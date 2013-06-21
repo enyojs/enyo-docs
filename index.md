@@ -8,6 +8,7 @@ documentation set; check back often as we continue to expand it.
 * [Enyo: A Brief Tour](getting-started/enyo-tour.html)
 * [Starting Enyo App Development](getting-started/getting-started.html)
 * [Bootplate: 0-60 with Enyo in 5 minutes](getting-started/bootplate.html)
+* [Dupliforking](getting-started/dupliforking.html)
 
 ## Tutorials
 
