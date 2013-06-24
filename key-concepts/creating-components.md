@@ -77,17 +77,17 @@ example,
 sets `baseInterval` to 75.
 
 If you have worked with Enyo in the past, you may recall that when you declare a
-published property, you also have the option to specify a "property changed"
+published property, you also have the option to specify a "property-changed"
 method, which will be called automatically whenever the value is changed.  In
 this example, we've defined `baseIntervalChanged()`, which will be called each
 time we set a new value for `baseInterval`.
 
-The property changed method may be used to perform actions that need to be
+The property-changed method may be used to perform actions that need to be
 repeated each time the property value changes, such as data validation.  This
 is, in fact, what we see taking place in `baseIntervalChanged()`.
 
 Note that it's often necessary to initialize a property's value.  We typically
-do this by calling the property changed method in `create()`.  Since the need
+do this by calling the property-changed method in `create()`.  Since the need
 for initialization can vary from case to case, we leave this to the component
 writer's discretion.
 
