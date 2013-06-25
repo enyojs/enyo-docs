@@ -70,7 +70,7 @@ documentation set; check back often as we continue to expand it.
 * [Supported Platforms](http://enyojs.com/docs/platforms/)
 * [Deploying to iOS, Android, Chrome, and Windows](deploying-apps/platform-specific-deployment.html)
 * [Enyo Apps on Windows 8](deploying-apps/enyo-apps-on-windows-8.html)
-* [Making Use of PhoneGap Native Functions](deploying-apps/phonegap-native-functions.html)
+* [Making Use of Cordova Native Functions](deploying-apps/cordova-native-functions.html)
 
 ## Best Practices
 
