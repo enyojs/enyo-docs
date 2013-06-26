@@ -78,6 +78,15 @@ processing.	Some examples of special properties are:
         // Invoke the static info() method of MyKind.
         console.log(MyKind.info());
 
+* `protectedStatics`: Introduced in Enyo 2.3, protected statics are statics
+    that are meant for use only within the kind in which they are declared, or
+    in code that derives from that kind.
+
+    Unlike public statics, protected statics won't prevent the deferral of a
+    kind's creation.  Deferral is not possible for kinds containing public
+    statics because of the potential for the public statics' being used before
+    any instances of the kind exist.
+
 Certain kinds in the framework define their own special properties, e.g., the
 `published` property supported by
 [enyo.Object](http://enyojs.com/api/#enyo.Object).
