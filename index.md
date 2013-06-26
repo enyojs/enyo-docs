@@ -74,7 +74,7 @@ documentation set; check back often as we continue to expand it.
 
 ## Best Practices
 
-* [Managing Project Complexity](best-practices/managing-your-project.html)
+* [Structuring Your Project](best-practices/structuring-your-project.html)
 * [Encapsulation in Enyo](best-practices/encapsulation-in-enyo.html)
 * [Documenting Code for the API Viewer](best-practices/documenting-code.html)
 * [Coding Style Guide](best-practices/style-guide.html)

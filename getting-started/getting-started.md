@@ -78,7 +78,7 @@ following app structure:
 		lib/
 
 (**Note:** A more detailed discussion of application structure may be found in
-[Managing Your Project](../best-practices/managing-your-project.html).)
+[Structuring Your Project](../best-practices/structuring-your-project.html).)
 
 ## Starting an App
 
@@ -276,7 +276,7 @@ And our application folder looks like this:
 		index.html
 
 At this point, our app's structure closely resembles the basic scaffold
-described in [Managing Your Project](../best-practices/managing-your-project.html)
+described in [Structuring Your Project](../best-practices/structuring-your-project.html)
 and embodied in the [bootplate template](bootplate.html).  The stage is now set
 for the project to grow to an arbitrary level of complexity.  Source files may
 be added and arranged in `source` (or subdirectories thereof), additional
