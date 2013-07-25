@@ -92,6 +92,8 @@ Here is our aforementioned `TrafficLight` control:
             }
         });
 
+![_TrafficLight control_](../assets/traffic-light.png)
+
 Because they are components, controls may contain other controls.  A control
 will render any controls contained inside itself.  Thus, a `TrafficLight` will
 render with three `Circle` instances inside it and, if our styling is correct,
