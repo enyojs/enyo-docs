@@ -45,11 +45,12 @@ process follows standard practice.
 
 For example, from a command-line git client,
 
-	git clone --recursive git@github.com:enyojs/bootplate.git <myapp>
+        git clone --recursive git@github.com:enyojs/bootplate.git <myapp>
 
-will clone the "bootplate" app template to a directory called `<myapp>` on your local computer, and
+will clone the "bootplate" app template to a directory called `<myapp>` on your
+local computer, and
 
-	git clone git@github.com:enyojs/enyo.git <local-enyo-dir>
+        git clone git@github.com:enyojs/enyo.git <local-enyo-dir>
 
 will clone the core Enyo code to a local directory called `<local-enyo-dir>`.
 
@@ -73,9 +74,9 @@ library), from the open source community, or from one's own development efforts.
 By convention, plugins are placed in a directory called `lib`, giving us the
 following app structure:
 
-	<app>
-		enyo/
-		lib/
+        <app>
+            enyo/
+            lib/
 
 (**Note:** A more detailed discussion of application structure may be found in
 [Structuring Your Project](../best-practices/structuring-your-project.html).)
@@ -88,53 +89,48 @@ applications.  Your first app can be as simple as a single HTML file.
 For example, we can create a minimal "HelloWorld" app by placing the following
 code in `index.html`:
 
-```html
-	<!doctype html>
-	<html>
-	<head>
-		<title>Enyo Hello</title>
-		<!-- load debug version of Enyo -->
-		<script src="enyo/enyo.js"></script>
-		<!-- load debug plugin -->
-	</head>
-	<body>
-		<script>new enyo.Control({content: "Hello From Enyo"}).write();</script>
-	</body>
-	</html>
-```
+        <!doctype html>
+        <html>
+        <head>
+            <title>Enyo Hello</title>
+            <!-- load debug version of Enyo -->
+            <script src="enyo/enyo.js"></script>
+        </head>
+        <body>
+            <script>new enyo.Control({content: "Hello From Enyo"}).write();</script>
+        </body>
+        </html>
 
 Now our app folder looks like this:
 
-	<app>
-		enyo/
-		lib/
-		index.html
+        <app>
+            enyo/
+            lib/
+            index.html
 
 If we decide to use a plugin, we can load it directly via `<script>` tag, e.g.:
 
-```html
-	<!doctype html>
-	<html>
-	<head>
-		<title>Enyo Hello</title>
-		<!-- load debug version of Enyo -->
-		<script src="enyo/enyo.js"></script>
-		<!-- load debug version of plugin -->
-		<script src="lib/aPlugin/source/package.js"></script>
-	</head>
-	<body>
-		<script>
-			// make a custom Control based on CoolKind from aPlugin
-			enyo.kind({
-				name: "App",
-				kind: "aPlugin.CoolKind",
-				coolness: true
-			});
-			new App().write();
-		</script>
-	</body>
-	</html>
-```
+        <!doctype html>
+        <html>
+        <head>
+            <title>Enyo Hello</title>
+            <!-- load debug version of Enyo -->
+            <script src="enyo/enyo.js"></script>
+            <!-- load debug version of plugin -->
+            <script src="lib/aPlugin/source/package.js"></script>
+        </head>
+        <body>
+        <script>
+            // make a custom Control based on CoolKind from aPlugin
+            enyo.kind({
+                name: "App",
+                kind: "aPlugin.CoolKind",
+                coolness: true
+            });
+            new App().write();
+        </script>
+        </body>
+        </html>
 
 Notice that to load the plugin, we load a `package.js` file.  An Enyo resource
 can use a `package.js` file as a manifest--that is, a description of what is
@@ -156,35 +152,33 @@ a file of application source code (`App.js`) and a file of CSS styles
 Once the app source and styles have been factored out, we have the following
 file structure:
 
-	<app>
-		enyo/
-		lib/
-		source/
-			App.js
-			App.css
-		index.html
+        <app>
+            enyo/
+            lib/
+            source/
+                App.js
+                App.css
+            index.html
 
 And our `index.html` has the following contents:
 
-```html
-	<!doctype html>
-	<html>
-	<head>
-		<title>Enyo Hello</title>
-		<!-- load debug version of Enyo -->
-		<script src="enyo/enyo.js"></script>
-		<!-- load debug version of plugin -->
-		<script src="lib/aPlugin/source/package.js"></script>
-		<!-- load our application css -->
-		<script src="source/App.css"></script>
-		<!-- load our application source -->
-		<script src="source/App.js"></script>
-	</head>
-	<body>
-		<script>new App().write();</script>
-	</body>
-	</html>
-```
+        <!doctype html>
+        <html>
+        <head>
+            <title>Enyo Hello</title>
+            <!-- load debug version of Enyo -->
+            <script src="enyo/enyo.js"></script>
+            <!-- load debug version of plugin -->
+            <script src="lib/aPlugin/source/package.js"></script>
+            <!-- load our application css -->
+            <script src="source/App.css"></script>
+            <!-- load our application source -->
+            <script src="source/App.js"></script>
+        </head>
+        <body>
+            <script>new App().write();</script>
+        </body>
+        </html>
 
 Notice that as the application grows in complexity, so, too, does the `<head>`
 section of the index file.
@@ -195,13 +189,11 @@ We saw earlier that `aPlugin` has a `package.js` file with instructions for
 loading the plugin; now it makes sense to create a `package.js` file for the
 application itself:
 
-```javascript
-	enyo.depends(
-		"$lib/aPlugin/source",
-		"App.css",
-		"App.js"
-	);
-```
+        enyo.depends(
+            "$lib/aPlugin/source",
+            "App.css",
+            "App.js"
+        );
 
 Some things to note about this file:
 
@@ -232,48 +224,44 @@ Some things to note about this file:
 
 * As your application grows, be sure to add the new files and plugins to `package.js`, e.g.:
 
-```javascript
-	enyo.depends(
-		"$lib/aPlugin/source",
-		"$lib/bPlugin/source",
-		"$lib/cPlugin/source",
-		"MyView.js",
-		"App.css",
-		"App.js"
-	);
-```
+        enyo.depends(
+            "$lib/aPlugin/source",
+            "$lib/bPlugin/source",
+            "$lib/cPlugin/source",
+            "MyView.js",
+            "App.css",
+            "App.js"
+        );
 
 ## Ready for Growth
 
 Now our HTML file looks something like this:
 
-```html
-	<!doctype html>
-	<html>
-	<head>
-		<title>Enyo Hello</title>
-		<!-- load debug version of enyo -->
-		<script src="enyo/enyo.js"></script>
-		<!-- load debug version of application-->
-		<script src="source/package.js"></script>
-	</head>
-	<body>
-		<script>new App().write();</script>
-	</body>
-	</html>
-```
+        <!doctype html>
+        <html>
+        <head>
+            <title>Enyo Hello</title>
+            <!-- load debug version of enyo -->
+            <script src="enyo/enyo.js"></script>
+            <!-- load debug version of application-->
+            <script src="source/package.js"></script>
+        </head>
+        <body>
+            <script>new App().write();</script>
+        </body>
+        </html>
 
 And our application folder looks like this:
 
-	<app>
-		enyo/
-		lib/
-		source/
-			MyView.js
-			App.css
-			App.js
-			package.js
-		index.html
+        <app>
+            enyo/
+            lib/
+            source/
+                MyView.js
+                App.css
+                App.js
+                package.js
+            index.html
 
 At this point, our app's structure closely resembles the basic scaffold
 described in [Structuring Your Project](../best-practices/structuring-your-project.html)
