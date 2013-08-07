@@ -1,4 +1,4 @@
-# Platform-Specific Deployment
+% Platform-Specific Deployment
 
 The instructions that follow assume that you have completed the development phase
 of an Enyo-based application as well as the optimization phase (i.e., running the

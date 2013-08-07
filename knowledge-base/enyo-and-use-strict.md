@@ -1,4 +1,4 @@
-# Enyo and use strict
+% Enyo and use strict
 
 ## Why we don't work with "use strict"
 

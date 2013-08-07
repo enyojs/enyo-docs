@@ -1,6 +1,6 @@
-# Enyo 2.3-dev Release Notes
+% Enyo 2.3-dev Release Notes
 
-Welcome to Enyo 2.3-dev  The following items have changes since the Enyo 2.2
+Welcome to Enyo 2.3-dev.  The following items have changes since the Enyo 2.2
 release. (Note that this list is not comprehensive; see the commit history in
 GitHub for a complete list of changes.)
 
@@ -38,6 +38,23 @@ GitHub for a complete list of changes.)
     + Added `enyo.View` as an alias for `enyo.Control`.
 
     + Under `tools`, added unit tests for new MVC functionality.
+
+* Introduced new API for getting and setting object property values.
+
+    The existing getter and setter methods, `getProperty()` and `setProperty()`,
+    have been replaced by the simpler `get()` and `set()`.  To retrieve a
+    property's value, instead of calling `getProperty("<propertyName>")` on an
+    object, you should now call `get("<propertyName>")`.
+
+    Likewise, when setting a property's value, instead of calling
+    `setProperty("<propertyName>", <value>)` on a given object, you should now
+    call `set("<propertyName>", <value>)`.
+
+    The framework's automatic support for `propertyName<Changed>` methods for
+    published properties has not changed.  So, for example, a call to
+    `set("myProp", 5)` will still automatically call the `myPropChanged()`
+    method (assuming that you've defined such a method, and that the value of
+    `myProp` was not already `5`).
 
 * In `Oop.js`, changed `enyo.kind()` to delay most of its work until the kind
     is used for the first time.  This behavior is enabled by default for named

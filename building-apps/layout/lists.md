@@ -1,4 +1,4 @@
-# Lists
+% Lists
 
 Most applications need to display a list of items of one kind or another.
 Sometimes the items in the list are very simple, like the name of a contact,

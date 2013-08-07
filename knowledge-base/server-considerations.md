@@ -1,4 +1,4 @@
-# Server Considerations
+% Server Considerations
 
 This page documents specific issues seen when hosting Enyo applications on Web
 servers with certain configurations.

@@ -1,4 +1,4 @@
-# Buttons
+% Buttons
 
 The Onyx library provides a rich assortment of buttons for use in your Enyo
 applications.  This document surveys the types of buttons that you are most

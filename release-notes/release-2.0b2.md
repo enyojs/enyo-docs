@@ -1,3 +1,5 @@
+% Enyo 2.0b2 Release Notes
+
 Since our original 2.0 beta 1 release at the end of January, there have 
 been a number of changes to the API in the Enyo code.  Here's a summary of 
 what has changed.

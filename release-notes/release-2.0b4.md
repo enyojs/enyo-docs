@@ -1,3 +1,5 @@
+% Enyo 2.0b4 Release Notes
+
 It's been five weeks since the beta 3 release, and we're now ready to package
 up a bunch of new work that we've been doing.
 

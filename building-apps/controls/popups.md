@@ -1,4 +1,4 @@
-# Popups
+% Popups
 
 ## enyo.Popup
 

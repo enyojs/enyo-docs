@@ -1,4 +1,4 @@
-# Enyo MVC: An Introduction
+% Enyo MVC: An Introduction
 
 **In this doc:**
 

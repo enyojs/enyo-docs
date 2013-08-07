@@ -1,4 +1,4 @@
-# Scrollers
+% Scrollers
 
 ## enyo.Scroller
 

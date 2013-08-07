@@ -1,4 +1,4 @@
-# Dupliforking
+% Dupliforking
 
 This document describes a way to "fork" a project multiple times, which we call "dupliforking".
 

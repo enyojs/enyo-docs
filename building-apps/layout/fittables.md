@@ -1,4 +1,4 @@
-# Fittables
+% Fittables
 
 The fittable package helps you create layouts that expand to fit the available
 space--a common need for apps, but one that has historically been difficult to

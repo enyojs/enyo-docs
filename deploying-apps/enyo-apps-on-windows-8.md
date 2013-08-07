@@ -1,4 +1,4 @@
-# Enyo Apps on Windows 8
+% Enyo Apps on Windows 8
 
 In this article, we present instructions for developers wishing to deploy Enyo
 applications to PCs and tablets running Windows 8, via the Windows Store.

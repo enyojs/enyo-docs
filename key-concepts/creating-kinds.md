@@ -1,4 +1,4 @@
-# Creating Kinds
+% Creating Kinds
 
 ## enyo.kind
 

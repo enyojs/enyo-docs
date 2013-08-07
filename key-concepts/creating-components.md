@@ -1,4 +1,4 @@
-# Creating Components
+% Creating Components
 
 The Component object, [enyo.Component](http://enyojs.com/api/#enyo.Component),
 is the basic building block of Enyo.  Components encapsulate rich behavior and

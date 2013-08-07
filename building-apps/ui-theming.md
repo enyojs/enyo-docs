@@ -1,4 +1,4 @@
-# UI Theming
+% UI Theming
 
 ## Overview
 

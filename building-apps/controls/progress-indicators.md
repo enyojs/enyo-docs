@@ -1,4 +1,4 @@
-# Progress Indicators
+% Progress Indicators
 
 ## onyx.ProgressBar
 

@@ -1,4 +1,4 @@
-# Handling User Input
+% Handling User Input
 
 ## Normalized User Input
 

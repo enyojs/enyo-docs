@@ -1,4 +1,4 @@
-# Getting Started with Enyo 2
+% Getting Started with Enyo 2
 
 ## Development Environment
 

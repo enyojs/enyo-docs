@@ -1,4 +1,4 @@
-﻿# Localization
+﻿% Localization
 
 ## ilib and enyo-ilib
 

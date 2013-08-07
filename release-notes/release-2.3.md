@@ -1,4 +1,4 @@
-# Enyo 2.3 Release Notes
+% Enyo 2.3 Release Notes
 
 Welcome to Enyo 2.3.  The following items have changes since the Enyo 2.2
 release. (Note that this list is not comprehensive; see the commit history in

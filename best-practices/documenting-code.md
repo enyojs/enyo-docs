@@ -1,4 +1,4 @@
-# Documenting Code
+% Documenting Code
 
 ## What to Document
 

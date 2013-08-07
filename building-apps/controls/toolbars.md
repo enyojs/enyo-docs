@@ -1,4 +1,4 @@
-# Toolbars
+% Toolbars
 
 ## onyx.Toolbar
 

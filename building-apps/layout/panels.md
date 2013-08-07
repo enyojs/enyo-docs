@@ -1,4 +1,4 @@
-# Panels
+% Panels
 
 The [enyo.Panels](http://enyojs.com/api/#enyo.Panels) kind is designed to
 satisfy a variety of common use cases for application layout.  Using

@@ -1,4 +1,4 @@
-# Creating Controls
+% Creating Controls
 
 ## enyo.Control
 

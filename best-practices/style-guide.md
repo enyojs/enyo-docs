@@ -1,4 +1,4 @@
-# Style Guide
+% Style Guide
 
 We ask that developers respect the following guidelines when contributing pull
 requests to Enyo.

@@ -1,4 +1,4 @@
-# Menus
+% Menus
 
 ## onyx.Menu
 

@@ -1,4 +1,4 @@
-# Bootplate
+% Bootplate
 
 The **Bootplate** template provides a complete starter project that supports
 source control and cross-platform deployment out of the box.  It can be used to

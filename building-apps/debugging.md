@@ -1,4 +1,4 @@
-﻿# Debugging
+﻿% Debugging
 
 While acknowledging that debugging is a subject on which entire books are
 written, and that each software project presents its own unique challenges, the

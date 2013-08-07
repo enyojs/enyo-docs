@@ -1,4 +1,4 @@
-# Structuring Your Project
+% Structuring Your Project
 
 While an Enyo application may be as simple as single HTML5 file, once we start
 making more sophisticated apps, there are numerous resources to manage, versions

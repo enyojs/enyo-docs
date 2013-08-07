@@ -1,4 +1,4 @@
-# Release Notes
+% Release Notes
 
 Release notes are available for the following Enyo releases:
 

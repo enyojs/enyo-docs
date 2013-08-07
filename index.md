@@ -1,4 +1,4 @@
-# Enyo Documentation
+% Enyo Documentation
 
 Welcome to the Enyo Documentation overview.  Below you'll find our current
 documentation set; check back often as we continue to expand it.

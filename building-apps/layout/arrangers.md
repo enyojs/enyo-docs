@@ -1,4 +1,4 @@
-# Arrangers
+% Arrangers
 
 [enyo.Arranger](http://enyojs.com/api/#enyo.Arranger) is an
 [enyo.Layout](http://enyojs.com/api/#enyo.Layout) that considers one of its

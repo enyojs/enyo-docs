@@ -1,4 +1,4 @@
-# Encapsulation in Enyo
+% Encapsulation in Enyo
 
 One of the most important features that Enyo brings to Web development is the
 ability to encapsulate useful blocks of presentation code and associated logic

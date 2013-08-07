@@ -1,4 +1,4 @@
-# Enyo 2.1.1 Release Notes
+% Enyo 2.1.1 Release Notes
 
 Welcome to Enyo 2.1.1.  The following items have changes since the Enyo 2.1
 release.  (Note that this list is not comprehensive; see the commit history in

@@ -1,4 +1,4 @@
-# Enyo: A Brief Tour
+% Enyo: A Brief Tour
 
 Thanks for checking out Enyo!  This document will help you orient yourself with how the framework is organized and what each piece offers.  From there we encourage you to dig into the tutorials and other documentation and get started!
 

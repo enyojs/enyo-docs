@@ -1,4 +1,4 @@
-# Consuming Web Services
+% Consuming Web Services
 
 In this article, we look at how the Enyo framework enables apps to work with
 services in general, and Web services in particular.

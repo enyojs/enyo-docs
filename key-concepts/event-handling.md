@@ -1,4 +1,4 @@
-# Event Handling
+% Event Handling
 
 Enyo employs a message-passing strategy for indirect communication between
 components.  We refer to these messages as "events" to dovetail with common DOM

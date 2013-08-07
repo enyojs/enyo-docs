@@ -1,4 +1,4 @@
-# Published Properties
+% Published Properties
 
 ## enyo.Object
 

@@ -1,4 +1,4 @@
-# Pickers
+% Pickers
 
 ## onyx.Picker
 

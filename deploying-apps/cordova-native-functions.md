@@ -1,4 +1,4 @@
-# Making Use of Cordova's Native Functions
+% Making Use of Cordova's Native Functions
 
 In this document, we examine the relationship between Enyo and Cordova (a.k.a.
 "PhoneGap"), making reference to a simple app that consists of the following

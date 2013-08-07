@@ -1,4 +1,4 @@
-# Object Lifecycle
+% Object Lifecycle
 
 ## Lifecycle Methods in Enyo
 

@@ -1,4 +1,4 @@
-# Enyo 2.0b5 Release Notes
+% Enyo 2.0b5 Release Notes
 
 # enyo
 
