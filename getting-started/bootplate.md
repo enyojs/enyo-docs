@@ -83,15 +83,15 @@ your finished app for deployment:
 
 2. Make a deployment build by doing the following:
 
-        * Open a command prompt (Windows) or terminal window (Mac/Linux).
-        
-        * On the command line, navigate to root of your bootplate folder.
+    * Open a command prompt (Windows) or terminal window (Mac/Linux).
 
-        * Run the `tools\deploy.bat` script (Windows) or `./tools/deploy.sh`
+    * On the command line, navigate to root of your bootplate folder.
+
+    * Run the `tools\deploy.bat` script (Windows) or `./tools/deploy.sh`
         (Mac/Linux).
 
-        (Note: For releases prior to 2.1.1, navigate to the `tools` folder and
-        run `deploy.bat` or `./deploy.sh`)
+    (Note: For releases prior to 2.1.1, navigate to the `tools` folder and
+    run `deploy.bat` or `./deploy.sh`)
 
     The `deploy` script invokes the `minify` script; it is typically not
     necessary to call `minify` directly.
