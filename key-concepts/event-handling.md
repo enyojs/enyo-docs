@@ -117,7 +117,7 @@ The second is to name a catch-all handler in the `handlers` block, like so:
 
 Note that if you use both event handling strategies at the same time, you
 will receive the event in both places by default.  You may avoid this behavior
-by preventing propagation in `thingTap`.  For example:
+by preventing propagation in `thingTap()`.  For example:
 
         components: [
             {name: "thing", ontap: "thingTap"}
@@ -126,7 +126,7 @@ by preventing propagation in `thingTap`.  For example:
             ontap: "anythingTap"
         },
         thingTap: function(inSender, inEvent) {
-            // taps on _thing_ will bubble up to _anythingTap_ also,
+            // taps on _thing_ will bubble up to _anythingTap()_ also,
             // unless I stop propagation here
             return true; // handled here, don't propagate
         }
@@ -219,7 +219,7 @@ are broadcast as signals.  These events include window events, like `onload` and
 up non-Enyo events (e.g., Cordova/PhoneGap events) to be handled by Enyo kinds
 in application code.
 
-To broadcast a message, a sender simply invokes the static `send` function on
+To broadcast a message, a sender simply invokes the static `send()` function on
 `enyo.Signals`:
 
         enyo.Signals.send(inEventName, inEvent);
@@ -252,20 +252,20 @@ For example, the following kind...
 
         enyo.Signals.send("onTransmission");
 
-Note that, like all Enyo message handlers, the signal handler (`transmission`)
+Note that, like all Enyo message handlers, the signal handler (`transmission()`)
 receives two parameters: a reference to the component that sent the message (in
 this case, our own Signals object, `this.$.signals`), and any event payload
 that the transmitter included in the broadcast.
 
 Some important things to note:
 
-* The signal name passed into `send` must exactly match the message name in the
-    receiving Signals instance; both must include the `"on"` prefix.
+* The signal name passed into `send()` must exactly match the message name in
+    the receiving Signals instance; both must include the `"on"` prefix.
 
 * All Signals instances that register a handler for a particular message name
     will receive the message.
 
-* The `send` method is on the `enyo.Signals` kind itself, not an instance of a
+* The `send()` method is on the `enyo.Signals` kind itself, not an instance of a
     Signals component.  
 
 * Do not abuse Signals.  Coupling objects with global communication is considered
