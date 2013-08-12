@@ -176,6 +176,8 @@ The following DOM events are handled by Enyo:
 * hashchange
 * webkitTransitionEnd
 * transitionend
+* webkitAnimationEnd
+* animationEnd
 
 If there are additional DOM events that you want Enyo to handle, use the
 `enyo.dispatcher.listen()` method.  For example, the following code sets up a
