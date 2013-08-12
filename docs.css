@@ -17,4 +17,8 @@ p code, ul li code, ul li p code { font-size: 13px; line-height: 23px;
 pre { font-size: 13px; line-height: 23px; background-color: #f8f8f8;
 	padding: 15px; border: 1px solid #ccc; border-radius: 3px; overflow: auto; }
 ul li pre code { border: 0 }
+table { border-spacing: 5px; }
+table td, table th { padding: 5px; }
+td pre { background-color: transparent; border: 0px; }
+hr { color: #ccc; background-color: #ccc; border: 0px; height: 3px; }
 </style>
