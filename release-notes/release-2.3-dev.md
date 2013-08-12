@@ -29,6 +29,10 @@ GitHub for a complete list of changes.)
         `mixins` submodule.  Also made major additions to existing `lang.js`
         and `Object.js` files.
 
+    + Added data layer components (under `ui/data`) `enyo.DataList` and
+        `enyo.DataGridList`.  Both are subkinds of the abstract
+        `enyo.DataRepeater` kind.
+
     + Added new `ext` module, which contains the new files `BooleanBinding.js`,
         `BooleanOnlyBinding.js`, and `InputBinding.js`, as well as `macroize.js`
         (previously found in the `kernel` module).
@@ -86,13 +90,22 @@ GitHub for a complete list of changes.)
 * Added new kinds `enyo.Media` and `enyo.Audio`.
 
 * Moved code for drawers, previously in `onyx.Drawer`, into the core Enyo `ui`
-    library as the new kind `enyo.Drawer`.
+    library as the new kind `enyo.Drawer`.  Also added new
+    `onDrawerAnimationEnd` event, which may be used to detect changes in the
+    drawer's open/closed status.
 
 * Moved `focus()` and `blur()` methods from `enyo.Input` to `enyo.Control`,
     since they are generally useful for any DOM node.
 
 * Added `enyo.design`, which is used to specify design information for the Ares
     designer tool.
+
+* Added `version.js`, which defines `enyo.version`, a string that indicates the
+    current version.
+
+* Added `jobs.js`, which defines `enyo.jobs`, a low-level mechanism for queueing
+    tasks and sorting them by priority.  Normally, it will not be used by
+    application code.  Also added related sample, "AnimatorSample".
 
 * In `enyo.Object`, added new `bindSafely()` method, which acts like
     `enyo.bind()`, but handles the case in which the bound method is called
@@ -121,7 +134,8 @@ GitHub for a complete list of changes.)
 
 * In `dispatcher.js`, added `enyo.dispatcher.stopListening()`, which removes
     listeners for a particular kind of event, and `enyo.unmakeBubble()`, which
-    stops listening for events bubbled by `enyo.makeBubble()`.
+    stops listening for events bubbled by `enyo.makeBubble()`.  Also added
+    support for `animationEnd` and `webkitAnimationEnd` events.
 
 * Renamed `phonegap.js` as `cordova.js` and added Enyo support for the
     `localechange` event supplied by cordova-webos (i.e., signals will be sent).
@@ -129,8 +143,9 @@ GitHub for a complete list of changes.)
 * In `loader.js` and `boot.js`, fixed issue causing `enyo.load()` to not wait
     until all files have loaded before calling the callback function.
 
-* In `boot.js`, added `"charset"` to the generated script elements for Internet
-    Explorer.
+* In `boot.js`, changed `enyo.ready()` to call `enyo.asyncMethod()` instead of
+    `run()`, to guarantee that all callbacks are asynchronous.  Also added
+    "charset"` to the generated script elements for Internet Explorer.
 
 * Added new method `enyo.easedComplexLerp()` in `animation.js` and put it to use
     in `Animator.next()`.  The new method allows for more complex animations
@@ -175,14 +190,19 @@ GitHub for a complete list of changes.)
 * In `Repeater.js`, updated `decorateEvent()` to prevent index value from being
     overwritten when dealing with nested repeaters.
 
-* In `RichText.js`, updated `valueChanged()` to prevent scroll reset on keypress.
+* In `RichText.js`, updated `valueChanged()` to prevent scroll reset on
+    keypress.  Also added proper support for `disabled` property, including new
+    `disabledChanged()` method.
 
-* In `dom.js`, fixed positioning issues affecting IE8.
+* Modified core code so that IE8 passes unit tests.  Also, fixed positioning
+    issues affecting IE8 in `dom.js`.
 
 * In `drag.js`, reworked code for cloning events in `beginHold()`, as it was
     causing crashes in `ImageView`.
-    
+
 * In `lang.js`, fixed `enyo.getPath()` to return null if path is not defined.
+
+* In `langTest.js`, added tests for `enyo.isObject()` and `enyo.isArray()`.
 
 * In `ready.js`, added legacy WebKit support for `enyo.ready()`.
 
@@ -196,11 +216,16 @@ GitHub for a complete list of changes.)
 
 * Removed obsolete "Playground" sample.
 
+* Added `"es3": true` to `.jshintrc` to have JSHint detect trailing commas;
+    removed trailing commas from several source files.
+
 ## Onyx
 
 * Added new `onyx.Submenu` kind, which enables the creation of nested menus.
     Instances are meant to live alongside `onyx.MenuItem` objects within an
     `onyx.Menu`.
+
+* In `onyx.Menu`, added support for specifying a menu's scroll strategy.
 
 * Added `onyx.design`, which is used by libraries to specify their associated
     design information.  It replaces `design.js` and is discoverable via
@@ -212,17 +237,13 @@ GitHub for a complete list of changes.)
 * Cleaned up code for better compatibility with JSHint 2.1, which is used in
     Travis CI tests.
 
-* Added `"es3": true` to `.jshintrc` to have JSHint detect trailing commas;
-    removed trailing commas from "SubmenuSample".
-
 * In `Popup.js`, modified `getScrimZIndex()` to ensure selection of proper
-    z-index values for popups that should appear on top of other popups.
+    z-index values for popups that should appear on top of other popups.  Also
+    made static fields protectedStatic to hide their internal state.
 
 * In `ContextualPopup.js`, added ability to set `ontap` handlers for the action
     buttons.
- 
-* In `Menu.js`, added support for specifying a menu's scroll strategy.
- 
+
 * Tweaked the `Button`, `IconButton`, and `Slider` controls to work better on
     FirefoxOS.
 
@@ -233,6 +254,9 @@ GitHub for a complete list of changes.)
 
 * In `MoreToolbar.js`, fixed issue that could cause a crash when resizing a
     window.
+
+* In `TimePicker.js`, moved check for null `is24HrMode` property after
+    globalization/localization code.
 
 * Updated samples with "no telephone number detection" and "no translation" meta
     tags.
@@ -324,50 +348,15 @@ GitHub for a complete list of changes.)
 
 ## Tools
 
-* Added `.jshintrc` files to the root folder of most repos; these are now used
-    when writing new code and validating old code.
-
 * Added support for Travis CI continuous integration system, which uses JSHint
     and PhantomJS to run tests on repos after each commit.
+
+* Added `.jshintrc` files to the root folder of most repos; these are now used
+    when writing new code and validating old code.  Set `"es3": true` so that
+    JSHint detects trailing commas.  (Subsequently removed trailing commas from
+    several source files.)
 
 * Updated minifier support in Enyo to use `less 1.3.3` and `uglify-js 2.2.5`.
     Flag tweaks should result in ~5% reduction in gzipped-file size.  If you
     need to debug the minified logic, use the `--beautify` switch on the
     minifier to have it pretty-print the compacted code.
-
-## Known Issues and Limitations
-
-### Windows 8
-
-Developers should be aware of the possibility for unexpected behavior related to
-Windows 8's lack of support for JSONP and the fact that the Bootplate app must
-be in its minified state to run properly on this platform.
-
-### Windows Phone 8
-
-While compatibility with Windows Phone 8 has been improved over previous
-Enyo releases, we have encountered some notable (non-Enyo-related) obstacles
-while developing for this platform.  Specifically:
-
-* Debugging is difficult.  There is no `console.log()` for Visual Studio Express
-    for Windows Phone 8.  To do logging, you must pass console messages from
-    your JavaScript to a C# function that then produces output.  In addition, we
-    sometimes received unexpected log data for things like objects.
-
-* App caching can be a hindrance.  When you make a code change and redeploy your
-    app, you won't always see new results from the app.  In order to see the
-    results of our code changes, we have sometimes had to quit and restart
-    Visual Studio, create a new project, or reboot a device.
-
-* The viewport is somewhat odd, in that you can move your app around.  Setting
-    specific pixel dimensions for the viewport and setting
-    `-ms-touch-action: none;` (which is done in the `enyo-no-touch-action`
-    class) seem to aid usability.
-
-### Kindle Fire HD
-
-We have noticed several issues with how swipeable/reorderable lists are handled
-by the Web browser on Kindle Fire HD.  Currently, this browser lacks a mode in
-which it can be full-screen without reacting to scrolls that cause the URL bar
-to be shown or hidden.  As a result, operations that involve dragging often
-fail.  This may be addressed by Amazon in a future browser update.
