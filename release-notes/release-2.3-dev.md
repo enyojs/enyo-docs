@@ -76,6 +76,30 @@ GitHub for a complete list of changes.)
     quoted (e.g., `kind: "enyo.Control"`).  Previously, the quotation marks
     were optional.
 
+* To improve performance, modified internal code in Enyo Core so that override
+    methods use `enyo.super()`, following the double function pattern outlined
+    by [dcl.js](http://www.dcljs.org/docs/general/supercalls/).  Application
+    code will continue to use the existing `this.inherited()` syntax.
+
+* Made several significant additions to `enyo.Component`:
+
+    + New `componentOverrides` property simplifies the creation of subkinds by
+        letting developers alter items in the superkind's `components` block
+        without having to copy all of the block's contents into the subkind.
+
+    + New methods `startJob()` and `stopJob()` are used to manage job methods
+        that should be associated with a specific component; they are
+        automatically stopped if the component is destroyed.
+
+    + New `throttleJob()` method allows you to execute a method immediately and
+        then prevent the method from being called again for a specified period
+        of time.
+
+    + New `silence()` and `unsilence()` methods are used to stop and restore
+        event propagation through the component.  This is useful when you're
+        changing a lot of properties and want to keep observers from reacting to
+        `changed` events until all of your work is complete.
+
 * Added support for progress events during asynchronous activities.  Progress
     events are sent by `enyo.Async.sendProgress()` and handled by
     `enyo.Ajax.updateProgress()`.  Also added associated unit test.
@@ -87,7 +111,9 @@ GitHub for a complete list of changes.)
 
 * Added support for loading framework source from embedded on-device location.
 
-* Added new kinds `enyo.Media` and `enyo.Audio`.
+* Added new kinds `enyo.Media` and `enyo.Audio`.  Also added `enyo.Anchor`,
+    which implements an HTML anchor (`<a>`) tag; `title` and `href` are
+    available as published properties.
 
 * Moved code for drawers, previously in `onyx.Drawer`, into the core Enyo `ui`
     library as the new kind `enyo.Drawer`.  Also added new
@@ -113,21 +139,6 @@ GitHub for a complete list of changes.)
     documentation for optional `force` parameter; if true, the property whose
     value is being set will be updated (and notifications will be sent) even if
     the passed-in value is the same as the existing value.
-
-* In `enyo.Component`, added a number of new methods:
-
-    + `startJob()` and `stopJob()` are used to manage job methods that should be
-        associated with a specific component; they are automatically stopped if
-        the component is destroyed.
-
-    + `throttleJob()` allows you to execute a method immediately and then
-        prevent the method from being called again for a specified period of
-        time.
-
-    + `silence()` and `unsilence()` are used to stop and restore event
-        propagation through the component.  This is useful when you're changing
-        a lot of properties and want to keep observers from reacting to `changed`
-        events until all of your work is complete.
 
 * In `job.js`, added `enyo.job.throttle()`, which enables job throttling outside
     the context of a specific component.
@@ -174,8 +185,8 @@ GitHub for a complete list of changes.)
 * In `FloatingLayer.js` and `Popup.js`, modified `enyo.FloatingLayer` so it
     recreates itself when `document.body` is wiped out by a fresh render.
 
-* Added detection of Tizen platform in `platform.js` and made
-    "TouchScrollStrategy" its default scroll strategy in `Scroller.js`.
+* Added detection of webOS 4/Open webOS, Tizen, BlackBerry PlayBook, and
+    Internet Explorer 11 platforms to `platform.js`.
 
 * In `Oop.js`, fixed issue in `enyo.kind.features.push()` that could allow
     feature mixins to be run more than once, overwriting the custom subclass
@@ -194,8 +205,15 @@ GitHub for a complete list of changes.)
     keypress.  Also added proper support for `disabled` property, including new
     `disabledChanged()` method.
 
+* In `enyo.Image`, added new published property `alt`, which corresponds to the
+    `"alt"` attribute of an HTML `<img>` tag.
+
 * Modified core code so that IE8 passes unit tests.  Also, fixed positioning
     issues affecting IE8 in `dom.js`.
+
+* Also in `dom.js`, added methods `enyo.dom.hasClass()`, `enyo.dom.addClass()`,
+    and `enyo.dom.removeClass()`.  Put the new methods to use in `enyo.Control`
+    to prevent duplication of effort across multiple renders.
 
 * In `drag.js`, reworked code for cloning events in `beginHold()`, as it was
     causing crashes in `ImageView`.
@@ -289,6 +307,8 @@ GitHub for a complete list of changes.)
 * In `enyo.List`, added support for horizontal layouts; also removed
     unnecessary call to `inEvent.preventDefault()`.
 
+* In `enyo.Scroller`, updated documentation for `getScrollBounds()` method.
+
 * Added `layout.design`, which contains information on the layouts available in
     the Layout library; it replaces `design.js` and is loaded by default.
 
@@ -310,6 +330,10 @@ GitHub for a complete list of changes.)
 
 ## Globalization/Localization
 
+* Introduced `enyo-ilib`, a wrapper for the [ilib](www.jedlsoft.com)
+    globalization/internationalization library.  This is a replacement for the
+    now-deprecated `g11n` library.
+
 * Fixed `deploy.sh` to not create duplicate subdirectories.
 
 ## Bootplate
@@ -324,6 +348,9 @@ GitHub for a complete list of changes.)
     paths to allowing forking of the project.
 
 ## Samples
+
+* Added new samples "DataListSample", "DataRepeaterSample", and
+    "ComponentOverrideSample".
 
 * In `sampler` repo's `.gitmodules` file, replaced absolute URL paths to
     github.com with relative paths to allowing forking of the project.
@@ -354,9 +381,14 @@ GitHub for a complete list of changes.)
 * Added `.jshintrc` files to the root folder of most repos; these are now used
     when writing new code and validating old code.  Set `"es3": true` so that
     JSHint detects trailing commas.  (Subsequently removed trailing commas from
-    several source files.)
+    a number of source files.)
 
 * Updated minifier support in Enyo to use `less 1.3.3` and `uglify-js 2.2.5`.
-    Flag tweaks should result in ~5% reduction in gzipped-file size.  If you
-    need to debug the minified logic, use the `--beautify` switch on the
-    minifier to have it pretty-print the compacted code.
+    Flag tweaks should result in ~5% reduction in gzipped-file size.
+
+* Added support for new `"beautify"` option in minification and deployment
+    scripts, `tools/minify.js` and `tools/deploy.js`.  When this switch is
+    activated (by specifying `-B` on the command line), the scripts will create
+    output files in which line breaks are not removed from code.  The
+    improvement in human-readability makes the beautified files useful for
+    debugging.
