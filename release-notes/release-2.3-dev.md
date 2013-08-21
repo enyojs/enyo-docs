@@ -121,7 +121,11 @@ GitHub for a complete list of changes.)
     drawer's open/closed status.
 
 * Moved `focus()` and `blur()` methods from `enyo.Input` to `enyo.Control`,
-    since they are generally useful for any DOM node.
+    since they are generally useful for any DOM node.  Also added protected
+    property `rtl`, which indicates direction of layout, to `enyo.Control`.  It
+    should be set to `true` for right-to-left scripts (default is `false`).
+    This property will typically only be used by developers who are creating
+    their own subkinds of `enyo.Control`.
 
 * Added `enyo.design`, which is used to specify design information for the Ares
     designer tool.
@@ -218,7 +222,12 @@ GitHub for a complete list of changes.)
 * In `drag.js`, reworked code for cloning events in `beginHold()`, as it was
     causing crashes in `ImageView`.
 
-* In `lang.js`, fixed `enyo.getPath()` to return null if path is not defined.
+* In `lang.js`, added fast implementations of `enyo.setPath()` and
+    `enyo.getPath()` that only work with local property names.  These are used
+    internally by a new unit test for published properties; they are not for
+    public use.
+    
+    Also fixed `enyo.getPath()` to return null if path is not defined.
 
 * In `langTest.js`, added tests for `enyo.isObject()` and `enyo.isArray()`.
 
@@ -226,16 +235,6 @@ GitHub for a complete list of changes.)
 
 * Fixed `enyo.Drawer` and "GestureSample" to stop propagation of animation
     events.
-
-* In "RepeaterSample", modified `setupItem()` to stop event propagation.
-
-* Updated samples with "no telephone number detection" and "no translation"
-    meta tags.
-
-* Removed obsolete "Playground" sample.
-
-* Added `"es3": true` to `.jshintrc` to have JSHint detect trailing commas;
-    removed trailing commas from several source files.
 
 ## Onyx
 
@@ -276,9 +275,6 @@ GitHub for a complete list of changes.)
 * In `TimePicker.js`, moved check for null `is24HrMode` property after
     globalization/localization code.
 
-* Updated samples with "no telephone number detection" and "no translation" meta
-    tags.
-
 ## Layout
 
 * Added new `flex` layout module, based on CSS Flexible Box Model.
@@ -304,13 +300,15 @@ GitHub for a complete list of changes.)
     + `enyo.GridFlyweightRepeater`, which extends `enyo.FlyweightRepeater` to
         display items in a grid pattern
 
+* Added `layout.design`, which contains information on the layouts available in
+    the Layout library; it replaces `design.js` and is loaded by default.
+
+* Added library manifest file, `deploy.json`.
+
 * In `enyo.List`, added support for horizontal layouts; also removed
     unnecessary call to `inEvent.preventDefault()`.
 
 * In `enyo.Scroller`, updated documentation for `getScrollBounds()` method.
-
-* Added `layout.design`, which contains information on the layouts available in
-    the Layout library; it replaces `design.js` and is loaded by default.
 
 * In `enyo.Panels`, added method `selectPanelByName()`, which selects a pane
     based on its name instead of its index.  Also fixed `removeControl()` to
@@ -324,9 +322,6 @@ GitHub for a complete list of changes.)
 * In `FittableLayout.css`, added special case for tables in a
     FittableColumnsLayout.  Also added special case for locales with
     right-to-left text alignment.
-
-* Updated samples with "no telephone number detection" and "no translation"
-    meta tags.
 
 ## Globalization/Localization
 
@@ -352,6 +347,8 @@ GitHub for a complete list of changes.)
 * Added new samples "DataListSample", "DataRepeaterSample", and
     "ComponentOverrideSample".
 
+* Removed obsolete "Playground" sample.
+
 * In `sampler` repo's `.gitmodules` file, replaced absolute URL paths to
     github.com with relative paths to allowing forking of the project.
 
@@ -359,15 +356,18 @@ GitHub for a complete list of changes.)
     compatibility with Windows 8 and Windows Phone 8.  Also made fix to not
     clobber existing namespaces.
 
+* Updated samples with "no telephone number detection" and "no translation"
+    meta tags.
+
 * In "ButtonSample", modified sample control to use `.png` file instead of
     `.ico` file for improved compatibility with Windows Phone 8 browser.
 
 * In "PlatformSample", modified `updateWindowSize()` for improved compatibility
     with IE8.
 
-* Fixed "ListPulldownSample" to work properly as a Windows 8 application.
+* In "RepeaterSample", modified `setupItem()` to stop event propagation.
 
-* In "RepeaterSample", revised `setupItem()` to stop event propagation.
+* Fixed "ListPulldownSample" to work properly as a Windows 8 application.
 
 * In "ContextualPopupSample", fixed double-inclusion of Onyx source.
 
@@ -392,3 +392,7 @@ GitHub for a complete list of changes.)
     output files in which line breaks are not removed from code.  The
     improvement in human-readability makes the beautified files useful for
     debugging.
+
+* Made numerous changes to enable use of `deploy.js` and `minify.js` outside of
+    the source tree.  Also added support for deploy script manifest file
+    (`deploy.json`).
