@@ -12,8 +12,7 @@ documentation set; check back often as we continue to expand it.
 
 ## Tutorials
 
-* [Part 1: Enyo](tutorials/tutorial.html)
-* [Part 2: Onyx and Layout](tutorials/tutorial-2.html)
+* [Tutorials](tutorials.html)
 
 ## Key Concepts
 
