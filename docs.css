@@ -15,10 +15,11 @@ p code, ul li code, ul li p code { font-size: 13px; line-height: 23px;
 	background-color: #f8f8f8; padding: 2px; border: 1px solid #ccc;
 	border-radius: 3px; overflow: auto; }
 pre { font-size: 13px; line-height: 23px; background-color: #f8f8f8;
-	padding: 15px; border: 1px solid #ccc; border-radius: 3px; overflow: auto; }
-ul li pre code { border: 0 }
+	padding: 11px; border: 1px solid #ccc; border-radius: 3px; overflow: auto; }
+ul li pre code { border: 0px; }
 table { border-spacing: 5px; }
 table td, table th { padding: 5px; }
 td pre { background-color: transparent; border: 0px; }
-hr { color: #ccc; background-color: #ccc; border: 0px; height: 3px; }
+hr { color: #999; background-color: #999; border: 0px; margin-top: 20px;
+	margin-bottom: 10px; height: 2px; }
 </style>
