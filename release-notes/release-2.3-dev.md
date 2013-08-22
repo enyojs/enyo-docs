@@ -132,8 +132,8 @@ GitHub for a complete list of changes.)
 
 * Added new `version.js` file, which defines `enyo.version`, a string that
     indicates the current framework version.  Then added `version.js` to list of
-    boot scripts in `enyo.js` so `enyo.version` is available to non-minified
-    files.
+    boot scripts in `enyo.js` (so that `enyo.version` is available to
+    non-minified files) and to list of dependencies in `package.js`.
 
 * Added `jobs.js`, which defines `enyo.jobs`, a low-level mechanism for queueing
     tasks and sorting them by priority.  Normally, it will not be used by
@@ -244,6 +244,10 @@ GitHub for a complete list of changes.)
     Instances are meant to live alongside `onyx.MenuItem` objects within an
     `onyx.Menu`.
 
+* Added `version.js` file, which specifies current version of Onyx library
+    (`enyo.version.onyx`).  Initial value is `2.3.0-pre.7-dev`.  Also added
+    `version.js` to list of dependencies in `package.js`.
+
 * In `onyx.Menu`, added support for specifying a menu's scroll strategy.
 
 * Added `onyx.design`, which is used by libraries to specify their associated
@@ -279,8 +283,6 @@ GitHub for a complete list of changes.)
 
 ## Layout
 
-* Added new `flex` layout module, based on CSS Flexible Box Model.
-
 * Added several new layout-related kinds:
 
     + `enyo.ContextualLayout`, a layout strategy intended for use in a popup in
@@ -301,6 +303,10 @@ GitHub for a complete list of changes.)
 
     + `enyo.GridFlyweightRepeater`, which extends `enyo.FlyweightRepeater` to
         display items in a grid pattern
+
+* Added `version.js` file, which specifies current version of Layout library
+    (`enyo.version.layout`).  Initial value is `2.3.0-pre.7-dev`.  Also added
+    `version.js` to list of dependencies in `package.js`.
 
 * Added `layout.design`, which contains information on the layouts available in
     the Layout library; it replaces `design.js` and is loaded by default.
@@ -324,6 +330,12 @@ GitHub for a complete list of changes.)
 * In `FittableLayout.css`, added special case for tables in a
     FittableColumnsLayout.  Also added special case for locales with
     right-to-left text alignment.
+
+## Canvas
+
+* Added `version.js` file, which specifies current version of Canvas library
+    (`enyo.version.canvas`).  Initial value is `2.3.0-pre.7-dev`.  Also added
+    `version.js` to list of dependencies in `package.js`.
 
 ## Globalization/Localization
 
