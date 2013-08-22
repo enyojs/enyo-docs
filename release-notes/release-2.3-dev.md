@@ -130,8 +130,10 @@ GitHub for a complete list of changes.)
 * Added `enyo.design`, which is used to specify design information for the Ares
     designer tool.
 
-* Added `version.js`, which defines `enyo.version`, a string that indicates the
-    current version.
+* Added new `version.js` file, which defines `enyo.version`, a string that
+    indicates the current framework version.  Then added `version.js` to list of
+    boot scripts in `enyo.js` so `enyo.version` is available to non-minified
+    files.
 
 * Added `jobs.js`, which defines `enyo.jobs`, a low-level mechanism for queueing
     tasks and sorting them by priority.  Normally, it will not be used by
@@ -394,5 +396,8 @@ GitHub for a complete list of changes.)
     debugging.
 
 * Made numerous changes to enable use of `deploy.js` and `minify.js` outside of
-    the source tree.  Also added support for deploy script manifest file
-    (`deploy.json`).
+    the source tree.
+    
+ * In `deploy.js`, added support for manifest file (`deploy.json`).  Also added
+    `-T`/`--test` switch to generate a build directory in the source tree for
+    testing.
