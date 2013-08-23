@@ -154,8 +154,10 @@ GitHub for a complete list of changes.)
     stops listening for events bubbled by `enyo.makeBubble()`.  Also added
     support for `animationEnd` and `webkitAnimationEnd` events.
 
-* Renamed `phonegap.js` as `cordova.js` and added Enyo support for the
-    `localechange` event supplied by cordova-webos (i.e., signals will be sent).
+* Renamed `phonegap.js` as `cordova.js` and modified `enyo.ready()` to add
+    listener for `deviceready` event before setting up signals for other Cordova
+    events.  Also added Enyo support for the `localechange` event supplied by
+    cordova-webos (i.e., signals will be sent).
 
 * In `loader.js` and `boot.js`, fixed issue causing `enyo.load()` to not wait
     until all files have loaded before calling the callback function.
