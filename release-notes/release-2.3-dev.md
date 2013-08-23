@@ -337,6 +337,8 @@ GitHub for a complete list of changes.)
     (`enyo.version.canvas`).  Initial value is `2.3.0-pre.7-dev`.  Also added
     `version.js` to list of dependencies in `package.js`.
 
+* Added library manifest file, `deploy.json`.
+
 ## Globalization/Localization
 
 * Introduced `enyo-ilib`, a wrapper for the [ilib](www.jedlsoft.com)
