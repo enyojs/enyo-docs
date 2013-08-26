@@ -1,8 +1,8 @@
-% Enyo 2.3-dev Release Notes
+% Enyo 2.3.0-pre.7 Release Notes
 
-Welcome to Enyo 2.3-dev.  The following items have changes since the Enyo 2.2
-release. (Note that this list is not comprehensive; see the commit history in
-GitHub for a complete list of changes.)
+Welcome to Enyo 2.3.0-pre.7, a pre-release version of Enyo 2.3.0.  The following
+items have changed since the Enyo 2.2 release. (Note that this list is not
+comprehensive; see the commit history in GitHub for a complete list of changes.)
 
 ## Enyo
 
