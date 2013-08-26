@@ -131,9 +131,9 @@ GitHub for a complete list of changes.)
     designer tool.
 
 * Added new `version.js` file, which defines `enyo.version`, a string that
-    indicates the current framework version.  Then added `version.js` to list of
-    boot scripts in `enyo.js` (so that `enyo.version` is available to
-    non-minified files) and to list of dependencies in `package.js`.
+    indicates the framework version (currently, `2.3.0-pre.7-dev`).  Then, added
+    `version.js` to list of boot scripts in `enyo.js` (so that `enyo.version` is
+    available to non-minified files) and to list of dependencies in `package.js`.
 
 * Added `jobs.js`, which defines `enyo.jobs`, a low-level mechanism for queueing
     tasks and sorting them by priority.  Normally, it will not be used by
@@ -327,7 +327,8 @@ GitHub for a complete list of changes.)
     animations.
 
 * Modified `enyo.Arranger` to allow panels to opt out of acceleration/transform
-    on a per-instance basis.
+    on a per-instance basis.  Also allowed sliding panel acceleration to be set
+    to `auto`.
 
 * In `FittableLayout.css`, added special case for tables in a
     FittableColumnsLayout.  Also added special case for locales with
@@ -417,3 +418,18 @@ GitHub for a complete list of changes.)
  * In `deploy.js`, added support for manifest file (`deploy.json`).  Also added
     `-T`/`--test` switch to generate a build directory in the source tree for
     testing.
+
+## Work in Progress
+
+The following components are considered "Work-in-Progress" (WIP), meaning code
+has been committed but is still under development and should not be considered
+API-stable.
+
+All WIP components are included in a `wip-package.js` rather than the standard
+`package.js`, so apps will not have access to these kinds by default.  If you
+need to use them, you may include the relevant `wip-package.js` file in your
+app, but be aware that breaking changes are likely.
+
+* Layout
+
+    - `enyo.FlexLayout` and related kinds
