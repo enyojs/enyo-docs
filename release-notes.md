@@ -2,7 +2,7 @@
 
 Release notes are available for the following Enyo releases:
 
-* [Enyo 2.3.0-pre.7 Release Notes](release-notes/release-2.3.0-pre.7.html) (August 28, 2013)
+* [Enyo 2.3.0-pre.8 Release Notes](release-notes/release-2.3.0-pre.8.html) (September 6, 2013)
 * [Enyo 2.2 Release Notes](release-notes/release-2.2.html) (February 21, 2013)
 * [Enyo 2.1.1 Release Notes](release-notes/release-2.1.1.html) (November 28, 2012)
 * [Enyo 2.1 Release Notes](release-notes/release-2.1.html) (October 26, 2012)
