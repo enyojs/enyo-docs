@@ -248,7 +248,7 @@ and show the username in bold and the tweet text in a normal font.  For example,
 the following code
 
     <div style="border: 2px; padding: 10px; margin: 10px; min-height: 50px">
-    <img src="https://github.com/enyojs/enyo/wiki/assets/twitter-bird-blue-on-white.png" 
+    <img src="../assets/twitter-bird-blue-on-white.png" 
         style="width:50px; height:50px; float: left; padding-right: 10px">
     <b>handle:</b> <span>tweet text</span>
     </div>
@@ -256,7 +256,7 @@ the following code
 renders as
 
 <div style="border: 2px; padding: 10px; margin: 10px; min-height: 50px">
-<img src="https://github.com/enyojs/enyo/wiki/assets/twitter-bird-blue-on-white.png"
+<img src="../assets/twitter-bird-blue-on-white.png"
     style="width:50px; height:50px; float: left; padding-right: 10px">
 <b>handle:</b> <span>tweet text</span>
 </div>
@@ -343,7 +343,7 @@ Now, if we create a Tweet object...
 
 ...we'll get output that looks like this:
 
-![Rendering of tweet from unwiredben](https://github.com/enyojs/enyo/wiki/assets/tweet-1.png)
+![Rendering of tweet from unwiredben](../assets/tweet-1.png)
 
 Making a List, Checking It Twice
 --------------------------------
@@ -657,7 +657,7 @@ For more help with Enyo, check out the samples we've got on the
 [Enyo Web site][] and ask questions in our [developer forums][].  Thanks for sticking
 with this, and enjoy coding with Enyo!
 
-## Continue to [part 2 of the tutorial](Tutorial-2) covering the Onyx and Layout libraries!
+**Continue to [part 2 of the tutorial](tutorial-2.html) covering the Onyx and Layout libraries!**
 
 [Twitter Search API docs]: https://dev.twitter.com/docs/using-search
 [JSONLint]: http://www.jsonlint.com/

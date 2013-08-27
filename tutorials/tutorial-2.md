@@ -2,7 +2,7 @@
 
 ## Onyx and Layout
 
-In [Part 1](Tutorial) of the tutorial, we built a Twitter search application
+In [Part 1](tutorial.html) of the tutorial, we built a Twitter search application
 using just the core Enyo 2 library.  Since that initial installment first
 appeared, we've released a set of controls and styles, called "Onyx".  In this
 extension of the tutorial, we'll use Onyx to update our application with a nice
@@ -229,6 +229,6 @@ and more enjoyable to use.
 
 **Additional Reading**
 
-* [Creating Components](https://github.com/enyojs/enyo/wiki/Creating-Components)
-* [Creating Controls](https://github.com/enyojs/enyo/wiki/Creating-Controls)
-* [Creating Kinds](https://github.com/enyojs/enyo/wiki/Creating-Kinds)
+* [Creating Components](../key-concepts/creating-components.html)
+* [Creating Controls](../key-concepts/creating-controls.html)
+* [Creating Kinds](../key-concepts/creating-kinds.html)
