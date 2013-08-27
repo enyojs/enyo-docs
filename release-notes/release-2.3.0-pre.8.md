@@ -77,7 +77,7 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
     were optional.
 
 * To improve performance, modified internal code in Enyo Core so that override
-    methods use `enyo.super()`, following the double function pattern outlined
+    methods use `enyo.inherit()`, following the double function pattern outlined
     by [dcl.js](http://www.dcljs.org/docs/general/supercalls/).  Application
     code will continue to use the existing `this.inherited()` syntax.
 
