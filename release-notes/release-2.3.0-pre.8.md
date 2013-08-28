@@ -218,9 +218,6 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 
 * Updated `msevents.js` to include button status info in generated events.
 
-* Modified `walker.js` to keep package name in re-mapped sources, to allow
-    deployment of multiple themes in a single library.
-
 * Modified core code so that IE8 passes unit tests.  Also, fixed positioning
     issues affecting IE8 in `dom.js`.
 
@@ -287,7 +284,8 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 * In `MoreToolbar.js`, fixed issue that could cause a crash when resizing a
     window.
 
-* In `TimePicker.js`, moved check for null `is24HrMode` property after
+* In `TimePicker.js`, fixed issues causing two-way data bindings to not work
+    properly.  Also moved check for null `is24HrMode` property after
     globalization/localization code.
 
 ## Layout
@@ -430,6 +428,11 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
  * In `deploy.js`, added support for manifest file (`deploy.json`).  Also added
     `-T`/`--test` switch to generate a build directory in the source tree for
     testing.
+
+* Modified `walker.js` to keep package name in re-mapped sources, to allow
+    deployment of multiple themes in a single library.
+
+* Updated `lessc.js` to work with multiple `.less` files in `package.js`.
 
 ## Work in Progress
 
