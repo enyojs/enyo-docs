@@ -216,6 +216,11 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 * In `enyo.Image`, added new published property `alt`, which corresponds to the
     `"alt"` attribute of an HTML `<img>` tag.
 
+* Updated `msevents.js` to include button status info in generated events.
+
+* Modified `walker.js` to keep package name in re-mapped sources, to allow
+    deployment of multiple themes in a single library.
+
 * Modified core code so that IE8 passes unit tests.  Also, fixed positioning
     issues affecting IE8 in `dom.js`.
 
@@ -275,7 +280,9 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 * In `DatePicker.js`, fixed issue causing DatePicker controls to be unusable
     inside a Repeater.
 
-* In `IntegerPicker.js`, fixed max/min validation in `valueChanged()`.
+* In `IntegerPicker.js`, fixed issue in `selectedChanged()` causing two-way data
+    bindings to not work properly.  Also fixed max/min validation in
+    `valueChanged()`.
 
 * In `MoreToolbar.js`, fixed issue that could cause a crash when resizing a
     window.
