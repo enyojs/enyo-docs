@@ -321,7 +321,8 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 * Added library manifest file, `deploy.json`.
 
 * In `enyo.List`, added support for horizontal layouts; also removed
-    unnecessary call to `inEvent.preventDefault()`.
+    unnecessary call to `inEvent.preventDefault()` and fixed issue causing
+    horizontal lists to not have a scrollbar until they are resized.
 
 * In `enyo.Scroller`, updated documentation for `getScrollBounds()` method.
 
