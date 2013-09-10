@@ -8,12 +8,29 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 
 * This release adds support for the MVC model of app development.  This includes
     changes to properties to support bindings, computed properties, and property
-    change observers; highlights are called out below.  (See our [MVC Overview]
-    for details on all the new kinds and methods.)
+    change observers; highlights are called out below.
 
     + Added `enyo.Application`, a new kind to include non-visible elements and
         rendered components.  It is defined in the new `Application.js` file in
         the `kernel` module.
+
+    + Added `data` module, which houses code used for manipulating data in an
+        MVC environment.  This module includes the following:
+        
+        - `enyo.Model`, a special object whose properties define the schema
+           (i.e., set of attributes) for a data record
+
+        - `enyo.Collection`, used for working with groups of models
+
+        - `enyo.ModelController`, used in data binding
+
+        - `enyo.Store`, a runtime database of data records
+
+        - `enyo.Source`, used for retrieving data from external services
+
+    + Added data layer components (under `ui/data`) `enyo.DataList` and
+        `enyo.DataGridList`, both subkinds of the abstract `enyo.DataRepeater`
+        kind.
 
     + Added `enyo.Router`, a new kind that acts as an application controller
         that responds to changes in the Web page URL.  This allows developers to
@@ -24,18 +41,11 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 
     + Significantly expanded `kernel` module, adding new files `Binding.js`,
         `Controller.js`, `ViewController.js`, and `dev.js` (in addition to the
-        aforementioned `Application.js` and `Router.js`), along with new `data`
-        submodule (with `Model`, `ModelController`, and `Collection` kinds) and
-        `mixins` submodule.  Also made major additions to existing `lang.js`
-        and `Object.js` files.
+        aforementioned `Application.js` and `Router.js`).  Also made major
+        additions to existing `lang.js` and `Object.js` files.
 
-    + Added data layer components (under `ui/data`) `enyo.DataList` and
-        `enyo.DataGridList`.  Both are subkinds of the abstract
-        `enyo.DataRepeater` kind.
-
-    + Added new `ext` module, which contains the new files `BooleanBinding.js`,
-        `BooleanOnlyBinding.js`, and `InputBinding.js`, as well as `macroize.js`
-        (previously found in the `kernel` module).
+    + Added new `ext` module, which contains several subkinds of `enyo.Binding`,
+        as well as `macroize.js` (previously found in the `kernel` module).
 
     + Added new file `ready.js` in the `boot` module.
 
@@ -141,10 +151,16 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 
 * In `enyo.Object`, added new `bindSafely()` method, which acts like
     `enyo.bind()`, but handles the case in which the bound method is called
-    after the object has been destroyed.  Also, in `set()` method, added
-    documentation for optional `force` parameter; if true, the property whose
-    value is being set will be updated (and notifications will be sent) even if
-    the passed-in value is the same as the existing value.
+    after the object has been destroyed.
+
+    In addition, removed `enyo.Object.overload()` and rewrote
+    `enyo.Object.addGetterSetter()` to make use of `enyo.getPath.fast()` and
+    `enyo.setPath.fast()`, which were added to `lang.js`
+        
+    Finally, in `set()` method, added documentation for optional `force`
+    parameter; if true, the property whose value is being set will be updated
+    (and notifications will be sent) even if the passed-in value is the same as
+    the existing value.
 
 * In `job.js`, added `enyo.job.throttle()`, which enables job throttling outside
     the context of a specific component.
