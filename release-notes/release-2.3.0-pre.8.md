@@ -6,19 +6,20 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
 
 ## Enyo
 
-* This release adds support for the MVC model of app development.  This includes
-    changes to properties to support bindings, computed properties, and property
-    change observers; highlights are called out below.
+* This release adds support for the MVC model of application development.  This
+    includes changes to properties to support bindings, computed properties, and
+    property change observers; highlights are called out below.
 
     + Added `enyo.Application`, a new kind to include non-visible elements and
         rendered components.  It is defined in the new `Application.js` file in
         the `kernel` module.
 
     + Added `data` module, which houses code used for manipulating data in an
-        MVC environment.  This module includes the following:
+        MVC environment.  This module includes the following kinds:
         
         - `enyo.Model`, a special object whose properties define the schema
-           (i.e., set of attributes) for a data record
+           (i.e., set of attributes) for a data record; it is not derived from
+           any other Enyo kind 
 
         - `enyo.Collection`, used for working with groups of models
 
