@@ -2,7 +2,7 @@
 
 ## enyo.Object
 
-[enyo.Object](http://enyojs.com/api/#enyo.Object) implements the Enyo
+[enyo.Object](../api.html#enyo.Object) implements the Enyo
 framework's property publishing system.  Published properties are declared in a
 hash called `published` within a call to `enyo.kind`.  To get the value of a
 published property, call `get(<propertyName>)`; to set the value, call

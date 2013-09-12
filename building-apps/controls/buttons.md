@@ -6,8 +6,8 @@ likely to use.
 
 ## onyx.Button
 
-[onyx.Button](http://enyojs.com/api/#onyx.Button) derives directly from
-[enyo.Button](http://enyojs.com/api/#enyo.Button) and provides the same basic
+[onyx.Button](../../api.html#onyx.Button) derives directly from
+[enyo.Button](../../api.html#enyo.Button) and provides the same basic
 functionality, along with a modicum of visual styling.
 
         {kind: "onyx.Toolbar", components: [
@@ -60,8 +60,8 @@ as in the following examples:
 ## onyx.IconButton
 
 Similar effects may be achieved using
-[onyx.IconButton](http://enyojs.com/api/#onyx.IconButton), a subkind of
-[onyx.Icon](http://enyojs.com/api/#onyx.Icon).  For instance, the code
+[onyx.IconButton](../../api.html#onyx.IconButton), a subkind of
+[onyx.Icon](../../api.html#onyx.Icon).  For instance, the code
 
         {kind: "onyx.IconButton", src: "assets/my_icon.png"}
 
@@ -84,9 +84,9 @@ background, but not in the image itself.)
 
 ## onyx.RadioButton
 
-In Enyo 2, an [onyx.RadioButton](http://enyojs.com/api/#onyx.RadioButton) is an
+In Enyo 2, an [onyx.RadioButton](../../api.html#onyx.RadioButton) is an
 `enyo.Button` designed to go inside an
-[onyx.RadioGroup](http://enyojs.com/api/#onyx.RadioGroup) (a
+[onyx.RadioGroup](../../api.html#onyx.RadioGroup) (a
 horizontally-oriented group of buttons in which tapping on one button will
 release any previously-tapped button).
 
@@ -127,7 +127,7 @@ explicitly setting the `defaultKind` property of the radio group.)
 
 ## onyx.ToggleButton
 
-[onyx.ToggleButton](http://enyojs.com/api/#onyx.ToggleButton) is a control that
+[onyx.ToggleButton](../../api.html#onyx.ToggleButton) is a control that
 looks like a switch with labels for two states.  Each time a toggle button is
 tapped, it switches its value and fires an `onChange` event.
 

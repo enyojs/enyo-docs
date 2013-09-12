@@ -77,15 +77,15 @@ the corresponding Onyx kind names:
 
 At this point, one of the first things we notice is that there's no prompting
 to indicate what the search box is for.  Since
-[onyx.Input](http://enyojs.com/api/#onyx.Input) is derived from
-[enyo.Input](http://enyojs.com/api/#enyo.Input), we can use the `placeholder`
+[onyx.Input](../api.html#onyx.Input) is derived from
+[enyo.Input](../api.html#enyo.Input), we can use the `placeholder`
 property to provide text that will be displayed (with grayed-out styling) when
 the user hasn't entered anything in the search box:
 
     { kind: "onyx.Input", name: "searchTerm", placeholder: "Search on Twitter" },
 
 Better still, we can use the `placeholder` property in conjunction with a styled
-search widget ([onyx.InputDecorator](http://enyojs.com/api/#onyx.InputDecorator))
+search widget ([onyx.InputDecorator](../api.html#onyx.InputDecorator))
 that already exists in the "OnyxSampler" app.  We'll borrow that code, while
 making a few modifications:
 
@@ -121,7 +121,7 @@ any further.
 
 The search box looks lonely at the top of the page, so let's give it a
 border to make it pop.  Onyx provides several nice grouping options.  In this
-case, we'll use the [onyx.Toolbar](http://enyojs.com/api/#onyx.Toolbar) kind to
+case, we'll use the [onyx.Toolbar](../api.html#onyx.Toolbar) kind to
 highlight the name of the application, while providing a pleasing amount of
 space between the app name and search box.
 
@@ -165,8 +165,8 @@ with most of the items having a natural size, but one item expanding to fill the
 remaining space.  The one that grows is labeled with the attribute `fit: true`.
 
 To use the fittable layout, we can change the base kind of `TwitterSearchApp`
-from "[enyo.Control](http://enyojs.com/api/#enyo.Control)" to
-"[enyo.FittableRows](http://enyojs.com/api/#enyo.FittableRows)"...
+from "[enyo.Control](../api.html#enyo.Control)" to
+"[enyo.FittableRows](../api.html#enyo.FittableRows)"...
 
     enyo.kind({
       name: "TwitterSearchApp",
@@ -192,12 +192,12 @@ the base kind as `enyo.Control`:
 
 (For Enyo controls, the `layoutKind` property provides a way to add layout
 behavior in a pluggable fashion.  Behind the scenes, the
-[enyo.FittableRowsLayout](http://enyojs.com/api/#enyo.FittableRowsLayout) kind
+[enyo.FittableRowsLayout](../api.html#enyo.FittableRowsLayout) kind
 works by measuring the natural size of all of its child objects, then adjusting
 the size of the "fit" object to use up the remaining space.)
 
 Then we'll wrap the tweetList in an
-[enyo.Scroller](http://enyojs.com/api/#enyo.Scroller) and set `fit: true` on the
+[enyo.Scroller](../api.html#enyo.Scroller) and set `fit: true` on the
 scroller to mark it as the layout element that expands:
 
     { kind: "enyo.Scroller", fit: true, components: [
@@ -215,7 +215,7 @@ classes to the application div that's inserted into the body.  If you're using
 the fittable layout for an item inside your application, you'll need to
 either define explicit width and height for the control or have it be sized by a
 parent fittable control.  (A common mistake is to have an `enyo.FittableRows`
-or [enyo.FittableColumns](http://enyojs.com/api/#enyo.FittableColumns) control
+or [enyo.FittableColumns](../api.html#enyo.FittableColumns) control
 as a child of your application kind with its `fit: true` control sized at 0
 pixels.)
 

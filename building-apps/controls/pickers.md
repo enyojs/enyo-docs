@@ -2,12 +2,12 @@
 
 ## onyx.Picker
 
-[onyx.Picker](http://enyojs.com/api/#onyx.Picker), a subkind of
-[onyx.Menu](http://enyojs.com/api/#onyx.Menu), is used to display a list of
+[onyx.Picker](../../api.html#onyx.Picker), a subkind of
+[onyx.Menu](../../api.html#onyx.Menu), is used to display a list of
 items that can be selected.  It is meant to be used in conjunction with an
-[onyx.PickerDecorator](http://enyojs.com/api/#onyx.PickerDecorator).  The
+[onyx.PickerDecorator](../../api.html#onyx.PickerDecorator).  The
 decorator loosely couples the picker with an
-[onyx.PickerButton](http://enyojs.com/api/#onyx.PickerButton)--a button that,
+[onyx.PickerButton](../../api.html#onyx.PickerButton)--a button that,
 when tapped, shows the picker.  Once an item is selected, the list of items
 closes, but the item stays selected and the PickerButton displays the choice
 that was made.
@@ -46,7 +46,7 @@ for the PickerDecorator--is an `onyx.PickerButton`.
 As noted earlier, when the selected item changes, the PickerButton displays the
 content of the new selection.  However, it's also possible to have the Picker
 display a button with static content.  To do this, we define the activating
-control as an [onyx.Button](http://enyojs.com/api/#onyx.Button):
+control as an [onyx.Button](../../api.html#onyx.Button):
 
         {kind: "onyx.Button", content: "Choose one", style: "width: 150px;"}
 

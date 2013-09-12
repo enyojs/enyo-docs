@@ -2,7 +2,7 @@
 
 ## enyo.Popup
 
-[enyo.Popup](http://enyojs.com/api/#enyo.Popup) is a control used to display
+[enyo.Popup](../../api.html#enyo.Popup) is a control used to display
 certain content on top of other content.  The following example shows a kind in
 which pressing a button will display a popup.
 
@@ -54,7 +54,7 @@ popup from responding to events while the popup is showing:
 
 ## onyx.Popup
 
-[onyx.Popup](http://enyojs.com/api/#onyx.Popup) extends `enyo.Popup`, adding
+[onyx.Popup](../../api.html#onyx.Popup) extends `enyo.Popup`, adding
 support for scrim behavior and z-index handling, as well as Onyx-themed visual
 styling.
 

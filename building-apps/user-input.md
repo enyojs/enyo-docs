@@ -113,7 +113,7 @@ handle keyboard input automatically.  However, there may be situations--in some
 games, for instance--in which you want your app to respond directly to
 keyboard-related DOM events.
 
-To do this, you can use an [enyo.Signals](http://enyojs.com/api/#enyo.Signals)
+To do this, you can use an [enyo.Signals](../api.html#enyo.Signals)
 instance to listen for the events `onkeydown`, `onkeypress`, and `onkeyup`.
 Each keystroke fires an `onkeydown` and an `onkeyup`; if the keystroke generates
 a character, there will also be an `onkeypress` event fired between `onkeydown`

@@ -74,12 +74,12 @@ and to wrap common functionality in published properties or collections of
 components.
 
 Enyo's core code provides a kind called
-[enyo.Control](http://enyojs.com/api/#enyo.Control).  This is the basic building
+[enyo.Control](../api.html#enyo.Control).  This is the basic building
 block used to make all the widgets and content that will be rendered into your
 Web page.
 
 `enyo.Control` is a kind defined in the Enyo code using the
-[enyo.kind](http://enyojs.com/api/#Oop.js) method.  To create a new control,
+[enyo.kind](../api.html#Oop.js) method.  To create a new control,
 call `enyo.Control` as a constructor, passing in an object containing properties
 for the new instance.  For example, the following code creates a paragraph
 showing the text "Hello, World!" in blue.
@@ -168,7 +168,7 @@ Note that if the control has already been rendered into the page,
 calling `setContent` will cause it to be re-rendered to reflect the new
 `content` value.
 
-You may remember from [enyo.Object](http://enyojs.com/api/#enyo.Object) that any
+You may remember from [enyo.Object](../api.html#enyo.Object) that any
 published properties of an object have `get<Property>` and `set<Property>`
 methods created automatically.  What's more, calling `setContent` on a control
 will trigger a call to that control's `contentChanged` method.  `contentChanged`
@@ -217,7 +217,7 @@ elements:
     list.renderInto(document.body);
 
 This is possible because `enyo.Control` is derived from
-[enyo.Component](http://enyojs.com/api/#enyo.Component), and a component may act
+[enyo.Component](../api.html#enyo.Component), and a component may act
 as host to a whole hierarchy of items.  Any component listed in a kind's
 `components` block will be added to a special hash called `$`, based on its name
 property.  So, if we wanted to make the "red" list item display in red, we could
@@ -528,9 +528,9 @@ variable or calls a function.  This scheme has been named JSONP, or JavaScript
 Object Notation with Padding.
 
 Enyo has a built-in method that wraps XmlHttpRequests (the `enyo.Xhr` and
-[enyo.Ajax](http://enyojs.com/api/#enyo.Ajax) code).  For JSONP, we'll use a
+[enyo.Ajax](../api.html#enyo.Ajax) code).  For JSONP, we'll use a
 variant of this kind called
-[enyo.JsonpRequest](http://enyojs.com/api/#enyo.JsonpRequest).  This uses the
+[enyo.JsonpRequest](../api.html#enyo.JsonpRequest).  This uses the
 script method to load a foreign URL, so it allows cross-domain access, but you
 must be able to trust the remote site completely, since its code will be running
 in the same context as your own application.

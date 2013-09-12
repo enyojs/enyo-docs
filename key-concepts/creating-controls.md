@@ -2,7 +2,7 @@
 
 ## enyo.Control
 
-[enyo.Control](http://enyojs.com/api/#enyo.Control) is a component that controls
+[enyo.Control](../api.html#enyo.Control) is a component that controls
 a DOM node (i.e., an element in the user interface).  Controls are generally
 visible and the user often interacts with them directly.  Things like buttons
 and input boxes are obviously controls, but in Enyo a control may become as
@@ -46,7 +46,7 @@ inside a `TrafficLight` control:
 
 The `Circle` has a `kind` value of `"Control"` and therefore inherits and
 extends the behavior of `enyo.Control`.  Since a control is a component (i.e.,
-`enyo.Control` extends [enyo.Component](http://enyojs.com/api/#enyo.Component)),
+`enyo.Control` extends [enyo.Component](../api.html#enyo.Component)),
 it can publish properties, as is done here.
 
 ## Manipulating a Control's DOM Node

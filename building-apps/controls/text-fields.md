@@ -2,8 +2,8 @@
 
 ## enyo.Input
 
-[enyo.Input](http://enyojs.com/api/#enyo.Input) is an
-[enyo.Control](http://enyojs.com/api/#enyo.Control) that implements an HTML
+[enyo.Input](../../api.html#enyo.Input) is an
+[enyo.Control](../../api.html#enyo.Control) that implements an HTML
 `<input>` element with cross-platform support for change events.
 
 You can listen for the `oninput` and `onchange` DOM events to know when the text
@@ -40,11 +40,11 @@ should only do this for one input.)
 
 ## onyx.Input
 
-[onyx.Input](http://enyojs.com/api/#onyx.Input) derives from `enyo.Input` and
+[onyx.Input](../../api.html#onyx.Input) derives from `enyo.Input` and
 provides the same functionality with added visual styling.
 
 Typically, an `onyx.Input` is placed inside an
-[onyx.InputDecorator](http://enyojs.com/api/#onyx.InputDecorator), e.g.:
+[onyx.InputDecorator](../../api.html#onyx.InputDecorator), e.g.:
 
         {kind: "onyx.InputDecorator", components: [
             {kind: "onyx.Input", placeholder: "Enter some text...", onchange: "inputChange"}
@@ -54,7 +54,7 @@ Typically, an `onyx.Input` is placed inside an
 
 ## enyo.TextArea
 
-[enyo.TextArea](http://enyojs.com/api/#enyo.TextArea) is an `enyo.Input` that
+[enyo.TextArea](../../api.html#enyo.TextArea) is an `enyo.Input` that
 implements an HTML `<textarea>` element with cross-platform support for change
 events.
 
@@ -71,7 +71,7 @@ multiple lines.
 
 ## onyx.TextArea
 
-[onyx.TextArea](http://enyojs.com/api/#onyx.TextArea) derives from
+[onyx.TextArea](../../api.html#onyx.TextArea) derives from
 `enyo.TextArea` and provides the same functionality with added visual styling.
 
 Typically, an `onyx.TextArea` is placed inside an `onyx.InputDecorator`, e.g.:
@@ -84,7 +84,7 @@ Typically, an `onyx.TextArea` is placed inside an `onyx.InputDecorator`, e.g.:
 
 ## enyo.RichText
 
-[enyo.RichText](http://enyojs.com/api/#enyo.RichText) is a multi-line
+[enyo.RichText](../../api.html#enyo.RichText) is a multi-line
 `enyo.Input` that supports rich formatting, such as bold, italics, and
 underlining.
 
@@ -118,7 +118,7 @@ Note that RichText is not supported on Android < 3.
 
 ## onyx.RichText
 
-[onyx.RichText](http://enyojs.com/api/#onyx.RichText) derives from
+[onyx.RichText](../../api.html#onyx.RichText) derives from
 `enyo.RichText` and provides the same functionality with added visual styling.
 
 Typically, an `onyx.RichText` is placed inside an `onyx.InputDecorator`, e.g.:

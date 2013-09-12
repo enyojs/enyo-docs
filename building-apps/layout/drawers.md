@@ -6,7 +6,7 @@
 core.  `onyx.Drawer` continues to exist, but is now simply an alias to
 `enyo.Drawer`.)
 
-[enyo.Drawer](http://enyojs.com/api/#enyo.Drawer) is a control that appears or
+[enyo.Drawer](../../api.html#enyo.Drawer) is a control that appears or
 disappears based on its `open` property.  `open` is a Boolean that defaults to
 `true`, meaning that the control is visible.
 

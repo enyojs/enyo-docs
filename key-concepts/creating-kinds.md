@@ -2,7 +2,7 @@
 
 ## enyo.kind
 
-[enyo.kind(inProps)](http://enyojs.com/api/#Oop.js) is the Enyo framework's
+[enyo.kind(inProps)](../api.html#Oop.js) is the Enyo framework's
 method for generating kinds.  A kind, you'll recall, is a
 constructor-with-prototype (like a class) that has advanced features like
 prototype-chaining (inheritance).
@@ -88,8 +88,7 @@ processing.	Some examples of special properties are:
     any instances of the kind exist.
 
 Certain kinds in the framework define their own special properties, e.g., the
-`published` property supported by
-[enyo.Object](http://enyojs.com/api/#enyo.Object).
+`published` property supported by [enyo.Object](../api.html#enyo.Object).
 
 ## this.inherited
 

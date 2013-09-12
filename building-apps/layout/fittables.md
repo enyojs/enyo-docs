@@ -6,8 +6,8 @@ meet using Web technologies.
 
 ## FittableColumns and FittableRows
 
-The [FittableColumns](http://enyojs.com/api/#enyo.FittableColumns) and
-[FittableRows](http://enyojs.com/api/#enyo.FittableColumns) controls let you
+The [FittableColumns](../../api.html#enyo.FittableColumns) and
+[FittableRows](../../api.html#enyo.FittableColumns) controls let you
 define views whose children are arranged either horizontally or vertically.
 Within a given view, you can designate one child to expand and contract to fit
 the available space, while its siblings retain their natural or
@@ -31,8 +31,8 @@ the available container space between the first and third.
 ## FittableColumnsLayout and FittableRowsLayout
 
 Another way to use the fittable layout strategy is to set a kind's `layoutKind`
-property to "[FittableColumnsLayout](http://enyojs.com/api/#enyo.FittableColumnsLayout)"
-or "[FittableRowsLayout](http://enyojs.com/api/#enyo.FittableRowsLayout)" while
+property to "[FittableColumnsLayout](../../api.html#enyo.FittableColumnsLayout)"
+or "[FittableRowsLayout](../../api.html#enyo.FittableRowsLayout)" while
 employing a different base kind:
 
         enyo.kind({
@@ -46,7 +46,7 @@ employing a different base kind:
         });
 
 Both `FittableColumnsLayout` and `FittableRowsLayout` are derived directly from
-[enyo.FittableLayout](http://enyojs.com/api/#enyo.FittableLayout), which
+[enyo.FittableLayout](../../api.html#enyo.FittableLayout), which
 provides basic positioning and boundary logic.
 
 ## Nested Fittables

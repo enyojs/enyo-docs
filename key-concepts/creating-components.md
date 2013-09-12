@@ -1,6 +1,6 @@
 % Creating Components
 
-The Component object, [enyo.Component](http://enyojs.com/api/#enyo.Component),
+The Component object, [enyo.Component](../api.html#enyo.Component),
 is the basic building block of Enyo.  Components encapsulate rich behavior and
 may be used together as modules to create complex applications.  When coding an
 Enyo application, you'll create many of your own component and control kinds.

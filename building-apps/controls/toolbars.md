@@ -2,7 +2,7 @@
 
 ## onyx.Toolbar
 
-[onyx.Toolbar](http://enyojs.com/api/#onyx.Toolbar) is a a horizontal bar that
+[onyx.Toolbar](../../api.html#onyx.Toolbar) is a a horizontal bar that
 contains controls used to perform common UI actions.
 
 A Toolbar customizes the styling of the controls it hosts, including buttons,
@@ -50,9 +50,9 @@ make it horizontally-scrollable, so that the user can access the offscreen
 ## onyx.MoreToolbar
 
 A simpler way to deal with multiple items in a toolbar is to use an
-[onyx.MoreToolbar](http://enyojs.com/api/#onyx.MoreToolbar). `onyx.MoreToolbar`
+[onyx.MoreToolbar](../../api.html#onyx.MoreToolbar). `onyx.MoreToolbar`
 can adapt to different screen sizes by moving overflowing controls and content
-into an [onyx.Menu](http://enyojs.com/api/#onyx.Menu), e.g.:
+into an [onyx.Menu](../../api.html#onyx.Menu), e.g.:
 
         {kind: "onyx.Toolbar", components: [
             {kind: "onyx.Grabber"},

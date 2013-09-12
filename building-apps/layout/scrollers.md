@@ -2,7 +2,7 @@
 
 ## enyo.Scroller
 
-[enyo.Scroller](http://enyojs.com/api/#enyo.Scroller) provides a viewport in
+[enyo.Scroller](../../api.html#enyo.Scroller) provides a viewport in
 which the user may scroll content using touch or mouse actions.  (The scrolling
 of content exceeding the size of a viewport is not automatic; for content to
 scroll, it must be placed inside a Scroller control.)  `enyo.Scroller` is

@@ -10,9 +10,9 @@ items that can be rendered and scrolled with good performance across the range
 of devices that Enyo supports.  For this reason, Enyo has two broad strategies
 for dealing with lists of data.  When an application needs a relatively small
 number of items (up to ~100) that are relatively complex, an
-[enyo.Repeater](http://enyojs.com/api/#enyo.Repeater) should be used.  When an
+[enyo.Repeater](../../api.html#enyo.Repeater) should be used.  When an
 application needs a large number of relatively simple items (into the millions),
-an [enyo.List](http://enyojs.com/api/#enyo.List) should be used.
+an [enyo.List](../../api.html#enyo.List) should be used.
 
 ## Repeater
 
@@ -48,7 +48,7 @@ done to accomodate potential changes to the data model for the repeater, which
 may or may not have the same item count as before.
 
 (**Note:** If the contents of a repeater should scroll, then the repeater should
-be placed inside an [enyo.Scroller](http://enyojs.com/api/#enyo.Scroller).)
+be placed inside an [enyo.Scroller](../../api.html#enyo.Scroller).)
 
 ## List
 
@@ -59,8 +59,8 @@ time.  This is done using a [flyweight
 pattern](http://en.wikipedia.org/wiki/Flyweight_pattern), in which controls
 placed inside the list are created once, but rendered for each list item.  For
 this reason, it's best to use only simple controls in a List, such as
-[enyo.Control](http://enyojs.com/api/#enyo.Control) and
-[enyo.Image](http://enyojs.com/api/#enyo.Image).
+[enyo.Control](../../api.html#enyo.Control) and
+[enyo.Image](../../api.html#enyo.Image).
 
 (Note that `enyo.List` includes a scroller; therefore, it should *not* be placed
 inside an `enyo.Scroller`.)

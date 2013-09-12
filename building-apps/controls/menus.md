@@ -2,11 +2,11 @@
 
 ## onyx.Menu
 
-[onyx.Menu](http://enyojs.com/api/#onyx.Menu) is a subkind of
-[onyx.Popup](http://enyojs.com/api/#onyx.Popup) that displays a list of
-[onyx.MenuItem](http://enyojs.com/api/#onyx.MenuItem) objects and looks like a
+[onyx.Menu](../../api.html#onyx.Menu) is a subkind of
+[onyx.Popup](../../api.html#onyx.Popup) that displays a list of
+[onyx.MenuItem](../../api.html#onyx.MenuItem) objects and looks like a
 popup menu.  It is meant to be used in conjunction with an
-[onyx.MenuDecorator](http://enyojs.com/api/#onyx.MenuDecorator).  The decorator
+[onyx.MenuDecorator](../../api.html#onyx.MenuDecorator).  The decorator
 couples the menu with an activating control, which may be a button or any other
 control with an `onActivate` event.  When the control is activated, the menu
 shows itself in the correct position relative to the activator.
@@ -42,7 +42,7 @@ relevant properties such as `content` or `value`:
         }
 
 If you've created a menu in which each menu item is a kind with subcomponents
-(e.g., an [onyx.IconButton](http://enyojs.com/api/#onyx.IconButton) plus an
+(e.g., an [onyx.IconButton](../../api.html#onyx.IconButton) plus an
 `onyx.MenuItem`), you'll need to perform the extra step of identifying the
 originating menu item before you can retrieve property values from it.  For
 instance, if each menu item looks like this...

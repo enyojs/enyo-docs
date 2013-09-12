@@ -15,7 +15,7 @@ not handle.
 While sending events from child to parent is the standard paradigm in Enyo, in
 some situations the implementation of this model can result in inefficient and
 unwieldy code.  Thus an alternative method of communication exists--this
-involves the use of [enyo.Signals](http://enyojs.com/api/#enyo.Signals) and is
+involves the use of [enyo.Signals](../api.html#enyo.Signals) and is
 discussed at the end of the current document.
 
 ## Sending Events
@@ -67,7 +67,7 @@ children.  For example:
         }
 
 * `inSender` is the immediate sender of the event--that is, the last
-    [enyo.Component](http://enyojs.com/api/#enyo.Component) to touch the event
+    [enyo.Component](../api.html#enyo.Component) to touch the event
     before passing it to `this`.
 
 * `inEvent` is an object that contains event data.  For DOM events, this is the
@@ -210,7 +210,7 @@ event up to a common parent (in the worst case, the top-level app kind) and then
 pass the event back down to the target component.  Because this may require a
 significant amount of plumbing, Enyo provides an alternative.
 
-[enyo.Signals](http://enyojs.com/api/#enyo.Signals) provides a means of
+[enyo.Signals](../api.html#enyo.Signals) provides a means of
 broadcasting and subscribing to global messages, bypassing the normal component
 tree.  Within the Enyo framework itself, DOM events that have no node targets
 are broadcast as signals.  These events include window events, like `onload` and

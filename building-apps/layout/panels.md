@@ -1,6 +1,6 @@
 % Panels
 
-The [enyo.Panels](http://enyojs.com/api/#enyo.Panels) kind is designed to
+The [enyo.Panels](../../api.html#enyo.Panels) kind is designed to
 satisfy a variety of common use cases for application layout.  Using
 `enyo.Panels`, controls may be arranged as (among other things) a carousel, a
 set of collapsing panels, a card stack that fades between panels, or a grid.
@@ -59,10 +59,10 @@ Certain arrangers may be used in conjunction with a Panels instance to create a
 "wrap-around" effect, in which moving forward past the last panel returns you to
 the first panel, and moving backward past the first panel brings you to the last
 panel.  To achieve this effect, specify a
-[LeftRightArranger](http://enyojs.com/api/#enyo.LeftRightArranger),
-[TopBottomArranger](http://enyojs.com/api/#enyo.TopBottomArranger),
-[SpiralArranger](http://enyojs.com/api/#enyo.SpiralArranger), or
-[GridArranger](http://enyojs.com/api/#enyo.GridArranger) as the `arrangerKind`
+[LeftRightArranger](../../api.html#enyo.LeftRightArranger),
+[TopBottomArranger](../../api.html#enyo.TopBottomArranger),
+[SpiralArranger](../../api.html#enyo.SpiralArranger), or
+[GridArranger](../../api.html#enyo.GridArranger) as the `arrangerKind`
 for an `enyo.Panels` whose `wrap` property has been set to `true`.
 
 ## Responsive Design
@@ -94,7 +94,7 @@ we've set the `arrangerKind` and applied a CSS class:
         });
 	
 Note that in a
-[CollapsingArranger](http://enyojs.com/api/#enyo.CollapsingArranger), the last
+[CollapsingArranger](../../api.html#enyo.CollapsingArranger), the last
 panel will always take up the available space.
 
 The key to achieving the sizing behavior we want is to set up the CSS classes

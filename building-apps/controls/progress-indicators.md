@@ -2,8 +2,8 @@
 
 ## onyx.ProgressBar
 
-[onyx.ProgressBar](http://enyojs.com/api/#onyx.ProgressBar) is an
-[enyo.Control](http://enyojs.com/api/#enyo.Control) that shows the current
+[onyx.ProgressBar](../../api.html#onyx.ProgressBar) is an
+[enyo.Control](../../api.html#enyo.Control) that shows the current
 progress of a process in a horizontal bar.
 
         {kind: "onyx.ProgressBar", progress: 40}
@@ -29,7 +29,7 @@ will not be visible.
 
 ## onyx.ProgressButton
 
-[onyx.ProgressButton](http://enyojs.com/api/#onyx.ProgressButton) extends
+[onyx.ProgressButton](../../api.html#onyx.ProgressButton) extends
 `onyx.ProgressBar`, adding a Cancel button, as well as the ability to contain
 other controls.
 
@@ -55,7 +55,7 @@ as in the example above.
 
 ## onyx.Slider
 
-[onyx.Slider](http://enyojs.com/api/#onyx.Slider), which also derives from
+[onyx.Slider](../../api.html#onyx.Slider), which also derives from
 `onyx.ProgressBar`, is a control that presents a range of selection options in
 the form of a horizontal slider with a control knob.  The knob may be tapped and
 dragged to the desired location.
@@ -71,7 +71,7 @@ or by tapping the bar.
 ## onyx.RangeSlider
 
 Another subkind of `onyx.ProgressBar`,
-[onyx.RangeSlider](http://enyojs.com/api/#onyx.RangeSlider) is a control that
+[onyx.RangeSlider](../../api.html#onyx.RangeSlider) is a control that
 combines a horizontal slider with two control knobs. The knobs may be dragged to
 select a desired range of values.
 
