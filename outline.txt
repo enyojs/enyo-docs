@@ -47,7 +47,7 @@ release-notes/release-2.0b5.md
 release-notes/release-2.1.1.md
 release-notes/release-2.1.md
 release-notes/release-2.2.md
-release-notes/release-2.3.0-pre.8.md
+release-notes/release-2.3.0-pre.9.md
 release-notes/release-2.3.md
 tutorials/tutorial-2.md
 tutorials/tutorial.md
