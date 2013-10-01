@@ -82,7 +82,7 @@ with Bootplate [here](bootplate.html).
 
 From here, there are a number of guides you can continue reading to help ramp up into Enyo development:
 
-* If you'd like a step-by-step introduction to Enyo, head to the [tutorials](../tutorials/tutorial.html).
+* If you'd like a step-by-step introduction to Enyo, head to the [tutorials](../tutorials.html).
 * To get off to the races writing Enyo apps, check out [Bootplate](bootplate.html).
 * To learn more about the nuts and bolts of Enyo app structure, read the [Getting Started](getting-started.html) guide.
 * For the complete list of documentation, see the [Enyo documentation](../index.html) overview.

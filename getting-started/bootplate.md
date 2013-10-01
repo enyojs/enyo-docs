@@ -201,5 +201,5 @@ tree.
 
 **Additional Reading**
 
-* [Enyo Tutorial](../tutorials/tutorial.html)
+* [Enyo Tutorial](../tutorials.html)
 * [Platform-Specific Deployment](../deploying-apps/platform-specific-deployment.html)
