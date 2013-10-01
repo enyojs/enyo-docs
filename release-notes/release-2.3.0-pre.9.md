@@ -482,11 +482,6 @@ comprehensive; see the commit history in GitHub for a complete list of changes.)
     added `-w` flag, which watches the file and any dependencies, and recompiles
     if changes are detected.
 
-## Known Issues
-
-* `enyo.Collection.add()` is not working properly in this preview release.  A
-    fix has been found and will be incorporated into the next release.
-
 ## Work in Progress
 
 The following components are considered "Work-in-Progress" (WIP), meaning code
