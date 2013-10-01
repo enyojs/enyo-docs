@@ -85,5 +85,5 @@ documentation set; check back often as we continue to expand it.
 
 ## Reference
 
-* [API Documentation](http://enyojs.com/api/)
+* [API Documentation](api.html)
 * [Enyo Release Notes](release-notes.html)
