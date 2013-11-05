@@ -19,9 +19,9 @@ documentation set; check back often as we continue to expand it.
 * [Creating Components](key-concepts/creating-components.html)
 * [Creating Controls](key-concepts/creating-controls.html)
 * [Creating Kinds](key-concepts/creating-kinds.html)
+* [Objects and Published Properties](key-concepts/objects-and-published-properties.html)
 * [Object Lifecycle](key-concepts/object-lifecycle.html)
 * [Event Handling](key-concepts/event-handling.html)
-* [Published Properties](key-concepts/published-properties.html)
 
 ## Building Apps
 
@@ -58,7 +58,7 @@ documentation set; check back often as we continue to expand it.
 
 ### Services
 
-* [Consuming Web Services](building-apps/consuming-web-services.html)
+* [Consuming Web Services](building-apps/managing-data/consuming-web-services.html)
 
 ### Debugging
 

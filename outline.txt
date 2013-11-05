@@ -5,7 +5,6 @@ best-practices/documenting-code.md
 best-practices/encapsulation-in-enyo.md
 best-practices/structuring-your-project.md
 best-practices/style-guide.md
-building-apps/consuming-web-services.md
 building-apps/debugging.md
 building-apps/localization.md
 building-apps/ui-theming.md
@@ -23,6 +22,7 @@ building-apps/layout/fittables.md
 building-apps/layout/lists.md
 building-apps/layout/panels.md
 building-apps/layout/scrollers.md
+building-apps/managing-data/consuming-web-services.md
 deploying-apps/cordova-native-functions.md
 deploying-apps/enyo-apps-on-windows-8.md
 deploying-apps/platform-specific-deployment.md
@@ -35,7 +35,7 @@ key-concepts/creating-controls.md
 key-concepts/creating-kinds.md
 key-concepts/event-handling.md
 key-concepts/object-lifecycle.md
-key-concepts/published-properties.md
+key-concepts/objects-and-published-properties.md
 knowledge-base/enyo-and-use-strict.md
 knowledge-base/server-considerations.md
 release-notes/release-2.0.1.md
@@ -47,7 +47,7 @@ release-notes/release-2.0b5.md
 release-notes/release-2.1.1.md
 release-notes/release-2.1.md
 release-notes/release-2.2.md
-release-notes/release-2.3.0-pre.9.md
-release-notes/release-2.3.md
+release-notes/release-2.3.0-pre.10.md
+release-notes/release-2.3.0-pre.11.md
 tutorials/tutorial-2.md
 tutorials/tutorial.md
