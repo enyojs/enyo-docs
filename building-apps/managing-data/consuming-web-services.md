@@ -4,12 +4,12 @@ In this article, we look at how the Enyo framework enables apps to work with
 services in general, and Web services in particular.
 
 In Enyo, Web requests are made using either the
-[enyo.Ajax](../api.html#enyo.Ajax) object or the
-[enyo.WebService](../api.html#enyo.WebService) component.
-`enyo.Ajax` derives directly from [enyo.Async](../api.html#enyo.Async),
+[enyo.Ajax](../../api.html#enyo.Ajax) object or the
+[enyo.WebService](../../api.html#enyo.WebService) component.
+`enyo.Ajax` derives directly from [enyo.Async](../../api.html#enyo.Async),
 the base kind for handling asynchronous operations.  `enyo.WebService` manages
 HTTP transactions by using either `enyo.Ajax` or
-[enyo.JsonpRequest](../api.html#enyo.JsonpRequest), which is
+[enyo.JsonpRequest](../../api.html#enyo.JsonpRequest), which is
 another subkind of `enyo.Async`.
 
 Considering the central role of `Async`, it makes sense to begin our discussion
@@ -17,12 +17,12 @@ there.
 
 ## enyo.Async
 
-[enyo.Async](../api.html#enyo.Async), again, is a generalized kind
+[enyo.Async](../../api.html#enyo.Async), again, is a generalized kind
 for dealing with asynchronous transactions.
 
 `enyo.Async` is an **Object**, not a **Component**; thus, you may not declare an
 `Async` in a `components` block.  If you want to use `Async` as a component, you
-should probably be using [enyo.WebService](../api.html#enyo.WebService)
+should probably be using [enyo.WebService](../../api.html#enyo.WebService)
 instead.  (See the section on `WebService` below.)
 
 An Async object represents a task that has not yet completed.  You may attach
@@ -95,11 +95,11 @@ until all functions return (synchronously):
 
 ## enyo.Ajax
 
-[enyo.Ajax](../api.html#enyo.Ajax) extends `enyo.Async`, providing a
+[enyo.Ajax](../../api.html#enyo.Ajax) extends `enyo.Async`, providing a
 wrapper for JavaScript's XmlHttpRequest (XHR) API.
 
 `enyo.Ajax` publishes all the properties of the
-[enyo.AjaxProperties](../api.html#AjaxProperties.js) object.  You may
+[enyo.AjaxProperties](../../api.html#AjaxProperties.js) object.  You may
 set values for these properties to customize different aspects of your HTTP
 request, such as the url, method, optional headers, and username and password
 for authentication.
@@ -137,7 +137,7 @@ enyojs.com.  (The Sampler also has examples using `JsonpRequest` and
 
 ## enyo.JsonpRequest
 
-[enyo.JsonpRequest](../api.html#enyo.JsonpRequest) is a specialized
+[enyo.JsonpRequest](../../api.html#enyo.JsonpRequest) is a specialized
 form of `enyo.Async` used for making JSONP requests to a remote server (which
 must, of course, support such requests).  This differs from the normal
 XmlHttpRequest call in that the external resource is loaded using a `<script>`
@@ -157,14 +157,14 @@ the HTTP transaction.
 
 ## enyo.WebService
 
-[enyo.WebService](../api.html#enyo.WebService) is a component that
+[enyo.WebService](../../api.html#enyo.WebService) is a component that
 performs XHR requests; it acts as a wrapper for the `Async` subkinds `enyo.Ajax`
 and `enyo.JsonpRequest`, using these subkinds internally to manage HTTP
 transactions.
 
 `enyo.WebService` uses `enyo.Ajax` by default and, like `enyo.Ajax`, it
 publishes all the properties of the
-[enyo.AjaxProperties](../api.html#AjaxProperties.js) object.  You may
+[enyo.AjaxProperties](../../api.html#AjaxProperties.js) object.  You may
 customize your HTTP request by setting values for these properties on a given
 `WebService` instance.
 

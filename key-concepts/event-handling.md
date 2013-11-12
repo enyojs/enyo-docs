@@ -275,5 +275,5 @@ Some important things to note:
 
 * [User Input](../building-apps/user-input.html)
 * [Creating Controls](creating-controls.html)
-* [Published Properties](published-properties.html)
+* [Objects and Published Properties](objects-and-published-properties.html)
 * [Encapsulation in Enyo](../best-practices/encapsulation-in-enyo.html)

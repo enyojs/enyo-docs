@@ -121,4 +121,4 @@ Lifecycle](object-lifecycle.html).
 **Additional Reading**
 
 * [Event Handling](event-handling.html)
-* [Published Properties](published-properties.html)
+* [Objects and Published Properties](objects-and-published-properties.html)
