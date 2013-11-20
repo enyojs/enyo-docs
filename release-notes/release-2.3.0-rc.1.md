@@ -142,7 +142,9 @@ list of changes.)
     in horizontal orientation.
 
 * In `HorizontalDelegate.js` and `VerticalDelegate.js`, modified `initList()` to
-    allow scroller settings to be overridden by a subkind or instance.
+    allow scroller settings to be overridden by a subkind or instance.  Also
+    added new property `posProp`, part of reworked support for right-to-left
+    scripts.
 
 * In `enyo.dispatcher`, added `enyo.getPosition()`, a new API for retrieving the
     coordinates of the last known mouse/cursor position (or touch, if
@@ -212,6 +214,8 @@ list of changes.)
 * In `enyo.ContextualLayout`, fixed miscalculation in
     `applyHorizontalPositioning()` that could cause contextual popups to bleed
     off the screen.
+
+* Reworked handling of right-to-left scripts in `enyo.List`.
 
 * Updated `layout.design` file, used by the Ares IDE.
 
