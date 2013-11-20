@@ -63,17 +63,22 @@ list of changes.)
 
 * Made numerous changes to `enyo.Binding`:
 
+    + Added `allowUndefined` property, which defaults to `true`, allowing
+        propagation of the `undefined` object.  If set to `false`, `undefined`
+        will not be propagated without the use of a transform or an overloaded
+        binding kind.
+
     + Removed `dirty` property, which was found to be not worth supporting. 
-
-    + Removed the `stop()` method.  Instead of calling `stop()` on the binding
-        reference in a transform, return `undefined` (or nothing) to achieve the
-        same effect.
-
-    + Instances of `enyo.Binding` no longer propagate `undefined`; instead, use
-        `null`.
 
     + `enyo.Binding` now registers for an entire path, and will update in
         response to changes anywhere in the path.
+
+* In `enyo.Collection`, added ability to call `filter()` with no parameters to
+    easily apply the active filter.
+
+* In `enyo.DataList` and `enyo.DataRepeater`, renamed `getChildForIndex()` as
+    `childForIndex()` and made sure that it returns `undefined` when that value
+    is expected.
 
 * In `enyo.DataRepeater`, deprecated the `controller` property; the `collection`
     property should be used instead.  Updated core unit test to use `collection`
@@ -117,6 +122,9 @@ list of changes.)
     `controllerChanged()`; as a result, any developer code calling
     `this.inherited(arguments)` from within an overloaded `modelChanged()`
     method will fail, and should be removed.
+
+    Also addressed issue in which `addBefore()` did not work correctly if the
+    container had a control parent; added related unit test to `ControlTest.js`.
 
 * In `xhr.js`, updated XHR references to avoid potential circular references.
     Also, in `simplifyFileURL()`, added a workaround for problems with local
@@ -171,10 +179,13 @@ list of changes.)
 
 * Updated `enyo.platform` to include `platformName`.
 
-* In `modal.js`, added `transitionend` and `animationend` to `noCaptureEvents`,
-    a hash of events to be ignored by `enyo.dispatcher.capture()`.  This avoids
-    potential problems when these two events are captured while a modal dialog
-    is showing.
+* In `modal.js`, modified `enyo.dispatcher.capture()` API so that captured
+    events no longer get bubbled through the normal event chain, but instead
+    notify the `captureTarget` through a callback passed as a parameter to
+    `capture()`.
+
+    In addition, the capture API now requires a whitelist of events to capture,
+    rather than the previous behavior of capturing (nearly) all events.
 
 * In `msevents.js`, added pointer event support for IE11.
 
@@ -186,14 +197,16 @@ list of changes.)
     unit test to `BindingTest.js`.
 
 * Optimized `RepeaterChildSupport.js` to avoid claiming node until necessary.
-    
-* Updated `enyo.design` file, used by the Ares IDE.
+
+* Fixed issues with minifier script (`minify.js`).
 
 * In `enyo/tools`, updated npm dependencies (`nopt` and `shelljs` packages).
 
 * Updated Travis CI configuration to use npm cache and PHP 5.5.  Temporarily
     disabled AJAX tests' ability to affect Travis pass/fail status due to
     problems with PHP server.
+
+* Updated `enyo.design` file, used by the Ares IDE.
 
 # onyx
 
@@ -221,7 +234,7 @@ list of changes.)
 
 ## enyo-ilib
 
-* Updated `ilib` to version `20131115-build-4.0-003`.
+* Updated `ilib` to version `enyojs/20131102-build-4.0-002`.
 
 * In `glue.js`, added the class `<enyo-locale>-non-italic` for locales that use
     scripts that do not commonly use italic fonts.  This may be used in the Enyo
