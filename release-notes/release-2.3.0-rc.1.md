@@ -179,13 +179,16 @@ list of changes.)
 
 * Updated `enyo.platform` to include `platformName`.
 
-* In `modal.js`, modified `enyo.dispatcher.capture()` API so that captured
-    events no longer get bubbled through the normal event chain, but instead
-    notify the `captureTarget` through a callback passed as a parameter to
-    `capture()`.
-
-    In addition, the capture API now requires a whitelist of events to capture,
-    rather than the previous behavior of capturing (nearly) all events.
+* In `modal.js`, modified the `enyo.dispatcher.capture()` API so that it no
+    longer bubbles all captured events through the normal event chain, but
+    rather notifies the `captureTarget` when specific events occur, according to
+    a map of callbacks passed as a parameter to `capture()`.
+    
+    While this is, technically, a breaking change to the
+    `enyo.dispatcher.capture()` API, the API has not been publicized and is
+    fairly difficult to use.  Among the set of controls developed by the Enyo
+    team, it was only used in `enyo.Popup`, so we assume this change will have
+    minimal impact on the general public.
 
 * In `msevents.js`, added pointer event support for IE11.
 
@@ -222,6 +225,9 @@ list of changes.)
 
 ## layout
 
+* Removed `disableTranslation` hack from `enyo.Panels`, as the webOS bug it
+    worked around has been fixed.
+
 * In `enyo.Arranger`, disabled translation for any panel containing video.
 
 * In `enyo.ContextualLayout`, fixed miscalculation in
@@ -234,7 +240,7 @@ list of changes.)
 
 ## enyo-ilib
 
-* Updated `ilib` to version `enyojs/20131102-build-4.0-002`.
+* Updated `ilib` to version `20131115-build-4.0-003`.
 
 * In `glue.js`, added the class `<enyo-locale>-non-italic` for locales that use
     scripts that do not commonly use italic fonts.  This may be used in the Enyo
