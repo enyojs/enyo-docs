@@ -15,6 +15,20 @@ list of changes.)
     `controller` property is considered deprecated.  So, please consider
     renaming `controller` to `collection` when time permits.
 
+* In `enyo.Binding`, the new `allowUndefined` flag (which defaults to `true`)
+    may be set in binding definitions to control whether `undefined` will be
+    propagated.
+    
+        bindings: [
+            // Undefined will be propagated from foo to fooControl
+            {from: ".model.foo", to: ".$.fooControl.content"},
+            // Undefined will NOT be propagated from bar to barControl
+            {from: ".model.bar", to: ".$.barControl.content", allowUndefined: false}
+        ]
+
+    In addition, you may now call `stop()` from within a binding's `transform`
+    function to stop propagation based on user-defined conditions.
+
 ## enyo
 
 * Enyo now supports the W3C pointer events recommendation and will use these
@@ -140,10 +154,18 @@ list of changes.)
 * In `enyo.Component`, modified `toString()` to return `id` as well as
     `kindName`.
 
-* Fixed issue causing layout problems in DataLists with horizontal orientation;
-    also, addressed problems with `scrollToIndex()` API in `enyo.DataList`,
-    adding overload version of `destroy()` method, and removed misleading
-    documentation.
+* Made several changes to `enyo.DataList`:
+
+    + Fixed issue causing layout problems in DataLists with horizontal
+        orientation.
+
+    + Added overload version of `destroy()` method to address problems with
+        `scrollToIndex()` API.
+
+    + Modified `rendered()` to give overloaded kinds the opportunity to respond
+        to the `finished` event, even when it is delayed.
+
+    + Removed misleading documentation.
 
 * In `enyo.DataList` and `VerticalDelegate.js`, fixed issue preventing proper
     updating of properties; also fixed code for determining scrolling threshold
@@ -201,7 +223,9 @@ list of changes.)
 
 * Optimized `RepeaterChildSupport.js` to avoid claiming node until necessary.
 
-* Fixed issues with minifier script (`minify.js`).
+* Addressed issues with minifier script (`minify.js`), including fixes for
+    handling of non-relative paths, alternate `package.js` files, and CSS/LESS
+    assets with spaces in their filenames.
 
 * In `enyo/tools`, updated npm dependencies (`nopt` and `shelljs` packages).
 
@@ -240,7 +264,7 @@ list of changes.)
 
 ## enyo-ilib
 
-* Updated `ilib` to version `20131115-build-4.0-003`.
+* Updated `ilib` to version `20131121-build-4.0-004`.
 
 * In `glue.js`, added the class `<enyo-locale>-non-italic` for locales that use
     scripts that do not commonly use italic fonts.  This may be used in the Enyo
