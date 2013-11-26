@@ -223,9 +223,8 @@ list of changes.)
 
 * Optimized `RepeaterChildSupport.js` to avoid claiming node until necessary.
 
-* Addressed issues with minifier script (`minify.js`), including fixes for
-    handling of non-relative paths, alternate `package.js` files, and CSS/LESS
-    assets with spaces in their filenames.
+* In minifier script (`minify.js`), fixed handling of non-relative paths and
+    alternate `package.js` files.
 
 * In `enyo/tools`, updated npm dependencies (`nopt` and `shelljs` packages).
 
