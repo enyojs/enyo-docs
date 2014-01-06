@@ -1,4 +1,4 @@
-﻿# Enyo 2.3.0 Release Notes
+﻿# Enyo 2.3.0 Release Notes [Current Through 2.3.0-rc.4]
 
 Welcome to Enyo 2.3.0!  The following items have changed since the 2.3.0-pre.10
 public preview release.  (Note that this list is not comprehensive; see the
@@ -121,6 +121,11 @@ commit history in GitHub for a complete list of changes.)
     `enyo.dom.transformsToDom()` in `transform.js`, while the latter is used
     internally in `enyo.Control`.
 
+    Also in `enyo.Control`, modified `getAbsoluteShowing()` so that it now
+    accepts an optional boolean parameter.  If `true` is passed in, computed
+    bounds will not be retrieved to force a layout; instead, the method will
+    rely on the return value of `getShowing()`.
+    
 * Made a number of updates to `enyo.DataList`
 
     + Deprecated the `controlsPerPage` property because it was not being used
@@ -163,9 +168,17 @@ commit history in GitHub for a complete list of changes.)
     added new property `posProp`, part of reworked support for right-to-left
     scripts.
 
-* Modified `enyo.Input` so that, when the value changes, we only call
-    `setAttribute()` if the Input has no DOM node yet; otherwise, we set
-    the `value` property on the node.
+* In `enyo.Input`, modified `valueChanged()` to manually update the cached value
+    to ensure we have the correct value the next time the attribute is requested
+    or the control is re-rendered.
+
+* In `lang.js`, added `enyo.perfNow()`, a high-precision, high performance
+    monotonic timestamp, which is independent of changes to the system clock and
+    safer for use in animation, etc.  `enyo.perfNow()` falls back to
+    `enyo.now()` (based on the JavaScript `Date` object) on platforms where
+    `window.performance.now()` is not available.  Also modified numerous kinds
+    across the framework to use `enyo.perfNow()` instead of `enyo.now()` for
+    tracking duration.
 
 * In `modal.js`, modified the `enyo.dispatcher.capture()` API so that it no
     longer bubbles all captured events through the normal event chain, but
@@ -196,9 +209,17 @@ commit history in GitHub for a complete list of changes.)
     event.  This is needed because `disabledChanged()` doesn't call the parent
     method in `enyo.Input`.
 
-* In `enyo.Scroller`, set `noDefer: true` for API compatibility.  Also, set the
-    touch strategy to "TranslateScrollStrategy" (instead of
-    "TouchScrollStrategy") for webOS version 4 and later.
+* Made several modifications to `enyo.Scroller`:
+
+    + Added overload version of `resized()` that only propagates `resize` events
+        to children if the `showing` property is `true`.  This is part of a fix
+        for issues seen while scrolling or paging in `enyo.DataList` or
+        `enyo.DataGridList`.
+
+    + Set `noDefer: true` for API compatibility.
+
+    + Also, set the touch strategy to "TranslateScrollStrategy" (instead of
+        "TouchScrollStrategy") for webOS version 4 and later.
 
 * Updated `enyo.Scroller` and `enyo.ScrollStrategy` to normalize new properties
     returned by `getScrollBounds()`.
@@ -217,8 +238,13 @@ commit history in GitHub for a complete list of changes.)
     correctly if the container had a control parent; added related unit test to
     `ControlTest.js`.
 
- In `VerticalDelegate.js`, fixed problems with item selection.  Also fixed
+* In `VerticalDelegate.js`, fixed problems with item selection.  Also fixed
     issue causing display of truncated list after deletion of an item.
+
+* In `VerticalGridDelegate.js`, modified `layout()` to add support for
+    right-to-left positioning of grid items.  Also rounded values used for
+    positioning and sizing to avoid floating point positioning glitches in
+    WebKit.
 
 * In `xhr.js`, updated previous change to `simplifyFileURL()` that disabled use
     of local file access when fetching a page from a Windows file share.  With
@@ -242,6 +268,14 @@ commit history in GitHub for a complete list of changes.)
 
 ### onyx
 
+* In "PickerSample", replaced `onyx.PickerButton` with `onyx.Button` in the
+    "Picker with Static Button".  Also replaced one-off date picker with generic
+    name picker based on `onyx.FlyweightPicker`.
+
+* Fixed issue with delayed `:active:hover` button styling in response to touch.
+
+* Updated `.less` files to ensure that `<script>` tag content isn't visible.
+
 * Updated `onyx.design` file, used by the Ares IDE.
 
 ### layout
@@ -263,12 +297,20 @@ commit history in GitHub for a complete list of changes.)
 
 * Updated `ilib` to version `20131204-build-4.0-005`.
 
-* In `glue.js`, added the class `<enyo-locale>-non-italic` for locales that use
-    scripts that do not commonly use italic fonts.  This may be used in the Enyo
-    CSS classes to determine whether or not to turn on italics for some parts of
-    the UI.
+* Made several updates to `glue.js`:
 
-    Also in `glue.js`, restored code that updates locale settings at library
-    load time.
+    + Updated `enyo.updateI18NClasses()` to apply the `enyo-locale-non-latin`
+        CSS class to the `<body>` tag for languages having missing glyphs in
+        either the Miso or Museo Sans fonts. This lets us avoid the "ransom
+        note" effect, in which multiple fonts are used in the same word.
+
+    + Added the class `<enyo-locale>-non-italic` for locales that use scripts
+        that do not commonly use italic fonts.  This may be used in the Enyo CSS
+        classes to determine whether or not to turn on italics for some parts of
+        the UI.
+
+    + Restored code that updates locale settings at library load time.
+
+    + Added override to display Latin characters in Korean.
 
 * Restored Onyx-based samples.
