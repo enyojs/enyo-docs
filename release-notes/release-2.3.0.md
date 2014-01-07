@@ -116,17 +116,37 @@ commit history in GitHub for a complete list of changes.)
 * In `enyo.Component`, modified `toString()` to return `id` as well as
     `kindName`.
 
-* In `enyo.Control`, added new API methods `invalidateStyles()` and
-    `getDomCssText()`.  The former method is called by
-    `enyo.dom.transformsToDom()` in `transform.js`, while the latter is used
-    internally in `enyo.Control`.
+* In `ComputedSupport.js`, added default value support to computed properties.
+    Simply provide a configuration object with a key named `defaultValue` and
+    any value (even `undefined`).  Also updated associated unit tests.
 
-    Also in `enyo.Control`, modified `getAbsoluteShowing()` so that it now
-    accepts an optional boolean parameter.  If `true` is passed in, computed
-    bounds will not be retrieved to force a layout; instead, the method will
-    rely on the return value of `getShowing()`.
-    
+* Made several updates to `enyo.Control`:
+
+    + Added new API methods `invalidateStyles()` and `getDomCssText()`.  The
+        former method is called by `enyo.dom.transformsToDom()` in
+        `transform.js`, while the latter is used internally in `enyo.Control`.
+
+    + Added `absoluteShowing` property, a read-only Boolean that may be observed
+        to determine whether the control is currently visible.  For any control,
+        setting the `showing` property to `false` will set `absoluteShowing` to
+        `false` for all of its children.  `absoluteShowing` will then reliably
+        reflect the control's visibility.
+
+        Also updated related unit tests.
+
+    + Modified `getAbsoluteShowing()` so that it now accepts an optional boolean
+        parameter.  If `true` is passed in, computed bounds will not be
+        retrieved to force a layout; instead, the method will rely on the return
+        value of `getShowing()`.
+
 * Made a number of updates to `enyo.DataList`
+
+    + Added public property `fixedChildSize`, used to optimize performance when
+        the items in a list have fixed dimensions.  This property should be set
+        for any list whose items are of uniform height or width.
+
+    + Added overload version of `destroy()` method to address problems with
+        `scrollToIndex()`.
 
     + Deprecated the `controlsPerPage` property because it was not being used
         properly, leading to problems in some apps; in its place, added
@@ -134,11 +154,10 @@ commit history in GitHub for a complete list of changes.)
         optimal number of controls for a given page.  Apps should not need to
         modify `pageSizeMultiplier` except in very rare circumstances.
 
-    + Added overload version of `destroy()` method to address problems with
-        `scrollToIndex()`.
-
     + Modified `rendered()` to give overloaded kinds the opportunity to respond
         to the `finished` event, even when it is delayed.
+
+    + Reworked code to delay certain actions until the list is showing.
 
     + Fixed issue causing layout problems in DataLists with horizontal
         orientation.
@@ -239,7 +258,8 @@ commit history in GitHub for a complete list of changes.)
     `ControlTest.js`.
 
 * In `VerticalDelegate.js`, fixed problems with item selection.  Also fixed
-    issue causing display of truncated list after deletion of an item.
+    issue causing display of truncated list after deletion of an item, and
+    added check to refresh page only if it actually has children.
 
 * In `VerticalGridDelegate.js`, modified `layout()` to add support for
     right-to-left positioning of grid items.  Also rounded values used for
@@ -268,13 +288,16 @@ commit history in GitHub for a complete list of changes.)
 
 ### onyx
 
-* In "PickerSample", replaced `onyx.PickerButton` with `onyx.Button` in the
-    "Picker with Static Button".  Also replaced one-off date picker with generic
-    name picker based on `onyx.FlyweightPicker`.
+* In `onyx.IconButton`, added code to verify that the IconButton is not disabled
+    before firing events.
 
 * Fixed issue with delayed `:active:hover` button styling in response to touch.
 
 * Updated `.less` files to ensure that `<script>` tag content isn't visible.
+
+* In "PickerSample", replaced `onyx.PickerButton` with `onyx.Button` in the
+    "Picker with Static Button".  Also replaced one-off date picker with generic
+    name picker based on `onyx.FlyweightPicker`.
 
 * Updated `onyx.design` file, used by the Ares IDE.
 
