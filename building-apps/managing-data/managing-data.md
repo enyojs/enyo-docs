@@ -123,7 +123,7 @@ If necessary, a bi-directional transform can be provided for two-way bindings by
 
 ```
 		{from: ".$.slider.value", to: ".$.input.value", oneWay:false, transform: function(val, dir) {
-			if (this.dir == "source") {
+			if (dir == "source") {
 				return (val * 100) + "%";
 			} else {
 				return parseInt(val) / 100;
