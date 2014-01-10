@@ -100,7 +100,7 @@ enyo.kind({
 });
 ```
 
-Note that with two-way bindings, the order of the `from` and `to` values still have meaning, since the initial value will be determined by the source (`from`) end.  In the example above, we are binding the `sliderValue` published property to the child slider's `value`, property.  The initial value of the slider will be determined by the published `sliderValue` property, but subsequent changes on the slider will be propagated back to the `sliderValue` published property.
+Note that with two-way bindings, the order of the `from` and `to` values still have meaning, since the initial value will be determined by the source (`from`) end.  In the example above, we are binding the `sliderValue` published property to the child slider's `value`, property.  At create time, the binding will propagate the value of the `sliderValue` published property to the slider's `value` property (not the other way around), but subsequent changes on the slider will be propagated from the slider's `value` back to the `sliderValue` published property.
 
 An optional `transform` function may be provided on bindings to transform the value as it passes from the source to the target (or vice-versa, for two-way bindings):
 
