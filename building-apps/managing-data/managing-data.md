@@ -502,7 +502,7 @@ The abstract API for `enyo.Source` is as follows:
 * `destroy` - Deletes a model from the source (not required for read-only sources)
 * `find` - Queries the source for a model or collection based on query attributes (optional)
 
-Enyo 2.3 currently provides default sources for Ajax and Jsonp REST endpoints, via the `enyo.AjaxSource` ("`ajax`") and `enyo.JsonpSource` sub-kinds ("`jsonp`").
+Enyo 2.3 currently provides default sources for Ajax and Jsonp REST endpoints, via the `enyo.AjaxSource` ("`ajax`") and `enyo.JsonpSource` ("`jsonp`") sub-kinds.
 
 ### Specifying a source
 
