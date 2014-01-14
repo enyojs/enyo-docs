@@ -8,7 +8,7 @@ service, display that data in your application's views, accept input from users
 that changes or creates new data, keep views in sync with the changing data, and
 persist the data to a back-end location.  Enyo provides many features to make
 developing rich, data-driven applications as easy as possible using a minimal
-amount of code.  
+amount of code.
 
 At the heart of Enyo's data layer is the concept of data observation and
 binding--the ability to observe changes to an object's properties and have the
@@ -44,11 +44,16 @@ registering new [enyo.Source](../../api.html#enyo.Source) objects.
 
 ## Observers, Bindings, and Computed Properties
 
-`enyo.Component` provides both declarative and programmatic API's for observing property changes and binding between properties of objects in the scope of the component.
+[enyo.Component](../../api.html#enyo.Component) provides both declarative and
+programmatic APIs for observing property changes and binding properties of
+objects in the scope of the component.
 
 ### Observers
 
-In Enyo, an observer is simply a function that is called when the value of the property being observed changes.  As a convention, Enyo automatically provides published property change observers in the form of `<property>Changed()` functions.  For example:
+In Enyo, an observer is simply a function that is called when the value of a
+property being observed changes.  By convention, Enyo automatically provides
+change observers for published properties in the form of `<property>Changed()`
+functions.  For example:
 
 ```
 enyo.kind({
@@ -62,7 +67,7 @@ enyo.kind({
 });
 ```
 
-In the above example, `fooChanged()` will be called when the `foo` setter is called:
+In this example, `fooChanged()` will be called when the `foo` setter is called:
 
 ```
     tapHandler: function() {
@@ -70,7 +75,8 @@ In the above example, `fooChanged()` will be called when the `foo` setter is cal
     }
 ```
 
-You can declare your own observers that watch one or more properties by adding entries to the `observers` block of your kind:
+You may declare your own property change observers by adding entries to your
+kind's `observers` block:
 
 ```
 enyo.kind({
@@ -87,31 +93,49 @@ enyo.kind({
     }
 });
 ```
-Note, as long as the property is chagned via the `set()` setter function of `enyo.Object`, any property (published or otherwise) is observable.  Also note that the long-form setters generated for published properties (e.g. `setPublicProperty`, for the example above internally call the generic `set()` function as well).
 
-For programmaticly adding observers after your kind is created, you may use the `addObserver` and `removeObserver` functions supplied on `enyo.Object` (via the `enyo.ObserverSupport` mixin).
+Note that, as long as property changes are made via the `set()` function of
+`enyo.Object`, any property (published or otherwise) is observable.  Also note
+that the long-form setters generated for published properties (e.g.,
+`setPublicProperty()` for the current example) call the generic `set()`
+function internally.
+
+After a kind has been created, you may add or remove observers programmatically
+using the `addObserver()` and `removeObserver()` functions on `enyo.Object`
+(provided by the [enyo.ObserverSupport](../../api.html#enyo.ObserverSupport) mixin).
 
 ### Bindings
 
-Bindings in Enyo are built on top of the basic observation capability above, and are responsible for propogating property value changes between two points: the source and target of the binding.  When the source of a binding changes, the new value is set to the target property.
+Bindings in Enyo are built on the basic observation capability outlined above.
+A binding is responsible for propagating property value changes between two
+points--the source and target of the binding.  When the source of a binding
+changes, the new value is set to the target property.
 
-You can declare bindings between properties in the scope of a component by adding entries to the `bindings` block of your kind.  In the example below, the value of the slider will be automatically set to the content of the label as the user drags the slider.  
+You may declare bindings between properties in the scope of a component by
+adding entries to your kind's `bindings` block.  In the following example, the
+binding will automatically keep the content of the label (`label.content`) in
+sync with the value of the slider (`slider.value`) as the user drags the slider
+knob.
 
 ```
 enyo.kind({
     name: "MyValueSlider",
     components: [
-        {kind: "moon.Slider", name:"slider"},
-        {kind: "enyo.Control", name:"label"}
+        {kind: "moon.Slider", name: "slider"},
+        {kind: "enyo.Control", name: "label"}
     ],
     bindings: [
         {from: ".$.slider.value", to: ".$.label.content"}
     ]
 });
 ```
-Note, the source (`from`) and target (`to`) properties of the binding are specified as string paths.  By convention, when the path starts with a dot (`.`) as in the example above, the path is relative to `this`.  If the path starts with a caret (`^`), the path is relative to the global scope.
+Note that the source (`from`) and target (`to`) properties of the binding are
+specified as string paths.  By convention, when the path starts with a dot (`.`)
+as in this example, the path is relative to `this`.  If the path starts with a
+caret (`^`), the path is relative to the global scope.
 
-By default, bindings are one-way, from the source to the target.  However, bindings can be specified as "two-way" by setting the `oneWay` flag to `false`:
+By default, bindings are one-way, from the source to the target.  However,
+a binding may be specified as "two-way" by setting the `oneWay` flag to `false`:
 
 ```
 enyo.kind({
@@ -130,9 +154,17 @@ enyo.kind({
 });
 ```
 
-Note that with two-way bindings, the order of the `from` and `to` values still have meaning, since the initial value will be determined by the source (`from`) end.  In the example above, we are binding the `sliderValue` published property to the child slider's `value`, property.  At create time, the binding will propagate the value of the `sliderValue` published property to the slider's `value` property (not the other way around), but subsequent changes on the slider will be propagated from the slider's `value` back to the `sliderValue` published property.
+Note that in two-way bindings, the order of the `from` and `to` values is still
+meaningful, since the initial value will be determined by the source (`from`)
+end.  In the current example, we are binding the `sliderValue` published
+property to the child slider's `value` property.  At creation time, the binding
+will propagate the value of `sliderValue` to the child slider's `value` property
+(not the other way around), but on any subsequent changes to the child slider,
+`value` will be propagated from `value` back to `sliderValue`.
 
-An optional `transform` function may be provided on bindings to transform the value as it passes from the source to the target (or vice-versa, for two-way bindings):
+An optional `transform` function may be provided for a binding to transform the
+value as it passes from the source to the target (and vice-versa, for two-way
+bindings):
 
 ```
 enyo.kind({
@@ -149,7 +181,9 @@ enyo.kind({
 });
 ```
 
-If necessary, a bi-directional transform can be provided for two-way bindings by checking the second argument to the transform function to determine the direction the binding is firing: 
+If necessary, a bi-directional transform may be provided for a two-way binding;
+check the second argument to the `transform` function to determine the direction
+in which the binding is firing: 
 
 ```
         {from: ".$.slider.value", to: ".$.input.value", oneWay:false, transform: function(val, dir) {
@@ -163,9 +197,12 @@ If necessary, a bi-directional transform can be provided for two-way bindings by
 
 ### Computed Properties
 
-Computed properties allow observing and binding to changes in properties that are computed based on one or more dependent properties.  When any dependencies to the computed property change (which would result in the computed value changing), observers and bindings for that property fire.
+Computed properties allow you to observe and bind to changes in properties that
+are computed based on one or more dependent properties.  When any dependencies
+of the computed property change (resulting in a change to the computed value),
+observers and bindings for that property fire.
 
-Here's a simple example of a computed property, which is based on two published properties:
+Here's a simple example of a computed property based on two published properties:
 
 ```
 enyo.kind({
@@ -182,7 +219,8 @@ enyo.kind({
     }
 }); 
 ```
-We can now bind the computed `forecast` computed property to a view Control, for example:
+
+We may now bind the computed `forecast` property to a view control, e.g.:
 
 ```
 enyo.kind({
@@ -203,8 +241,9 @@ enyo.kind({
     forecast: function() {
         return "It's always " + this.get("weather") + " in " + this.get("city")
     }
-}); 
+});
 ```
+
 Then, when either dependent property changes, the view will automatically update:
 
 ```
@@ -212,7 +251,7 @@ this.set("weather", "rainy");
 // forecastLabel's content becomes "It's always rainy in San Francisco"
 
 this.set("city", "Seattle");
-// forecastLabel'scontent becomes "It's always rainy in Seattle"
+// forecastLabel's content becomes "It's always rainy in Seattle"
 ```
 
 ## Models
