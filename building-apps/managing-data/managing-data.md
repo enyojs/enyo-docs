@@ -2,15 +2,45 @@
 
 ## Overview
 
-Working with data is a key part of building any application.  In a typical application, you may need to load records and lists of records from a back-end service, display that data in your application's views, accept input from users that change or create new data, keep views in sync with the changing data, and then persist the data back to a back-end location.  Enyo provides many features to make developing rich, data-driven applications as easy as possible using a minimal amount of code.  
+Working with data is a key part of building any application.  In a typical
+application, you may need to load records and lists of records from a back-end
+service, display that data in your application's views, accept input from users
+that changes or creates new data, keep views in sync with the changing data, and
+persist the data to a back-end location.  Enyo provides many features to make
+developing rich, data-driven applications as easy as possible using a minimal
+amount of code.  
 
-At the center of Enyo's data layer is the concept of data observation and binding-- the ability to observe changes to properties of an object and have those changes automatically synced to properties of related objects.  This is most useful in binding view properties to your back-end data, but bindings in Enyo are very flexible and can be used between any two Enyo objects.
+At the heart of Enyo's data layer is the concept of data observation and
+binding--the ability to observe changes to an object's properties and have the
+changes be automatically synced to properties of related objects.  While this is
+most useful for binding view properties to your back-end data, bindings in Enyo
+are very flexible and may be created between any two Enyo objects.
 
-All Enyo Objects and Components support binding by default when values are changed through the `enyo.Object` `set()` function.  However, to make changes to properties of plain old JavaScript objects observable (for eample, JSON objects loaded from a back-end service), Enyo also provides `enyo.Model`, which is an object that wraps a plain JavaScript object and adds observation support, allowing your back-end data to be easily bound to Enyo objects and controls.  Further, Enyo provides `enyo.Collection` to wrap arrays of models, allowing observation of additions and removals to/from the collection.
+All Enyo objects and components support binding by default when property values
+are changed using the `set()` method of [enyo.Object](../../api.html#enyo.Object).
+However, to make changes to properties observable on plain old JavaScript
+objects (e.g., JSON objects loaded from a back-end service), Enyo also provides
+[enyo.Model](../../api.html#enyo.Model), an object that wraps a plain JavaScript
+object and adds support for observation, thus allowing your back-end data to be
+easily bound to Enyo objects and controls.  In addition, Enyo provides
+[enyo.Collection](../../api.html#enyo.Collection), which wraps arrays of models
+and allows observation of additions to (and removals from) the collection.
 
-Using these features, `enyo.Object`'s and `enyo.Model` properties can be bound to any view properties (and automatically kept in sync when the model changes).  Further, "collection-aware" view kinds such as `enyo.DataRepeater`, `enyo.DataList` and `enyo.DataGridList` that generates repeated controls based on a list of data can be bound to `enyo.Collection`s (and automatically re-rendered when the models in the collections change).
+Using these features, the properties of `enyo.Object` and `enyo.Model` instances
+may be bound to any view properties (which will then be automatically kept in
+sync with any object or model changes).  Furthermore, "collection-aware" view
+kinds such as [enyo.DataRepeater](../../api.html#enyo.DataRepeater),
+[enyo.DataList](../../api.html#enyo.DataList) and
+[enyo.DataGridList](../../api.html#enyo.DataGridList), which generate repeated
+controls based on a list of data, may be bound to an `enyo.Collection`.  The
+views will then be automatically re-rendered when the models in the collection
+change.
 
-Last, Enyo provides API's on `enyo.Model` and `enyo.Collection` for easily fetching and persisting data to/from back-end sources such as HTTP-based Ajax and Jsonp endpoints.  These API's are also extensible to other sources for your data, such as data fetched via 3rd-party libraries or SDK's by sub-classing and registering new `enyo.Source` objects.
+Finally, Enyo provides APIs on `enyo.Model` and `enyo.Collection` that let you
+easily fetch data from (and persist data to) back-end sources such as HTTP-based
+Ajax and Jsonp endpoints.  You may also customize these APIs to accommodate
+other data sources, such as third-party libraries or SDKs, by sub-classing and
+registering new [enyo.Source](../../api.html#enyo.Source) objects.
 
 ## Observers, Bindings, and Computed Properties
 
