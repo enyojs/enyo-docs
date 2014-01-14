@@ -39,7 +39,7 @@ change.
 Finally, Enyo provides APIs on `enyo.Model` and `enyo.Collection` that let you
 easily fetch data from (and persist data to) back-end sources such as HTTP-based
 Ajax and Jsonp endpoints.  You may also customize these APIs to accommodate
-other data sources, such as third-party libraries or SDKs, by sub-classing and
+other data sources, such as third-party libraries or SDKs, by subclassing and
 registering new [enyo.Source](../../api.html#enyo.Source) objects.
 
 ## Observers, Bindings, and Computed Properties
@@ -256,13 +256,21 @@ this.set("city", "Seattle");
 
 ## Models
 
-`enyo.Model` is a very lightweight base kind that is specially designed to wrap POJO's (plain-old JavaScript objects), such as data fetched as JSON from a remote server, and allow for observation and binding using the API's described above.  
+[enyo.Model](../../api.html#enyo.Model) is a very lightweight base kind that is
+specially designed to wrap POJOs (plain-old JavaScript objects) such as data
+fetched as JSON from a remote server.  It allows for observation and binding
+using the APIs described above.
 
-_Note that `enyo.Model` is not an `enyo.Component`, and may not be used within declarative component blocks, but rather is instanced using the `new` keyword.  As a matter of fact, it does not even extend from `enyo.Object`, as it is intended to be as lightweight as possible._
+Note that `enyo.Model` is **NOT** an `enyo.Component`; it may not be used within
+declarative `components` blocks, but is instead instanced using the `new`
+keyword.  In fact, `enyo.Model` is not even derived from `enyo.Object`, as it is
+intended to be as lightweight as possible.
 
 ### Creating and using models
 
-A generic `enyo.Model` can be instanced and passed initial attribute values by simply using the `new` keyword and optionally passing object containing the initial attribute values to the constructor:
+A generic `enyo.Model` may be instanced and initialized by simply using the
+`new` keyword and passing the constructor an optional object containing the
+desired initial attribute values:
 
 ```
 var myModel = new enyo.Model({
@@ -272,7 +280,9 @@ var myModel = new enyo.Model({
     height: 6.0
 });
 ```
-We can get and set properties of the model using the `set()` and `get()` functions, similar to `enyo.Object`:
+
+We may get and set properties of the model using the `set()` and `get()`
+functions, just as we would do with `enyo.Object`:
 
 ```
 myModel.get("name"); // returns "Kevin"
@@ -280,8 +290,8 @@ myModel.set("name", "Bob");
 myModel.get("name"); // returns "Bob"
 ```
 
-
-The properties of the model can be observed or bound to properties of components or other models using the same API described above:
+The properties of the model may be observed or bound to properties of components
+or other models using the same API described above:
 
 ```
 enyo.kind({
@@ -302,7 +312,9 @@ enyo.kind({
 });
 ```
 
-By simply setting the `personModel` property of the kind above to a model with the expected schema, the avatar, name, and town components of the view will automatically be synced to the model:
+If we set the `personModel` property of a `ContactView` instance to a model with
+the expected schema, the avatar, name, and town components of the view will
+automatically be synced with the corresponding properties of the model:
 
 ```
 var myModel = new enyo.Model({
@@ -315,15 +327,17 @@ var myModel = new enyo.Model({
 this.$.contactView.set("personModel", myModel);
 ```
 
-Further, if any properties of the model are changed, the view will automatically update:
+Furthermore, if any properties of the model are changed, the view will
+automatically update:
 
 ```
 myModel.set("name", "Bob");        // The "nameLabel" component of the view will update
 ```
 
-### Creating model sub-kinds
+### Creating model subkinds
 
-You may sub-kind `enyo.Model` as you would any kind, to provide an explicit schema and default values via the `defaults` property, or to override any other default behavior:
+You may subkind `enyo.Model` to provide an explicit schema and default values
+via the `defaults` property, or to override any other default behavior:
 
 ```
 enyo.kind({
@@ -343,9 +357,16 @@ var myModel = new ContactModel({
 
 ### Fetching models from REST endpoints
 
-Although it is often useful to initialize a model using an object literal as above, `enyo.Model`'s are often populated based on data from a remote source.  To simplify this process, the Enyo data layer supports fetching models from Ajax and Jsonp REST endpoints by default, and can be easily customized for other source types (see [Sources](http://) for more details).
+Although it is often useful to initialize a model using an object literal (as
+seen above), `enyo.Model` instances are often populated based on data from a
+remote source.  To simplify this process, the Enyo data layer includes support
+for fetching models from Ajax and Jsonp REST endpoints by default, and may be
+easily customized for other source types (see [Sources](#sources) below for more
+details).
 
-In the following example, we create a `ContactModel` sub-kind, providing a url to the REST endpoint for this resource, and the primaryKey to be used (which is appended to the end of the `url` property):
+In the following example, we create a `ContactModel` subkind, providing a URL to
+the REST endpoint for this resource, along with the `primaryKey` (which will be
+appended to the end of the `url` property):
 
 ```
 enyo.kind({
@@ -357,9 +378,10 @@ enyo.kind({
 
 var myModel = new ContactModel({user_id: 1234});
 myModel.fetch();  // Results in an XHR request to http://myservice.com/users/1234
-
 ```
-If you need greater control over how the URL is constructed to fetch resources from your service, you may overload the `getUrl` function on `enyo.Model`:
+
+If you need greater control over how the URL is constructed for your service,
+you may overload the `getUrl()` function on `enyo.Model`:
 
 ```
 enyo.kind({
@@ -373,9 +395,14 @@ enyo.kind({
 
 ### Parsing and converting fetched data
 
-Often, you may need to adjust or convert the structure of data returned from a service (especially one you do not control) to make it more suitable for use in your application.  `enyo.Model` provides a `parse` API which is called after fetching data, but before the data is set to the internal attributes hash and observers are notified, where you may adjust the data used in the model.
+Often, you may need to adjust or convert the structure of data returned from a
+service (especially one that you don't control) in order to make it suitable for
+use in your application.  For this reason, `enyo.Model` provides a `parse()`
+API, to be called after the data is fetched but before the data is transferred
+to the internal `attributes` hash and observers are notified.
 
-For example, some services may return metdata about the request that are not relevant to the actual data for your model:
+For example, a service might return metadata about a request that is not
+relevant to the data for your model:
 
 ```
 {
@@ -392,7 +419,9 @@ For example, some services may return metdata about the request that are not rel
     }
 }
 ```
-In this case, you could overload the `parse` function to tell `enyo.Model` to only use the `result` sub-tree of the fetched data for the model attributes:
+
+In this case, you could overload the `parse()` function to tell `enyo.Model` to
+only use the `result` sub-tree of the fetched data for the model attributes:
 
 ```
 enyo.kind({
@@ -406,7 +435,11 @@ enyo.kind({
 });
 ```
 
-If the data from the REST endpoint was not in JSON format, you would also need to use the `parse` function to parse the data (string) returned from the service into a JS object.  Although Enyo does not provide XML-to-JSON parsing as part of the core framework, there are several open-source libraries that provide this (such as [X2JS](https://code.google.com/p/x2js/)):
+If the data from the REST endpoint did not arrive in JSON format, you would also
+use `parse()` to parse the data (string) returned from the service into a
+JavaScript object.  Although Enyo does not provide XML-to-JSON parsing as part
+of the core framework, there are several open-source libraries that provide this
+functionality, such as [X2JS](https://code.google.com/p/x2js/):
 
 ```
 enyo.kind({
@@ -422,7 +455,10 @@ enyo.kind({
 });
 ```
 
-Finally, `enyo.Mdoel` does not currently support binding to nested data structures within a model. If a service returned nested data that your app needs to bind to, you could use the `parse` function to flatten the structure.  For example, if the fetched model data looked like this:
+Finally, `enyo.Model` does not currently support binding to nested data
+structures within a model.  If a service returns nested data that your app needs
+to bind to, you could use the `parse()` function to flatten the structure.  For
+example, if the fetched model data looked like this:
 
 ```
 {
@@ -438,7 +474,9 @@ Finally, `enyo.Mdoel` does not currently support binding to nested data structur
     }
 }
 ```
-...the following `parse` function would wrap the `department` and `manager` fields with `enyo.Model`, making those nested sub-objects bindable as well:
+
+...the following() `parse` function would wrap the `department` and `manager`
+fields with `enyo.Model`, making those nested sub-objects bindable as well:
 
 ```
 enyo.kind({
@@ -458,10 +496,9 @@ enyo.kind({
 });
 ```
 
-
 ## Collections
 
-Whereas `enyo.Object` wraps plain JavaScript objects to make them observable, `enyo.Collection` wraps arrays of JavaScript objects, and provides observation support for adding and removing objects to the array, as well as automatic "upgrading" of plain JavaScript objects to `enyo.Model`s.  
+While `enyo.Object` wraps plain JavaScript objects to make them observable, `enyo.Collection` wraps arrays of JavaScript objects, and provides observation support for adding and removing objects to the array, as well as automatic "upgrading" of plain JavaScript objects to `enyo.Model`s.  
 
 _Note: although collections have many features and API's in common with `enyo.Model` such as the ability to fetch and parse data from a back-end server, `enyo.Collection` is actually a sub-kind of `enyo.Component`, and may be instantiated declaratively in the `components` block of other components or controls, in addition to being instanced programmatically using the normal `new` keyword._
 
