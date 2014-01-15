@@ -498,13 +498,24 @@ enyo.kind({
 
 ## Collections
 
-While `enyo.Object` wraps plain JavaScript objects to make them observable, `enyo.Collection` wraps arrays of JavaScript objects, and provides observation support for adding and removing objects to the array, as well as automatic "upgrading" of plain JavaScript objects to `enyo.Model`s.  
+While `enyo.Object` wraps plain JavaScript objects to make them observable,
+[enyo.Collection](../../api.html#enyo.Collection) wraps arrays of JavaScript
+objects, providing observation support for the addition of objects to (and
+removal of objects from) the array, and automatically "upgrading" plain
+JavaScript objects to `enyo.Model` status.
 
-_Note: although collections have many features and API's in common with `enyo.Model` such as the ability to fetch and parse data from a back-end server, `enyo.Collection` is actually a sub-kind of `enyo.Component`, and may be instantiated declaratively in the `components` block of other components or controls, in addition to being instanced programmatically using the normal `new` keyword._
+Note: Although collections have many features and APIs in common with
+`enyo.Model`, such as the ability to fetch and parse data from a back-end
+server, `enyo.Collection` is actually a subkind of `enyo.Component`.  As such,
+a collection may be instantiated either declaratively, in the `components` block
+of a component or control, or programmatically, using the standard keyword
+`new`.
 
 ### Creating and using collections
 
-A generic `enyo.Collection` can be instanced and passed initial model data by simply using the `new` keyword and optionally passing array containing the initial model data to the constructor:
+A generic `enyo.Collection` may be instanced and initialized by simply using the
+`new` keyword and passing the constructor an optional object containing the
+initial model data:
 
 ```
 var myCollection = new enyo.Collection([
@@ -528,13 +539,17 @@ var myCollection = new enyo.Collection([
     }
 ]);
 ```
-We can retrieve models from the collection using the `at` function:
+
+We can retrieve models from the collection using the `at()` function:
 
 ```
 myCollection.at(0);                 // returns enyo.Model instance for "Kevin" record
-myCollection.at(2).get("name");      // returns "Cole"
+myCollection.at(2).get("name");     // returns "Cole"
 ```
-We can add models using the `add` function.  Note, collections accept either `enyo.Model`s directly, or plain JS objects (which are upgraded to `enyo.Models` when first retrieved).
+
+We can add models using the `add()` function.  Note that `add()` will accept
+either `enyo.Model` objects or plain JavaScript objects.  The latter are
+converted into `enyo.Model` objects when first retrieved.
 
 ```
 myCollection.add({name: "Ben", hometown: "Austin"});
@@ -543,11 +558,14 @@ myCollection.at(myCollection.length-1).get("name"); // returns "Ben"
 myCollection.add(new ContactModel({name: "Aaron", hometown: "San Mateo"}));
 myCollection.at(myCollection.length-1).get("name"); // returns "Aaron"
 ```
-See the [enyo.Collection](http://) API reference for the full list of API's provided by `enyo.Collection` for manipulating records.
 
-### Creating collection sub-kinds
+See the [enyo.Collection](../../api.html#enyo.Collection) API reference for the
+full list of APIs available for manipulating records.
 
-You may sub-kind `enyo.Collection` as you would any kind, to indicate an explicit model type to be used to wrap its array data, or to override any other default behavior:
+### Creating collection subkinds
+
+You may subkind `enyo.Collection` to indicate an explicit model type to be used
+for wrapping its array data, or to override any other default behavior:
 
 ```
 enyo.kind({
@@ -571,9 +589,11 @@ myCollection.at(0);        // returns instance of "MyContactModel" for "Kevin" r
 
 ### Fetching collections from REST endpoints
 
-Similar to `enyo.Model`, `enyo.Collection` provides default support for fetching array data from REST endpoints by providing the resource `url` property and using the `fetch` function.
+Like `enyo.Model`, `enyo.Collection` provides default support for fetching
+array data from REST endpoints by specifying the resource's `url` and calling
+`fetch()`.
 
-In the following example, the colleciton is loaded from a fixed url:
+In the following example, the collection is loaded from a fixed URL:
 
 ```
 enyo.kind({
@@ -584,10 +604,10 @@ enyo.kind({
 
 var myCollection = new MyContactCollection();
 myCollection.fetch();
-
 ```
 
-If the url for the collection needs to be customized, simply overload the `getUrl` function to provide a custom URL, based on properties of the collection, for example:
+If the URL for the collection needs to be customized, simply overload `getUrl()`
+to provide a custom URL--based on properties of the collection, for example:
 
 ```
 enyo.kind({
@@ -601,11 +621,14 @@ enyo.kind({
 new MyContactCollection({dept_id: 42});
 myCollection.fetch();
 ```
+
 ### Parsing and converting fetched data
 
-Similar to `enyo.Model`, `enyo.Collection` a `parse` function to allow fetched data to be parsed or converted before being used.
+Also like `enyo.Model`, `enyo.Collection` has a `parse()` function to allow
+fetched data to be processed before being used.
 
-For example, if your service provided request metadata in addition to the data array the collection would wrap:
+For example, if your service provided request metadata in addition to the data
+array...
 
 ```
 {
@@ -619,19 +642,19 @@ For example, if your service provided request metadata in addition to the data a
             "name": "Kevin",
             "hometown": "San Francisco"
             "avatar": "/images/kevin.png",
-            "height": 6.1
+            "height": 6.0
         },
         {
             "user_id": 2345,
             "name": "Gray",
             "hometown": "San Jose"
             "avatar": "/images/gray.png",
-            "height": 6.0
+            "height": 6.1
         },
         {
             "user_id": 4567,
             "name": "Cole",
-            "hometown": "San Clara"
+            "hometown": "Santa Clara"
             "avatar": "/images/cole.png",
             "height": 5.9
         }
@@ -656,20 +679,37 @@ enyo.kind({
 
 ### Overview
 
-`enyo.Source` is an abstraction provided by Enyo's data layer that encapsulates knowledge of how to fetch and commit models and collections to/from a data source.  The data "source" could be a remote service exposed as REST endpoints accessed via Ajax or Jsonp, a complex web API accessed through a 3rd-party JavaScript library, or even localStorage.
+[enyo.Source](../../api.html#enyo.Source) is an abstraction provided by Enyo's
+data layer that encapsulates knowledge of how to fetch models from and commit
+collections to a data source.  The data source could be a remote service exposed
+as REST endpoints accessed via Ajax or Jsonp, a complex Web API accessed through
+a third-party JavaScript library, or even `localStorage`.
 
 The abstract API for `enyo.Source` is as follows:
 
-* `fetch` - Retrieves a model or collection, typically based on a unique resource identifier
-* `commit` - Persists a model's current state to the source, creating a new record on the source if the model was created locally and not originally fetched from the source (not required for read-only sources)
-* `destroy` - Deletes a model from the source (not required for read-only sources)
-* `find` - Queries the source for a model or collection based on query attributes (optional)
+* `fetch()` - Retrieves a model or collection, typically based on a unique
+    resource identifier.
 
-Enyo 2.3 currently provides default sources for Ajax and Jsonp REST endpoints, via the `enyo.AjaxSource` ("`ajax`") and `enyo.JsonpSource` ("`jsonp`") sub-kinds.
+* `commit()` - Persists a model's current state to the source, creating a new
+    record on the source if the model was created locally and not originally
+    fetched from the source (not required for read-only sources).
+
+* `destroy()` - Deletes a model from the source (not required for read-only
+    sources).
+
+* `find()` - Queries the source for a model or collection based on query
+    attributes (optional).
+
+Enyo 2.3 currently provides default sources for Ajax and Jsonp REST endpoints
+via the [enyo.AjaxSource](../../api.html#enyo.AjaxSource) and
+[enyo.JsonpSource](../../api.html#enyo.JsonpSource) subkinds, respectively.
 
 ### Specifying a source
 
-When defining a custom `enyo.Model` or `enyo.Collection` sub-kind, you may specify the `defaultSource` property to indicate which source to use for fetching and committing records, using the short-hand name of the source (e.g. "`ajax`", "`jsonp`", etc.).
+When defining a custom `enyo.Model` or `enyo.Collection` subkind, you may
+specify the `defaultSource` property to indicate which source to use for
+fetching and committing records, using the shorthand name for the source (e.g.,
+"`ajax`", "`jsonp`", etc.).
 
 For example:
 
@@ -682,11 +722,16 @@ enyo.kind({
     source: "jsonp"        // use jsonp source instead of ajax for fetching
 });
 ```
-### Creating source sub-kinds
 
-You may sub-kind existing sources to specify options to configure the fetching strategy, or to create brand new sources for accessing data not supported by existing source kinds.  Newly created sources must be registered with the data layer by calling the `enyo.store.addSources()` API.
+### Creating source subkinds
 
-For example, to create a sub-kind of `enyo.JsonpSource` to provide a custom `callback` property required by the JSONP endpoint, you could do the following:
+You may subkind existing sources to specify options to configure the fetching
+strategy, or to create brand new sources for accessing data not supported by
+existing source kinds.  Newly-created sources must be registered with the data
+layer by calling the `enyo.store.addSources()` API.
+
+For example, to create a subkind of `enyo.JsonpSource` to provide a custom
+`callback` property required by the JSONP endpoint, you could do the following:
 
 ```
 enyo.kind({
@@ -703,7 +748,7 @@ enyo.kind({
 enyo.store.addSources({mysource: "MyJsonpSource"});
 ```
 
-To create a brand-new source, implement the abstract API as necessary:
+To create a brand new source, implement the abstract API as necessary:
 
 ```
 enyo.kind({
@@ -729,7 +774,7 @@ enyo.kind({
 enyo.store.addSources({mysource: "MySource"});
 ```
 
-For example, you could easily implement an `enyo.Source` that uses the [Facebook JavaScript SDK](https://developers.facebook.com/docs/reference/javascript/) to read/add posts a user's news feed as follows (note: authentication using that particular SDK is out of the scope of this section):
+As an example, you could easily implement an `enyo.Source` that uses the [Facebook JavaScript SDK](https://developers.facebook.com/docs/reference/javascript/) to read/add posts a user's news feed as follows (note: authentication using that particular SDK is out of the scope of this section):
 
 ```
 enyo.kind({
