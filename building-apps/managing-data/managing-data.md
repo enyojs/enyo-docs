@@ -266,7 +266,7 @@ declarative `components` blocks, but is instead instanced using the `new`
 keyword.  In fact, `enyo.Model` is not even derived from `enyo.Object`, as it is
 intended to be as lightweight as possible.
 
-### Creating and using models
+### Creating and Using Models
 
 A generic `enyo.Model` may be instanced and initialized by simply using the
 `new` keyword and passing the constructor an optional object containing the
@@ -334,7 +334,7 @@ automatically update:
 myModel.set("name", "Bob");        // The "nameLabel" component of the view will update
 ```
 
-### Creating model subkinds
+### Creating Model Subkinds
 
 You may subkind `enyo.Model` to provide an explicit schema and default values
 via the `defaults` property, or to override any other default behavior:
@@ -355,7 +355,7 @@ var myModel = new ContactModel({
 });
 ```
 
-### Fetching models from REST endpoints
+### Fetching Models from REST Endpoints
 
 Although it is often useful to initialize a model using an object literal (as
 seen above), `enyo.Model` instances are often populated based on data from a
@@ -393,7 +393,7 @@ enyo.kind({
 });
 ```
 
-### Parsing and converting fetched data
+### Parsing and Converting Fetched Data
 
 Often, you may need to adjust or convert the structure of data returned from a
 service (especially one that you don't control) in order to make it suitable for
@@ -511,7 +511,7 @@ a collection may be instantiated either declaratively, in the `components` block
 of a component or control, or programmatically, using the standard keyword
 `new`.
 
-### Creating and using collections
+### Creating and Using Collections
 
 A generic `enyo.Collection` may be instanced and initialized by simply using the
 `new` keyword and passing the constructor an optional object containing the
@@ -562,7 +562,7 @@ myCollection.at(myCollection.length-1).get("name"); // returns "Aaron"
 See the [enyo.Collection](../../api.html#enyo.Collection) API reference for the
 full list of APIs available for manipulating records.
 
-### Creating collection subkinds
+### Creating Collection Subkinds
 
 You may subkind `enyo.Collection` to indicate an explicit model type to be used
 for wrapping its array data, or to override any other default behavior:
@@ -587,7 +587,7 @@ var myCollection = new enyo.Collection([
 myCollection.at(0);        // returns instance of "MyContactModel" for "Kevin" record
 ```
 
-### Fetching collections from REST endpoints
+### Fetching Collections from REST Endpoints
 
 Like `enyo.Model`, `enyo.Collection` provides default support for fetching
 array data from REST endpoints by specifying the resource's `url` and calling
@@ -622,7 +622,7 @@ new MyContactCollection({dept_id: 42});
 myCollection.fetch();
 ```
 
-### Parsing and converting fetched data
+### Parsing and Converting Fetched Data
 
 Also like `enyo.Model`, `enyo.Collection` has a `parse()` function to allow
 fetched data to be processed before being used.
@@ -723,7 +723,7 @@ enyo.kind({
 });
 ```
 
-### Creating source subkinds
+### Creating Source Subkinds
 
 You may subkind existing sources to specify options to configure the fetching
 strategy, or to create brand new sources for accessing data not supported by
@@ -774,7 +774,11 @@ enyo.kind({
 enyo.store.addSources({mysource: "MySource"});
 ```
 
-As an example, you could easily implement an `enyo.Source` that uses the [Facebook JavaScript SDK](https://developers.facebook.com/docs/reference/javascript/) to read/add posts a user's news feed as follows (note: authentication using that particular SDK is out of the scope of this section):
+As an example, you could easily implement an `enyo.Source` that uses the
+[Facebook JavaScript SDK](https://developers.facebook.com/docs/reference/javascript/)
+to read or add posts to a user's news feed as follows. (Note that the
+authentication required for this particular SDK is out of the scope of this
+article.)
 
 ```
 enyo.kind({
@@ -821,13 +825,24 @@ enyo.kind({
 });
 enyo.store.addSources({fbfeed: "FacebookFeedSource"});
 ```
-## Binding models and collections to views
 
-As already discussed above, using bindings in Enyo, we can easily bind properties from any `enyo.Object` or `enyo.Model` to properties of controls that make up your app views.  Without using bindings, one would typically programmatically initialize view properties and handle view events to keep the view and model data in sync programmatically.
+## Binding Models and Collections to Views
 
-### Binding to normal view properties
+As discussed above, in Enyo we can easily bind properties from any `enyo.Object`
+or `enyo.Model` to properties of the controls that make up your app views.
+Without using bindings, one would typically initialize the view's properties
+programmatically and handle view events programmatically to keep the view and
+model data in sync.
 
-As an example, below is a view that gets its data from a model with `name` and `value` properties.  The slider value, input value, and name label are initialized based on the model at create time. The value property can be changed by dragging the slider or typing in the input, and the value shold be reflected in the model again.  This would be the typical way to implement such a view without using bindings:
+### Binding to Normal View Properties
+
+The following example features a view that gets its data from a model with
+`name` and `value` properties.  The slider value, input value, and name label
+are initialized based on the model at creation time.  The `value` property may
+be changed by dragging the slider or typing in the input, and when the change is
+complete, the new value should be reflected in the model.
+
+This is the typical way to implement such a view without using bindings:
 
 ```
 enyo.kind({
@@ -856,9 +871,11 @@ enyo.kind({
     }
 }); 
 ```
+
 [Link to jsFiddle](http://jsfiddle.net/enyojs/Q45NW/)
 
-Using bindings, this requires significantly less code, and can be done completely declaratively, making your code more readable and maintainable:
+Using bindings, the implementation requires significantly less code, and may be
+done completely declaratively, making your code easier to read and maintain:
 
 ```
 enyo.kind({
@@ -878,15 +895,26 @@ enyo.kind({
     ]
 }); 
 ```
+
 [Link to jsFiddle](http://jsfiddle.net/enyojs/4n343/)
 
-### Binding in collection-aware controls
+### Binding in Collection-Aware Controls
 
-Enyo also provides several "collection-aware" controls, which accept an `enyo.Collection` on their API, and then automatically generate controls based on data in the collection, and keep the child controls in sync with changes to the underlying collection and models.
+Enyo includes several "collection-aware" controls, whose APIs allow you to pass
+in an `enyo.Collection`; child controls are then automatically generated based
+on the data in the collection, and are kept in sync with changes made to the
+underlying collection and models.
 
-The base-kind for these controls is `enyo.DataRepeater`.  This control is similar to `enyo.Repeater`, in that its child controls serve as a template for controls to be generated by the repeater, one for each child in the underlying data set.  However, instead of setting a count and responding to `setupItem` events to sync generated controls to the data models, `enyo.DataRepeater` generates one control for each model in the collection, and then assigns the corresponding model to each control, allowing bindings on that control to sync data to/from the models.
+The base kind for these controls is [enyo.DataRepeater](../../api.html#enyo.DataRepeater).
+This is similar to [enyo.Repeater](../../api.html#enyo.Repeater), in that its
+child controls serve as a template for controls to be generated by the repeater
+(one for each child in the underlying data set).  However, instead of setting a
+count and responding to `setupItem` events to sync generated controls to the
+data models, `enyo.DataRepeater` generates one control for each model in the
+collection and then assigns the corresponding model to each control, allowing
+bindings on that control to sync data to and from the models.
 
-Again, without Collections or Bindings one might implement a simple repeater as follows:
+Without collections or bindings, one might implement a simple repeater as follows:
 
 ```
 enyo.kind({
@@ -916,9 +944,16 @@ enyo.kind({
     }
 }); 
 ```
-However, the above code has a significant downside: if any records in the `data` array change, this kind has no way of knowing.  So it would require further communication between the kind that may be changing records and this view, to know that the repeater needs to be refreshed.
 
-However, using the Collection-aware `enyo.DataRepeater` with an `enyo.Collection`, we can implement this view with much less code, and DataRepeater will keep the view in sync with changes to records in the collection:
+However, this code has a significant downside: if any records in the `data`
+array change, this kind has no way of knowing.  Additional communication would
+be needed between the kind that is changing records and this view in order to
+know that the repeater needs to be refreshed.
+
+By contrast, using the collection-aware `enyo.DataRepeater` with an
+`enyo.Collection` will let us implement the view with much less code, with
+the DataRepeater automatically keeping the view in sync when records in the
+collection are changed:
 
 ```
 enyo.kind({
