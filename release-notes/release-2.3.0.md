@@ -1,4 +1,4 @@
-﻿# Enyo 2.3.0 Release Notes [Current Through 2.3.0-rc.4]
+﻿# Enyo 2.3.0 Release Notes [Current Through 2.3.0-rc.5]
 
 Welcome to Enyo 2.3.0!  The following items have changed since the 2.3.0-pre.10
 public preview release.  (Note that this list is not comprehensive; see the
@@ -103,6 +103,8 @@ commit history in GitHub for a complete list of changes.)
     destroying component bindings when called on a component.  Added related
     unit test to `BindingTest.js`.
 
+* In `boot.js`, updated `enyo.load()` to work properly at load time.
+
 * Made multiple updates to `enyo.Collection`:
 
     + Updated `add()` to monitor `change` and `destroy` events from instantiated
@@ -126,24 +128,25 @@ commit history in GitHub for a complete list of changes.)
         former method is called by `enyo.dom.transformsToDom()` in
         `transform.js`, while the latter is used internally in `enyo.Control`.
 
-    + Added `absoluteShowing` property, a read-only Boolean that may be observed
-        to determine whether the control is currently visible.  For any control,
-        setting the `showing` property to `false` will set `absoluteShowing` to
-        `false` for all of its children.  `absoluteShowing` will then reliably
-        reflect the control's visibility.
-
-        Also updated related unit tests.
+    + Updated `showingChanged()` to waterfall `onShowingChanged` event when a
+        control's `showing` value is modified; also added
+        `showingChangedHandler()` as default handler for the event.  If the
+        control is not showing, the handler will stop propagation of the event.
+        `showingChangedHandler()` may be overloaded to provide additional
+        handling for the `onShowingChanged` event.
 
     + Modified `getAbsoluteShowing()` so that it now accepts an optional boolean
         parameter.  If `true` is passed in, computed bounds will not be
         retrieved to force a layout; instead, the method will rely on the return
         value of `getShowing()`.
 
-* Made a number of updates to `enyo.DataList`
+* Made multiple updates to `enyo.DataList`
 
     + Added public property `fixedChildSize`, used to optimize performance when
         the items in a list have fixed dimensions.  This property should be set
         for any list whose items are of uniform height or width.
+
+    + Added overload version of `showingChangedHandler()`.
 
     + Added overload version of `destroy()` method to address problems with
         `scrollToIndex()`.
@@ -158,6 +161,9 @@ commit history in GitHub for a complete list of changes.)
         to the `finished` event, even when it is delayed.
 
     + Reworked code to delay certain actions until the list is showing.
+
+    + Updated `didScroll()` and `didResize()` to avoid firing events if no
+        collection is available.
 
     + Fixed issue causing layout problems in DataLists with horizontal
         orientation.
@@ -257,9 +263,16 @@ commit history in GitHub for a complete list of changes.)
     correctly if the container had a control parent; added related unit test to
     `ControlTest.js`.
 
-* In `VerticalDelegate.js`, fixed problems with item selection.  Also fixed
-    issue causing display of truncated list after deletion of an item, and
-    added check to refresh page only if it actually has children.
+* Made several updates to `VerticalDelegate.js`:
+
+    * Fixed problems with item selection.
+
+    * Fixed issue causing display of truncated list after deletion of an item.
+
+    * Added check to refresh page only if it actually has children.
+
+    * Modified `setScrollThreshold()` to better handle case in which a
+        DataGridList has a small data set and page 2 has no controls.
 
 * In `VerticalGridDelegate.js`, modified `layout()` to add support for
     right-to-left positioning of grid items.  Also rounded values used for
@@ -270,6 +283,10 @@ commit history in GitHub for a complete list of changes.)
     of local file access when fetching a page from a Windows file share.  With
     this update, the hostname is now only omitted for devices running webOS 3 or
     earlier.
+
+    Also, modified `request()` to call `enyo.path.rewrite()` on passed-in URL
+    before calling `simplifyFileURL()`.  This fixes the loading of `$`-prefixed
+    paths from `file://` URLs.
 
 * In `enyo/tools`, updated npm dependencies (`nopt` and `shelljs` packages).
 
@@ -290,6 +307,8 @@ commit history in GitHub for a complete list of changes.)
 
 * In `onyx.IconButton`, added code to verify that the IconButton is not disabled
     before firing events.
+
+* In `onyx.TabBar.Item`, removed unnecessary call to `render()`.
 
 * Fixed issue with delayed `:active:hover` button styling in response to touch.
 
@@ -335,5 +354,7 @@ commit history in GitHub for a complete list of changes.)
     + Restored code that updates locale settings at library load time.
 
     + Added override to display Latin characters in Korean.
+
+    + Fixed ISO code for Polish language.
 
 * Restored Onyx-based samples.
