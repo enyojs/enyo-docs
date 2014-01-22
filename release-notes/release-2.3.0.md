@@ -271,9 +271,12 @@ commit history in GitHub for a complete list of changes.)
 
     * Added check to refresh page only if it actually has children.
 
+    * Modified `didScroll()` to update scroll bounds before comparing bounds to
+        scroll threshold.
+
     * Modified `setScrollThreshold()` to better handle case in which a
         DataGridList has a small data set and page 2 has no controls.
-
+        
 * In `VerticalGridDelegate.js`, modified `layout()` to add support for
     right-to-left positioning of grid items.  Also rounded values used for
     positioning and sizing to avoid floating point positioning glitches in
@@ -337,7 +340,7 @@ commit history in GitHub for a complete list of changes.)
 
 ### enyo-ilib
 
-* Updated `ilib` to version `20131204-build-4.0-005`.
+* Updated `ilib` to version `20140116-build-5.0-001`.
 
 * Made several updates to `glue.js`:
 
@@ -350,6 +353,8 @@ commit history in GitHub for a complete list of changes.)
         that do not commonly use italic fonts.  This may be used in the Enyo CSS
         classes to determine whether or not to turn on italics for some parts of
         the UI.
+
+    + Allowed caching of JSON files.
 
     + Restored code that updates locale settings at library load time.
 
