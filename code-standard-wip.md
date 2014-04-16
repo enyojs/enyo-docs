@@ -15,6 +15,7 @@
 * As is consistent with other languages and source-code style standards the maximum number of columns should be `80`. This will lead to consistent looking code and not require horizontal scrolling to read said code.
 * Scopes should begin and end with a blank line for readability.
 * Comment whenever possible to explain non-obvious decisions and note their impacts elsewhere. Yes, code should explain itself but in functional programming _obvious_ is often only _really obvious_ when being written…even for the original author.
+* Comments should be __above__ the code they are commenting and never to the side (`80` columns...).
 * __TABS__ are used instead of ~~__spaces__~~. How your editor presents them is your choice but use __TABS__.
 	* Some editors (e.g. TextMate) tend to auto-indent empty lines and this should be avoided whether care is taken when writing code or using a cleanup script before issuing a Pull Request. A __blank line__ should be completely __blank__ (no invisible characters).
 
@@ -51,31 +52,28 @@ var myLongString = 'This is the beginning of a very, very ' +
 * Variable declarations should be made as early in the scope as necessary even for potentially unused variables. This includes iterator variables used in `for` and `for…in` loops.
 * Variables should begin with an _alpha_ character and be lowercase with camel-case unless it is a constructor in which case it should be capitalized with camel-case.
 	* Anonymous constructors _do not need to be capitalized_.
-* When declaring multiple variables they should take the comma-first style for easier diffing, minimizing line-impact in future additions and to assist in finding and avoiding errors. Empty variable declarations should be the last ones declared with the semi-colon (`;`) on the same column as the `var` statement. Constructors (capitalized variables) and large Array or Object declarations should be separated from the initial group:
+* When declaring multiple variables they should take the standard style. Empty variable declarations should be the last ones declared. Constructors (capitalized variables) and large Array or Object declarations should be separated from the initial group:
 
 ```javascript
 (function (enyo, scope) {
 	
-	var one = 'value'
-		, two = 'value'
-		, three = 'value'
-		, four
-		, five
-	;
+	var one = 'value',
+		two = 'value',
+		three = 'value',
+		four,
+		five;
 	
 	// separate constructor assignments
-	var Model = enyo.Model
-		, Collection = enyo.Collection
-	;
+	var Model = enyo.Model,
+		Collection = enyo.Collection;
 	
 	// separate large Object declarations
-	var options =
-		{ op1: true
-		, op2: false
-		, op3: true
-		, op4: 'default'
-		}
-	;
+	var options = {
+		op1: true,
+		op2: false,
+		op3: true,
+		op4: 'default'
+	};
 	
 })(enyo, this);
 ```
@@ -88,18 +86,16 @@ var str = 'my string';
 
 // if there were more than one it becomes imperative to clearly
 // identify which string is which
-var firstName = 'Jimmy'
-	, lastName = 'Johnson'
-;
+var firstName = 'Jimmy',
+	lastName = 'Johnson';
 
 // like with string, if there is only one object it could be
 var obj = {};
 
 // but with more we need to clearly identify them
-var base = {original: true}
+var base = {original: true},
 	// another common variable name is cpy, etc...
-	, cpy = enyo.clone(base)
-;
+	cpy = enyo.clone(base);
 ```
 > It is important to note that we are moving in the direction of modularity and in the (_near_…) future will be grouping functionality and kinds into modules exposing only what is necessary. In some cases it is our practice moving forward to separate out dependencies of a _module_ when possible now, as follows:
 
@@ -111,9 +107,8 @@ var base = {original: true}
 		
 	// treat any constructor or mixin as a module ensuring it is loaded in
 	// the correct order (this is good) from its package
-	var Model = enyo.Model
-		, ObserverSupport = enyo.ObserverSupport
-	;
+	var Model = enyo.Model,
+		ObserverSupport = enyo.ObserverSupport;
 
 })(enyo, this);
 ```
@@ -122,43 +117,35 @@ var base = {original: true}
 
 ```javascript
 // an empty or short Object declaration is inline
-var empty = {}
-	, small = {one: 'one', two: 'two'}
-;
+var empty = {},
+	small = {one: 'one', two: 'two'};
 
-// larger Object declarations are lined up for readability and it becomes obvious
-// when an error has been introduced as well as lines can be added without bothering
-// the line above them
-var large =
-	{ one: 'one'
-	, two: 'two'
-	, three: 'three'
-	, four: 'four'
-	, five: 'five'
-	}
-;
+// larger Object declarations are lined up for readability
+var large = {
+	one: 'one',
+	two: 'two',
+	three: 'three',
+	four: 'four',
+	five: 'five'
+};
 ```
 
 * When assigning __Arrays__, if there are only a few, short properties allocated or it is empty keep it inline. Otherwise the __Array__ assignment should be separate from the group declarations for clarity and each property should have its own line:
 
 ```javascript
 // an empty or short Array declaration is inline
-var empty = []
-	, short = ['one', 'two', 'three']
-;
+var empty = [],
+	short = ['one', 'two', 'three'];
 
-// larger Array declarations are lined up for readability and it becomes obvious
-// when an error has been introduced as well as lines can be added without bothering
-// the line above them
-var large =
-	[ 'one'
-	, 'two'
-	, 'three'
-	, 'four'
-	, 'five'
-	, 'six'
-	]
-;
+// larger Array declarations are lined up for readability
+var large = [
+	'one',
+	'two',
+	'three',
+	'four',
+	'five',
+	'six'
+];
 ```
 
 
@@ -184,6 +171,45 @@ someArray.forEach(function (ln, i) { /* … */ });
 
 // not this
 enyo.forEach(someArray, function (ln, i) { /* … */ });
+```
+* For `if...else if...else` control structures there shouldn't be a space between the parenthesis. Complex `if` conditions should usually be able to fit on a single line but in rare cases should be broken onto multiple lines:
+
+```javascript
+if (
+	(first && last) &&
+	!middle
+) {
+	// met the condition...
+}
+```
+* For simple `if...else if...else` conditions they should be inlined without unnecessary brackets
+
+```javascript
+if (true) callThisFunc();
+else callThatFunc();
+```
+
+* Unless broken by a comment describing a difference in the path of an `if...else if...else` control structure, the next path should be inlined with the end of the previous section:
+
+```javascript
+// example of normal flow
+if (/* something */) {
+	// first path...
+} else if (/* something else */) {
+	// second path...
+} else {
+	// final path...
+}
+
+// example of commented flow
+if (/* something */) {
+	// first path...
+}
+
+// some additional comment about this condition
+else {
+	// final path...
+}
 ```
 
 ### @kind
