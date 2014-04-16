@@ -23,7 +23,7 @@
 * Each file's content should be considered an encapsulated module with control over what it exposes.
 * Each file's content should be wrapped in an immediately-invoked-function-expression (IIFE). This protects scope and is future proof as to  where the file can be executed with the advantage of possible optimization when minified and compiled. We will only have to export/expose exactly what should be for any given file's content. It should have the following structure:
 
-```
+```javascript
 (function (enyo, scope) {
 
 	// content here…
@@ -40,7 +40,7 @@
 * All static string declarations should use a single quote `'`.
 * Multiline string concatenation should end the line with the `+` operator and when necessary include the space on the upper line end as follows:
 
-```
+```javascript
 var myLongString = 'This is the beginning of a very, very ' +
 	'long string that has several lines worth of pretty useless ' +
 	'text associated with it for filler';		
@@ -53,7 +53,7 @@ var myLongString = 'This is the beginning of a very, very ' +
 	* Anonymous constructors _do not need to be capitalized_.
 * When declaring multiple variables they should take the comma-first style for easier diffing, minimizing line-impact in future additions and to assist in finding and avoiding errors. Empty variable declarations should be the last ones declared with the semi-colon (`;`) on the same column as the `var` statement. Constructors (capitalized variables) and large Array or Object declarations should be separated from the initial group:
 
-```
+```javascript
 (function (enyo, scope) {
 	
 	var one = 'value'
@@ -82,7 +82,7 @@ var myLongString = 'This is the beginning of a very, very ' +
 * Avoid using single-character variable names with the exception being iterators.
 	* Try and be reasonable and consistent, for example:
 	
-```
+```javascript
 // in cases where it is a single string it could be
 var str = 'my string';
 
@@ -103,7 +103,7 @@ var base = {original: true}
 ```
 > It is important to note that we are moving in the direction of modularity and in the (_near_…) future will be grouping functionality and kinds into modules exposing only what is necessary. In some cases it is our practice moving forward to separate out dependencies of a _module_ when possible now, as follows:
 
-```
+```javascript
 (function (enyo, scope) {
 
 	// treat enyo.kind as a module
@@ -120,7 +120,7 @@ var base = {original: true}
 
 * When assigning __Objects__, if there are only a few, short properties assigned keep it inline. Otherwise the __Object__ assignment should be separate from the group declarations for clarity and each property should have its own line:
 
-```
+```javascript
 // an empty or short Object declaration is inline
 var empty = {}
 	, small = {one: 'one', two: 'two'}
@@ -141,7 +141,7 @@ var large =
 
 * When assigning __Arrays__, if there are only a few, short properties allocated or it is empty keep it inline. Otherwise the __Array__ assignment should be separate from the group declarations for clarity and each property should have its own line:
 
-```
+```javascript
 // an empty or short Array declaration is inline
 var empty = []
 	, short = ['one', 'two', 'three']
@@ -167,7 +167,7 @@ var large =
 * Variables used in `for` and `for…in` loops should be declared before the structure at the top of the local scope.
 * Assignment in `for` loops should have a space between the variable, the operator and the value being assigned or compared and for consistency with increment with the `++` operator before the variable (when applicable):
 
-```
+```javascript
 var i;
 
 for (i = 0; i < 1000; ++i) {
@@ -178,7 +178,7 @@ for (i = 0; i < 1000; ++i) {
 * __Framework level code should use `for` and `for…in` loops when possible for the performance benefit__, however, there are exceptions such as overloaded procedures, shared code sections or certain Array operations requiring advanced methods where the benefits do not outweigh the implementation benefits.
 	* When using iterator methods (e.g. `forEach`) internal code should use the prototype method and not the exposed Enyo version as it is included for backwards compatibility but adds an extra context to the CallStack:
 
-```
+```javascript
 // do this
 someArray.forEach(function (ln, i) { /* … */ });
 
@@ -192,7 +192,7 @@ enyo.forEach(someArray, function (ln, i) { /* … */ });
 	* This rule does not apply to internally used kinds that are only exposed to their given scope
 * Every property or method should have a space between it and the previous property (if any) and at the very least be documented as `@private` otherwise be fully documented.
 
-```
+```javascript
 (function (enyo, scope) {
 
 	// enyo.kind is treated as its own module
