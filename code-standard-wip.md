@@ -12,12 +12,50 @@
 
 ### @general
 
-* As is consistent with other languages and source-code style standards the maximum number of columns should be `80`. This will lead to consistent looking code and not require horizontal scrolling to read said code.
+* As is consistent with other languages and source-code style standards the maximum number of columns should be `100`. This will lead to consistent looking code and not require horizontal scrolling to read said code.
 * Scopes should begin and end with a blank line for readability.
 * Comment whenever possible to explain non-obvious decisions and note their impacts elsewhere. Yes, code should explain itself but in functional programming _obvious_ is often only _really obvious_ when being written…even for the original author.
-* Comments should be __above__ the code they are commenting and never to the side (`80` columns...).
+* Comments should be __above__ the code they are commenting and never to the side (`100` columns...).
 * __TABS__ are used instead of ~~__spaces__~~. How your editor presents them is your choice but use __TABS__.
 	* Some editors (e.g. TextMate) tend to auto-indent empty lines and this should be avoided whether care is taken when writing code or using a cleanup script before issuing a Pull Request. A __blank line__ should be completely __blank__ (no invisible characters).
+* When testing the type of a variable end-developers are handed useful tools such as `enyo.isFunction`, `enyo.isArray`, etc, but core developers should rely on raw tests for performance and consistency at the framework level:
+
+```javascript
+// function
+if (typeof fn == 'function') ...
+
+// object
+if (typeof obj == 'object') ...
+
+// number
+if (typeof num == 'number') ...
+
+// array is special because we can't use typeof we must ensure it exists or
+// instanceof will fail
+if (ary && ary instanceof Array) ...
+
+// string
+if (typeof str == 'string') ...
+
+// boolean
+if (typeof bool == 'boolean') ...
+```
+
+* For explicit type checks such as boolean or number values always use the `===` operator:
+
+```javascript
+// zero check
+if (num === 0) ...
+
+// null check
+if (obj === null) ...
+
+// undefined check
+if (obj === undefined) ...
+
+// in cases to check for both null and undefined it can be shortended to
+if (obj != null) ...
+```
 
 ### @files
 
