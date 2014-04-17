@@ -13,7 +13,6 @@
 ### @general
 
 * As is consistent with other languages and source-code style standards the maximum number of columns should be `100`. This will lead to consistent looking code and not require horizontal scrolling to read said code.
-* Scopes should begin and end with a blank line for readability.
 * Comment whenever possible to explain non-obvious decisions and note their impacts elsewhere. Yes, code should explain itself but in functional programming _obvious_ is often only _really obvious_ when being written…even for the original author.
 * Comments should be __above__ the code they are commenting and never to the side (`100` columns...).
 * __TABS__ are used instead of ~~__spaces__~~. How your editor presents them is your choice but use __TABS__.
