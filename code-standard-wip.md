@@ -263,6 +263,8 @@ else {
 * Each __public kind__ should be declared in its own file.
 	* This rule does not apply to internally used kinds that are only exposed to their given scope
 * Every property or method should have a space between it and the previous property (if any) and at the very least be documented as `@private` otherwise be fully documented.
+* Private methods should avoid using the `_` (underscore) as their property name and instead make a scoped method that is called by individual instances of the kind when necessary.
+* Private properties with initial values should use the `_` (underscore) but note that for performance reasons minimize the number of unnecessarily declared private properties and assign them at runtime when necessary.
 
 ```javascript
 (function (enyo, scope) {
