@@ -56,6 +56,15 @@ if (obj === undefined) ...
 // in cases to check for both null and undefined it can be shortended to
 if (obj != null) ...
 ```
+* If the final statement of a function is an assignment but the return value of the function is the assigned value it is __ok__ to do this in a single line:
+```javascript
+function assignSomething (value) {
+	
+	// both assigns the value and returns the value
+	return (this.something = value);
+	
+}
+```
 
 ### @files
 
