@@ -17,6 +17,7 @@
 * Comments should be __above__ the code they are commenting and never to the side (`100` columns...).
 * __TABS__ are used instead of ~~__spaces__~~. How your editor presents them is your choice but use __TABS__.
 	* Some editors (e.g. TextMate) tend to auto-indent empty lines and this should be avoided whether care is taken when writing code or using a cleanup script before issuing a Pull Request. A __blank line__ should be completely __blank__ (no invisible characters).
+* A `function ()` declaration should __always__ have a space between the word `function` and its `()` and an additional space between its `()` and its opening bracket `{`.
 * When testing the type of a variable end-developers are handed useful tools such as `enyo.isFunction`, `enyo.isArray`, etc, but core developers should rely on raw tests for performance and consistency at the framework level:
 
 ```javascript
@@ -279,20 +280,20 @@ else {
 	// API methods or properties
 	
 	/**
-		@public
-		@class enyo.NewModelType
-		@extends enyo.Model
+	* @public
+	* @class enyo.NewModelType
+	* @extends enyo.Model
 	*/
 	kind(
 		/** @lends enyo.NewModelType.prototype */ {
 		
 		/**
-			@private
+		* @private
 		*/
 		name: 'enyo.NewModelType',
 
 		/**
-			@private
+		* @private
 		*/
 		kind: Model
 	});
