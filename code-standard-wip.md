@@ -280,9 +280,9 @@ else {
 	// API methods or properties
 	
 	/**
-	* @public
 	* @class enyo.NewModelType
 	* @extends enyo.Model
+	* @public
 	*/
 	kind(
 		/** @lends enyo.NewModelType.prototype */ {
