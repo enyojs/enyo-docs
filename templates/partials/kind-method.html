@@ -1,0 +1,72 @@
+<div class="method {{ method.access }}">
+	<div class="header">
+		<div class="top">
+			<span class="icon"></span>
+			<span class="name">{{ method.name }}</span>
+			<span>&nbsp;(&nbsp;</span>
+			<span class="type">
+				{%- for param in method.params -%}
+					{%- for type in param.type.resolved -%}
+						{{ type }}
+						{%- if not loop.last -%}
+						&nbsp;|&nbsp;
+						{%- endif -%}
+					{%- endfor -%}
+					{%- if not loop.last -%}
+					,&nbsp;
+					{%- endif -%}
+				{%- endfor -%}
+			</span>
+			<span>&nbsp;)&nbsp;</span>
+		</div>
+	</div>
+	<div class="description">
+	{{ method.description }}
+	</div>
+	<div class="parameters">
+		{%- if method.params -%}
+		<h3>Parameters</h3>
+		<div class="table">
+		{%- for param in method.params -%}
+			<div class="row">
+				<span>
+				{%- for type in param.type.resolved -%}
+				{{ type }}
+				{%- if not loop.last -%}
+				&nbsp;|&nbsp;
+				{%- endif -%}
+				{%- endfor -%}
+				</span>
+				<span>{{ param.description }}</span>
+			</div>
+		{%- endfor -%}
+		</div>
+		{%- endif -%}
+	</div>
+	<div class="returns">
+		<h3>Returns</h3>
+		<div class="table">
+			<span>
+			{%- for type in method.returns.type.resolved -%}
+			{{ type }}
+			{%- if not loop.last -%}
+			&nbsp;|&nbsp;
+			{%- endif -%}
+			{%- endfor -%}
+			</span>
+			<span>{{ method.returns.description }}</span>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="inherited">
+		{%- if method.inherited -%}
+		(inherited)
+		{%- endif -%}
+		</div>
+		<div class="source">
+		<span><a href="javascript:void(0);">{{ method.meta.relpath }}</a></span>
+		<span>&nbsp;:&nbsp;</span>
+		<span>{{ method.meta.lineno }}</span>
+		</div>
+	</div>
+</div>

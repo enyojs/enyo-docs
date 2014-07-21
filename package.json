@@ -1,0 +1,14 @@
+{
+  "name": "enyo-api",
+  "version": "0.0.0",
+  "description": "API reference application for Enyo.js and its libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cole Davis (@clinuz)",
+  "license": "Apache-2",
+  "dependencies": {
+    "nunjucks": "~1.0.5"
+  }
+}

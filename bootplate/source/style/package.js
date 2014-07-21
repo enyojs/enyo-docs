@@ -1,0 +1,10 @@
+enyo.depends(
+	'main.less',
+	'kind.less',
+	'header.less',
+	'browse.less',
+	'kind-property.less',
+	'kind-method.less',
+	'glossary.less',
+	'kinds.less'
+);

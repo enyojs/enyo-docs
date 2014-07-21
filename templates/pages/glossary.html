@@ -1,0 +1,21 @@
+<div class="glossary">
+	{%- for term in terms -%}
+	<div class="term">
+		<div class="header">
+			<div class="title">{{ term.longname }}</div>
+		</div>
+		<div class="description">
+			{{ term.description }}
+		</div>
+		<div class="see">
+			<div class="title">See</div>
+			<ul>
+			{%- for link in term.see -%}
+			<li><a href="{{ link }}">{{ link }}</a></li>
+			{%- endfor -%}
+			</ul>
+		</div>
+		<div class="footer"></div>
+	</div>
+	{%- endfor -%}
+</div>

@@ -1,0 +1,4 @@
+bootplate/assets/*/*.html
+bootplate/enyo
+bootplate/lib
+node_modules

@@ -1,0 +1,7 @@
+<div class="kinds">
+	<ul>
+		{%- for kind in kinds -%}
+		<li class="{{ kind.access }}"><a href="#/kind/{{ kind.longname }}">{{ kind.longname }}</a></li>
+		{%- endfor -%}
+	</ul>
+</div>

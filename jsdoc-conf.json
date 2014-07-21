@@ -1,0 +1,43 @@
+{
+	"tags": {
+		"allowUnknownTags": true
+	},
+	"source": {
+		"include": [
+			"bootplate/enyo/docs",
+			"bootplate/enyo/source",
+			"bootplate/lib/onyx/version.js",
+			"bootplate/lib/onyx/source",
+			"bootplate/lib/layout/contextual/source",
+			"bootplate/lib/layout/easing/source",
+			"bootplate/lib/layout/fittable/source",
+			"bootplate/lib/layout/imageview/source",
+			"bootplate/lib/layout/list/source",
+			"bootplate/lib/layout/panels/source",
+			"bootplate/lib/layout/slideable/source",
+			"bootplate/lib/layout/tree/source",
+			"bootplate/lib/moonstone/version.js",
+			"bootplate/lib/moonstone/source"
+		],
+		"includePattern": ".+\\.js(doc)?$",
+		"excludePattern": "package\\.js"
+	},
+	"opts": {
+		"encoding": "utf8",
+		"destination": "./bootplate",
+		"recurse": true,
+		"private": false,
+		"lenient": false,
+		"template": "."
+	},
+	"plugins": [
+		"plugins/markdown",
+		"ext/glossary",
+		"ext/utility",
+		"ext/ui"
+	],
+	"markdown": {
+		"parser": "gfm",
+		"hardwrap": false
+	}
+}

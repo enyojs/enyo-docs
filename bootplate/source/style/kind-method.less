@@ -1,0 +1,96 @@
+@import 'variables.less';
+
+.method {
+	padding: 10px 10px 10px 0;
+}
+
+.method {
+	.header {
+		position: relative;
+		padding-left: 25px;
+		height: 50px;
+	}
+}
+
+.method {
+	.header {
+		.top {
+			height: 30px;
+			line-height: 30px;
+			font-size: 20px;
+		}
+	}
+}
+
+.method {
+	.header {
+		.default-value {
+			height: 15px;
+			line-height: 15px;
+			font-size: 15px;
+		}
+	}
+}
+
+.method {
+	.header {
+		.icon {
+			background-image: url(../../assets/icons/method.png);
+			left: -17px;
+			.api-icon();
+		}
+	}
+	
+	&.private {
+		.header {
+			.icon {
+				background-image: url(../../assets/icons/method-private.png);
+			}
+		}
+	}
+	&.protected {
+		.header {
+			.icon {
+				background-image: url(../../assets/icons/method-protected.png);
+			}
+		}
+	}
+}
+
+.method {
+	.parameters {
+		margin-left: 25px;
+	}
+}
+
+.method {
+	.returns {
+		margin-left: 25px;
+	}
+}
+
+.method {
+	.footer {
+		background: @bg-light;
+		display: table;
+		width: 100%;
+		padding: 20px;
+	}
+}
+
+.method {
+	.footer {
+		.inherited {
+			display: table-cell;
+		}
+	}
+}
+
+.method {
+	.footer {
+		.source {
+			display: table-cell;
+			text-align: right;
+		}
+	}
+}
