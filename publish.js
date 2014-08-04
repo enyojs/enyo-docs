@@ -7,11 +7,12 @@
 
 // nodejs built-ins
 var util = require('util'),
-	fs = require('fs'),
+	fs = require('fs-extra'),
 	path = require('path');
 
 // third-party
 var nunjucks = require('nunjucks');
+var helper = require('jsdoc/util/templateHelper');
 
 // internal
 var handlers = {},
@@ -21,6 +22,13 @@ var handlers = {},
 nunjucks.configure(path.resolve(process.cwd(), './templates'));
 
 exports.publish = function (db, opts) {
+
+	var dir = path.resolve(process.cwd(), opts.destination);
+	var assets = path.resolve(process.cwd(), "./templates/assets");
+	fs.removeSync(dir);
+	fs.copySync(assets, path.resolve(dir, "./assets"));
+
+	helper.getMembers(db);
 
 	// prune and normalize the database so querying can be accurate without a ton of additional
 	// special handling later on
@@ -94,6 +102,7 @@ function resolveClass (doclet, db) {
 	var props = db({kind: 'member', memberof: doclet.longname}),
 		methods = db({kind: 'function', memberof: doclet.longname}),
 		statics = db({memberof: doclet.longname, scope: 'static'}),
+		events = db({kind: 'event', memberof: doclet.longname}),
 		augs = doclet.augments,
 		ns,
 		tmp;
@@ -110,6 +119,7 @@ function resolveClass (doclet, db) {
 		}
 	}
 
+	doclet.events = events.order('name asec').get();
 	doclet.properties = props.order('name asec').get();
 	doclet.methods = methods.order('name asec').get();
 	doclet.statics = statics.order('name asec').get();
@@ -143,6 +153,10 @@ function resolveNamespace (doclet, db) {
 	if (!doclet.functions) {
 		doclet.functions = db({kind: 'function', memberof: doclet.longname}).order('name asec').get();
 	}
+	
+	if (!doclet.events) {
+		doclet.events = db({kind: 'event', memberof: doclet.longname}).order('name asec').get();
+	}
 }
 
 var RESOLVED_LINKS = {};
@@ -166,7 +180,7 @@ function resolveType (type, db) {
 			// if it does not have a namespace (as a type remember) we assume it is a
 			// glossary term (this might have to be reviewed?))
 			if ((idx = nom.indexOf('.')) < 0) {
-				if (nom != 'UNDOCUMENTED') url = '#/glossary/' + nom;
+				if (nom != 'UNDOCUMENTED') url = '../pages/glossary.html#' + nom;
 				else url = 'javascript:void(0);';
 			}
 			
@@ -192,7 +206,7 @@ function resolveType (type, db) {
 					if (!doc) console.log('Cannot find entry for `' + nom + '`');
 					else {
 						if (doc.ui) url = '#/ui/' + nom;
-						else if (doc.kind == 'class') url = '#/kind/' + nom;
+						else if (doc.kind == 'class') url = '../kind/' + nom + '.html';
 						else if (doc.kind == 'typedef') {
 							// needs to be handled and normalize the name!
 							url = 'javascript:void(0);';
@@ -210,7 +224,7 @@ function resolveType (type, db) {
 	
 	if (type && type.resolved) return type;
 	
-	if (!type) type = {names: ['UNDOCUMENTED']};
+	if (!type) type = {undocumented: true, names: ['UNDOCUMENTED']};
 	
 	if (!type.resolved) {
 		type.resolved = [];
@@ -224,7 +238,7 @@ function resolveType (type, db) {
 			scop.class = scop.class || 'auto-resolved';
 			link = scop.link || (scop.link = nunjucks.render('partials/auto-resolved-link.html', scop));
 			if (!RESOLVED_LINKS[nom]) RESOLVED_LINKS[nom] = scop;
-			type.resolved.push(link);
+			type.resolved.push(scop);
 		});
 	}
 	
@@ -300,7 +314,7 @@ function publishIndex (db, opts) {
 	
 	
 	// write the index file for the project
-	writeFile(filenom, nunjucks.render('index.html', scop));
+	writeFile(filenom, helper.resolveLinks(nunjucks.render('index.html', scop)));
 }
 
 function publishDoclets (db, opts) {
@@ -323,7 +337,7 @@ function publishPages (db, opts) {
 
 handlers['class'] = function (doclet, opts, db) {
 	
-	var dir = path.resolve(process.cwd(), opts.destination, './assets'),
+	var dir = path.resolve(process.cwd(), opts.destination, './'),
 		filenom;
 	
 	dir = path.normalize(dir + '/kind/');
@@ -331,12 +345,12 @@ handlers['class'] = function (doclet, opts, db) {
 
 	filenom = doclet.longname.replace('<anonymous>', '').replace('~', '');
 	filenom = path.normalize(dir + filenom) + '.html';
-	writeFile(filenom, nunjucks.render('pages/kind.html', doclet));
+	writeFile(filenom, helper.resolveLinks(nunjucks.render('pages/kind.html', doclet)));
 };
 
 handlers['namespace'] = function (doclet, opts, db) {
 	
-	var dir = path.resolve(process.cwd(), opts.destination, './assets'),
+	var dir = path.resolve(process.cwd(), opts.destination, './'),
 		filenom;
 	
 	dir = path.normalize(dir + '/namespace/');
@@ -346,13 +360,13 @@ handlers['namespace'] = function (doclet, opts, db) {
 	filenom = path.normalize(dir + filenom) + '.html';
 	
 	// we have to modify scope as this file is included in others with a separate loop scope
-	writeFile(filenom, nunjucks.render('pages/namespace.html', {namespace: doclet}));
+	writeFile(filenom, helper.resolveLinks(nunjucks.render('pages/namespace.html', {namespace: doclet})));
 };
 
 
 pages['browse'] = function (db, opts) {
 	
-	var dir = path.resolve(process.cwd(), opts.destination, './assets'),
+	var dir = path.resolve(process.cwd(), opts.destination, './'),
 		scop = {},
 		filenom;
 	
@@ -373,12 +387,12 @@ pages['browse'] = function (db, opts) {
 	// retrieve the complete list of elements marked as @utility
 	// scop.utility = db({utility: true}).order('longname asec').get();
 	
-	writeFile(filenom, nunjucks.render('pages/browse.html', scop));
+	writeFile(filenom, helper.resolveLinks(nunjucks.render('pages/browse.html', scop)));
 };
 
 pages['glossary'] = function (db, opts) {
 	
-	var dir = path.resolve(process.cwd(), opts.destination, './assets'),
+	var dir = path.resolve(process.cwd(), opts.destination, './'),
 		scop = {},
 		filenom;
 		
@@ -389,12 +403,12 @@ pages['glossary'] = function (db, opts) {
 	
 	scop.terms = db({isGlossary: true}).order('longname asec').get();
 	
-	writeFile(filenom, nunjucks.render('pages/glossary.html', scop));
+	writeFile(filenom, helper.resolveLinks(nunjucks.render('pages/glossary.html', scop)));
 };
 
 pages['kinds'] = function (db, opts) {
 	
-	var dir = path.resolve(process.cwd(), opts.destination, './assets'),
+	var dir = path.resolve(process.cwd(), opts.destination, './'),
 		scop = {},
 		filenom;
 		
@@ -405,6 +419,6 @@ pages['kinds'] = function (db, opts) {
 	
 	scop.kinds = db({kind: 'class'}).order('longname asec').get();
 	
-	writeFile(filenom, nunjucks.render('pages/kinds.html', scop));
+	writeFile(filenom, helper.resolveLinks(nunjucks.render('pages/kinds.html', scop)));
 	
 };

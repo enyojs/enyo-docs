@@ -1,0 +1,40 @@
+{% import "partials/macros.inc" as mac %}
+<section id="{{event.name}}" class="event {{ event.access }} {{ "inherited" if event.inherited }}">
+	<header>
+		<h3>{{ event.name }}</h3>
+	</header>
+
+	<div class="description">
+		{{ event.description }}
+	</div>
+
+	{%- if event.properties -%}
+	<div class="parameters">
+		<h4>Properties</h4>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
+			</tr>
+		{%- for property in event.properties -%}
+			<tr>
+				<td class="name">{{ property.name }}</td>
+				<td class="type">
+					{{ mac.typeList(property.types) }}
+				</td>
+				<td class="description">{{ property.description }}</td>
+			</tr>
+		{%- endfor -%}
+		</table>
+	</div>
+	{%- endif -%}
+
+	<footer>
+		<div class="source">
+		<span><a href="javascript:void(0);">{{ event.meta.relpath }}</a></span>
+		<span>&nbsp;:&nbsp;</span>
+		<span>{{ event.meta.lineno }}</span>
+		</div>
+	</footer>
+</section>

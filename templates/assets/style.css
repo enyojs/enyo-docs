@@ -1,0 +1,158 @@
+@font-face {
+  font-family: "Mochi Light";
+  src: local("☺"),
+    url("fonts/lato-light.woff") format("woff"),
+    url("fonts/lato-light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mochi Bold";
+  src: local("☺"),
+    url("fonts/lato-bold.woff") format("woff"),
+    url("fonts/lato-bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+BODY {
+	font-family: "Mochi Light";
+	font-size: 16px;
+}
+
+H1, H2, H3, H4, H5, H6 {
+    font-family: "Mochi Bold";
+}
+
+code {
+    font-size: 0.9rem;
+}
+
+pre.source {
+    border: 1px solid #eee;
+    padding: 0.5em;
+    width: 100%;
+    overflow-x: auto;
+    position: relative;
+}
+
+pre.lang-javascript:before {
+    content: "JavaScript";
+    color: #55f;
+    font-size: .8em;
+    padding: .5rem;
+    background: #eee;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+@media screen and (min-width: 768px) {
+    article {
+        float: left;
+        width: 70%;
+    }
+
+    nav {
+        float: right;
+        width: 30%;
+    }
+}
+
+body {
+    line-height: 1.2;
+}
+
+section > section {
+    padding: .75em;
+    padding-top: 0;
+    margin: .25em;
+}
+
+section > section:not(:last-child) {
+    border-bottom: 1px dashed #ccf;
+}
+
+section header {
+    font-size: 1.1em;
+}
+
+section footer {
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+h2 {
+    border-top: 1px dotted #bbf;
+    padding: 0.5rem 0;
+    border-bottom: 1px dotted #bbf;
+    content: "";
+    display: block;
+}
+
+section.method header .type, section.method header h3 {
+    display: inline-block;
+}
+
+section.method header .type:before {
+    content: "( ";
+}
+
+section.method header .type:after {
+    content: " )";
+}
+
+section header h3:before {
+    color: #ccc;
+}
+
+section.private header h3:before {
+    content: "private ";
+    font-style: italic;
+}
+
+section.public header h3:before {
+    content: "public ";
+}
+
+section.protected header h3:before {
+    content: "protected ";
+    font-style: italic;
+}
+
+.parameters table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.parameters table th {
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.parameters table TR:nth-child(even) {
+    background-color: #eee
+}
+
+.parameters table td, .parameters table th {
+    padding: 0.5em;
+}
+
+.returns h4, .returns .type {
+    display: inline-block;
+}
+
+.returns .description {
+    margin-top: -1.5em;
+    margin-left: 1em;
+}
+
+section.property .attributes td:first-child {
+    min-width: 4.5em;
+}
+
+section.property .attributes td {   
+    padding: 0.25em 0;
+}

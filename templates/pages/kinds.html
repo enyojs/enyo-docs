@@ -1,7 +1,17 @@
+
+<script src="scripts/prettify/prettify.js"> </script>
+<script src="scripts/prettify/lang-css.js"> </script>
+<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+<link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<link rel="stylesheet" type="text/css" href="../assets/style.css">
+
 <div class="kinds">
 	<ul>
 		{%- for kind in kinds -%}
-		<li class="{{ kind.access }}"><a href="#/kind/{{ kind.longname }}">{{ kind.longname }}</a></li>
+		<li class="{{ kind.access }}"><a href="../kind/{{ kind.longname }}.html">{{ kind.longname }}</a></li>
 		{%- endfor -%}
 	</ul>
 </div>

@@ -9,6 +9,7 @@
   "author": "Cole Davis (@clinuz)",
   "license": "Apache-2",
   "dependencies": {
-    "nunjucks": "~1.0.5"
+    "nunjucks": "~1.0.5",
+    "fs-extra": "~0.10"
   }
 }
