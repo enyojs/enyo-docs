@@ -31,10 +31,6 @@
 	{%- endif -%}
 
 	<footer>
-		<div class="source">
-		<span><a href="javascript:void(0);">{{ event.meta.relpath }}</a></span>
-		<span>&nbsp;:&nbsp;</span>
-		<span>{{ event.meta.lineno }}</span>
-		</div>
+		{{ mac.source(event) }}
 	</footer>
 </section>

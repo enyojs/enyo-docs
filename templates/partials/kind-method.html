@@ -3,7 +3,7 @@
 	<header>
 		<h3>{{ method.name }}</h3>
 		<div class="type">
-			{% set comma = joiner(', ') %}
+			{% set comma = joiner('<span>, </span>') %}
 			{%- for param in method.params -%}
 				{{ comma() }}
 				{%- if param.type.names.length == 1 -%}
@@ -53,10 +53,6 @@
 	{%- endif -%}
 
 	<footer>
-		<div class="source">
-		<span><a href="javascript:void(0);">{{ method.meta.relpath }}</a></span>
-		<span>&nbsp;:&nbsp;</span>
-		<span>{{ method.meta.lineno }}</span>
-		</div>
+		{{ mac.source(method) }}
 	</footer>
 </section>

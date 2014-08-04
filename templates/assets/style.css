@@ -18,8 +18,8 @@
 
 
 BODY {
-	font-family: "Mochi Light";
-	font-size: 16px;
+    font-family: "Mochi Light";
+    font-size: 16px;
 }
 
 H1, H2, H3, H4, H5, H6 {
@@ -28,6 +28,10 @@ H1, H2, H3, H4, H5, H6 {
 
 code {
     font-size: 0.9rem;
+}
+
+pre.source:hover:before {
+    display:none;
 }
 
 pre.source {
@@ -41,24 +45,12 @@ pre.source {
 pre.lang-javascript:before {
     content: "JavaScript";
     color: #55f;
-    font-size: .8em;
-    padding: .5rem;
+    font-size: .7em;
+    padding: .5em;
     background: #eee;
     position: absolute;
     top: 0;
     right: 0;
-}
-
-@media screen and (min-width: 768px) {
-    article {
-        float: left;
-        width: 70%;
-    }
-
-    nav {
-        float: right;
-        width: 30%;
-    }
 }
 
 body {
@@ -80,8 +72,19 @@ section header {
 }
 
 section footer {
-    font-size: 0.9em;
-    margin-bottom: 1em;
+    font-size: 0.8em;
+    margin-top: 1em;
+    text-align: right;
+    color: #ccc;
+    visibility: hidden;
+}
+
+section:hover > footer {
+    visibility: visible;
+}
+
+section footer a {
+    color: #ccf;
 }
 
 h2 {
@@ -93,7 +96,7 @@ h2 {
 }
 
 section.method header .type, section.method header h3 {
-    display: inline-block;
+    display: inline;
 }
 
 section.method header .type:before {
@@ -106,6 +109,7 @@ section.method header .type:after {
 
 section header h3:before {
     color: #ccc;
+    margin-right: 0.25em;
 }
 
 section.private header h3:before {
@@ -155,4 +159,94 @@ section.property .attributes td:first-child {
 
 section.property .attributes td {   
     padding: 0.25em 0;
+}
+
+.inheritance {
+    position: absolute;
+    top: 0.25rem;
+    font-size: 0.8em;
+}
+
+main > header {
+    position:relative;
+    padding-top: 0.25em;
+    background-image: url("enyo-logo@2x.png");
+    background-size: 161px 53px;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+nav > ul {
+    font-family: "Mochi Bold";
+    display: inline-block;
+    vertical-align: top;
+    min-width: 256px;
+    margin: 0 0 1em 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav > ul > ul {
+    font-family: "Mochi Light";
+    padding-left: 1.5em;
+}
+
+@media screen and (min-width: 768px) {
+
+    main {
+        padding-right: 15em;
+    }
+
+    main > header {
+        margin-right: -15em;
+    }
+
+    article {
+        float: left;
+        width: 100%;
+    }
+
+    nav {
+        float: right;
+        width: 13em;
+        margin-right: -14em;
+    }
+
+    nav h2 {
+        display: none;
+    }
+
+    nav > ul {
+        display: block;
+        margin-top: 1em;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    section header h3:before {
+        font-size: 0.8em;
+        display: block;
+    }
+
+    section.method header .type > * {
+        display: none;
+    }
+
+    .kind > header:before {
+        content: " ";
+        height: 60px;
+        display: block;
+        background-image: url("enyo-logo@2x.png");
+        background-size: 161px 53px;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .kind > header {
+        background-image: none;
+    }
+
+    .kind > header .inheritance {
+        top: 70px;
+    }
 }

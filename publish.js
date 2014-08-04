@@ -48,10 +48,16 @@ exports.publish = function (db, opts) {
 
 function normalize (db) {
 	// general resolution stuff
-	
+	var priv = global.env.opts['private'] || false;
+
 	db({undocumented: true}).remove();
 	db({ignore: true}).remove();
 	db({memberof: '<anonymous>'}).remove();
+
+	// if private is false, remove those
+	if(!priv) {
+		db({access:'private'}).remove();
+	}
 	
 	db().each(function (doclet) {
 		var filepath,
@@ -94,13 +100,19 @@ function resolveDoclet (doclet, db) {
 	case 'namespace':
 		resolveNamespace(doclet, db);
 		break;
+	case 'event':
+		resolveEvent(doclet, db);
+		break;
 	}
 }
 
+function resolveEvent(doclet, db) {
+	doclet.name = doclet.name.replace("event:", "");
+}
+
 function resolveClass (doclet, db) {
-	
-	var props = db({kind: 'member', memberof: doclet.longname}),
-		methods = db({kind: 'function', memberof: doclet.longname}),
+	var props = db({kind: 'member', memberof: doclet.longname, scope:{'!is':'static'}}),
+		methods = db({kind: 'function', memberof: doclet.longname, scope:{'!is':'static'}}),
 		statics = db({memberof: doclet.longname, scope: 'static'}),
 		events = db({kind: 'event', memberof: doclet.longname}),
 		augs = doclet.augments,

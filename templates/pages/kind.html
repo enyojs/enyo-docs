@@ -1,77 +1,90 @@
-{%- macro attrLinks(scop, class) %}
+{%- macro attrLinks(label, scop, class) %}
+	{% if scop|length > 0 %}
 	<ul>
-		{%- for attr in scop %}
-		<li class="attribute {{ class }} {{ attr.access }}{{ " inherits" if attr.inherits }}">
-			<a class="{{ class }}" href="#{{ attr.name }}">{{ attr.name }}</a>
-		</li>
-		{%- endfor %}
+		<li>{{ label }}</li>
+		<ul>
+			{%- for attr in scop %}
+			<li class="attribute {{ class }} {{ attr.access }}{{ " inherits" if attr.inherits }}">
+				<a class="{{ class }}" href="#{{ attr.name }}">{{ attr.name }}</a>
+			</li>
+			{%- endfor %}
+		</ul>
 	</ul>
+	{% endif %}
 {%- endmacro %}
 
 {%- macro inheritance(scop) %}
 		{%- set gt = joiner(' &gt; ') -%}
 		{%- for super in scop %}
-		<a class="super" href="{{ super.longname }}.html">{{ super.longname }}</a> &gt; 
+		<a class="super" href="{{ super.longname }}.html">{{ super.longname }}</a> &gt;
 		{% if not loop.last %}
 		{% endif %}
 		{%- endfor %}
 {%- endmacro %}
 
-<script src="../assets/prettify/prettify.js"> </script>
-<script src="../assets/prettify/lang-css.js"> </script>
-<script>document.addEventListener("DOMContentLoaded", prettyPrint, false)</script>
-<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link type="text/css" rel="stylesheet" href="../assets/prettify-tomorrow.css">
-<link rel="stylesheet" type="text/css" href="../assets/style.css">
+<html>
+	<head>
+		<title>{{ longname }}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<script src="../assets/prettify/prettify.js"> </script>
+		<script src="../assets/prettify/lang-css.js"> </script>
+		<script>document.addEventListener("DOMContentLoaded", prettyPrint, false)</script>
+		<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link type="text/css" rel="stylesheet" href="../assets/prettify-tomorrow.css">
+		<link rel="stylesheet" type="text/css" href="../assets/style.css">
+	</head>
+	<body>
+		<main class="kind">
+			<header>
+				<h1>{{ longname }}</h1>
+				<div class="inheritance">{{ inheritance(inherits) }}</div>
+			</header>
+			<article>
+				<div class="description">{{ description }}</div>
+				{% if properties.length %}
+				<section class="properties">
+					<h2>Properties</h2>
+					{%- for property in properties %}
+					{% include 'partials/kind-property.html' %}
+					{%- endfor %}
+				</section>
+				{% endif %}
 
-<div class="kind">
-	<header>
-		<h1>{{ longname }}</h1>
-		<div class="inheritance">{{ inheritance(inherits) }}</div`>
-	</header>
-	<article>
-		<div class="description">{{ description }}</div>
-		{% if properties.length %}
-		<section class="properties">
-			<h2>Properties</h2>
-			{%- for property in properties %}
-			{% include 'partials/kind-property.html' %}
-			{%- endfor %}
-		</section>
-		{% endif %}
-		
-		{% if methods.length %}
-		<section class="methods">
-			<h2>Methods</h2>
-			{%- for method in methods -%}
-			{% include 'partials/kind-method.html' %}
-			{%- endfor -%}
-		</section>
-		{% endif %}
-				
-		{% if events.length %}
-		<section class="events">
-			<h2>Events</h2>
-			{%- for event in events -%}
-			{% include 'partials/kind-event.html' %}
-			{%- endfor -%}
-		</section>
-		{% endif %}
-	</article>
-	<nav>
-		<ul>
-			<li>Properties</li>
-			{{ attrLinks(properties, 'property') }}
-		</ul>
-		<ul>
-			<li>Methods</li>
-			{{ attrLinks(methods, 'method') }}
-		</ul>
-		<ul>
-			<li>Events</li>
-			{{ attrLinks(events, 'event') }}
-		</ul>
-	</nav>
-</div>
+				{% if methods.length %}
+				<section class="methods">
+					<h2>Methods</h2>
+					{%- for method in methods -%}
+					{% include 'partials/kind-method.html' %}
+					{%- endfor -%}
+				</section>
+				{% endif %}
+
+				{% if events.length %}
+				<section class="events">
+					<h2>Events</h2>
+					{%- for event in events -%}
+					{% include 'partials/kind-event.html' %}
+					{%- endfor -%}
+				</section>
+				{% endif %}
+
+				{% if statics.length %}
+				<section class="events">
+					<h2>Statics</h2>
+					{%- for member in statics -%}
+						{{ member.kind }} {{ member.name }}<br>
+					{%- endfor -%}
+				</section>
+				{% endif %}
+			</article>
+			<nav>
+				<h2>Navigation</h2>
+				{{ attrLinks('Properties', properties, 'property') }}
+				{{ attrLinks('Methods', methods, 'method') }}
+				{{ attrLinks('Events', events, 'event') }}
+			</nav>
+		</main>
+	</body>
+</html>

@@ -22,10 +22,6 @@
 	{{ property.description }}
 	</div>
 	<footer>
-		<div class="source">
-		<span><a href="javascript:void(0);">{{ property.meta.relpath }}</a></span>
-		<span>&nbsp;:&nbsp;</span>
-		<span>{{ property.meta.lineno }}</span>
-		</div>
+		{{ mac.source(property) }}
 	</footer>
 </section>
