@@ -29,7 +29,11 @@ exports.publish = function (db, opts) {
 	db().each(proc.preProcess.bind(proc));
 
 	// now we need to do rendering, post-processing and then publishing (writing) the files
-	// note that the post-process routine is actually part of the rendering routine as well as
-	// the actual publishing portion of the process
+	// note that the post-process routine is actually part of the rendering routine as well
 	db().each(proc.render.bind(proc));
+	
+	// we allow for every kind of doclet to be rendered and post-processed prior to attempting to
+	// actually publish the file in case of attempted re-use of some output or other more
+	// intricate handling
+	db().each(proc.publish.bind(proc));
 };
