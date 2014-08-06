@@ -26,9 +26,10 @@ exports.publish = function (db, opts) {
 	// for every doclet we have the opportunity to pre-process it before rendering its template
 	// this is a separate routine from actually rendering and post-rendering routines (like
 	// resolving links)
-	db().each(proc.process);
+	db().each(proc.preProcess.bind(proc));
 
-	// publishDoclets(db, opts);
-	// publishPages(db, opts);
-	// publishIndex(db, opts);
+	// now we need to do rendering, post-processing and then publishing (writing) the files
+	// note that the post-process routine is actually part of the rendering routine as well as
+	// the actual publishing portion of the process
+	db().each(proc.render.bind(proc));
 };
