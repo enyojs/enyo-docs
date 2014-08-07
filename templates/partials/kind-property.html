@@ -1,37 +1,17 @@
 <div class="property {{ property.access }}">
 	<div class="header">
-		<div class="top">
-			<span class="icon"></span>
-			<span class="name">{{ property.name }}</span>
-			<span>&nbsp;:&nbsp;</span>
-			<span class="type">
-				{%- for type in property.type.resolved -%}
-				{{ type }} 
-				{%- if not loop.last -%}
-				&nbsp;|&nbsp;
-				{%- endif -%}
-				{%- endfor -%}
-			</span>
-		</div>
-		<div class="default-value">
-			<span>default</span>
-			<span>&nbsp;:&nbsp;</span>
-			<span>{{ property.defaultvalue }}</span>
-		</div>
+		{% if property.access == "private" or property.access == "protected" %}
+		<div class="{{ property.access }}">{{ property.access }}</div>
+		{% endif %}
+		<div class="name">{{ property.name }}</div>
+		<div class="type"></div>
+		{% if property.inherited %}
+		<div class="inherited">From {{ property.inherits }}</div>
+		{% endif %}
 	</div>
-	<div class="description">
-	{{ property.description }}
-	</div>
-	<div class="footer">
-		<div class="inherited">
-		{%- if property.inherited -%}
-		(inherited)
-		{%- endif -%}
-		</div>
-		<div class="source">
-		<span><a href="javascript:void(0);">{{ property.meta.relpath }}</a></span>
-		<span>&nbsp;:&nbsp;</span>
-		<span>{{ property.meta.lineno }}</span>
-		</div>
+	<div class="description">{{ property.description }}</div>
+	<div class="source">
+		<div class="file">{{ property.source }}</div>
+		<div class="line">{{ property.sourceLine }}</div>
 	</div>
 </div>

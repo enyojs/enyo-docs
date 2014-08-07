@@ -1,69 +1,14 @@
 {% include "page-header.html" %}
 
-{%- macro attrLinks(scop, class) %}
-<ul>
-{%- for attr in scop %}
-<li class="attribute {{ class }} {{ attr.access }}{{ " inherits" if attr.inherits else "" }}">
-	{% if attr.inherits %}
-	<span class="inherited">*</span>
-	{% endif %}
-	<a class="{{ class }}" href="javascript:void(0);">{{ attr.name }}</a>
-</li>
-{%- endfor %}
-</ul>
-{%- endmacro %}
-
-{%- macro inheritance(scop) %}
-{%- for super in scop %}
-<a class="super" href="#/kind/{{ super.longname }}">{{ super.longname }}</a>
-{% if not loop.last %}
-<span>&gt;</span>
-{% endif %}
-{%- endfor %}
-{%- endmacro %}
-
 <div class="kind">
-	<div class="left">
-		<div class="header">
-			<div class="title">
-				<div class="icon"></div>
-				<div class="props">
-					<span class="name">{{ longname }}</span>
-					<span class="inheritance">{{ inheritance(inherits) }}</span>
-				</div>
-			</div>
-			<div class="description">{{ description }}</div>
-		</div>
-		
-		{% if properties.length %}
-		<div class="section properties">
-			{%- for property in properties %}
-			{% include 'partials/kind-property.html' %}
-			{%- endfor %}
-		</div>
-		{% endif %}
-		
-		{% if methods.length %}
-		<div class="section methods">
-			{%- for method in methods -%}
-			{% include 'partials/kind-method.html' %}
-			{%- endfor -%}
-		</div>
-		{% endif %}
-		
+	<div class="header">
+		<div class="name">{{ longname }}</div>
+		<div class="inherits">{% include "partials/inherits.html" %}</div>
+		<div class="source">{{ source }}</div>
 	</div>
-	<div class="right">
-		<div class="quick-links">
-			<div class="section">
-				<h1>Properties</h1>
-				{{ attrLinks(properties, 'property') }}
-			</div>
-			<div class="section">
-				<h1>Methods</h1>
-				{{ attrLinks(methods, 'method') }}
-			</div>
-		</div>
-	</div>
+	<div class="description">{{ description }}</div>
+	<div class="properties">{% include "partials/kind-properties.html" %}</div>
+	<div class="methods">{{ methods }}</div>
 </div>
 
 {% include "page-footer.html" %}

@@ -1,0 +1,7 @@
+{% if properties.length > 0 %}
+{% for property in properties -%}
+{% include "partials/kind-property.html" %}
+{%- endfor %}
+{% else %}
+<span class="no-properties">none</span>
+{% endif %}

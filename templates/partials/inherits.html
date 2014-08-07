@@ -1,0 +1,7 @@
+{% if inherits.length > 0 %}
+{% for super in inherits -%}
+<span class="inherits">{{ super.longname }}</span>
+{%- endfor %}
+{% else %}
+<span class="no-inherits">none</span>
+{% endif %}
