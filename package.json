@@ -10,5 +10,8 @@
   "license": "Apache-2",
   "dependencies": {
     "nunjucks": "~1.0.5"
+  },
+  "devDependencies": {
+    "fs-extra": "~0.11.0"
   }
 }
