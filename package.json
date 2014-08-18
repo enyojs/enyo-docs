@@ -12,6 +12,8 @@
     "nunjucks": "~1.0.5"
   },
   "devDependencies": {
-    "fs-extra": "~0.11.0"
+    "fs-extra": "~0.11.0",
+    "grunt": "~0.4.5",
+    "grunt-contrib-less": "~0.11.4"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "name": "enyo-docs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/enyojs/enyo-docs",
+  "authors": [
+    "Cole Davis <cole.davis@lge.com>"
+  ],
+  "license": "MIT",
+  "private": true
+}
