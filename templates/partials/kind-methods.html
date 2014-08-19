@@ -1,0 +1,7 @@
+{% if methods.length > 0 %}
+{% for method in methods -%}
+{% include "partials/kind-method.html" %}
+{%- endfor %}
+{% else %}
+<span class="no-methods">none</span>
+{% endif %}
