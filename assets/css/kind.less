@@ -1,5 +1,70 @@
 .kind {
-	.header {
-		font-family: 'Raleway', sans-serif;
+	&> .header {
+		.name {
+			font-family: 'Raleway', sans-serif;
+			padding: 20px;
+			span {
+				font-weight: bold;
+			}
+			.namespace {
+				font-size: 30px;
+			}
+			.kind-name {
+				font-size: 50px;
+			}
+		}
+		&> .source, &> .inherits {
+			padding-left: 20px;
+			font-size: 12px;
+		}
+		&> .quick-view {
+			padding: 20px;
+			&> div {
+				display: inline-block;
+				box-sizing: border-box;
+				padding: 10px;
+				vertical-align: top;
+			}
+			.description {
+				width: 50%;
+				min-width: 400px;
+			}
+			.properties, .methods {
+				width: 24%;
+			}
+		}
+	}
+	&> .properties, &> .methods {
+		padding: 20px;
+		.property, .method {
+			margin-bottom: 20px;
+			.header {
+				.name {
+					font-weight: bold;
+					font-size: 20px;
+				}
+				.inherited, .source {
+					font-size: 10px;
+				}
+				.inherited {
+					float: right;
+				}
+			}
+			&> .description {
+				padding: 20px;
+			}
+		}
+	}
+	&> .methods {
+		.params, .returns {
+			padding: 20px;
+			&> h2 {
+				font-family: 'Raleway', sans-serif;
+				font-size: 15px;
+			}
+			.type {
+				font-size: 12px;
+			}
+		}
 	}
 }

@@ -1,0 +1,19 @@
+{% if method.returns %}
+<div class="returns">
+	<h2>Returns</h2>
+	<ul>
+		<li>
+			<span class="type">&#123;
+			{% if method.returns.type.names.length > 0 %}
+			{% for name in method.returns.type.names %}
+			{{ name }}{{ ",&nbsp;" if not loop.last }}
+			{% endfor %}
+			{% else %}
+			undefined
+			{% endif %}
+			&#125;</span>
+			<div class="description">{{ method.returns.description }}</div>
+		</li>
+	</ul>
+</div>
+{% endif %}

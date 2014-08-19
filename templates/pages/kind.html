@@ -2,11 +2,27 @@
 
 <div class="kind">
 	<div class="header">
-		<div class="name">{{ longname }}</div>
-		<div class="inherits">{% include "partials/inherits.html" %}</div>
-		<div class="source">{{ source }}</div>
+		{% include "partials/inherits.html" %}
+		<div class="name">
+			<span class="namespace">{{ memberof }}</span>
+			<span class="kind-name">{{ name }}</span>
+		</div>
+		<div class="source">From {{ source }}</div>
+		<div class="quick-view">
+			<div class="description">
+				<h1>Description</h1>
+				<div>{{ description }}</div>
+			</div>
+			<div class="properties">
+				<h1><a href="#properties">Properties</a></h1>
+				<div>{% include "partials/kind-quick-properties.html" %}</div>
+			</div>
+			<div class="methods">
+				<h1><a href="#methods">Methods</a></h1>
+				<div>{% include "partials/kind-quick-methods.html" %}</div>
+			</div>
+		</div>
 	</div>
-	<div class="description">{{ description }}</div>
 	<div class="properties">{% include "partials/kind-properties.html" %}</div>
 	<div class="methods">{% include "partials/kind-methods.html" %}</div>
 </div>

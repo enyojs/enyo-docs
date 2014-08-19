@@ -1,0 +1,7 @@
+{% if properties.length > 0 %}
+{% for property in properties %}
+<div class="property {{ property.access }} {{ "inherited" if property.inherits }}"><a href="#{{ property.name }}">{{ property.name }}</a></div>
+{% endfor %}
+{% else %}
+<span class="no-properties">No properties</span>
+{% endif %}

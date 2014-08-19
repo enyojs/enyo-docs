@@ -1,17 +1,19 @@
-<div class="property {{ property.access }}">
+<a name="{{ property.name }}"></a>
+<div class="property {{ property.access }} {{ "inherited" if property.inherits }}">
 	<div class="header">
 		{% if property.access == "private" or property.access == "protected" %}
-		<div class="{{ property.access }}">{{ property.access }}</div>
+		<span class="{{ property.access }}">{{ property.access }}</span>
 		{% endif %}
-		<div class="name">{{ property.name }}</div>
-		<div class="type"></div>
+		<span class="name">{{ property.name }}</span>
+		<span class="type"></span>
 		{% if property.inherited %}
-		<div class="inherited">From {{ property.inherits }}</div>
+		<span class="inherited">Inherited from {{ property.inherits }}</span>
 		{% endif %}
+		<div class="source">
+			<span>Source:&nbsp;</span>
+			<span class="file">{{ property.source }}</span>
+			<span class="line">{{ property.sourceLine }}</span>
+		</div>
 	</div>
 	<div class="description">{{ property.description }}</div>
-	<div class="source">
-		<div class="file">{{ property.source }}</div>
-		<div class="line">{{ property.sourceLine }}</div>
-	</div>
 </div>

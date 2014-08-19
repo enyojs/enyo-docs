@@ -1,17 +1,24 @@
-<div class="method {{ method.access }}">
+<a name="{{ method.name }}"></a>
+<div class="method {{ method.access }} {{ "inherited" if method.inherits }}">
 	<div class="header">
 		{% if method.access == "private" or method.access == "protected" %}
-		<div class="{{ method.access }}">{{ method.access }}</div>
+		<span class="{{ method.access }}">{{ method.access }}</span>
 		{% endif %}
-		<div class="name">{{ method.name }}</div>
-		<div class="type"></div>
+		<span class="name">{{ method.name }}</span>
+		<span>&#040;</span>
+		{% include "partials/kind-method-header-params.html" %}
+		<span>&#041;</span>
+		<span class="type"></span>
 		{% if method.inherited %}
-		<div class="inherited">From {{ method.inherits }}</div>
+		<span class="inherited">Inherited from {{ method.inherits }}</span>
 		{% endif %}
+		<div class="source">
+			<span>Source:&nbsp;</span>
+			<span class="file">{{ method.source }}</span>
+			<span class="line">{{ method.sourceLine }}</span>
+		</div>
 	</div>
 	<div class="description">{{ method.description }}</div>
-	<div class="source">
-		<div class="file">{{ method.source }}</div>
-		<div class="line">{{ method.sourceLine }}</div>
-	</div>
+	{% include "partials/kind-method-params.html" %}
+	{% include "partials/kind-method-returns.html" %}
 </div>

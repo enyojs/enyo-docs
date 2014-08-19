@@ -1,7 +1,11 @@
 {% if inherits.length > 0 %}
-{% for super in inherits -%}
-<span class="inherits">{{ super.longname }}</span>
-{%- endfor %}
-{% else %}
-<span class="no-inherits">none</span>
+<div class="inherits">
+	<span class="title">Extends&nbsp;</span>
+	{% for super in inherits -%}
+	<span class="super">{{ super.longname }}</span>
+	{% if not loop.last %}
+	<span>&gt;</span>
+	{% endif %}
+	{%- endfor %}
+</div>
 {% endif %}
