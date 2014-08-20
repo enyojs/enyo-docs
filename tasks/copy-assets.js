@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 		// arbitrarily map the correct include file into the output directory (for now)
 		cpy('js/jquery/dist/jquery.min.js', 'js/jquery.min.js');
 		cpy('js/jquery-hashchange/jquery.ba-hashchange.min.js', 'js/jquery.ba-hashchange.min.js');
-		cpy('js/main.js', 'js/main.js');
+		cpy('main.js', 'js/main.js');
 		
 	});
 	

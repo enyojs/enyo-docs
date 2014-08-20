@@ -37,8 +37,18 @@ exports.publish = function (db, opts) {
 	// intricate handling
 	db().each(proc.publish.bind(proc));
 	
-	// last but not least lets ensure we include our index page
-	helpers.publish('index.html', helpers.render(
-		'index.html', {}
+	// publish our home (main) section of the site
+	helpers.publish('home.html', helpers.render(
+		'partials/home.html', {
+			
+		}
 	));
+	
+	// publish our index
+	helpers.publish('index.html', helpers.render(
+		'index.html', {
+			generated: new Date().toISOString()
+		}
+	));
+	
 };
