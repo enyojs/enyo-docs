@@ -19,10 +19,6 @@
 		}
 		&> .quick-view {
 			padding: 20px;
-			ul {
-				list-style-type: none;
-				padding: 0;
-			}
 			&> div {
 				display: inline-block;
 				box-sizing: border-box;
@@ -62,6 +58,10 @@
 	&> .methods {
 		.params, .returns {
 			padding: 20px;
+			&> ul {
+				list-style-type: disc;
+				padding: inherit;
+			}
 			&> h2 {
 				font-family: 'Raleway', sans-serif;
 				font-size: 15px;

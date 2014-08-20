@@ -2,7 +2,7 @@
 <div class="inherits">
 	<span class="title">Extends&nbsp;</span>
 	{% for super in inherits -%}
-	<span class="super">{{ super.longname }}</span>
+	<span class="super"><a href="#/kind/{{ super.longname }}">{{ super.longname }}</a></span>
 	{% if not loop.last %}
 	<span>&gt;</span>
 	{% endif %}

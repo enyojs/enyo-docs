@@ -1,0 +1,35 @@
+<div class="namespace">
+	<div class="header">
+		<h1>{{ name }}</h1>
+	</div>
+	{% if subNamespaces.length %}
+	<div class="group">
+		<h1>Sub-Namespaces</h1>
+		<ul>
+			{% for sub in subNamespaces %}
+			<li><a href="#/namespace/{{ sub.name }}">{{ sub.name }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+	{% if kinds.length %}
+	<div class="group">
+		<h1>Kinds</h1>
+		<ul>
+			{% for kind in kinds %}
+			<li><a href="#/kind/{{ kind.longname }}">{{ kind.longname }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+	{% if mixins.length %}
+	<div class="group">
+		<h1>Mixins</h1>
+		<ul>
+			{% for mixin in mixins %}
+			<li><a href="#/mixin/{{ mixin.longname }}">{{ mixin.longname }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+</div>
