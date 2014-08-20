@@ -1,7 +1,9 @@
 {% if methods.length > 0 %}
+<ul>
 {% for method in methods %}
-<div class="method {{ method.access }} {{ "inherited" if method.inherits }}"><a href="#{{ method.name }}">{{ method.name }}</a></div>
+<li class="method {{ method.access }} {{ "inherited" if method.inherits }}"><a href="#{{ method.name }}">{{ method.name }}</a></li>
 {% endfor %}
+</ul>
 {% else %}
 <span class="no-methods">No methods</span>
 {% endif %}

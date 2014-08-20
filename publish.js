@@ -36,4 +36,9 @@ exports.publish = function (db, opts) {
 	// actually publish the file in case of attempted re-use of some output or other more
 	// intricate handling
 	db().each(proc.publish.bind(proc));
+	
+	// last but not least lets ensure we include our index page
+	helpers.publish('index.html', helpers.render(
+		'index.html', {}
+	));
 };

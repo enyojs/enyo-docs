@@ -9,12 +9,18 @@ module.exports = function (grunt) {
 			dest = opts.dest || 'output',
 			src = opts.src || 'assets';
 			
+		var cpy = function (from, to) {
+			fs.copySync(
+				path.resolve(process.cwd(), src, from),
+				path.resolve(process.cwd(), dest, to)
+			);
+		};
+			
 		// for js includes, we specify and install specific versions via bower but we
 		// arbitrarily map the correct include file into the output directory (for now)
-		fs.copySync(
-			path.resolve(process.cwd(), src, 'js/jquery/dist/jquery.min.js'),
-			path.resolve(process.cwd(), dest, 'js/jquery.min.js')
-		);
+		cpy('js/jquery/dist/jquery.min.js', 'js/jquery.min.js');
+		cpy('js/jquery-hashchange/jquery.ba-hashchange.min.js', 'js/jquery.ba-hashchange.min.js');
+		cpy('js/main.js', 'js/main.js');
 		
 	});
 	

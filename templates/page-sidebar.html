@@ -1,34 +1,7 @@
 <div id="sidebar">
-	<div class="section">
+	<div class="group">
 		<h1>Namespaces</h1>
 		<ul>
-		{%- for namespace in namespaces %}
-			<li><a class="namespace" href="#/namespace/{{ namespace.longname }}">{{ namespace.longname }}</a></li>
-		{%- endfor %}
-		</ul>
-	</div>
-	<div class="section">
-		<h1>UI Widgets</h1>
-		<ul>
-		{%- for kind in widgets %}
-			<li><a class="widget" href="#/ui/{{ kind.longname }}">{{ kind.longname }}</a></li>
-		{%- endfor %}
-		</ul>
-	</div>
-	<div class="section">
-		<h1>Utility Methods</h1>
-		<ul>
-		{%- for fn in utilities %}
-			<li><a class="utility" href="#/utility/{{ fn.longname }}">{{ fn.longname }}</a></li>
-		{%- endfor %}
-		</ul>
-	</div>
-	<div class="section">
-		<h1>Kinds</h1>
-		<ul>
-		{%- for kind in kinds %}
-			<li><a class="kind" href="#/kind/{{ kind.longname }}">{{ kind.longname }}</a></li>
-		{%- endfor %}
 		</ul>
 	</div>
 </div>

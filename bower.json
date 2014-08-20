@@ -6,5 +6,8 @@
     "Cole Davis <cole.davis@lge.com>"
   ],
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "jquery-hashchange": "*"
+  }
 }
