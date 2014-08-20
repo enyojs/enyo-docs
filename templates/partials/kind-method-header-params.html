@@ -1,6 +1,1 @@
-{% if method.params.length > 0 %}
-{% for param in method.params %}
-<span class="param">{{ param.name }}</span>
-{% if not loop.last %}<span>,&nbsp;</span>{% endif %}
-{% endfor %}
-{% endif %}
+{{ method.params | join(", ", "name") }}

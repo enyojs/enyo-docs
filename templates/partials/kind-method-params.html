@@ -5,13 +5,7 @@
 	{% for param in method.params %}
 	<li>
 		<span class="name">{{ param.name }}</span>
-		{% if param.type.names.length > 0 %}
-		<span class="type">&#123;
-		{% for name in param.type.names %}
-		{{ name }}{{ ",&nbsp;" if not loop.last }}
-		{% endfor %}
-		&#125;</span>
-		{% endif %}
+		<span class="type">&#123;&nbsp;{{ param.type.names | join(", ") | escape }}&nbsp;&#125;</span>
 		<div class="description">{{ param.description }}</div>
 	</li>
 	{% endfor %}
