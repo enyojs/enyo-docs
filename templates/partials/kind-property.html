@@ -5,7 +5,7 @@
 		<span class="{{ property.access }}">{{ property.access }}</span>
 		{% endif %}
 		<span class="name">{{ property.name }}</span>
-		<span class="type"></span>
+		<span class="type">&#123;&nbsp;{{ property.type.names | join(", ") }}&nbsp;&#125;</span>
 		{% if property.inherited %}
 		<span class="inherited">Inherited from {{ property.inherits }}</span>
 		{% endif %}
