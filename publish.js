@@ -40,7 +40,8 @@ exports.publish = function (db, opts) {
 	// publish our home (main) section of the site
 	helpers.publish('home.html', helpers.render(
 		'partials/home.html', {
-			
+			namespaces: db({kind: 'namespace', subNamespace: {'!is': true}}).order('longname asec').get(),
+			kinds: db({kind: 'class'}).order('longname asec').get()
 		}
 	));
 	
