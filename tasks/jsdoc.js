@@ -16,16 +16,10 @@ module.exports = function (grunt) {
 		args.push('-d');
 		args.push(opts.dest || 'output');
 		
-		grunt.log.write('Running JSDoc against known sources...');
-
 		// TODO: update to use npm installed jsdoc
 		child = childProcess.spawn('jsdoc', args, {stdio: 'inherit'});
 
-		child.on('exit', function () {
-			grunt.log.write('done\n');
-
-			done();
-		});
+		child.on('exit', done);
 		
 	});
 	
