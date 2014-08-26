@@ -2,8 +2,8 @@
 <a name="properties"></a>
 <h1>Properties</h1>
 {% for property in properties -%}
-{% include "partials/kind-property.html" %}
+{% include "partials/property.html" %}
 {%- endfor %}
 {% else %}
-<span class="no-properties">No properties</span>
+<strong>No properties</strong>
 {% endif %}

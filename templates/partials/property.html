@@ -1,0 +1,22 @@
+<a name="{{ property.name }}"></a>
+<div class="entry property {{ property.access }} {{ "inherited" if property.inherits }}">
+	<div class="header">
+		{% if property.access == "private" or property.access == "protected" %}
+		<span class="{{ property.access }}">{{ property.access }}</span>
+		{% endif %}
+		<span class="type">({{ property.type.names | join(", ") }})&nbsp;&rarr;</span>
+		<span class="name"><code>{{ property.name }}</code></span>
+		<span class="default">: {{ property.defaultvalue }}</span>
+		{% if property.inherited %}
+		<span class="inherited">Inherited from {{ property.inherits }}</span>
+		{% endif %}
+	</div>
+	<div class="content">
+		<div class="description">{{ property.description }}</div>
+		<div class="source">
+			<span>From </span>
+			<span class="file">{{ property.source }}</span>
+			<span class="line">:{{ property.sourceLine }}</span>
+		</div>
+	</div>
+</div>

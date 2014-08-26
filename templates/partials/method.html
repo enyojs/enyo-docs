@@ -1,4 +1,4 @@
-<div class="method {{ method.access }} {{ "inherited" if method.inherits }}">
+<div class="entry method {{ method.access }} {{ "inherited" if method.inherits }}">
 	<a name="{{ method.name }}"></a>
 	<div class="header">
 		{% if method.access == "private" or method.access == "protected" %}
@@ -6,7 +6,7 @@
 		{% endif %}
 		<span class="name">{{ method.name }}</span>
 		<span>&#040;</span>
-		{% include "partials/kind-method-header-params.html" %}
+		{% include "partials/method-header-params.html" %}
 		<span>&#041;</span>
 		<span class="type"></span>
 		{% if method.inherited %}
@@ -19,6 +19,6 @@
 		</div>
 	</div>
 	<div class="description">{{ method.description }}</div>
-	{% include "partials/kind-method-params.html" %}
-	{% include "partials/kind-method-returns.html" %}
+	{% include "partials/method-params.html" %}
+	{% include "partials/method-returns.html" %}
 </div>
