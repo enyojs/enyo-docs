@@ -1,11 +1,9 @@
-@import '../less-variables.less';
-
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,800|Open+Sans:400,800|Titillium+Web:400,300);
 
 body {
 	font-family: 'Titillium Web', sans-serif;
-	background: @background-primary;
-	color: @color-primary;
+	background-color: #FFFFFF;
+	color: #55CFFF;
 	margin: 0;
 	padding: 0;
 }
@@ -17,44 +15,4 @@ body {
 ul {
 	list-style-type: none;
 	padding: 0;
-}
-
-#header {
-	position: relative;
-	width: 100%;
-	height: 90px;
-	&> div {
-		box-sizing: border-box;
-		height: 50px;
-		position: absolute;
-	}
-	.title {
-		top: 20px;
-		left: 20px;
-		.title-enyo {
-			font-family: 'Raleway', sans-serif;
-			font-size: 35px;
-			line-height: 50px;
-			font-weight: bold;
-		}
-		.title-docs {
-			font-family: 'Raleway', sans-serif;
-			font-size: 35px;
-			line-height: 50px;
-			font-weight: bold;
-			color: @color-secondary;
-		}
-	}
-	.nav-container {
-		top: 20px;
-		right: 20px;
-		text-align: right;
-		ul > li {
-			display: inline-block;
-			box-sizing: border-box;
-			padding: 10px;
-			height: 50px;
-			line-height: 30px;
-		}
-	}
 }
