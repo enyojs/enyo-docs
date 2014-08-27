@@ -1,0 +1,19 @@
+<a name="{{ event.name }}"></a>
+<div class="entry event {{ event.access }} {{ "inherited" if event.inherits }}">
+	<div class="header">
+		<span class="access {{ event.access }}">{{ event.access }}</span>
+		<span class="name">{{ event.name }}</span>
+	</div>
+	<div class="content">
+		{% if event.inherited %}
+		<div class="inherited">Inherited from {{ event.inherits }}</div>
+		{% endif %}
+		<div class="description">{{ event.description }}</div>
+		{% include "partials/event-properties.html" %}
+		<div class="source">
+			<span>From </span>
+			<span class="file">{{ event.source }}</span>
+			<span class="line">:{{ event.sourceLine }}</span>
+		</div>
+	</div>
+</div>

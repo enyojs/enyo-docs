@@ -1,0 +1,14 @@
+{% if event.properties %}
+<div class="subsection properties">
+	<h3>Properties</h3>
+	<ul>
+	{% for property in event.properties %}
+	<li>
+		<span class="name">{{ property.name }}</span>
+		<div class="type">Type: {{ property.type.names | join(", ") | escape }}</div>
+		<div class="description">{{ property.description }}</div>
+	</li>
+	{% endfor %}
+	</ul>
+</div>
+{% endif %}

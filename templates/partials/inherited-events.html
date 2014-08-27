@@ -1,0 +1,9 @@
+<a name="inherited-events"></a>
+<h1 class="inherited">Inherited Events</h1>
+{% if inheritedEvents.length > 0 %}
+{% for event in inheritedEvents %}
+{% include "partials/event.html" %}
+{% endfor %}
+{% else %}
+<strong class="inherited">No inherited events</strong>
+{% endif %}

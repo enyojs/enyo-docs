@@ -1,0 +1,11 @@
+{% if events.length > 0 %}
+<ul>
+	{% for event in events %}
+	<li class="event {{ event.access }} {{ "inherited" if event.inherits }}">
+		<a href="javascript:find(':{{ event.name }}');">{{ event.name }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% else %}
+<span class="no-methods">No events</span>
+{% endif %}
