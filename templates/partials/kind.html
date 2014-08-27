@@ -4,10 +4,14 @@
 		<div class="properties">
 			<h1><a href="javascript:find(':properties');">Properties</a></h1>
 			<div>{% include "partials/features-properties.html" %}</div>
+			<h1 class="inherited"><a href="javascript:find(':inherited-properties');">Inherited Properties</a></h1>
+			<div class="inherited">{% include "partials/features-inherited-properties.html" %}</div>
 		</div>
 		<div class="methods">
 			<h1><a href="javascript:find(':methods');">Methods</a></h1>
 			<div>{% include "partials/features-methods.html" %}</div>
+			<h1 class="inherited"><a href="javascript:find(':inherited-methods');">Inherited Methods</a></h1>
+			<div class="inherited">{% include "partials/features-inherited-methods.html" %}</div>
 		</div>
 		<div class="events">
 			<h1><a href="javascript:find(':events');">Events</a></h1>
@@ -15,10 +19,10 @@
 	</div>
 	
 	<div class="header">
-		
+
+		<h2>KIND</h2>
 		{% include "partials/inherits.html" %}
-		
-		<h1>KIND: <a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{{ name }}</h1>
+		<h1><a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{{ name }}</h1>
 		<div class="source">From {{ source }}</div>
 	</div>
 		
@@ -27,5 +31,7 @@
 		<div>{{ description }}</div>
 	</div>
 	<div class="section properties">{% include "partials/properties.html" %}</div>
+	<div class="section inherited-properties inherited">{% include "partials/inherited-properties.html" %}</div>
 	<div class="section methods">{% include "partials/methods.html" %}</div>
+	<div class="section inherited-methods inherited">{% include "partials/inherited-methods.html" %}</div>
 </div>

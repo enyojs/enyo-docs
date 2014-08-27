@@ -1,24 +1,25 @@
+<a name="{{ method.name }}"></a>
 <div class="entry method {{ method.access }} {{ "inherited" if method.inherits }}">
-	<a name="{{ method.name }}"></a>
 	<div class="header">
-		{% if method.access == "private" or method.access == "protected" %}
-		<span class="{{ method.access }}">{{ method.access }}</span>
-		{% endif %}
-		<span class="name">{{ method.name }}</span>
-		<span>&#040;</span>
-		{% include "partials/method-header-params.html" %}
-		<span>&#041;</span>
-		<span class="type"></span>
+		<span class="access {{ method.access }}">{{ method.access }}</span>
+		<span class="name">{{ method.name }}&#040;
+		{%- if method.params.length -%}
+		<span class="header-params">{{ method.params | join(", ", "name") }}</span>
+		{%- endif -%}&#041;</span>
+		<span>&rarr;</span>
+		<span class="header-returns">{{ method.returns.type.names | join(", ") }}</span>
+	</div>
+	<div class="content">
 		{% if method.inherited %}
-		<span class="inherited">Inherited from {{ method.inherits }}</span>
+		<div class="inherited">Inherited from {{ method.inherits }}</div>
 		{% endif %}
+		<div class="description">{{ method.description }}</div>
+		{% include "partials/method-params.html" %}
+		{% include "partials/method-returns.html" %}
 		<div class="source">
-			<span>Source:&nbsp;</span>
+			<span>From </span>
 			<span class="file">{{ method.source }}</span>
-			<span class="line">{{ method.sourceLine }}</span>
+			<span class="line">:{{ method.sourceLine }}</span>
 		</div>
 	</div>
-	<div class="description">{{ method.description }}</div>
-	{% include "partials/method-params.html" %}
-	{% include "partials/method-returns.html" %}
 </div>

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,800|Open+Sans:400,800|Titillium+Web:400,300);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,800|Open+Sans:400,700,800|Droid+Sans+Mono:400,800);
 
 body {
 	font-family: 'Open Sans', sans-serif;
@@ -8,8 +8,14 @@ body {
 	padding: 0;
 }
 
-.private, .protected, .inherited {
-	display: none;
+// .private, .protected, .inherited {
+// 	display: none;
+// }
+
+h1, h2, h3 {
+	font-weight: 700;
+	font-family: 'Open Sans', sans-serif;
+	letter-spacing: -1px;
 }
 
 ul {
@@ -25,4 +31,151 @@ a, a:hover, a:visited {
 strong {
 	font-weight: normal;
 	font-style: italic;
+}
+
+
+.section {
+	.entry {
+		margin: 20px 0 20px 0;
+	}
+}
+
+.section {
+	.entry {
+		.header {
+			font-family: 'Droid Sans Mono', monospace;
+			height: 18px;
+		}
+	}
+}
+
+.section {
+	.entry {
+		.header {
+			span {
+				display: inline-block;
+				font-size: 18px;
+				line-height: 18px;
+				height: 18px;
+				vertical-align: baseline;
+			}
+		}
+	}
+}
+
+.section {
+	.entry {
+		.header {
+			.access {
+				width: 60px;
+				height: 18px;
+				line-height: 18px;
+				font-size: 10px;
+			}
+		}
+	}
+}
+
+.section {
+	.entry {
+		.header {
+			.name {
+				color: #5DC4FF;
+				font-weight: bold;
+			}
+			.type {
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+.section {
+	.entry {
+		.header {
+			.header-type, .header-returns, .header-params {
+				color: #222;
+			}
+		}
+	}
+}
+
+.section {
+	.entry {
+		.content {
+			padding-left: 20px;
+			font-size: 15px;
+			line-height: 25px;
+		}
+	}
+}
+
+.section {
+	.entry {
+		&.property {
+			.content {
+				.default {
+					padding-top: 1em;
+				}
+			}
+		}
+	}
+}
+
+.section {
+	.entry {
+		.content {
+			p {
+				padding: 0;
+				margin: 0;
+			}
+			&> .description {
+				margin-top: 1em;
+			}
+		}
+	}
+}
+
+.section {
+	.entry {
+		.content {
+			.subsection {
+				ul {
+					margin: 0;
+					list-style-type: square;
+				}
+				span {
+					font-family: 'Droid Sans Mono', monospace;
+				}
+			}
+		}
+	}
+}
+
+.section {
+	.entry {
+		.content {
+			.subsection {
+				&.params {
+					.name {
+						font-weight: bold;
+					}
+					.type {
+						// font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.section {
+	.entry {
+		.content {
+			.source {
+				font-size: 10px;
+				color: #999;
+			}
+		}
+	}
 }

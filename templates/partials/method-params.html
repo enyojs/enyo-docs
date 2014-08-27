@@ -1,11 +1,11 @@
 {% if method.params.length > 0 %}
-<div class="params">
-	<h2>Parameters</h2>
+<div class="subsection params">
+	<h3>Parameters</h3>
 	<ul>
 	{% for param in method.params %}
 	<li>
 		<span class="name">{{ param.name }}</span>
-		<span class="type">&#123;&nbsp;{{ param.type.names | join(", ") | escape }}&nbsp;&#125;</span>
+		<div class="type">Type: {{ param.type.names | join(", ") | escape }}</div>
 		<div class="description">{{ param.description }}</div>
 	</li>
 	{% endfor %}

@@ -1,0 +1,11 @@
+{% if inheritedMethods.length > 0 %}
+<ul>
+	{% for method in inheritedMethods %}
+	<li class="method {{ method.access }} {{ "inherited" if method.inherits }}">
+		<a href="javascript:find(':{{ method.name }}');">{{ method.name }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% else %}
+<span class="no-methods">No inherited methods</span>
+{% endif %}
