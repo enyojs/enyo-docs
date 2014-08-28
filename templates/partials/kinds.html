@@ -1,0 +1,38 @@
+<a name="kinds"></a>
+<h1>Kinds</h1>
+{% if ui.length > 0 or kinds.length > 0 %}
+	<div class="kinds">
+		{% if ui.length > 0 %}
+		<a name="kinds-ui"></a>
+		<h2>Controls</h2>
+		{% for control in ui %}
+		<a name="{{ control.longname }}"></a>
+		<div class="entry kind control">
+			<div class="header">
+				<span class="name">{{ control.internalLink }}</span>
+			</div>
+			<div class="content">
+				<div class="description">{{ control.description }}</div>
+			</div>
+		</div>
+		{% endfor %}
+		{% endif %}
+		{% if kinds.length > 0 %}
+		<a name="kinds-other"></a>
+		<h2>Other</h2>
+		{% for kind in kinds %}
+		<a name="{{ kind.longname }}"></a>
+		<div class="entry kind other">
+			<div class="header">
+				<span class="name">{{ kind.internalLink }}</span>
+			</div>
+			<div class="content">
+				<div class="description">{{ kind.description }}</div>
+			</div>
+		</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+{% else %}
+<strong>No kinds</strong>
+{% endif %}

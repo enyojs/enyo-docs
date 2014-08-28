@@ -1,3 +1,6 @@
+{% if utility.length > 0 %}
+{% include "partials/features-utility-methods.html" %}
+{% endif %}
 {% if methods.length > 0 %}
 <ul>
 	{% for method in methods %}

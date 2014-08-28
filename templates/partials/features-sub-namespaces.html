@@ -1,0 +1,11 @@
+{% if subNamespaces.length > 0 %}
+<ul>
+	{% for sub in subNamespaces %}
+	<li class="sub-namespace">
+		<a href="javascript:find(':{{ sub.longname }}');">{{ sub.longname }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% else %}
+<span class="no-sub-namespaces">No sub-namespaces</span>
+{% endif %}

@@ -1,0 +1,9 @@
+<a name="sub-namespaces"></a>
+<h1>Sub-Namespaces</h1>
+{% if subNamespaces.length > 0 %}
+{% for sub in subNamespaces %}
+{% include "partials/sub-namespace.html" %}
+{% endfor %}
+{% else %}
+<strong>No sub-namespaces</strong>
+{% endif %}
