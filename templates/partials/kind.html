@@ -1,6 +1,12 @@
 <div class="kind">
 	
 	<div class="features">
+		{% if mixes %}
+		<div class="mixins">
+			<h1><a href="javascript:find(':mixins');">Mixins</a></h1>
+			<div>{% include "partials/features-mixins.html" %}</div>
+		</div>
+		{% endif %}
 		<div class="properties">
 			<h1><a href="javascript:find(':properties');">Properties</a></h1>
 			<div>{% include "partials/features-properties.html" %}</div>
@@ -39,4 +45,5 @@
 	<div class="section inherited-methods inherited">{% include "partials/inherited-methods.html" %}</div>
 	<div class="section events">{% include "partials/events.html" %}</div>
 	<div class="section inherited-events inherited">{% include "partials/inherited-events.html" %}</div>
+	<div class="section mixins">{% include "partials/mixins.html" %}</div>
 </div>
