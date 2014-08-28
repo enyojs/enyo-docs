@@ -1,0 +1,11 @@
+{% if mixins.length > 0 %}
+<ul>
+	{% for mixin in mixins %}
+	<li class="mixin">
+		<a href="javascript:find(':{{ mixin.longname }}');">{{ mixin.longname }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% else %}
+<span class="no-mixins">No mixins</span>
+{% endif %}

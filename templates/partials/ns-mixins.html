@@ -1,0 +1,9 @@
+<a name="mixins"></a>
+<h1>Mixins</h1>
+{% if mixins.length > 0 %}
+{% for mixin in mixins -%}
+{% include "partials/mixin.html" %}
+{%- endfor %}
+{% else %}
+<strong>No mixins</strong>
+{% endif %}
