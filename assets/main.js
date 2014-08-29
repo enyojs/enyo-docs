@@ -68,13 +68,19 @@ function find (anchor) {
 		} else anchor = anchor.slice(1);
 	}
 	
-	var el = $('a[name="' + anchor + '"]');
+	var el = $('a[name="' + anchor + '"]'),
+		pos;
 	
 	// if it found the element (should have length 1 or we'll assume we were looking for the
 	// first matching element) we want to scroll to it
-	if (el.length) $('html, body').animate({
-		scrollTop: el.offset().top
-	}, 500);
+	if (el.length) {
+		// because of the fixed header when scrolling we adjust
+		pos = el.offset().top - 85;
+		
+		$('html, body').animate({
+			scrollTop: pos
+		}, 500);
+	}
 }
 
 $(document).ready(function () {

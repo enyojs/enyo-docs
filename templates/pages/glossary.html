@@ -1,21 +1,47 @@
-<div class="glossary">
-	{%- for term in terms -%}
-	<div class="term">
-		<div class="header">
-			<div class="title">{{ term.longname }}</div>
-		</div>
-		<div class="description">
-			{{ term.description }}
-		</div>
-		<div class="see">
-			<div class="title">See</div>
+<div class="glossary main-container">
+	<div class="features">
+		<div class="terms">
+			<h1><a href="javascript:find(':terms');">Terms</a></h1>
 			<ul>
-			{%- for link in term.see -%}
-			<li><a href="{{ link }}">{{ link }}</a></li>
-			{%- endfor -%}
+				{% for term in terms %}
+				<li class="term">
+					<a href="javascript:find(':{{ term.longname }}');">{{ term.longname }}</a>
+				</li>
+				{% endfor %}
 			</ul>
 		</div>
-		<div class="footer"></div>
 	</div>
-	{%- endfor -%}
+	
+	<div class="header">
+		<h2>Glossary</h2>
+	</div>
+	
+	<div class="section description">
+		<div>A collection of terms from throughout the source-base defined for better clarity.</div>
+	</div>
+	<div class="section terms">
+		<a name="terms"></a>
+		<h1>Terms</h1>
+		{% for term in terms %}
+		<a name="{{ term.longname }}"></a>
+		<div class="entry term">
+			<div class="header">
+				<div class="name">{{ term.longname }}</div>
+			</div>
+			<div class="content">
+				<div class="definition description">{{ term.description }}</div>
+				{% if term.see and term.see.length > 0 %}
+				<div class="see">
+					<h3>See</h3>
+					<ul>
+						{% for see in term.see %}
+						<li><a href="{{ see }}">{{ see }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 </div>

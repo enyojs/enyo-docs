@@ -4,7 +4,8 @@
 	},
 	"source": {
 		"include": [
-			"../enyo/source"
+			"../enyo/source",
+			"../enyo/docs/external.jsdoc"
 		],
 		"includePattern": ".+\\.js(doc)?$",
 		"excludePattern": "package\\.js"
