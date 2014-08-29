@@ -1,0 +1,4 @@
+{% set comma = joiner(", ") %}
+{%- for param in method.params -%}
+<span class="param {{ "optional" if param.optional }}">{{ comma() }}{{ param.name }}</span>
+{%- endfor -%}

@@ -141,6 +141,14 @@ strong {
 			.header-type, .header-returns, .header-params {
 				color: #222;
 			}
+			.header-params {
+				span.param {
+					&.optional {
+						color: #999;
+						font-style: italic;
+					}
+				}
+			}
 		}
 	}
 }
@@ -202,8 +210,18 @@ strong {
 		.content {
 			.subsection {
 				&.params {
+					div.optional {
+						font-size: 10px;
+						color: #999;
+						font-style: italic;
+					}
 					.name {
 						font-weight: bold;
+						
+						&.optional {
+							color: #999;
+							font-style: italic;
+						}
 					}
 					.type {
 						// font-size: 12px;

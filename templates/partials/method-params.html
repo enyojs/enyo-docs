@@ -4,7 +4,13 @@
 	<ul>
 	{% for param in method.params %}
 	<li>
-		<span class="name">{{ param.name }}</span>
+		<span class="name {{ "optional" if param.optional }}">{{ param.name }}</span>
+		{% if param.optional %}
+		<div class="optional">This parameter is optional</div>
+		{% endif %}
+		{% if param.defaultvalue %}
+		<div class="default">Default value: {{ param.defaultvalue }}</div>
+		{% endif %}
 		<div class="type">Type: {{ param.type.names | join(", ") | escape }}</div>
 		<div class="description">{{ param.description }}</div>
 	</li>
