@@ -15,12 +15,15 @@ module.exports = function (grunt) {
 				path.resolve(process.cwd(), dest, to)
 			);
 		};
+		
+		cpy('prism.css', 'css/prism.css');
 			
 		// for js includes, we specify and install specific versions via bower but we
 		// arbitrarily map the correct include file into the output directory (for now)
 		cpy('js/jquery/dist/jquery.min.js', 'js/jquery.min.js');
 		cpy('js/jquery-hashchange/jquery.ba-hashchange.min.js', 'js/jquery.ba-hashchange.min.js');
 		cpy('main.js', 'js/main.js');
+		cpy('prism.js', 'js/prism.js');
 		
 	});
 	

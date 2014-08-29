@@ -31,6 +31,18 @@ $(function () {
 			$('#content').load(hash + '.html', function (res, status) {
 				if (status == 'error') {
 					$('#content').html('Could not locate the requested file: ' + hash);
+				} else {
+					// this is an unfortunate hack to ensure that Prism can find the code areas
+					// and then highlight them so we don't have to write our own custom Markdown
+					// parser routine within JSDoc3 and because it doesn't give us the opportunity
+					// to do any type of custom class additions
+					$('#content pre.source > code').each(function (idx, el) {
+						$(el).addClass('language-javascript');
+						
+						// we do this so we don't have to have it scan the whole DOM every time
+						// and only needs to render the new sections
+						Prism.highlightElement(el);
+					});
 				}
 				if (query) setTimeout(function () { find(query) }, 300);
 			});
