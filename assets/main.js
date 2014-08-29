@@ -81,5 +81,29 @@ $(document).ready(function () {
 
 	// ensure that we actually have a hash
 	$(window).hashchange();
+});
 
+$(document).ready(function () {
+	
+	// register for the fixed nav feature
+	var nav = $('#header .fixed-nav'),
+		orig = nav.offset().top;
+	
+	$(document).scroll(function () {
+		var y = $(document).scrollTop();
+		
+		if (y >= orig) {
+			nav.addClass('fixed');
+		} else {
+			nav.removeClass('fixed');
+		}
+	});
+	
+	// also for the top link in the bar we deal with its click event here
+	$('li.top a#top-link').click(function (e) {
+		e.preventDefault();
+		$('html, body').animate({
+			scrollTop: 0
+		}, 200);
+	});
 });
