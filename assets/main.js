@@ -32,6 +32,9 @@ $(function () {
 				if (status == 'error') {
 					$('#content').html('Could not locate the requested file: ' + hash);
 				} else {
+					
+					if (!query) $('html, body').animate({scrollTop: 0}, 200);
+					
 					// this is an unfortunate hack to ensure that Prism can find the code areas
 					// and then highlight them so we don't have to write our own custom Markdown
 					// parser routine within JSDoc3 and because it doesn't give us the opportunity
@@ -46,8 +49,7 @@ $(function () {
 				}
 				if (query) setTimeout(function () { find(query) }, 300);
 			});
-		}
-		if (query) find(query);
+		} else if (query) find(query);
 	});
 	
 });
