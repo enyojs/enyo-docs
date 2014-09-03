@@ -59,10 +59,12 @@ $(function () {
 function find (anchor) {
 	if (!anchor) return;
 	
+	var hash = location.hash;
+	
 	// if the anchor is passed in prefixed with a ':' then we actually need to make a hash-request
 	// change for it so that it is detected in history
 	if (anchor[0] == ':') {
-		if (location.hash.indexOf(anchor) === -1) {
+		if ((' ' + hash + ' ').indexOf((' ' + anchor + ' ')) === -1) {
 			location.hash = (location.hash.replace(/:(.*)$/, '') + anchor);
 			return;
 		} else anchor = anchor.slice(1);
