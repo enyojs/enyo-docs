@@ -1,0 +1,80 @@
+<a name="namespaces"></a>
+{% for ns in namespaces %}
+<a name="{{ ns.longname }}"></a>
+<div class="entry namespace">
+	<div class="header">
+		<h1>{{ ns.internalLink }}</h1>
+	</div>
+	<div class="content">
+		{% if ns.description %}<div class="description">ns.description</div>{% endif %}
+		<ul>
+			{% if ns.ui.length %}
+			<li>
+				<a name="{{ ns.longname }}-controls"></a>
+				<h2><a href="#/namespace/{{ ns.longname }}:controls">CONTROLS</a></h2>
+				<ul>
+				{% for control in ns.ui %}
+				<li>{{ control.internalLink }}</li>
+				{% endfor %}
+				</ul>
+			</li>
+			{% endif %}
+			{% if ns.kinds.length %}
+			<li>
+				<a name="{{ ns.longname }}-kinds-other">
+				<h2><a href="#/namespace/{{ ns.longname }}:kinds-other">KINDS</a></h2>
+				<ul>
+					{% for kind in ns.kinds %}
+					<li class="{{ kind.access }}">{{ kind.internalLink }}</li>
+					{% endfor %}
+				</ul>
+			</li>
+			{% endif %}
+			{% if ns.methods.length %}
+			<li>
+				<a name="{{ ns.longname }}-methods">
+				<h2><a href="#/namespace/{{ ns.longname }}:methods">METHODS</a></h2>
+				<ul>
+					{% for method in ns.methods %}
+					<li class="{{ method.access }}"><a href="#/namespace/{{ ns.longname }}:{{ method.name }}">{{ method.longname }}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			{% endif %}
+			{% if ns.properties.length %}
+			<li>
+				<a name="{{ ns.longname }}-properties"></a>
+				<h2><a href="#/namespace/{{ ns.longname }}:properties">PROPERTIES</a></h2>
+				<ul>
+					{% for prop in ns.properties %}
+					<li class="{{ prop.access }}"><a href="#/namespace/{{ ns.longname }}:{{ prop.name }}">{{ prop.longname }}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			{% endif %}
+			{% if ns.mixins.length %}
+			<li>
+				<a name="{{ ns.longname }}-mixins"></a>
+				<h2><a href="#/namespace/{{ ns.longname }}:mixins">MIXINS</a></h2>
+				<ul>
+					{% for mixin in ns.mixins %}
+					<li class="{{ mixin.access }}"><a href="#/mixin/{{ mixin.longname }}">{{ mixin.longname }}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			{% endif %}
+			{% if ns.subNamespaces.length %}
+			<li>
+				<a name="{{ ns.longname }}-sub-namespaces"></a>
+				<h2><a href="#/namespace/{{ ns.longname }}:sub-namespaces">SUB-NAMESPACES</a></h2>
+				<ul>
+					{% for sub in ns.subNamespaces %}
+					<li class="{{ sub.access }}"><a href="#/namespace/{{ sub.longname }}">{{ sub.longname }}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+</div>
+{% endfor %}

@@ -37,10 +37,12 @@ exports.publish = function (db, opts) {
 	// intricate handling
 	db().each(proc.publish.bind(proc));
 	
+	var namespaces = db({kind: 'namespace', subNamespace: {'!is': true}}).order('longname asec').get();
+	
 	// publish our home (main) section of the site
 	helpers.publish('home.html', helpers.render(
 		'pages/home.html', {
-			namespaces: db({kind: 'namespace', subNamespace: {'!is': true}}).order('longname asec').get(),
+			namespaces: namespaces,
 			kinds: db({kind: 'class'}).order('longname asec').get()
 		}
 	));
@@ -49,6 +51,13 @@ exports.publish = function (db, opts) {
 	helpers.publish('glossary.html', helpers.render(
 		'pages/glossary.html', {
 			terms: db({kind: 'glossary'}).order('longname asec').get()
+		}
+	));
+	
+	// publish the namespaces page
+	helpers.publish('namespaces.html', helpers.render(
+		'pages/namespaces.html', {
+			namespaces: namespaces
 		}
 	));
 	

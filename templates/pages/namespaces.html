@@ -1,0 +1,44 @@
+<div class="namespaces main-container">
+	
+	<div class="features">
+		<div class="namespaces">
+			<h1><a href="javascript:find(':namespaces');">Namespaces</a></h1>
+			<div>
+				<ul>
+					{% for ns in namespaces %}
+					<li><a href="javascript:find(':{{ ns.longname }}');">{{ ns.longname }}</a></li>
+					<ul>
+						{% if ns.ui.length %}
+						<li><a href="javascript:find(':{{ ns.longname }}-controls');">controls ({{ ns.ui.length }})</a></li>
+						{% endif %}
+						{% if ns.kinds.length %}
+						<li><a href="javascript:find(':{{ ns.longname }}-kinds-other');">kinds ({{ ns.kinds.length }})</a></li>
+						{% endif %}
+						{% if ns.methods.length %}
+						<li><a href="javascript:find(':{{ ns.longname }}-methods');">methods ({{ ns.methods.length }})</a></li>
+						{% endif %}
+						{% if ns.properties.length %}
+						<li><a href="javascript:find(':{{ ns.longname }}-properties');">properties ({{ ns.properties.length }})</a></li>
+						{% endif %}
+						{% if ns.mixins.length %}
+						<li><a href="javascript:find(':{{ ns.longname }}-mixins');">mixins ({{ ns.mixins.length }})</a></li>
+						{% endif %}
+						{% if ns.subNamespaces.length %}
+						<li><a href="javascript:find(':{{ ns.longname }}-sub-namespaces');">sub-namespaces ({{ ns.subNamespaces.length }})</a></li>
+						{% endif %}
+					</ul>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="header">
+		<h2>NAMESPACES</h2>
+	</div>
+		
+	<div class="section description">
+		<div>Here are the available top-level namespaces provided by the core framework and its libraries.</div>
+	</div>
+	<div class="section namespaces">{% include "partials/namespaces-blocks.html" %}</div>
+</div>

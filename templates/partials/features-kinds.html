@@ -1,7 +1,7 @@
 {% if ui.length > 0 or kinds.length > 0 %}
 	{% if ui.length > 0 %}
 	<div class="ui">
-		<h2><a href="javascript:find(':kinds-ui');">Controls</a></h2>
+		<h2><a href="javascript:find(':controls');">Controls</a></h2>
 		<ul>
 			{% for control in ui %}
 			<li class="kind control {{ control.access }}">
