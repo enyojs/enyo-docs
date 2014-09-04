@@ -1,7 +1,51 @@
-<div class="kinds">
-	<ul>
-		{%- for kind in kinds -%}
-		<li class="{{ kind.access }}"><a href="#/kind/{{ kind.longname }}">{{ kind.longname }}</a></li>
-		{%- endfor -%}
-	</ul>
+<div class="kinds main-container">
+
+	<div class="features">
+		<div class="kinds">
+			<h1><a href="javascript:find(':kinds');">Kinds</a></h1>
+			<div>
+				<ul>
+					<li><a href="javascript:find(':controls');">controls ({{ controls.length }})</a></li>
+					<li><a href="javascript:find(':kinds-other');">kinds ({{ kinds.length }})</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="header">
+		<h2>KINDS</h2>
+	</div>
+	
+	<div class="section description">
+		<div>Here are all of the various <a href="#/glossary:kind">kinds</a>.</div>
+	</div>
+	<div class="section kinds">
+		<a name="kinds"></a>
+		<a name="controls"></a>
+		<div class="entry">
+			<div class="header">
+				<h2>CONTROLS</h2>
+			</div>
+			<div class="content">
+				<ul>
+				{% for control in controls %}
+				<li>{{ control.internalLink }}</li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<a name="kinds-other"></a>
+		<div class="entry">
+			<div class="header">
+				<h2>KINDS</h2>
+			</div>
+			<div class="content">
+				<ul>
+				{% for kind in kinds %}
+				<li>{{ kind.internalLink }}</li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>

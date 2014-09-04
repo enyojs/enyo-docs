@@ -37,7 +37,9 @@ exports.publish = function (db, opts) {
 	// intricate handling
 	db().each(proc.publish.bind(proc));
 	
-	var namespaces = db({kind: 'namespace', subNamespace: {'!is': true}}).order('longname asec').get();
+	var namespaces = db({kind: 'namespace', subNamespace: {'!is': true}}).order('longname asec').get(),
+		kinds = db({kind: 'class', ui: {isUndefined: true}}).order('longname asec').get(),
+		controls = db({kind: 'class', ui: true}).order('longname asec').get();
 	
 	// publish our home (main) section of the site
 	helpers.publish('home.html', helpers.render(
@@ -58,6 +60,14 @@ exports.publish = function (db, opts) {
 	helpers.publish('namespaces.html', helpers.render(
 		'pages/namespaces.html', {
 			namespaces: namespaces
+		}
+	));
+	
+	// publish the kinds page
+	helpers.publish('kinds.html', helpers.render(
+		'pages/kinds.html', {
+			controls: controls,
+			kinds: kinds
 		}
 	));
 	
