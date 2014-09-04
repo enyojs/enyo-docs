@@ -52,11 +52,11 @@ exports.publish = function (db, opts) {
 	));
 	
 	// publish the glossary
-	helpers.publish('glossary.html', helpers.render(
+	helpers.publish('glossary.html', resolveLinks(helpers.render(
 		'pages/glossary.html', {
 			terms: db({kind: 'glossary'}).order('longname asec').get()
 		}
-	));
+	)));
 	
 	// publish the namespaces page
 	helpers.publish('namespaces.html', helpers.render(

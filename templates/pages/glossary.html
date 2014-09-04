@@ -30,15 +30,9 @@
 			</div>
 			<div class="content">
 				<div class="definition description">{{ term.description }}</div>
-				{% if term.see and term.see.length > 0 %}
-				<div class="see">
-					<h3>See</h3>
-					<ul>
-						{% for see in term.see %}
-						<li><a href="{{ see }}">{{ see }}</a></li>
-						{% endfor %}
-					</ul>
-				</div>
+				{% if term.see %}
+				{% set see = term.see %}
+				{% include "partials/see.html" %}
 				{% endif %}
 			</div>
 		</div>
