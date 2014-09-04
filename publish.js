@@ -83,7 +83,7 @@ exports.publish = function (db, opts) {
 	// publish our index
 	helpers.publish('index.html', helpers.render(
 		'index.html', {
-			generated: new Date().toISOString()
+			generated: new Date().toLocaleDateString()
 		}
 	));
 	
