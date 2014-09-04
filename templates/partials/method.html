@@ -1,8 +1,8 @@
-<a name="{{ method.longname if longname else method.name }}"></a>
+<a name="{{ method.longname if longname == true else method.name }}"></a>
 <div class="entry method {{ method.access }} {{ "inherited" if method.inherits }}">
 	<div class="header">
 		<span class="access {{ method.access }}">{{ method.access }}</span>
-		<span class="name">{{ method.longname if longname else method.name }}&#040;
+		<span class="name">{{ method.longname if longname == true else method.name }}&#040;
 		{%- if method.params.length -%}
 		<span class="header-params">{%- include "partials/method-header-params.html" -%}</span>
 		{%- endif -%}&#041;</span>
@@ -16,6 +16,10 @@
 		<div class="description">{{ method.description }}</div>
 		{% include "partials/method-params.html" %}
 		{% include "partials/method-returns.html" %}
+		{% if method.see %}
+		{% set see = method.see %}
+		{% include "partials/see.html" %}
+		{% endif %}
 		<div class="source">
 			<span>From </span>
 			<span class="file">{{ method.source }}</span>

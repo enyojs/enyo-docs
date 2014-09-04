@@ -3,7 +3,7 @@
 	<ul>
 		{% for util in utility %}
 		<li class="method {{ util.access }} {{ "inherited" if util.inherits }}">
-			<a href="javascript:find(':{{ util.longname if longname else util.name }}');">{{ util.longname if longname else util.name }}</a>
+			<a href="javascript:find(':{{ util.longname if longname == true else util.name }}');">{{ util.longname if longname == true else util.name }}</a>
 		</li>
 		{% endfor %}
 	</ul>

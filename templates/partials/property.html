@@ -12,6 +12,10 @@
 		{% endif %}
 		<div class="default">Default: {{ property.defaultvalue }}</div>
 		<div class="description">{{ property.description }}</div>
+		{% if property.see %}
+		{% set see = property.see %}
+		{% include "partials/see.html" %}
+		{% endif %}
 		<div class="source">
 			<span>From </span>
 			<span class="file">{{ property.source }}</span>
