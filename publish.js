@@ -12,7 +12,8 @@ var util = require('util'),
 	
 // internal
 var helpers = require('./lib/helpers'),
-	proc = require('./lib/processor');
+	proc = require('./lib/processor'),
+	resolveLinks = require('./lib/post_processors/common').process;
 
 /**
 * This is the entry point for the template. It is passed a TaffyDB database of everything that was
@@ -39,7 +40,8 @@ exports.publish = function (db, opts) {
 	
 	var namespaces = db({kind: 'namespace', subNamespace: {'!is': true}}).order('longname asec').get(),
 		kinds = db({kind: 'class', ui: {isUndefined: true}}).order('longname asec').get(),
-		controls = db({kind: 'class', ui: true}).order('longname asec').get();
+		controls = db({kind: 'class', ui: true}).order('longname asec').get(),
+		utils = db({kind: 'function', utility: true}).order('longname asec').get();
 	
 	// publish our home (main) section of the site
 	helpers.publish('home.html', helpers.render(
@@ -70,6 +72,13 @@ exports.publish = function (db, opts) {
 			kinds: kinds
 		}
 	));
+	
+	// publish utilities page
+	helpers.publish('utilities.html', resolveLinks(helpers.render(
+		'pages/utilities.html', {
+			utils: utils
+		}
+	)));
 	
 	// publish our index
 	helpers.publish('index.html', helpers.render(
