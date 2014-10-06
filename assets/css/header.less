@@ -117,3 +117,25 @@
 		}
 	}
 }
+
+#header {
+	.fixed-nav {
+		ul {
+			li.show-hide-private {
+				float: right;
+			}
+		}
+	}
+}
+
+.hide-private {
+	.private, .protected, .inherited {
+		display: none;
+	}
+}
+
+.show-private {
+	.private, .protected, .inherited {
+		display: block;
+	}
+}

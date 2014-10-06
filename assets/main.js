@@ -114,4 +114,22 @@ $(document).ready(function () {
 			scrollTop: 0
 		}, 200);
 	});
+	
+	$('li.show-hide-private').click(function (e) {
+		e.preventDefault();
+		
+		var a = $('a#show-hide-link'),
+			text = a.text();
+		
+		switch (text) {
+		case 'show private':
+			a.text('hide private');
+			$('body').removeClass('hide-private').addClass('show-private');
+			break;
+		case 'hide private':
+			a.text('show private');
+			$('body').removeClass('show-private').addClass('hide-private');
+			break;
+		}
+	});
 });
