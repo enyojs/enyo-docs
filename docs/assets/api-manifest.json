@@ -1,0 +1,16 @@
+{
+	"version": "2.3.0",
+	"packages": [
+		{"name": "enyo", "path": "enyo/source"},
+		{"name": "layout/contextual", "path": "lib/layout/contextual"},
+		{"name": "layout/easing", "path": "lib/layout/easing"},
+		{"name": "layout/fittable", "path": "lib/layout/fittable"},
+		{"name": "layout/imageview", "path": "lib/layout/imageview"},
+		{"name": "layout/list", "path": "lib/layout/list"},
+		{"name": "layout/panels", "path": "lib/layout/panels"},
+		{"name": "layout/slideable", "path": "lib/layout/slideable"},
+		{"name": "layout/tree", "path": "lib/layout/tree"},
+		{"name": "moonstone", "path": "../enyojs/pilot/lib/moonstone"},
+		{"name": "canvas", "path": "lib/canvas"}
+	]
+}
