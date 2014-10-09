@@ -2,9 +2,9 @@
 
 ## enyo.Popup
 
-[enyo.Popup](../../api.html#enyo.Popup) is a control used to display certain
-content on top of other content.  The following example shows a kind in which
-pressing a button will display a popup.
+[enyo.Popup](../../../index.html#/kind/enyo.Popup) is a control used to display
+certain content on top of other content.  The following example shows a kind in
+which pressing a button will display a popup.
 
         enyo.kind({
             name: "PopupExample",
@@ -54,10 +54,10 @@ popup from responding to events while the popup is showing:
 
 ## moon.Popup
 
-[moon.Popup](../../api.html#moon.Popup) is an _enyo.Popup_ that appears at the
-bottom of the screen and takes up the full screen width.  Its features include
-support for scrim behavior and z-index handling, along with Moonstone visual
-styling.
+[moon.Popup](../../../index.html#/kind/moon.Popup) is an `enyo.Popup` that
+appears at the bottom of the screen and takes up the full screen width.  Its
+features include support for scrim behavior and z-index handling, along with
+Moonstone visual styling.
 
         components: [
             {kind: "moon.Button", content: "Basic Popup", ontap: "showPopup", popup: "basicPopup"},
@@ -90,8 +90,8 @@ render unless the popup is floating.
 
 ## moon.Dialog
 
-[moon.Dialog](../../api.html#moon.Dialog) is a `moon.Popup` with a title, a
-message, and an area for additional controls.
+[moon.Dialog](../../../index.html#/kind/moon.Dialog) is a `moon.Popup` with a
+title, a message, and an area for additional controls.
 
 Often, a dialog will present the user with a choice between two options, as in
 the following example:
@@ -124,10 +124,10 @@ the following example:
 
 ## moon.ContextualPopup
 
-[moon.ContextualPopup](../../api.html#moon.ContextualPopup) is a modal container
-for content such as text, images, or buttons.  It extends `enyo.Popup`, adding
-Moonstone-themed visual styling, and is typically used inside a
-[moon.ContextualPopupDecorator](../../api.html#moon.ContextualPopupDecorator),
+[moon.ContextualPopup](../../../index.html#/kind/moon.ContextualPopup) is a
+modal container for content such as text, images, or buttons.  It extends
+`enyo.Popup`, adding Moonstone-themed visual styling, and is typically used
+inside a [moon.ContextualPopupDecorator](../../../index.html#/kind/moon.ContextualPopupDecorator),
 which couples the popup with an activating control.
 
         {kind: "moon.ContextualPopupDecorator",
@@ -145,17 +145,18 @@ which couples the popup with an activating control.
 ![_moon.ContextualPopup_](../../assets/contextual-popup-shown.png)
 
 In this example, we can tell that the "Wide" button is an instance of
-[moon.ContextualPopupButton](../../api.html#moon.ContextualPopupButton), because
-that is the `defaultKind` value of `moon.ContextualPopupDecorator`.
+[moon.ContextualPopupButton](../../../index.html#/kind/moon.ContextualPopupButton),
+because that is the `defaultKind` value of `moon.ContextualPopupDecorator`.
 
 A contextual popup is dismissed when the user selects one of its items or clicks
 outside the popup's boundaries.
 
 ## moon.Tooltip
 
-[moon.Tooltip](../../api.html#moon.Tooltip), like `moon.ContextualPopup`, is a
-subkind of `enyo.Popup` that is used in tandem with a decorator kind--in this
-case, [moon.TooltipDecorator](../../api.html#moon.TooltipDecorator).  This
+[moon.Tooltip](../../../index.html#/kind/moon.Tooltip), like
+`moon.ContextualPopup`, is a subkind of `enyo.Popup` that is used in tandem with
+a decorator kind--in this case,
+[moon.TooltipDecorator](../../../index.html#/kind/moon.TooltipDecorator).  This
 control automatically displays on-screen help content when the user hovers over
 the decorator for a given period of time (500 ms, by default).
 

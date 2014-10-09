@@ -7,11 +7,11 @@ content is being scrolled.
 
 ## enyo.Scroller
 
-[enyo.Scroller](../../api.html#enyo.Scroller) provides a viewport in which the
-user may scroll content using touch or mouse actions.  (The scrolling of content
-exceeding the size of a viewport is not automatic; for content to scroll, it
-must be placed inside a Scroller control.)  `enyo.Scroller` is suitable for use
-in both desktop and mobile applications.
+[enyo.Scroller](../../../index.html#/kind/enyo.Scroller) provides a viewport
+in which the user may scroll content using touch or mouse actions.  (The
+scrolling of content exceeding the size of a viewport is not automatic; for
+content to scroll, it must be placed inside a Scroller control.)  `enyo.Scroller`
+is suitable for use in both desktop and mobile applications.
 
 The `strategyKind` property determines the type of scrolling used by a given
 scroller.  The default value is `"ScrollStrategy"`, which lets the framework
@@ -50,9 +50,9 @@ behavior, set the `touchOverscroll` property to `false`.
 
 ## moon.Scroller
 
-[moon.Scroller](../../api.html#moon.Scroller) inherits from `enyo.Scroller`,
-adding support for 5-way focus (Spotlight) and pagination buttons.  It currently
-requires a `strategyKind` of `TouchScrollStrategy`.
+[moon.Scroller](../../../index.html#/kind/moon.Scroller) inherits from
+`enyo.Scroller`, adding support for 5-way focus (Spotlight) and pagination
+buttons.  It currently requires a `strategyKind` of `TouchScrollStrategy`.
 
 `moon.Scroller` responds to the `onSpotlightFocused` event by scrolling the event
 originator into view. This ensures that 5-way (Spotlight) focused controls are

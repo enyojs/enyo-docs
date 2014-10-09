@@ -2,9 +2,9 @@
 
 ## enyo.Input
 
-[enyo.Input](../../api.html#enyo.Input) is an
-[enyo.Control](../../api.html#enyo.Control) that implements an HTML `<input>`
-element with cross-platform support for change events.
+[enyo.Input](../../../index.html#/kind/enyo.Input) is an
+[enyo.Control](../../../index.html#/kind/enyo.Control) that implements an HTML
+`<input>` element with cross-platform support for change events.
 
 You can listen for the `oninput` and `onchange` DOM events to know when the text
 inside an Input has been modified.  `oninput` fires immediately, while
@@ -40,11 +40,11 @@ should only do this for one input.)
 
 ## moon.Input
 
-[moon.Input](../../api.html#moon.Input) derives from `enyo.Input` and provides
-the same functionality with added visual styling.
+[moon.Input](../../../index.html#/kind/moon.Input) derives from `enyo.Input` and
+provides the same functionality with added visual styling.
 
 Typically, a `moon.Input` is placed inside a
-[moon.InputDecorator](../../api.html#moon.InputDecorator), e.g.:
+[moon.InputDecorator](../../../index.html#/kind/moon.InputDecorator), e.g.:
 
         {kind: "moon.InputDecorator", components: [
             {kind: "moon.Input", type: "password", placeholder: "Enter password",
@@ -55,9 +55,9 @@ Typically, a `moon.Input` is placed inside a
 
 ## moon.ExpandableInput
 
-[moon.ExpandableInput](../../api.html#moon.ExpandableInput) is a
-[moon.ExpandableListItem](../../api.html#moon.ExpandableListItem) that contains
-a `moon.Input` within its drop-down content area.
+[moon.ExpandableInput](../../../index.html#/kind/moon.ExpandableInput) is a
+[moon.ExpandableListItem](../../../index.html#/kind/moon.ExpandableListItem)
+that contains a `moon.Input` within its drop-down content area.
 
 In its collapsed state, the ExpandableInput displays its `content` and `value`.
 In the expanded state, the text input appears, giving the user the opportunity
@@ -72,7 +72,7 @@ to change the `value`.
 
 ## enyo.TextArea
 
-[enyo.TextArea](../../api.html#enyo.TextArea) is an `enyo.Input` that
+[enyo.TextArea](../../../index.html#/kind/enyo.TextArea) is an `enyo.Input` that
 implements an HTML `<textarea>` element with cross-platform support for change
 events.
 
@@ -89,9 +89,9 @@ multiple lines.
 
 ## moon.TextArea
 
-[moon.TextArea](../../api.html#moon.TextArea) is a Moonstone-styled TextArea
-control, derived from `enyo.TextArea`. Typically, a `moon.TextArea` is placed
-inside a `moon.InputDecorator`, which provides styling, e.g.:
+[moon.TextArea](../../../index.html#/kind/moon.TextArea) is a Moonstone-styled
+TextArea control, derived from `enyo.TextArea`. Typically, a `moon.TextArea` is
+placed inside a `moon.InputDecorator`, which provides styling, e.g.:
 
         {kind: "moon.InputDecorator", components: [
             {kind: "moon.TextArea", oninput: "inputChanged"}
@@ -101,7 +101,7 @@ inside a `moon.InputDecorator`, which provides styling, e.g.:
 
 ## enyo.RichText
 
-[enyo.RichText](../../api.html#enyo.RichText) is a multi-line
+[enyo.RichText](../../../index.html#/kind/enyo.RichText) is a multi-line
 `enyo.Input` that supports rich formatting, such as bold, italics, and
 underlining.
 
@@ -135,9 +135,9 @@ Note that RichText is not supported on Android < 3.
 
 ## moon.RichText
 
-[moon.RichText](../../api.html#moon.RichText) is a multi-line text input that
-supports rich formatting, such as bold, italics, and underlining.  It is derived
-directly from `enyo.RichText`.
+[moon.RichText](../../../index.html#/kind/moon.RichText) is a multi-line text
+input that supports rich formatting, such as bold, italics, and underlining.  It
+is derived directly from `enyo.RichText`.
 
 The content displayed in a RichText may be accessed at runtime via the `value`
 property.

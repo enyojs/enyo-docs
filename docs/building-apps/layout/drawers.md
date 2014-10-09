@@ -6,7 +6,7 @@
 core.  `onyx.Drawer` continues to exist, but is now simply an alias to
 `enyo.Drawer`.)
 
-[enyo.Drawer](../../api.html#enyo.Drawer) is a control that appears or
+[enyo.Drawer](../../../index.html#/kind/enyo.Drawer) is a control that appears or
 disappears based on its `open` property.  `open` is a Boolean that defaults to
 `true`, meaning that the control is visible.
 
@@ -127,15 +127,15 @@ the orientation of the drawer.
 ## moon.Drawer and moon.Drawers
 
 The Moonstone library has its own implementation of drawer functionality, based
-on [moon.Drawer](../../api.html#moon.Drawer) (which is _not_ a subkind of
-`enyo.Drawer`) and [moon.Drawers](../../api.html#moon.Drawers) (which is a
-container for `moon.Drawer` objects).
+on [moon.Drawer](../../../index.html#/kind/moon.Drawer) (which is **not** a
+subkind of `enyo.Drawer`) and [moon.Drawers](../../../index.html#/kind/moon.Drawers)
+(which is a container for `moon.Drawer` objects).
 
 `moon.Drawer` contains two areas for content--a main content area, where items
 declared in the `components` block live, and an optional `controlDrawer`, which
 houses any items declared in a `controlDrawerComponents` block.  In addition, in
 its `handle` property, `moon.Drawer` allows you to specify an activator control
-(typically of the kind [moon.DrawerHandle](../../api.html#moon.DrawerHandle)),
+(typically of the kind [moon.DrawerHandle](../../../index.html#/kind/moon.DrawerHandle)),
 which is used to display the activator along with a styled label.
 
 `moon.Drawer` objects are designed to be placed inside a `moon.Drawers`
