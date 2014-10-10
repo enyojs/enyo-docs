@@ -2,9 +2,9 @@
 
 ## moon.RadioItem
 
-[moon.RadioItem](../../api.html#moon.RadioItem) is a
-[moon.Button](../../api.html#moon.Button) designed to go inside a
-[moon.RadioItemGroup](../../api.html#moon.RadioItemGroup), a
+[moon.RadioItem](../../../index.html#/kind/moon.RadioItem) is a
+[moon.Button](../../../index.html#/kind/moon.Button) designed to go inside a
+[moon.RadioItemGroup](../../../index.html#/kind/moon.RadioItemGroup), a
 horizontally-oriented group of items in which tapping on one item will release
 any previously-tapped items.
 

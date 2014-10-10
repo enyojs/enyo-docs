@@ -71,7 +71,7 @@ the launcher will open.
 ## Example 2: Simulating Back key events
 
 The following code simulates the dispatching of **Back** key `keypress` events
-via [enyo.Signals](../api.html#enyo.Signals).  This code introduces a
+via [enyo.Signals](../../index.html#/kind/enyo.Signals).  This code introduces a
 `setDispatchBackKey(boolean)` API, which determines whether or not pressing the
 **Back** key will dispatch a simulated `keypress` event.  When `true` is passed
 in, the app will receive keypress events.  When `false` is passed in, the
@@ -103,7 +103,8 @@ results in the app's going to the background.
         })(window);
 
 Below is a simple example that uses this API with
-[moon.Panels](../api.html#moon.Panels) and [moon.Dialog](../api.html#moon.Dialog).
+[moon.Panels](../../index.html#/kind/moon.Panels) and
+[moon.Dialog](../../index.html#/kind/moon.Dialog).
 When the Panels is moved to index 0, the `dispatchBackKey` flag is set to
 `false`, so that the app is closed on the next **Back** press.
 

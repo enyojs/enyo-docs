@@ -2,8 +2,8 @@
 
 ## moon.Header
 
-The [moon.Header](../../api.html#moon.Header) kind provides a styled header with
-optional text above and below.
+The [moon.Header](../../../index.html#/kind/moon.Header) kind provides a styled
+header with optional text above and below.
 
         {kind: "moon.Header", name: "bigHeader", content: "Header Header Header",
             titleAbove: "02", titleBelow: "Sub Header",

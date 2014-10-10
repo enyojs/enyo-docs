@@ -2,8 +2,8 @@
 
 ## moon.SimplePicker
 
-[moon.SimplePicker](../../api.html#moon.SimplePicker) is a basic picker that
-allows the user to select items from a list.
+[moon.SimplePicker](../../../index.html#/kind/moon.SimplePicker) is a basic
+picker that allows the user to select items from a list.
 
 In 5-way mode, the arrows are focusable and change the selection when pressed.
 (Selection state is remembered.)
@@ -21,8 +21,9 @@ with long, data-driven lists.
 
 ## moon.SimpleIntegerPicker
 
-[moon.SimpleIntegerPicker](../../api.html#moon.SimpleIntegerPicker) is a control
-that prompts the user to make a selection from a range of integer-based options.
+[moon.SimpleIntegerPicker](../../../index.html#/kind/moon.SimpleIntegerPicker)
+is a control that prompts the user to make a selection from a range of
+integer-based options.
 
 The picker may be changed programmatically by calling _previous()_ or _next()_,
 or by modifying the published property _value_.
@@ -45,9 +46,9 @@ selected value flanked by navigation arrows on each side.
 
 ## moon.IntegerPicker
 
-[moon.IntegerPicker](../../api.html#moon.IntegerPicker) is a control used to
-display a list of integers and solicit a choice from the user.  The integers
-range from `min` to `max`.
+[moon.IntegerPicker](../../../index.html#/kind/moon.IntegerPicker) is a control
+used to display a list of integers and solicit a choice from the user.  The
+integers range from `min` to `max`.
 
 To initialize the IntegerPicker to a particular value, set the `value` property
 to the integer that should be selected, as in this example:
@@ -68,20 +69,20 @@ while passing in the name of the property and the desired new value.
 
 ## moon.ExpandableListItem
 
-[moon.ExpandableListItem](../../api.html#moon.ExpandableListItem) is a control
-with an expanded state and a collapsed state.  As the kind name suggests,
-ExpandableListItem is suitable for use within lists; it is also important with
-respect to pickers, because a variety of Moonstone picker kinds are derived from
-it.
+[moon.ExpandableListItem](../../../index.html#/kind/moon.ExpandableListItem) is
+a control with an expanded state and a collapsed state.  As the kind name
+suggests, ExpandableListItem is suitable for use within lists; it is also
+important with respect to pickers, because a variety of Moonstone picker kinds
+are derived from it.
 
 A `moon.ExpandableListItem` control displays a header while also allowing
-additional content to be stored in an [enyo.Drawer](../../api.html#enyo.Drawer);
-when the header is selected, the drawer opens below.  The drawer is closed by
-tapping on the header text or navigating (via 5-way) back to the top of the
-drawer.
+additional content to be stored in an
+[enyo.Drawer](../../../index.html#/kind/enyo.Drawer); when the header is
+selected, the drawer opens below.  The drawer is closed by tapping on the header
+text or navigating (via 5-way) back to the top of the drawer.
 
 The control's child components may be of any kind; by default, they are
-instances of [moon.Item](../../api.html#moon.Item).
+instances of [moon.Item](../../../index.html#/kind/moon.Item).
 
         components: [
             {kind: "moon.ExpandableListItem", content: "This is an expandable list item", components: [
@@ -98,9 +99,9 @@ instances of [moon.Item](../../api.html#moon.Item).
 ## moon.ExpandablePicker
 
 One important subkind of `moon.ExpandableListItem` is
-[moon.ExpandablePicker](../../api.html#moon.ExpandablePicker), a drop-down
-picker menu that solicits a choice from the user.  The picker's child
-components, instances of [moon.LabeledCheckbox](../../api.html#moon.LabeledCheckbox)
+[moon.ExpandablePicker](../../../index.html#/kind/moon.ExpandablePicker), a
+drop-down picker menu that solicits a choice from the user.  The picker's child
+components, instances of [moon.CheckboxItem](../../../index.html#/kind/moon.CheckboxItem)
 by default, provide the options for the picker.
 
         components: [
@@ -132,8 +133,8 @@ within lists.
 ## moon.ExpandableIntegerPicker
 
 Another kind derived from `moon.ExpandableListItem` is 
-[moon.ExpandableIntegerPicker](../../api.html#moon.ExpandableIntegerPicker), a
-drop-down picker menu that prompts the user to make a selection from a range of
+[moon.ExpandableIntegerPicker](../../../index.html#/kind/moon.ExpandableIntegerPicker),
+a drop-down picker menu that prompts the user to make a selection from a range of
 integer-based options.
 
 The value of the currently selected item is available in the picker's `value`
@@ -157,9 +158,9 @@ property, while the content of the item is available in `content`.
 
 ## moon.DatePicker
 
-[moon.DatePicker](../../api.html#moon.DatePicker), yet another subkind of
-`moon.ExpandableListItem`, contains fields that allow the user to choose a day,
-month, and year.
+[moon.DatePicker](../../../index.html#/kind/moon.DatePicker), yet another
+subkind of `moon.ExpandableListItem`, contains fields that allow the user to
+choose a day, month, and year.
 
 An `onChange` event is fired whenever the user selects a new value for one of
 the fields.  This event contains a standard JavaScript Date object representing
@@ -182,9 +183,9 @@ the current date.
 
 ## moon.TimePicker
 
-The [moon.TimePicker](../../api.html#moon.TimePicker) control has fields that
-allow the user to choose an hour value, minute value, and (optional) AM/PM
-value.
+The [moon.TimePicker](../../../index.html#/kind/moon.TimePicker) control has
+fields that allow the user to choose an hour value, minute value, and (optional)
+AM/PM value.
 
 Like `moon.DatePicker`, `moon.TimePicker` extends `moon.ExpandableListItem`, so
 it has an expanded form and a collapsed form.  The expanded form is displayed
@@ -212,10 +213,10 @@ the current date.
 ## moon.Accordion
 
 An additional subkind of `moon.ExpandableListItem`,
-[moon.Accordion](../../api.html#moon.Accordion) features an arrow to the right
-of the header and additional margin space to the left of the drawer containing
-the item list.  The arrow points up when the control is expanded, and down when
-it is collapsed (the default state).
+[moon.Accordion](../../../index.html#/kind/moon.Accordion) features an arrow to
+the right of the header and additional margin space to the left of the drawer
+containing the item list.  The arrow points up when the control is expanded, and
+down when it is collapsed (the default state).
 
         {kind: "moon.Accordion", content: "This is an accordion", components: [
             {content: "Item One"},
@@ -235,7 +236,7 @@ accordion in the group may be expanded at any given time.
 ## moon.Calendar
 
 Though not descended from `moon.ExpandableListItem`,
-[moon.Calendar](../../api.html#moon.Calendar) does implement picker
+[moon.Calendar](../../../index.html#/kind/moon.Calendar) does implement picker
 functionality in the form of a monthly calendar, from which the user may select
 a particular day.
 
@@ -249,6 +250,6 @@ navigate to the desired month; the desired day is selected by tapping on it.
 
 ## moon.CalendarDate
 
-[moon.CalendarDate](../../api.html#moon.CalendarDate) is a control that
-represents a single day; in a `moon.Calendar` control, each day of the month is
-a separate CalendarDate instance.
+[moon.CalendarDate](../../../index.html#/kind/moon.CalendarDate) is a control
+that represents a single day; in a `moon.Calendar` control, each day of the
+month is a separate CalendarDate instance.

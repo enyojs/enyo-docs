@@ -12,8 +12,8 @@ items](radio-items.html) (otherwise known as radio buttons).
 
 ## enyo.Checkbox
 
-[enyo.Checkbox](../../api.html#enyo.Checkbox) implements an HTML checkbox input,
-with support for grouping.
+[enyo.Checkbox](../../../index.html#/kind/enyo.Checkbox) implements an HTML
+checkbox input, with support for grouping.
 
 The `onActivate` event is fired when the checkbox is tapped.
 
@@ -22,13 +22,13 @@ The state of the checkbox is available as a boolean (`true` if checked;
 
 ## moon.Checkbox and moon.CheckboxItem
 
-[moon.Checkbox](../../api.html#moon.Checkbox) extends `enyo.Checkbox`, adding
-Moonstone visual styling.
+[moon.Checkbox](../../../index.html#/kind/moon.Checkbox) extends `enyo.Checkbox`,
+adding Moonstone visual styling.
 
 Instead of creating `moon.Checkbox` objects directly, you may find it convenient
-to use the [moon.CheckboxItem](../../api.html#moon.CheckboxItem) kind, which
-combines a checkbox with a text label, as in this example taken from the Enyo
-Sampler:
+to use the [moon.CheckboxItem](../../../index.html#/kind/moon.CheckboxItem) kind,
+which combines a checkbox with a text label, as in this example taken from the
+Enyo Sampler:
 
         components: [
             {classes: "checkbox-sample-wrapper", components: [
@@ -43,11 +43,11 @@ Sampler:
 
 ## moon.FormCheckbox
 
-[moon.FormCheckbox](../../api.html#moon.FormCheckbox) extends `moon.Checkbox`,
-providing a labeled checkbox (similar to `moon.CheckboxItem`) for use in form
-layouts.  Unlike `moon.CheckboxItem`, `moon.FormCheckbox` has a circular "tap
-target" area that is always visible, regardless of whether the checkbox is
-currently checked.
+[moon.FormCheckbox](../../../index.html#/kind/moon.FormCheckbox) extends
+`moon.Checkbox`, providing a labeled checkbox (similar to `moon.CheckboxItem`)
+for use in form layouts.  Unlike `moon.CheckboxItem`, `moon.FormCheckbox` has a
+circular "tap target" area that is always visible, regardless of whether the
+checkbox is currently checked.
 
         components: [
             {kind: "moon.Divider", content: "FormCheckbox Items (Default)"},
