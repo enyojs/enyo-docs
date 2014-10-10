@@ -28,9 +28,9 @@ As an Enyo app developer, you have an assortment of powerful, free debugging
 tools at your disposal, since all of the major desktop browsers now have
 built-in tools for JavaScript developers.  Modern browsers combine standard
 debug tools--a console for displaying log output (from calls to
-[enyo.log](../../api.html#enyo.log)), the ability to set breakpoints,
-and so on--with Web-specific tools, such as DOM and CSS inspectors (which are
-particularly useful for tracking down UI glitches).
+[enyo.log](../../../index.html#/namespace/enyo:log)), the ability to set
+breakpoints, and so on--with Web-specific tools, such as DOM and CSS inspectors
+(which are particularly useful for tracking down UI glitches).
 
 Refer to the following instructions to access the developer tools in your
 browser of choice.
@@ -176,7 +176,7 @@ ownership hierarchy.
 By watching the console in the debugger, you can sometimes detect errors from
 the JavaScript engine that aren't caught by exception handlers.
 
-In general, you should use the [enyo.log](../../api.html#enyo.log)
+In general, you should use the [enyo.log](../../../index.html#/namespace/enyo:log)
 methods (`enyo.log()`, `enyo.warn()`, and `enyo.error()`) instead of calling
 `console.log()` directly, since `enyo.log()` has better cross-platform support.
 (For example, you'll get errors in IE8 if you call `console.log()` when the
@@ -209,8 +209,8 @@ time and effort of manually logging that basic data.
     * By specifying an explicit CSS height
     * By applying the `"enyo-fit"` class
     * By setting `"fit: true"` on the object in a
-        [Fittable layout](../../api.html#enyo.FittableLayout)
-    * By being placed in an [enyo.Panels](../../api.html#enyo.Panels)
+        [Fittable layout](../../../index.html#/kind/enyo.FittableLayout)
+    * By being placed in an [enyo.Panels](../../../index.html#/kind/enyo.Panels)
         whose arranger fits the panel height
 
 *	A Fittable may only have `"fit: true"` set for one component; doing so for

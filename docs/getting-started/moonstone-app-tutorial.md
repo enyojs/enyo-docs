@@ -7,11 +7,11 @@ library.  Our application will perform Flickr searches, and will follow
 Moonstone's "always viewing" Panels pattern.  
 
 We'll walk through the creation of "Search" and "Detail" panel views, crafting
-subkinds of [enyo.Source](../api.html#enyo.Source),
-[enyo.Collection](../api.html#enyo.Collection) and
-[enyo.Model](../api.html#enyo.Model) to meet the demands of the Flickr API, and
-binding the returned data to our views--all typical things you will need to do
-in an interactive, data-driven application.
+subkinds of [enyo.Source](../../index.html#/kind/enyo.Source),
+[enyo.Collection](../../index.html#/kind/enyo.Collection) and
+[enyo.Model](../../index.html#/kind/enyo.Model) to meet the demands of the
+Flickr API, and binding the returned data to our views--all typical things you
+will need to do in an interactive, data-driven application.
 
 If you'd like to get an idea of where we're heading, you can [view the completed
 app](http://enyojs.github.io/moon-flickr) or [browse the completed
@@ -64,20 +64,20 @@ after deployment, `index.html`) is opened, it first loads the Enyo core CSS and
 JavaScript files, along with the application's top-level `package.js`.  The
 top-level `package.js` loads any Enyo libraries your app depends on, and then
 the application's `app.js` file.  `app.js` defines your top-level
-[enyo.Application](../api.html#enyo.Application), registers an `enyo.ready`
-callback (fired when the DOM is ready), and creates an instance of the
-application.  Finally, by default, `enyo.Application` automatically renders the
-"main view" upon instantiation--i.e., it creates and renders the `MainView` kind
-from `main.js`, thus starting your app.
+[enyo.Application](../../index.html#/kind/enyo.Application), registers an
+`enyo.ready` callback (fired when the DOM is ready), and creates an instance of
+the application.  Finally, by default, `enyo.Application` automatically renders
+the "main view" upon instantiation--i.e., it creates and renders the `MainView`
+kind from `main.js`, thus starting your app.
 
 ## 4. Set up main view
 
 Since this app will be based on the Moonstone "Always Viewing" Panel pattern,
-let's set up our main view to have a [moon.Panels](../api.html#moon.Panels)
+let's set up our main view to have a [moon.Panels](../../index.html#/kind/moon.Panels)
 instance (which will be responsible for maintaining a stack of panels and
 transitioning them left and right) and a single instance of
-[moon.Panel](../api.html#moon.Panel), the base kind for views added to
-`moon.Panels`.
+[moon.Panel](../../index.html#/kind/moon.Panel), the base kind for views added
+to `moon.Panels`.
 
 **Edit file: source/views/views.js**
 
@@ -94,9 +94,9 @@ transitioning them left and right) and a single instance of
 ```
 
 Here we've created a simple kind named `flickr.MainView`, which is a subkind of
-[enyo.Control](../api.html#enyo.Control) (the default kind when no `kind`
-property is specified).  As per our plan, the main view contains an instance of
-`moon.Panels`, which in turn contains an instance of `moon.Panel`.
+[enyo.Control](../../index.html#/kind/enyo.Control) (the default kind when no
+`kind` property is specified).  As per our plan, the main view contains an
+instance of `moon.Panels`, which in turn contains an instance of `moon.Panel`.
 
 **Additional notes on this code:**
 
@@ -166,7 +166,7 @@ from the Flickr API.
 **Additional notes on this code:**
 
 * **headerOptions** - Internally, `moon.Panel` contains a
-    [moon.Header](../api.html#moon.Header) as part of its "chrome" (a term we
+    [moon.Header](../../index.html#/kind/moon.Header) as part of its "chrome" (a term we
     use to refer to controls contained within another kind, which are not
     accessible to the _user_ of the kind).  Many common properties of
     `moon.Header`, such as `title`, `titleBelow`, and so on, are brought forward
@@ -226,8 +226,8 @@ that we declared in Step 4.
 
 ## 6. Add a grid to the search panel
 
-Next, let's add a [moon.DataGridList](../api.html#moon.DataGridList) to the
-search panel.  We'll use this to display thumbnails of the search results.
+Next, let's add a [moon.DataGridList](../../index.html#/kind/moon.DataGridList)
+to the search panel.  We'll use this to display thumbnails of the search results.
 
 **Edit file: source/views/views.js**
 
@@ -255,8 +255,8 @@ search panel.  We'll use this to display thumbnails of the search results.
 Here we've added a `components` block, the contents of which are placed under
 the header inside of the panel.  Within the `components` block, we have a
 `moon.DataGridList`, which has a
-[moon.GridListImageItem](../api.html#moon.GridListImageItem) that serves as the
-list template that is repeated for each model.
+[moon.GridListImageItem](../../index.html#/kind/moon.GridListImageItem) that
+serves as the list template that is repeated for each model.
 
 **Additional notes on this code:**
 
@@ -265,9 +265,9 @@ list template that is repeated for each model.
     * **fit: true** - Note that the `moon.DataGridList` instance has its `fit`
         property set to `true`.  By default, `moon.Panel` lays out the child
         components under the header using
-        [enyo.FittableRowsLayout](../api.html#enyo.FittableRowsLayout).  That
-        layoutKind causes one component with `fit: true` to be resized to take
-        up any remaining space left by the other components.  In this case,
+        [enyo.FittableRowsLayout](../../index.html#/kind/enyo.FittableRowsLayout).
+        That layoutKind causes one component with `fit: true` to be resized to
+        take up any remaining space left by the other components.  In this case,
         since the grid list is the only component, it will expand to fill the
         entire space under the header.
 
@@ -282,7 +282,7 @@ list template that is repeated for each model.
         the grid area.
 
 * **moon.GridListImageItem** - For details on the options passed to this
-    control, see the [API docs](../api.html#moon.GridListImageItem).
+    control, see the [API docs](../../index.html#/kind/moon.GridListImageItem).
 
 If you try running the app after these changes, you shouldn't see any changes
 from the previous step.  That's because the DataGridList requires data in order
@@ -294,20 +294,21 @@ situation.
 ## 7. Bind a data collection to the grid
 
 As we've just seen, a DataGridList requires a collection of data to drive the
-set of items rendered in the list.  [enyo.Collection](../api.html#enyo.Collection)
-is a subkind of [enyo.Component](../api.html#enyo.Component) that provides an
-array-like data structure for handling instances of
-[enyo.Model](../api.html#enyo.Model), with support for observing additions to
-and deletions from the array.  The `DataGridList` will render one instance of
-the controls in its `components` block for each model contained in the
-collection.  The model will then be set to the `model` property of the top-level
-control for each item, and bindings from the `model` property into the view
-properties will control how data from each model is represented in the view.
+set of items rendered in the list.  [enyo.Collection](../../index.html#/kind/enyo.Collection)
+is a subkind of [enyo.Component](../../index.html#/kind/enyo.Component) that
+provides an array-like data structure for handling instances of
+[enyo.Model](../../index.html#/kind/enyo.Model), with support for observing
+additions to and deletions from the array.  The `DataGridList` will render one
+instance of the controls in its `components` block for each model contained in
+the collection.  The model will then be set to the `model` property of the
+top-level control for each item, and bindings from the `model` property into the
+view properties will control how data from each model is represented in the
+view.
 
 **For your information:** If you're interested in a complete overview of
 Enyo's data-layer features, including bindings, observers, computed properties,
-models, collections, and data-aware controls (such as DataGridList), see
-[Building Data-Driven Apps](../building-apps/managing-data/building-data-driven-apps.html).
+models, collections, and data-aware controls (such as DataGridList), see [Building
+Data-Driven Apps](../building-apps/managing-data/building-data-driven-apps.html).
 
 To make this grid go, first we'll create a generic `enyo.Collection` when the
 panel is instantiated by overriding the `SearchPanel` control's `create()`
@@ -452,8 +453,8 @@ The final `flickr.SearchPanel` implementation for this step should look like thi
 
 Dummy data does not make for an interesting app, so in the next few steps, we'll
 start making custom data-related kinds for interacting with the Flickr API.  In
-this step, we'll build a subkind of [enyo.Source](../api.html#enyo.Source) to
-fetch data from Flickr.
+this step, we'll build a subkind of [enyo.Source](../../index.html#/kind/enyo.Source)
+to fetch data from Flickr.
 
 Enyo provides a layered approach to defining logic specific to fetching,
 committing changes, and deleting records from back-end data sources.  At the
@@ -468,10 +469,10 @@ retrieve the data.  A model or collection may also provide overrides for any of
 these operations on a case-by-case basis as needed.
 
 Enyo provides two concrete data sources by default, one for fetching data from
-an Ajax source using XHR ([enyo.AjaxSource](../api.html#enyo.AjaxSource)) and
-one for fetching data from a Jsonp source
-([enyo.JsonpSource](../api.html#enyo.JsonpSource)).  Both of these sources
-assume a REST interface by default, but may be customized.
+an Ajax source using XHR ([enyo.AjaxSource](../../index.html#/kind/enyo.AjaxSource))
+and one for fetching data from a Jsonp source
+([enyo.JsonpSource](../../index.html#/kind/enyo.JsonpSource)).  Both of these
+sources assume a REST interface by default, but may be customized.
 
 We will be using Flickr's Jsonp Web services; this will make testing in the
 browser easier, since Jsonp lets us avoid the cross-origin security restrictions
@@ -529,10 +530,10 @@ by models and collections:
 ```
 
 For more details on the properties available for configuring this source, refer
-to the API documentation for [enyo.JsonpSource](../api.html#enyo.JsonpSource)
-and [enyo.JsonpRequest](../api.html#enyo.JsonpRequest).  The latter kind is used
-internally by `enyo.JsonpSource`, and is configured by properties on the `opts`
-hash.
+to the API documentation for [enyo.JsonpSource](../../index.html#/kind/enyo.JsonpSource)
+and [enyo.JsonpRequest](../../index.html#/kind/enyo.JsonpRequest).  The latter
+kind is used internally by `enyo.JsonpSource`, and is configured by properties
+on the `opts` hash.
 
 **[View the code and results of Step 8 in JSFiddle](http://jsfiddle.net/enyojs/65hr7/)**
 
@@ -895,9 +896,9 @@ Try it out by typing something into the input in the header and pressing
 ## 12. Add a loading spinner to search panel
 
 The Flickr API may take a bit of time to return the results of the search, so
-we'll add a [moon.Spinner](../api.html#moon.Spinner) control to be shown while
-the collection is fetching, to let the user know we're working on returning
-their data.
+we'll add a [moon.Spinner](../../index.html#/kind/moon.Spinner) control to be
+shown while the collection is fetching, to let the user know we're working on
+returning their data.
 
 We can place the spinner in the header's "client" area.  This is exposed on
 `moon.Panel` via the `headerComponents` array:
@@ -945,7 +946,7 @@ the search panel, along with some more detailed information about the photo--for
 example, the user who took the photo and the date it was taken.
 
 First, we'll create another subkind of `moon.Panel` for our detail panel, and
-place a [moon.Image](api.html#moon.Image) in the `components` block.  (We'll use
+place a [moon.Image](../../index.html#/kind/moon.Image) in the `components` block.  (We'll use
 the panel header's `titleBelow` and `subTitleBelow` properties to show the other
 data.)
 
@@ -972,10 +973,11 @@ data.)
         makes it fill the entire width of the panel client area.
 
     * **sizing** - This is a property of `moon.Image` (and
-        [enyo.Image](../api.html#enyo.Image)) that allows us to specify sizing
-        options for the image.  Since we don't know the aspect ratio of the
-        image, setting `sizing` to `"contain"` causes the longer dimension to be
-        fit to the available space, so that there is no cropping or stretching.
+        [enyo.Image](../../index.html#/kind/enyo.Image)) that allows us to
+        specify sizing options for the image.  Since we don't know the aspect
+        ratio of the image, setting `sizing` to `"contain"` causes the longer
+        dimension to be fit to the available space, so that there is no cropping
+        or stretching.
 
 When we push this panel onto our main view's `moon.Panels` (in the next step),
 we'll set a `model` property on the panel, from which we'll access the image
@@ -1064,7 +1066,7 @@ grid list items that will use this new event API:
         function.
 
     * Note that any events bubbled from subkinds of
-        [enyo.DataRepeater](../api.html#enyo.DataRepeater) (such as
+        [enyo.DataRepeater](../../index.html#/kind/enyo.DataRepeater) (such as
         `moon.DataGridList`) will include `inEvent.model` and `inEvent.index`
         properties to allow you to identify the item that originated the event
         and the model associated with it.
@@ -1324,7 +1326,7 @@ To demonstrate how to switch between the panels overlay and the fullscreen
 content, we'll add a simple image viewer in the "basement" (a term we use to
 describe the screen area underneath any overlying panels).
 
-First, let's add the image viewer.  [enyo.ImageView](../api.html#enyo.ImageView)
+First, let's add the image viewer.  [enyo.ImageView](../../index.html#/kind/enyo.ImageView)
 provides a basic image view with scroll-to-zoom and drag-to-pan capability.
 We'll place an ImageView in our `flickr.MainView`, _before_ the panels instance,
 using the `enyo-fit` class to fit it to the full bounds of the screen:
@@ -1403,7 +1405,7 @@ In our final app, you'll see that we made a few additional improvements:
     search panel.  We also added one more top-level event handler to request a
     slideshow from the search panel.
 
-* For fun, we added a [moon.ContextualPopup](../api.html#moon.ContextualPopup)
+* For fun, we added a [moon.ContextualPopup](../../index.html#/kind/moon.ContextualPopup)
     on the detail page containing a QR code link to the full-size image, to
     allow a user to quickly open the image on a mobile device with a bar-code
     reader app.
