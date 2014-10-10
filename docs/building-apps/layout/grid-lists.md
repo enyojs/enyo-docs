@@ -4,10 +4,11 @@
 
 ## enyo.GridList
 
-[enyo.GridList](../../api.html#enyo.GridList) extends
-[enyo.List](../../api.html#enyo.List) to provide a grid for displaying multiple
-items per row, based on the available container width.  Because grid lists are
-commonly used to display images, we sometimes refer to them as "image grids".
+[enyo.GridList](../../../index.html#/kind/enyo.GridList) extends
+[enyo.List](../../../index.html#/kind/enyo.List) to provide a grid for
+displaying multiple items per row, based on the available container width.
+Because grid lists are commonly used to display images, we sometimes refer to
+them as "image grids".
 
 Three rendering modes are supported: `fixedSize`, `fluidWidth`, and
 `variableSize` (with or without normalization of rows):
@@ -50,9 +51,9 @@ Here's an example of how a GridList may be used:
  
 ## moon.GridList
 
-[moon.GridList](../../api.html#moon.GridList) extends `enyo.GridList`, adding
-Moonstone-specific configuration, styling, decorators and Spotlight/focus-state
-management.
+[moon.GridList](../../../index.html#/kind/moon.GridList) extends
+`enyo.GridList`, adding Moonstone-specific configuration, styling, decorators
+and Spotlight/focus-state management.
 
         enyo.kind({
             name: "moon.sample.GridListSample",
@@ -87,14 +88,15 @@ management.
 
 ## enyo.GridListImageItem
 
-[enyo.GridListImageItem](../../api.html#enyo.GridListImageItem) is a convenience
-component that may be used inside an `enyo.GridList` to display an image grid.
+[enyo.GridListImageItem](../../../index.html#/kind/enyo.GridListImageItem) is a
+convenience component that may be used inside an `enyo.GridList` to display an
+image grid.
 
 ## moon.GridListImageItem
 
-[moon.GridListImageItem](../../api.html#moon.GridListImageItem) extends
-`enyo.GridListImageItem`, adding Moonstone-specific configuration, styling,
-decorators and Spotlight/focus-state management.
+[moon.GridListImageItem](../../../index.html#/kind/moon.GridListImageItem)
+extends `enyo.GridListImageItem`, adding Moonstone-specific configuration,
+styling, decorators and Spotlight/focus-state management.
 
 Add instances of `moon.GridListImageItem` as components of a `moon.GridList`
 to create an image grid.

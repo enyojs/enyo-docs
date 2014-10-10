@@ -2,7 +2,7 @@
 
 ## enyo.Panels
 
-The [enyo.Panels](http://enyojs.com/api/#enyo.Panels) kind is designed to
+The [enyo.Panels](../../../index.html#/kind/enyo.Panels) kind is designed to
 satisfy a variety of common use cases for application layout.  Using
 `enyo.Panels`, controls may be arranged as (among other things) a carousel, a
 set of collapsing panels, a card stack that fades between panels, or a grid.
@@ -60,11 +60,12 @@ Certain arrangers may be used in conjunction with a Panels instance to create a
 "wrap-around" effect, in which moving forward past the last panel returns you to
 the first panel, and moving backward past the first panel brings you to the last
 panel.  To achieve this effect, specify a
-[LeftRightArranger](http://enyojs.com/api/#enyo.LeftRightArranger),
-[TopBottomArranger](http://enyojs.com/api/#enyo.TopBottomArranger),
-[SpiralArranger](http://enyojs.com/api/#enyo.SpiralArranger), or
-[GridArranger](http://enyojs.com/api/#enyo.GridArranger) as the `arrangerKind`
-for an `enyo.Panels` whose `wrap` property has been set to `true`.
+[LeftRightArranger](../../../index.html#/kind/enyo.LeftRightArranger),
+[TopBottomArranger](../../../index.html#/kind/enyo.TopBottomArranger),
+[SpiralArranger](../../../index.html#/kind/enyo.SpiralArranger), or
+[GridArranger](../../../index.html#/kind/enyo.GridArranger) as the
+`arrangerKind` for an `enyo.Panels` whose `wrap` property has been set to
+`true`.
 
 ## Responsive Design
 
@@ -95,8 +96,8 @@ we've set the `arrangerKind` and applied a CSS class:
         });
 	
 Note that in a
-[CollapsingArranger](http://enyojs.com/api/#enyo.CollapsingArranger), the last
-panel will always take up the available space.
+[CollapsingArranger](../../../index.html#/kind/enyo.CollapsingArranger), the
+last panel will always take up the available space.
 
 The key to achieving the sizing behavior we want is to set up the CSS classes
 correctly.  Here's one way to do it:
@@ -132,8 +133,8 @@ We'll also want to override the static method `Panels.isScreenNarrow()`,
 replacing `800` with `600`.  This method isn't used by the framework itself, but
 exists to give application code an easy way to know if it's being run in a
 small-screen environment.  (For an interesting example of how this can be used
-in the context of navigation between panels, see the
-[Flickr sample app](http://enyojs.com/samples/panels/app-flickr.html) on enyojs.com.)
+in the context of navigation between panels, see the [Flickr sample
+app](http://enyojs.com/samples/panels/app-flickr.html) on enyojs.com.)
 
 This gives us the following kind definition:
 
@@ -179,12 +180,12 @@ Panels control with window width over 600px
 
 ## moon.Panels and moon.Panel
 
-The [moon.Panels](../../api.html#moon.Panels) kind extends `enyo.Panels`, adding
+The [moon.Panels](../../../index.html#/kind/moon.Panels) kind extends `enyo.Panels`, adding
 Moonstone visual styling and support for 5-way focus (Spotlight).  The Moonstone
 Panels control is suitable for use in a broad range of applications.
 
 By default, new controls created inside a `moon.Panels` container are instances
-of [moon.Panel](../../api.html#moon.Panel), which is _not_ derived from
+of [moon.Panel](../../../index.html#/kind/moon.Panel), which is _not_ derived from
 `enyo.Panel`.  A `moon.Panels` will typically contain several `moon.Panel`
 objects.  The built-in features of `moon.Panel` include a header and a
 FittableRows layout for the main body content. 

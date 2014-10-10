@@ -6,12 +6,12 @@ meet using Web technologies.
 
 ## FittableColumns and FittableRows
 
-The [FittableColumns](../../api.html#enyo.FittableColumns) and
-[FittableRows](../../api.html#enyo.FittableColumns) controls let you define
-views whose children are arranged either horizontally or vertically.  Within a
-given view, you may designate one child to expand and contract to fit the
-available space, while its siblings retain their natural or explicitly-specified
-sizes.
+The [FittableColumns](../../../index.html#/kind/enyo.FittableColumns) and
+[FittableRows](../../../index.html#/kind/enyo.FittableColumns) controls let you
+define views whose children are arranged either horizontally or vertically.
+Within a given view, you may designate one child to expand and contract to fit
+the available space, while its siblings retain their natural or
+explicitly-specified sizes.
 
 To mark a child control as the one having variable size, set its `fit` property
 to `true`, e.g.:
@@ -31,9 +31,9 @@ the available container space between the first and third.
 ## FittableColumnsLayout and FittableRowsLayout
 
 Another way to use the fittable layout strategy is to set a kind's `layoutKind`
-property to "[FittableColumnsLayout](../../api.html#enyo.FittableColumnsLayout)"
-or "[FittableRowsLayout](../../api.html#enyo.FittableRowsLayout)" while
-employing a different base kind:
+property to "[FittableColumnsLayout](../../../index.html#/kind/enyo.FittableColumnsLayout)"
+or "[FittableRowsLayout](../../../index.html#/kind/enyo.FittableRowsLayout)"
+while employing a different base kind:
 
         enyo.kind({
             kind: "enyo.Control",
@@ -46,7 +46,7 @@ employing a different base kind:
         });
 
 Both `FittableColumnsLayout` and `FittableRowsLayout` are derived directly from
-[enyo.FittableLayout](../../api.html#enyo.FittableLayout), which
+[enyo.FittableLayout](../../../index.html#/kind/enyo.FittableLayout), which
 provides basic positioning and boundary logic.
 
 ## Nested Fittables

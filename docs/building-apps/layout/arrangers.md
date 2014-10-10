@@ -1,7 +1,7 @@
 % Arrangers
 
-[enyo.Arranger](../../api.html#enyo.Arranger) is an
-[enyo.Layout](../../api.html#enyo.Layout) that considers one of its
+[enyo.Arranger](../../../index.html#/kind/enyo.Arranger) is an
+[enyo.Layout](../../../index.html#/kind/enyo.Layout) that considers one of its
 controls to be active.  The other controls are placed relative to the active one
 as makes sense for the layout.
 
@@ -12,10 +12,10 @@ controls in an Arranger are absolutely positioned, and the Arranger kind has an
 `accelerated` property, which marks controls for CSS compositing. The default
 setting of `"auto"` ensures that this will occur if enabled by the platform.
 
-Subkinds of Arranger (e.g., [CardArranger](../../api.html#enyo.CardArranger),
-[CarouselArranger](../../api.html#enyo.CarouselArranger)) are typically used as
-layouts for instances of [enyo.Panels](../../api.html#enyo.Panels), which uses
-the Arranger API to implement transitions between layouts.  Implement the
+Subkinds of Arranger (e.g., [CardArranger](../../../index.html#/kind/enyo.CardArranger),
+[CarouselArranger](../../../index.html#/kind/enyo.CarouselArranger)) are typically
+used as layouts for instances of [enyo.Panels](../../../index.html#/kind/enyo.Panels),
+which uses the Arranger API to implement transitions between layouts.  Implement the
 `size()` method to size controls and perform other expensive layout operations
 that are only required when the layout reflows.  Implement the `start()` and
 `finish()` methods to specify behavior that should occur when a transition
