@@ -10,14 +10,18 @@ between `0` and `100`.
 To animate progress changes, call the `animateProgressTo()` method, passing in
 the destination `progress` value.
 
-        {kind: "moon.ProgressBar", progress: 25}
+```javascript
+    {kind: "moon.ProgressBar", progress: 25}
+```
 
 ![_moon.ProgressBar_](../../assets/progress-bar-1.png)
 
 In addition to the main process, the ProgressBar can track the state of a
 background process via the `bgProgress` property.
 
-        {kind: "moon.ProgressBar", progress: 25, bgProgress: 75}
+```javascript
+    {kind: "moon.ProgressBar", progress: 25, bgProgress: 75}
+```
 
 ![_moon.ProgressBar with background process_](../../assets/progress-bar-2.png)
 
@@ -27,7 +31,9 @@ background process via the `bgProgress` property.
 presenting a range of selection options in the form of a horizontal slider with
 a control knob.  The knob may be tapped and dragged to the desired location.
 
-        {kind: "moon.Slider", value: 30}
+```javascript
+    {kind: "moon.Slider", value: 30}
+```
 
 ![_moon.Slider_](../../assets/slider.png)
 

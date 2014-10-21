@@ -7,26 +7,32 @@ inherits from [moon.Checkbox](../../../index.html#/kind/moon.Checkbox), looks
 like a switch with labels for two states.  Each time it is tapped, it switches
 its state and fires an `onChange` event.
 
-        {kind: "moon.ToggleText", onContent: "foo", offContent: "bar",
-            onChange: "toggleTextToggle"},
+```javascript
+    {kind: "moon.ToggleText", onContent: "foo", offContent: "bar",
+        onChange: "toggleTextToggle"},
 
-        ...
+    ...
 
-        toggleTextToggle: function(inSender, inEvent) {
-            this.log("Toggled to value " + inEvent.value);
-        }
+    toggleTextToggle: function(inSender, inEvent) {
+        this.log("Toggled to value " + inEvent.value);
+    }
+```
 
 You may customize the appearance of the control's "on" state by setting the
 background color as a CSS style:
 
-        {kind: "moon.ToggleText", style: "background-color: #35A8EE;"}
+```javascript
+    {kind: "moon.ToggleText", style: "background-color: #35A8EE;"}
+```
 
 Finally, you may determine whether the toggle is currently "on" by querying its
 `value` property.  The returned value will be a Boolean `true` or `false`:
 
-        queryToggleValue: function() {
-            return this.$.toggleText.get("value");
-        }
+```javascript
+    queryToggleValue: function() {
+        return this.$.toggleText.get("value");
+    }
+```
 
 ## moon.ToggleSwitch
 
@@ -46,16 +52,18 @@ ToggleSwitch controls in various states, see the illustration for
 [moon.CheckboxItem](../../../index.html#/kind/moon.CheckboxItem) and provides a convenient
 way to combine a ToggleSwitch with a text label.
 
-        components: [
-            {kind: "moon.Divider", content: "Toggle Items"},
-            {kind: "moon.ToggleItem", content: "Option 1", checked: true,
-                onchange: "itemChanged"},
-            {kind: "moon.ToggleItem", content: "Option 2", onchange: "itemChanged"},
-            {kind: "moon.ToggleItem", disabled: true, content: "Disabled",
-                onchange: "itemChanged"},
-            {kind: "moon.ToggleItem", content: "Option 4", checked: true,
-                onchange: "itemChanged"}
-        ]
+```javascript
+    components: [
+        {kind: "moon.Divider", content: "Toggle Items"},
+        {kind: "moon.ToggleItem", content: "Option 1", checked: true,
+            onchange: "itemChanged"},
+        {kind: "moon.ToggleItem", content: "Option 2", onchange: "itemChanged"},
+        {kind: "moon.ToggleItem", disabled: true, content: "Disabled",
+            onchange: "itemChanged"},
+        {kind: "moon.ToggleItem", content: "Option 4", checked: true,
+            onchange: "itemChanged"}
+    ]
+```
 
 ![_Toggle Items_](../../assets/toggle-items.png)
 
@@ -72,8 +80,10 @@ states ("on" and "off"), each of which has an associated text label.  When the
 button is tapped, the state switches (as evidenced by updates to the text label
 and visual styling), and an `onChange` event is fired.
 
-        {kind: "moon.ToggleButton", toggleOnLabel: "wifi is on",
-            toggleOffLabel: "wifi is off", ontap: "buttonTapped"}
+```javascript
+    {kind: "moon.ToggleButton", toggleOnLabel: "wifi is on",
+        toggleOffLabel: "wifi is off", ontap: "buttonTapped"}
+```
 
 ![_Toggle Button (On)_](../../assets/toggle-button-on.png)
 

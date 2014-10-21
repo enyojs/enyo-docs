@@ -10,16 +10,17 @@ You can listen for the `oninput` and `onchange` DOM events to know when the text
 inside an Input has been modified.  `oninput` fires immediately, while
 `onchange` fires when the text has changed and the input loses focus.
 
-        components: [
-            {kind: "enyo.Input", name: "myInput", placeholder: "Enter some text...",
-                oninput: "inputChanged"}
-        ],
-        inputChanged: function(inSender, inEvent) {
-            // retrieve new input value
-            newInputValue = this.$.myInput.get("value");
-
-            // do something in response
-        }
+```javascript
+    components: [
+        {kind: "enyo.Input", name: "myInput", placeholder: "Enter some text...",
+            oninput: "inputChanged"}
+    ],
+    inputChanged: function(inSender, inEvent) {
+        // retrieve new input value
+        newInputValue = this.$.myInput.get("value");
+        // do something in response
+    }
+```
 
 ![_enyo.Input_](../../assets/enyo-input.png)
 
@@ -46,10 +47,12 @@ provides the same functionality with added visual styling.
 Typically, a `moon.Input` is placed inside a
 [moon.InputDecorator](../../../index.html#/kind/moon.InputDecorator), e.g.:
 
-        {kind: "moon.InputDecorator", components: [
-            {kind: "moon.Input", type: "password", placeholder: "Enter password",
-                oninput: "inputChanged"}
-        ]}
+```javascript
+    {kind: "moon.InputDecorator", components: [
+        {kind: "moon.Input", type: "password", placeholder: "Enter password",
+            oninput: "inputChanged"}
+    ]}
+```
 
 ![_moon.Input_](../../assets/input.png)
 
@@ -63,8 +66,10 @@ In its collapsed state, the ExpandableInput displays its `content` and `value`.
 In the expanded state, the text input appears, giving the user the opportunity
 to change the `value`.
 
-        {kind: "moon.ExpandableInput", oninput: "inputChanging", onChange: "inputChanged",
-            content: "Input with Value", value: "Initial value"}
+```javascript
+    {kind: "moon.ExpandableInput", oninput: "inputChanging", onChange: "inputChanged",
+        content: "Input with Value", value: "Initial value"}
+```
 
 ![_moon.ExpandableInput (Collapsed)_](../../assets/expandable-input-collapsed.png)
 
@@ -83,7 +88,9 @@ it through the same events (`oninput`, `onchange`) and properties (`value`,
 A TextArea differs from an Input mainly in that the text field it displays spans
 multiple lines.
 
-        {kind: "enyo.TextArea", placeholder: "Enter some text...", oninput: "inputChanged"}
+```javascript
+    {kind: "enyo.TextArea", placeholder: "Enter some text...", oninput: "inputChanged"}
+```
 
 ![_enyo.TextArea_](../../assets/enyo-text-area.png)
 
@@ -93,9 +100,11 @@ multiple lines.
 TextArea control, derived from `enyo.TextArea`. Typically, a `moon.TextArea` is
 placed inside a `moon.InputDecorator`, which provides styling, e.g.:
 
-        {kind: "moon.InputDecorator", components: [
-            {kind: "moon.TextArea", oninput: "inputChanged"}
-        ]}
+```javascript
+    {kind: "moon.InputDecorator", components: [
+        {kind: "moon.TextArea", oninput: "inputChanged"}
+    ]}
+```
 
 ![_moon.TextArea_](../../assets/text-area.png)
 
@@ -105,9 +114,11 @@ placed inside a `moon.InputDecorator`, which provides styling, e.g.:
 `enyo.Input` that supports rich formatting, such as bold, italics, and
 underlining.
 
-        {kind: "enyo.RichText",
-            value: "<b>Boldly</b> going where <i>no one</i> has gone before",
-            style: "width: 250px;", defaultFocus: true, oninput: "inputChanged"}
+```javascript
+    {kind: "enyo.RichText",
+        value: "<b>Boldly</b> going where <i>no one</i> has gone before",
+        style: "width: 250px;", defaultFocus: true, oninput: "inputChanged"}
+```
 
 ![_enyo.RichText_](../../assets/enyo-rich-text.png)
 
@@ -142,9 +153,11 @@ is derived directly from `enyo.RichText`.
 The content displayed in a RichText may be accessed at runtime via the `value`
 property.
 
-        {kind: "moon.InputDecorator", components: [
-            {kind: "moon.RichText", oninput: "handleInput", onchange: "handleChange",
-                value: "<b>Boldly</b> going where <i>no one</i> has gone before"}
-        ]}
+```javascript
+    {kind: "moon.InputDecorator", components: [
+        {kind: "moon.RichText", oninput: "handleInput", onchange: "handleChange",
+            value: "<b>Boldly</b> going where <i>no one</i> has gone before"}
+    ]}
+```
 
 ![_moon.RichText_](../../assets/rich-text.png)

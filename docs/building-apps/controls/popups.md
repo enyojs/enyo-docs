@@ -6,24 +6,26 @@
 certain content on top of other content.  The following example shows a kind in
 which pressing a button will display a popup.
 
-        enyo.kind({
-            name: "PopupExample",
-            style: "text-align: center;",
-            components: [
-                {kind: "enyo.Button", content: "Basic Popup", ontap: "showPopup"},
-                {name: "basicPopup", kind: "enyo.Popup", floating: true, centered: true,
-                    style: "background-color: yellow; padding: 10px", onHide: "popupHidden", components: [
-                        {content: "Popup..."}
-                    ]
-                }
-            ],
-            showPopup: function(inSender, inEvent) {
-                this.$.basicPopup.show();
-            },
-            popupHidden: function(inSender, inEvent) {
-                // do something
+```javascript
+    enyo.kind({
+        name: "PopupExample",
+        style: "text-align: center;",
+        components: [
+            {kind: "enyo.Button", content: "Basic Popup", ontap: "showPopup"},
+            {name: "basicPopup", kind: "enyo.Popup", floating: true, centered: true,
+                style: "background-color: yellow; padding: 10px", onHide: "popupHidden", components: [
+                    {content: "Popup..."}
+                ]
             }
-        });
+        ],
+        showPopup: function(inSender, inEvent) {
+            this.$.basicPopup.show();
+        },
+        popupHidden: function(inSender, inEvent) {
+            // do something
+        }
+    });
+```
 
 ![_enyo.Popup (hidden)_](../../assets/enyo-popup-hidden.png)
 
@@ -48,9 +50,11 @@ the popup.
 The `modal` property may be set to `true` to prevent any controls outside the
 popup from responding to events while the popup is showing:
 
-        {kind: "enyo.Popup", centered: true, modal: true, floating: true, components: [
-            {content: "Here's some information..."}
-        ]}
+```javascript
+    {kind: "enyo.Popup", centered: true, modal: true, floating: true, components: [
+        {content: "Here's some information..."}
+    ]}
+```
 
 ## moon.Popup
 
@@ -59,23 +63,25 @@ appears at the bottom of the screen and takes up the full screen width.  Its
 features include support for scrim behavior and z-index handling, along with
 Moonstone visual styling.
 
-        components: [
-            {kind: "moon.Button", content: "Basic Popup", ontap: "showPopup", popup: "basicPopup"},
-            {name: "basicPopup", kind: "moon.Popup", content: "Popup..."},
-        ],
+```javascript
+    components: [
+        {kind: "moon.Button", content: "Basic Popup", ontap: "showPopup", popup: "basicPopup"},
+        {name: "basicPopup", kind: "moon.Popup", content: "Popup..."},
+    ],
 
-        ...
+    ...
 
-        showPopup: function(inSender) {
-            this.hidePopup();
-            var p = this.$[inSender.popup];
-            if (p) {
-                p.show();
-            }
-        },
-        hidePopup: function() {
-            this.$.basicPopup.hide();
+    showPopup: function(inSender) {
+        this.hidePopup();
+        var p = this.$[inSender.popup];
+        if (p) {
+            p.show();
         }
+    },
+    hidePopup: function() {
+        this.$.basicPopup.hide();
+    }
+```
 
 ![_moon.Popup (hidden)_](../../assets/popup-hidden.png)
 
@@ -96,31 +102,33 @@ title, a message, and an area for additional controls.
 Often, a dialog will present the user with a choice between two options, as in
 the following example:
 
-        enyo.kind({
-            name: "moon.sample.DialogSample",
-            classes: "moon enyo-unselectable enyo-fit",
-            components: [
-                {kind: "moon.Button", content: "Basic Dialog", ontap: "showDialog"},
-                {
-                    name: "dialog",
-                    kind: "moon.Dialog",
-                    title: "You've been watching TV for a very long time.",
-                    message: "Perhaps it's time to take a break and get some fresh air."
-                        + " "
-                        + "There is a nice coffee shop around the corner.",
-                    components: [
-                        {kind: "moon.Button", content: "Go get a coffee", ontap: "hideDialog"},
-                        {kind: "moon.Button", content: "Keep watching TV", ontap: "hideDialog"}
-                    ]
-                }
-            ],
-            showDialog: function(inSender) {
-                this.$.dialog.show();
-            },
-            hideDialog: function(inSender, inEvent) {
-                this.$.dialog.hide();
+```javascript
+    enyo.kind({
+        name: "moon.sample.DialogSample",
+        classes: "moon enyo-unselectable enyo-fit",
+        components: [
+            {kind: "moon.Button", content: "Basic Dialog", ontap: "showDialog"},
+            {
+                name: "dialog",
+                kind: "moon.Dialog",
+                title: "You've been watching TV for a very long time.",
+                message: "Perhaps it's time to take a break and get some fresh air."
+                    + " "
+                    + "There is a nice coffee shop around the corner.",
+                components: [
+                    {kind: "moon.Button", content: "Go get a coffee", ontap: "hideDialog"},
+                    {kind: "moon.Button", content: "Keep watching TV", ontap: "hideDialog"}
+                ]
             }
-        });
+        ],
+        showDialog: function(inSender) {
+            this.$.dialog.show();
+        },
+        hideDialog: function(inSender, inEvent) {
+            this.$.dialog.hide();
+        }
+    });
+```
 
 ## moon.ContextualPopup
 
@@ -130,17 +138,19 @@ modal container for content such as text, images, or buttons.  It extends
 inside a [moon.ContextualPopupDecorator](../../../index.html#/kind/moon.ContextualPopupDecorator),
 which couples the popup with an activating control.
 
-        {kind: "moon.ContextualPopupDecorator",
-            style:"position: absolute; left: 0px; top: 45%;", components: [
-                {content: "Wide"},
-                {kind: "moon.ContextualPopup", classes: "moon-6h moon-4v", components: [
-                    {kind: "moon.Scroller", classes: "enyo-fill", components:[
-                        {content: "testing 1"},
-                        {content: "testing 2"}
-                    ]}
+```javascript
+    {kind: "moon.ContextualPopupDecorator",
+        style: "position: absolute; left: 0px; top: 45%;", components: [
+            {content: "Wide"},
+            {kind: "moon.ContextualPopup", classes: "moon-6h moon-4v", components: [
+                {kind: "moon.Scroller", classes: "enyo-fill", components: [
+                    {content: "testing 1"},
+                    {content: "testing 2"}
                 ]}
-            ]
-        }
+            ]}
+        ]
+    }
+```
 
 ![_moon.ContextualPopup_](../../assets/contextual-popup-shown.png)
 
@@ -160,10 +170,12 @@ a decorator kind--in this case,
 control automatically displays on-screen help content when the user hovers over
 the decorator for a given period of time (500 ms, by default).
 
-        {kind: "moon.TooltipDecorator", style: "display:inline-block", components: [
-            {kind: "moon.Button", content: "Tooltip"},
-            {kind: "moon.Tooltip", content: "I'm a tooltip for a button."}
-        ]}
+```javascript
+    {kind: "moon.TooltipDecorator", style: "display:inline-block", components: [
+        {kind: "moon.Button", content: "Tooltip"},
+        {kind: "moon.Tooltip", content: "I'm a tooltip for a button."}
+    ]}
+```
 
 ![_moon.Tooltip_ (hidden)](../../assets/tooltip-hidden.png)
 

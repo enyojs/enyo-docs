@@ -23,16 +23,18 @@ other contexts besides lists; e.g., in menus.)
 [moon.Item](../../../index.html#/kind/moon.Item), the simplest list item kind,
 provides an item with a text label specified in its `content` property.
 
-        components: [
-            {kind: "moon.Divider", content: "Item Sample"},
-            {
-                components: [
-                    {kind: "moon.Item", content: "Item 1"},
-                    {kind: "moon.Item", content: "Item 2"},
-                    {kind: "moon.Item", content: "Item 3"}
-                ]
-            }
-        ]
+```javascript
+    components: [
+        {kind: "moon.Divider", content: "Item Sample"},
+        {
+            components: [
+                {kind: "moon.Item", content: "Item 1"},
+                {kind: "moon.Item", content: "Item 2"},
+                {kind: "moon.Item", content: "Item 3"}
+            ]
+        }
+    ]
+```
 
 ![_moon.Item_](../../assets/item.png)
 
@@ -42,17 +44,19 @@ provides an item with a text label specified in its `content` property.
 `moon.Item`, adding the `label` property, which serves as a label accompanying
 the content specified in the `text` property.
 
-        components: [
-            {kind: 'moon.Scroller', classes: "enyo-fill", components: [
-                {
-                    kind: "moon.LabeledTextItem",
-                    label: "South Park",
-                    text: "Follows the misadventures of four irreverent grade schoolers"
-                        + " "
-                        + "in the quiet, dysfunctional town of South Park, Colorado."
-                }
-            ]}
-        ]
+```javascript
+    components: [
+        {kind: 'moon.Scroller', classes: "enyo-fill", components: [
+            {
+                kind: "moon.LabeledTextItem",
+                label: "South Park",
+                text: "Follows the misadventures of four irreverent grade schoolers"
+                    + " "
+                    + "in the quiet, dysfunctional town of South Park, Colorado."
+            }
+        ]}
+    ]
+```
 
 ![_moon.LabeledTextItem_](../../assets/labeled-text-item.png)
 
@@ -65,16 +69,18 @@ Spotlight.
 [enyo.Image](../../../index.html#/kind/enyo.Image) with a `moon.LabeledTextItem`.
 By default, the image is positioned on the left side of the text.
 
-        components: [
-            {
-                kind: "moon.ImageItem",
-                source: "./assets/south_park.png",
-                label: "South Park",
-                text: "Follows the misadventures of four irreverent grade schoolers"
-                    + " "
-                    + "in the quiet, dysfunctional town of South Park, Colorado."
-            }
-        ]
+```javascript
+    components: [
+        {
+            kind: "moon.ImageItem",
+            source: "./assets/south_park.png",
+            label: "South Park",
+            text: "Follows the misadventures of four irreverent grade schoolers"
+                + " "
+                + "in the quiet, dysfunctional town of South Park, Colorado."
+        }
+    ]
+```
 
 ![_moon.ImageItem_](../../assets/image-item.png)
 
@@ -92,18 +98,20 @@ property (a boolean indicating whether the item is the currently selected item
 within the group) and the `onActivated` event (fired when the item is tapped).
 By default, when items are placed in a group, only one may be active at a given
 time; if a new item is activated, the previously active item (if there is one)
-is de-activated.
+is deactivated.
 
-        components: [
-            {kind: "moon.Divider", content: "Selectable Item Group"},
-            {kind: "Group", onActivate: "groupChanged", components: [
-                {kind: "moon.SelectableItem", content: "Group Option 1"},
-                {kind: "moon.SelectableItem", content: "Group Option 2"},
-                {kind: "moon.SelectableItem", disabled: true, content: "Disabled"},
-                {kind: "moon.SelectableItem", content: "Group Option 4"},
-                {kind: "moon.SelectableItem", content: "Group Option 5", selected: true}
-            ]}
-        ]
+```javascript
+    components: [
+        {kind: "moon.Divider", content: "Selectable Item Group"},
+        {kind: "Group", onActivate: "groupChanged", components: [
+            {kind: "moon.SelectableItem", content: "Group Option 1"},
+            {kind: "moon.SelectableItem", content: "Group Option 2"},
+            {kind: "moon.SelectableItem", disabled: true, content: "Disabled"},
+            {kind: "moon.SelectableItem", content: "Group Option 4"},
+            {kind: "moon.SelectableItem", content: "Group Option 5", selected: true}
+        ]}
+    ]
+```
 
 ![_Selectable Items_](../../assets/selectable-items.png)
 
@@ -134,9 +142,11 @@ label supports marquee behavior for long content.
 Dividers are commonly used as category headers (e.g., "A", "B", "C", etc.)
 within a list.
 
-        components: [
-            {kind: "moon.Divider", content: "Divider 1"}
-        ]
+```javascript
+    components: [
+        {kind: "moon.Divider", content: "Divider 1"}
+    ]
+```
 
 ![_moon.Divider_](../../assets/divider.png)
 

@@ -30,14 +30,16 @@ to use the [moon.CheckboxItem](../../../index.html#/kind/moon.CheckboxItem) kind
 which combines a checkbox with a text label, as in this example taken from the
 Enyo Sampler:
 
-        components: [
-            {classes: "checkbox-sample-wrapper", components: [
-                {kind: "moon.CheckboxItem", content: "Option 1", checked: true},
-                {kind: "moon.CheckboxItem", content: "Option 2"},
-                {kind: "moon.CheckboxItem", disabled: true, content: "Disabled"},
-                {kind: "moon.CheckboxItem", content: "Option 4", checked: true}
-            ]}
-        ]
+```javascript
+    components: [
+        {classes: "checkbox-sample-wrapper", components: [
+            {kind: "moon.CheckboxItem", content: "Option 1", checked: true},
+            {kind: "moon.CheckboxItem", content: "Option 2"},
+            {kind: "moon.CheckboxItem", disabled: true, content: "Disabled"},
+            {kind: "moon.CheckboxItem", content: "Option 4", checked: true}
+        ]}
+    ]
+```
 
 ![](../../assets/checkbox-items.png)
 
@@ -49,13 +51,15 @@ for use in form layouts.  Unlike `moon.CheckboxItem`, `moon.FormCheckbox` has a
 circular "tap target" area that is always visible, regardless of whether the
 checkbox is currently checked.
 
-        components: [
-            {kind: "moon.Divider", content: "FormCheckbox Items (Default)"},
-            {kind: "moon.FormCheckbox", content: "Option 1", checked: true,
-                onchange: "itemChanged"},
-            {kind: "moon.FormCheckbox", content: "Option 2", onchange: "itemChanged"},
-            {kind: "moon.FormCheckbox", disabled: true, content: "Disabled",
-                onchange: "itemChanged"}
-        ]
+```javascript
+    components: [
+        {kind: "moon.Divider", content: "FormCheckbox Items (Default)"},
+        {kind: "moon.FormCheckbox", content: "Option 1", checked: true,
+            onchange: "itemChanged"},
+        {kind: "moon.FormCheckbox", content: "Option 2", onchange: "itemChanged"},
+        {kind: "moon.FormCheckbox", disabled: true, content: "Disabled",
+            onchange: "itemChanged"}
+    ]
+```
 
 ![](../../assets/form-checkbox-items.png)
