@@ -18,9 +18,6 @@ module.exports = function (grunt) {
 		
 		cpy('prism.css', 'css/prism.css');
 
-		// copy conceptual docs into output directory
-		cpy('../docs', 'docs');
-
 		// for js includes, we specify and install specific versions via bower but we
 		// arbitrarily map the correct include file into the output directory (for now)
 		cpy('js/jquery/dist/jquery.min.js', 'js/jquery.min.js');
