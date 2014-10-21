@@ -35,39 +35,43 @@ functionality, along with a dose of Moonstone visual styling.
 When a `moon.Button` is tapped, it generates an `ontap` event; you may respond
 to the event by specifying a handler method, e.g.:
 
-        {kind: "moon.Button", content: "tap me", ontap: "buttonTapped"},
+```javascript
+    {kind: "moon.Button", content: "tap me", ontap: "buttonTapped"},
 
-        ...
+    ...
 
-        buttonTapped: function(inSender, inEvent) {
-            // respond to the tap event
-        }
+    buttonTapped: function(inSender, inEvent) {
+        // respond to the tap event
+    }
+```
 
 You may apply a caption to a button by wrapping it inside a
 [moon.CaptionDecorator](../../../index.html#/kind/moon.CaptionDecorator):
 
-        components: [
-            {name: 'scroller', kind: 'moon.Scroller', fit: true, touch: true, components: [
-                {classes: "moon-button-sample-wrapper", components: [
-                    {kind: "moon.CaptionDecorator", side: "top", content: "Pow", components: [
-                        {name: "Captioned Button A", kind: "moon.Button",
-                            content: "A", ontap: "buttonTapped"}
-                    ]},
-                    {kind: "moon.CaptionDecorator", side: "right", content: "Boom", components: [
-                        {name: "Captioned Button B", kind: "moon.Button",
-                            content: "B", ontap: "buttonTapped"}
-                    ]},
-                    {kind: "moon.CaptionDecorator", side: "bottom", content: "Crash", components: [
-                        {name: "Captioned Button C", kind: "moon.Button",
-                            content: "C", ontap: "buttonTapped"}
-                    ]},
-                    {kind: "moon.CaptionDecorator", side: "left", content: "Bang", components: [
-                        {name: "Captioned Button D", kind: "moon.Button",
-                            content: "D", ontap: "buttonTapped"}
-                    ]}
+```javascript
+    components: [
+        {name: 'scroller', kind: 'moon.Scroller', fit: true, touch: true, components: [
+            {classes: "moon-button-sample-wrapper", components: [
+                {kind: "moon.CaptionDecorator", side: "top", content: "Pow", components: [
+                    {name: "Captioned Button A", kind: "moon.Button",
+                        content: "A", ontap: "buttonTapped"}
+                ]},
+                {kind: "moon.CaptionDecorator", side: "right", content: "Boom", components: [
+                    {name: "Captioned Button B", kind: "moon.Button",
+                        content: "B", ontap: "buttonTapped"}
+                ]},
+                {kind: "moon.CaptionDecorator", side: "bottom", content: "Crash", components: [
+                    {name: "Captioned Button C", kind: "moon.Button",
+                        content: "C", ontap: "buttonTapped"}
+                ]},
+                {kind: "moon.CaptionDecorator", side: "left", content: "Bang", components: [
+                    {name: "Captioned Button D", kind: "moon.Button",
+                        content: "D", ontap: "buttonTapped"}
                 ]}
             ]}
-        ]
+        ]}
+    ]
+```
 
 ![_Captioned Buttons_](../../assets/buttons-captioned.png)
 
@@ -80,12 +84,14 @@ target) by setting `small: true` when declaring the button.
 [moon.Icon](../../../index.html#/kind/moon.Icon) kind, provides a button with an image
 inside.
 
-        components: [
-            {kind: "moon.IconButton", src: "assets/icon-list.png",
-                ontap: "buttonTapped"},
-            {kind: "moon.IconButton", src: "assets/icon-list.png",
-                    ontap: "buttonTapped", disabled: true}
-        ]
+```javascript
+    components: [
+        {kind: "moon.IconButton", src: "assets/icon-list.png",
+            ontap: "buttonTapped"},
+        {kind: "moon.IconButton", src: "assets/icon-list.png",
+            ontap: "buttonTapped", disabled: true}
+    ]
+```
 
 ![_moon.IconButton_](../../assets/icon-buttons.png)
 

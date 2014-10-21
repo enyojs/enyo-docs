@@ -41,7 +41,9 @@ We'll start by cloning the `bootplate-moonstone` project template from GitHub.
 While this step is also covered in [First Steps with Enyo](first-steps.html),
 there's no harm in repeating the essential Git command:
 
-        git clone --recursive --branch 2.4.0 https://github.com/enyojs/bootplate-moonstone.git <myapp>
+```
+    git clone --recursive --branch 2.4.0 https://github.com/enyojs/bootplate-moonstone.git <myapp>
+```
 
 ## 3. Customize app boilerplate
 
@@ -81,7 +83,7 @@ to `moon.Panels`.
 
 **Edit file: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.MainView",
         classes: "moon enyo-fit",
@@ -142,7 +144,7 @@ in which the user searches for photos and browses the results.
 
 **Add to file: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         kind: "moon.Panel",
@@ -210,7 +212,7 @@ that we declared in Step 4.
 
 **Edit file: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.MainView",
         classes: "moon enyo-fit",
@@ -231,7 +233,7 @@ to the search panel.  We'll use this to display thumbnails of the search results
 
 **Edit file: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",	
         kind: "moon.Panel",
@@ -317,7 +319,7 @@ control, which we'll call "photos":
 
 **Edit file: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         ...
@@ -334,7 +336,7 @@ property of our DataGridList:
 
 **Edit file: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         ...
@@ -353,7 +355,7 @@ assumes each model will have a schema that includes properties named `title` and
 
 **Edit file: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         ...
@@ -375,7 +377,7 @@ from Flickr to use.
 
 **Edit file: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         ...
@@ -396,7 +398,7 @@ The final `flickr.SearchPanel` implementation for this step should look like thi
 
 **File: source/views/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         kind: "moon.Panel",
@@ -485,7 +487,7 @@ source directly:
 
 **Add to file: source/data/data.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.Source",
         kind: "enyo.JsonpSource",
@@ -505,7 +507,7 @@ hash, which will be expanded into query string parameters on the Jsonp request.
 
 **Edit file: source/data/data.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.Source",
         kind: "enyo.JsonpSource",
@@ -525,7 +527,7 @@ by models and collections:
 
 **Add to bottom of file: source/data/data.js**
 
-```
+```javascript
     enyo.store.addSources({flickr: "flickr.Source"});
 ```
 
@@ -547,7 +549,7 @@ We'll start with a basic subkind, and tell it to use the `flickr.Source` by defa
 
 **Add to file: source/data/data.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchCollection",
         kind: "enyo.Collection",
@@ -565,7 +567,7 @@ the value of `searchText` is altered.
 
 **Edit file: source/data/data.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchCollection",
         kind: "enyo.Collection",
@@ -590,7 +592,7 @@ photos.  There are a number of optional parameters we could specify as well; for
 this sample, we'll specify a `sort` value (so that we get interesting photos),
 and a limit to the number of results.
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchCollection",
         kind: "enyo.Collection",
@@ -621,7 +623,7 @@ for these parameters and add them to the `params` that are passed along:
 
 **Edit file: source/data/data.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.Source",
         kind: "enyo.JsonpSource",
@@ -700,7 +702,7 @@ array that we actually want to load into the collection--which, in this case, is
 
 **Edit file: source/data/data.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchCollection",
         ...
@@ -769,7 +771,7 @@ the model data:
 
 **Edit file: source/data/data.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.ImageModel",
         kind: "enyo.Model",
@@ -822,7 +824,7 @@ the `model` property on the collection:
 
 **Edit file: source/data/data.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchCollection",
         ...
@@ -852,7 +854,7 @@ set the grid list's collection type to be our new `flickr.SearchCollection`:
 
 **Edit file: source/view/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         ...
@@ -868,7 +870,7 @@ the search collection's `searchText` property:
 
 **Edit file: source/view/views.js**
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         ...
@@ -903,7 +905,7 @@ returning their data.
 We can place the spinner in the header's "client" area.  This is exposed on
 `moon.Panel` via the `headerComponents` array:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         ...
@@ -917,7 +919,7 @@ We can place the spinner in the header's "client" area.  This is exposed on
 `enyo.Collection` provides a handy `isFetching` property we can bind the
 spinner's `showing` property to:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         ...
@@ -950,7 +952,7 @@ place a [moon.Image](../../index.html#/kind/moon.Image) in the `components` bloc
 the panel header's `titleBelow` and `subTitleBelow` properties to show the other
 data.)
 
-```
+```javascript
     enyo.kind({
         name: "flickr.DetailPanel",
         kind: "moon.Panel",
@@ -984,7 +986,7 @@ we'll set a `model` property on the panel, from which we'll access the image
 URL. So let's go ahead and set up bindings from the model's `title` and
 `original` URL attribute to the view.  
 
-```
+```javascript
     enyo.kind({
         name: "flickr.DetailPanel",
         kind: "moon.Panel",
@@ -1020,7 +1022,7 @@ First, we'll add a handler for the new custom `onRequestPushPanel` event to
 `flickr.MainView`; this handler will call the `pushPanel` API on our
 `moon.Panels` instance:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.MainView",
         ...
@@ -1043,7 +1045,7 @@ child of `flickr.MainView` may bubble an `onRequestPushPanel` event with a
 First, let's go back to the `flickr.SearchPanel` and add a tap handler to the
 grid list items that will use this new event API:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         components: [
@@ -1075,7 +1077,7 @@ Next, we declare that the `flickr.SearchPanel` will bubble the
 `onRequestPushPanel` event, and then implement the `itemSelected()` handler to
 bubble the event, passing the panel definition in the event payload:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.SearchPanel",
         events: {
@@ -1136,7 +1138,7 @@ and then override the `fetch()` function on `enyo.Model` to pass `flickr.Source`
 a `params` hash with the information needed to fetch detailed image models
 (similar to what we did in `flickr.SearchCollection`):
 
-```
+```javascript
     enyo.kind({
         name: "flickr.ImageModel",
         defaultSource: "flickr",
@@ -1202,7 +1204,7 @@ data.  Furthermore, `enyo.Model` currently has a limitation that only top-level
 properties are bindable.  Since we're interested in the `owner.realname` and
 `dates.taken` fields, we can deal with those in the `parse()` function also:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.ImageModel",
         ...
@@ -1261,7 +1263,7 @@ implement this on our panel instance, and call `this.model.fetch()` when we are
 moving _to_ the detail panel (i.e., when the "to" index is greater than the
 "from" index):
 
-```
+```javascript
     enyo.kind({
         name: "flickr.DetailPanel",
         ...
@@ -1278,7 +1280,7 @@ Now all we need to do is add some bindings to get our detailed data properties
 these fields into the panel header's `titleBelow` and `subTitleBelow`
 properties:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.DetailPanel",
         ...
@@ -1295,7 +1297,7 @@ We can make it a bit more interesting if we add transform functions to the
 bindngs, to format the raw values from the model into more user-friendly
 strings:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.DetailPanel",
         ...
@@ -1331,7 +1333,7 @@ provides a basic image view with scroll-to-zoom and drag-to-pan capability.
 We'll place an ImageView in our `flickr.MainView`, _before_ the panels instance,
 using the `enyo-fit` class to fit it to the full bounds of the screen:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.MainView",
         components: [
@@ -1345,7 +1347,7 @@ Next, let's add another custom event handler to the main view to allow the
 `flickr.DetailPanel` (or any other panel we may add in the future) to request
 that a new image be loaded into the image viewer:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.MainView",
         handlers: {
@@ -1371,7 +1373,7 @@ Now we need to bubble this new event from our detail page.  Let's add a "View
 Fullscreen" button to the panel header's client area, along with a tap handler
 that bubbles the `onRequestFullScreen` event, passing the model mentioned above:
 
-```
+```javascript
     enyo.kind({
         name: "flickr.DetailPanel",
         ...
