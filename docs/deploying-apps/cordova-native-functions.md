@@ -4,39 +4,40 @@ In this document, we examine the relationship between Enyo and Cordova (a.k.a.
 "PhoneGap"), making reference to a simple app that consists of the following
 code inside an `index.html` file:
 
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta name="viewport" content="width=device-width, height=device-height,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height,
+            initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 
-            <title>Enyo and Cordova</title>
+        <title>Enyo and Cordova</title>
 
-            <!-- Cordova (i.e., PhoneGap) -->
-            <script src="cordova-1.8.1.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Cordova (i.e., PhoneGap) -->
+        <script src="cordova-1.8.1.js" type="text/javascript" charset="utf-8"></script>
 
-            <!-- Enyo -->
-            <script src="enyo/enyo.js" type="text/javascript"></script>
-        </head>
-        <body>
-            <script>
-                // Application kind
-                enyo.kind({
-                    name: "App",
-                    components: [
-                        {kind: "Signals", ondeviceready: "deviceReady"},
-                        {content: "Hello, World!"}
-                    ],
-                    deviceReady: function() {
-                        // respond to deviceready event
-                    }
-                });
-
-                new App().renderInto(document.body);
-            </script>
-        </body>
-        </html>
+        <!-- Enyo -->
+        <script src="enyo/enyo.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <script>
+            // Application kind
+            enyo.kind({
+                name: "App",
+                components: [
+                    {kind: "Signals", ondeviceready: "deviceReady"},
+                    {content: "Hello, World!"}
+                ],
+                deviceReady: function() {
+                    // respond to deviceready event
+                }
+            });
+            new App().renderInto(document.body);
+        </script>
+    </body>
+    </html>
+```
 
 ## Enyo and Cordova
 
@@ -75,16 +76,18 @@ The following Cordova events are supported:
 In order to respond to one of these events, we add an `enyo.Signals` instance to
 our application, e.g.:
 
-        enyo.kind({
-            name: "App",
-            components: [
-                {kind: "Signals", ondeviceready: "deviceReady"},
-                {content: "Hello, World!"}
-            ],
-            deviceReady: function() {
-                // respond to deviceready event
-            }
-        });
+```javascript
+    enyo.kind({
+        name: "App",
+        components: [
+            {kind: "Signals", ondeviceready: "deviceReady"},
+            {content: "Hello, World!"}
+        ],
+        deviceReady: function() {
+            // respond to deviceready event
+        }
+    });
+```
 
 **Additional Reading**
 

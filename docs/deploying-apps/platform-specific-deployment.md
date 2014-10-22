@@ -17,7 +17,7 @@ are now ready to create a final product for deployment to your platform of choic
 
 3. Add the following `<meta>` tag to `index.html` for proper display on device:
 
-    ```
+    ```html
         <meta name="viewport"; content="width=device-width, initial-scale=1.0,
             maximum-scale=1.0, user-scalable=no" />
     ```
@@ -40,7 +40,7 @@ follow the directions in [Making Use of Cordova's Native Functions][native-funct
 
 3. Add the following `<meta>` tag to `index.html` for proper display on device:
 
-    ```
+    ```html
         <meta name="viewport"; content="width=device-width, initial-scale=1.0,
             maximum-scale=1.0, user-scalable=no" />
     ```
@@ -63,7 +63,7 @@ follow the directions in [Making Use of Cordova's Native Functions][native-funct
 
 3.	Add the following viewport rule to `css/index.css` for proper display on device:
 
-    ```
+    ```css
         @-ms-viewport {
             width: device-width;
             height: device-height;
@@ -101,7 +101,7 @@ If, for example, you want to use the
 first modify the `<head>` section of Bootplate's `index.html` file by inserting
 the following line to load Cordova before Enyo:
 
-```
+```html
     <script src="cordova-2.7.0.js"></script>
 ```
 
@@ -109,7 +109,7 @@ Enyo supports Cordova events out of the box; you may subscribe to them using
 `enyo.Signals`.  To listen for Cordova's startup event (`onDeviceReady`), add
 the following to your main app kind's `components` block:
 
-```
+```javascript
     {kind: "Signals", ondeviceready: "deviceready"}
 ```
 
@@ -133,7 +133,7 @@ webOS Web site](http://www.openwebosproject.org).
 
 1. Create a `manifest.json` file in your application's root directory, e.g.:
 
-    ```
+    ```json
         {
             "name": "Testplate",
             "version": "1.0",

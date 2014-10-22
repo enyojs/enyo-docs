@@ -44,7 +44,7 @@ Build your Enyo application using the Bootplate template, as described
 * Replace your project's `index.html` file with the `index.html` from your
     Bootplate app, or else edit it to look like the following:
 
-    ```
+    ```html
         <!DOCTYPE html>
         <html>
         <head>

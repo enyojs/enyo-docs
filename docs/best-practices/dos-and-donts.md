@@ -20,13 +20,13 @@ mind when writing apps using Enyo and Moonstone:
 
     * Avoid using `$` more than once on a given line:
 
-        ```
+        ```javascript
             this.$.child.$.childsChild    // bad idea
         ```
 
     * Don't reach into the parent's other components:
 
-        ```
+        ```javascript
             this.parent.$.parentsChild    // also a bad idea
         ```
 
@@ -98,7 +98,7 @@ mind when writing apps using Enyo and Moonstone:
     framework supports a number of shortcuts for commonly-used locations (such
     as `$tv-common` in the following example):
 
-    ```
+    ```javascript
         this.$.channelSource.setSrc("$tv-common/assets/banner/banner_input_icon_tv.png");
     ```
 
@@ -139,13 +139,12 @@ creating shared code:
 
 * **Remember to include inline API documentation.**
 
-    If you create a new kind, be sure to include a summary the top, along with a
-    description of the kind and a brief code sample.  In addition, add inline
+    All Enyo APIs are documented with comments in JSDoc format.  If you create a
+    new kind, be sure to include a summary the top, including a description of
+    the kind and a brief code sample (if appropriate).  In addition, add inline
     comments for all published properties, public events (including event
-    properties), and public methods. 
-
-    Also, check that the pragmas `//* @protected` and `//* @public` are
-    correctly placed. 
+    properties), and public methods.  When commenting your code, use the
+    existing comments as a guide.
 
     For more details, see [Documenting Code for the API
     Viewer](api-tool.html#documenting-code-for-the-api-viewer).
