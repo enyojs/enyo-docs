@@ -51,8 +51,7 @@ Welcome!  Resources are available in the following areas:
 
 * Enyo and webOS
 
-    * [Using webOS features](building-apps/using-webos-features.html)
-    * [Back Key Handling in webOS](building-apps/back-key-handling.html)
+    * [Using webOS Features](building-apps/using-webos-features.html)
 
 * Testing and Debugging
 

@@ -33,7 +33,6 @@ building-apps/localization.md
 building-apps/spotlight.md
 building-apps/testing-and-debugging/browser-based-debugging.md
 building-apps/using-webos-features.md
-building-apps/back-key-handling.md
 deploying-apps/cordova-native-functions.md
 deploying-apps/enyo-apps-on-windows-8.md
 deploying-apps/platform-specific-deployment.md
