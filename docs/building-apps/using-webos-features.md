@@ -27,16 +27,18 @@ In addition, [Enyo signals](../../index.html#/kind/enyo.Signals) are set up for
 all [Cordova-based events](http://docs.phonegap.com/en/2.7.0/index.html) for
 easy use within Enyo applications. For example:
 
-        enyo.kind({
-            name: "App",
-            components: [
-                {kind: "Signals", ondeviceready: "deviceready"},
-                ...
-            ],
-            deviceready: function(inSender, inEvent) {
-                // After deviceready, Cordova is loaded and ready to be used
-            }
-        });
+```javascript
+    enyo.kind({
+        name: "App",
+        components: [
+            {kind: "Signals", ondeviceready: "deviceready"},
+            ...
+        ],
+        deviceready: function(inSender, inEvent) {
+            // After deviceready, Cordova is loaded and ready to be used
+        }
+    });
+```
 
 ### TV-Specific Plugins
 
@@ -71,32 +73,36 @@ viewed as being analogous to `enyo.Ajax` and `enyo.WebService`, respectively.
 ServiceRequest is based on `enyo.Async`; the constructor takes the service name,
 method, parameters, and an optional subscription flag.
 
-        var request = new enyo.ServiceRequest({
-            service: "luna://com.palm.connectionmanager",
-            method: "getstatus"
-        });
-        request.response(this, function(inSender, inResponse) {
-            // service request succeeded with returned data within inResponse
-        });
-        request.go({});
+```javascript
+    var request = new enyo.ServiceRequest({
+        service: "luna://com.palm.connectionmanager",
+        method: "getstatus"
+    });
+    request.response(this, function(inSender, inResponse) {
+        // service request succeeded with returned data within inResponse
+    });
+    request.go({});
+```
 
 Building upon this, LunaService provides a reusable component for interacting
 with webOS services.
 
-        enyo.kind({
-            name: "App",
-            components: [
-                {name:"netstat", kind: "LunaService", service: "luna://com.palm.connectionmanager",
-                    method: "getstatus", onResponse:"serviceResponse"},
-                ...
-            ],
-            getConnectionStatus: function() {
-                var request = this.$.netstat.send({});
-            },
-            serviceResponse: function(inSender, inResponse) {
-                // service request succeeded with returned data within inResponse
-            }
-        });
+```javascript
+    enyo.kind({
+        name: "App",
+        components: [
+            {name:"netstat", kind: "LunaService", service: "luna://com.palm.connectionmanager",
+                method: "getstatus", onResponse:"serviceResponse"},
+            ...
+        ],
+        getConnectionStatus: function() {
+            var request = this.$.netstat.send({});
+        },
+        serviceResponse: function(inSender, inResponse) {
+            // service request succeeded with returned data within inResponse
+        }
+    });
+```
 
 ### webOS.js
 

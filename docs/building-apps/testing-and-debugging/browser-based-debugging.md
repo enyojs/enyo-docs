@@ -140,10 +140,12 @@ loading the minimized files by editing your host HTML file.  Be sure to load
 your application's source folder.  For example, the `<head>` section of the host
 HTML file might contain the following:
 
-        <!-- enyo (debug) -->
-        <script src="enyo/enyo.js"></script>
-        <!-- application (debug) -->
-        <script src="source/package.js" type="text/javascript"></script>
+```html
+    <!-- enyo (debug) -->
+    <script src="enyo/enyo.js"></script>
+    <!-- application (debug) -->
+    <script src="source/package.js" type="text/javascript"></script>
+```
 
 ## Basic Tips
 
@@ -207,11 +209,11 @@ time and effort of manually logging that basic data.
     of the following ways:
 
     * By specifying an explicit CSS height
-    * By applying the `"enyo-fit"` class
-    * By setting `"fit: true"` on the object in a
+    * By applying the `'enyo-fit'` class
+    * By setting `'fit: true'` on the object in a
         [Fittable layout](../../../index.html#/kind/enyo.FittableLayout)
     * By being placed in an [enyo.Panels](../../../index.html#/kind/enyo.Panels)
         whose arranger fits the panel height
 
-*	A Fittable may only have `"fit: true"` set for one component; doing so for
+*	A Fittable may only have `'fit: true'` set for one component; doing so for
     multiple components will result in bad layout.

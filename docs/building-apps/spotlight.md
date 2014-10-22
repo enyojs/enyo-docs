@@ -340,7 +340,7 @@ Simply add the appropriate property to your control, and if the corresponding
 event is allowed to bubble, Spotlight will move focus to the control whose name
 is specified in the property's value:
 
-```
+```javascript
     {name: 'control1', spotlight: true, defaultSpotlightRight: 'control2'},
     {name: 'control2', spotlight: true, defaultSpotlightRight: 'control1'}
 ```
