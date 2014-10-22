@@ -26,28 +26,30 @@ Three rendering modes are supported: `fixedSize`, `fluidWidth`, and
 
 Here's an example of how a GridList may be used:
 
-        enyo.kind( { 
-            name: "App",
-            components: [
-                { name: "gridList", kind: "enyo.GridList", onSizeupItem: "sizeupItem",
-                    onSetupItem: "setupItem", itemMinWidth: 160, itemSpacing: 2,
-                    components: [ {name: "img", kind: "enyo.Image"} ] },
-            ],
-            ... 
-            //array of all item data 
-            _data: [],      //example: [{width: 100, height: 100, source: "http://www.flickr.com/myimage.jpg"},....]
-            sizeupItem: function(inSender, inEvent) {
-                var item = this._data[inEvent.index];
-                inSender.setItemWidth(item.width);
-                inSender.setItemHeight(item.height);
-            },
-            setupItem: function(inSender, inEvent) {
-                var item = this._data[inEvent.index];
-                this.$.img.setSrc(item.source);
-                this.$.img.addStyles("width:100%; height: auto;");
-            }
-            ...
-        });
+```javascript
+    enyo.kind( { 
+        name: "App",
+        components: [
+            { name: "gridList", kind: "enyo.GridList", onSizeupItem: "sizeupItem",
+                onSetupItem: "setupItem", itemMinWidth: 160, itemSpacing: 2,
+                components: [ {name: "img", kind: "enyo.Image"} ] },
+        ],
+        ... 
+        //array of all item data 
+        _data: [],      //example: [{width: 100, height: 100, source: "http://www.flickr.com/myimage.jpg"},....]
+        sizeupItem: function(inSender, inEvent) {
+            var item = this._data[inEvent.index];
+            inSender.setItemWidth(item.width);
+            inSender.setItemHeight(item.height);
+        },
+        setupItem: function(inSender, inEvent) {
+            var item = this._data[inEvent.index];
+            this.$.img.setSrc(item.source);
+            this.$.img.addStyles("width:100%; height: auto;");
+        }
+        ...
+    });
+```
  
 ## moon.GridList
 
@@ -55,36 +57,38 @@ Here's an example of how a GridList may be used:
 `enyo.GridList`, adding Moonstone-specific configuration, styling, decorators
 and Spotlight/focus-state management.
 
-        enyo.kind({
-            name: "moon.sample.GridListSample",
-            classes: "moon enyo-unselectable enyo-fit",
-            components: [
-                {
-                    name: "gridlist",
-                    kind: "moon.GridList",
-                    classes: "enyo-fill",
-                    onSetupItem: "setupItem",
-                    toggleSelected: true,
-                    itemWidth: 200,
-                    itemHeight: 200,
-                    itemSpacing: 50,
-                    components: [
-                        {name: "item", kind: "moon.GridListImageItem"}
-                    ]
-                }
-            ],
-            create: function() {
-                this.inherited(arguments);
-                this.$.gridlist.show(50);
-            },
-            setupItem: function(inSender, inEvent) {
-                var i = inEvent.index;
-                this.$.item.setSource("./assets/default-music.png");
-                this.$.item.setCaption("Item " + i);
-                this.$.item.setSubCaption("Sub Caption");
-                this.$.item.setSelected(this.$.gridlist.isSelected(i));
+```javascript
+    enyo.kind({
+        name: "moon.sample.GridListSample",
+        classes: "moon enyo-unselectable enyo-fit",
+        components: [
+            {
+                name: "gridlist",
+                kind: "moon.GridList",
+                classes: "enyo-fill",
+                onSetupItem: "setupItem",
+                toggleSelected: true,
+                itemWidth: 200,
+                itemHeight: 200,
+                itemSpacing: 50,
+                components: [
+                    {name: "item", kind: "moon.GridListImageItem"}
+                ]
             }
-        });
+        ],
+        create: function() {
+            this.inherited(arguments);
+            this.$.gridlist.show(50);
+        },
+        setupItem: function(inSender, inEvent) {
+            var i = inEvent.index;
+            this.$.item.setSource("./assets/default-music.png");
+            this.$.item.setCaption("Item " + i);
+            this.$.item.setSubCaption("Sub Caption");
+            this.$.item.setSelected(this.$.gridlist.isSelected(i));
+        }
+    });
+```
 
 ## enyo.GridListImageItem
 

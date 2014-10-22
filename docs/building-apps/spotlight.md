@@ -34,8 +34,10 @@ your `package.js` file.  Note that when you use the `bootplate-moonstone` app
 template, this is already done for you, since `source/package.js` includes the
 `spotlight` library:
 
-        // Focus support library for TV applications
-        "$lib/spotlight",
+```javascript
+    // Focus support library for TV applications
+    "$lib/spotlight",
+```
 
 <a name="2"></a>
 
@@ -48,7 +50,9 @@ whenever suitable input is received--i.e., it switches to pointer mode on
 
 The Spotlight API also provides a way to make the switch explicitly:
 
-        enyo.Spotlight.setPointerMode(<Boolean>);
+```javascript
+    enyo.Spotlight.setPointerMode(<Boolean>);
+```
 
 <a name="3"></a>
 
@@ -62,8 +66,10 @@ using `.<kindClass>.spotlight` selectors.
 In order to make a control focusable (or "spottable") with Spotlight, simply
 set its `spotlight` property to `true`, like so:
 
-        {name: 'mybutton', tag: 'button', spotlight: true}
-	
+```javascript
+    {name: 'mybutton', tag: 'button', spotlight: true}
+```
+
 When the application loads, Spotlight searches for a control with the name
 specified in its `defaultControl` property; if `defaultControl` is not
 specified, Spotlight assigns focus to the first available spottable control.
@@ -99,11 +105,13 @@ question has never been focused, it passes focus to its first spottable child.
 
 To define a container, set a control's `spotlight` property to `"container"`:
 
-        {
-            name: 'mycontainer',
-            spotlight: 'container',
-            components: [<A list of controls with `spotlight:true`>]
-        }
+```javascript
+    {
+        name: 'mycontainer',
+        spotlight: 'container',
+        components: [<A list of controls with `spotlight:true`>]
+    }
+```
 
 In a way, containers may be thought of as the branches--and spottable controls
 as the leaves--of the Spotlight navigation tree.
@@ -199,9 +207,11 @@ For such cases, we have included an "Allow DOM Default" feature.  The events
 `onSpotlightDown` and `onSpotlightSelect` pass their handlers an event object
 with an added `allowDomDefault()` method:
 
-        onSpotlightKeyDown: function(oSender, oEvent) {
-            oEvent.allowDomDefault();
-        }
+```javascript
+    onSpotlightKeyDown: function(oSender, oEvent) {
+        oEvent.allowDomDefault();
+    }
+```
 
 In the above handler, if the Spotlight event is allowed to propagate, it will
 allow the original DOM `keydown` to trigger default browser behavior. (See
@@ -265,8 +275,10 @@ Spotlight Accelerator may be configured via its array property,
 `enyo.Spotlight.Accelerator.frequency`.  The default configuration is as
 follows:
 
-        //* Firing configuration. At n-th second use every frequency[n] subsequent keydown event
-        frequency : [3, 3, 3, 2, 2, 2, 1], ...
+```javascript
+    //* Firing configuration. At n-th second use every frequency[n] subsequent keydown event
+    frequency : [3, 3, 3, 2, 2, 2, 1], ...
+```
 
 This tells the Accelerator to do the following:
 
@@ -328,8 +340,10 @@ Simply add the appropriate property to your control, and if the corresponding
 event is allowed to bubble, Spotlight will move focus to the control whose name
 is specified in the property's value:
 
-        {name: 'control1', spotlight: true, defaultSpotlightRight: 'control2'},
-        {name: 'control2', spotlight: true, defaultSpotlightRight: 'control1'}
+```
+    {name: 'control1', spotlight: true, defaultSpotlightRight: 'control2'},
+    {name: 'control2', spotlight: true, defaultSpotlightRight: 'control1'}
+```
 
 In this example, focus will pass from one control to the other each time the
 right arrow button is pressed.

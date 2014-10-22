@@ -22,21 +22,23 @@ disable the sliding animation.
 
 Here's a kind that implements a simple vertically-oriented drawer:
 
-        enyo.kind({
-            name: "VDrawer",
-            components: [
-                {kind: "FittableRows", classes: "outer-box", components: [
-                    {content: "Activate Vertical", classes: "inner-box inner-box-v", ontap: "activateDrawer"},
-                    {name: "drawer", kind: "enyo.Drawer", open: false, components: [
-                        {content: "Vertical Drawer<br>Vertical Drawer</br>Vertical Drawer",
-                            classes: "inner-box inner-box-v", allowHtml: true}
-                    ]}
+```javascript
+    enyo.kind({
+        name: "VDrawer",
+        components: [
+            {kind: "FittableRows", classes: "outer-box", components: [
+                {content: "Activate Vertical", classes: "inner-box inner-box-v", ontap: "activateDrawer"},
+                {name: "drawer", kind: "enyo.Drawer", open: false, components: [
+                    {content: "Vertical Drawer<br>Vertical Drawer</br>Vertical Drawer",
+                        classes: "inner-box inner-box-v", allowHtml: true}
                 ]}
-            ],
-            activateDrawer: function(inSender, inEvent) {
-                this.$.drawer.setOpen(!this.$.drawer.open);
-            },
-        });
+            ]}
+        ],
+        activateDrawer: function(inSender, inEvent) {
+            this.$.drawer.setOpen(!this.$.drawer.open);
+        },
+    });
+```
 
 Because we've set `"open: false"` on the drawer, it starts out in the closed
 state when this view is loaded.
@@ -54,25 +56,27 @@ method toggles the `open` state (and visibility).
 
 The following kind implements a simple horizontally-oriented drawer:
 
-        enyo.kind({
-            name: "HDrawer",
-            components: [
-                {kind: "FittableColumns", ontap: "activateColumnsDrawer", classes: "outer-box",
-                    components: [
-                        {content: "Activate Horizontal", classes: "inner-box inner-box-h"},
-                        {name: "columnsDrawer", orient: "h", kind: "enyo.Drawer", fit: true, open: false,
-                            components: [
-                                {content: "Horizontal Drawer Horizontal Drawer",
-                                    classes: "inner-box inner-box-h"}
-                            ]
-                        }
-                    ]
-                }
-            ],
-            activateColumnsDrawer: function(inSender, inEvent) {
-                this.$.columnsDrawer.setOpen(!this.$.columnsDrawer.open);
+```javascript
+    enyo.kind({
+        name: "HDrawer",
+        components: [
+            {kind: "FittableColumns", ontap: "activateColumnsDrawer", classes: "outer-box",
+                components: [
+                    {content: "Activate Horizontal", classes: "inner-box inner-box-h"},
+                    {name: "columnsDrawer", orient: "h", kind: "enyo.Drawer", fit: true, open: false,
+                        components: [
+                            {content: "Horizontal Drawer Horizontal Drawer",
+                                classes: "inner-box inner-box-h"}
+                        ]
+                    }
+                ]
             }
-        });
+        ],
+        activateColumnsDrawer: function(inSender, inEvent) {
+            this.$.columnsDrawer.setOpen(!this.$.columnsDrawer.open);
+        }
+    });
+```
 
 As in the previous example, we've set `"open: false"`, so the drawer first
 appears in its closed state.
@@ -95,31 +99,33 @@ assumes the natural width of its content:
 
 The examples in this document make use of the following CSS styles:
 
-        .outer-box {
-            border: 2px solid orange;
-            padding: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            margin-top: 3px;
-            margin-bottom: 3px;
-        }
+```css
+    .outer-box {
+        border: 2px solid orange;
+        padding: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
 
-        .inner-box {
-            border: 2px solid lightblue;
-            padding: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-        }
+    .inner-box {
+        border: 2px solid lightblue;
+        padding: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 
-        .inner-box-v {
-            margin-top: 2px;
-            margin-bottom: 2px;
-        }
+    .inner-box-v {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
 
-        .inner-box-h {
-            margin-left: 2px;
-            margin-right: 2px;
-        }
+    .inner-box-h {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+```
 
 Note that there are slight differences in how margins are handled, depending on
 the orientation of the drawer.

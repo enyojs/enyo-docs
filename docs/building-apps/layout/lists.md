@@ -55,18 +55,20 @@ The `count` property specifies the number of times the item controls are
 repeated; for each repetition, the `onSetupItem` event is fired.  You may handle
 this event to customize the settings for individual rows, e.g.:
 
-        {kind: "Repeater", count: 2, onSetupItem: "setImageSource", components: [
-            {kind: "Image"}
-        ]},
+```javascript
+    {kind: "Repeater", count: 2, onSetupItem: "setImageSource", components: [
+        {kind: "Image"}
+    ]},
 
-        ...
+    ...
 
-        setImageSource: function(inSender, inEvent) {
-            var index = inEvent.index;
-            var item = inEvent.item;
-            item.$.image.setSrc(this.imageSources[index]);
-            return true;
-        }
+    setImageSource: function(inSender, inEvent) {
+        var index = inEvent.index;
+        var item = inEvent.item;
+        item.$.image.setSrc(this.imageSources[index]);
+        return true;
+    }
+```
 
 Be sure to return `true` from your `onSetupItem` handler to prevent other event
 handlers further up the tree from trying to modify your item control.
@@ -100,27 +102,31 @@ This set of controls will be rendered for each row.	 You may customize the row
 rendering by handling the `onSetupItem` event.  For example, given the following
 list...
 
-        components: [
-            {kind: "List", fit: true, count: 100, onSetupItem: "setupItem", components: [
-                {classes: "item", ontap: "itemTap", components: [
-                    {name: "name"},
-                    {name: "index", style: "float: right;"}
-                ]}
+```javascript
+    components: [
+        {kind: "List", fit: true, count: 100, onSetupItem: "setupItem", components: [
+            {classes: "item", ontap: "itemTap", components: [
+                {name: "name"},
+                {name: "index", style: "float: right;"}
             ]}
-        ]
+        ]}
+    ]
+```
 
 ...one might write event handlers like so:
 
-        setupItem: function(inSender, inEvent) {
-            // given some available data.
-            var data = this.data[inEvent.index];
-            // setup the controls for this item.
-            this.$.name.setContent(data.name);
-            this.$.index.setContent(inEvent.index);
-        },
-        itemTap: function(inSender, inEvent) {
-            alert("You tapped on row: " + inEvent.index);
-        }
+```javascript
+    setupItem: function(inSender, inEvent) {
+        // given some available data.
+        var data = this.data[inEvent.index];
+        // setup the controls for this item.
+        this.$.name.setContent(data.name);
+        this.$.index.setContent(inEvent.index);
+    },
+    itemTap: function(inSender, inEvent) {
+        alert("You tapped on row: " + inEvent.index);
+    }
+```
 
 As this example illustrates, the identity of the row from which the event
 originated is available to us in the event's `index` property (i.e.,

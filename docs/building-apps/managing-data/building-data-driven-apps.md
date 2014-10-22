@@ -57,7 +57,7 @@ property being observed changes.  By convention, Enyo automatically provides
 change observers for published properties in the form of `<property>Changed()`
 functions.  For example:
 
-```
+```javascript
     enyo.kind({
         name: "MyControl",
         published: {
@@ -71,7 +71,7 @@ functions.  For example:
 
 In this example, `fooChanged()` will be called when the `foo` setter is called:
 
-```
+```javascript
     tapHandler: function() {
         this.set("foo", "bar");      // Causes fooChanged() to be called
     }
@@ -80,7 +80,7 @@ In this example, `fooChanged()` will be called when the `foo` setter is called:
 You may declare your own property change observers by adding entries to your
 kind's `observers` block:
 
-```
+```javascript
     enyo.kind({
         name: "MyControl",
         published: {
@@ -120,7 +120,7 @@ binding will automatically keep the content of the label (`label.content`) in
 sync with the value of the slider (`slider.value`) as the user drags the slider
 knob.
 
-```
+```javascript
     enyo.kind({
         name: "MyValueSlider",
         components: [
@@ -140,7 +140,7 @@ caret (`^`), the path is relative to the global scope.
 By default, bindings are one-way, from the source to the target.  However,
 a binding may be specified as "two-way" by setting the `oneWay` flag to `false`:
 
-```
+```javascript
     enyo.kind({
         name: "MyValueSlider",
         published: {
@@ -169,7 +169,7 @@ An optional `transform` function may be provided for a binding to transform the
 value as it passes from the source to the target (and vice-versa, for two-way
 bindings):
 
-```
+```javascript
     enyo.kind({
         name: "MyValueSlider",
         components: [
@@ -188,7 +188,7 @@ If necessary, a bi-directional transform may be provided for a two-way binding;
 check the second argument to the `transform` function to determine the direction
 in which the binding is firing: 
 
-```
+```javascript
     {from: ".$.slider.value", to: ".$.input.value", oneWay:false, transform: function(val, dir) {
         if (dir == "source") {
             return (val * 100) + "%";
@@ -207,7 +207,7 @@ observers and bindings for that property fire.
 
 Here's a simple example of a computed property based on two published properties:
 
-```
+```javascript
     enyo.kind({
         name: "MyForecastControl",
         published: {
@@ -225,7 +225,7 @@ Here's a simple example of a computed property based on two published properties
 
 We may now bind the computed `forecast` property to a view control, e.g.:
 
-```
+```javascript
     enyo.kind({
         name: "MyForecastControl",
         published: {
@@ -249,7 +249,7 @@ We may now bind the computed `forecast` property to a view control, e.g.:
 
 Then, when either dependent property changes, the view will automatically update:
 
-```
+```javascript
     this.set("weather", "rainy");    
     // forecastLabel's content becomes "It's always rainy in San Francisco"
 
@@ -275,7 +275,7 @@ A generic `enyo.Model` may be instanced and initialized by simply using the
 `new` keyword and passing the constructor an optional object containing the
 desired initial attribute values:
 
-```
+```javascript
     var myModel = new enyo.Model({
         name: "Kevin", 
         hometown: "San Francisco",
@@ -287,7 +287,7 @@ desired initial attribute values:
 We may get and set properties of the model using the `set()` and `get()`
 functions, just as we would do with `enyo.Object`:
 
-```
+```javascript
     myModel.get("name"); // returns "Kevin"
     myModel.set("name", "Bob");
     myModel.get("name"); // returns "Bob"
@@ -296,7 +296,7 @@ functions, just as we would do with `enyo.Object`:
 The properties of the model may be observed or bound to properties of components
 or other models using the same API described above:
 
-```
+```javascript
     enyo.kind({
         name: "ContactView",
         published: {
@@ -319,7 +319,7 @@ If we set the `personModel` property of a `ContactView` instance to a model with
 the expected schema, the avatar, name, and town components of the view will
 automatically be synced with the corresponding properties of the model:
 
-```
+```javascript
     var myModel = new enyo.Model({
         name: "Kevin", 
         hometown: "San Francisco",
@@ -333,7 +333,7 @@ automatically be synced with the corresponding properties of the model:
 Furthermore, if any properties of the model are changed, the view will
 automatically update:
 
-```
+```javascript
     myModel.set("name", "Bob");        // The "nameLabel" component of the view will update
 ```
 
@@ -342,7 +342,7 @@ automatically update:
 You may subkind `enyo.Model` to provide an explicit schema and default values
 via the `defaults` property, or to override any other default behavior:
 
-```
+```javascript
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
@@ -371,7 +371,7 @@ In the following example, we create a `ContactModel` subkind, providing a URL to
 the REST endpoint for this resource, along with the `primaryKey` (which will be
 appended to the end of the `url` property):
 
-```
+```javascript
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
@@ -386,7 +386,7 @@ appended to the end of the `url` property):
 If you need greater control over how the URL is constructed for your service,
 you may overload the `getUrl()` function on `enyo.Model`:
 
-```
+```javascript
     enyo.kind({
         name: "ProductModel",
         kind: "enyo.Model",
@@ -426,7 +426,7 @@ relevant to the data for your model:
 In this case, you could overload the `parse()` function to tell `enyo.Model` to
 only use the `result` sub-tree of the fetched data for the model attributes:
 
-```
+```javascript
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
@@ -444,7 +444,7 @@ JavaScript object.  Although Enyo does not provide XML-to-JSON parsing as part
 of the core framework, there are several open-source libraries that provide this
 functionality, such as [X2JS](https://code.google.com/p/x2js/):
 
-```
+```javascript
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
@@ -481,7 +481,7 @@ example, if the fetched model data looked like this...
 ...the following() `parse` function would wrap the `department` and `manager`
 fields with `enyo.Model`, making those nested sub-objects bindable as well:
 
-```
+```javascript
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
@@ -520,7 +520,7 @@ A generic `enyo.Collection` may be instanced and initialized by simply using the
 `new` keyword and passing the constructor an optional object containing the
 initial model data:
 
-```
+```javascript
     var myCollection = new enyo.Collection([
         {
             name: "Kevin", 
@@ -545,7 +545,7 @@ initial model data:
 
 We can retrieve models from the collection using the `at()` function:
 
-```
+```javascript
     myCollection.at(0);                 // returns enyo.Model instance for "Kevin" record
     myCollection.at(2).get("name");     // returns "Cole"
 ```
@@ -554,7 +554,7 @@ We can add models using the `add()` function.  Note that `add()` will accept
 either `enyo.Model` objects or plain JavaScript objects.  The latter are
 converted into `enyo.Model` objects when first retrieved.
 
-```
+```javascript
     myCollection.add({name: "Ben", hometown: "Austin"});
     myCollection.at(myCollection.length-1).get("name"); // returns "Ben"
 
@@ -570,7 +570,7 @@ reference for the full list of APIs available for manipulating records.
 You may subkind `enyo.Collection` to indicate an explicit model type to be used
 for wrapping its array data, or to override any other default behavior:
 
-```
+```javascript
     enyo.kind({
         name: "MyContactCollection",
         kind: "enyo.Collection",
@@ -598,7 +598,7 @@ array data from REST endpoints by specifying the resource's `url` and calling
 
 In the following example, the collection is loaded from a fixed URL:
 
-```
+```javascript
     enyo.kind({
         name: "MyContactCollection",
         kind: "enyo.Collection",
@@ -612,7 +612,7 @@ In the following example, the collection is loaded from a fixed URL:
 If the URL for the collection needs to be customized, simply overload `getUrl()`
 to provide a custom URL--based on properties of the collection, for example:
 
-```
+```javascript
     enyo.kind({
         name: "MyContactCollection",
         kind: "enyo.Collection",
@@ -667,7 +667,7 @@ array...
 
 ...you could implement the following function to use only the `result` sub-array:
 
-```
+```javascript
     enyo.kind({
         name: "MyContactCollection",
         kind: "enyo.Collection",
@@ -717,7 +717,7 @@ fetching and committing records, using the shorthand name for the source (e.g.,
 
 For example:
 
-```
+```javascript
     enyo.kind({
         name: "MyContactCollection",
         kind: "enyo.Collection",
@@ -737,7 +737,7 @@ layer by calling the `enyo.store.addSources()` API.
 For example, to create a subkind of `enyo.JsonpSource` to provide a custom
 `callback` property required by the JSONP endpoint, you could do the following:
 
-```
+```javascript
     enyo.kind({
         name: "MyJsonpSource",
         kind: "enyo.JsonpSource",
@@ -751,7 +751,7 @@ For example, to create a subkind of `enyo.JsonpSource` to provide a custom
 
 To create a brand new source, implement the abstract API as necessary:
 
-```
+```javascript
     enyo.kind({
         name: "MySource",
         kind: "enyo.Source",
@@ -781,7 +781,7 @@ to read or add posts to a user's news feed as follows. (Note that the
 authentication required for this particular SDK is out of the scope of this
 article.)
 
-```
+```javascript
     enyo.kind({
         name: "FacebookFeedSource",
         kind: "enyo.Source",
@@ -845,7 +845,7 @@ complete, the new value should be reflected in the model.
 
 This is the typical way to implement such a view without using bindings:
 
-```
+```javascript
     enyo.kind({
         name: "MyControl",
         published: {
@@ -878,7 +878,7 @@ This is the typical way to implement such a view without using bindings:
 Using bindings, the implementation requires significantly less code, and may be
 done completely declaratively, making your code easier to read and maintain:
 
-```
+```javascript
     enyo.kind({
         name: "MyControl",
         published: {
@@ -918,7 +918,7 @@ bindings on that control to sync data to and from the models.
 
 Without collections or bindings, one might implement a simple repeater as follows:
 
-```
+```javascript
     enyo.kind({
         name: "",
         published: {
@@ -957,7 +957,7 @@ By contrast, using the collection-aware `enyo.DataRepeater` with an
 the DataRepeater automatically keeping the view in sync when records in the
 collection are changed:
 
-```
+```javascript
     enyo.kind({
         name: "",
         published: {

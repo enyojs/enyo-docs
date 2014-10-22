@@ -27,16 +27,18 @@ to `false`.
 
 Here's an example of a card stack:
 
-        enyo.kind({
-            name: "App",
-            kind: "Panels",
-            fit: true,
-            components: [
-                {name: "MyStartPanel"},
-                {name: "MyMiddlePanel"},
-                {name: "MyLastPanel"}
-            ]
-        });
+```javascript
+    enyo.kind({
+        name: "App",
+        kind: "Panels",
+        fit: true,
+        components: [
+            {name: "MyStartPanel"},
+            {name: "MyMiddlePanel"},
+            {name: "MyLastPanel"}
+        ]
+    });
+```
 
 This example will stretch the panels inside the application to fit the size of
 the application.  If, instead, the panels should be arranged left-to-right as a
@@ -82,19 +84,21 @@ collapses to hide the other panels.
 The code for this use case is almost the same as in the previous example, but
 we've set the `arrangerKind` and applied a CSS class:
 
-        enyo.kind({
-            name: "App",
-            kind: "Panels",
-            fit: true,
-            classes: "app-panels",
-            arrangerKind: "CollapsingArranger",
-            components: [
-                {name: "MyStartPanel"},
-                {name: "MyMiddlePanel"},
-                {name: "MyLastPanel"}
-            ]
-        });
-	
+```javascript
+    enyo.kind({
+        name: "App",
+        kind: "Panels",
+        fit: true,
+        classes: "app-panels",
+        arrangerKind: "CollapsingArranger",
+        components: [
+            {name: "MyStartPanel"},
+            {name: "MyMiddlePanel"},
+            {name: "MyLastPanel"}
+        ]
+    });
+```
+
 Note that in a
 [CollapsingArranger](../../../index.html#/kind/enyo.CollapsingArranger), the
 last panel will always take up the available space.
@@ -102,20 +106,22 @@ last panel will always take up the available space.
 The key to achieving the sizing behavior we want is to set up the CSS classes
 correctly.  Here's one way to do it:
 
-        /* set the width and some basic styling for each panel */
-        .app-panels > * {
-            width: 320px;
-            background-color: #EAEAEA;
-            box-shadow: -4px -4px 4px rgba(0,0,0,0.3);
-        }
+```css
+    /* set the width and some basic styling for each panel */
+    .app-panels > * {
+        width: 320px;
+        background-color: #EAEAEA;
+        box-shadow: -4px -4px 4px rgba(0,0,0,0.3);
+    }
 
-        /* on small devices, make each panel fit to the app width */
-        @media all and (max-width: 800px) {
-            .app-panels > * {
-                min-width: 100%;
-                max-width: 100%;
-            }
+    /* on small devices, make each panel fit to the app width */
+    @media all and (max-width: 800px) {
+        .app-panels > * {
+            min-width: 100%;
+            max-width: 100%;
         }
+    }
+```
 
 Now, technically, the second block of CSS isn't needed to achieve this specific
 sizing effect.  That's because the `narrowFit` property of `enyo.Panels`, when
@@ -138,39 +144,43 @@ app](http://enyojs.com/samples/panels/app-flickr.html) on enyojs.com.)
 
 This gives us the following kind definition:
 
-        enyo.kind({
-            name: "App",
-            kind: "enyo.Panels",
-            fit: true,
-            narrowFit: false,
-            classes: "app-panels",
-            arrangerKind: "CollapsingArranger",
-            components: [
-                {name: "MyStartPanel", content: "start"},
-                {name: "MyMiddlePanel", content: "middle"},
-                {name: "MyLastPanel", content: "last"}
-            ],
-            statics: {
-                isScreenNarrow: function() {
-                    return enyo.dom.getWindowWidth() <= 600;
-                }
+```javascript
+    enyo.kind({
+        name: "App",
+        kind: "enyo.Panels",
+        fit: true,
+        narrowFit: false,
+        classes: "app-panels",
+        arrangerKind: "CollapsingArranger",
+        components: [
+            {name: "MyStartPanel", content: "start"},
+            {name: "MyMiddlePanel", content: "middle"},
+            {name: "MyLastPanel", content: "last"}
+        ],
+        statics: {
+            isScreenNarrow: function() {
+                return enyo.dom.getWindowWidth() <= 600;
             }
-        });
+        }
+    });
+```
 
 Finally, we add the appropriate media query to the accompanying CSS:
 
-        .app-panels > * {
-            width: 320px;
-            background-color: #EAEAEA;
-            box-shadow: -4px -4px 4px rgba(0,0,0,0.3);
-        }
+```css
+    .app-panels > * {
+        width: 320px;
+        background-color: #EAEAEA;
+        box-shadow: -4px -4px 4px rgba(0,0,0,0.3);
+    }
 
-        @media all and (max-width: 600px) {
-            .app-panels > * {
-                min-width: 100%;
-                max-width: 100%;
-            }
+    @media all and (max-width: 600px) {
+        .app-panels > * {
+            min-width: 100%;
+            max-width: 100%;
         }
+    }
+```
 
 ![_Panels control with window width under 600px_](../../assets/enyo-panels-1.png)  
 Panels control with window width under 600px  

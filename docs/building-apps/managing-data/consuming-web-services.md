@@ -38,8 +38,8 @@ Handlers may either be methods with the signature `(asyncObject, value)` or new
 instances of `enyo.Async` or its subkinds.  This allows for chaining of Async
 objects (e.g., when calling a Web API).
 
-If a response method returns a value (other than undefined), that value is sent
-to subsequent handlers in the chain, replacing the original value.
+If a response method returns a value (other than `undefined`), that value is
+sent to subsequent handlers in the chain, replacing the original value.
 
 A failure method may call `recover()` to undo the error condition and switch
 to calling response methods.
@@ -50,48 +50,52 @@ called (asynchronously).
 The following (rather complicated) example demonstrates many of the
 aforementioned features:
 
-        var transaction = function() {
-            // Create a transaction object.
-            var async = new enyo.Async();
-            // Cause handlers to fire asynchronously (sometime after we yield this thread).
-            // "initial response" will be sent to handlers as inResponse
-            async.go("intial response");
-            // Until we yield the thread, we can continue to add handlers.
-            async.response(function(inSender, inResponse) {
-                console.log("first response: returning a string,",
-                    "subsequent handlers receive this value for 'inResponse'");
-                return "some response";
-            });
-            return async;
-        };
+```javascript
+    var transaction = function() {
+        // Create a transaction object.
+        var async = new enyo.Async();
+        // Cause handlers to fire asynchronously (sometime after we yield this thread).
+        // "initial response" will be sent to handlers as inResponse
+        async.go("intial response");
+        // Until we yield the thread, we can continue to add handlers.
+        async.response(function(inSender, inResponse) {
+            console.log("first response: returning a string,",
+                "subsequent handlers receive this value for 'inResponse'");
+            return "some response";
+        });
+        return async;
+    };
+```
 
 Users of the `transaction()` function may add handlers to the Async object
 until all functions return (synchronously):
 
-        // Get a new transaction; it's been started, but we can add more handlers
-        // synchronously.
-        var x = transaction();
+```javascript
+    // Get a new transaction; it's been started, but we can add more handlers
+    // synchronously.
+    var x = transaction();
 
-        // Add a handler that will be called if an error is detected. This handler
-        // recovers and sends a custom message.
-        x.error(function(inSender, inResponse) {
-            console.log("error: calling recover", inResponse);
-            this.recover();
-            return "recovered message";
-        });
+    // Add a handler that will be called if an error is detected. This handler
+    // recovers and sends a custom message.
+    x.error(function(inSender, inResponse) {
+        console.log("error: calling recover", inResponse);
+        this.recover();
+        return "recovered message";
+    });
 
-        // Add a response handler that halts response handler and triggers the
-        // error chain. The error will be sent to the error handler registered
-        // above, which will restart the handler chain.
-        x.response(function(inSender, inResponse) {
-            console.log("response: calling fail");
-            this.fail(inResponse);
-        });
+    // Add a response handler that halts response handler and triggers the
+    // error chain. The error will be sent to the error handler registered
+    // above, which will restart the handler chain.
+    x.response(function(inSender, inResponse) {
+        console.log("response: calling fail");
+        this.fail(inResponse);
+    });
 
-        // Recovered message will end up here.
-        x.response(function(inSender, inResponse) {
-            console.log("response: ", inResponse);
-        });
+    // Recovered message will end up here.
+    x.response(function(inSender, inResponse) {
+        console.log("response: ", inResponse);
+    });
+```
 
 ## enyo.Ajax
 
@@ -114,21 +118,23 @@ component, you should probably be using `WebService` instead.  (By default,
 The following example uses `enyo.Ajax` to retrieve a unique id from Yahoo!
 corresponding to the passed-in place name:
 
-        getWoeid: function(inPlace) {
-            // set up enyo.AjaxProperties by sending them to the enyo.Ajax constructor
-            var x = new enyo.Ajax({url: "http://query.yahooapis.com/v1/public/yql?format=json"});
-            // send parameters the remote service using the 'go()' method
-            x.go({
-                q: 'select woeid from geo.placefinder where text="' + inPlace + '"'
-            });
-            // attach responders to the transaction object
-            x.response(this, function(inSender, inResponse) {
-                // extra information from response object
-                var woeid = inResponse.data.query.results.Result.woeid;
-                // do something with it
-                this.setWoeid(inPlace, woeid);
-            });
-        }
+```javascript
+    getWoeid: function(inPlace) {
+        // set up enyo.AjaxProperties by sending them to the enyo.Ajax constructor
+        var x = new enyo.Ajax({url: "http://query.yahooapis.com/v1/public/yql?format=json"});
+        // send parameters the remote service using the 'go()' method
+        x.go({
+            q: 'select woeid from geo.placefinder where text="' + inPlace + '"'
+        });
+        // attach responders to the transaction object
+        x.response(this, function(inSender, inResponse) {
+            // extra information from response object
+            var woeid = inResponse.data.query.results.Result.woeid;
+            // do something with it
+            this.setWoeid(inPlace, woeid);
+        });
+    }
+```
 
 For additional examples of `enyo.Ajax` in action, look under `"Enyo Core > Ajax"`
 in the [Sampler app](http://enyojs.com/sampler/) on enyojs.com.  (The Sampler

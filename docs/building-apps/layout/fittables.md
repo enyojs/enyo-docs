@@ -16,14 +16,16 @@ explicitly-specified sizes.
 To mark a child control as the one having variable size, set its `fit` property
 to `true`, e.g.:
 
-        enyo.kind({
-            kind: "FittableColumns",
-            components: [
-                {content: "1"},
-                {content: "2", fit: true},
-                {content: "3"}
-            ]
-        });
+```javascript
+    enyo.kind({
+        kind: "FittableColumns",
+        components: [
+            {content: "1"},
+            {content: "2", fit: true},
+            {content: "3"}
+        ]
+    });
+```
 
 The preceding code aligns three components as columns, with the second filling
 the available container space between the first and third.
@@ -35,15 +37,17 @@ property to "[FittableColumnsLayout](../../../index.html#/kind/enyo.FittableColu
 or "[FittableRowsLayout](../../../index.html#/kind/enyo.FittableRowsLayout)"
 while employing a different base kind:
 
-        enyo.kind({
-            kind: "enyo.Control",
-            layoutKind: "FittableColumnsLayout",
-            components: [
-                {content: "1"},
-                {content: "2", fit: true},
-                {content: "3"}
-            ]
-        });
+```javascript
+    enyo.kind({
+        kind: "enyo.Control",
+        layoutKind: "FittableColumnsLayout",
+        components: [
+            {content: "1"},
+            {content: "2", fit: true},
+            {content: "3"}
+        ]
+    });
+```
 
 Both `FittableColumnsLayout` and `FittableRowsLayout` are derived directly from
 [enyo.FittableLayout](../../../index.html#/kind/enyo.FittableLayout), which
@@ -54,40 +58,44 @@ provides basic positioning and boundary logic.
 Fittable views may be nested as needed, as illustrated by the following example,
 in which we've nested a FittableColumns control inside of a FittableRows:
 
-        enyo.kind({
-            name: "NestedFittablesExample",
-            kind: "FittableRows",
-            components: [
-                {content: "Top", allowHtml: true, classes: "outer-box"},
-                {content: "Middle", allowHtml: true, classes: "outer-box"},
-                {kind: "FittableColumns", fit: true, classes: "outer-box", components: [
-                    {content: "Left", classes: "inner-box"},
-                    {content: "Fits!", fit: true, classes: "inner-box"},
-                    {content: "Right", classes: "inner-box"}
-                ]}
-            ]
-        });
+```javascript
+    enyo.kind({
+        name: "NestedFittablesExample",
+        kind: "FittableRows",
+        components: [
+            {content: "Top", allowHtml: true, classes: "outer-box"},
+            {content: "Middle", allowHtml: true, classes: "outer-box"},
+            {kind: "FittableColumns", fit: true, classes: "outer-box", components: [
+                {content: "Left", classes: "inner-box"},
+                {content: "Fits!", fit: true, classes: "inner-box"},
+                {content: "Right", classes: "inner-box"}
+            ]}
+        ]
+    });
+```
 
 ![_Nested Fittables_](../../assets/fittables-1.png)
 
 For the sake of completeness, here's the CSS that was used:
 
-        .outer-box {
-            border: 2px solid orange;
-            padding: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            margin-top: 3px;
-            margin-bottom: 3px;
-        }
+```css
+    .outer-box {
+        border: 2px solid orange;
+        padding: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
 
-        .inner-box {
-            border: 2px solid lightblue;
-            padding: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            margin: 2px;
-        }
+    .inner-box {
+        border: 2px solid lightblue;
+        padding: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        margin: 2px;
+    }
+```
 
 ## Resizing Fittables
 
