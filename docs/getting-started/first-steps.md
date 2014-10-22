@@ -72,7 +72,9 @@ server using `Node.js`.  Here's how to do it:
 
 * Use npm to install the `serve` package:
 
-            npm install -g serve
+```
+        npm install -g serve
+```
 
 * Create a directory to house your application files, then enter that directory
     and start the server by running `serve`, e.g.:
@@ -99,7 +101,9 @@ with Enyo in 5 Minutes](bootplate.html).)
 To start an app using the Moonstone UI library, clone the `bootplate-moonstone`
 repository to your local machine:
 
-        git clone --recursive --branch 2.4.0 https://github.com/enyojs/bootplate-moonstone.git <myapp>
+```
+    git clone --recursive --branch 2.4.0 https://github.com/enyojs/bootplate-moonstone.git <myapp>
+```
 
 (**Expert tip:** If you'd like to version-control the newly-cloned project
 under your own GitHub account, follow the instructions in the [Bootplate
@@ -114,7 +118,9 @@ World" screen, congratulations!  You're ready to start coding!
 Of course, you're also free to clone `enyo` or any of the library repos
 individually, e.g.:
 
-        git clone https://github.com/enyojs/enyo.git <myEnyoDirectory>
+```
+    git clone https://github.com/enyojs/enyo.git <myEnyoDirectory>
+```
 
 If you plan to submit changes back to a repository, be sure to create your own
 fork of the repository and clone the fork to your local machine.

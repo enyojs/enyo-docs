@@ -24,7 +24,7 @@ processing.	Some examples of special properties are:
     (intermediate objects are created automatically).  `name` is not copied
     directly to the prototype, but is instead stored as `kindName`.
 
-    ```
+    ```javascript
         // Create a function MyNamespace.MyKind with a prototype.
         // MyNamespace.MyKind.prototype.kindName is set to "MyNamespace.MyKind".
         // MyNamespace.MyKind.prototype.plainProperty is set to "foo".
@@ -41,7 +41,7 @@ processing.	Some examples of special properties are:
     specified by `kind`, and the `base` property in the new prototype is set to
     reference the `kind` constructor.
 
-    ```
+    ```javascript
         // Create a function MyKind with a prototype, derived from enyo.Object.
         // MyKind.prototype.kindName is set to "MyKind".
         // MyKind.prototype.base is set to "enyo.Object".
@@ -54,7 +54,7 @@ processing.	Some examples of special properties are:
 * `constructor`: An optional function to call when a new instance is created; it
     is actually stored on the prototype as `_constructor`.
 
-    ```
+    ```javascript
         // Create a function MyKind with a prototype, derived from enyo.Object.
         // _constructor_ is called when an instance is created. 
         enyo.kind({
@@ -71,7 +71,7 @@ processing.	Some examples of special properties are:
 * `statics`: Properties from any `statics` object are copied onto the
     constructor directly, instead of the prototype.
 
-    ```
+    ```javascript
         // Create a kind with a static method.
         enyo.kind({
             name: "MyKind",
@@ -101,17 +101,21 @@ Certain kinds in the framework define their own special properties, e.g., the
 
 A trivial kind has a simple lifecycle:
 
-        var MyKind = enyo.kind({
-            kind: null, // otherwise it will default to 'Control'
-            constructor: function() {
-                // do any initialization tasks
-            }
-        });
+```javascript
+    var MyKind = enyo.kind({
+        kind: null, // otherwise it will default to 'Control'
+        constructor: function() {
+            // do any initialization tasks
+        }
+    });
+```
 
 That's it.  `MyKind()` is now a function that you can use with the `new`
 operator to create instances.
 
+```javascript
         myInstance = new MyKind();
+```
 
 Like all JavaScript objects, a kind instance will be garbage-collected when
 there are no references to it. 
@@ -122,17 +126,19 @@ It's common for one kind to be based on another kind.  The new kind inherits all
 the properties and methods of the old kind.  If the new kind overrides a method
 from the old kind, you can call the overridden method using `this.inherited()`:
 
-        var MyNextKind = enyo.kind({
-            kind: "MyKind",
-            constructor: function() {
-                // do any initialization tasks before MyKind initializes
-                //
-                // do inherited initialization (optional, but usually a good idea)
-                this.inherited(arguments);
-                //
-                // do any initialization tasks after MyKind initializes
+```javascript
+    var MyNextKind = enyo.kind({
+        kind: "MyKind",
+        constructor: function() {
+            // do any initialization tasks before MyKind initializes
+            //
+            // do inherited initialization (optional, but usually a good idea)
+            this.inherited(arguments);
+            //
+            // do any initialization tasks after MyKind initializes
             }
         });
+```
 
 `MyNextKind` starts with all the properties and methods of `MyKind`, but then we
 override `constructor()`.  Our new constructor may call the old constructor
@@ -148,27 +154,31 @@ all.
 
 This override system works the same for any method, not just `constructor()`:
 
-        enyo.kind({
-            name: "MyOriginalKind",
-            doWork: function() {
-                this.work++;
-            }
-        });
+```javascript
+    enyo.kind({
+        name: "MyOriginalKind",
+        doWork: function() {
+            this.work++;
+        }
+    });
 
-        enyo.kind({
-            name: "MyDerivedKind",
-            kind: "MyOriginalKind",
-            doWork: function() {
-                if (this.shouldDoWork) {
-                    this.inherited(arguments);
-                }
+    enyo.kind({
+        name: "MyDerivedKind",
+        kind: "MyOriginalKind",
+        doWork: function() {
+            if (this.shouldDoWork) {
+                this.inherited(arguments);
             }
-        });
+        }
+    });
+```
 
 Note that you could also call an inherited method using only raw JavaScript,
 like so:
 
-        MyKind.prototype.<method name>.apply(this, arguments);
+```javascript
+    MyKind.prototype.<method name>.apply(this, arguments);
+```
 
 However, the `this.inherited()` syntax is shorter and eliminates the need to
 specify the superkind's name (in this case, `MyKind`).

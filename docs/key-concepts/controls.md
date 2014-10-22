@@ -13,36 +13,38 @@ complex as an entire application.
 In the following example, we define a `Circle` control, which we will put to use
 inside a `TrafficLight` control:
 
-        enyo.kind({
-            name: "Circle",
-            kind: "Control",
-            published: {
-                color: "magenta",
-                bgColor: "black"
-            },
-            handlers: {
-                ondown: "downHandler",
-                onup: "upHandler"
-            },
-            content: "Hi",
-            style: "padding: 2px 6px; border: 3px solid; border-radius: 20px; cursor: pointer;",
-            create: function() {
-                this.inherited(arguments);
-                this.colorChanged();
-            },
-            colorChanged: function() {
-                this.applyStyle("border-color", this.color);
-            },
-            bgColorChanged: function() {
-                this.applyStyle("background-color", this.bgColor);
-            },
-            downHandler: function(inSender, inEvent) {
-                this.applyStyle("background-color", "white");
-            },
-            upHandler: function(inSender, inEvent) {
-                this.applyStyle("background-color", "black");
-            }
-        });
+```javascript
+    enyo.kind({
+        name: "Circle",
+        kind: "Control",
+        published: {
+            color: "magenta",
+            bgColor: "black"
+        },
+        handlers: {
+            ondown: "downHandler",
+            onup: "upHandler"
+        },
+        content: "Hi",
+        style: "padding: 2px 6px; border: 3px solid; border-radius: 20px; cursor: pointer;",
+        create: function() {
+            this.inherited(arguments);
+            this.colorChanged();
+        },
+        colorChanged: function() {
+            this.applyStyle("border-color", this.color);
+        },
+        bgColorChanged: function() {
+            this.applyStyle("background-color", this.bgColor);
+        },
+        downHandler: function(inSender, inEvent) {
+            this.applyStyle("background-color", "white");
+        },
+        upHandler: function(inSender, inEvent) {
+            this.applyStyle("background-color", "black");
+        }
+    });
+```
 
 The `Circle` has a `kind` value of `"Control"` and therefore inherits and
 extends the behavior of `enyo.Control`.  Since a control is a component (i.e.,
@@ -59,7 +61,9 @@ The `style` property specifies CSS styles that the control will use to decorate
 its node.  You may also specify classes, attributes, or even a tag type.  For
 example:
 
-        {tag: "input", classes: "rounded", attributes: {value: "foo"}}
+```javascript
+    {tag: "input", classes: "rounded", attributes: {value: "foo"}}
+```
 
 These properties may be set either on control configuration blocks or in kind
 definitions.
@@ -69,28 +73,30 @@ There are also methods available to modify these properties; for example,
 other such methods, including `addStyles()`, `addClass()`, `setAttribute()`,
 `show()`, `hide()`, and `render()`.  See the API documentation for more info.
 
-## Controls in Controls: It's Those Turtles Again
+## Controls in Controls
 
 Here is our aforementioned `TrafficLight` control:
 
-        enyo.kind({
-            name: "TrafficLight",
-            kind: "Control",
-            style: "position: absolute; padding: 4px; border: 1px solid black; background-color: silver;",
-            components: [
-                {kind: "Circle", color: "red", ontap: "circleTap"},
-                {kind: "Circle", color: "yellow", ontap: "circleTap"},
-                {kind: "Circle", color: "green", ontap: "circleTap"}
-            ],
-            circleTap: function(inSender, inEvent) {
-                var lights = {red: "tomato", yellow: "#FFFF80", green: "lightgreen"};
-                if (this.lastCircle) {
-                    this.lastCircle.setBgColor("black");
-                }
-                this.lastCircle = inSender;
-                this.lastCircle.setBgColor(lights[inSender.color]);
+```javascript
+    enyo.kind({
+        name: "TrafficLight",
+        kind: "Control",
+        style: "position: absolute; padding: 4px; border: 1px solid black; background-color: silver;",
+        components: [
+            {kind: "Circle", color: "red", ontap: "circleTap"},
+            {kind: "Circle", color: "yellow", ontap: "circleTap"},
+            {kind: "Circle", color: "green", ontap: "circleTap"}
+        ],
+        circleTap: function(inSender, inEvent) {
+            var lights = {red: "tomato", yellow: "#FFFF80", green: "lightgreen"};
+            if (this.lastCircle) {
+                this.lastCircle.setBgColor("black");
             }
-        });
+            this.lastCircle = inSender;
+            this.lastCircle.setBgColor(lights[inSender.color]);
+        }
+    });
+```
 
 ![_TrafficLight control_](../assets/traffic-light.png)
 
@@ -144,7 +150,9 @@ few additional methods for managing its representation in the DOM.
 without regard to whether there is a corresponding DOM node or not.  For
 example, you may call
 
-        this.$.control.applyStyle("color", "blue");
+```javascript
+    this.$.control.applyStyle("color", "blue");
+```
 
 If the control is rendered, that style is placed in the DOM; if not, the
 information is stored until the DOM is created.  Either way, when you see it,
@@ -158,12 +166,14 @@ is no DOM, you won't get accurate values.
 In a control, if you need to perform an action immediately after the DOM is
 created, you can do it in the `rendered()` method:
 
-        rendered: function() {
-            // important! must call the inherited method
-            this.inherited(arguments);
-            // this is the first moment that bounds are available
-            this.firstBounds = this.getBounds();
-        }
+```javascript
+    rendered: function() {
+        // important! must call the inherited method
+        this.inherited(arguments);
+        // this is the first moment that bounds are available
+        this.firstBounds = this.getBounds();
+    }
+```
 
 An important thing to note here is that even though DOM elements have been
 created when `rendered()` is called, the visual representation of these elements
@@ -175,22 +185,26 @@ visual artifacts.
 Whenever you need to access a control's DOM node directly, use the `hasNode()`
 method:
 
-        twiddle: function() {
-            if (this.hasNode()) {
-                buffNode(this.node); // buffNode is made-up
-            }
+```javascript
+    twiddle: function() {
+        if (this.hasNode()) {
+            buffNode(this.node); // buffNode is made-up
         }
+    }
+```
 
 Remember that even if DOM is rendered, `this.node` may not have a value.  A
 truthy result from `hasNode()` means `this.node` is initialized.  Even within
 `rendered()`, you need to call `hasNode()` before using `this.node`:
 
-        rendered: function() {
-            this.inherited(arguments); // important! must call the inherited method
-            if (this.hasNode()) {
-                buffNode(this.node);
-            }
-        });
+```javascript
+    rendered: function() {
+        this.inherited(arguments); // important! must call the inherited method
+        if (this.hasNode()) {
+            buffNode(this.node);
+        }
+    });
+```
 
 ## When Controls Are Rendered
 
@@ -202,19 +216,21 @@ Also, when creating controls dynamically, Enyo will not render those controls
 until you call `render()` on them, or on one of their containers.  You will
 often see code like the following:
 
-        updateControls: function() {
-            // destroy controls we made last time 
-            // ('destroyClientControls' destroys only dynamic controls;
-            // 'destroyControls' destroys everything)
-            this.destroyClientControls(); 
-            // create new controls
-            for (var i=0; i<this.count; i++) {
-                // created but not rendered
-                this.createComponent({kind: "myCoolControl", index: i});
-            }
-            // render everything in one shot
-            this.render();
-        });
+```javascript
+    updateControls: function() {
+        // destroy controls we made last time 
+        // ('destroyClientControls' destroys only dynamic controls;
+        // 'destroyControls' destroys everything)
+        this.destroyClientControls(); 
+        // create new controls
+        for (var i=0; i<this.count; i++) {
+            // created but not rendered
+            this.createComponent({kind: "myCoolControl", index: i});
+        }
+        // render everything in one shot
+        this.render();
+    });
+```
 
 Destroying a control will cause it to be removed from the DOM right away, as
 this is a necessary part of the cleanup process.  There is no `unrender()`

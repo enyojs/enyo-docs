@@ -21,9 +21,11 @@ discussed at the end of the current document.
 
 A component declares the events that it sends using an `events` block, e.g.:
 
-        events: {
-            onStateChanged:""
-        }
+```javascript
+    events: {
+        onStateChanged:""
+    }
+```
 
 Note that, by convention, event names always start with `"on"`.
 
@@ -34,12 +36,16 @@ parameter, which can contain event-specific information to be passed to the
 handler.  For example, to send the `"onStateChanged"` event from the example
 above, a component would call
 
-        this.doStateChanged(newState)  // parameter is specific to the "onStateChanged" event
+```javascript
+    this.doStateChanged(newState)  // parameter is specific to the "onStateChanged" event
+```
 
 Under the hood, the `do<EventName>` function wraps Enyo's generic `bubble`
 function for sending events up the component tree:
 
-        this.bubble(inEventName <, inEvent, inSender>)
+```javascript
+    this.bubble(inEventName <, inEvent, inSender>)
+```
 
 * `inEventName` is the event name (including the `"on"` prefix).
 
@@ -60,10 +66,12 @@ is more descriptive and serves to define the interface to your kind.
 An event handler is a function assigned to "catch" events bubbling up from
 children.  For example:
 
-        myEventHandler: function(inSender, inEvent) {
-            // Can return true to indicate that this event was handled and
-            // propagation should stop
-        }
+```javascript
+    myEventHandler: function(inSender, inEvent) {
+        // Can return true to indicate that this event was handled and
+        // propagation should stop
+    }
+```
 
 * `inSender` is the immediate sender of the event--that is, the last
     [enyo.Component](../../index.html#/kind/enyo.Component) to touch the event
@@ -98,40 +106,46 @@ the button and the sender is the button's parent.
 There are two common ways of handling events in a component.  The first is to
 set a handler name on an object owned by the component, like so:
 
-        components: [
-            {name: "thing", ontap: "thingTap"}
-        ],
-        thingTap: function(inSender, inEvent) {
-            // do stuff
-        }
+```javascript
+    components: [
+        {name: "thing", ontap: "thingTap"}
+    ],
+    thingTap: function(inSender, inEvent) {
+        // do stuff
+    }
+```
 
 The second is to name a catch-all handler in the `handlers` block, like so:
 
-        handlers: {
-            ontap: "anythingTap"
-        },
-        anythingTap: function(inSender, inEvent) {
-            // do stuff
-        }
+```javascript
+    handlers: {
+        ontap: "anythingTap"
+    },
+    anythingTap: function(inSender, inEvent) {
+        // do stuff
+    }
+```
 
 Note that if you use both event handling strategies at the same time, you
 will receive the event in both places by default.  You may avoid this behavior
 by preventing propagation in `thingTap()`.  For example:
 
-        components: [
-            {name: "thing", ontap: "thingTap"}
-        ],
-        handlers: {
-            ontap: "anythingTap"
-        },
-        thingTap: function(inSender, inEvent) {
-            // taps on _thing_ will bubble up to _anythingTap()_ also,
-            // unless I stop propagation here
-            return true; // handled here, don't propagate
-        }
-        anythingTap: function(inSender, inEvent) {
-            // do stuff
-        }
+```javascript
+    components: [
+        {name: "thing", ontap: "thingTap"}
+    ],
+    handlers: {
+        ontap: "anythingTap"
+    },
+    thingTap: function(inSender, inEvent) {
+        // taps on _thing_ will bubble up to _anythingTap()_ also,
+        // unless I stop propagation here
+        return true; // handled here, don't propagate
+    }
+    anythingTap: function(inSender, inEvent) {
+        // do stuff
+    }
+```
 
 If you need more sophisticated handling, you can use the `inSender` and
 `inEvent.originator` properties to help you discern the provenance of the event.
@@ -182,7 +196,9 @@ If there are additional DOM events that you want Enyo to handle, use the
 `enyo.dispatcher.listen()` method.  For example, the following code sets up a
 handler for an event called `myEvent`:
 
-        enyo.dispatcher.listen(document, "myEvent", handleMyEvent);
+```javascript
+    enyo.dispatcher.listen(document, "myEvent", handleMyEvent);
+```
 
 Here the first parameter is an event receiver to listen on (typically `document`
 or `window`).  The second parameter is the name of the event to listen for, and
@@ -330,7 +346,9 @@ kinds in application code.
 To broadcast a message, a sender simply invokes the static `send()` function on
 `enyo.Signals`:
 
-        enyo.Signals.send(inEventName, inEvent);
+```javascript
+    enyo.Signals.send(inEventName, inEvent);
+```
 
 * `inEventName` is the event name (including the `"on"` prefix). 
 
@@ -344,21 +362,25 @@ is received.
 
 For example, the following kind...
 
-        enyo.kind({
-            name: "Receiver",
-            components: [
-                // 'onTransmission' is the message name and 'transmission' is the
-                // name of a handler method in my owner.
-                {kind: "Signals", onTransmission: "transmission"}
-            ],
-            transmission: function(inSender, inEvent) {
-                // respond to the signal
-            }
-        });
+```javascript
+    enyo.kind({
+        name: "Receiver",
+        components: [
+            // 'onTransmission' is the message name and 'transmission' is the
+            // name of a handler method in my owner.
+            {kind: "Signals", onTransmission: "transmission"}
+        ],
+        transmission: function(inSender, inEvent) {
+            // respond to the signal
+        }
+    });
+```
 
 ...will handle signal events dispatched by a call like this:
 
+```javascript
         enyo.Signals.send("onTransmission");
+```
 
 Note that, like all Enyo message handlers, the signal handler (`transmission()`)
 receives two parameters: a reference to the component that sent the message (in
@@ -384,34 +406,36 @@ Some important things to note:
 Now, returning to the subject of keyboard input, the following example kind uses
 Signals to implement some simple handling of keyboard events:
 
-        enyo.kind({
-            name: "KeyboardEventExample",
-            kind: "enyo.FittableRows",
-            classes: "onyx",
-            components: [
-                {name: "myContent", content: "Please do not press the spacebar."},
-                {kind: "enyo.Signals", onkeypress: "handleKeyPress",
-                    onkeydown: "handleKeyDown", onkeyup: "handleKeyUp"}
-            ],
-            handleKeyDown: function(inSender, inEvent) {
-                // Can use inEvent.keyCode to detect non-character keys
-                if (inEvent.keyCode === 8) {
-                    // respond to backspace
-                }
-            },
-            handleKeyPress: function(inSender, inEvent) {
-                // Use inEvent.charCode to detect spacebar
-                if (inEvent.charCode === 32) {
-                    this.$.myContent.setContent("I thought I asked you not to press the spacebar.");
-                } else {
-                    var key = String.fromCharCode(inEvent.charCode).toUpperCase();
-                    this.$.myContent.setContent("Last key pressed: " + key);
-                }
-            },
-            handleKeyUp: function(inSender, inEvent) {
-                // Respond to keyup, if desired
+```javascript
+    enyo.kind({
+        name: "KeyboardEventExample",
+        kind: "enyo.FittableRows",
+        classes: "onyx",
+        components: [
+            {name: "myContent", content: "Please do not press the spacebar."},
+            {kind: "enyo.Signals", onkeypress: "handleKeyPress",
+                onkeydown: "handleKeyDown", onkeyup: "handleKeyUp"}
+        ],
+        handleKeyDown: function(inSender, inEvent) {
+            // Can use inEvent.keyCode to detect non-character keys
+            if (inEvent.keyCode === 8) {
+                // respond to backspace
             }
-        });
+        },
+        handleKeyPress: function(inSender, inEvent) {
+            // Use inEvent.charCode to detect spacebar
+            if (inEvent.charCode === 32) {
+                this.$.myContent.setContent("I thought I asked you not to press the spacebar.");
+            } else {
+                var key = String.fromCharCode(inEvent.charCode).toUpperCase();
+                this.$.myContent.setContent("Last key pressed: " + key);
+            }
+        },
+        handleKeyUp: function(inSender, inEvent) {
+            // Respond to keyup, if desired
+        }
+    });
+```
 
 Within the `onkeydown` and `onkeyup` handler methods (`handleKeyDown()` and
 `handleKeyUp()`), `inEvent.keyCode` is the JavaScript key code representing the
