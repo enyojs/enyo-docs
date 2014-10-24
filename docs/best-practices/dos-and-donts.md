@@ -147,7 +147,7 @@ creating shared code:
     existing comments as a guide.
 
     For more details, see [Documenting Code for the API
-    Viewer](api-tool.html#documenting-code-for-the-api-viewer).
+    Reference](api-reference.html#documenting-code-for-the-api-reference).
 
 * **Prefix all CSS classes with the name of the widget you are developing.**
 

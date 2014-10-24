@@ -93,7 +93,7 @@
 	추가로  `//* @protected`와 `//* @public pragma`가 올바른 위치에 있는지 확인해야 한다.
 
 	자세한 내용은 [Documenting Code for the API
-    Viewer](api-tool.html#documenting-code-for-the-api-viewer)를 참조한다.
+    Reference](api-reference.html#documenting-code-for-the-api-reference)를 참조한다.
 
 * **모든 CSS 클래스에 개발중인 위젯 이름을 Prefix로 사용한다.**
 

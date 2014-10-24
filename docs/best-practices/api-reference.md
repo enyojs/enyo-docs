@@ -1,26 +1,23 @@
-% The API Viewer
+% The API Reference
 
-The [Enyo API Viewer](http://enyojs.com/api), also known as the API Reference or
-API Tool, is an Enyo application that enables a live view of documentation drawn
-from the source code of Enyo core and its related libraries.
+The [Enyo API Reference](http://enyojs.com/api), also known as the API Viewer or
+API Tool, provides detailed information on all of the framework's publicly
+accessible kinds.  This data originates in comments found in the framework's
+JavaScript source code.   (including inherited methods and properties).
 
-The API Viewer looks at all publicly visible kinds, functions, and properties,
-and displays them along with their documentation comments.  In addition, the
-ancestry of kinds is shown, including inherited methods and properties.
+For the curious, the code used to generate the reference is available on GitHub
+in the enyojs project's [enyo-docs](https://github.com/enyojs/enyo-docs) repo.
 
-For the curious, source code for the viewer app is available on GitHub in the
-enyojs project's [enyo-docs](https://github.com/enyojs/enyo-docs) repo.
-
-## Using the API Viewer
+## Using the API Reference
 
 ### Properties, Events, and Methods
 
-The primary purpose of the API Viewer is to present information about the
-object properties, events, and methods that Enyo and its related libraries
-(Moonstone, Layout, etc.) make available to application developers.  When you
-view the information for a particular kind, you will see a brief description of
-the kind, followed by a listing of its public elements, under the headings
-"Properties", "Methods", and "Events".
+The primary purpose of the API Reference is to give application developers an
+easy way to find documentation for the object properties, events, and methods
+made available by Enyo and its related libraries (e.g., Moonstone, Layout,
+Onyx).  When you view the information for a particular kind, you'll see a brief
+description of the kind, followed by a listing of its public elements, under the
+headings "Properties", "Methods", and "Events".
 
 To begin browsing the API, follow one of the top-level navigation links.  For
 example, if you follow the "namespaces" link, you'll find all the public
@@ -31,7 +28,7 @@ methods and properties that exist directly on the namespace, mixins (shared
 chunks of functionality that may be added to individual kinds as needed), and
 sub-namespaces (e.g., the focus-state management library, `enyo.Spotlight`).
 
-## Documenting Code for the API Viewer
+## Documenting Code for the API Reference
 
 ### What to Document
 
@@ -42,7 +39,7 @@ these API elements should be documented are provided in the following section,
 [How to Document](#how-to-document).
 
 Members that are private to the kind should be marked with the `@private` tag,
-but any further documentation is optional.
+but any additional documentation is optional.
 
 ### How to Document
 

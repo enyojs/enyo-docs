@@ -36,7 +36,7 @@ building-apps/using-webos-features.md
 deploying-apps/cordova-native-functions.md
 deploying-apps/enyo-apps-on-windows-8.md
 deploying-apps/platform-specific-deployment.md
-best-practices/api-tool.md
+best-practices/api-reference.md
 best-practices/dos-and-donts.md
 best-practices/encapsulation-in-enyo.md
 best-practices/style-guide.md

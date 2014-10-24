@@ -72,4 +72,4 @@ Use a single space after any keyword, except `function`:
 ## Commenting
 
 For code commenting guidelines, see [Documenting Code for the API
-Viewer](api-tool.html#documenting-code-for-the-api-viewer).
+Reference](api-reference.html#documenting-code-for-the-api-reference).

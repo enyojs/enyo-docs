@@ -65,7 +65,7 @@ Welcome!  Resources are available in the following areas:
 
 * Best Practices
 
-    * [The API Viewer](best-practices/api-tool.html)
+    * [The API Reference](best-practices/api-reference.html)
     * [Enyo Dos and Don'ts](best-practices/dos-and-donts.html)
     * [Encapsulation in Enyo](best-practices/encapsulation-in-enyo.html)
     * [Coding Style Guide](best-practices/style-guide.html)
