@@ -1,6 +1,6 @@
-% The API Reference
+% The API Reference: What Every Developer Should Know
 
-The [Enyo API Reference](http://enyojs.com/api), also known as the API Viewer or
+The [Enyo API Reference](../../index.html), also known as the API Viewer or
 API Tool, provides detailed information on all of the framework's publicly
 accessible kinds.  This data originates in comments found in the framework's
 JavaScript source code.   (including inherited methods and properties).
