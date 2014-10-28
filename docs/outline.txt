@@ -41,6 +41,8 @@ best-practices/dos-and-donts.md
 best-practices/encapsulation-in-enyo.md
 best-practices/style-guide.md
 release-notes.md
+release-notes/release-2.5.1.md
+release-notes/release-2.5.md
 release-notes/release-2.4.md
 release-notes/release-2.3.0-pre.10.md
 release-notes/release-2.2.md

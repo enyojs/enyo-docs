@@ -1,6 +1,6 @@
-﻿% Enyo 2.5.0 Release Notes
+﻿% Enyo 2.5 Release Notes
 
-Welcome to Enyo 2.5.0!  The following items have changed since the 2.4 release.
+Welcome to Enyo 2.5!  The following items have changed since the 2.4 release.
 (Note that this list is not comprehensive; see the commit history in GitHub for
 a complete list of changes.)
 
