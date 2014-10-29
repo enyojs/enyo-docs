@@ -19,8 +19,7 @@
 			"../lib/spotlight",
 			"../lib/onyx/source",
 			"../lib/onyx/version.js",
-			"../lib/canvas/",
-			"../lib/canvas/version.js"
+			"../lib/canvas/"
 		],
 		"includePattern": ".+\\.js(doc)?$",
 		"excludePattern": "package\\.js"
