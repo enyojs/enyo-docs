@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 			files: {
 				expand: true,
 				cwd: '<%= copyAssets.src %>/css',
-				src: '*.less',
+				src: 'main.less',
 				ext: '.css',
 				dest: '<%= copyAssets.dest %>/css'
 			}

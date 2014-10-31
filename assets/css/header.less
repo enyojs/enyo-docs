@@ -1,10 +1,3 @@
-// hack for Prism selector...
-#header {
-	.namespace {
-		opacity: initial;
-	}
-}
-
 #header {
 	height: 175px;
 	width: 100%;
@@ -13,26 +6,22 @@
 	background-color: #5DC4FF;
 	color: #FFFFFF;
 	position: relative;
-}
 
-#header {
 	a, a:hover, a:visited {
 		color: #FFFFFF;
 		text-decoration: none;
 	}
-}
+	// hack for Prism selector...
+	.namespace {
+		opacity: initial;
+	}
 
-#header {
 	.title {
 		position: absolute;
 		top: 25px;
 		left: 25px;
 		height: 75px;
-	}
-}
 
-#header {
-	.title {
 		span {
 			display: block;
 			line-height: 75px;
@@ -41,9 +30,7 @@
 			font-weight: normal;
 		}
 	}
-}
 
-#header {
 	.primary-nav {
 		position: absolute;
 		top: 25px;
@@ -58,21 +45,17 @@
 			padding: 0;
 			margin: 0;
 			height: 75px;
-		}
-	}
-}
 
-#header {
-	.primary-nav ul, .fixed-nav ul {
-		li {
-			display: inline-block;
-			box-sizing: border-box;
-			padding: 20px;
-			height: 100%;
-			line-height: 35px;
-			font-size: 15px;
-			font-weight: normal;
-			font-family: 'Open Sans', sans-serif;
+			li {
+				display: inline-block;
+				box-sizing: border-box;
+				padding: 20px;
+				height: 100%;
+				line-height: 35px;
+				font-size: 15px;
+				font-weight: normal;
+				font-family: 'Open Sans', sans-serif;
+			}
 		}
 	}
 }
@@ -86,43 +69,34 @@
 		height: 75px;
 		background-color: inherit;
 		z-index: 100;
-	}
-	
-	.fixed-nav {
+
 		&.fixed {
 			position: fixed;
 			top: 0;
 			left: 0;
 			right: 0;
-			
+
 			ul {
 				li.top {
 					opacity: 1;
 					visibility: visible;
-					transition-delay: 0s;
+					.transition-delay(0s);
 				}
 			}
 		}
-	}
-}
 
-#header {
-	.fixed-nav {
 		ul {
-			li.top {
-				opacity: 0;
-				visibility: hidden;
-				transition: visibility 0s 300ms, opacity 300ms;
-			}
-		}
-	}
-}
+			li {
+				&.top {
+					opacity: 0;
+					visibility: hidden;
+					@transition: visibility 0s 300ms, opacity 300ms;
+					.transition(@transition);
+				}
 
-#header {
-	.fixed-nav {
-		ul {
-			li.show-hide-private {
-				float: right;
+				&.show-hide-private {
+					float: right;
+				}
 			}
 		}
 	}
