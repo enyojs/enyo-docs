@@ -24,6 +24,11 @@ outlineFile=${docSourceRoot}/outline.txt
 
 while test $# -gt 0; do
 	case "$1" in
+		--less)
+			shift
+			lessFile=$1
+			shift
+			;;
 		--head)
 			shift
 			headFilePath=${docSourceRoot}/$1
@@ -148,4 +153,15 @@ if [ -d $assetsSourceDir ]; then
 	mkdir -p $assetsTargetDir
 	cp $assetsSourceDir/* $assetsTargetDir/
 fi
+
+# Compile LESS into CSS
+
+lessSourceDir=${docSourceRoot}/css
+
+if [ -d $lessSourceDir ] && [ -n "$lessFile" ]; then
+	cssTargetDir=$outputDir/css
+	mkdir -p $cssTargetDir
+	lessc $lessSourceDir/$lessFile $cssTargetDir/${lessFile%.*}.css
+fi
+
 exit
