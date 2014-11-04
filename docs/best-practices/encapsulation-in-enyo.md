@@ -27,9 +27,10 @@ have to create them, after all, usually by declaring them in the `components`
 block.  Thus, tight binding from the parent to the child is normal.  Parents
 should communicate with their children by calling functions defined in their
 APIs.  Although JavaScript lacks a clean way to enforce the separation between
-public API and private functions, we use the special `//* @public` comment
-before function definitions to designate public APIs.  These comments serve as a
-guide for the API viewer tool when displaying the public API.
+public API and private functions, we use the `@public` JSDoc tag to mark
+functions designated as public APIs, and the `@private` tag to mark non-public
+functions.  These tags are parsed when we compile the API Reference to display
+the Enyo API.
 
 Finally, you should never make assumptions about how a component you are using
 is built internally.  For example, say you are using a widget that includes a
