@@ -1,23 +1,20 @@
 % The API Reference: What Every Developer Should Know
 
-The [Enyo API Reference](../../index.html), also known as the API Viewer or
-API Tool, provides detailed information on all of the framework's publicly
-accessible kinds.  This data originates in comments found in the framework's
-JavaScript source code.   (including inherited methods and properties).
-
-For the curious, the code used to generate the reference is available on GitHub
-in the enyojs project's [enyo-docs](https://github.com/enyojs/enyo-docs) repo.
 
 ## Using the API Reference
 
 ### Properties, Events, and Methods
 
+The [Enyo API Reference](../../index.html), also known as the API Viewer or
+API Tool, provides detailed information on all of the framework's publicly
+accessible kinds, including their properties, events, and methods.
+
 The primary purpose of the API Reference is to give application developers an
-easy way to find documentation for the object properties, events, and methods
-made available by Enyo and its related libraries (e.g., Moonstone, Layout,
-Onyx).  When you view the information for a particular kind, you'll see a brief
-description of the kind, followed by a listing of its public elements, under the
-headings "Properties", "Methods", and "Events".
+easy way to find documentation.  When you view the page for a particular kind,
+you'll see a brief description of the kind, followed by a listing of its public
+elements, under the headings "Properties", "Methods", and "Events".  All of this
+information comes from comments in JSDoc format, found in the JavaScript source
+code of Enyo and its related libraries (e.g., Moonstone, Layout, Onyx).
 
 To begin browsing the API, follow one of the top-level navigation links.  For
 example, if you follow the "namespaces" link, you'll find all the public
