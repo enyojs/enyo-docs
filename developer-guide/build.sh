@@ -19,7 +19,7 @@ docSourceRoot=( $(pwd) )
 variant=''
 variantLength=0
 isVariant=false
-outputDir=${docSourceRoot}/../output/docs
+outputDir=${docSourceRoot}/../output/developer-guide
 outlineFile=${docSourceRoot}/outline.txt
 
 while test $# -gt 0; do
