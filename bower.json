@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "jquery-hashchange": "*"
+    "jquery-hashchange": "*",
+    "jquery": "~2.1.1"
   }
 }
