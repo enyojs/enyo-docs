@@ -20,8 +20,8 @@ other contexts besides lists; e.g., in menus.)
 
 ### moon.Item
 
-[moon.Item](../../../index.html#/kind/moon.Item), the simplest list item kind,
-provides an item with a text label specified in its `content` property.
+[moon.Item]($api/#/kind/moon.Item), the simplest list item kind, provides an
+item with a text label specified in its `content` property.
 
 ```javascript
     components: [
@@ -40,9 +40,9 @@ provides an item with a text label specified in its `content` property.
 
 ### moon.LabeledTextItem
 
-[moon.LabeledTextItem](../../../index.html#/kind/moon.LabeledTextItem) extends
-`moon.Item`, adding the `label` property, which serves as a label accompanying
-the content specified in the `text` property.
+[moon.LabeledTextItem]($api/#/kind/moon.LabeledTextItem) extends `moon.Item`,
+adding the `label` property, which serves as a label accompanying the content
+specified in the `text` property.
 
 ```javascript
     components: [
@@ -65,9 +65,9 @@ Spotlight.
 
 ### moon.ImageItem
 
-[moon.ImageItem](../../../index.html#/kind/moon.ImageItem) combines an
-[enyo.Image](../../../index.html#/kind/enyo.Image) with a `moon.LabeledTextItem`.
-By default, the image is positioned on the left side of the text.
+[moon.ImageItem]($api/#/kind/moon.ImageItem) combines an
+[enyo.Image]($api/#/kind/enyo.Image) with a `moon.LabeledTextItem`.  By default,
+the image is positioned on the left side of the text.
 
 ```javascript
     components: [
@@ -88,10 +88,10 @@ To position the image on the right, set `imageAlignRight: true`.
 
 ### moon.SelectableItem
 
-[moon.SelectableItem](../../../index.html#/kind/moon.SelectableItem) features
-the `selected` property, which contains a boolean value indicating whether the
-item is currently selected.  A selected item will be displayed with a pink dot
-to its left.
+[moon.SelectableItem]($api/#/kind/moon.SelectableItem) features the `selected`
+property, which contains a boolean value indicating whether the item is
+currently selected.  A selected item will be displayed with a pink dot to its
+left.
 
 `moon.SelectableItem` also supports the Enyo Group API by exposing the `active`
 property (a boolean indicating whether the item is the currently selected item
@@ -117,12 +117,12 @@ is deactivated.
 
 ### moon.ExpandableListItem
 
-[moon.ExpandableListItem](../../../index.html#/kind/moon.ExpandableListItem) is
-a control with an expanded state and a collapsed state.  It displays a header
-while also allowing additional content to be stored in an
-[enyo.Drawer](../../../index.html#/kind/enyo.Drawer); when the header is selected,
-the drawer opens below.  The drawer is closed by tapping on the header text or
-navigating (via 5-way) back to the top of the drawer.
+[moon.ExpandableListItem]($api/#/kind/moon.ExpandableListItem) is a control with
+an expanded state and a collapsed state.  It displays a header while also
+allowing additional content to be stored in an
+[enyo.Drawer]($api/#/kind/enyo.Drawer); when the header is selected, the drawer
+opens below.  The drawer is closed by tapping on the header text or navigating
+(via 5-way) back to the top of the drawer.
 
 While an ExpandableListItem's child components may be of any kind, by default,
 they are instances of `moon.Item`.
@@ -135,9 +135,9 @@ documentation on [Pickers](pickers.html).
 
 ### moon.Divider
 
-[moon.Divider](../../../index.html#/kind/moon.Divider) is a non-actionable
-separator control that consists of a horizontal rule and a text label.  The text
-label supports marquee behavior for long content.
+[moon.Divider]($api/#/kind/moon.Divider) is a non-actionable separator control
+that consists of a horizontal rule and a text label.  The text label supports
+marquee behavior for long content.
 
 Dividers are commonly used as category headers (e.g., "A", "B", "C", etc.)
 within a list.
@@ -152,10 +152,10 @@ within a list.
 
 ### moon.ListActions
 
-[moon.ListActions](../../../index.html#/kind/moon.ListActions) is a menu of
-actions that resides on the right side of a list.  When the activator control is
-pressed, the menu opens to reveal a set of actions that may be performed on the
-items in the list to its left.
+[moon.ListActions]($api/#/kind/moon.ListActions) is a menu of actions that
+resides on the right side of a list.  When the activator control is pressed, the
+menu opens to reveal a set of actions that may be performed on the items in the
+list to its left.
 
 The ListActions menu may contain options for sorting (alphabetically, by date,
 etc.) or filtering (show only games, show only free items, etc.).  It may also

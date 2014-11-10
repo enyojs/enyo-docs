@@ -28,8 +28,8 @@ Note that the focused state may be animated.
 
 ## moon.Button
 
-[moon.Button](../../../index.html#/kind/moon.Button) derives directly from
-[enyo.Button](../../../index.html#/kind/enyo.Button) and provides the same basic
+[moon.Button]($api/#/kind/moon.Button) derives directly from
+[enyo.Button]($api/#/kind/enyo.Button) and provides the same basic
 functionality, along with a dose of Moonstone visual styling.
 
 When a `moon.Button` is tapped, it generates an `ontap` event; you may respond
@@ -46,7 +46,7 @@ to the event by specifying a handler method, e.g.:
 ```
 
 You may apply a caption to a button by wrapping it inside a
-[moon.CaptionDecorator](../../../index.html#/kind/moon.CaptionDecorator):
+[moon.CaptionDecorator]($api/#/kind/moon.CaptionDecorator):
 
 ```javascript
     components: [
@@ -80,8 +80,8 @@ target) by setting `small: true` when declaring the button.
 
 ## moon.IconButton
 
-[moon.IconButton](../../../index.html#/kind/moon.IconButton), which extends the
-[moon.Icon](../../../index.html#/kind/moon.Icon) kind, provides a button with an image
+[moon.IconButton]($api/#/kind/moon.IconButton), which extends the
+[moon.Icon]($api/#/kind/moon.Icon) kind, provides a button with an image
 inside.
 
 ```javascript

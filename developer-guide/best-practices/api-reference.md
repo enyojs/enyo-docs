@@ -1,13 +1,12 @@
 % The API Reference: What Every Developer Should Know
 
-
 ## Using the API Reference
 
 ### Properties, Events, and Methods
 
-The [Enyo API Reference](../../index.html), also known as the API Viewer or
-API Tool, provides detailed information on all of the framework's publicly
-accessible kinds, including their properties, events, and methods.
+The [Enyo API Reference]($api/), also known as the API Viewer or API Tool,
+provides detailed information on all of the framework's publicly accessible
+kinds, including their properties, events, and methods.
 
 The primary purpose of the API Reference is to give application developers an
 easy way to find documentation.  When you view the page for a particular kind,

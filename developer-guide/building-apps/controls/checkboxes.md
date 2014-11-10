@@ -12,7 +12,7 @@ items](radio-items.html) (otherwise known as radio buttons).
 
 ## enyo.Checkbox
 
-[enyo.Checkbox](../../../index.html#/kind/enyo.Checkbox) implements an HTML
+[enyo.Checkbox]($api/#/kind/enyo.Checkbox) implements an HTML
 checkbox input, with support for grouping.
 
 The `onActivate` event is fired when the checkbox is tapped.
@@ -22,11 +22,11 @@ The state of the checkbox is available as a boolean (`true` if checked;
 
 ## moon.Checkbox and moon.CheckboxItem
 
-[moon.Checkbox](../../../index.html#/kind/moon.Checkbox) extends `enyo.Checkbox`,
+[moon.Checkbox]($api/#/kind/moon.Checkbox) extends `enyo.Checkbox`,
 adding Moonstone visual styling.
 
 Instead of creating `moon.Checkbox` objects directly, you may find it convenient
-to use the [moon.CheckboxItem](../../../index.html#/kind/moon.CheckboxItem) kind,
+to use the [moon.CheckboxItem]($api/#/kind/moon.CheckboxItem) kind,
 which combines a checkbox with a text label, as in this example taken from the
 Enyo Sampler:
 
@@ -45,7 +45,7 @@ Enyo Sampler:
 
 ## moon.FormCheckbox
 
-[moon.FormCheckbox](../../../index.html#/kind/moon.FormCheckbox) extends
+[moon.FormCheckbox]($api/#/kind/moon.FormCheckbox) extends
 `moon.Checkbox`, providing a labeled checkbox (similar to `moon.CheckboxItem`)
 for use in form layouts.  Unlike `moon.CheckboxItem`, `moon.FormCheckbox` has a
 circular "tap target" area that is always visible, regardless of whether the
