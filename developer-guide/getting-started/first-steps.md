@@ -79,8 +79,8 @@ server using `Node.js`.  Here's how to do it:
 * Create a directory to house your application files, then enter that directory
     and start the server by running `serve`, e.g.:
 
-    + `mkdir my_doc_root`
-    + `cd my_doc_root`
+    + `mkdir <my_doc_root>`
+    + `cd <my_doc_root>`
     + `serve`
 
 * Your application will be accessible on port 3000, at a URL such as `http://localhost:3000/debug.html`.
@@ -102,7 +102,7 @@ To start an app using the Moonstone UI library, clone the `bootplate-moonstone`
 repository to your local machine:
 
 ```
-    git clone --recursive --branch 2.4.0 https://github.com/enyojs/bootplate-moonstone.git <myapp>
+    git clone --recursive --branch 2.5.1 https://github.com/enyojs/bootplate-moonstone.git <myapp>
 ```
 
 (**Expert tip:** If you'd like to version-control the newly-cloned project

@@ -38,18 +38,18 @@ items that can be rendered and scrolled with good performance across the range
 of devices that Enyo supports.  For this reason, Enyo has two broad strategies
 for dealing with lists of data.  When an application needs a relatively small
 number of items (up to ~100) that are relatively complex, an
-[enyo.Repeater](../../../index.html#/kind/enyo.Repeater) should be used.  When an
-application needs a large number of relatively simple items (into the millions),
-an [enyo.List](../../../index.html#/kind/enyo.List) should be used.
+[enyo.Repeater]($api/#/kind/enyo.Repeater) should be used.  When an application
+needs a large number of relatively simple items (into the millions), an
+[enyo.List]($api/#/kind/enyo.List) should be used.
 
 ### enyo.Repeater
 
-[enyo.Repeater](../../../index.html#/kind/enyo.Repeater) is a simple control for
-making lists of items.  A repeater does just what its name implies--it repeats
-the set of controls that are contained within it.  The components of a repeater
-are copied for each item created, and are	wrapped	in a control that keeps the
-state of the item index.  Any control may be placed inside a repeater, and
-applications may interact with these controls normally.
+[enyo.Repeater]($api/#/kind/enyo.Repeater) is a simple control for making lists
+of items.  A repeater does just what its name implies--it repeats the set of
+controls that are contained within it.  The components of a repeater are copied
+for each item created, and are	wrapped	in a control that keeps the state of the
+item index.  Any control may be placed inside a repeater, and applications may
+interact with these controls normally.
 
 The `count` property specifies the number of times the item controls are
 repeated; for each repetition, the `onSetupItem` event is fired.  You may handle
@@ -80,19 +80,19 @@ done to accommodate potential changes to the data model for the repeater, which
 may or may not have the same item count as before.
 
 (**Note:** If the contents of a repeater should scroll, then the repeater should
-be placed inside an [enyo.Scroller](../../../index.html#/kind/enyo.Scroller).)
+be placed inside an [enyo.Scroller]($api/#/kind/enyo.Scroller).)
 
 ### enyo.List
 
-[enyo.List](../../../index.html#/kind/enyo.List) is a control that displays a
-scrolling list of rows.  It is designed to render a very large number of rows
-efficiently, having been optimized such that only a small portion of the list is
-rendered at any given time.  This is done using a [flyweight
+[enyo.List]($api/#/kind/enyo.List) is a control that displays a scrolling list
+of rows.  It is designed to render a very large number of rows efficiently,
+having been optimized such that only a small portion of the list is rendered at
+any given time.  This is done using a [flyweight
 pattern](http://en.wikipedia.org/wiki/Flyweight_pattern), in which controls
 placed inside the list are created once, but rendered for each list item.  For
 this reason, it's best to use only simple controls in a List, such as
-[enyo.Control](../../../index.html#/kind/enyo.Control) and
-[enyo.Image](../../../index.html#/kind/enyo.Image).
+[enyo.Control]($api/#/kind/enyo.Control) and
+[enyo.Image]($api/#/kind/enyo.Image).
 
 (Note that `enyo.List` includes a scroller; therefore, it should *not* be placed
 inside an `enyo.Scroller`.)
@@ -138,19 +138,18 @@ used in lists.
 
 ### moon.List
 
-[moon.List](../../../index.html#/kind/moon.List) inherits from `enyo.List`,
-adding support for 5-way focus (Spotlight) and pagination buttons.
+[moon.List]($api/#/kind/moon.List) inherits from `enyo.List`, adding support for
+5-way focus (Spotlight) and pagination buttons.
 
 Currently, `moon.List` requires a value of `"TouchScrollStrategy"` (or a subkind
 of `"TouchScrollStrategy"`) for the `strategyKind` property.
 
 ## enyo.GridList
 
-[enyo.GridList](../../../index.html#/kind/enyo.GridList) extends `enyo.List`,
-providing a grid in which you may display multiple items per row (depending on
-the available container width). Three rendering modes are supported:
-"fixed-size", "fluid-width", and "variable-size" (with or without normalization
-of rows).
+[enyo.GridList]($api/#/kind/enyo.GridList) extends `enyo.List`, providing a grid
+in which you may display multiple items per row (depending on the available
+container width). Three rendering modes are supported: "fixed-size",
+"fluid-width", and "variable-size" (with or without normalization of rows).
 
 In `fixedSize` mode--i.e., when `itemFixedSize` is set to `true`--all items are
 of the same size, which may be configured by setting the `itemWidth` and
@@ -166,9 +165,9 @@ dimensions at runtime.
 
 ## moon.GridList
 
-[moon.GridList](../../../index.html#/kind/moon.GridList) extends
-`enyo.GridList`, adding Moonstone-specific configuration, styling, decorators,
-and Spotlight/focus-state management.
+[moon.GridList]($api/#/kind/moon.GridList) extends `enyo.GridList`, adding
+Moonstone-specific configuration, styling, decorators, and Spotlight/focus-state
+management.
 
 ## More on Flyweight
 
