@@ -1,0 +1,19 @@
+{
+    "node": true,
+    "es3": false,
+    "evil": false,
+    "regexdash": true,
+    "browser": false,
+    "wsh": false,
+    "trailing": false,
+    "sub": true,
+    "eqnull": true,
+    "laxbreak": true,
+    "laxcomma": true,
+    "curly": false,
+    "indent": 4,
+    "newcap": true,
+    "undef": true,
+    "expr": true,
+    "unused": "vars"
+}
