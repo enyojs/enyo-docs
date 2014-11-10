@@ -1,10 +1,10 @@
 % Components
 
-The Component object, [enyo.Component](../../index.html#/kind/enyo.Component),
-is the basic building block of Enyo.  Components encapsulate rich behavior and
+The Component object, [enyo.Component]($api/#/kind/enyo.Component), is the basic
+building block of the Enyo framework.  Components encapsulate rich behavior and
 may be used together as modules to create complex applications.  When coding an
 Enyo application, you'll create many of your own component and control kinds.
-Here are a few steps to get started.
+The information in this document should help you get started.
 
 ## The Basics
 

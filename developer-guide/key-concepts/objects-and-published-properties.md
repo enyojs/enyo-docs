@@ -2,11 +2,11 @@
 
 ## enyo.Object
 
-[enyo.Object](../api.html#enyo.Object) implements the Enyo framework's property
+[enyo.Object]($api/#/kind/enyo.Object) implements the Enyo framework's property
 publishing system.  Published properties are declared in a hash called
-`published` within a call to `enyo.kind()`.  To get the value of a published
-property, call `get(<propertyName>)`; to set the value, call
-`set(<propertyName>, value)`.
+`published` within a call to [enyo.kind()]($api/#/namespace/enyo.kind).  To get
+the value of a published property, call `get(<propertyName>)`; to set the value,
+call `set(<propertyName>, value)`.
 
 By convention, the setter for a published property will trigger an optional
 `<propertyName>Changed` method when called.

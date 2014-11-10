@@ -2,8 +2,8 @@
 
 ## enyo.kind()
 
-[enyo.kind(inProps)](../../index.html#/namespace/enyo.kind) is the Enyo framework's
-method for generating kinds.  A kind, you'll recall, is a constructor-with-prototype
+[enyo.kind(inProps)]($api/#/namespace/enyo.kind) is the Enyo framework's method
+for generating kinds.  A kind, you'll recall, is a constructor-with-prototype
 (like a class) that has advanced features like prototype-chaining (inheritance).
 
 A plug-in system is included for extending the abilities of the kind generator,
@@ -95,7 +95,7 @@ processing.	Some examples of special properties are:
     any instances of the kind exist.
 
 Certain kinds in the framework define their own special properties, e.g., the
-`published` property supported by [enyo.Object](../../index.html#/kind/enyo.Object).
+`published` property supported by [enyo.Object]($api/#/kind/enyo.Object).
 
 ## Lifecycle of a Trivial Kind
 

@@ -2,11 +2,11 @@
 
 ## enyo.Control
 
-[enyo.Control](../../index.html#/kind/enyo.Control) is a component that controls
-a DOM node (i.e., an element in the user interface).  Controls are generally
-visible and the user often interacts with them directly.  Things like buttons
-and input boxes are obviously controls, but in Enyo a control may become as
-complex as an entire application.
+[enyo.Control]($api/#/kind/enyo.Control) is a component that controls a DOM node
+(i.e., an element in the user interface).  Controls are generally visible and
+the user often interacts with them directly.  Things like buttons and input
+boxes are obviously controls, but in Enyo a control may become as complex as an
+entire application.
 
 ## The Basics
 
@@ -48,7 +48,7 @@ inside a `TrafficLight` control:
 
 The `Circle` has a `kind` value of `"Control"` and therefore inherits and
 extends the behavior of `enyo.Control`.  Since a control is a component (i.e.,
-`enyo.Control` extends [enyo.Component](../../index.html#/kind/enyo.Component)), it can
+`enyo.Control` extends [enyo.Component]($api/#/kind/enyo.Component)), it can
 publish properties, as is done here.
 
 ## Manipulating a Control's DOM Node
