@@ -28,7 +28,6 @@ Welcome!  Resources are available in the following areas:
     * [Fittables](building-apps/layout/fittables.html)
     * [Scrollers](building-apps/layout/scrollers.html)
     * [Lists](building-apps/layout/lists.html)
-    * [Grid Lists](building-apps/layout/grid-lists.html)
     * [Data Lists](building-apps/layout/data-lists.html)
     * [Drawers](building-apps/layout/drawers.html)
     * [Panels](building-apps/layout/panels.html)

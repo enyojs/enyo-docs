@@ -21,7 +21,6 @@ building-apps/controls/text-fields.md
 building-apps/controls/toggles.md
 building-apps/layout/scrollers.md
 building-apps/layout/lists.md
-building-apps/layout/grid-lists.md
 building-apps/layout/data-lists.md
 building-apps/layout/fittables.md
 building-apps/layout/panels.md
