@@ -4,7 +4,7 @@
 #
 # A bash shell script that reads in a list of markdown (.md) files from a
 # manifest ('outline.txt' by default) and uses Pandoc to convert them to HTML;
-# the resulting files are written to an output directory ('../output/docs' by
+# the resulting files are written to an output directory ('../output/developer-guide' by
 # default). If the 'assets' subdirectory exists, its contents are copied to the
 # output directory.
 #
