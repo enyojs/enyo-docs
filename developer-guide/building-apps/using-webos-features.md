@@ -23,9 +23,9 @@ in-app-browser.  The Enyo library `enyo-cordova` encapsulates Cordova for all
 platforms, dynamically choosing the right version based on the device running
 the application (e.g., the webOS version of Cordova on webOS TVs).
 
-In addition, [Enyo signals](../../index.html#/kind/enyo.Signals) are set up for
-all [Cordova-based events](http://docs.phonegap.com/en/2.7.0/index.html) for
-easy use within Enyo applications. For example:
+In addition, [Enyo signals]($api/#/kind/enyo.Signals) are set up for all
+[Cordova-based events](http://docs.phonegap.com/en/2.7.0/index.html) for easy
+use within Enyo applications. For example:
 
 ```javascript
     enyo.kind({

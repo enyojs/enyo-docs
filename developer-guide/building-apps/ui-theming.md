@@ -166,11 +166,11 @@ The absence of custom styling makes sense, however, when we realize that
 Bootplate does not contain any Onyx controls, so there are no UI elements that
 will reflect our variable overrides.  The lone control in Bootplate's `App.js`
 file has no kind specified, and thus defaults to being an unstyled
-[enyo.Control](../../index.html#/kind/enyo.Control):
+[enyo.Control]($api/#/kind/enyo.Control):
 
         {name: "hello", content: "Hello World", allowHtml: true, ontap: "helloWorldTap"}
 
-If, instead, we define this control as an [onyx.Button](../../index.html#/kind/onyx.Button)...
+If, instead, we define this control as an [onyx.Button]($api/#/kind/onyx.Button)...
 
         {name: "hello", kind: "onyx.Button", content: "Hello World",
             allowHtml: true, ontap: "helloWorldTap"}
@@ -262,8 +262,8 @@ selector; that is, add an additional class to the definition, such as
         }
 
 Now the rule override will only affect instances of
-[onyx.InputDecorator](../../index.html#/kind/onyx.InputDecorator) that have the
-selecting class (`"red-glow"`) applied, e.g.:
+[onyx.InputDecorator]($api/#/kind/onyx.InputDecorator) that have the selecting
+class (`"red-glow"`) applied, e.g.:
 
         components: [
             {kind: "onyx.InputDecorator", classes: "red-glow", components: [
@@ -301,9 +301,9 @@ when DOM or behavioral changes are required.
 
 For example, you might want to implement a `"Slider"` as a rotary dial instead
 of a horizontal track with a handle.  Even if your new `Slider` has the exact
-same API as [onyx.Slider](../../index.html#/kind/onyx.Slider) (i.e., the same
-published properities and bubbled events), it will still require completely
-different DOM, CSS, and internal event tracking.
+same API as [onyx.Slider]($api/#/kind/onyx.Slider) (i.e., the same published
+properities and bubbled events), it will still require completely different DOM,
+CSS, and internal event tracking.
 
 In this scenario, the idea of "theming" grows to encompass the building of a new
 library, made up of (one or more) Enyo kinds that implement your desired

@@ -17,38 +17,36 @@ most useful for binding view properties to your back-end data, bindings in Enyo
 are very flexible and may be created between any two Enyo objects.
 
 All Enyo objects and components support binding by default when property values
-are changed using the `set()` method of
-[enyo.Object](../../../index.html#/kind/enyo.Object).  However, to make changes
-to properties observable on plain old JavaScript objects (e.g., JSON objects
-loaded from a back-end service), Enyo also provides
-[enyo.Model](../../../index.html#/kind/enyo.Model), an object that wraps a plain
-JavaScript object and adds support for observation, thus allowing your back-end
-data to be easily bound to Enyo objects and controls.  In addition, Enyo provides
-[enyo.Collection](../../../index.html#/kind/enyo.Collection), which wraps arrays
-of models and allows observation of additions to (and removals from) the
-collection.
+are changed using the `set()` method of [enyo.Object]($api/#/kind/enyo.Object).
+However, to make changes to properties observable on plain old JavaScript
+objects (e.g., JSON objects loaded from a back-end service), Enyo also provides
+[enyo.Model]($api/#/kind/enyo.Model), an object that wraps a plain JavaScript
+object and adds support for observation, thus allowing your back-end data to be
+easily bound to Enyo objects and controls.  In addition, Enyo provides
+[enyo.Collection]($api/#/kind/enyo.Collection), which wraps arrays of models and
+allows observation of additions to (and removals from) the collection.
 
 Using these features, the properties of `enyo.Object` and `enyo.Model` instances
 may be bound to any view properties (which will then be automatically kept in
 sync with any object or model changes).  Furthermore, "collection-aware" view
-kinds such as [enyo.DataRepeater](../../../index.html#/kind/enyo.DataRepeater),
-[enyo.DataList](../../../index.html#/kind/enyo.DataList), and
-[enyo.DataGridList](../../../index.html#/kind/enyo.DataGridList), which generate
-repeated controls based on a list of data, may be bound to an `enyo.Collection`.
-The views will then be automatically re-rendered when the models in the
-collection change.
+kinds such as [enyo.DataRepeater]($api/#/kind/enyo.DataRepeater),
+[enyo.DataList]($api/#/kind/enyo.DataList), and
+[enyo.DataGridList]($api/#/kind/enyo.DataGridList), which generate repeated
+controls based on a list of data, may be bound to an `enyo.Collection`.  The
+views will then be automatically re-rendered when the models in the collection
+change.
 
 Finally, Enyo provides APIs on `enyo.Model` and `enyo.Collection` that let you
 easily fetch data from (and persist data to) back-end sources such as HTTP-based
 Ajax and Jsonp endpoints.  You may also customize these APIs to accommodate
 other data sources, such as third-party libraries or SDKs, by subclassing and
-registering new [enyo.Source](../../../index.html#/kind/enyo.Source) objects.
+registering new [enyo.Source]($api/#/kind/enyo.Source) objects.
 
 ## Observers, Bindings, and Computed Properties
 
-[enyo.Component](../../../index.html#/kind/enyo.Component) provides both
-declarative and programmatic APIs for observing property changes and binding
-properties of objects in the scope of the component.
+[enyo.Component]($api/#/kind/enyo.Component) provides both declarative and
+programmatic APIs for observing property changes and binding properties of
+objects in the scope of the component.
 
 ### Observers
 
@@ -104,7 +102,7 @@ function internally.
 
 After a kind has been created, you may add or remove observers programmatically
 using the `addObserver()` and `removeObserver()` functions on `enyo.Object`
-(provided by the [enyo.ObserverSupport](../../../index.html#/mixin/enyo.ObserverSupport)
+(provided by the [enyo.ObserverSupport]($api/#/mixin/enyo.ObserverSupport)
 mixin).
 
 ### Bindings
@@ -259,10 +257,10 @@ Then, when either dependent property changes, the view will automatically update
 
 ## Models
 
-[enyo.Model](../../../index.html#/kind/enyo.Model) is a very lightweight base
-kind that is specially designed to wrap POJOs (plain-old JavaScript objects)
-such as data fetched as JSON from a remote server.  It allows for observation
-and binding using the APIs described above.
+[enyo.Model]($api/#/kind/enyo.Model) is a very lightweight base kind that is
+specially designed to wrap plain-old JavaScript objects (POJOs), such as data
+fetched as JSON from a remote server.  It allows for observation and binding
+using the APIs described above.
 
 Note that `enyo.Model` is **NOT** an `enyo.Component`; it may not be used within
 declarative `components` blocks, but is instead instanced using the `new`
@@ -502,9 +500,9 @@ fields with `enyo.Model`, making those nested sub-objects bindable as well:
 ## Collections
 
 While `enyo.Object` wraps plain JavaScript objects to make them observable,
-[enyo.Collection](../../../index.html#/kind/enyo.Collection) wraps arrays of
-JavaScript objects, providing observation support for the addition of objects to
-(and removal of objects from) the array, and automatically "upgrading" plain
+[enyo.Collection]($api/#/kind/enyo.Collection) wraps arrays of JavaScript
+objects, providing observation support for the addition of objects to (and
+removal of objects from) the array, and automatically "upgrading" plain
 JavaScript objects to `enyo.Model` status.
 
 Note: Although collections have many features and APIs in common with
@@ -562,8 +560,8 @@ converted into `enyo.Model` objects when first retrieved.
     myCollection.at(myCollection.length-1).get("name"); // returns "Aaron"
 ```
 
-See the [enyo.Collection](../../../index.html#/kind/enyo.Collection) API
-reference for the full list of APIs available for manipulating records.
+See the documentation for [enyo.Collection]($api/#/kind/enyo.Collection) for the
+full list of APIs available for manipulating records.
 
 ### Creating Collection Subkinds
 
@@ -682,11 +680,11 @@ array...
 
 ### Overview
 
-[enyo.Source](../../../index.html#/kind/enyo.Source) is an abstraction provided
-by Enyo's data layer that encapsulates knowledge of how to fetch models from and
-commit collections to a data source.  The data source could be a remote service
-exposed as REST endpoints accessed via Ajax or Jsonp, a complex Web API accessed
-through a third-party JavaScript library, or even `localStorage`.
+[enyo.Source]($api/#/kind/enyo.Source) is an abstraction provided by Enyo's data
+layer that encapsulates knowledge of how to fetch models from and commit
+collections to a data source.  The data source could be a remote service exposed
+as REST endpoints accessed via Ajax or Jsonp, a complex Web API accessed through
+a third-party JavaScript library, or even `localStorage`.
 
 The abstract API for `enyo.Source` is as follows:
 
@@ -704,9 +702,8 @@ The abstract API for `enyo.Source` is as follows:
     attributes (optional).
 
 Enyo currently provides default sources for Ajax and Jsonp REST endpoints via
-the [enyo.AjaxSource](../../../index.html#/kind/enyo.AjaxSource) and
-[enyo.JsonpSource](../../../index.html#/kind/enyo.JsonpSource) subkinds,
-respectively.
+the [enyo.AjaxSource]($api/#/kind/enyo.AjaxSource) and
+[enyo.JsonpSource]($api/#/kind/enyo.JsonpSource) subkinds, respectively.
 
 ### Specifying a source
 
@@ -907,14 +904,14 @@ on the data in the collection, and are kept in sync with changes made to the
 underlying collection and models.
 
 The base kind for these controls is
-[enyo.DataRepeater](../../../index.html#/kind/enyo.DataRepeater).  This is
-similar to [enyo.Repeater](../../../index.html#/kind/enyo.Repeater) in that its
-child controls serve as a template for controls to be generated by the repeater
-(one for each child in the underlying data set).  However, instead of setting a
-count and responding to `setupItem` events to sync generated controls to the
-data models, `enyo.DataRepeater` generates one control for each model in the
-collection and then assigns the corresponding model to each control, allowing
-bindings on that control to sync data to and from the models.
+[enyo.DataRepeater]($api/#/kind/enyo.DataRepeater).  This is similar to
+[enyo.Repeater]($api/#/kind/enyo.Repeater) in that its child controls serve as
+a template for controls to be generated by the repeater (one for each child in
+the underlying data set).  However, instead of setting a count and responding to
+`setupItem` events to sync generated controls to the data models,
+`enyo.DataRepeater` generates one control for each model in the collection and
+then assigns the corresponding model to each control, allowing bindings on that
+control to sync data to and from the models.
 
 Without collections or bindings, one might implement a simple repeater as follows:
 
