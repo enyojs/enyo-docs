@@ -12,8 +12,8 @@ meaning that the control is visible.
 
 By default, a Drawer appears or disappears with a sliding animation whose
 direction is determined by the `orient` property.  The default value of `orient`
-is `"v"`, indicating that the drawer opens and closes along the vertical axis.
-To create a horizontally-oriented drawer, set `orient` to `"h"`.
+is `'v'`, indicating that the drawer opens and closes along the vertical axis.
+To create a horizontally-oriented drawer, set `orient` to `'h'`.
 
 `enyo.Drawer` exposes an `animated` property, which may be set to `false` to
 disable the sliding animation.
@@ -140,17 +140,15 @@ container for `moon.Drawer` objects).
 `moon.Drawer` contains two areas for content--a main content area, where items
 declared in the `components` block live, and an optional `controlDrawer`, which
 houses any items declared in a `controlDrawerComponents` block.  In addition, in
-its `handle` property, `moon.Drawer` allows you to specify an activator control
-(typically of the kind [moon.DrawerHandle]($api/#/kind/moon.DrawerHandle)),
-which is used to display the activator along with a styled label.
+its `handle` property, `moon.Drawer` allows you to specify an activator control,
+which is displayed along with a styled label.
 
 `moon.Drawer` objects are designed to be placed inside a `moon.Drawers`
 container.  This is done by supplying an array of Drawer objects in the
-`drawers` property of the `moon.Drawers`.  The `moon.Drawers` creates a
-`moon.DrawerHandle` instance for each Drawer it contains.  These handles are
-grouped together visually in the Drawers control; selecting a handle will
-activate the associated Drawer, opening either the main content area or the
-control drawer (depending on how the Drawer is configured).
+`drawers` property of the `moon.Drawers`.  The drawer handles are grouped
+together visually in the Drawers control; selecting a handle will activate the
+associated drawer, opening either the main content area or the control drawer
+(depending on how the Drawer is configured).
 
 Finally, note that a `moon.Drawers` may contain child components of any kind.
 
