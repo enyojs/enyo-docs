@@ -42,7 +42,7 @@ While this step is also covered in [First Steps with Enyo](first-steps.html),
 there's no harm in repeating the essential Git command:
 
 ```
-    git clone --recursive --branch 2.4.0 https://github.com/enyojs/bootplate-moonstone.git <myapp>
+    git clone --recursive --branch 2.5.1 https://github.com/enyojs/bootplate-moonstone.git <myapp>
 ```
 
 ## 3. Customize app boilerplate
