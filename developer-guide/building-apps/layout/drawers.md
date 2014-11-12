@@ -152,4 +152,4 @@ associated drawer, opening either the main content area or the control drawer
 
 Finally, note that a `moon.Drawers` may contain child components of any kind.
 
-![_moon.Drawers with moon.DrawerHandle_](../../assets/drawers-6.png)
+![_moon.Drawers with Handle_](../../assets/drawers-6.png)
