@@ -59,7 +59,7 @@ next several release cycles.
         parameter.  If present, the passed-in string will be tested to determine
         directionality instead of `this.content`.
 
-    + Modified regular in expression in `applyStyle()` so that all instances of
+    + Modified regular expression in `applyStyle()` so that all instances of
         a property are removed when removing properties before a DOM node is
         attached.
 
@@ -166,6 +166,9 @@ next several release cycles.
 * In `enyo.TouchScrollStrategy`, added `inFireEvent` parameter to `stop()`
     method, to suppress redundant `onScrollStop` events when stopping previous
     scroll behavior.
+
+* Fixed behavior of `enyo.TranslateScrollStrategy` when `translateOptimized`
+    option is disabled.
 
 * In `VerticalDelegate.js`, modified `refresh()` to fix routine for updating
     page indices.  Also, updated `controlsPerPage()` and `setScrollThreshold()`
@@ -658,11 +661,14 @@ next several release cycles.
 
     + Fixed reordering of list items.
 
-    + Modified the kind to use new `Control.retainNode()` method.
+    + Modified kind to use new `Control.retainNode()` method.
 
     + Updated code to avoid passing shared event object references when firing
         custom events, also updating related samples "ListAroundSample",
         "ListContactsSample", and "ListLanguagesSample".
+
+    + Updated `swipeDrag()` and `swipeDragFinish()` to use last non-zero swipe
+        direction when determining swipe completion state.
 
 * Corrected quotation marks in `deploy.json` (single quotes are illegal in JSON
     files).
@@ -715,6 +721,9 @@ next several release cycles.
 * Removed `onyx.Scrim` and modified `onyx.Popup` to rely on scrim-handling code
     that's now inherited from `enyo.Popup`.
 
+* In `onyx.DatePicker` and `onyx.TimePicker`, properly scoped check for
+    existence of `iLib`.
+
 * In `onyx.RangeSlider`, fixed incorrect method name that was causing
     initialization error.
 
@@ -727,6 +736,8 @@ next several release cycles.
 ### enyo-ilib
 
 * Updated `iLib` to version `20140918-build-8.0-002`.
+
+* In "ChooseLocale" sample, made locale string comparison case-insensitive.
 
 ### enyo-webos
 
