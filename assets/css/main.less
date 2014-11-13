@@ -85,11 +85,16 @@ strong {
 				vertical-align: baseline;
 			}
 
-			.access {
+			span.access.public {
+				color: @public-color;
+			}
+
+			span.access.private {
+				color: @private-color
 			}
 
 			.name {
-				color: #5DC4FF;
+				color: @name-color;
 				font-weight: bold;
 			}
 
@@ -169,7 +174,9 @@ strong {
 				.default {
 					padding-top: 1em;
 				}
+
 			}
+
 		}
 	}
 }
