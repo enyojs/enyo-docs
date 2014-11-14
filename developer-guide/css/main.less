@@ -1,9 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,800|Open+Sans:400,700,800|Droid+Sans+Mono:400,800);
 
+@background-color: #fff;
+@text-color: #222;
+@link-color: #5DC4FF;
+
 body {
 	font-family: 'Open Sans', sans-serif;
-	background-color: #FFFFFF;
-	color: #222;
+	background-color: @background-color;
+	color: @text-color;
 	margin: 40px;
 	padding: 0;
 }
@@ -25,7 +29,7 @@ li {
 }
 
 a, a:hover, a:visited {
-	color: #5DC4FF;
+	color: @link-color;
 	text-decoration: none;
 }
 
