@@ -1,3 +1,4 @@
 node_modules
-assets/js
 output
+assets/js/jquery
+assets/js/jquery-hashchange

@@ -18,32 +18,45 @@
 		<!--<link rel="stylesheet" type="text/css" href="css/features.css" />-->
 		<!--<link rel="stylesheet" type="text/css" href="css/footer.css" />-->
 		
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.ba-hashchange.min.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-		
+		<!--<script type="text/javascript" src="js/jquery.min.js"></script>-->
+		<!--<script type="text/javascript" src="js/jquery.ba-hashchange.min.js"></script>-->
+		<!--<script type="text/javascript" src="js/main.js"></script>-->
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+
 	</head>
 	<body>
-	
-	<div id="header">
-		<!-- PLACEHOLDER FOR LOGO -->
-		<div class="title">
-			<span>ENYODOCS</span>
+		<div class="container-fluid">
+			<div class="row" id="header">
+				<!-- PLACEHOLDER FOR LOGO -->
+				<div class="col-lg-6 title">
+					<span>ENYODOCS</span>
+				</div>
+				<div class="col-lg-6 primary-nav">
+					<ul class="pull-right">
+						<li><a href="http://enyojs.com">ENYOJS.COM</a></li>
+						<li><a href="#/home">DOCS HOME</a></li>
+					</ul>
+				</div>
+				<div class="fixed-nav">
+					<ul>
+						<li><a href="#/namespaces">namespaces</a></li>
+						<li><a href="#/kinds">kinds</a></li>
+						<li><a href="#/glossary">glossary</a></li>
+						<li><a href="#/utilities">utilities</a></li>
+						<li class="top"><a id="top-link" href="javascript:void(0);">top</a></li>
+						<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<div class="primary-nav">
-			<ul>
-				<li><a href="http://enyojs.com">ENYOJS.COM</a></li>
-				<li><a href="#/home">DOCS HOME</a></li>
-			</ul>
-		</div>
-		<div class="fixed-nav">
-			<ul>
-				<li><a href="#/namespaces">namespaces</a></li>
-				<li><a href="#/kinds">kinds</a></li>
-				<li><a href="#/glossary">glossary</a></li>
-				<li><a href="#/utilities">utilities</a></li>
-				<li class="top"><a id="top-link" href="javascript:void(0);">top</a></li>
-				<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
-			</ul>
-		</div>
-	</div>
