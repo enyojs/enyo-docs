@@ -1,14 +1,9 @@
 #header {
-	height: 175px;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	background-color: #5DC4FF;
-	color: #FFFFFF;
-	position: relative;
+	background-color: @header-bg-color;
+	color: @header-text-color;
 
 	a, a:hover, a:visited {
-		color: #FFFFFF;
+		color: @header-text-color;
 		text-decoration: none;
 	}
 	// hack for Prism selector...
@@ -17,13 +12,10 @@
 	}
 
 	.title {
-		position: absolute;
-		top: 25px;
-		left: 25px;
-		height: 75px;
+		padding-top: 25px;
+		padding-left: 25px;
 
 		span {
-			display: block;
 			line-height: 75px;
 			font-size: 50px;
 			font-family: 'Raleway', sans-serif;
@@ -32,25 +24,25 @@
 	}
 
 	.primary-nav {
-		position: absolute;
-		top: 25px;
-		right: 25px;
-		height: 75px;
+		padding-top:35px;
+//		position: absolute;
+//		top: 25px;
+//		right: 25px;
+//		height: 75px;
 	}
 }
 
 #header {
 	.primary-nav, .fixed-nav {
 		ul {
-			padding: 0;
-			margin: 0;
-			height: 75px;
+//			padding: 0;
+//			margin: 0;
+//			height: 75px;
 
 			li {
-				display: inline-block;
-				box-sizing: border-box;
-				padding: 20px;
-				height: 100%;
+//				display: inline-block;
+//				box-sizing: border-box;
+//				height: 100%;
 				line-height: 35px;
 				font-size: 15px;
 				font-weight: normal;
@@ -62,12 +54,12 @@
 
 #header {
 	.fixed-nav {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		height: 75px;
-		background-color: inherit;
+//		position: absolute;
+//		left: 0;
+//		right: 0;
+//		bottom: 0;
+//		height: 75px;
+		background-color: @header-bg-color;
 		z-index: 100;
 
 		&.fixed {
@@ -86,6 +78,7 @@
 		}
 
 		ul {
+			width: 100%;
 			li {
 				&.top {
 					opacity: 0;

@@ -7,7 +7,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-		
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-theme.css" rel="stylesheet">
+
 		<link rel="stylesheet" type="text/css" href="css/prism.css" />
 		
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -22,10 +26,6 @@
 		<!--<script type="text/javascript" src="js/jquery.ba-hashchange.min.js"></script>-->
 		<!--<script type="text/javascript" src="js/main.js"></script>-->
 
-		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
-
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -38,25 +38,32 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row" id="header">
-				<!-- PLACEHOLDER FOR LOGO -->
-				<div class="col-lg-6 title">
-					<span>ENYODOCS</span>
-				</div>
-				<div class="col-lg-6 primary-nav">
-					<ul class="pull-right">
-						<li><a href="http://enyojs.com">ENYOJS.COM</a></li>
-						<li><a href="#/home">DOCS HOME</a></li>
-					</ul>
-				</div>
-				<div class="fixed-nav">
-					<ul>
-						<li><a href="#/namespaces">namespaces</a></li>
-						<li><a href="#/kinds">kinds</a></li>
-						<li><a href="#/glossary">glossary</a></li>
-						<li><a href="#/utilities">utilities</a></li>
-						<li class="top"><a id="top-link" href="javascript:void(0);">top</a></li>
-						<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
-					</ul>
+				<div class="col-xs-12">
+					<div class="row">
+						<!-- PLACEHOLDER FOR LOGO -->
+						<div class="col-xs-6 title">
+							<span>ENYODOCS</span>
+						</div>
+						<div class="col-xs-6 primary-nav">
+							<ul class="nav navbar-nav pull-right">
+								<li><a href="http://enyojs.com">ENYOJS.COM</a></li>
+								<li><a href="#/home">DOCS HOME</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<nav class="navbar fixed-nav" role="navigation">
+							<ul class="nav navbar-nav">
+								<li><a href="#/namespaces">namespaces</a></li>
+								<li><a href="#/kinds">kinds</a></li>
+								<li><a href="#/glossary">glossary</a></li>
+								<li><a href="#/utilities">utilities</a></li>
+								<li class="top"><a id="top-link" href="javascript:void(0);">top</a></li>
+								<li class="show-hide-private pull-right"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+							</ul>
+						</nav>
+					</div>
 				</div>
 			</div>
+
 		</div>
