@@ -158,7 +158,7 @@ fi
 
 lessSourceDir=${docSourceRoot}/css
 
-if [ -d $lessSourceDir ] && [ -n "$lessFile" ]; then
+if [ -d $lessSourceDir ] && [ ${#lessFile} > 0 ]; then
 	cssTargetDir=$outputDir/css
 	mkdir -p $cssTargetDir
 	lessc $lessSourceDir/$lessFile $cssTargetDir/${lessFile%.*}.css
