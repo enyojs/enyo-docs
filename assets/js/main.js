@@ -5,6 +5,10 @@ $(function () {
 	var loc;
 	
 	$(window).hashchange(function () {
+
+		if ($('#navbarCollapse').hasClass('in')) {
+			$('#navbarButton').click()
+		}
 		
 		var hash = location.hash,
 			parts,
