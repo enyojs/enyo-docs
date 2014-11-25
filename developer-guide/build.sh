@@ -154,13 +154,22 @@ if [ -d $assetsSourceDir ]; then
 	cp $assetsSourceDir/* $assetsTargetDir/
 fi
 
-# Compile LESS into CSS
+# Compile/copy LESS and raw CSS
 
 lessSourceDir=${docSourceRoot}/css
 
+# Create CSS target directory
+
+cssTargetDir=$outputDir/css
+mkdir -p $cssTargetDir
+
+# Copy over any raw CSS
+
+cp $lessSourceDir/*.css $cssTargetDir/
+
+# Compile LESS into CSS
+
 if [ -d $lessSourceDir ] && [ ${#lessFile} > 0 ]; then
-	cssTargetDir=$outputDir/css
-	mkdir -p $cssTargetDir
 	lessc $lessSourceDir/$lessFile $cssTargetDir/${lessFile%.*}.css
 fi
 
