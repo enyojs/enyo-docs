@@ -14,8 +14,7 @@ module.exports = function (grunt) {
 					paths: ['<%= copyAssets.src %>/css']
 				},
 				files: {
-					'<%= copyAssets.dest %>/css/main.css': '<%= copyAssets.src %>/css/main.less',
-					'<%= copyAssets.dest %>/css/bootstrap-theme.css': '<%= copyAssets.src %>/css/bootstrap-theme.less'
+					'<%= copyAssets.dest %>/css/style.css': '<%= copyAssets.src %>/css/style.less'
 				}
 			}
 		},

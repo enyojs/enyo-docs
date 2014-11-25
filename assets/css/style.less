@@ -1,3 +1,18 @@
+@import 'bootstrap/bootstrap.less';
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,800|Open+Sans:400,700,800|Droid+Sans+Mono:400,800);
+
+@import 'variables.less';
+@import 'mixins.less';
+
+@import 'header.less';
+@import 'footer.less';
+@import 'home.less';
+@import 'kind.less';
+@import 'namespace.less';
+@import 'features.less';
+@import 'main.less';
+
 body {
 	font-family: 'Open Sans', sans-serif;
 	background-color: @background-color;
@@ -166,39 +181,4 @@ strong {
 
 		}
 	}
-}
-
-/*!
- * Bootstrap v3.2.0 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-.navbar {
-	border-radius: 0;
-}
-
-.nav {
-	> li {
-		> a {
-			&:hover,
-			&:focus {
-				text-decoration: none;
-				background-color: transparent;
-			}
-		}
-	}
-}
-
-.navbar-nav {
-	> li {
-		> a {
-			padding: 20px 20px 0 20px;
-		}
-	}
-}
-
-.navbar-default {
-	background-color: transparent;
-	border-color: transparent;
 }
