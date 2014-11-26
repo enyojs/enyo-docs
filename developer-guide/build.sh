@@ -154,7 +154,7 @@ if [ -d $assetsSourceDir ]; then
 	cp $assetsSourceDir/* $assetsTargetDir/
 fi
 
-# Compile/copy LESS and raw CSS
+# Copy raw CSS and compile LESS
 
 lessSourceDir=${docSourceRoot}/css
 
@@ -163,11 +163,18 @@ cssTargetDir=$outputDir/css
 mkdir -p $cssTargetDir
 
 # Copy over any raw CSS
-cp $lessSourceDir/*.css $cssTargetDir/
+for f in $lessSourceDir/*.css; do
+	# Check whether the glob gets expanded to existing files.
+	# If not, $f here will be exactly the pattern above
+	# and the exists test will evaluate to false.
+	# You can find all kinds of neat stuff like this
+	# on the Internet.
+	[ -e "$f" ] && cp $lessSourceDir/*.css $cssTargetDir/
+	break
+done
 
 # Compile LESS into CSS
-
-if [ -d $lessSourceDir ] && [ -n "$lessFile" ]; then
+if [ -d $lessSourceDir ] && [ ${#lessFile} > 0 ]; then
 	lessc $lessSourceDir/$lessFile $cssTargetDir/${lessFile%.*}.css
 fi
 
