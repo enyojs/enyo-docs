@@ -1,6 +1,5 @@
-<div class="kinds main-container">
-
-	<div class="features">
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
 		<div class="kinds">
 			<h1><a href="javascript:find(':kinds');">Kinds</a></h1>
 			<div>
@@ -11,42 +10,45 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="header">
-		<h2>KINDS</h2>
-	</div>
-	
-	<div class="section description">
-		<div>These are the <a href="#/glossary:kind">kinds</a> available in
-		the Enyo framework.  UI-related kinds (i.e., those with associated DOM
-		nodes) are grouped together under "Controls".</div>
-	</div>
-	<div class="section kinds">
-		<a name="kinds"></a>
-		<a name="controls"></a>
-		<div class="entry">
-			<div class="header">
-				<h2>CONTROLS</h2>
-			</div>
-			<div class="content">
-				<ul>
-				{% for control in controls %}
-				<li class="{{ control.access }}">{{ control.internalLink }}</li>
-				{% endfor %}
-				</ul>
-			</div>
+	<div class="col-sm-8 col-sm-pull-4 kinds main-container">
+
+
+		<div class="header">
+			<h2>KINDS</h2>
 		</div>
-		<a name="kinds-other"></a>
-		<div class="entry">
-			<div class="header">
-				<h2>KINDS</h2>
+
+		<div class="section description">
+			<div>These are the <a href="#/glossary:kind">kinds</a> available in
+				the Enyo framework.  UI-related kinds (i.e., those with associated DOM
+				nodes) are grouped together under "Controls".</div>
+		</div>
+		<div class="section kinds">
+			<a name="kinds"></a>
+			<a name="controls"></a>
+			<div class="entry">
+				<div class="header">
+					<h2>CONTROLS</h2>
+				</div>
+				<div class="content">
+					<ul>
+						{% for control in controls %}
+						<li class="{{ control.access }}">{{ control.internalLink }}</li>
+						{% endfor %}
+					</ul>
+				</div>
 			</div>
-			<div class="content">
-				<ul>
-				{% for kind in kinds %}
-				<li class="{{ kind.access }}">{{ kind.internalLink }}</li>
-				{% endfor %}
-				</ul>
+			<a name="kinds-other"></a>
+			<div class="entry">
+				<div class="header">
+					<h2>KINDS</h2>
+				</div>
+				<div class="content">
+					<ul>
+						{% for kind in kinds %}
+						<li class="{{ kind.access }}">{{ kind.internalLink }}</li>
+						{% endfor %}
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,25 +1,27 @@
-<div class="utilities main-container">
-	
-	{% set longname = true %}
-	
-	<div class="features">
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
 		{% set utility = utils %}
 		{% include "partials/features-utility-methods.html" %}
 	</div>
-	
-	<div class="header">
-		<h2>UTILITIES</h2>
+	<div class="col-sm-8 col-sm-pull-4 utilities main-container">
+
+		{% set longname = true %}
+
+
+		<div class="header">
+			<h2>UTILITIES</h2>
+		</div>
+
+		<div class="section description">
+			<div>The Enyo framework provides the following utility methods.</div>
+		</div>
+
+		<div class="section utilities">
+			<a name="utilities"></a>
+
+			{% set methods = utils %}
+			{% include "partials/methods.html" %}
+		</div>
+
 	</div>
-	
-	<div class="section description">
-		<div>The Enyo framework provides the following utility methods.</div>
-	</div>
-	
-	<div class="section utilities">
-		<a name="utilities"></a>
-		
-		{% set methods = utils %}
-		{% include "partials/methods.html" %}
-	</div>
-	
 </div>
