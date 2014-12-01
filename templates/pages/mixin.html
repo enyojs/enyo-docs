@@ -1,6 +1,5 @@
-<div class="mixin main-container">
-	
-	<div class="features">
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
 		<div class="properties">
 			<h1><a href="javascript:find(':properties');">Properties</a></h1>
 			<div>{% include "partials/features-properties.html" %}</div>
@@ -14,19 +13,22 @@
 			<div>{% include "partials/features-events.html" %}</div>
 		</div>
 	</div>
-	
-	<div class="header">
+	<div class="col-sm-8 col-sm-pull-4 mixin main-container">
 
-		<h2>MIXIN</h2>
-		<h1><a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{{ name }}</h1>
-		<div class="source">From {{ source }}</div>
+
+		<div class="header">
+
+			<h2>MIXIN</h2>
+			<h1><a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{{ name }}</h1>
+			<div class="source">From {{ source }}</div>
+		</div>
+
+		<div class="section description">
+			<h1>Description</h1>
+			<div>{{ description }}</div>
+		</div>
+		<div class="section properties">{% include "partials/properties.html" %}</div>
+		<div class="section methods">{% include "partials/methods.html" %}</div>
+		<div class="section events">{% include "partials/events.html" %}</div>
 	</div>
-		
-	<div class="section description">
-		<h1>Description</h1>
-		<div>{{ description }}</div>
-	</div>
-	<div class="section properties">{% include "partials/properties.html" %}</div>
-	<div class="section methods">{% include "partials/methods.html" %}</div>
-	<div class="section events">{% include "partials/events.html" %}</div>
 </div>

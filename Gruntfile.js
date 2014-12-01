@@ -9,15 +9,13 @@ module.exports = function (grunt) {
 		},
 		
 		less: {
-			options: {
-				paths: ['<%= copyAssets.src %>/css']
-			},
-			files: {
-				expand: true,
-				cwd: '<%= copyAssets.src %>/css',
-				src: 'main.less',
-				ext: '.css',
-				dest: '<%= copyAssets.dest %>/css'
+			development: {
+				options: {
+					paths: ['<%= copyAssets.src %>/css']
+				},
+				files: {
+					'<%= copyAssets.dest %>/css/style.css': '<%= copyAssets.src %>/css/style.less'
+				}
 			}
 		},
 		subst: {

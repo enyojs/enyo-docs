@@ -1,5 +1,5 @@
-<div class="glossary main-container">
-	<div class="features">
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
 		<div class="terms">
 			<h1><a href="javascript:find(':terms');">Terms</a></h1>
 			<ul>
@@ -11,32 +11,34 @@
 			</ul>
 		</div>
 	</div>
-	
-	<div class="header">
-		<h2>GLOSSARY</h2>
-	</div>
-	
-	<div class="section description">
-		<div>The Glossary provides definitions of key terms used throughout the Enyo
-		framework's API documentation.</div>
-	</div>
-	<div class="section terms">
-		<a name="terms"></a>
-		<h1>Terms</h1>
-		{% for term in terms %}
-		<a name="{{ term.longname }}"></a>
-		<div class="entry term">
-			<div class="header">
-				<div class="name">{{ term.longname }}</div>
-			</div>
-			<div class="content">
-				<div class="definition description">{{ term.description }}</div>
-				{% if term.see %}
-				{% set see = term.see %}
-				{% include "partials/see.html" %}
-				{% endif %}
-			</div>
+	<div class="col-sm-8 col-sm-pull-4 glossary main-container">
+
+		<div class="header">
+			<h2>GLOSSARY</h2>
 		</div>
-		{% endfor %}
+
+		<div class="section description">
+			<div>The Glossary provides definitions of key terms used throughout the Enyo
+				framework's API documentation.</div>
+		</div>
+		<div class="section terms">
+			<a name="terms"></a>
+			<h1>Terms</h1>
+			{% for term in terms %}
+			<a name="{{ term.longname }}"></a>
+			<div class="entry term">
+				<div class="header">
+					<div class="name">{{ term.longname }}</div>
+				</div>
+				<div class="content">
+					<div class="definition description">{{ term.description }}</div>
+					{% if term.see %}
+					{% set see = term.see %}
+					{% include "partials/see.html" %}
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>

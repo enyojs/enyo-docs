@@ -1,6 +1,5 @@
-<div class="kind main-container">
-	
-	<div class="features">
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
 		{% if mixes %}
 		<div class="mixins">
 			<h1><a href="javascript:find(':mixins');">Mixins</a></h1>
@@ -26,24 +25,27 @@
 			<div class="inherited">{% include "partials/features-inherited-events.html" %}</div>
 		</div>
 	</div>
-	
-	<div class="header">
+	<div class="col-sm-8 col-sm-pull-4 kind main-container">
 
-		<h2>KIND</h2>
-		{% include "partials/inherits.html" %}
-		<h1><a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{{ name }}</h1>
-		<div class="source">From {{ source }}</div>
+
+		<div class="header">
+
+			<h2>KIND</h2>
+			{% include "partials/inherits.html" %}
+			<h1><a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{{ name }}</h1>
+			<div class="source">From {{ source }}</div>
+		</div>
+
+		<div class="section description">
+			<h1>Description</h1>
+			<div>{{ description }}</div>
+		</div>
+		<div class="section properties">{% include "partials/properties.html" %}</div>
+		<div class="section inherited-properties inherited">{% include "partials/inherited-properties.html" %}</div>
+		<div class="section methods">{% include "partials/methods.html" %}</div>
+		<div class="section inherited-methods inherited">{% include "partials/inherited-methods.html" %}</div>
+		<div class="section events">{% include "partials/events.html" %}</div>
+		<div class="section inherited-events inherited">{% include "partials/inherited-events.html" %}</div>
+		<div class="section mixins">{% include "partials/mixins.html" %}</div>
 	</div>
-		
-	<div class="section description">
-		<h1>Description</h1>
-		<div>{{ description }}</div>
-	</div>
-	<div class="section properties">{% include "partials/properties.html" %}</div>
-	<div class="section inherited-properties inherited">{% include "partials/inherited-properties.html" %}</div>
-	<div class="section methods">{% include "partials/methods.html" %}</div>
-	<div class="section inherited-methods inherited">{% include "partials/inherited-methods.html" %}</div>
-	<div class="section events">{% include "partials/events.html" %}</div>
-	<div class="section inherited-events inherited">{% include "partials/inherited-events.html" %}</div>
-	<div class="section mixins">{% include "partials/mixins.html" %}</div>
 </div>

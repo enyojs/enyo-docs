@@ -1,6 +1,5 @@
-<div class="namespace main-container">
-	
-	<div class="features">
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
 		<div class="sub-namespaces">
 			<h1><a href="javascript:find(':sub-namespaces');">Sub-Namespaces</a></h1>
 			<div>{% include "partials/features-sub-namespaces.html" %}</div>
@@ -22,21 +21,24 @@
 			<div>{% include "partials/features-methods.html" %}</div>
 		</div>
 	</div>
-	
-	<div class="header">
+	<div class="col-sm-8 col-sm-pull-4 namespace main-container">
 
-		<h2>NAMESPACE</h2>
-		<h1>{% if memberof %}<a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{% endif %}{{ name }}</h1>
-		<div class="source">From {{ source }}</div>
+
+		<div class="header">
+
+			<h2>NAMESPACE</h2>
+			<h1>{% if memberof %}<a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{% endif %}{{ name }}</h1>
+			<div class="source">From {{ source }}</div>
+		</div>
+
+		<div class="section description">
+			<h1>Description</h1>
+			<div>{{ description }}</div>
+		</div>
+		<div class="section sub-namespaces">{% include "partials/sub-namespaces.html" %}</div>
+		<div class="section kinds">{% include "partials/kinds.html" %}</div>
+		<div class="section mixins">{% include "partials/ns-mixins.html" %}</div>
+		<div class="section properties">{% include "partials/properties.html" %}</div>
+		<div class="section methods">{% include "partials/methods.html" %}</div>
 	</div>
-		
-	<div class="section description">
-		<h1>Description</h1>
-		<div>{{ description }}</div>
-	</div>
-	<div class="section sub-namespaces">{% include "partials/sub-namespaces.html" %}</div>
-	<div class="section kinds">{% include "partials/kinds.html" %}</div>
-	<div class="section mixins">{% include "partials/ns-mixins.html" %}</div>
-	<div class="section properties">{% include "partials/properties.html" %}</div>
-	<div class="section methods">{% include "partials/methods.html" %}</div>
 </div>
