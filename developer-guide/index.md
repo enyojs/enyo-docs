@@ -73,3 +73,4 @@ Welcome!  Resources are available in the following areas:
 
     * [API Reference](../index.html)
     * [Enyo Release Notes](release-notes.html)
+    * [Documentation for Previous Releases](previous-releases.html)

@@ -49,3 +49,4 @@ release-notes/release-2.1.1.md
 release-notes/release-2.1.md
 release-notes/release-2.0.1.md
 release-notes/release-2.0.md
+previous-releases.md
