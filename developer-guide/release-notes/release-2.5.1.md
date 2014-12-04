@@ -98,6 +98,11 @@ next several release cycles.
     zero-length array before assuming that rendering has occurred.  This fixes
     an issue in which right-to-left styling was not being properly applied.
 
+* Modified `enyo.FloatingLayer` to remove `'enyo-fit'` CSS class for Internet
+    Explorer version 10 and older; `'enyo-fit'` was causing the floating layer
+    to capture mouse wheel events, leaving the user unable to scroll content
+    behind popups.
+
 * In `gesture.js`, modified `touchstart()` and `touchend()` to fix uncaught
     TypeError on mobile devices.
 
@@ -106,6 +111,9 @@ next several release cycles.
 
 * Modified `enyo.Image` to allow the `src` property to be cleared while the
     `sizing` property is in use.
+
+* In `enyo.InputBinding`, fixed exception thrown when `source` property is
+    falsy.
 
 * In `enyo.JsonpRequest`, updated `bodyArgsFromParams()` to work properly when
     `params` is `null`.
@@ -183,8 +191,15 @@ next several release cycles.
 * In `dom.css`, removed CSS rule causing Chrome to display highlighted text as
     transparent.
 
+* In `package.json`, explicitly specified known-good version number for `chai`
+    library.
+
 * Updated build scripts `deploy.js` and `minify.js` to support non-standard
     locations for the Enyo framework core and libraries.
+
+* In "ButtonSample", added explicit dimensions to button with image.  This
+    addresses an issue in which the button would not be displayed at its full
+    height on iOS.
 
 ### moonstone
 
@@ -446,7 +461,6 @@ next several release cycles.
 
 * Updated `moon.Panel` and `moon.Panels` to fix functionality of the latter
     kind's `setIndexDirect()` method.
-
 
 * Made a number of changes to `moon.Panels`:
 
