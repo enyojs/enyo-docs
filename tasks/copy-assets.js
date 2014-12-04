@@ -17,7 +17,6 @@ module.exports = function (grunt) {
 		};
 
 		cpy('css/prism.css', 'css/prism.css');
-		//cpy('css/bootstrap.min.css', 'css/bootstrap.min.css');
 
 		cpy('fonts/', 'fonts/');
 

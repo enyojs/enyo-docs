@@ -35,14 +35,30 @@ strong {
 	}
 }
 
+h1 {
+	font-size: 18px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+@media (min-width: @screen-sm-min) {
+	h1 {
+		font-size: 36px;
+	}
+	h2 {
+		font-size: 30px;
+	}
+}
+
+
+
 #content {
 	padding-top: 80px;
 }
 
 .main-container {
-//	position: relative;
-//	margin: 80px;
-//	min-height: 300px;
 	.source {
 		color: @source-color;
 	}
@@ -50,7 +66,7 @@ strong {
 	.header {
 		h1 {
 			font-weight: normal;
-			font-size: 60px;
+			font-size: 24px;
 			margin: 0;
 			padding: 0;
 		}
@@ -69,6 +85,17 @@ strong {
 		}
 	}
 }
+
+@media (min-width: @screen-sm-min) {
+	.main-container {
+		.header {
+			h1 {
+				font-size: 60px;
+			}
+		}
+	}
+}
+
 
 .section {
 	.entry {
@@ -208,9 +235,4 @@ strong {
 			padding: 20px 20px 0 20px;
 		}
 	}
-}
-
-.navbar-default {
-//	background-color: transparent;
-//	border-color: transparent;
 }
