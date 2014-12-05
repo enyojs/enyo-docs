@@ -5,14 +5,15 @@ with how the framework is organized and what each piece offers.
 
 In a given Enyo release, you will find the following folders:
 
-* **enyo** - the core
-* **lib** - where all plugins and add-on libraries go
-* **moonstone** - a toolbox of UI components, optimized for TV
+* **enyo** - The core
+* **lib** - Where all plugins and add-on libraries live
+* **moonstone** - A toolbox of UI components, optimized for TV
 * **onyx** - Enyo's original UI library, optimized for mobile devices
-* **spotlight** - a specialized library for handling focus state
-* **layout** - a set of layout components
-* **canvas** - components for building HTML5-based canvas views
-* **extra** - additional utility components
+* **spotlight** - A specialized library for handling focus state
+* **layout** - A set of layout components
+* **enyo-ilib** - A library providing localization services
+* **canvas** - Components for building HTML5-based canvas views
+* **extra** - Additional utility components
 
 ## Enyo
 
@@ -24,6 +25,7 @@ build on the Web stack in a modular way:
 * **View and DOM widget model** - UiComponent and Control
 * **Event routing** - Dispatcher and Signals
 * **Services model** - Async and Ajax
+* **Data Modeling and Data Binding** - Model, Collection, Binding, and more
 * **Basic HTML components** - Base UI
 * **Touch support** - Touch scroller and gesture simulation
 * **Package loader** - `enyo.depends()` and `package.js`
@@ -63,6 +65,13 @@ the publicity recently, new Onyx development is also in the works.  We encourage
 you to check out the [Onyx source](https://github.com/enyojs/onyx), and stay
 tuned.
 
+## Spotlight
+
+The Spotlight library manages focus state, enabling users to navigate through
+Enyo applications in either 5-way mode (using the directional arrow and Return
+keys on a keyboard, or the corresponding buttons on a traditional television
+remote control) or pointer mode (using a mouse or touchscreen).
+
 ## Layout
 
 While Enyo components may be laid out using pure HTML/CSS techniques, we have
@@ -74,6 +83,14 @@ compatible containers for your common layout needs:
 * **Panels**
 
 You can read up on these layout options [here](https://github.com/enyojs/layout).
+
+## enyo-ilib
+
+The `enyo-ilib` library provides localization support for the Enyo framework.
+The heavy lifting is done by the open-source `iLib` library; `enyo-ilib` is
+essentially a compatibility layer, making it easy for Enyo app developers to
+access the powerful features of `iLib` without having to deal with messy,
+locale-specific details.
 
 ## Canvas
 
