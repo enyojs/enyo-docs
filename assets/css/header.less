@@ -28,22 +28,28 @@
 	}
 }
 
-@media (min-width: 884px) {
-	#header {
-		.primary-nav {
-			padding-top: 35px;
+.header-nav-item {
+	margin: 0 12px;
+	line-height: 35px;
+	font-size: 15px;
+	font-weight: normal;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#header {
+	.primary-nav {
+		a {
+			display: inline-block;
+			.header-nav-item
 		}
 	}
 }
 
 #header {
-	.primary-nav, .fixed-nav {
+	.fixed-nav {
 		ul {
 			li {
-				line-height: 35px;
-				font-size: 15px;
-				font-weight: normal;
-				font-family: 'Open Sans', sans-serif;
+				.header-nav-item
 			}
 		}
 	}
@@ -92,7 +98,6 @@
 			li {
 				&.show-hide-private {
 					.pull-right;
-					padding-right: 40px;
 				}
 			}
 		}
@@ -125,3 +130,14 @@
 		}
 	}
 }
+
+@media (min-width: @screen-sm-min) {
+	#header {
+		.primary-nav {
+			text-align: right;
+			margin-top: 30px;
+		}
+	}
+}
+
+
