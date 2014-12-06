@@ -9,13 +9,15 @@ $(function () {
 		if ($('#navbarCollapse').hasClass('in')) {
 			$('#navbarButton').click()
 		}
-		
+
+		var isGuide = !!~location.pathname.indexOf('developer-guide');
+
 		var hash = location.hash,
 			parts,
 			query;
 		
 		// if there isn't a hash then we redirect to home
-		if (!location.hash) return location.hash = '#/home';
+		if (!isGuide && !location.hash) return location.hash = '#/home';
 		
 		// remove the first characters
 		hash = hash.replace(/^#\//, '');
@@ -26,8 +28,18 @@ $(function () {
 			hash = parts.shift();
 			query = parts.shift();
 		}
+
+		location.href.replace('/developer-guide/developer-guide', '/developer-guide')
+
+		if (isGuide && hash) {
+			console.log("isGuide && hash");
+			console.log(isGuide);
+			console.log(hash);
+			location.replace(location.href.replace(/developer-guide.*\.html/i, 'index.html'));
+			isGuide = false;
+		}
 		
-		if (hash != loc) {
+		if (!isGuide && hash != loc ) {
 			loc = hash;
 			
 			// attempt to load the file directly since the paths should match 1:1 for html partials

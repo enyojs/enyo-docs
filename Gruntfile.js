@@ -2,12 +2,12 @@ module.exports = function (grunt) {
 	
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		
+
 		jsdoc: {
 			configFile: 'jsdoc-conf.json',
 			dest: 'output'
 		},
-		
+
 		less: {
 			development: {
 				options: {
@@ -22,7 +22,8 @@ module.exports = function (grunt) {
 			'dev-guide': {
 				options: {
 					pattern: /\$dev-guide/ig,
-					replacement: 'developer-guide'
+					relative: true,
+					base: 'output/developer-guide'
 				},
 				files: {
 					src: 'output/**/*.html'

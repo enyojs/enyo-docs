@@ -35,7 +35,7 @@ module.exports = function (grunt) {
 				}
 				grunt.file.copy(filepath, filepath, {
 					process: function(text) {
-						return text.replace(options.pattern, replacement);
+						return text.replace(options.pattern, (replacement ? replacement + "/" : replacement));
 					}
 				});
 			});
