@@ -340,13 +340,13 @@ property of our DataGridList:
         name: "flickr.SearchPanel",
         ...
         bindings: [
-            {from: ".photos", to: ".$.resultList.collection"}
+            {from: "photos", to: "$.resultList.collection"}
         ],
         ...
     });
 ```
 
-Then we'll add bindings from the `.model` property on GridListImageItem (which,
+Then we'll add bindings from the `model` property on GridListImageItem (which,
 you may recall, will be retrieved from the collection and set on each item by
 the DataGridList) to properties on the `GridListImageItem`.  Note that this
 assumes each model will have a schema that includes properties named `title` and
@@ -361,8 +361,8 @@ assumes each model will have a schema that includes properties named `title` and
         components: [
             {kind: "moon.DataGridList", ..., components: [
                 {kind: "moon.GridListImageItem", ..., bindings: [
-                    {from: ".model.title", to:".caption"},
-                    {from: ".model.thumbnail", to:".source"}
+                    {from: "model.title", to: "caption"},
+                    {from: "model.thumbnail", to: "source"}
                 ]}
             ]}
         ],
@@ -410,13 +410,13 @@ The final `flickr.SearchPanel` implementation for this step should look like thi
         components: [
             {kind: "moon.DataGridList", fit: true, name: "resultList", minWidth: 250, minHeight: 300, components: [
                 {kind: "moon.GridListImageItem", imageSizing: "cover", useSubCaption: false, centered: false, bindings: [
-                    {from: ".model.title", to:".caption"},
-                    {from: ".model.thumbnail", to:".source"}
+                    {from: "model.title", to: "caption"},
+                    {from: "model.thumbnail", to: "source"}
                 ]}
             ]}
         ],
         bindings: [
-            {from: ".photos", to: ".$.resultList.collection"}
+            {from: "photos", to: "$.resultList.collection"}
         ],
         create: function() {
             this.inherited(arguments);
@@ -490,7 +490,7 @@ source directly:
     enyo.kind({
         name: "flickr.Source",
         kind: "enyo.JsonpSource",
-        urlRoot: "http://api.flickr.com/services/rest/",
+        urlRoot: "https://api.flickr.com/services/rest/",
     });
 ```
 
@@ -510,7 +510,7 @@ hash, which will be expanded into query string parameters on the Jsonp request.
     enyo.kind({
         name: "flickr.Source",
         kind: "enyo.JsonpSource",
-        urlRoot: "http://api.flickr.com/services/rest/",
+        urlRoot: "https://api.flickr.com/services/rest/",
         fetch: function(rec, opts) {
             opts.callbackName = "jsoncallback";
             opts.params = {};
@@ -527,7 +527,7 @@ by models and collections:
 **Add to bottom of file: source/data/data.js**
 
 ```javascript
-    enyo.store.addSources({flickr: "flickr.Source"});
+   new flickr.Source({name: "flickr"}); 
 ```
 
 For more details on the properties available for configuring this source, refer
@@ -552,12 +552,11 @@ We'll start with a basic subkind, and tell it to use the `flickr.Source` by defa
     enyo.kind({
         name: "flickr.SearchCollection",
         kind: "enyo.Collection",
-        defaultSource: "flickr"
+        source: "flickr"
     });
 ```
 
-*Note:* The `".Source"` is dropped from `flickr.Source` when used as the value
-of `defaultSource`.
+*Note:* We use the name we registered for the source as the value of `source`.
 
 Next, we'll add a published property called `searchText`, and a
 `searchTextChanged` handler, which will destroy any previously fetched records
@@ -571,12 +570,12 @@ the value of `searchText` is altered.
         name: "flickr.SearchCollection",
         kind: "enyo.Collection",
         model: "flickr.ImageModel",
-        defaultSource: "flickr",
+        source: "flickr",
         published: {
-            searchText: null,
+            searchText: null
         },
         searchTextChanged: function() {
-            this.destroyAll();
+            this.empty({destroy: true});
             this.fetch();
         }
     });
@@ -585,7 +584,7 @@ the value of `searchText` is altered.
 Finally, we'll override the collection's `fetch()` function to provide more
 information to the source about how to retrieve this specific information.
 Along with the search text, the [Flickr photos search
-API](http://www.flickr.com/services/api/flickr.photos.search.html) requires us
+API](https://www.flickr.com/services/api/flickr.photos.search.html) requires us
 to pass a `method` query string parameter indicating that we want to search
 photos.  There are a number of optional parameters we could specify as well; for
 this sample, we'll specify a `sort` value (so that we get interesting photos),
@@ -595,12 +594,12 @@ and a limit to the number of results.
     enyo.kind({
         name: "flickr.SearchCollection",
         kind: "enyo.Collection",
-        defaultSource: "flickr",
+        source: "flickr",
         published: {
             searchText: null,
         },
         searchTextChanged: function() {
-            this.destroyAll();
+            this.empty({destroy: true});
             this.fetch();
         },
         fetch: function(opts) {
@@ -626,7 +625,7 @@ for these parameters and add them to the `params` that are passed along:
     enyo.kind({
         name: "flickr.Source",
         kind: "enyo.JsonpSource",
-        urlRoot: "http://api.flickr.com/services/rest/",
+        urlRoot: "https://api.flickr.com/services/rest/",
         fetch: function(rec, opts) {
             opts.callbackName = "jsoncallback";
             opts.params = enyo.clone(rec.params);
@@ -649,7 +648,7 @@ our `flickr.SearchCollection`, we should get result data loaded into the
 collection.  But there is one final step.
 
 If we look at a sample of the [data
-returned](http://api.flickr.com/services/rest/?method=flickr.photos.search&sort=interestingness-desc&per_page=50&text=San%20Francisco&api_key=2a21b46e58d207e4888e1ece0cb149a5&format=json&jsoncallback=enyo_jsonp_callback_0)
+returned](https://api.flickr.com/services/rest/?method=flickr.photos.search&sort=interestingness-desc&per_page=50&text=San%20Francisco&api_key=2a21b46e58d207e4888e1ece0cb149a5&format=json&jsoncallback=enyo_jsonp_callback_0)
 from a call to the API, we can see that it is not actually an array, which is
 what `enyo.Collection` expects.  The array of photo records is actually nested
 a couple levels down in the object returned:
@@ -705,11 +704,15 @@ array that we actually want to load into the collection--which, in this case, is
     enyo.kind({
         name: "flickr.SearchCollection",
         ...
+        options: { parse: true },
+        ...
         parse: function(data) {
             return data && data.photos && data.photos.photo;
         }
     });
 ```
+
+*Note:* By default, Enyo will not call the `parse` method unless you set the `parse` option to `true`.
 
 **[View the code and results of Step 9 in JSFiddle](http://jsfiddle.net/enyojs/PLqj6/)**
 
@@ -756,11 +759,11 @@ interesting--the data doesn't include a URL for the image!
 Since we want to present a grid of images found by the search, this is a
 problem.  It turns out that Flickr requires you to construct the URL from the
 data returned, according to a [scheme documented in their API
-guide](http://www.flickr.com/services/api/misc.urls.html).  Essentially, the URL
+guide](http:s//www.flickr.com/services/api/misc.urls.html).  Essentially, the URL
 is assembled as follows:
 
 ```
-    http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
+    https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
 ```
 
 where `[mstzb]` indicates a size option.  To accommodate this, we'll create a
@@ -774,48 +777,34 @@ the model data:
     enyo.kind({
         name: "flickr.ImageModel",
         kind: "enyo.Model",
-        readOnly: true,
-        attributes: {
-            thumbnail: function() {
-                return "http://farm" + this.get("farm") +
-                    ".static.flickr.com/" + this.get("server") +
-                    "/" + this.get("id") + "_" + this.get("secret") + "_m.jpg";
-            },
-            original: function() {
-                return "http://farm" + this.get("farm") +
-                    ".static.flickr.com/" + this.get("server") +
-                    "/" + this.get("id") + "_" + this.get("secret") + ".jpg";
-            }
+        computed: [
+            {method: "thumbnail", path: ["farm", "server", "id", "secret"]},
+            {method: "original", path: ["farm", "server", "id", "secret"]}
+        ],
+        thumbnail: function() {
+            return "https://farm" + this.get("farm") +
+                ".static.flickr.com/" + this.get("server") +
+                "/" + this.get("id") + "_" + this.get("secret") + "_m.jpg";
         },
-        computed: {
-            thumbnail: ["farm", "server", "id", "secret"],
-            original: ["farm", "server", "id", "secret"]
+        original: function() {
+            return "https://farm" + this.get("farm") +
+                ".static.flickr.com/" + this.get("server") +
+                "/" + this.get("id") + "_" + this.get("secret") + ".jpg";
         }
     });
 ```
 
 **Additional notes on this code:**
 
-* **attributes** - The `attributes` hash is an optional block that allows you to
-    initialize properties for the model or provide functions for evaluating
-    computed properties.  Here, we provide the `thumbnail` and `original`
-    properties, computed according to Flickr's URL schemes.  These properties
-    will be bindable to our view, just like static properties retrieved from the
-    server, such as `title`.
-
-* **computed** - The `computed` hash lets us define dependencies for any of our
-    computed properties.  If any dependent property specified in the array
-    (`farm`, `server`, `id`, or `secret`) changes, any bindings to the property
-    will be notified and re-synced.  In this sample, we won't be changing the
-    dependent properties after they are fetched from the server, but if we did,
-    they would update automatically.  Very handy.
-
-* **readOnly** - This flag tells the source that we don't care about syncing any
-    changes we make to the model back to the server.  Since we'll be destroying
-    models fetched in the search collection each time we do a new search, this
-    will prevent the source from trying to delete those records from the server
-    (which the Flickr API wouldn't allow anyway, since we're not authenticated
-    as the owner of those photos).
+* **computed** - The `computed` array lets us define computed properties and
+their dependencies.  Here, we provide the `thumbnail` and `original`
+properties, computed according to Flickr's URL schemes.  These properties will
+be bindable to our view, just like static properties retrieved from the server,
+such as `title`.  If any dependent property specified in the array (`farm`,
+`server`, `id`, or `secret`) changes, any bindings to the property will be
+notified and re-synced.  In this sample, we won't be changing the dependent
+properties after they are fetched from the server, but if we did, they would
+update automatically.  Very handy.
 
 Last, we'll tell our `flickr.SearchCollection` to wrap all records fetched, using
 our new `flickr.ImageModel` (rather than the default `enyo.Model`) by specifying
@@ -880,7 +869,7 @@ the search collection's `searchText` property:
 ```
 
 You may recall that setting `searchText` kicks off a fetch of the
-`flickr.SearchCollection` via the `flickr.Store`, using the parameters passed
+`flickr.SearchCollection` via the `flickr` source, using the parameters passed
 from the collection.  When the collection gets its data, each record will be
 wrapped in our `flickr.ImageModel`, and the `moon.DataGridList` will be notified
 that new models were added to its `collection` property.  The grid list will
@@ -915,8 +904,9 @@ We can place the spinner in the header's "client" area.  This is exposed on
     });
 ```
 
-`enyo.Collection` provides a handy `isFetching` property we can bind the
-spinner's `showing` property to:
+`enyo.Collection` provides a `status` property that is updated with its current state.
+We can bind the spinner's `showing` property to updates of this property and use a transform
+to test for the specific conditions we're interested in:
 
 ```javascript
     enyo.kind({
@@ -928,7 +918,9 @@ spinner's `showing` property to:
         ...
         bindings: [
             ...,
-            {from: ".photos.isFetching", to:".$.spinner.showing"}
+            {from: "photos.status", to:"$.spinner.showing", transform: function(value) {
+                return this.photos.isBusy();
+            }}
         ],
         ...
     });
@@ -936,6 +928,8 @@ spinner's `showing` property to:
 
 That's all there is to it!  Now, when you press **Enter** to start a search, you
 should see the spinner run until the data is returned and the list is updated.
+
+*Note:* A transform is a handy way to convert data in one format to another, such as converting a string to a number. In this case, we could have looked up all the status codes for the collection that correspond to a busy state and converted that to the boolean we need, however, collection provides a convenience method called `isBusy()` that does exactly what we need.
 
 **[View the code and results of Step 12 in JSFiddle](http://jsfiddle.net/enyojs/3D7BM/)**
 
@@ -994,8 +988,8 @@ URL. So let's go ahead and set up bindings from the model's `title` and
             {kind: "moon.Image", fit: true, sizing: "contain", name: "image"}
         ],
         bindings: [
-            {from: ".model.title", to: ".title"},
-            {from: ".model.original", to: ".$.image.src"}
+            {from: "model.title", to: "title"},
+            {from: "model.original", to: "$.image.src"}
         ]
     });
 ```
@@ -1132,7 +1126,7 @@ the fetching of a full image record based on the partial information obtained
 from the search collection.  When we move to the detail panel, we'll call
 `fetch()` on the model to request the additional information.
 
-First, let's set the `defaultSource` for the image model to our Flickr source,
+First, let's set the `source` for the image model to our Flickr source,
 and then override the `fetch()` function on `enyo.Model` to pass `flickr.Source`
 a `params` hash with the information needed to fetch detailed image models
 (similar to what we did in `flickr.SearchCollection`):
@@ -1140,7 +1134,7 @@ a `params` hash with the information needed to fetch detailed image models
 ```javascript
     enyo.kind({
         name: "flickr.ImageModel",
-        defaultSource: "flickr",
+        source: "flickr",
         ...
         fetch: function(opts) {
             this.params = {
@@ -1153,12 +1147,12 @@ a `params` hash with the information needed to fetch detailed image models
 ```
 
 Here, we set the `method` parameter to `flickr.photos.getinfo` to reach the
-[Flickr photo information endpoint](http://www.flickr.com/services/api/flickr.photos.getinfo.html).
+[Flickr photo information endpoint](https://www.flickr.com/services/api/flickr.photos.getinfo.html).
 We also pass a `photo_id` property, whose value will already be available from
 the partial field set loaded by the collection.
 
 Next, let's examine the [data we get
-back](http://api.flickr.com/services/rest/?method=flickr.photos.getinfo&photo_id=59948935&api_key=2a21b46e58d207e4888e1ece0cb149a5&format=json&jsoncallback=enyo_jsonp_callback_1)
+back](https://api.flickr.com/services/rest/?method=flickr.photos.getinfo&photo_id=59948935&api_key=2a21b46e58d207e4888e1ece0cb149a5&format=json&jsoncallback=enyo_jsonp_callback_1)
 from a call to this endpoint:
 
 **Sample of data returned by call to "flickr.photos.getinfo" API**
@@ -1199,13 +1193,15 @@ from a call to this endpoint:
 Again, the data fields for the `flickr.ImageModel` attributes are nested inside
 a `photos` object, so we'll need to add a `parse()` function to our model to
 return just the set of fields to be added to the model's attributes from the raw
-data.  Furthermore, `enyo.Model` currently has a limitation that only top-level
-properties are bindable.  Since we're interested in the `owner.realname` and
+data.  For performance, `enyo.Model` only makes the top-level
+properties bindable.  Since we're interested in the `owner.realname` and
 `dates.taken` fields, we can deal with those in the `parse()` function also:
 
 ```javascript
     enyo.kind({
         name: "flickr.ImageModel",
+        ...
+        options: { parse: true },
         ...
         parse: function(data) {
             data = data.photo || data;
@@ -1285,8 +1281,8 @@ properties:
         ...
         bindings: [
             ...
-            {from: ".model.username", to: ".titleBelow"},
-            {from: ".model.taken", to: ".subTitleBelow"}
+            {from: "model.username", to: "titleBelow"},
+            {from: "model.taken", to: "subTitleBelow"}
         ],
         ...
     });
@@ -1302,10 +1298,10 @@ strings:
         ...
         bindings: [
             ...
-            {from: ".model.username", to: ".titleBelow", transform: function(val) {
+            {from: "model.username", to: "titleBelow", transform: function(val) {
                 return "By " + (val || " unknown user");
             }},
-            {from: ".model.taken", to: ".subTitleBelow", transform: function(val) {
+            {from: "model.taken", to: "subTitleBelow", transform: function(val) {
                 return val ? "Taken " + val : "";
             }}
         ],
