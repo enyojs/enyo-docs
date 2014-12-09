@@ -52,7 +52,7 @@ mind when writing apps using Enyo and Moonstone:
     the owner or elsewhere often need to reference other components.  `create()`
     is called as items are being created, meaning that at the time Component A's
     `create()` is called, all components after it (e.g., Components B and C)
-    have yet to been created.  As a result, if you have a handler for A's event
+    have yet to be created.  As a result, if you have a handler for A's event
     that references `this.$.B`, it will throw an undefined error.
 
     Firing initial events from `render()` is safer, since all components have
