@@ -180,7 +180,7 @@ for f in $lessSourceDir/*.css; do
 done
 
 # Compile LESS into CSS
-if [ -d $lessSourceDir ] && [ ${#lessFile} > 0 ]; then
+if [ -d $lessSourceDir ] && [ ${#lessFile} -gt 0 ]; then
 	lessc $lessSourceDir/$lessFile $cssTargetDir/${lessFile%.*}.css
 fi
 
