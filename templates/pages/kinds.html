@@ -30,9 +30,9 @@
 					<h2>CONTROLS</h2>
 				</div>
 				<div class="content">
-					<ul>
+					<ul class="row">
 						{% for control in controls %}
-						<li class="{{ control.access }}">{{ control.internalLink }}</li>
+						<li class="col-lg-4 col-md-6 col-sm-12 {{ control.access }}">{{ control.internalLink }}</li>
 						{% endfor %}
 					</ul>
 				</div>
@@ -43,9 +43,9 @@
 					<h2>KINDS</h2>
 				</div>
 				<div class="content">
-					<ul>
+					<ul class="row">
 						{% for kind in kinds %}
-						<li class="{{ kind.access }}">{{ kind.internalLink }}</li>
+						<li  class="col-lg-4 col-md-6 col-sm-12 {{ kind.access }}">{{ kind.internalLink }}</li>
 						{% endfor %}
 					</ul>
 				</div>
