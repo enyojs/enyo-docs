@@ -21,9 +21,15 @@ variantLength=0
 isVariant=false
 outputDir=${docSourceRoot}/../output/developer-guide
 outlineFile=${docSourceRoot}/outline.txt
+templateFile=_pandoc-template.html
 
 while test $# -gt 0; do
 	case "$1" in
+		--template)
+			shift
+			templateFile=$1
+			shift
+			;;
 		--less)
 			shift
 			lessFile=$1
@@ -138,7 +144,7 @@ while [ $y -lt $len ]; do
 #			echo "targetFilePath: ${targetFilePath}"
 			# Create HTML file
 #			pandoc -s $pandocOptions -f markdown -t html -o $targetFilePath $sourceFilePath
-			pandoc --template=_pandoc-template.html $pandocOptions -f markdown -t html -o $targetFilePath $sourceFilePath
+			pandoc --template=$templateFile $pandocOptions -f markdown -t html -o $targetFilePath $sourceFilePath
 		fi
 	fi
 	let y++
@@ -174,7 +180,7 @@ for f in $lessSourceDir/*.css; do
 done
 
 # Compile LESS into CSS
-if [ -d $lessSourceDir ] && [ ${#lessFile} > 0 ]; then
+if [ -d $lessSourceDir ] && [ ${#lessFile} -gt 0 ]; then
 	lessc $lessSourceDir/$lessFile $cssTargetDir/${lessFile%.*}.css
 fi
 
