@@ -32,10 +32,11 @@ module.exports = function (grunt) {
 				var replacement = options.replacement;
 				if(options.relative) {
 					replacement = path.relative(path.dirname(filepath), options.base);
+					replacement = (replacement ? replacement + "/" : replacement);
 				}
 				grunt.file.copy(filepath, filepath, {
 					process: function(text) {
-						return text.replace(options.pattern, (replacement ? replacement + "/" : replacement));
+						return text.replace(options.pattern, replacement);
 					}
 				});
 			});
