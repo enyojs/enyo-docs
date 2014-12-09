@@ -46,7 +46,9 @@ Welcome!  Resources are available in the following areas:
     * [Text Fields](building-apps/controls/text-fields.html)
     * [Toggles](building-apps/controls/toggles.html)
 
-* [Localization](building-apps/localization.html)
+* Localization
+
+    * [Localization](building-apps/localization.html)
 
 * Enyo and webOS
 
