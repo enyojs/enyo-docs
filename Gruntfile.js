@@ -38,6 +38,15 @@ module.exports = function (grunt) {
 				files: {
 					src: 'output/**/*.html'
 				}
+			},
+			'index': {
+				options: {
+					pattern: /\.\.\/#/g,
+					replacement: "../index.html#"
+				},
+				files: {
+					src: 'output/**/*.html'
+				}
 			}
 		},
 		

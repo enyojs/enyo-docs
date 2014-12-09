@@ -12,12 +12,14 @@ $(function () {
 
 		var isGuide = !!~location.pathname.indexOf('developer-guide');
 
+		if(isGuide) return;
+
 		var hash = location.hash,
 			parts,
 			query;
 		
 		// if there isn't a hash then we redirect to home
-		if (!isGuide && !location.hash) return location.hash = '#/home';
+		if (!location.hash) return location.hash = '#/home';
 		
 		// remove the first characters
 		hash = hash.replace(/^#\//, '');
@@ -29,17 +31,7 @@ $(function () {
 			query = parts.shift();
 		}
 
-		location.href.replace('/developer-guide/developer-guide', '/developer-guide')
-
-		if (isGuide && hash) {
-			console.log("isGuide && hash");
-			console.log(isGuide);
-			console.log(hash);
-			location.replace(location.href.replace(/developer-guide.*\.html/i, 'index.html'));
-			isGuide = false;
-		}
-		
-		if (!isGuide && hash != loc ) {
+		if (hash != loc ) {
 			loc = hash;
 			
 			// attempt to load the file directly since the paths should match 1:1 for html partials
@@ -114,10 +106,16 @@ $(document).ready(function () {
 		orig = nav.offset().top;
 	
 	$(document).scroll(function () {
-		var y = $(document).scrollTop();
+		var y = $(document).scrollTop(),
+			wh = $(window).height(),
+			dh;
 		
 		if (y >= orig) {
-			nav.addClass('fixed');
+			// Prevent jitter when fixed size header makes page too small
+			dh = $(document).height();
+			if(dh > wh+orig) {
+				nav.addClass('fixed');
+			}
 		} else {
 			nav.removeClass('fixed');
 		}
@@ -131,21 +129,27 @@ $(document).ready(function () {
 		}, 200);
 	});
 	
-	$('li.show-hide-private').click(function (e) {
-		e.preventDefault();
-		
-		var a = $('a#show-hide-link'),
-			text = a.text();
-		
-		switch (text) {
-		case 'show private':
-			a.text('hide private');
-			$('body').removeClass('hide-private').addClass('show-private');
-			break;
-		case 'hide private':
-			a.text('show private');
-			$('body').removeClass('show-private').addClass('hide-private');
-			break;
-		}
-	});
+	var isGuide = !!~location.pathname.indexOf('developer-guide');
+
+	if(isGuide) {
+		$('li.show-hide-private').hide();
+	} else {
+		$('li.show-hide-private').click(function (e) {
+			e.preventDefault();
+			
+			var a = $('a#show-hide-link'),
+				text = a.text();
+			
+			switch (text) {
+			case 'show private':
+				a.text('hide private');
+				$('body').removeClass('hide-private').addClass('show-private');
+				break;
+			case 'hide private':
+				a.text('show private');
+				$('body').removeClass('show-private').addClass('hide-private');
+				break;
+			}
+		});
+	}
 });
