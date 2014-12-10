@@ -90,10 +90,10 @@ Here is our aforementioned `TrafficLight` control:
         circleTap: function(inSender, inEvent) {
             var lights = {red: "tomato", yellow: "#FFFF80", green: "lightgreen"};
             if (this.lastCircle) {
-                this.lastCircle.setBgColor("black");
+                this.lastCircle.set("bgColor", "black");
             }
             this.lastCircle = inSender;
-            this.lastCircle.setBgColor(lights[inSender.color]);
+            this.lastCircle.set("bgColor", lights[inSender.color]);
         }
     });
 ```

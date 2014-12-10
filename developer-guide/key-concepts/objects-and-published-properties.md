@@ -65,10 +65,13 @@ is not called.
 In most cases, published properties should only contain basic values, such as
 numbers and strings.  If you use an array or an object as the value of a
 property, the mechanism that detects changes will likely fail.  This is because
-JavaScript comparisons only change the outermost object.  A `get(<propertyName>)`
-call that returns an object or array returns a reference to the internal state,
-since if you then modify that object or array, you modify the same instance
-that's held inside the kind instance.
+of the way that JavaScript handles comparisons between arrays and objects.
+
+In JavaScript, two arrays or objects are not considered equal if they merely
+share the same data in the same structure; they must also be the same
+*instance*.  A `get(<propertyName>)` call that returns an object or array
+returns a reference to the internal state, since if you then modify that object
+or array, you modify the same instance that's held inside the kind instance.
 
 You could work around this by overriding `get()` to have it use `enyo.clone()`
 to make a shallow copy of the object or array.  Then, if you pass that object
