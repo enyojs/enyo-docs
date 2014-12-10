@@ -3,8 +3,8 @@
 ## enyo.kind()
 
 [enyo.kind(inProps)]($api/#/namespace/enyo.kind) is the Enyo framework's method
-for generating kinds.  A kind, you'll recall, is a constructor-with-prototype
-(like a class) that has advanced features like prototype-chaining (inheritance).
+for generating kinds.  A kind is a constructor-with-prototype (like a class)
+that has advanced features like prototype-chaining (inheritance).
 
 A plug-in system is included for extending the abilities of the kind generator,
 and constructors are allowed to perform custom operations when subclassed.
@@ -25,15 +25,15 @@ processing.	Some examples of special properties are:
     directly to the prototype, but is instead stored as `kindName`.
 
     ```javascript
-        // Create a function MyNamespace.MyKind with a prototype.
-        // MyNamespace.MyKind.prototype.kindName is set to "MyNamespace.MyKind".
-        // MyNamespace.MyKind.prototype.plainProperty is set to "foo".
+        // Create a function myNamespace.MyKind with a prototype.
+        // myNamespace.MyKind.prototype.kindName is set to "myNamespace.MyKind".
+        // myNamespace.MyKind.prototype.plainProperty is set to "foo".
         enyo.kind({
-            name: "MyNamespace.MyKind"
+            name: "myNamespace.MyKind"
             plainProperty: "foo"
         });
         // Make an instance of the new kind.
-        var myk = new MyNamespace.MyKind();
+        var myk = new myNamespace.MyKind();
     ```
 
 * `kind`: The name of, or a reference to, a kind to derive from, like a
@@ -189,3 +189,4 @@ specify the superkind's name (in this case, `MyKind`).
 * [Objects and Published Properties](objects-and-published-properties.html)
 * [Components](components.html)
 * [Controls](controls.html)
+
