@@ -1,67 +1,44 @@
 % Bootplate
 
-Bootplate (BOOTstrap + boilerPLATE) templates provide complete starter projects
-with support for source control and cross-platform deployment out of the box.
-They may be used to facilitate both the creation of new projects and the
-preparation for those projects' eventual deployment.
+The enyojs project includes a set of application templates, known as "Bootplate"
+(BOOTstrap + boilerPLATE) templates.  These may be used to facilitate both the
+creation of new projects and the preparation for their eventual deployment.
 
 ## Quick Start with Bootplate
 
-There are two ways to use a bootplate template to start a new project--one that
-uses version-controlled source from GitHub, and another that does not.
+While each Bootplate template lives in its own GitHub repo (e.g.,
+[bootplate](https://github.com/enyojs/bootplate) and
+[bootplate-moonstone](https://github.com/enyojs/bootplate-moonstone), we provide
+two easy ways to use Bootplate without dealing directly with Git.
 
-### The GitHub Way
+### generator-enyo
 
-**Note:** The following command-line instructions should work on Mac OS X,
-Linux, or Windows if the [official Git client](http://git-scm.com/download) is
-installed.
+`generator-enyo` is the preferred method for starting an app with Bootplate.  It
+is implemented using [Yeoman](http://yeoman.io/), an open-source suite of Web
+development tools.
 
-1. Choose one of the bootplate template projects, such as
-    [bootplate-moonstone](https://github.com/enyojs/bootplate-moonstone) or
-    [bootplate](https://github.com/enyojs/bootplate), and use Git's `clone`
-    command to obtain the source code, e.g.:
+**Note:** To use `generator-enyo`, you will first need to have
+[Node.js](http://nodejs.org) and the [Node Package Manager](https://npmjs.org)
+installed on your Mac OS or Linux computer.
 
-    ```
-        git clone --recursive --branch 2.4.0 https://github.com/enyojs/bootplate-moonstone.git <myProjectName>
-    ```
+1. Use the Node Package Manager `(npm)` to install `generator-enyo`:
 
-    By default, `bootplate-moonstone` includes a fair number of submodules
-    (including the `enyo` framework core and `moonstone` UI library).  The
-    `--recursive` flag in the preceding command tells Git to initialize the
-    submodules when cloning the project, while `--branch 2.4.0` ensures that
-    we'll obtain framework code from a stable release branch.
+	```
+		sudo npm install -g generator-enyo
+	```
 
-    At this point, you should be able to load `debug.html` in a browser and see
-    "Hello World".
+	This will also install Yeoman, if it is not already installed.
 
-2. On github.com, [create a new repository](https://github.com/repositories/new)
-    for your project.
+2. Run the generator, specifying the name of your new app:
 
-3. Use the following command to point your clone of bootplate at your new GitHub
-    repo (this changes where the code is pushed to and pulled from):
+	```
+		yo enyo <myApp>
+	```
 
-    ```
-        git remote set-url origin git@github.com:<your user name>/<myProjectName>.git
-    ```
+	This will create the `<myApp>` directory and populate it with the necessary
+	files.
 
-    Alternatively, you may edit the config file, `<myProjectName>/.git/config`,
-    directly:
-
-    ```
-        [remote "origin"]
-            url = git@github.com:<your user name>/<myProjectName>.git
-            ...
-    ```
-
-4. Push subsequent changes to the new repo.
-
-Now, strictly speaking, the process described in steps 2-4 is only necessary if
-you want your new project to exist as its own GitHub repository.  The Enyo team
-has historically referred to this as "dupliforking", since it works around a
-limitation in GitHub that would otherwise prevent the creation of multiple
-(duplicate) forks from a single project.
-
-### The Non-GitHub Way
+### The Other Way
 
 1. Download a bootplate zip archive from
     [enyojs.com](http://enyojs.com/get-enyo/), unzip the archive, and open the
@@ -87,9 +64,9 @@ By following the structure established by the bootplate templates, you set
 yourself up for a relatively pain-free experience when it comes time to prepare
 your finished app for deployment:
 
-1. Check that you have the node.js runtime installed on your system.  You'll
-    need version 0.8 or later for the deployment script to work.  You can
-    download it from [nodejs.org](http://nodejs.org).
+1. Make sure that you have the Node.js runtime (version 0.8 or later) installed
+    on your system.  (It should already be installed, assuming you were able to
+    use `generator-enyo` successfully.)
 
 2. Make a deployment build by doing the following:
 
@@ -100,9 +77,6 @@ your finished app for deployment:
     * Run the `tools\deploy.bat` script (Windows) or `./tools/deploy.sh`
         (Mac/Linux).
 
-    (Note: For releases prior to 2.1.1, navigate to the `tools` folder and
-    run `deploy.bat` or `./deploy.sh`)
-
     When the build is complete, there will be two compressed JavaScript files
     and two compressed CSS files in a folder called `build`; `app.js` and
     `app.css` contain your application code, while `enyo.js` and `enyo.css`
@@ -112,7 +86,7 @@ your finished app for deployment:
     that loads your app, any images or other resources used by the app, etc.)
     are then copied into the final deployment folder, called `deploy`.
 
-3. Open the deployment folder, load `index.html` in a browser, and see "Hello
+3. Open the `deploy` folder, load `index.html` in a browser, and see "Hello
     World" (but faster!).
 
 Now your project is ready to deploy to various HTML5-ready targets.  For details
@@ -216,8 +190,7 @@ References to submodules in the
 file may not work if you're behind a firewall that affects HTTP communication.
 You may manually edit this file in your local copy of bootplate to tailor it for
 your specific environment.  For example, in our bootplate-based
-[api-tool](https://github.com/enyojs/api-tool) and
-[sampler](https://github.com/enyojs/sampler) repos, we've modified the
+[sampler](https://github.com/enyojs/sampler) repo, we've modified the
 `.gitmodules` files to use relative URL references.  (Be aware, though, that
 this particular change will only work for your project if you also fork `enyo`
 and its libraries into your own GitHub account.)
