@@ -4,7 +4,7 @@
 
 ### Properties, Events, and Methods
 
-The [Enyo API Reference]($api/), also known as the API Viewer or API Tool,
+The [Enyo API Reference]($apiindex.html), also known as the API Viewer,
 provides detailed information on all of the framework's publicly accessible
 kinds, including their properties, events, and methods.
 
@@ -49,14 +49,14 @@ it does.  Then provide additional information via JSDoc tags.
 
 ```javascript
     /**
-        * {@link moon.ContextualPopup} is a popup window control with Moonstone
-        * visual styling applied. It extends {@link enyo.Popup} and is designed
-        * to be used with {@link moon.ContextualPopupDecorator}.
-        *
-        * @class moon.ContextualPopup
-        * @extends enyo.Popup
-        * @ui
-        * @public
+    * {@link moon.ContextualPopup} is a popup window control with Moonstone
+    * visual styling applied. It extends {@link enyo.Popup} and is designed
+    * to be used with {@link moon.ContextualPopupDecorator}.
+    *
+    * @class moon.ContextualPopup
+    * @extends enyo.Popup
+    * @ui
+    * @public
     */
 ```
 

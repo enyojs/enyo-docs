@@ -51,23 +51,21 @@ objects in the scope of the component.
 ### Observers
 
 In Enyo, an observer is simply a function that is called when the value of a
-property being observed changes.  By convention, Enyo automatically provides
-change observers for published properties in the form of `<property>Changed()`
+property being observed changes.  By convention, Enyo automatically calls
+change observers for properties in the form of `<property>Changed()`
 functions.  For example:
 
 ```javascript
     enyo.kind({
         name: "MyControl",
-        published: {
-            foo: ""
-        },
+        foo: "",
         fooChanged: function(inOld) {    // Called when foo changes
             // Do something with "this.foo"
         }
     });
 ```
 
-In this example, `fooChanged()` will be called when the `foo` setter is called:
+In this example, `fooChanged()` will be called when `foo` is set with the `set()` method:
 
 ```javascript
     tapHandler: function() {
@@ -81,13 +79,11 @@ kind's `observers` block:
 ```javascript
     enyo.kind({
         name: "MyControl",
-        published: {
-            publicProperty: 10
-        },
+        publicProperty: 10
         _protectedProperty: 42,
-        observers: {
-            watchValues: ["publicProperty", "_protectedProperty"]
-        },
+        observers: [
+            { method: "watchValues", path: ["publicProperty", "_protectedProperty"] }
+        ],
         watchValues: function(previous, current, property) {  // Called when either property changes
             // Do something with "this.publicProperty" and "this._protectedProperty"
         }
@@ -126,7 +122,7 @@ knob.
             {kind: "enyo.Control", name: "label"}
         ],
         bindings: [
-            {from: ".$.slider.value", to: ".$.label.content"}
+            {from: "$.slider.value", to: "$.label.content"}
         ]
     });
 ```
@@ -141,23 +137,21 @@ a binding may be specified as "two-way" by setting the `oneWay` flag to `false`:
 ```javascript
     enyo.kind({
         name: "MyValueSlider",
-        published: {
-            sliderValue: 10    // Initial value of slider
-        },
+        sliderValue: 10,    // Initial value of slider
         components: [
             {kind: "moon.Slider", name:"slider"},
             {kind: "enyo.Control", name:"label"}
         ],
         bindings: [
-            {from: ".sliderValue", to: ".$.slider.value", oneWay: false},    // two-way binding
-            {from: ".$.slider.value", to: ".$.label.content"}                // one-way binding
+            {from: "sliderValue", to: "$.slider.value", oneWay: false},    // two-way binding
+            {from: "$.slider.value", to: "$.label.content"}                // one-way binding
         ]
     });
 ```
 
 Note that in two-way bindings, the order of the `from` and `to` values is still
 meaningful, since the initial value will be determined by the source (`from`)
-end.  In the current example, we are binding the `sliderValue` published
+end.  In the current example, we are binding the `sliderValue` 
 property to the child slider's `value` property.  At creation time, the binding
 will propagate the value of `sliderValue` to the child slider's `value` property
 (not the other way around), but on any subsequent changes to the child slider,
@@ -175,7 +169,7 @@ bindings):
             {kind: "enyo.Control", name:"label"}
         ],
         bindings: [
-            {from: ".$.slider.value", to: ".$.label.content", transform: function(val) {
+            {from: "$.slider.value", to: "$.label.content", transform: function(val) {
                 return "The slider value is " + Math.round(val * 100) + "%";
             }}
         ]
@@ -187,7 +181,7 @@ check the second argument to the `transform` function to determine the direction
 in which the binding is firing: 
 
 ```javascript
-    {from: ".$.slider.value", to: ".$.input.value", oneWay:false, transform: function(val, dir) {
+    {from: "$.slider.value", to: "$.input.value", oneWay:false, transform: function(val, dir) {
         if (dir == "source") {
             return (val * 100) + "%";
         } else {
@@ -203,18 +197,16 @@ are computed based on one or more dependent properties.  When any dependencies
 of the computed property change (resulting in a change to the computed value),
 observers and bindings for that property fire.
 
-Here's a simple example of a computed property based on two published properties:
+Here's a simple example of a computed property based on two properties:
 
 ```javascript
     enyo.kind({
         name: "MyForecastControl",
-        published: {
-            weather: "sunny",
-            city: "San Francisco"
-        },
-        computed: {
-            forecast: ["weather", "city"]    // "forecast" function depends on properties in list
-        },
+        weather: "sunny",
+        city: "San Francisco",
+        computed: [
+            { method: "forecast", path: ["weather", "city"] }    // "forecast" method depends on properties in list
+        ],
         forecast: function() {
             return "It's always " + this.get("weather") + " in " + this.get("city")
         }
@@ -226,19 +218,17 @@ We may now bind the computed `forecast` property to a view control, e.g.:
 ```javascript
     enyo.kind({
         name: "MyForecastControl",
-        published: {
-            weather: "sunny",
-            city: "San Francisco"
-        },
+        weather: "sunny",
+        city: "San Francisco",
         components: [
             {kind: "enyo.Control", name: "forecastLabel"}
         ],
         bindings: {
-            {from: ".forecast", to: ".$.forecastLabel.content"}
+            {from: "forecast", to: "$.forecastLabel.content"}
         },
-        computed: {
-            forecast: ["weather", "city"]
-        },
+        computed: [
+            { method: "forecast", path: ["weather", "city"] }    // "forecast" method depends on properties in list
+        ],
         forecast: function() {
             return "It's always " + this.get("weather") + " in " + this.get("city")
         }
@@ -297,18 +287,16 @@ or other models using the same API described above:
 ```javascript
     enyo.kind({
         name: "ContactView",
-        published: {
-            personModel: null
-        },
+        personModel: null,
         components: [
             {kind: "enyo.Image", name: "avatar"},
             {kind: "enyo.Control", name: "nameLabel"},
             {kind: "enyo.Control", name: "townLabel"}
         ],
         bindings: [
-            {from: ".personModel.name", to: ".$.nameLabel.content"},
-            {from: ".personModel.hometown", to: ".$.townLabel.content"},
-            {from: ".personModel.avatar", to: ".$.avatar.src"}
+            {from: "personModel.name", to: "$.nameLabel.content"},
+            {from: "personModel.hometown", to: "$.townLabel.content"},
+            {from: "personModel.avatar", to: "$.avatar.src"}
         ]
     });
 ```
@@ -338,13 +326,13 @@ automatically update:
 ### Creating Model Subkinds
 
 You may subkind `enyo.Model` to provide an explicit schema and default values
-via the `defaults` property, or to override any other default behavior:
+via the `attributes` property, or to override any other default behavior:
 
 ```javascript
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
-        defaults: {
+        attributes: {
             name: "Unknown",
             hometown: "Unknown",
             avatar: "/assets/unknown.png"
@@ -400,7 +388,7 @@ Often, you may need to adjust or convert the structure of data returned from a
 service (especially one that you don't control) in order to make it suitable for
 use in your application.  For this reason, `enyo.Model` provides a `parse()`
 API, to be called after the data is fetched but before the data is transferred
-to the internal `attributes` hash and observers are notified.
+to the internal `attributes` hash and observers are notified. To enable this feature, set the `parse` option to `true`.
 
 For example, a service might return metadata about a request that is not
 relevant to the data for your model:
@@ -428,6 +416,7 @@ only use the `result` sub-tree of the fetched data for the model attributes:
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
+        options: {parse: true},
         url: "http://myservice.com/users",
         primaryKey: "user_id",
         parse: function(data) {        // incoming data contains {status:..., result:...}
@@ -446,6 +435,7 @@ functionality, such as [X2JS](https://code.google.com/p/x2js/):
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
+        options: {parse: true},
         url: "http://myservice.com/users",
         primaryKey: "user_id",
         parser: new X2JS(),
@@ -456,7 +446,7 @@ functionality, such as [X2JS](https://code.google.com/p/x2js/):
     });
 ```
 
-Finally, `enyo.Model` does not currently support binding to nested data
+For performance, `enyo.Model` does not support binding to nested data
 structures within a model.  If a service returns nested data that your app needs
 to bind to, you could use the `parse()` function to flatten the structure.  For
 example, if the fetched model data looked like this...
@@ -483,6 +473,7 @@ fields with `enyo.Model`, making those nested sub-objects bindable as well:
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
+        options: {parse: true},
         url: "http://myservice.com/users",
         primaryKey: "user_id",
         parse: function(data) {
@@ -499,7 +490,7 @@ fields with `enyo.Model`, making those nested sub-objects bindable as well:
 
 ## Collections
 
-While `enyo.Object` wraps plain JavaScript objects to make them observable,
+While `enyo.Model` wraps plain JavaScript objects to make them observable,
 [enyo.Collection]($api/#/kind/enyo.Collection) wraps arrays of JavaScript
 objects, providing observation support for the addition of objects to (and
 removal of objects from) the array, and automatically "upgrading" plain
@@ -669,6 +660,7 @@ array...
     enyo.kind({
         name: "MyContactCollection",
         kind: "enyo.Collection",
+        options: {parse: true},
         url: "http://myservice.com/users"
         parse: function(data) {        // incoming data contains {status:..., result:...}
             return data.result;        // returned data contains {[{user_id:..., name:...}, {...}]}
@@ -708,7 +700,7 @@ the [enyo.AjaxSource]($api/#/kind/enyo.AjaxSource) and
 ### Specifying a source
 
 When defining a custom `enyo.Model` or `enyo.Collection` subkind, you may
-specify the `defaultSource` property to indicate which source to use for
+specify the `source` property to indicate which source to use for
 fetching and committing records, using the shorthand name for the source (e.g.,
 "`ajax`", "`jsonp`", etc.).
 
@@ -729,7 +721,7 @@ For example:
 You may subkind existing sources to specify options to configure the fetching
 strategy, or to create brand new sources for accessing data not supported by
 existing source kinds.  Newly-created sources must be registered with the data
-layer by calling the `enyo.store.addSources()` API.
+layer by instantiating a source with a name.
 
 For example, to create a subkind of `enyo.JsonpSource` to provide a custom
 `callback` property required by the JSONP endpoint, you could do the following:
@@ -743,7 +735,7 @@ For example, to create a subkind of `enyo.JsonpSource` to provide a custom
             this.inherited(arguments);
         }
     });
-    enyo.store.addSources({mysource: "MyJsonpSource"});
+    new MyJsonpSource({name: "mysource"});
 ```
 
 To create a brand new source, implement the abstract API as necessary:
@@ -769,7 +761,7 @@ To create a brand new source, implement the abstract API as necessary:
             opts.success(data);        // call success callback to return data
         },
     });
-    enyo.store.addSources({mysource: "MySource"});
+    new MySource({name: "mysource"});
 ```
 
 As an example, you could easily implement an `enyo.Source` that uses the
@@ -821,7 +813,7 @@ article.)
             });
         }
     });
-    enyo.store.addSources({fbfeed: "FacebookFeedSource"});
+    new FacebookFeedSource({name: "fbfeed"});
 ```
 
 ## Binding Models and Collections to Views
@@ -845,9 +837,7 @@ This is the typical way to implement such a view without using bindings:
 ```javascript
     enyo.kind({
         name: "MyControl",
-        published: {
-            model: ""
-        },
+        model: "",
         components: [
             {kind: "enyo.Control", name: "nameLabel"},
             {kind: "onyx.Slider", name: "slider", onChanging: "sliderChanging"},
@@ -878,18 +868,16 @@ done completely declaratively, making your code easier to read and maintain:
 ```javascript
     enyo.kind({
         name: "MyControl",
-        published: {
-            model: ""
-        },
+        model: "",
         components: [
             {kind: "enyo.Control", name: "nameLabel"},
             {kind: "onyx.Slider", name: "slider", onChanging: "sliderChanging"},
             {kind: "enyo.Input", name: "input", oninput: "inputChanged"}
         ],
         bindings: [
-            {from: ".model.name", to: ".$.nameLabel.content"},
-            {from: ".model.value", to: ".$.slider.value", oneWay: false},
-            {from: ".model.value", to: ".$.input.value", oneWay: false}
+            {from: "model.name", to: "$.nameLabel.content"},
+            {from: "model.value", to: "$.slider.value", oneWay: false},
+            {from: "model.value", to: "$.input.value", oneWay: false}
         ]
     });
 ```
@@ -918,9 +906,7 @@ Without collections or bindings, one might implement a simple repeater as follow
 ```javascript
     enyo.kind({
         name: "",
-        published: {
-            data: null // expects plain JS array array
-        },
+        data: null, // expects plain JS array array
         components: [
             {kind: "enyo.Repeater", name: "repeater", onSetupItem: "setupItem", components: [
                 {kind: "enyo.Control", name: "nameLabel"},
@@ -957,9 +943,7 @@ collection are changed:
 ```javascript
     enyo.kind({
         name: "",
-        published: {
-            data: null // expects an enyo.Collection
-        },
+        data: null, // expects an enyo.Collection
         components: [
             {kind: "enyo.DataRepeater", name: "repeater", components: [
                 {
@@ -968,8 +952,8 @@ collection are changed:
                         {kind: "enyo.Control", name: "ageLabel"}
                     ],
                     bindings: [
-                        {from: ".model.name", to: ".$.nameLabel.content"},
-                        {from: ".model.age", to: ".$.ageLabel.content"}
+                        {from: "model.name", to: "$.nameLabel.content"},
+                        {from: "model.age", to: "$.ageLabel.content"}
                     ]
                 }
             ]}
