@@ -8,8 +8,8 @@ creation of new projects and their ultimate deployment.
 
 While each Bootplate template lives in its own GitHub repo (e.g.,
 [bootplate](https://github.com/enyojs/bootplate) and
-[bootplate-moonstone](https://github.com/enyojs/bootplate-moonstone), we provide
-two easy ways to use Bootplate without dealing directly with Git.
+[bootplate-moonstone](https://github.com/enyojs/bootplate-moonstone)), we
+provide two easy ways to use Bootplate without dealing directly with Git.
 
 ### generator-enyo
 
@@ -27,8 +27,8 @@ installed on your Mac OS or Linux computer.
 		sudo npm install -g generator-enyo
 	```
 
-    This will also install Yeoman, if it is not already installed.  (Also, note
-    that `sudo` may not be necessary on all platforms.)
+    Note that this will install Yeoman, if it is not already installed.  (Also
+    note that `sudo` may not be necessary on all platforms.)
 
 2. Run the generator, specifying the name of your new app:
 
@@ -73,9 +73,9 @@ work on the "HelloWorld" app, and turn our attention to the deployment process.
 One advantage of installing `generator-enyo` is that it makes deploying your app
 extremely easy.  Just enter the application directory and issue the command:
 
-	```
-		yo enyo:deploy
-	```
+```
+	yo enyo:deploy
+```
 
 The optimized app will be created in a directory called `deploy` within the
 application directory.
@@ -183,31 +183,19 @@ builds become available.
 
 To check for updates to `generator-enyo`, use the command
 
-	```
-		sudo npm update -g generator-enyo
-	```
+```
+	sudo npm update -g generator-enyo
+```
 
 If an updated version was found and installed, you may update the framework code
 for a given application by entering the app's directory and issuing the command
 
-	```
-		yo enyo:update
-	```
+```
+	yo enyo:update
+```
 
 (Note that `generator-enyo` supports a number of additional options, which we
 will be documenting shortly.)
-
-### Submodules and Firewalls
-
-References to submodules in the
-[.gitmodules](https://github.com/enyojs/bootplate-moonstone/blob/master/.gitmodules)
-file may not work if you're behind a firewall that affects HTTP communication.
-You may manually edit this file in your local copy of bootplate to tailor it for
-your specific environment.  For example, in our bootplate-based
-[sampler](https://github.com/enyojs/sampler) repo, we've modified the
-`.gitmodules` files to use relative URL references.  (Be aware, though, that
-this particular change will only work for your project if you also fork `enyo`
-and its libraries into your own GitHub account.)
 
 **Additional Reading**
 
