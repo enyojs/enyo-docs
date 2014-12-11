@@ -35,8 +35,15 @@ installed on your Mac OS or Linux computer.
 		yo enyo <myApp>
 	```
 
-	This will create the `<myApp>` directory and populate it with the necessary
-	files.
+    This will create the `<myApp>` directory and populate it with the necessary
+    files for an Enyo application.  The Onyx UI library is included by default;
+    to choose a different UI library, use the `-m` or `--mode` flag, e.g.:
+
+	```
+		yo enyo -m=moonstone <myApp>
+
+		yo enyo --mode=moonstone <myApp>
+	```
 
 ### The Other Way
 
