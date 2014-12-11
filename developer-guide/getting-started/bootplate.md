@@ -2,7 +2,7 @@
 
 The enyojs project includes a set of application templates, known as "Bootplate"
 (BOOTstrap + boilerPLATE) templates.  These may be used to facilitate both the
-creation of new projects and the preparation for their eventual deployment.
+creation of new projects and their ultimate deployment.
 
 ## Quick Start with Bootplate
 
@@ -27,7 +27,8 @@ installed on your Mac OS or Linux computer.
 		sudo npm install -g generator-enyo
 	```
 
-	This will also install Yeoman, if it is not already installed.
+    This will also install Yeoman, if it is not already installed.  (Also, note
+    that `sudo` may not be necessary on all platforms.)
 
 2. Run the generator, specifying the name of your new app:
 
@@ -65,17 +66,32 @@ combine them all into optimized JavaScript and CSS files for deployment.
 For the purposes of this article, let's assume that you've completed all of your
 work on the "HelloWorld" app, and turn our attention to the deployment process.
 
-## Preparing for Deployment
+## Deployment
 
-By following the structure established by the bootplate templates, you set
-yourself up for a relatively pain-free experience when it comes time to prepare
-your finished app for deployment:
+### With generator-enyo
+
+One advantage of installing `generator-enyo` is that it makes deploying your app
+extremely easy.  Just enter the application directory and issue the command:
+
+	```
+		yo enyo:deploy
+	```
+
+The optimized app will be created in a directory called `deploy` within the
+application directory.
+
+Your project is now ready to deploy to various HTML5-ready targets.  For details
+about deploying apps to specific platforms, see [Platform-Specific
+Deployment](../deploying-apps/platform-specific-deployment.html).
+
+### The Other Way
+
+If you're not using `generator-enyo`, deploy your app by following these steps:
 
 1. Make sure that you have the Node.js runtime (version 0.8 or later) installed
-    on your system.  (It should already be installed, assuming you were able to
-    use `generator-enyo` successfully.)
+    on your system.
 
-2. Make a deployment build by doing the following:
+2. Make a deployment build as follows:
 
     * Open a command prompt (Windows) or terminal window (Mac/Linux).
 
@@ -96,10 +112,6 @@ your finished app for deployment:
 3. Open the `deploy` folder, load `index.html` in a browser, and see "Hello
     World" (but faster!).
 
-Now your project is ready to deploy to various HTML5-ready targets.  For details
-about deploying apps to specific platforms, see [Platform-Specific
-Deployment](../deploying-apps/platform-specific-deployment.html).
-
 ## Additional Notes on Bootplate Projects
 
 ### Embedded Enyo
@@ -109,15 +121,6 @@ library and other dependencies are stored completely inside the project folder.
 These resources are relatively small, and keeping all the dependencies together
 allows the developer to control versions and to easily deploy sealed packages
 (e.g., PhoneGap builds).
-
-### Submodules for Versioning
-
-Because resources from other repositories are included as submodules, you can
-control the versions of these resources in your project directly from Git (e.g.,
-you can lock to a version, update, or revert at will).
-
-As touched upon earlier, the `enyo` folder and the package libraries in the
-`lib` folder are actually submodules.
 
 ### Development vs. Deployment
 
@@ -170,25 +173,29 @@ A bootplate project has the following structure:
 * `index.html` loads the application using built files only.  If built files are
     not available, it will redirect to `debug.html`.
 
-### Updating the Submodules Manually
+### Updating the Framework Code
 
-If you want to use top-of-tree versions of Enyo, Moonstone, and the other
-submodules, you can do this with a couple of Git commands:
+`generator-enyo` uses the latest stable version of each Bootplate template.
+(And each version of Bootplate, in turn, references a particular version of Enyo
+core and each of its associated libraries.)  From time to time, the Bootplate
+versions specified by the `generator-enyo` tool will be updated, as new stable
+builds become available.
 
-```
-    git submodule foreach 'git checkout master'
-    git submodule foreach 'git pull'
-```
+To check for updates to `generator-enyo`, use the command
 
-The first command switches each submodule from being pinned to a specific commit
-to being on the master branch, while the second pulls any new source changes
-from GitHub.  You may also manually check out specific tags or branches if you
-wish.
+	```
+		sudo npm update -g generator-enyo
+	```
 
-From time to time, the Enyo team manually updates the submodule links in the
-bootplate templates, so if you want to stick with stable code, you can just pull
-the `bootplate-moonstone` repo and then use `git submodule update` to refresh
-your local tree.
+If an updated version was found and installed, you may update the framework code
+for a given application by entering the app's directory and issuing the command
+
+	```
+		yo enyo:update
+	```
+
+(Note that `generator-enyo` supports a number of additional options, which we
+will be documenting shortly.)
 
 ### Submodules and Firewalls
 
