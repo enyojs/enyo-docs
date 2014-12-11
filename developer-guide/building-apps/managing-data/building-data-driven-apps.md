@@ -837,7 +837,7 @@ This is the typical way to implement such a view without using bindings:
 ```javascript
     enyo.kind({
         name: "MyControl",
-        model: "",
+        model: null,
         components: [
             {kind: "enyo.Control", name: "nameLabel"},
             {kind: "onyx.Slider", name: "slider", onChanging: "sliderChanging"},
@@ -845,17 +845,17 @@ This is the typical way to implement such a view without using bindings:
         ],
         create: function() {
             this.inherited(arguments);
-            this.$.nameLabel("content", this.model.get("name"));
-            this.$.slider.set("value", this.model.get("value"));
-            this.$.input.set("value", this.model.get("value"));
+            this.set("$.nameLabel.content", this.get("model.name"));
+            this.set("$.slider.value", this.get("model.value"));
+            this.set("$.input.value", this.get("model.value"));
         },
         sliderChanging: function(inSender, inEvent) {
-            this.$.input.set("value", inEvent.value);
-            this.model.set("value", inEvent.value)
+            this.set("$.input.value", inEvent.value);
+            this.set("model.value", inEvent.value)
         },
         inputChanged: function(inSender, inEvent) {
-            this.$.slider.set("value", inSender.get("value"));
-            this.model.set("value", inSender.get("value"));
+            this.set("$.slider.value", inSender.get("value"));
+            this.set("model.value", inSender.get("value"));
         }
     });
 ```
@@ -868,7 +868,7 @@ done completely declaratively, making your code easier to read and maintain:
 ```javascript
     enyo.kind({
         name: "MyControl",
-        model: "",
+        model: null,
         components: [
             {kind: "enyo.Control", name: "nameLabel"},
             {kind: "onyx.Slider", name: "slider", onChanging: "sliderChanging"},
