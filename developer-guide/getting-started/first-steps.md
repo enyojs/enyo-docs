@@ -94,24 +94,9 @@ part of a ready-made project template.  The enyojs project includes a number of
 these, which we refer to as "bootplate" (BOOTstrap + boilerPLATE) templates.
 Each bootplate template comes with the Enyo core code, one or more optional
 libraries relevant to the project type, a "Hello World"-type application, and a
-recommended folder structure for organizing your application files.  (You can
-read more about bootplate templates and what they provide in [Bootplate: 0-60
-with Enyo in 5 Minutes](bootplate.html).)
-
-To start an app using the Moonstone UI library, clone the `bootplate-moonstone`
-repository to your local machine:
-
-```
-    git clone --recursive --branch 2.5.1 https://github.com/enyojs/bootplate-moonstone.git <myapp>
-```
-
-(**Expert tip:** If you'd like to version-control the newly-cloned project
-under your own GitHub account, follow the instructions in the [Bootplate
-documentation](bootplate.html#the-github-way).)
-
-Once the cloning is complete, you should be able to open the `debug.html` file
-from the root of the `<myapp>` folder in your browser.  If you see the "Hello
-World" screen, congratulations!  You're ready to start coding!
+recommended folder structure for organizing your application files.  For more on
+bootplate templates, including setup instructions, see [Bootplate: 0-60 with
+Enyo in 5 Minutes](bootplate.html).
 
 ### Individual Repos
 
