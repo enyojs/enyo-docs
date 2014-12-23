@@ -18,6 +18,13 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
+		shell: {
+			'dev-guide': {
+				command: 'cd developer-guide && sh grunt.sh'
+			}
+		},
+
 		subst: {
 			'dev-guide': {
 				options: {
@@ -79,8 +86,9 @@ module.exports = function (grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-shell');
 
 	grunt.loadTasks('tasks');
 	
-	grunt.registerTask('default', ['jsdoc', 'less', 'copy-assets', 'subst']);
+	grunt.registerTask('default', ['jsdoc', 'less', 'shell', 'copy-assets', 'subst']);
 };

@@ -5,12 +5,17 @@ The purpose of this project is to coordinate the accumulation and generation of 
 
 > In the future, [my hope](https://github.com/clinuz) is that the project will be able to better fulfill its ultimate purpose by coordinating all documentation and developer guidance into a single, normalized and cohesive source that is performant, extensible and comprehensive. For now, that is not possible.
 
+### System requirements
+
+The developer guide requires a unix-y shell. If you wish to build the full docs you will need Linux or Mac OS X. If you're feeling adventurous, you can convert the shell task into a grunt task (possibly with grunt-pandoc or one of the pandoc node modules.
+
 ### Technologies
 
 ##### Required Core Technologies
 
 - [Node.js](http://nodejs.org/) - Everything relies on `node`
-- [npm](https://www.npmjs.org/) - Package manager for [Node.js](http://nodejs.org)
+- [npm](https://www.npmjs.org/) - Package manager for [Node.js](http://nodejs.org) (installed with node)
+- [pandoc](http://johnmacfarlane.net/pandoc/) - A universal document converter, used to convert markdown to HTML. Be sure to make available on your path if it is not. (tip: 'brew install pandoc' on Mac)
 
 ##### Global npm Requirements
 
@@ -26,3 +31,35 @@ Execute `npm install` and then `bower install` to install these additional requi
 - [Grunt.js](http://gruntjs.com/) - Task runner to help automate certain portions of generating and building the site
 - [Prism.js](http://prismjs.com/) - The code/syntax highlighter in the output
 - [JQuery](http://jquery.com/) - The runtime progressive-enhancement JavaScript library used to interact with the static DOM
+
+### File System Setup
+
+The enyo-docs scripts assume that enyo and its libraries will be siblings. In other words:
+
+```
+Parent
++- enyo-docs
++- enyo
++- lib
+	+- onyx
+	+- layout
+	+- moonstone
+	+- etc...
+```
+
+### Building The Docs
+
+To build the docs, simply execute grunt:
+
+```
+grunt
+```
+
+Generated docs go into the `output` directory.
+
+### Additional notes
+
+Two special 'macros' are used within the enyo docs source:
+
+* `$api` - Converted into the relative location of the root document directory. Used primarily in the developer-guide to locate api references.
+* `$dev-guide` - Converted into the relative location of the developer guide. Used primarily in the enyo source to point towards the developer guide articles.
