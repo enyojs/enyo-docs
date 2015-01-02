@@ -34,7 +34,7 @@ Execute `npm install` and then `bower install` to install these additional requi
 
 ### File System Setup
 
-The enyo-docs scripts assume that enyo and its libraries will be siblings. In other words:
+The enyo-docs scripts assume that enyo and its libraries will be siblings and the libraries will be in the `lib` directory in the standard Bootplate way. In other words:
 
 ```
 Parent
@@ -44,8 +44,11 @@ Parent
 	+- onyx
 	+- layout
 	+- moonstone
-	+- etc...
+	+- canvas
+	+- spotlight
 ```
+
+Directories to be scanned (and other options for jsDoc) can be found in `jsdoc-conf.json`
 
 ### Building The Docs
 
