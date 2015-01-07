@@ -12,6 +12,10 @@ are confident that the new API viewer represents a significant upgrade over the
 old one, we will continue to add functionality and improve performance over the
 next several release cycles.
 
+In addition, note that several issues discovered in the days immediately
+following the 2.5.1 release have been addressed in a subsequent 2.5.1.1 release.
+These are detailed in their own section below.
+
 ## Detailed Release Notes
 
 ### enyo
@@ -764,3 +768,18 @@ next several release cycles.
 ### bootplate-moonstone
 
 * Bumped versions of submodules.
+
+## Addendum: Enyo 2.5.1.1
+
+The following issues were identified shortly after the public release of Enyo
+2.5.1; fixes have been included in a quick follow-up release (2.5.1.1).
+
+* Community member contributed fix for behavior of `parse()` method in
+    `enyo.Model`.
+
+* Fixed issues causing several Moonstone samples to be missing from the Sampler
+    app.  This involved updates to Moonstone's `package.js` file, as well as the
+    Sampler app's `manifest.json` file and submodule tags.
+
+* In `onyx.ContextualPopup`, fixed issue causing positioning to be incorrect
+    after a resize.
