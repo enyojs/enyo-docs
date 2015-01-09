@@ -24,7 +24,7 @@ The developer guide requires a unix-y shell. If you wish to build the full docs 
 
 ##### Incorporated Technologies
 
-Execute `npm install` and then `bower install` to install these additional requirements:
+Execute `npm install` and then `bower install` from within the `enyo-docs` directory to install these additional requirements:
 
 - [JSdoc3](http://usejsdoc.org) - The backbone of our documentation syntax and parser/generator
 - [Nunjucks](http://mozilla.github.io/nunjucks/) - The templating engine used to generate static HTML content
