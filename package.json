@@ -1,9 +1,13 @@
 {
-  "name": "enyo-api",
-  "version": "0.0.0",
+  "name": "enyo-docs",
+  "version": "0.1.0",
   "description": "API reference application for Enyo.js and its libraries",
   "main": "index.js",
-  "scripts": {
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enyojs/enyo-docs"
+  },
+   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cole Davis (@clinuz)",
@@ -15,6 +19,7 @@
     "fs-extra": "~0.11.0",
     "grunt": "~0.4.5",
     "grunt-contrib-less": "~0.11.4",
-    "grunt-shell": "^1.1.1"
+    "grunt-shell": "^1.1.1",
+    "jsdoc": "^3.3.0-alpha13"
   }
 }
