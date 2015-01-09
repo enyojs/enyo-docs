@@ -52,7 +52,7 @@ Directories to be scanned (and other options for jsDoc) can be found in *jsdoc-c
 
 ### Building The Docs
 
-To build the docs, simply execute grunt:
+To build the docs, simply execute grunt in the *enyo-docs* directory:
 
 ```
 grunt
