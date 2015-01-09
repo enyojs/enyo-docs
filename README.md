@@ -24,7 +24,7 @@ The developer guide requires a unix-y shell. If you wish to build the full docs 
 
 ##### Incorporated Technologies
 
-Execute `npm install` and then `bower install` to install these additional requirements:
+Execute `npm install` and then `bower install` in the *enyo-docs* directory to install these additional requirements:
 
 - [JSdoc3](http://usejsdoc.org) - The backbone of our documentation syntax and parser/generator
 - [Nunjucks](http://mozilla.github.io/nunjucks/) - The templating engine used to generate static HTML content
@@ -34,7 +34,7 @@ Execute `npm install` and then `bower install` to install these additional requi
 
 ### File System Setup
 
-The enyo-docs scripts assume that enyo and its libraries will be siblings and the libraries will be in the `lib` directory in the standard Bootplate way. In other words:
+The enyo-docs scripts assume that enyo and its libraries will be siblings and the libraries will be in the *lib* directory in the standard Bootplate way. In other words:
 
 ```
 Parent
@@ -48,7 +48,7 @@ Parent
 	+- spotlight
 ```
 
-Directories to be scanned (and other options for jsDoc) can be found in `jsdoc-conf.json`
+Directories to be scanned (and other options for jsDoc) can be found in *jsdoc-conf.json*
 
 ### Building The Docs
 
@@ -58,7 +58,7 @@ To build the docs, simply execute grunt:
 grunt
 ```
 
-Generated docs go into the `output` directory.
+Generated docs go into the *output* directory.
 
 ### Additional notes
 
