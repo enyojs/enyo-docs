@@ -182,3 +182,15 @@ The tooltip is positioned around the decorator where there is available window
 space.
 
 ![_moon.Tooltip_ (shown)](../../assets/tooltip-shown.png)
+
+## Known Issues with Popups
+
+We are aware of a WebKit bug that causes unexpected popup behavior in
+touch-enabled environments, such as tablets or smartphones.  Specifically, when
+a popup is opened in front of an input control, pressing a button to dismiss the
+popup will cause the underlying input to receive focus when the popup closes.
+
+We recommend that developers work around this issue on the application side,
+within the handler method for the button's `ontouchstart` event, by calling
+`preventDefault()` on the event object passed into the handler.  For an example
+of how this is done, see <http://jsfiddle.net/La44wvuf/light/>.
