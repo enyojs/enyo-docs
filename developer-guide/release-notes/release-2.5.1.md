@@ -769,6 +769,11 @@ These are detailed in their own section below.
 
 * Bumped versions of submodules.
 
+## Known Issues
+
+* In `enyo.Model`, the `restore()` method may not behave as expected if the
+    values being restored have not been updated on the object itself.
+
 ## Addendum: Enyo 2.5.1.1
 
 The following issues were identified shortly after the public release of Enyo
