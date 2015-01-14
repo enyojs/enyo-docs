@@ -1,7 +1,7 @@
-﻿% Enyo Design Guide
+﻿% Design Guide
 
-We are pleased to offer the following resources to those designing Enyo
-applications:
+We are pleased to offer the following resources to those designing apps using
+the Enyo framework and Moonstone UI library:
 
 * [Design Principles](design/principles.html)
 

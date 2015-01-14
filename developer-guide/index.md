@@ -71,6 +71,10 @@ Welcome!  Resources are available in the following areas:
     * [Encapsulation in Enyo](best-practices/encapsulation-in-enyo.html)
     * [Coding Style Guide](best-practices/style-guide.html)
 
+* Designing Apps
+
+    * [Design Guide](design.html)
+
 * Reference
 
     * [API Reference](../index.html)
