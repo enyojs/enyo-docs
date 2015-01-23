@@ -182,9 +182,9 @@ in which the binding is firing:
 
 ```javascript
     {from: "$.slider.value", to: "$.input.value", oneWay:false, transform: function(val, dir) {
-        if (dir == "source") {
+        if (dir == 1) { //source (`from`) setting value for target (`to`)
             return (val * 100) + "%";
-        } else {
+        } else if (dir == 2) { //target (`to`) setting value for source (`from`)
             return parseInt(val) / 100;
         }
     }}
