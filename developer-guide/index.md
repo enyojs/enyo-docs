@@ -1,82 +1,82 @@
-﻿% Enyo Developer Guide
+﻿% Enyo 开发者指南
 
-Welcome!  Resources are available in the following areas:
+欢迎！可用的资源有如下领域：
 
-* Getting Started
+* 开始
 
-    * [A Tour of Enyo](getting-started/enyo-tour.html)
-    * [First Steps](getting-started/first-steps.html)
-    * [Bootplate: 0-60 with Enyo in 5 Minutes](getting-started/bootplate.html)
-    * [Planning and Structuring Your App](getting-started/planning-and-structuring-your-app.html)
-    * [Tutorial: Building a Moonstone App](getting-started/moonstone-app-tutorial.html)
+    * [Enyo 教程](getting-started/enyo-tour.md)
+    * [第一步](getting-started/first-steps.md)
+    * [Bootplate: 5 分种内0-60学会使用 Enyo](getting-started/bootplate.md)
+    * [计划和组织你的应用](getting-started/planning-and-structuring-your-app.md)
+    * [教程：创建 Moonstone 应用](getting-started/moonstone-app-tutorial.md)
 
-* Enyo Essentials
+* Enyo 精华
 
-    * [Kinds](key-concepts/kinds.html)
-    * [Objects and Published Properties](key-concepts/objects-and-published-properties.html)
-    * [Components](key-concepts/components.html)
-    * [Controls](key-concepts/controls.html)
-    * [Event Handling](key-concepts/event-handling.html)
+    * [类型（Kinds）](key-concepts/kinds.md)
+    * [对象和发布属性](key-concepts/objects-and-published-properties.md)
+    * [组件](key-concepts/components.md)
+    * [控制](key-concepts/controls.md)
+    * [事件控制](key-concepts/event-handling.md)
 
-* Managing Data
+* 管理数据
 
-    * [Building Data-Driven Apps](building-apps/managing-data/building-data-driven-apps.html)
-    * [Consuming Web Services](building-apps/managing-data/consuming-web-services.html)
+    * [创建数据驱动的应用](building-apps/managing-data/building-data-driven-apps.md)
+    * [Consuming Web Services](building-apps/managing-data/consuming-web-services.md)
 
-* UI Layout
+* 用户界面布局
 
-    * [Fittables](building-apps/layout/fittables.html)
-    * [Scrollers](building-apps/layout/scrollers.html)
-    * [Lists](building-apps/layout/lists.html)
+    * [Fittables](building-apps/layout/fittables.md)
+    * [Scrollers](building-apps/layout/scrollers.md)
+    * [列表](building-apps/layout/lists.md)
     * [Data Lists](building-apps/layout/data-lists.html)
-    * [Drawers](building-apps/layout/drawers.html)
-    * [Panels](building-apps/layout/panels.html)
+    * [Drawers](building-apps/layout/drawers.md)
+    * [Panels](building-apps/layout/panels.md)
 
-* Building TV Applications
+* 创建电视应用
 
-    * [Spotlight](building-apps/spotlight.html)
-    * [Buttons](building-apps/controls/buttons.html)
-    * [Checkboxes](building-apps/controls/checkboxes.html)
-    * [Headers](building-apps/controls/headers.html)
-    * [List Items](building-apps/controls/list-items.html)
-    * [Pickers](building-apps/controls/pickers.html)
-    * [Popups](building-apps/controls/popups.html)
-    * [Progress Indicators](building-apps/controls/progress-indicators.html)
-    * [Radio Items](building-apps/controls/radio-items.html)
-    * [Text Fields](building-apps/controls/text-fields.html)
-    * [Toggles](building-apps/controls/toggles.html)
+    * [Spotlight](building-apps/spotlight.md)
+    * [按钮](building-apps/controls/buttons.md)
+    * [检查按钮](building-apps/controls/checkboxes.md)
+    * [头](building-apps/controls/headers.md)
+    * [列表项](building-apps/controls/list-items.md)
+    * [Pickers](building-apps/controls/pickers.md)
+    * [弹出菜单](building-apps/controls/popups.md)
+    * [Progress Indicators](building-apps/controls/progress-indicators.md)
+    * [单选项](building-apps/controls/radio-items.md)
+    * [文本域](building-apps/controls/text-fields.md)
+    * [Toggles](building-apps/controls/toggles.md)
 
-* Localization
+* 本地化
 
-    * [Localization](building-apps/localization.html)
+    * [本地化](building-apps/localization.md)
 
-* Enyo and webOS
+* Enyo 和 webOS
 
-    * [Using webOS Features](building-apps/using-webos-features.html)
+    * [Using webOS features](building-apps/using-webos-features.md)
 
-* Testing and Debugging
+* 测试和排错
 
-    * [Browser-Based Debugging](building-apps/testing-and-debugging/browser-based-debugging.html)
+    * [基于浏览器的排错](building-apps/testing-and-debugging/browser-based-debugging.md)
 
-* Deploying Apps
+* 布署应用
 
-    * [Platform-Specific Deployment](deploying-apps/platform-specific-deployment.html)
-    * [Enyo Apps on Windows 8](deploying-apps/enyo-apps-on-windows-8.html)
-    * [Cordova Native Functions](deploying-apps/cordova-native-functions.html)
+    * [Platform-Specific Deployment](deploying-apps/platform-specific-deployment.md)
+    * [Enyo Apps on Windows 8](deploying-apps/enyo-apps-on-windows-8.md)
+    * [Cordova Native Functions](deploying-apps/cordova-native-functions.md)
 
-* Best Practices
+* 最佳实践
 
-    * [The API Reference: What Every Developer Should Know](best-practices/api-reference.html)
-    * [Enyo Dos and Don'ts](best-practices/dos-and-donts.html)
-    * [Encapsulation in Enyo](best-practices/encapsulation-in-enyo.html)
-    * [Coding Style Guide](best-practices/style-guide.html)
+    * [API 参考：每一个开发者应该知道](best-practices/api-reference.md)
+    * [Enyo 能做和不能做的](best-practices/dos-and-donts.md)
+    * [Enyo 封装](best-practices/encapsulation-in-enyo.md)
+    * [编码风格指南](best-practices/style-guide.md)
 
-* Designing Apps
+* 设计应用
 
-    * [Design Guide](design.html)
+    * [设计指南](design.html)
 
-* Reference
+* 参考
 
-    * [API Reference](../index.html)
-    * [Enyo Release Notes](release-notes.html)
-    * [Documentation for Previous Releases](previous-releases.html)
+    * [API 参考](api.html)
+    * [Enyo 发布声明](release-notes.md)
+    * [以前发行版的文档](previous-releases.html)
