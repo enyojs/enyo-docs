@@ -97,7 +97,6 @@ such as our [Pirate Pig](http://enyojs.com/samples/piratepig) canvas demo app.
 
 ## 开始（Bootplate）
 
-
 Bootplate 是一个模板，它给开发新 Enyo 应用提供了一个完整的解决方案，并且包括在每一个发行版中。它包括当前版本的 Enyo 和最常用的库（Moonstone 和 Layout），也包括了用来布置应用的最小化脚本，源码和附件。从这里开始使用 Bootlate。
 
 The [Bootplate](bootplate.html) templates provide complete starter projects

@@ -1,4 +1,4 @@
-% Planning and Structuring Your App
+% 计划和组织你的应用
 
 While an Enyo application may be as simple as single HTML5 file, once we start
 making more sophisticated apps, there are numerous resources to manage, versions
@@ -10,7 +10,7 @@ application template (available in both
 [Onyx](https://github.com/enyojs/bootplate) variants), which you are encouraged
 to base your own apps upon.  They are also described in some detail below.
 
-## The Basic Scaffold
+## 基本的脚手架
 
 Enyo is designed so that plugin libraries, applications, and Enyo itself are all
 portable resources.  The use of common folder conventions significantly
@@ -86,7 +86,7 @@ The suggested setup for applications is similar, but includes some additions:
     `deploy` script to create a version of the app with the code minified and
     non-essential files removed.
 
-## The lib Folder and Plugins
+## 库文件夹和插件
 
 Enyo's infrastructure is intended to support a wide variety of plugins.  While
 it is not a technical requirement, the convention is to put plugins in a folder
@@ -103,7 +103,7 @@ called `lib` that is a peer to `enyo`:
 
 Again, notice that the standard scaffold has been used for this plugin.
 
-## Standard Snapshot
+## 标准快照
 
 If we combine the two preceding examples, we get the complete suggested folder
 structure:
@@ -153,7 +153,7 @@ Here's the deployment tree for the suggested folder structure:
 
 Note that the `enyo` folder itself is not necessary for deployment.
 
-## Sharing Enyo
+## 分享 Enyo
 
 As mentioned previously, it's also possible to build applications that refer to
 shared copies of Enyo and/or plugins.  In this case, shared resources are found

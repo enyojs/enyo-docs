@@ -21,16 +21,16 @@
 * 管理数据
 
     * [创建数据驱动的应用](building-apps/managing-data/building-data-driven-apps.md)
-    * [Consuming Web Services](building-apps/managing-data/consuming-web-services.md)
+    * [使用 Web 服务](building-apps/managing-data/consuming-web-services.md)
 
 * 用户界面布局
 
-    * [Fittables](building-apps/layout/fittables.md)
-    * [Scrollers](building-apps/layout/scrollers.md)
+    * [自适应](building-apps/layout/fittables.md)
+    * [滚动条](building-apps/layout/scrollers.md)
     * [列表](building-apps/layout/lists.md)
-    * [Data Lists](building-apps/layout/data-lists.html)
-    * [Drawers](building-apps/layout/drawers.md)
-    * [Panels](building-apps/layout/panels.md)
+    * [数据列表](building-apps/layout/data-lists.html)
+    * [抽屉](building-apps/layout/drawers.md)
+    * [面板](building-apps/layout/panels.md)
 
 * 创建电视应用
 
@@ -39,12 +39,12 @@
     * [检查按钮](building-apps/controls/checkboxes.md)
     * [头](building-apps/controls/headers.md)
     * [列表项](building-apps/controls/list-items.md)
-    * [Pickers](building-apps/controls/pickers.md)
+    * [选取器](building-apps/controls/pickers.md)
     * [弹出菜单](building-apps/controls/popups.md)
-    * [Progress Indicators](building-apps/controls/progress-indicators.md)
+    * [进度条](building-apps/controls/progress-indicators.md)
     * [单选项](building-apps/controls/radio-items.md)
     * [文本域](building-apps/controls/text-fields.md)
-    * [Toggles](building-apps/controls/toggles.md)
+    * [开关](building-apps/controls/toggles.md)
 
 * 本地化
 
@@ -52,7 +52,7 @@
 
 * Enyo 和 webOS
 
-    * [Using webOS features](building-apps/using-webos-features.md)
+    * [使用 webOS 特性](building-apps/using-webos-features.md)
 
 * 测试和排错
 
@@ -60,9 +60,9 @@
 
 * 布署应用
 
-    * [Platform-Specific Deployment](deploying-apps/platform-specific-deployment.md)
-    * [Enyo Apps on Windows 8](deploying-apps/enyo-apps-on-windows-8.md)
-    * [Cordova Native Functions](deploying-apps/cordova-native-functions.md)
+    * [平台相关的开发](deploying-apps/platform-specific-deployment.md)
+    * [在 Windows 8 上的 Enyo 应用](deploying-apps/enyo-apps-on-windows-8.md)
+    * [Cordova 原生功能](deploying-apps/cordova-native-functions.md)
 
 * 最佳实践
 
