@@ -2,7 +2,8 @@
 
 ## 准备开发环境
 
-作为 Enyo 开发者，你有很大的自由去选择开发平台和工具来写你的应用代码。你可能在 Windows, Mac, 或者 Linux 环境。仅需要一些简单的工具就可以弄好并运行了。
+作为 Enyo 开发者，你有很大的自由去选择开发平台和工具来写你的应用代码。你可能在
+Windows, Mac, 或者 Linux 环境。仅需要一些简单的工具就可以弄好并运行了。
 
 ### 文本编辑
 
@@ -15,29 +16,31 @@
 
 ### Git 客户端
 
-目前发行 Enyo 核心、库和“bootplate" 用的主要是 GitHub，所以你需要有现代的 Git 客户
-端安装在机器里。在本文档里，我们用 git 命令行，但你也可以使用喜欢的 GUI git 客户端。
+目前发行 Enyo 核心、库和“bootplate" 用的主要是 GitHub，所以你需要有现代的 Git
+客户端安装在机器里。在本文档里，我们用 git 命令行，但你也可以使用喜欢的图形界面
+git 客户端。
 
-你可以在 [git-scm.com](http://git-scm.com/downloads)下载你的操作系统对应的 git 客
-户端。
+你可以在 [git-scm.com](http://git-scm.com/downloads)下载你的操作系统对应的 git
+客户端。
 
-（注意：Enyo "bootplate" 模板同样在 **LG webOS TV SDK** 中一起分发，它可能使用在
-SDK中的 `ares-generate` 命令生成，该命令不需要 Git。 如果使用 **LG webOS TV SDK** ，
-而且不打算在你的应用中用 Git 来控制版本，你不需要安装 Git 客户端。）
+（注意：Enyo "bootplate" 模板同样在 **LG webOS TV SDK** 中一起分发，它可能使用
+在 SDK 中的 `ares-generate` 命令生成，该命令不需要 Git。 如果使用
+**LG webOS TV SDK** ，而且不打算在你的应用中用 Git 来控制版本，你不需要安装
+Git 客户端。）
 
 ### Node.js
 
-Enyo 框架包含了基于 `Node.js` 的工具来最小化和布署应用。 `Node.js` 是服务器端的
-运行时（像是服务器端的 Perl, Python, Ruby 和其他语言的解释器）用于在服务器上运
+Enyo 框架包含了基于 `Node.js` 的工具用来最小化和布署应用。 `Node.js` 是服务器端
+的运行时（像是服务器端的 Perl, Python, Ruby 和其他语言的解释器）用于在服务器上运
 行 JavaScript 脚本。甚至可以只用 `Node.js` 本身作为主 Web 服务器（下面会看到）。
 
 可以在 [nodejs.org](http://nodejs.org/) 下载你的操作系统对应版本的 `node.js`。
 
 ### Web 浏览器和 Web 服务器
 
-在开发过程中，你可以用任何现代浏览器来测试你的代码。也许在浏览器中可以直接打开本地
-文件，但我们还是强烈建议你通过 HTTP 服务器来打开应用。 这个建议有很多好处，其中包
-括有能力从远程设备进行测试。
+在开发过程中，你可以用任何现代浏览器来测试你的代码。也许在浏览器中可以直接打开本
+地文件，但我们还是强烈建议你通过 HTTP 服务器来打开应用。 这个建议有很多好处，其
+中包括有能力从远程设备进行测试。
 
 在 Web 服务器上运行你的应用可以避免 Chrome 浏览器对 AJAX 的安全限制。如果想选择
 在 Chrome 开发，*并且* 直接从文件系统打开你的文件，你需要在命令行启动浏览器并加
@@ -75,7 +78,7 @@ Enyo 框架包含了基于 `Node.js` 的工具来最小化和布署应用。 `No
 
 如果你是 Enyo 开发的新人，你会希望把 Enyo 源代码作为现成的项目模板的一部分。
 这个 enyojs 项目包括这样一些我们称为 "bootplate" (BOOTstrap + boilerPLATE) 模板
-的东西。每个 bootplate 模板会和 Enyo 核心代码，一个或多个与项目相关的库，一个
+的东西。每个 bootplate 模板会有 Enyo 核心代码，一个或多个与项目相关的库，一个
 “你好世界”这种应用，和一个推荐的文件夹结构用来组织本应用中的文件。关于
 bootplate 模板，包括设置介绍，见[Bootplate：在5分钟内用 Enyo 从0到60](bootplate.md)。
 

@@ -1,24 +1,23 @@
 % Bootplate
 
 enyojs 项目包括一套注用模板，称为 "Bootplate" (BOOTstrap + boilerPLATE) 模板。
-templates.  它们既可以用于创建新项目，也可以用于对最终布署项目。
+它们既可以用于创建新项目，也可以用于布署最终项目。
 
 ## Bootplate 快速启动
 
 两个 Bootplate 模板有各自的 GitHub 仓库（例如：
 [bootplate](https://github.com/enyojs/bootplate) 和
 [bootplate-moonstone](https://github.com/enyojs/bootplate-moonstone)），
-我们提供两个简单的方法来使用 Bootplate，不需要直接使用 Git。
+我们提供两个简单的方法来使用 Bootplate，都不需要直接使用 Git。
 
 ### generator-enyo
 
-`generator-enyo` is the preferred method for starting an app with Bootplate.  It
-is implemented using [Yeoman](http://yeoman.io/), an open-source suite of Web
-development tools.
+我们推荐使用 `generator-enyo` 来开始 Bootplate 应用。它用
+[Yeoman](http://yeoman.io/) 来实现这个功能。Yeoman 是一个开源的 Web 开发工具
+套件。
 
-**Note:** To use `generator-enyo`, you will first need to have
-[Node.js](http://nodejs.org) and the [Node Package Manager](https://npmjs.org)
-installed on your Mac OS or Linux computer.
+**注：** 要用 `generator-enyo`，你首先需要 [Node.js](http://nodejs.org) 和
+ [Node 包管理器](https://npmjs.org) 已经安装在 Mac OS 或 Linux 电脑里。
 
 1. Use the Node Package Manager `(npm)` to install `generator-enyo`:
 
