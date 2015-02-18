@@ -1,16 +1,15 @@
-% Enyo 2.3.0-rc.24 to 2.5.0 Migration Notes
+% Enyo 2.3.0-rc.24 到 2.5.0 迁移注释
 
 To ensure a smooth transition from Enyo 2.3.0-rc.24 to Enyo 2.5.0, please review
 the following list of changes that will likely require modifications to your
 existing Enyo applications.
 
-## General
+## 总览
 
-* In `enyo.Control`, the `resized()` method has been renamed as `resize()` and
-    the default event handler has been renamed from `resizeHandler()` to
-    `handleResize()`.  If you have overloaded the event handler, you will need
-    to rename your overload method as `handleResize()`, and if you are calling
-    `resized()` you will instead need to call `resize()`.
+* 在 `enyo.Control` 里，`resized()` 方法已经重命名成 `resize()`，缺省的事件处理器
+   也从 `resizeHandler()` 重命名成 `handleResize()`。 如果你重载过这个事件处理器，
+   你需要重命名你的重载方法为 `handleResize()`，同时如果你调用 `resized()`，你应该
+   调用 `resize()`。
 
 * The way in which bindings are initialized and resolved has been rewritten so
     that you no longer need to prefix the `to` and `from` properties with a dot
@@ -18,14 +17,14 @@ existing Enyo applications.
     string parsing, so you should use the new syntax for a slight boost in
     performance.
 
-Before the change:
+变更前：
 
 ```
 bindings: [
 	{from: '.myProp', to: '.$.myComponent.prop'}
 ]
 ```
-After the change:
+变更后：
 
 ```
 bindings: [
@@ -42,7 +41,7 @@ bindings: [
     An example of an acceptable use case would be an `enyo.Application` that
     exposes its components to other nested components.
 
-Before the change:
+变更前：
 
 ```
 enyo.kind({
@@ -62,7 +61,7 @@ bindings: [
 ]
 ```
 
-After the change:
+变更后：
 
 ```
 enyo.kind({
@@ -87,7 +86,7 @@ bindings: [
     the old behavior, you may need to make a few minor updates to your apps to
     make them function as before.
 
-Before the change:
+变更前：
 
 ```
 // unfortunately you were able to incorrectly create a kind and then use it as your namespace,
@@ -189,7 +188,7 @@ methods are backward-compatible.)
 	* `removeObserver` -> `unobserve`
 	* `notifyObservers` -> `notify`
 
-Before the change:
+变更前：
 
 ```
 // before, this would return the a function reference that had been bound to the context
@@ -200,7 +199,7 @@ var fn = this.addObserver('prop', method, context);
 this.removeObserver('prop', fn);
 ```
 
-After the change:
+变更后：
 
 ```
 // now we do not need to store the reference to the bound method to remove it
@@ -213,7 +212,7 @@ this.unobserve('prop', method, context);
 * There is a new preferred way of declaring observers in a kind--as an array
     (the previous structure is still available, but has been deprecated):
 
-Before the change:
+变更前：
 
 ```
 observers: {
@@ -221,7 +220,7 @@ observers: {
 }
 ```
 
-After the change:
+变更后：
 
 ```
 observers: [
@@ -251,7 +250,7 @@ observers: [
 * As in `enyo.ObserverSupport`, the `computed` property should now be declared
     as an array:
 
-Before the change:
+变更前：
 
 ```
 computed: {
@@ -259,7 +258,7 @@ computed: {
 }
 ```
 
-After the change:
+变更后：
 
 ```
 computed: [
@@ -314,13 +313,13 @@ that there has been a shift in terminology in that we refer to instances of
 
     For more information, see the documentation for the method.
 
-Before the change:
+变更前：
 
 ```
 enyo.store.findLocal(ctor, opts, filterMethod);
 ```
 
-After the change:
+变更后：
 
 ```
 enyo.store.find(ctor, filterMethod, opts);
@@ -444,7 +443,7 @@ enyo.store.find(ctor, filterMethod, opts);
     convenience methods `isBusy()`, `isError(),` and `isReady()`, which should
     be suitable for many general use cases (like the one below).
 
-Before the change:
+变更前：
 
 ```
 enyo.kind({
@@ -459,7 +458,7 @@ enyo.kind({
 });
 ```
 
-After the change:
+变更后：
 
 ```
 enyo.kind({
@@ -494,7 +493,7 @@ enyo.kind({
     function call, where the `enyo.Application` instance is created.  It should
     also be noted that sources no longer interact with `enyo.Store` at all.
 
-Before the change:
+变更前：
 
 ```
 enyo.store.addSources([
@@ -504,7 +503,7 @@ enyo.store.addSources([
 new enyo.Collection({defaultSource: 'ajaxSource'});
 ```
 
-After the change:
+变更后：
 
 ```
 enyo.AjaxSource.create({name: 'ajax'});
