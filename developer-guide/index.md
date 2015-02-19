@@ -7,7 +7,7 @@
     * [Enyo 教程](getting-started/enyo-tour.md)
     * [第一步](getting-started/first-steps.md)
     * [Bootplate: 5 分种内0-60学会使用 Enyo](getting-started/bootplate.md)
-    * [计划和组织你的应用](getting-started/planning-and-structuring-your-app.md)
+    * [计划和组织应用](getting-started/planning-and-structuring-your-app.md)
     * [教程：创建 Moonstone 应用](getting-started/moonstone-app-tutorial.md)
 
 * Enyo 精华

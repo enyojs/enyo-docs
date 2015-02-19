@@ -1,4 +1,4 @@
-% Components
+% 组件
 
 The Component object, [enyo.Component]($api/#/kind/enyo.Component), is the basic
 building block of the Enyo framework.  Components encapsulate rich behavior and
@@ -6,7 +6,7 @@ may be used together as modules to create complex applications.  When coding an
 Enyo application, you'll create many of your own component and control kinds.
 The information in this document should help you get started.
 
-## The Basics
+## 基础
 
 A component is an Enyo kind that can publish properties, expose events, and
 contain other components.  It may be useful to think about components as owning
@@ -60,7 +60,7 @@ As the name implies, this is a simple randomized timer component.  Its kind is
 a couple of properties to control the firing frequency.  As you can see, it's
 straightforward to expose properties and events.
 
-## Properties
+## 属性
 
 Exposed properties are placed in a `"published"` block and may include a default
 value.
@@ -97,7 +97,7 @@ do this by calling the property-changed method in `create()`.  Since the need
 for initialization can vary from case to case, we leave this to the component
 writer's discretion.
 
-## Events
+## 事件
 
 Similarly, events are placed in an `"events"` block.  To fire an event, we call
 the associated `"do"` method, another convenience provided by Enyo.  For
@@ -106,7 +106,7 @@ single argument to the `"do"` method--an event object that will be passed along
 to the event handler.  In this case, we send the current time in the event's
 `time` property.  In a moment, we'll see how to handle this event.
 
-## Components in Components
+## 组件中的组件
 
 First, though, we'll create another component kind, named `SimulatedMessage`:
 
@@ -135,7 +135,7 @@ Users of the `SimulatedMessage` component do not have to concern themselves with
 the timer component.  Its behavior is encapsulated inside `SimulatedMessage`.
 All components are considered to be private to their owner.
 
-## Handling Events
+## 处理事件
 
 Having addressed the issue of component ownership, we can return our attention
 to the `onTriggered` event.  Notice the string set for the `onTriggered` event
@@ -153,7 +153,7 @@ properties convey information about the event.
 
 To learn more about events in Enyo, see [Event Handling](event-handling.html).
 
-## Lifecycle Methods: create() and destroy()
+## 生命周期方法：create() 和 destroy()
 
 Returning for a moment to our `RandomizedTimer` component, you'll notice that it
 includes the methods `create()` and `destroy()`.  The `Component` kind
@@ -225,14 +225,14 @@ object subject to garbage collection.  For this reason, there is a
 `this.destroyed` flag on each component.  If `this.destroyed` is `true`, the
 component has been uninitialized and the reference should be removed.
 
-## Summary
+## 总结
 
 To review, components are basic building blocks that encapsulate behavior (often
 by using other sub-components) and expose an interface in the form of methods,
 properties, and events.
 
-**Additional Reading**
+**进一步阅读**
 
-* [Controls](controls.html)
+* [控制](controls.html)
 * [Kinds](kinds.html)
-* [Event Handling](event-handling.html)
+* [事件处理](event-handling.html)
