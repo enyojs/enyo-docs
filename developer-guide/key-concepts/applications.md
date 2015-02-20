@@ -1,2 +1,2 @@
-﻿% Applications
+﻿% 应用
 

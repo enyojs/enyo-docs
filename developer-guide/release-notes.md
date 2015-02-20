@@ -1,13 +1,13 @@
-% Release Notes
+% 发布信息
 
-Release notes are available for the following Enyo releases:
+发布信息在以下 Enyo 发行版中：
 
-* [Enyo 2.5.1 Release Notes](release-notes/release-2.5.1.html) (December 11, 2014)
-* [Enyo 2.5 Release Notes](release-notes/release-2.5.html) (Not released to public)
-* [Enyo 2.4 Release Notes](release-notes/release-2.4.html) (April 14, 2014)
-* [Enyo 2.3.0-pre.10 Release Notes](release-notes/release-2.3.0-pre.10.html) (October 16, 2013)
-* [Enyo 2.2 Release Notes](release-notes/release-2.2.html) (February 21, 2013)
-* [Enyo 2.1.1 Release Notes](release-notes/release-2.1.1.html) (November 28, 2012)
-* [Enyo 2.1 Release Notes](release-notes/release-2.1.html) (October 26, 2012)
-* [Enyo 2.0.1 Release Notes](release-notes/release-2.0.1.html) (August 30, 2012)
-* [Enyo 2.0 Release Notes](release-notes/release-2.0.html) (July 18, 2012)
+* [Enyo 2.5.1 发布信息](release-notes/release-2.5.1.html) (2014年12月11日)
+* [Enyo 2.5 发布信息](release-notes/release-2.5.html) (没有公开发行)
+* [Enyo 2.4 发布信息](release-notes/release-2.4.html) (2014年4月14日)
+* [Enyo 2.3.0-pre.10 发布信息](release-notes/release-2.3.0-pre.10.html) (2013年10月16日)
+* [Enyo 2.2 发布信息](release-notes/release-2.2.html) (2013年2月21日)
+* [Enyo 2.1.1 发布信息](release-notes/release-2.1.1.html) (2012年11月28日)
+* [Enyo 2.1 发布信息](release-notes/release-2.1.html) (2012年10月26日)
+* [Enyo 2.0.1 发布信息](release-notes/release-2.0.1.html) (2012年8月30日)
+* [Enyo 2.0 发布信息](release-notes/release-2.0.html) (2012年7月18日)

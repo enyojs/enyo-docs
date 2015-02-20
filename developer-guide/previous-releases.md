@@ -1,7 +1,6 @@
-% Documentation for Previous Releases
+% 上一次发布版的文档
 
-In addition to the [current release](/docs/), documentation is available for the
-prior Enyo releases listed below.  Note that this information is provided for
-historical purposes only.
+除了[当前发布版](/docs/)之外，Enyo 前一个发布版的文档也有。注意该信息仅为了
+记录历史的目的。
 
 * [Enyo 2.4](/docs/2.4.0/)

@@ -1,66 +1,54 @@
-﻿% Tutorial: Building a Moonstone App
+﻿% 教程：创建 Moonstone 应用
 
-## Introduction
+## 介绍
 
-In this tutorial, we will build a basic TV application using the Moonstone UI
-library.  Our application will perform Flickr searches, and will follow
-Moonstone's "always viewing" Panels pattern.  
+在本教程中，我们用 Moonstone UI 库来创建一个电视应用。该应用演示 Flickr 搜索，
+并按照 Moonstone 的 ”总能看见“面板模式。
 
-We'll walk through the creation of "Search" and "Detail" panel views, crafting
-subkinds of [enyo.Source]($api/#/kind/enyo.Source),
-[enyo.Collection]($api/#/kind/enyo.Collection) and
-[enyo.Model]($api/#/kind/enyo.Model) to meet the demands of the Flickr API, and
-binding the returned data to our views--all typical things you will need to do
-in an interactive, data-driven application.
+我们将会演练创建 "Search" 和 "Detail" 面板视图，精心制作
+ [enyo.Source]($api/#/kind/enyo.Source)，
+[enyo.Collection]($api/#/kind/enyo.Collection) 和
+[enyo.Model]($api/#/kind/enyo.Model) 子类来满足 Flickr API 的需要，并绑定为视图
+返回的数据--这些都是在数据驱动的应用中，你需要在交互活动中处理的典型事件。 
 
-If you'd like to get an idea of where we're heading, you can [view the completed
-app](http://enyojs.github.io/moon-flickr) or [browse the completed
-source code](https://github.com/enyojs/moon-flickr).
+如果你想对我们最后会得到什么结果有个印象，你可以[查看完整的应用](http://enyojs.github.io/moon-flickr) 或
+[浏览完整的源代码](https://github.com/enyojs/moon-flickr)。
 
-## 1. Set up your development environment
- 
-There are four main tools that make up the bread-and-butter of Enyo development:
+## 1. 设置你的开发环境
 
-* Your favorite **code editor**
-* A **Git client**, for checking out an Enyo bootplate template
-* **Node.js**, a server-side JavaScript runtime, for minifying your finished
-    application
-* A **Web browser** and **Web server**.  Although not strictly required, the
-    server will let you avoid browser security restrictions in Chrome, among
-    other benefits.
+有四种主要工具用来组成不可分割的 Enyo 开发：
 
-[First Steps with Enyo](first-steps.html) provides detailed instructions for
-obtaining and installing these tools, along with some suggested choices (where
-appropriate).  If you are already familiar with the tools, feel free to install
-them on your own and move on to step 2.
+* 你喜爱的 **代码编辑器**
+* **Git 客户端**，用来签出 Enyo bootplate 模板
+* **Node.js**，服务器端的 JavaScript 运行时，用来最小化你完成后的应用
+* **Web 浏览器** 和 **Web 服务器**。虽然不是严格要求，服务器可以避免 Chrome 里对
+浏览器的安全限制，还包括其它好处。
 
-## 2. Get a "bootplate" project template
+[和 Enyo 的第一步](first-steps.md) 提供了获得和安装这些工具的详细介绍，还有相应的建议选项（比较赞同的）。如果你已经熟悉这些工具，随你自己的想法安装并进入第2步。
 
-We'll start by cloning the `bootplate-moonstone` project template from GitHub.
+## 2. 获取 "bootplate" 项目模板
 
-While this step is also covered in [First Steps with Enyo](first-steps.html),
-there's no harm in repeating the essential Git command:
+我们从克隆 GitHub 里的 `bootplate-moonstone` 项目模板开始。
+
+虽然 [Enyo 第一步](first-steps.md) 包含了本步骤，但重新写一下 Git 的重要命令没有坏处：
 
 ```
     git clone --recursive --branch 2.5.1 https://github.com/enyojs/bootplate-moonstone.git <myapp>
 ```
 
-## 3. Customize app boilerplate
+## 3. 定制应用的样本文件
 
-After cloning, we'll make some customizations to the template to accommodate our
-new app.
+克隆完成后，我们要对模板进行一些定制以适应新应用。
 
-* In `debug.html` and `index.html`, let's set the `<title>` tag to
-    `"Moonstone Flickr"`.
+* 在 `debug.html` 和 `index.html` 里，设定 `<title>` 标签为 `"Moonstone Flickr"`。
 
-* In `source/views/views.js`, let's establish a namespace (`"flickr"`) for our
-    custom kinds by renaming `myapp.MainView` to `flickr.MainView`.
+* 在 `source/views/views.js` 中设置名字空间 (`"flickr"`)，我们定制的类就从
+  `MyApp.MainView` 重命名成 `flickr.MainView`。
 
-* Likewise, in `source/app.js`, we'll change the names `myapp.Application` and
-    `myapp.MainView` to `flickr.Application` and `flickr.MainView`,
-    respectively.
+* 同样，在 `source/app.js` 中相应地改变 `MyApp.Application` 和 `MyApp.MainView` 的
+  名字为 `flickr.Application` 和 `flickr.MainView`。
 
-**For your information:**  The files we just modified comprise the set of
+**仅供参考：**  The files we just modified comprise the set of
 files involved in the startup of your bootplate app.  When `debug.html` (or,
 after deployment, `index.html`) is opened, it first loads the Enyo core CSS and
 JavaScript files, along with the application's top-level `package.js`.  The
@@ -72,7 +60,7 @@ application.  Finally, by default, `enyo.Application` automatically renders the
 "main view" upon instantiation--i.e., it creates and renders the `MainView` kind
 from `main.js`, thus starting your app.
 
-## 4. Set up main view
+## 4. 设置主视图
 
 Since this app will be based on the Moonstone "Always Viewing" Panel pattern,
 let's set up our main view to have a [moon.Panels]($api/#/kind/moon.Panels)
@@ -81,7 +69,7 @@ transitioning them left and right) and a single instance of
 [moon.Panel]($api/#/kind/moon.Panel), the base kind for views added to
 `moon.Panels`.
 
-**Edit file: source/views/views.js**
+**编辑文件： source/views/views.js**
 
 ```javascript
     enyo.kind({
@@ -100,9 +88,9 @@ Here we've created a simple kind named `flickr.MainView`, which is a subkind of
 property is specified).  As per our plan, the main view contains an instance of
 `moon.Panels`, which in turn contains an instance of `moon.Panel`.
 
-**Additional notes on this code:**
+**本代码更多的注释：**
 
-* **classes**
+* **类**
 
     * The `moon` class applies standard Moonstone styling to the application.
         This is required at the top-level view of Moonstone apps.
@@ -126,7 +114,7 @@ property is specified).  As per our plan, the main view contains an instance of
         automatically pops panels off the stack (destroying them) once they are
         moved back offscreen.
 
-**Expert tip:** Strictly speaking, `enyo-fit` will position the control within
+**专家小窍门：** Strictly speaking, `enyo-fit` will position the control within
     the bounds of the control's "offset parent", which is an HTML term referring
     to the first parent element up the DOM hierarchy from the element that is
     either `position: absolute` or `position: relative`.  This will skip over
@@ -134,15 +122,15 @@ property is specified).  As per our plan, the main view contains an instance of
     may be confusing at first.  To force a parent to be a control's "offset
     parent", simply set `position: relative` on the intended parent's CSS.
 
-**[View the code and results of Step 4 in JSFiddle](http://jsfiddle.net/enyojs/84DRr/)**
+**[在 JSFiddle 中查看第4步代码的结](http://jsfiddle.net/enyojs/84DRr/)**
 
-## 5. Create a panel for searching
+## 5. 为搜索创建面板
 
 In the previous step, we added a dummy `moon.Panel` instance as a child of the
 `moon.Panels`.  Now, let's create a `moon.Panel` subkind to implement the view
 in which the user searches for photos and browses the results.
 
-**Add to file: source/views/views.js**
+**加入文件： source/views/views.js**
 
 ```javascript
     enyo.kind({
@@ -165,7 +153,7 @@ catches the `onInputHeaderChange` event that's generated, using a handler method
 called `search()`.  We'll eventually use this method to fetch search results
 from the Flickr API.
 
-**Additional notes on this code:**
+**本代码更多的注释：**
 
 * **headerOptions** - Internally, `moon.Panel` contains a
     [moon.Header]($api/#/kind/moon.Header) as part of its "chrome" (a term we
@@ -224,9 +212,9 @@ that we declared in Step 4.
     });
 ```
 
-**[View the code and results of Step 5 in JSFiddle](http://jsfiddle.net/enyojs/d7dr3/)**
+**[在 JSFiddle 中查看第5步代码的结果](http://jsfiddle.net/enyojs/d7dr3/)**
 
-## 6. Add a grid to the search panel
+## 6. 在搜索面板中加入网格布局
 
 Next, let's add a [moon.DataGridList]($api/#/kind/moon.DataGridList) to the
 search panel.  We'll use this to display thumbnails of the search results.
@@ -291,9 +279,9 @@ from the previous step.  That's because the DataGridList requires data in order
 to render items; right now, we have none.  In the next step, we'll rectify this
 situation.
 
-**[View the code and results of Step 6 in JSFiddle](http://jsfiddle.net/enyojs/45Zn4/)**
+**[在 JSFiddle 中查看第6步代码的结](http://jsfiddle.net/enyojs/45Zn4/)**
 
-## 7. Bind a data collection to the grid
+## 7. 绑定数据集与网格
 
 As we've just seen, a DataGridList requires a collection of data to drive the
 set of items rendered in the list.  [enyo.Collection]($api/#/kind/enyo.Collection)
@@ -306,7 +294,7 @@ collection.  The model will then be set to the `model` property of the top-level
 control for each item, and bindings from the `model` property into the view
 properties will control how data from each model is represented in the view.
 
-**For your information:** If you're interested in a complete overview of
+**仅供参考：** If you're interested in a complete overview of
 Enyo's data-layer features, including bindings, observers, computed properties,
 models, collections, and data-aware controls (such as DataGridList), see [Building
 Data-Driven Apps](../building-apps/managing-data/building-data-driven-apps.html).
@@ -316,7 +304,7 @@ panel is instantiated by overriding the `SearchPanel` control's `create()`
 method.  We set the new collection as the value of an instance variable on the
 control, which we'll call "photos":
 
-**Edit file: source/views/views.js**
+**编辑文件：source/views/views.js**
 
 ```javascript
     enyo.kind({
@@ -333,7 +321,7 @@ control, which we'll call "photos":
 Next, we'll add a binding from that instance variable to the `collection`
 property of our DataGridList:
 
-**Edit file: source/views/views.js**
+**编辑文件：source/views/views.js**
 
 ```javascript
     enyo.kind({
@@ -352,7 +340,7 @@ the DataGridList) to properties on the `GridListImageItem`.  Note that this
 assumes each model will have a schema that includes properties named `title` and
 `thumbnail`.
 
-**Edit file: source/views/views.js**
+**编辑文件：source/views/views.js**
 
 ```javascript
     enyo.kind({
@@ -374,7 +362,7 @@ Finally, let's give our new collection some placeholder data, to make sure it's
 all hooked up correctly.  We'll remove this once we have actual data fetched
 from Flickr to use.
 
-**Edit file: source/views/views.js**
+**编辑文件：source/views/views.js**
 
 ```javascript
     enyo.kind({
@@ -384,9 +372,9 @@ from Flickr to use.
             this.inherited(arguments);
             this.set("photos", new enyo.Collection([
                 {title: "Photo 1", thumbnail: "http://lorempixel.com/300/300/?1"},
-                {title: "Photo 2", thumbnail: "http://lorempixel.com/300/300/?2"},            
-                {title: "Photo 3", thumbnail: "http://lorempixel.com/300/300/?3"},           
-                {title: "Photo 4", thumbnail: "http://lorempixel.com/300/300/?4"}            
+                {title: "Photo 2", thumbnail: "http://lorempixel.com/300/300/?2"},
+                {title: "Photo 3", thumbnail: "http://lorempixel.com/300/300/?3"},
+                {title: "Photo 4", thumbnail: "http://lorempixel.com/300/300/?4"}
             ]));
         },
         ...
@@ -395,7 +383,7 @@ from Flickr to use.
 
 The final `flickr.SearchPanel` implementation for this step should look like this:
 
-**File: source/views/views.js**
+**文件：source/views/views.js**
 
 ```javascript
     enyo.kind({
@@ -422,9 +410,9 @@ The final `flickr.SearchPanel` implementation for this step should look like thi
             this.inherited(arguments);
             this.set("photos", new enyo.Collection([
                 {title: "Photo 1", thumbnail: "http://lorempixel.com/300/300/?1"},
-                {title: "Photo 2", thumbnail: "http://lorempixel.com/300/300/?2"},            
-                {title: "Photo 3", thumbnail: "http://lorempixel.com/300/300/?3"},           
-                {title: "Photo 4", thumbnail: "http://lorempixel.com/300/300/?4"}            
+                {title: "Photo 2", thumbnail: "http://lorempixel.com/300/300/?2"},
+                {title: "Photo 3", thumbnail: "http://lorempixel.com/300/300/?3"},
+                {title: "Photo 4", thumbnail: "http://lorempixel.com/300/300/?4"}
             ]));
         },
         search: function(inSender, inEvent) {
@@ -433,7 +421,7 @@ The final `flickr.SearchPanel` implementation for this step should look like thi
     });
 ```
 
-**Additional notes on this code:**
+**本代码更多的注释：**
 
 * **create()** - The `create()` function is called as part of every component's
     lifecycle.  Superkinds of your controls will also have their `create()`
@@ -450,7 +438,7 @@ The final `flickr.SearchPanel` implementation for this step should look like thi
 
 **[View the code and results of Step 7 in JSFiddle](http://jsfiddle.net/enyojs/D4qAD/)**
 
-## 8. Create a data source for the Flickr API
+## 8. 为 Flickr API 创建数据源
 
 Dummy data does not make for an interesting app, so in the next few steps, we'll
 start making custom data-related kinds for interacting with the Flickr API.  In
@@ -504,7 +492,7 @@ This includes customizing the `callbackName` property to match the one expected
 by Flickr's API.  We'll also set the `api_key` and `format` keys on the `params`
 hash, which will be expanded into query string parameters on the Jsonp request.
 
-**Edit file: source/data/data.js**
+**编辑文件：source/data/data.js**
 
 ```javascript
     enyo.kind({
@@ -538,7 +526,7 @@ hash.
 
 **[View the code and results of Step 8 in JSFiddle](http://jsfiddle.net/enyojs/65hr7/)**
 
-## 9: Create a collection subkind for searching
+## 9: 为搜索创建子类的集合
 
 Next, we'll create a subkind of `enyo.Collection` that uses our new
 `flickr.Source` to fetch a collection of image records based on search text that
@@ -546,7 +534,7 @@ we give it.
 
 We'll start with a basic subkind, and tell it to use the `flickr.Source` by default:
 
-**Add to file: source/data/data.js**
+**在文件中加入： source/data/data.js**
 
 ```javascript
     enyo.kind({
@@ -556,14 +544,14 @@ We'll start with a basic subkind, and tell it to use the `flickr.Source` by defa
     });
 ```
 
-*Note:* We use the name we registered for the source as the value of `source`.
+*注：* We use the name we registered for the source as the value of `source`.
 
 Next, we'll add a published property called `searchText`, and a
 `searchTextChanged` handler, which will destroy any previously fetched records
 and then fetch more. `searchTextChanged` will be called automatically whenever
 the value of `searchText` is altered.
 
-**Edit file: source/data/data.js**
+**编辑文件：source/data/data.js**
 
 ```javascript
     enyo.kind({
@@ -619,7 +607,7 @@ Ultimately, the search parameters need to be added to the `params` hash that our
 set these in a `params` hash on the collection; we'll update the source to look
 for these parameters and add them to the `params` that are passed along:
 
-**Edit file: source/data/data.js**
+**编辑文件：source/data/data.js**
 
 ```javascript
     enyo.kind({
@@ -698,7 +686,7 @@ passed-in `data` argument (which reflects the raw data received) and return the
 array that we actually want to load into the collection--which, in this case, is
 `data.photos.photo`:
 
-**Edit file: source/data/data.js**
+**编辑文件：source/data/data.js**
 
 ```javascript
     enyo.kind({
@@ -712,11 +700,11 @@ array that we actually want to load into the collection--which, in this case, is
     });
 ```
 
-*Note:* By default, Enyo will not call the `parse` method unless you set the `parse` option to `true`.
+*注：* By default, Enyo will not call the `parse` method unless you set the `parse` option to `true`.
 
 **[View the code and results of Step 9 in JSFiddle](http://jsfiddle.net/enyojs/PLqj6/)**
 
-## 10: Create a model subkind for image records
+## 10: 为图片记录创建模式子类
 
 There's one last piece we need before we can hook everything up and see it all
 in action.  That's an `enyo.Model` subkind to wrap the records that are fetched
@@ -771,7 +759,7 @@ subkind of `enyo.Model` that uses computed properties to dynamically build a
 `thumbnail` URL and an `original` URL, based on other properties contained in
 the model data:
 
-**Edit file: source/data/data.js**
+**编辑文件：source/data/data.js**
 
 ```javascript
     enyo.kind({
@@ -794,7 +782,7 @@ the model data:
     });
 ```
 
-**Additional notes on this code:**
+**本代码更多的注释：**
 
 * **computed** - The `computed` array lets us define computed properties and
 their dependencies.  Here, we provide the `thumbnail` and `original`
@@ -810,7 +798,7 @@ Last, we'll tell our `flickr.SearchCollection` to wrap all records fetched, usin
 our new `flickr.ImageModel` (rather than the default `enyo.Model`) by specifying
 the `model` property on the collection:
 
-**Edit file: source/data/data.js**
+**编辑文件：source/data/data.js**
 
 ```javascript
     enyo.kind({
@@ -823,7 +811,7 @@ the `model` property on the collection:
 
 **[View the code and results of Step 10 in JSFiddle](http://jsfiddle.net/enyojs/8uvJE/)**
 
-## 11: Connect the input, collection, and grid
+## 11: 连接输入，集合和网格
 
 At last, it's time to see all of our hard work in action.  To recap what we've
 done so far:
@@ -840,7 +828,7 @@ done so far:
 So, let's hook these pieces together.  First, in our `flickr.SearchPanel`, we'll
 set the grid list's collection type to be our new `flickr.SearchCollection`:
 
-**Edit file: source/view/views.js**
+**编辑文件：source/view/views.js**
 
 ```javascript
     enyo.kind({
@@ -856,7 +844,7 @@ set the grid list's collection type to be our new `flickr.SearchCollection`:
 Next, when the `search` input change handler fires, we'll set the input text to
 the search collection's `searchText` property:
 
-**Edit file: source/view/views.js**
+**编辑文件：source/view/views.js**
 
 ```javascript
     enyo.kind({
@@ -883,7 +871,7 @@ Try it out by typing something into the input in the header and pressing
 
 **[View the code and results of Step 11 in JSFiddle](http://jsfiddle.net/enyojs/ktXWd/)**
 
-## 12. Add a loading spinner to search panel
+## 12. 在搜索面板内加入载入转盘
 
 The Flickr API may take a bit of time to return the results of the search, so
 we'll add a [moon.Spinner]($api/#/kind/moon.Spinner) control to be shown while
@@ -929,11 +917,11 @@ to test for the specific conditions we're interested in:
 That's all there is to it!  Now, when you press **Enter** to start a search, you
 should see the spinner run until the data is returned and the list is updated.
 
-*Note:* A transform is a handy way to convert data in one format to another, such as converting a string to a number. In this case, we could have looked up all the status codes for the collection that correspond to a busy state and converted that to the boolean we need, however, collection provides a convenience method called `isBusy()` that does exactly what we need.
+*注：* A transform is a handy way to convert data in one format to another, such as converting a string to a number. In this case, we could have looked up all the status codes for the collection that correspond to a busy state and converted that to the boolean we need, however, collection provides a convenience method called `isBusy()` that does exactly what we need.
 
 **[View the code and results of Step 12 in JSFiddle](http://jsfiddle.net/enyojs/3D7BM/)**
 
-## 13. Create a photo detail panel
+## 13. 创建图片细节面板
 
 Now that we have a fully functioning search panel, let's move ahead and add a
 photo detail panel.  This will show a larger version of the image selected from
@@ -956,7 +944,7 @@ data.)
     });
 ```
 
-**Additional notes on this code:**
+**本代码更多的注释：**
 
 * **layoutKind** - As mentioned earlier, the default `layoutKind` for
     `moon.Panels` is `FittableRowsLayout`.  Here we change the value to
@@ -997,7 +985,7 @@ URL. So let's go ahead and set up bindings from the model's `title` and
 We can't see this panel yet because we haven't put it into the view.  Let's move
 on to our next step and do that.
 
-**[View the code and results of Step 13 in JSFiddle](http://jsfiddle.net/enyojs/pDU5r/)**
+**[在 JSFiddle 中查看第13步代码的结果](http://jsfiddle.net/enyojs/pDU5r/)**
 
 ## 14. Add handlers for transitioning to detail page
 
@@ -1052,7 +1040,7 @@ grid list items that will use this new event API:
     });
 ```
 
-**Additional notes on this code:**
+**本代码更多的注释：**
 
 * **itemSelected()**
 
@@ -1086,7 +1074,7 @@ bubble the event, passing the panel definition in the event payload:
     });
 ```
 
-**Additional notes on this code:**
+**本代码更多的注释：**
 
 * **events** - By declaring `onRequestPushPanel` in the `events` block, we tell
     the framework (and anyone who uses the kind) that this kind will bubble that
@@ -1110,7 +1098,7 @@ appear with the title set and the image displayed below the header.
 
 **[View the code and results of Step 14 in JSFiddle](http://jsfiddle.net/enyojs/PZBTC/)**
 
-## 15. Get detailed photo information
+## 15. 获得图片详细信息
 
 Recall that we wanted to show some more detail on the photo detail page, such
 as the name of the user who took the photo and the date it was taken.  Although
@@ -1213,7 +1201,7 @@ properties bindable.  Since we're interested in the `owner.realname` and
     });
 ```
 
-**Additional notes on this code:**
+**本代码更多的注释：**
 
 * Since `parse()` processes data returned from both the `search` API and the
     `getInfo` API, we need to ensure that the method works in both cases.
@@ -1314,7 +1302,7 @@ information in the header as soon as the data is fetched.
 
 **[View the code and results of Step 16 in JSFiddle](http://jsfiddle.net/enyojs/Ld9HJ/)**
 
-## 17. Add fullscreen image viewer
+## 17. 添加全屏图像视图
 
 The "Always Viewing" panels pattern used in this app is specially designed to
 provide a lightweight browsing interface in `moon.Panels` above fullscreen
@@ -1392,7 +1380,7 @@ panels via the handle at the right edge.
 
 **[View the code and results of Step 17 in JSFiddle](http://jsfiddle.net/enyojs/AB7J6/)**
 
-## 18. Final embellishments
+## 18. 最后的润色
 
 In our final app, you'll see that we made a few additional improvements:
 
@@ -1413,7 +1401,7 @@ for features to improve the app!
 **View the finished [application](http://enyojs.github.io/moon-flickr)
 and [source code](https://github.com/enyojs/moon-flickr)**
 
-## 19. Minify/deploy your app
+## 19. 最小化/布署应用
 
 When you are finished developing your app, you will want to "deploy" it.  As
 you'll recall, we've been developing our app in the top-level `debug.html` file,

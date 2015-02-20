@@ -1,12 +1,12 @@
-﻿% Design Guide
+﻿% 设计指南
 
-We are pleased to offer the following resources to those designing apps using
-the Enyo framework and Moonstone UI library:
+我们很高兴地提供下面的资源给开发者，他们使用 Enyo UI 和 Moonstone UI 框架库来
+设计应用：
 
-* [Design Principles](design/principles.html)
+* [设计原则](design/principles.html)
 
-* [UI Patterns](design/patterns.html)
+* [UI 模式](design/patterns.html)
 
-* [UI Controls](design/controls.html)
+* [UI 控制](design/controls.html)
 
-* [Styles](design/styles.html)
+* [风格](design/styles.html)

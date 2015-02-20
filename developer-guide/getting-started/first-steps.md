@@ -1,121 +1,104 @@
-% First Steps with Enyo
+% 与 Enyo 的第一步
 
-## Preparing Your Development Environment
+## 准备开发环境
 
-As an Enyo developer, you have a great deal of freedom in choosing the platform
-and tools you use to code your applications.  You may work in a Windows, Mac, or
-Linux environment.  Only a few simple tools are needed to get up and running.
+作为 Enyo 开发者，你有很大的自由去选择开发平台和工具来写你的应用代码。你可能在
+Windows, Mac, 或者 Linux 环境。仅需要一些简单的工具就可以弄好并运行了。
 
-### Text Editor
+### 文本编辑
 
-To write Enyo code, the only requirement is a text editor.  Just
-about any text editor will suffice, including basic freeware options such as
-[Notepad++](http://notepad-plus-plus.org/) (Windows) or
-[TextWrangler](http://www.barebones.com/products/textwrangler/) (Mac).  For what
-it's worth, members of the Enyo team tend to use either [Sublime
-Text](http://www.sublimetext.com/), which is available for Mac and Windows, or
-the Mac-only [TextMate](http://macromates.com/).
+写 Enyo 代码，只需要文本编辑器。任何一种编辑器都足够用，包括基础的自由软件如
+[Notepad++](http://notepad-plus-plus.org/)（Windows） 或者
+[TextWrangler](http://www.barebones.com/products/textwrangler/)（Mac）。
+对那些物有所值的软件，Enyo 团队倾向用 [Sublime Text](http://www.sublimetext.com/)，
+该软件可在 Mac 和 Windows 下使用，或者 只能在 Mac 下使用
+的 [TextMate](http://macromates.com/)。
 
-### Git Client
+### Git 客户端
 
-Currently, the primary mechanism for distribution of Enyo core, libraries, and
-"bootplate" project templates is via GitHub, so you'll need to have a modern Git
-client installed on your machine.  In our documentation, we present git commands
-on the command line, but you are free to use your favorite GUI Git client as
-well.
+目前发行 Enyo 核心、库和“bootplate" 用的主要是 GitHub，所以你需要有现代的 Git
+客户端安装在机器里。在本文档里，我们用 git 命令行，但你也可以使用喜欢的图形界面
+git 客户端。
 
-You can download the latest Git client for your operating system at
-[git-scm.com](http://git-scm.com/downloads).
+你可以在 [git-scm.com](http://git-scm.com/downloads)下载你的操作系统对应的 git
+客户端。
 
-(Note that the Enyo "bootplate" templates are also distributed in the **LG webOS
-TV SDK** and may be generated using the `ares-generate` command line tool
-included in the SDK, without the use of Git.  If you are using the **LG webOS TV
-SDK** and don't plan to version-control your application in Git, you won't need
-to install a Git client.
+（注意：Enyo "bootplate" 模板同样在 **LG webOS TV SDK** 中一起分发，它可能使用
+在 SDK 中的 `ares-generate` 命令生成，该命令不需要 Git。 如果使用
+**LG webOS TV SDK** ，而且不打算在你的应用中用 Git 来控制版本，你不需要安装
+Git 客户端。）
 
 ### Node.js
 
-The Enyo framework includes tools based on `Node.js` for minifying and deploying
-your applications.  `Node.js` is a server-side JavaScript runtime (similar to
-the server-side interpreters for Perl, Python, Ruby, and other languages) used
-for running JavaScript scripts on a server.  It's even possible to use `Node.js`
-itself as a barebones Web server (as we'll see below).
+Enyo 框架包含了基于 `Node.js` 的工具用来最小化和布署应用。 `Node.js` 是服务器端
+的运行时（像是服务器端的 Perl, Python, Ruby 和其他语言的解释器）用于在服务器上运
+行 JavaScript 脚本。甚至可以只用 `Node.js` 本身作为主 Web 服务器（下面会看到）。
 
-You can download the latest version of `Node.js` for your operating system at
-[nodejs.org](http://nodejs.org/).
+可以在 [nodejs.org](http://nodejs.org/) 下载你的操作系统对应版本的 `node.js`。
 
-### Web Browser and Web Server
+### Web 浏览器和 Web 服务器
 
-During your development process, you may test your code using any modern Web
-browser.  While it is possible to test by loading files into the browser
-directly from the local file system, we strongly suggest that you access the
-application through an HTTP server.  This approach provides numerous benefits,
-including the ability to test from remote devices.
+在开发过程中，你可以用任何现代浏览器来测试你的代码。也许在浏览器中可以直接打开本
+地文件，但我们还是强烈建议你通过 HTTP 服务器来打开应用。 这个建议有很多好处，其
+中包括有能力从远程设备进行测试。
 
-Running your app on a Web server will also let you avoid dealing with the Chrome
-browser's AJAX security restrictions.  If you choose to develop in Chrome *and*
-load your app directly from the file system, you'll need to launch the browser
-using the command-line switch `"--allow-file-access-from-files"`.  (On Windows,
-you can do this by creating a shortcut to `chrome.exe` and adding the switch to
-the end of the shortcut's Target property.  Then use the shortcut each time you
-launch the browser.  A similar approach should work on Mac and Linux as well.)
+在 Web 服务器上运行你的应用可以避免 Chrome 浏览器对 AJAX 的安全限制。如果想选择
+在 Chrome 开发，*并且* 直接从文件系统打开你的文件，你需要在命令行启动浏览器并加
+上 `"--allow-file-access-from-files"` 这个参数。（在Windows中，你可以创建一个
+快捷链接到 `Chrome.exe` ,并把这个参数放在快捷链接的目标属性中。然后每次运行浏览
+器的时候都使用这个快捷链接。在 Mac 和 Linux 中有类似的解决办法。）
 
-If you are not currently running a local Web server, you may find it convenient
-to install an Apache/MySQL/PHP software bundle, such as [BitNami
-WAMPStack](http://bitnami.org/stack/wampstack) (Windows) or
-[MAMP](http://www.mamp.info/en/index.html) (Mac).
+如果你目前没有运行本地 Web 服务器，你会发现安装 Apache/MySQL/PHP 软件套装很方
+便，比如 [BitNami WAMPStack](http://bitnami.org/stack/wampstack) (Windows)
+或者 [MAMP](http://www.mamp.info/en/index.md) (Mac)。
 
-As mentioned earlier, another alternative is to create your own simple HTTP
-server using `Node.js`.  Here's how to do it:
+像前面提到的，另外一个解决办法是用 `Node.js` 来创建自己的简单 HTTP 服务器。
+下面告诉你怎么做：
 
-* Install `Node.js`.
+* 安装 `Node.js`。
 
-* Use npm to install the `serve` package:
+* 用 npm 安装 `serve` 包：
 
 ```
         npm install -g serve
 ```
 
-* Create a directory to house your application files, then enter that directory
-    and start the server by running `serve`, e.g.:
+* 创建一个目录用于存放服务器的脚本，进入该目录，然后运行 `serve` 来启动服务器，
+例如：
 
     + `mkdir <my_doc_root>`
     + `cd <my_doc_root>`
     + `serve`
 
-* Your application will be accessible on port 3000, at a URL such as `http://localhost:3000/debug.html`.
+* 可以从 3000 端口来接入你的应用，用 URL 可以是 `http://localhost:3000/debug.html`。
 
-## Obtaining the Enyo Source Code
+## 获取 Enyo 源代码
 
 ### Bootplate
 
-If you are new to Enyo development, you will want to obtain the Enyo source as
-part of a ready-made project template.  The enyojs project includes a number of
-these, which we refer to as "bootplate" (BOOTstrap + boilerPLATE) templates.
-Each bootplate template comes with the Enyo core code, one or more optional
-libraries relevant to the project type, a "Hello World"-type application, and a
-recommended folder structure for organizing your application files.  For more on
-bootplate templates, including setup instructions, see [Bootplate: 0-60 with
-Enyo in 5 Minutes](bootplate.html).
+如果你是 Enyo 开发的新人，你会希望把 Enyo 源代码作为现成的项目模板的一部分。
+这个 enyojs 项目包括这样一些我们称为 "bootplate" (BOOTstrap + boilerPLATE) 模板
+的东西。每个 bootplate 模板会有 Enyo 核心代码，一个或多个与项目相关的库，一个
+“你好世界”这种应用，和一个推荐的文件夹结构用来组织本应用中的文件。关于
+bootplate 模板，包括设置介绍，见[Bootplate：在5分钟内用 Enyo 从0到60](bootplate.md)。
 
-### Individual Repos
+想用 Moonstone UI 库来启动应用，克隆 `bootplate-moonstone` 仓库到本地机器里：
 
-Of course, you're also free to clone `enyo` or any of the library repos
-individually, e.g.:
+### 独立的代码仓库
+
+当然，你也可以自由克隆 `enyo` 或者任何其它独立的库代码仓库，如：
 
 ```
     git clone https://github.com/enyojs/enyo.git <myEnyoDirectory>
 ```
 
-If you plan to submit changes back to a repository, be sure to create your own
-fork of the repository and clone the fork to your local machine.
+如果你计划把改变提交回代码库，请确定创建自己的代码仓库分支并在本地机器上克隆这个
+代码仓库分支。
 
-## Next Steps
+## 下一步
 
-If you haven't already done so, read through the [Moonstone App
-Tutorial](moonstone-app-tutorial.html).  Now that you have all the necessary
-tools, try following the steps in the tutorial to run the code on your own
-computer.
+如果你还没做，请通读 [Moonstone 应用教程](moonstone-app-tutorial.md)。现在你
+有了所有必需的工具，试着按照教程的步骤在你自己的机器里运行这些代码。
 
-If you get stuck, or you'd rather explore on your own, see the
-[Bootplate](bootplate.html) documentation for some useful pointers.
+如果你觉得有困难，或者你想要自己探索，参见 [Bootplate](bootplate.md) 文档中一
+些有用的提醒。
