@@ -157,25 +157,50 @@ Note that the `enyo` folder itself is not necessary for deployment.
 
 As mentioned previously, it's also possible to build applications that refer to
 shared copies of Enyo and/or plugins.  In this case, shared resources are found
-in a common location:
+in a common location.  This type of setup is most useful when developing
+plugins, creating a suite of applications that will be deployed together, or
+working on the Enyo source itself.
 
-        <shared-root>/
-            enyo/
-            lib/
-                aPlugin/
+Here's an example of a shared app structure:
 
-The following structure shows two applications, both of which load Enyo and
-plugins from `<shared-root>`:
+        <root>/
+            <shared-root>/
+                enyo/
+                lib/
+                    onyx/
+                    layout/
+            <apps-root>
+                <app1>/
+                <app2>/
 
-        <apps-root>
-            app1/
-                assets/
-                source/
-                index.html
-            app2/
-                assets/
-                source/
+The libraries under `<shared-root>` are cloned from GitHub individually.
 
-This type of setup is most useful when developing plugins, creating a suite of
-applications that will be deployed together, or working on the Enyo source
-itself.
+Under `<apps-root>`, new apps (e.g., `<app1>`) may be created by cloning the
+appropriate bootplate template.  In this case, the app is using the Onyx UI
+library, so you would clone the `bootplate` template.  Within `<apps-root>`,
+issue the command:
+
+        git clone https://github.com/enyojs/bootplate.git <app1>
+
+(To use the Moonstone UI library instead, clone `moonstone` within
+`<shared-root>/lib` and clone `bootplate-moonstone` within `<apps-root>`.)
+
+Within `<app1>`, the paths to `enyo` and the libraries will need to be updated
+to reflect their non-standard, shared location.  Specifically, three files need
+updating:
+
+* In `deploy.json`, the library paths must be changed from `./lib` to
+    `../../<shared-root>/lib`.
+
+* In `debug.html`, the path to `enyo` must be changed from `./enyo` to
+    `../../<shared-root>/enyo`.  (Note that `index.html` does not need to be
+    changed.)
+
+* In `tools/deploy.sh`, the path to `enyo` must be updated (from
+    `"$SRC/enyo"` to `"$SRC/../../<shared-root>/enyo"`) and the output path
+    for the `deploy.js` script must be overridden.  Override the output path
+    using the deploy script's `-e` switch, changing `"$SRC/deploy" $@` to
+    `"$SRC/deploy" -e "$ENYO" $@`.
+
+(Note that a [patch file](https://paste.ee/p/51xpD) is available for use as a
+guide when making these updates.)
