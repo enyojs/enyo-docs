@@ -351,9 +351,9 @@ seen above), `enyo.Model` instances are often populated based on data from a
 remote source.  To simplify this process, the Enyo data layer uses
 [Sources](#sources) to configure data endpoints.
 
-In the following example, we create a `ContactModel` subkind, providing a URL to
-the REST endpoint for this resource, along with the `primaryKey` (which will be
-appended to the end of the `url` property):
+In the following example, we create a `ContactModel` subkind, providing a `getUrl()`
+method to customize the URL for the REST endpoint for this resource. This allows us
+to pass along the model property that is used to reference the resource we need:
 
 ```javascript
     new enyo.AjaxSource({name: "ajax"});
@@ -362,25 +362,14 @@ appended to the end of the `url` property):
         name: "ContactModel",
         kind: "enyo.Model",
         source: "ajax",
-        url: "http://myservice.com/users",
+        getUrl: function() {
+            return "http://myservice.com/users/" + this.get("user_id");
+        }
         primaryKey: "user_id"
     });
 
     var myModel = new ContactModel({user_id: 1234});
     myModel.fetch();  // Results in an XHR request to http://myservice.com/users/1234
-```
-
-If you need greater control over how the URL is constructed for your service,
-you may overload the `getUrl()` function on `enyo.Model`:
-
-```javascript
-    enyo.kind({
-        name: "ProductModel",
-        kind: "enyo.Model",
-        getUrl: function() {
-            return "http://myservice.com/products/" + this.get("department_id") + "/" + this.get("product_id");
-        }
-    });
 ```
 
 ### Parsing and Converting Fetched Data
@@ -420,7 +409,9 @@ only use the `result` sub-tree of the fetched data for the model attributes:
         options: {parse: true},
         source: "ajax",
         url: "http://myservice.com/users",
-        primaryKey: "user_id",
+        getUrl: function() {
+            return "http://myservice.com/users/" + this.get("user_id");
+        }
         parse: function(data) {        // incoming data contains {status:..., result:...}
             return data.result;        // returned data contains {user_id:..., name:..., ...}
         }
@@ -439,8 +430,9 @@ functionality, such as [X2JS](https://code.google.com/p/x2js/):
         kind: "enyo.Model",
         options: {parse: true},
         source: "ajax",
-        url: "http://myservice.com/users",
-        primaryKey: "user_id",
+        getUrl: function() {
+            return "http://myservice.com/users/" + this.get("user_id");
+        }
         parser: new X2JS(),
         parse: function(data) {        // incoming data: "<root><user_id>1234</user_id><name>...</name>...</root>"
             var json = this.parser.xml_str2json(data);
@@ -478,8 +470,9 @@ fields with `enyo.Model`, making those nested sub-objects bindable as well:
         kind: "enyo.Model",
         options: {parse: true},
         source: "ajax",
-        url: "http://myservice.com/users",
-        primaryKey: "user_id",
+        getUrl: function() {
+            return "http://myservice.com/users/" + this.get("user_id");
+        }
         parse: function(data) {
             data.dept_id = data.department.dept_id;
             data.dept_name = data.department.name;
