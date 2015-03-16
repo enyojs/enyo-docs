@@ -365,7 +365,6 @@ to pass along the model property that is used to reference the resource we need:
         getUrl: function() {
             return "http://myservice.com/users/" + this.get("user_id");
         }
-        primaryKey: "user_id"
     });
 
     var myModel = new ContactModel({user_id: 1234});
@@ -411,7 +410,7 @@ only use the `result` sub-tree of the fetched data for the model attributes:
         url: "http://myservice.com/users",
         getUrl: function() {
             return "http://myservice.com/users/" + this.get("user_id");
-        }
+        },
         parse: function(data) {        // incoming data contains {status:..., result:...}
             return data.result;        // returned data contains {user_id:..., name:..., ...}
         }
@@ -432,7 +431,7 @@ functionality, such as [X2JS](https://code.google.com/p/x2js/):
         source: "ajax",
         getUrl: function() {
             return "http://myservice.com/users/" + this.get("user_id");
-        }
+        },
         parser: new X2JS(),
         parse: function(data) {        // incoming data: "<root><user_id>1234</user_id><name>...</name>...</root>"
             var json = this.parser.xml_str2json(data);
@@ -472,7 +471,7 @@ fields with `enyo.Model`, making those nested sub-objects bindable as well:
         source: "ajax",
         getUrl: function() {
             return "http://myservice.com/users/" + this.get("user_id");
-        }
+        },
         parse: function(data) {
             data.dept_id = data.department.dept_id;
             data.dept_name = data.department.name;
