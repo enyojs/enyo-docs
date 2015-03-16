@@ -708,7 +708,7 @@ the [enyo.AjaxSource]($api/#/kind/enyo.AjaxSource) and
 
 ### Specifying a source
 
-When defining a custom `enyo.Model` or `enyo.Collection` subkind, you may
+When defining a custom `enyo.Model` or `enyo.Collection` subkind, you must
 specify the `source` property to indicate which source to use for
 fetching and committing records, using the shorthand name for the source (e.g.,
 "`ajax`", "`jsonp`", etc.).
