@@ -348,19 +348,20 @@ via the `attributes` property, or to override any other default behavior:
 
 Although it is often useful to initialize a model using an object literal (as
 seen above), `enyo.Model` instances are often populated based on data from a
-remote source.  To simplify this process, the Enyo data layer includes support
-for fetching models from Ajax and Jsonp REST endpoints by default, and may be
-easily customized for other source types (see [Sources](#sources) below for more
-details).
+remote source.  To simplify this process, the Enyo data layer uses
+[Sources](#sources) to configure data endpoints.
 
 In the following example, we create a `ContactModel` subkind, providing a URL to
 the REST endpoint for this resource, along with the `primaryKey` (which will be
 appended to the end of the `url` property):
 
 ```javascript
+    new enyo.AjaxSource({name: "ajax"});
+
     enyo.kind({
         name: "ContactModel",
         kind: "enyo.Model",
+        source: "ajax",
         url: "http://myservice.com/users",
         primaryKey: "user_id"
     });
@@ -417,6 +418,7 @@ only use the `result` sub-tree of the fetched data for the model attributes:
         name: "ContactModel",
         kind: "enyo.Model",
         options: {parse: true},
+        source: "ajax",
         url: "http://myservice.com/users",
         primaryKey: "user_id",
         parse: function(data) {        // incoming data contains {status:..., result:...}
@@ -436,6 +438,7 @@ functionality, such as [X2JS](https://code.google.com/p/x2js/):
         name: "ContactModel",
         kind: "enyo.Model",
         options: {parse: true},
+        source: "ajax",
         url: "http://myservice.com/users",
         primaryKey: "user_id",
         parser: new X2JS(),
@@ -474,6 +477,7 @@ fields with `enyo.Model`, making those nested sub-objects bindable as well:
         name: "ContactModel",
         kind: "enyo.Model",
         options: {parse: true},
+        source: "ajax",
         url: "http://myservice.com/users",
         primaryKey: "user_id",
         parse: function(data) {
@@ -581,16 +585,19 @@ for wrapping its array data, or to override any other default behavior:
 
 ### Fetching Collections from REST Endpoints
 
-Like `enyo.Model`, `enyo.Collection` provides default support for fetching
-array data from REST endpoints by specifying the resource's `url` and calling
-`fetch()`.
+Like `enyo.Model`, `enyo.Collection` uses sources for fetching
+array data from REST endpoints. Specify the resource's `url` and call
+`fetch()` to retrieve data.
 
 In the following example, the collection is loaded from a fixed URL:
 
 ```javascript
+    new enyo.AjaxSource({name: "ajax"});
+
     enyo.kind({
         name: "MyContactCollection",
         kind: "enyo.Collection",
+        source: "ajax",
         url: "http://myservice.com/users"
     });
 
@@ -605,6 +612,7 @@ to provide a custom URL--based on properties of the collection, for example:
     enyo.kind({
         name: "MyContactCollection",
         kind: "enyo.Collection",
+        source: "ajax",
         getUrl: function() {
             return "http://myservice.com/departments/" + this.get("dept_id") + "/users";
         }
@@ -661,6 +669,7 @@ array...
         name: "MyContactCollection",
         kind: "enyo.Collection",
         options: {parse: true},
+        source: "ajax",
         url: "http://myservice.com/users"
         parse: function(data) {        // incoming data contains {status:..., result:...}
             return data.result;        // returned data contains {[{user_id:..., name:...}, {...}]}
