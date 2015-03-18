@@ -1,0 +1,11 @@
+{% if typedefs.length > 0 %}
+<ul>
+	{% for typedef in typedefs %}
+	<li class="typedef {{ typedef.access }} {{ "inherited" if typedef.inherits }}">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ typedef.name }}');">{{ typedef.name }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% else %}
+<span class="no-methods">No Type Definitons</span>
+{% endif %}

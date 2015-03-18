@@ -1,3 +1,4 @@
+<?js // var self = this; ?>
 <div class="row">
 	<div class="col-sm-4 col-sm-push-8 features">
 		{% if mixes %}
@@ -24,6 +25,10 @@
 			<h1 class="inherited"><a href="javascript:find(':inherited-events');">Inherited Events</a></h1>
 			<div class="inherited">{% include "partials/features-inherited-events.html" %}</div>
 		</div>
+		<div class="typedefs">
+			<h1><a href="javascript:find(':typedefs');">Type Definitions</a></h1>
+			<div>{% include "partials/features-typedefs.html" %}</div>
+		</div>
 	</div>
 	<div class="col-sm-8 col-sm-pull-4 kind main-container">
 
@@ -46,6 +51,7 @@
 		<div class="section inherited-methods inherited">{% include "partials/inherited-methods.html" %}</div>
 		<div class="section events">{% include "partials/events.html" %}</div>
 		<div class="section inherited-events inherited">{% include "partials/inherited-events.html" %}</div>
+		<div class="section typedefs">{% include "partials/typedefs.html" %}</div>
 		<div class="section mixins">{% include "partials/mixins.html" %}</div>
 	</div>
 </div>
