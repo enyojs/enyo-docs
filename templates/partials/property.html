@@ -12,6 +12,11 @@
 		{% endif %}
 		<div class="default">Default: {{ property.defaultvalue }}</div>
 		<div class="description">{{ property.description }}</div>
+		{% if property.properties %}
+			{% for subProperty in property.properties -%}
+				{% include "partials/sub-property.html" %}
+			{%- endfor %}
+		{% endif %}
 		{% if property.see %}
 		{% set see = property.see %}
 		{% include "partials/see.html" %}

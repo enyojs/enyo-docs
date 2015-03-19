@@ -1,0 +1,25 @@
+<a name="{{ property.name }}.{{ subProperty.name }}"></a>
+<div class="entry subProperty {{ subProperty.access }} {{ "inherited" if subProperty.inherits }}">
+	<div class="header">
+		<span class="access {{ subProperty.access }}">{{ subProperty.access }}</span>
+		<span class="name">{{ subProperty.name }}</span>
+		<span>:</span>
+		<span class="type">{{ subProperty.type.names | join(", ") }}</span>
+	</div>
+	<div class="content">
+		{% if subProperty.inherited %}
+		<div class="inherited">Inherited from {{ subProperty.inherits }}</div>
+		{% endif %}
+		<div class="default">Default: {{ subProperty.defaultvalue }}</div>
+		<div class="description">{{ subProperty.description }}</div>
+		{% if subProperty.see %}
+		{% set see = subProperty.see %}
+		{% include "partials/see.html" %}
+		{% endif %}
+		<div class="source">
+			<span>From </span>
+			<span class="file">{{ subProperty.source }}</span>
+			<span class="line">:{{ subProperty.sourceLine }}</span>
+		</div>
+	</div>
+</div>
