@@ -6,8 +6,10 @@
 		{%- if method.params.length -%}
 		<span class="header-params">{%- include "partials/method-header-params.html" -%}</span>
 		{%- endif -%}&#041;</span>
+		{% if method.returns and method.returns.type and method.returns.type.names %}
 		<span>&rarr;</span>
 		<span class="header-returns">{{ method.returns.type.names | join(", ") }}</span>
+		{% endif %}
 	</div>
 	<div class="content">
 		{% if method.inherited %}
