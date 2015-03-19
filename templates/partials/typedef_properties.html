@@ -1,0 +1,42 @@
+<a name="{{ typedef.name }}"></a>
+<div class="entry property {{ typedef.access }} {{ "inherited" if typedef.inherits }}">
+	<div class="header">
+		<span class="name">{{ typedef.name }}</span>
+		{% if typedef.type.names %}
+		<span>:</span>
+		<span class="type">{{ typedef.type.names | join(", ") }}</span>
+		{% endif %}
+	</div>
+	<div class="content">
+		{% if typedef.inherited %}
+		<div class="inherited">Inherited from {{ typedef.inherits }}</div>
+		{% endif %}
+		{% if typedef.defaultvalue %}
+		<div class="default">Default: {{ typedef.defaultvalue }}</div>
+		{% endif %}
+		<div class="description">{{ typedef.description }}</div>
+		{% if typedef.properties.length > 0 %}
+			<div class="subsection properties">
+				<h3>Properties</h3>
+				<ul>
+					{% for property in typedef.properties %} 
+						<li>
+							<span class="name">{{ property.name }}</span>
+							<div class="type">Type: {{ property.type.names | join(", ") | escape }}</div>
+							<div class="description">{{ property.description }}</div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		{% if typedef.see %}
+		{% set see = typedef.see %}
+		{% include "partials/see.html" %}
+		{% endif %}
+		<div class="source">
+			<span>From </span>
+			<span class="file">{{ typedef.source }}</span>
+			<span class="line">:{{ typedef.sourceLine }}</span>
+		</div>
+	</div>
+</div>
