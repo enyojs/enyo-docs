@@ -20,6 +20,6 @@
     "grunt": "~0.4.5",
     "grunt-contrib-less": "~0.11.4",
     "grunt-shell": "^1.1.1",
-    "jsdoc": "3.3.0-alpha13"
+    "jsdoc": "~3.3.0-beta3"
   }
 }
