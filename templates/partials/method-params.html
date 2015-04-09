@@ -11,7 +11,9 @@
 		{% if param.defaultvalue %}
 		<div class="default">Default value: {{ param.defaultvalue }}</div>
 		{% endif %}
+		{% if param.type and param.type.names %}
 		<div class="type">Type: {{ param.type.names | join(", ") | escape }}</div>
+		{% endif %}
 		<div class="description">{{ param.description }}</div>
 	</li>
 	{% endfor %}
