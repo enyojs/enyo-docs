@@ -198,3 +198,7 @@ of [moon.Panel]($api/#/kind/moon.Panel), which is **not** derived from
 `enyo.Panel`.  A `moon.Panels` will typically contain several `moon.Panel`
 objects.  The built-in features of `moon.Panel` include a header and a
 FittableRows layout for the main body content.
+
+## enyo.LightPanels
+
+Coming soon!
