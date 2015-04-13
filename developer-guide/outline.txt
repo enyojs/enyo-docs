@@ -28,6 +28,7 @@ building-apps/layout/arrangers.md
 building-apps/layout/drawers.md
 building-apps/managing-data/consuming-web-services.md
 building-apps/managing-data/building-data-driven-apps.md
+building-apps/performance/performance.md
 building-apps/localization.md
 building-apps/spotlight.md
 building-apps/testing-and-debugging/browser-based-debugging.md

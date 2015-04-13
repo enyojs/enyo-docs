@@ -46,6 +46,10 @@ Welcome!  Resources are available in the following areas:
     * [Text Fields](building-apps/controls/text-fields.html)
     * [Toggles](building-apps/controls/toggles.html)
 
+* Performance
+
+    * [Performance](building-apps/performance/performance.html)
+
 * Localization
 
     * [Localization](building-apps/localization.html)
