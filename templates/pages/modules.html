@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
+		<div class="modules">
+			<h1><a href="javascript:find(':modules');">Modules</a></h1>
+			<div>
+				<ul>
+					{% for module in modules %}
+					<li><a href="javascript:find(':{{ module.name }}');">{{ module.name }}</a></li>
+					<ul>
+						{% if module.ui.length %}
+						<li><a href="javascript:find(':{{ module.name }}-controls');">controls ({{ module.ui.length }})</a></li>
+						{% endif %}
+						{% if module.kinds.length %}
+						<li><a href="javascript:find(':{{ module.name }}-kinds-other');">kinds ({{ module.kinds.length }})</a></li>
+						{% endif %}
+						{% if module.methods.length %}
+						<li><a href="javascript:find(':{{ module.name }}-methods');">methods ({{ module.methods.length }})</a></li>
+						{% endif %}
+						{% if module.properties.length %}
+						<li><a href="javascript:find(':{{ module.name }}-properties');">properties ({{ module.properties.length }})</a></li>
+						{% endif %}
+					</ul>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-8 col-sm-pull-4 modules main-container">
+
+		<div class="header">
+			<h2>MODULES</h2>
+		</div>
+
+		<div class="section description">
+			<div>These are the top-level modules provided by Enyo core and its
+				associated libraries.  Also listed are the individual kinds available
+				within each module.</div>
+		</div>
+		<div class="section modules">{% include "partials/modules-blocks.html" %}</div>
+	</div>
+</div>

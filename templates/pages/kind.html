@@ -36,9 +36,12 @@
 		<div class="header">
 
 			<!--<h2>KIND</h2>-->
-			<h1><a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{{ name }}</h1>
+			<h1>{{ memberof }}.{{ name }}</h1>
 			{% include "partials/inherits.html" %}
 			<div class="source">From {{ source }}</div>
+			{% if definedbyLink %}
+			<div class="module-source">Import {{ definedbyLink }}</div>
+			{% endif %}
 		</div>
 
 		<div class="section description">

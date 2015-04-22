@@ -4,7 +4,8 @@
 	},
 	"source": {
 		"include": [
-			"../enyo/source",
+			"../enyo2/lib"
+		/*
 			"../enyo/docs/external.jsdoc",
 			"../lib/moonstone/source",
 			"../lib/moonstone/version.js",
@@ -20,6 +21,7 @@
 			"../lib/onyx/source",
 			"../lib/onyx/version.js",
 			"../lib/canvas/"
+		*/
 		],
 		"includePattern": ".+\\.js(doc)?$",
 		"excludePattern": "package\\.js"
@@ -35,7 +37,8 @@
 		"plugins/markdown",
 		"ext/glossary",
 		"ext/utility",
-		"ext/ui"
+		"ext/ui",
+		"ext/definedby"
 	],
 	"markdown": {
 		"parser": "gfm",

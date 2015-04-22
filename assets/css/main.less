@@ -59,7 +59,7 @@ h2 {
 }
 
 .main-container {
-	.source {
+	.source, .module-source {
 		color: @source-color;
 	}
 
@@ -79,10 +79,15 @@ h2 {
 			}
 		}
 
-		.source {
+		.source, .module-source {
 			height: 50px;
 			line-height: 50px;
 			font-size: 12px;
+			display: inline-block;
+		}
+
+		.module-source {
+			padding-left: 20px;
 		}
 	}
 }

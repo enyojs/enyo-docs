@@ -41,7 +41,8 @@ exports.publish = function (db, opts) {
 	var namespaces = db({kind: 'namespace', subNamespace: {'!is': true}}).order('longname asec').get(),
 		kinds = db({kind: 'class', ui: {isUndefined: true}}).order('longname asec').get(),
 		controls = db({kind: 'class', ui: true}).order('longname asec').get(),
-		utils = db({kind: 'function', utility: true}).order('longname asec').get();
+		utils = db({kind: 'function', utility: true}).order('longname asec').get(),
+		modules = db({kind: 'module'}).order('longname asec').get();
 	
 	// publish our home (main) section of the site
 	helpers.publish('home.html', helpers.render(
@@ -64,6 +65,13 @@ exports.publish = function (db, opts) {
 			namespaces: namespaces
 		}
 	));
+	
+	// publish the modules page
+	helpers.publish('modules.html', resolveLinks(helpers.render(
+		'pages/modules.html', {
+			modules: modules
+		}
+	)));
 	
 	// publish the kinds page
 	helpers.publish('kinds.html', helpers.render(
