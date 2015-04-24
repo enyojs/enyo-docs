@@ -52,6 +52,10 @@
 				</ul>
 			</li>
 			{% endif %}
+			{% if module.typedefs.length %}
+				{% set typedefs = module.typedefs %}
+				{% include "partials/typedefs.html" %}
+			{% endif %}
 		</ul>
 	</div>
 </div>
