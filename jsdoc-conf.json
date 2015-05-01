@@ -4,24 +4,13 @@
 	},
 	"source": {
 		"include": [
-			"../enyo2/lib"
-		/*
+			"../enyo/lib",
 			"../enyo/docs/external.jsdoc",
-			"../lib/moonstone/source",
-			"../lib/moonstone/version.js",
-			"../lib/layout/contextual/source",
-			"../lib/layout/easing/source",
-			"../lib/layout/fittable/source",
-			"../lib/layout/imageview/source",
-			"../lib/layout/list/source",
-			"../lib/layout/panels/source",
-			"../lib/layout/slideable/source",
-			"../lib/layout/tree/source",
-			"../lib/spotlight",
-			"../lib/onyx/source",
-			"../lib/onyx/version.js",
-			"../lib/canvas/"
-		*/
+			"../lib/moonstone/lib",
+			"../lib/layout/lib",
+			"../lib/spotlight/lib",
+			"../lib/onyx/lib",
+			"../lib/canvas/lib"
 		],
 		"includePattern": ".+\\.js(doc)?$",
 		"excludePattern": "package\\.js"

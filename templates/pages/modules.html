@@ -1,41 +1,45 @@
 <div class="row">
 	<div class="col-sm-4 col-sm-push-8 features">
-		<div class="modules">
+		<div class="kinds">
 			<h1><a href="javascript:find(':modules');">Modules</a></h1>
 			<div>
 				<ul>
-					{% for module in modules %}
-					<li><a href="javascript:find(':{{ module.name }}');">{{ module.name }}</a></li>
-					<ul>
-						{% if module.ui.length %}
-						<li><a href="javascript:find(':{{ module.name }}-controls');">controls ({{ module.ui.length }})</a></li>
-						{% endif %}
-						{% if module.kinds.length %}
-						<li><a href="javascript:find(':{{ module.name }}-kinds-other');">kinds ({{ module.kinds.length }})</a></li>
-						{% endif %}
-						{% if module.methods.length %}
-						<li><a href="javascript:find(':{{ module.name }}-methods');">methods ({{ module.methods.length }})</a></li>
-						{% endif %}
-						{% if module.properties.length %}
-						<li><a href="javascript:find(':{{ module.name }}-properties');">properties ({{ module.properties.length }})</a></li>
-						{% endif %}
-					</ul>
+					{% for library in libraries %}
+					<li><a href="javascript:find(':{{ library }}');">{{ library }} ({{ librariesModules[library].length }})</a></li>
 					{% endfor %}
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-8 col-sm-pull-4 modules main-container">
+	<div class="col-sm-8 col-sm-pull-4 kinds main-container">
+
 
 		<div class="header">
 			<h2>MODULES</h2>
 		</div>
 
 		<div class="section description">
-			<div>These are the top-level modules provided by Enyo core and its
-				associated libraries.  Also listed are the individual kinds available
-				within each module.</div>
+			<div>These are the <a href="#/glossary:module">modules</a> available in
+				the Enyo framework, separated by library.</div>
 		</div>
-		<div class="section modules">{% include "partials/modules-blocks.html" %}</div>
+		<div class="section modules">
+			<a name="modules"></a>
+			{% for library in libraries %}
+			<a name="{{ library }}"></a>
+			<div class="entry">
+				<div class="header">
+					<h2>{{ library }}</h2>
+				</div>
+				<div class="content">
+					<ul class="row">
+						{% for module in librariesModules[library] %}
+						<li class="col-lg-4 col-md-6 col-sm-12 {{ module.access }}">{{ module.internalLink }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>
+
