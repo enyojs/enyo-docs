@@ -19,8 +19,11 @@
 		<div class="header">
 
 			<h2>MIXIN</h2>
-			<h1><a href="#/namespace/{{ memberof }}">{{ memberof }}</a>.{{ name }}</h1>
+			<h1>{{ prettyMemberof }}~{{ name }}</h1>
 			<div class="source">From {{ source }}</div>
+			{% if moduleLink %}
+			<div class="module-source">Import {{ moduleLink }}</div>
+			{% endif %}
 		</div>
 
 		<div class="section description">

@@ -4,8 +4,8 @@
 	},
 	"source": {
 		"include": [
-			"../enyo/lib"
-//			"../enyo/docs/external.jsdoc",
+			"../enyo/lib",
+			"../enyo/docs/external.jsdoc"
 //			"../lib/moonstone/lib",
 //			"../lib/layout/lib",
 //			"../lib/spotlight/lib",
