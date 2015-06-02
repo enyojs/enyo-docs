@@ -6,7 +6,7 @@
 		<a name="controls"></a>
 		<h2>Controls</h2>
 		{% for control in ui %}
-		<a name="{{ control.longname }}"></a>
+		<a name="{{ control.name }}"></a>
 		<div class="entry kind control">
 			<div class="header">
 				<span class="name">{{ control.internalLink }}</span>
@@ -21,7 +21,7 @@
 		<a name="kinds-other"></a>
 		<h2>Other</h2>
 		{% for kind in kinds %}
-		<a name="{{ kind.longname }}"></a>
+		<a name="{{ kind.name }}"></a>
 		<div class="entry kind other">
 			<div class="header">
 				<span class="name">{{ kind.internalLink }}</span>

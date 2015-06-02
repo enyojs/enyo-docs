@@ -5,7 +5,7 @@
 		<ul>
 			{% for control in ui %}
 			<li class="kind control {{ control.access }}">
-				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ control.longname }}');">{{ control.name }}</a>
+				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ control.name }}');">{{ control.name }}</a>
 			</li>
 			{% endfor %}
 		</ul>
@@ -17,7 +17,7 @@
 		<ul>
 			{% for kind in kinds %}
 			<li class="kind {{ kind.access }}">
-				<a href="javascript:find(':{{ kind.longname }}');">{{ kind.name }}</a>
+				<a href="javascript:find(':{{ kind.name }}');">{{ kind.name }}</a>
 			</li>
 			{% endfor %}
 		</ul>
