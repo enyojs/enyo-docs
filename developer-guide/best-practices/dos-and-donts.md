@@ -65,6 +65,31 @@ mind when writing apps using Enyo and Moonstone:
     and will certainly make the program run more slowly due to the extra
     dispatching taking place for each item.
 
+* **Don't use the value of an object's `kind` property to determine whether the
+    instance is of a specific kind.**
+
+    Because of internal changes made in Enyo 2.6, application code should not
+    rely on either the `kind` or the `kindName` property to determine whether an
+    object instance is of a specific kind.  (In many cases, the `kind` property
+    will not exist at all.)
+
+    If you need to perform this sort of test, do a direct comparison between
+    constructors instead, e.g.:
+
+    ```javascript
+        if (inEvent.originator instanceof ExpectedKindCtor) {
+            // do something
+        }
+    ```
+
+    or
+
+    ```javascript
+        if (inEvent.originator.ctor === ExpectedKindCtor) {
+            // do something
+        }
+    ```
+
 * **Don't create unnecessary `Signals` instances.**
 
     When you have a component that needs to listen for several different
