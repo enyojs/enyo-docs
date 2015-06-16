@@ -9,7 +9,7 @@ To convert an existing Enyo app to the new scheme, you'll need to make modificat
 
 1. App Creation and Structure
 2. Package Definition `(package.json)`
-3. Updating Source Files to Use `require()`
+3. Updating Application Code
 4. Building the App
 
 ## App Creation and Structure
@@ -241,12 +241,15 @@ Also note that use of the `@import` directive in css/less should mostly be
 avoided now that the load order is controlled by `package.json`.  Using
 `@import` for remote includes is still acceptable.
 
-## Updating Source Files to Use `require()`
+## Updating Application Code
 
-When updating source code, there are two important changes to remember--that
-there is no longer anything from Enyo or its libraries in the global scope, and
-that all source files should be in
-[CommonJS](http://know.cujojs.com/tutorials/modules/authoring-cjs-modules) format.
+### Updating Source Files to Use `require()`
+
+When updating existing application code for Enyo 2.6, there are two fundamental
+changes to remember--there is no longer anything from Enyo or its libraries in
+the global scope, and all source files should now be in
+[CommonJS](http://know.cujojs.com/tutorials/modules/authoring-cjs-modules)
+format.
 
 The fact that Enyo no longer exports anything in the global scope means that any
 kinds or methods used via `enyo.`, `moon.`, or `onyx.` (e.g., `enyo.Button`,
@@ -340,6 +343,30 @@ specify the relative path to the file.
             // add custom stuff
         ]
     });
+```
+
+### Determining the Kind of an Object
+
+Because of internal changes made in 2.6, application code should not rely on
+either the `kind` or `kindName` property to determine whether an object instance
+is of a specific kind.  (In fact, in many cases, the `kind` property will not
+exist at all.)
+
+If you need to perform this sort of test, do a direct comparison between
+constructors, e.g.:
+
+```javascript
+    if (inEvent.originator instanceof ExpectedKindCtor) {
+        // do something
+    }
+```
+
+or
+
+```javascript
+    if (inEvent.originator.ctor === ExpectedKindCtor) {
+        // do something
+    }
 ```
 
 ## Building the App
