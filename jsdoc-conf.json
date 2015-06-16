@@ -6,11 +6,11 @@
 		"include": [
 			"../enyo/lib",
 			"../enyo/docs/external.jsdoc",
-			"../lib/moonstone/lib",
-			"../lib/layout/lib",
-			"../lib/spotlight/lib",
-			"../lib/onyx/lib",
-			"../lib/canvas/lib"
+			"../moonstone/lib",
+			"../layout/lib",
+			"../spotlight/lib",
+			"../onyx/lib",
+			"../canvas/lib"
 		],
 		"includePattern": ".+\\.js(doc)?$",
 		"excludePattern": "package\\.js"
