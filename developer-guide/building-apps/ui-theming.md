@@ -2,38 +2,35 @@
 
 ## Overview
 
-Enyo offers first-class UI widget sets called Moonstone and Onyx, both of which
-contain a wide variety of native-quality controls for building Enyo
-applications.  While you are certainly welcome to use Moonstone or Onyx controls
-straight out of the box to develop your app, we know that many developers will
-want to adapt the look and feel of these widgets to meet the design requirements
-of their particular projects.  To that end, we offer three discrete "theming"
-strategies.
+Enyo offers a first-class UI widget set called Onyx, which contains a wide
+variety of native-quality controls for building Enyo applications, along with a
+widget set called Moonstone, which offers controls tuned for use on smart TVs.
+While you are certainly welcome to use Onyx and Moonstone controls straight out
+of the box to develop your app, we know that many developers will want to adapt
+the look and feel of these widgets to meet the design requirements of their
+particular projects.  To that end, we offer three discrete "theming" strategies.
 
 Which strategy will work best for you depends largely on the degree of
 customization you need.  In this document, we discuss the three approaches to
 theming, proceeding in order from least-effort-and-least-flexibility to
 most-effort-and-most-flexibility:
 
-* <b>Variable-Based Theming:</b> Customization of pre-defined variables that
-    control UI library styling
-* <b>Rule-Override Theming:</b> Free-form overriding of rules that control
-    Moonstone or Onyx styling
-* <b>Library-Based Theming:</b> Creation of new Enyo kinds, extending Moonstone,
-    Onyx, or the Enyo core UI.
-
-(Note: While this document uses examples from Onyx, the same principles are
-applicable to Moonstone or any other UI library.)
+* **Variable-Based Theming:** Customization of pre-defined variables that
+    control styling
+* **Rule-Override Theming:** Free-form overriding of rules that control
+    styling
+* **Library-Based Theming:** Creation of new Enyo kinds, extending Onyx,
+    Moonstone, or the Enyo core UI.
 
 ## Variable-Based Theming
 
 In variable-based theming, you simply override the default values of certain
-variables that are used to generate Onyx's CSS stylesheets.  For example, you
-could set the `@onyx-toolbar-background` variable to `orange` to make all of
-your app's `onyx.Toolbar` controls orange.
+variables that are used to generate CSS stylesheets.  For example, you could set
+the `@onyx-toolbar-background` variable to `orange` to make all of your app's
+`onyx.Toolbar` controls orange.
 
-Since release 2.1, Enyo has included support for [LESS](http://lesscss.org/), a
-dynamic stylesheet language that extends CSS with features such as variables,
+Since the 2.1 release, Enyo has included support for [LESS](http://lesscss.org/),
+a dynamic stylesheet language that extends CSS with features such as variables,
 mixins, operations, and functions.  Enyo's variable-based theming leverages LESS
 to break out common styling parameters into semantically-named, easy-to-override
 variables.
@@ -51,11 +48,11 @@ additional tools or setup.
 
 By the way, if you're wondering how this affects backward compatibility, please
 note that using LESS with Enyo is completely optional.  Pre-compiled `.css`
-files for Onyx are provided alongside the top-level `.less` files; if the
-client-side `less.js` library is not loaded and Enyo's loader finds a `.less`
-file while parsing a `package.js` file, it will fall back to loading the `.css`
-file of the same name.  As such, you are free to modify CSS directly, or use a
-server-side tool such as CodeKit to pre-compile your LESS to CSS instead of
+files for both widget sets are provided alongside the top-level `.less` files;
+if the client-side `less.js` library is not loaded and Enyo's loader finds a
+`.less` file while parsing a `package.js` file, it will fall back to loading the
+`.css` file of the same name.  As such, you are free to modify CSS directly, or
+use a server-side tool such as CodeKit to pre-compile your LESS to CSS instead of
 using the client-side compiler.  Additionally, you may pass the `"-c"` flag to
 Bootplate's `deploy` script to enable similar CSS-fallback behavior when
 deploying your app.
@@ -69,20 +66,15 @@ pulled in when you include `$lib/onyx` in your app's `package.js` file.
 That being said, if you're using the Bootplate app template, you can easily
 create and use a custom theme for Onyx as follows:
 
-1. In the `debug.html` file, uncomment the line referencing
-    `"less-<version number>.min.js"`
+1. In `source/package.js`, include `"$lib/onyx/source"` instead of `"$lib/onyx"`.
+    This will cause your app to load only the JavaScript source; the default CSS
+    will be ignored.
 
-2. In `package.js`, include `"$lib/onyx/source"` instead of `"$lib/onyx"`.  This
-    will cause your app to load only the JavaScript source; the default CSS will
-    be ignored.
+2. In `source/style/package.js`, uncomment the entry for `"Theme.less"`.
 
-3. Also in `package.js`, add an entry for `"Theme.less"`.  In Bootplate,
-    `Theme.less` lives in the application's `source` directory, alongside
-    `package.js`.
-
-4. Within `Theme.less`, import `onyx-variables.less` and `onyx-rules.less`.
-    Then insert your custom variable definitions between the two `@import`
-    statements, i.e.:
+4. Within `source/style/Theme.less`, insert your variable overrides between the
+    import rules for `onyx-variables.less` and `onyx-rules.less`, where
+    indicated:
 
         @import "../lib/onyx/css/onyx-variables.less";
 
@@ -103,7 +95,7 @@ for a complete list of the available variables and their default values.
 
 * Font-size:
 	* High-level: `@onyx-font-size-small`, `@onyx-font-size-medium`, `@onyx-font-size-large`
-	* Widget-level: `@onyx-<widget-name>`-font-size`
+	* Widget-level: `@onyx-<widget-name>-font-size`
 
 * Text color:
 	* High-level: `@onyx-text-color`
@@ -128,6 +120,50 @@ for a complete list of the available variables and their default values.
 
 * Images: `@onyx-<widget-name>-image`, `@onyx-<widget-name>-image-width`,
     `@onyx-<widget-name>-image-height`
+
+### Overriding Moonstone Variables
+
+Similar to Onyx, Moonstone's CSS is split between variables and rules.  However,
+Moonstone includes both a light and a dark theme; consequently, it has an
+additional variable file for each theme.  For the light theme, this variable
+file is called `moonstone-variables-light.less`; for the dark theme, it is
+called `moonstone-variables-dark.less`.  Both themes use a common variable file,
+`moonstone-variables.less`, and a common rule file, `moonstone-rules.less`.
+
+When using the Bootplate Moonstone app template, you can easily create and use a
+custom theme as follows:
+
+1. In `source/package.js`, include `"$lib/moonstone/source"` instead of
+    `"$lib/moonstone"`.  This will cause your app to load only the JavaScript
+    source; the default CSS will be ignored.
+
+2. In `source/style/package.js`, uncomment the entry for `"Theme.less"`.
+
+3. Within `source/style/Theme.less`, insert your variable overrides between the
+    import rules for the variables and the rules, as indicated:
+
+        /* Moonstone theme variable definitions: */
+        @import "../../lib/moonstone/css/moonstone-variables-light.less";
+        /* @import "../../lib/moonstone/css/moonstone-variables-dark.less"; */
+
+        /* Moonstone default variable definitions: */
+        @import "../../lib/moonstone/css/moonstone-variables.less";
+
+        /* Place your Moonstone variable overrides here --------------- */
+
+        /* ------------------------------------- end variable overrides */
+
+        /* Moonstone rule definitions: */
+        @import "../../lib/moonstone/css/moonstone-rules.less";
+
+The Moonstone defaults will now be overridden by the values you supply.
+
+### Moonstone Variables
+
+Moonstone employs a much finer-grained approach to specifying default values for
+various controls than Onyx does.  Refer to `moonstone.less` and the
+corresponding light or dark `less` file for a complete list of the available
+variables and their default values.
 
 ### Variable Overrides in Action
 
@@ -231,10 +267,10 @@ to override the default color.
 
 ### Global Overrides
 
-To override a rule globally (so the override applies to all Onyx widgets),
-simply define the rule overriding the property (or properties) whose styling you
-wish to customize.  In the case of the input glow color, that might look like
-the following:
+To override a rule globally (so the override applies to all widgets), simply
+define the rule overriding the property (or properties) whose styling you wish
+to customize.  In the case of the input glow color, that might look like the
+following:
 
         @import "../lib/onyx/css/onyx-variables.less";
 
@@ -280,7 +316,7 @@ will cause all of its child input decorators to receive the override:
                 {kind: "onyx.Input"}
             ]},
             // Both input decorators will have "red-glow" applied
-            {classes:"red-glow", components: [
+            {classes: "red-glow", components: [
                 {kind: "onyx.InputDecorator", components: [
                     {kind: "onyx.Input"}
                 ]},
