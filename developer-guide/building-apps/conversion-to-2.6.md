@@ -369,6 +369,11 @@ or
     }
 ```
 
+### Resolution Independence Changes
+
+If you are converting an Enyo 2.5.x app to use Enyo 2.6.x, please note that the
+`moon-res-*` CSS classes are no longer available in Enyo 2.6.x.
+
 ## Building the App
 
 As mentioned above, the new Enyo build tools require that both `Node.js` and the
