@@ -16,16 +16,20 @@ content it owns and sends messages to its owner in the form of events. Here's an
 example:
 
 ```javascript
-    enyo.kind({
-        name: "RandomizedTimer",
-        kind: "enyo.Component",
+    var
+        kind = require('enyo/kind'),
+        Component = require('enyo/Component');
+
+    module.exports = kind({
+        name: 'RandomizedTimer',
+        kind: Component,
         minInterval: 50,
         published: {
             baseInterval: 100,
             percentTrigger: 50
         },
         events: {
-            onTriggered: ""
+            onTriggered: ''
         },
         create: function() {
             this.inherited(arguments);
@@ -36,7 +40,7 @@ example:
             this.inherited(arguments);
         },
         start: function() {
-            this.job = window.setInterval(enyo.bind(this, "timer"), this.baseInterval);
+            this.job = window.setInterval(enyo.bind(this, 'timer'), this.baseInterval);
         },
         stop: function() {
             window.clearInterval(this.job);
@@ -68,7 +72,7 @@ value.
 To retrieve a published property's value, call `get()`.  For example,
 
 ```javascript
-        get("baseInterval");
+        get('baseInterval');
 ```
 
 returns the value of `baseInterval`.
@@ -77,7 +81,7 @@ Similarly, to change a published property's value, call `set()`.  In the current
 example,
 
 ```javascript
-        set("baseInterval", 75);
+        set('baseInterval', 75);
 ```
 
 sets `baseInterval` to 75.
@@ -111,15 +115,19 @@ to the event handler.  In this case, we send the current time in the event's
 First, though, we'll create another component kind, named `SimulatedMessage`:
 
 ```javascript
-    enyo.kind({
-        name: "SimulatedMessage",
-        kind: "enyo.Component",
+    var
+        kind = require('enyo/kind'),
+        Component = require('enyo/Component');
+
+    module.exports = kind({
+        name: 'SimulatedMessage',
+        kind: Component,
         components: [
-            {name: "timer", kind: "RandomizedTimer", percentTrigger: 10,
-                onTriggered: "timerTriggered"}
+            {name: 'timer', kind: RandomizedTimer, percentTrigger: 10,
+                onTriggered: 'timerTriggered'}
         ],
         timerTriggered: function(inSender, inEvent) {
-            this.log("Simulated Service Message Occurred at " + inEvent.time);
+            this.log('Simulated Service Message Occurred at ' + inEvent.time);
         }
     });
 ```
@@ -163,8 +171,12 @@ discussed in [Kinds](kinds.html).
 The different roles of these methods are sketched out in the following example:
 
 ```javascript
-    var myComponent = enyo.kind({
-        kind: "enyo.Component",
+    var
+        kind = require('enyo/kind'),
+        Component = require('enyo/Component');
+
+    module.exports = kind({
+        kind: Component,
         constructor: function() {
             // low-level or esoteric initialization, usually not needed at all
             this.inherited(arguments);
@@ -195,7 +207,7 @@ components.  For example:
 
 ```javascript
     components: [
-        {kind: "MyWorker"}
+        {kind: MyWorker}
     ],
     create: function() {
         this.inherited(arguments);

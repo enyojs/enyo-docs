@@ -14,34 +14,38 @@ In the following example, we define a `Circle` control, which we will put to use
 inside a `TrafficLight` control:
 
 ```javascript
-    enyo.kind({
-        name: "Circle",
-        kind: "Control",
+    var
+        kind = require('enyo/kind'),
+        Control = require('enyo/Control');
+
+    module.exports = kind({
+        name: 'Circle',
+        kind: Control,
         published: {
-            color: "magenta",
-            bgColor: "black"
+            color: 'magenta',
+            bgColor: 'black'
         },
         handlers: {
-            ondown: "downHandler",
-            onup: "upHandler"
+            ondown: 'downHandler',
+            onup: 'upHandler'
         },
-        content: "Hi",
-        style: "padding: 2px 6px; border: 3px solid; border-radius: 20px; cursor: pointer;",
+        content: 'Hi',
+        style: 'padding: 2px 6px; border: 3px solid; border-radius: 20px; cursor: pointer;',
         create: function() {
             this.inherited(arguments);
             this.colorChanged();
         },
         colorChanged: function() {
-            this.applyStyle("border-color", this.color);
+            this.applyStyle('border-color', this.color);
         },
         bgColorChanged: function() {
-            this.applyStyle("background-color", this.bgColor);
+            this.applyStyle('background-color', this.bgColor);
         },
         downHandler: function(inSender, inEvent) {
-            this.applyStyle("background-color", "white");
+            this.applyStyle('background-color', 'white');
         },
         upHandler: function(inSender, inEvent) {
-            this.applyStyle("background-color", "black");
+            this.applyStyle('background-color', 'black');
         }
     });
 ```
@@ -62,7 +66,7 @@ its node.  You may also specify classes, attributes, or even a tag type.  For
 example:
 
 ```javascript
-    {tag: "input", classes: "rounded", attributes: {value: "foo"}}
+    {tag: 'input', classes: 'rounded', attributes: {value: 'foo'}}
 ```
 
 These properties may be set either on control configuration blocks or in kind
@@ -78,22 +82,26 @@ other such methods, including `addStyles()`, `addClass()`, `setAttribute()`,
 Here is our aforementioned `TrafficLight` control:
 
 ```javascript
-    enyo.kind({
-        name: "TrafficLight",
-        kind: "Control",
-        style: "position: absolute; padding: 4px; border: 1px solid black; background-color: silver;",
+    var
+        kind = require('enyo/kind'),
+        Control = require('enyo/Control');
+
+    module.exports = kind({
+        name: 'TrafficLight',
+        kind: Control,
+        style: 'position: absolute; padding: 4px; border: 1px solid black; background-color: silver;',
         components: [
-            {kind: "Circle", color: "red", ontap: "circleTap"},
-            {kind: "Circle", color: "yellow", ontap: "circleTap"},
-            {kind: "Circle", color: "green", ontap: "circleTap"}
+            {kind: Circle, color: 'red', ontap: 'circleTap'},
+            {kind: Circle, color: 'yellow', ontap: 'circleTap'},
+            {kind: Circle, color: 'green', ontap: 'circleTap'}
         ],
         circleTap: function(inSender, inEvent) {
-            var lights = {red: "tomato", yellow: "#FFFF80", green: "lightgreen"};
+            var lights = {red: 'tomato', yellow: '#FFFF80', green: 'lightgreen'};
             if (this.lastCircle) {
-                this.lastCircle.set("bgColor", "black");
+                this.lastCircle.set('bgColor', 'black');
             }
             this.lastCircle = inSender;
-            this.lastCircle.set("bgColor", lights[inSender.color]);
+            this.lastCircle.set('bgColor', lights[inSender.color]);
         }
     });
 ```
@@ -151,7 +159,7 @@ without regard to whether there is a corresponding DOM node or not.  For
 example, you may call
 
 ```javascript
-    this.$.control.applyStyle("color", "blue");
+    this.$.control.applyStyle('color', 'blue');
 ```
 
 If the control is rendered, that style is placed in the DOM; if not, the
@@ -225,7 +233,7 @@ often see code like the following:
         // create new controls
         for (var i=0; i<this.count; i++) {
             // created but not rendered
-            this.createComponent({kind: "myCoolControl", index: i});
+            this.createComponent({kind: MyCoolControl, index: i});
         }
         // render everything in one shot
         this.render();

@@ -25,12 +25,15 @@ processing.	Some examples of special properties are:
     directly to the prototype, but is instead stored as `kindName`.
 
     ```javascript
+        var
+            kind = require('enyo/kind');
+
         // Create a function myNamespace.MyKind with a prototype.
-        // myNamespace.MyKind.prototype.kindName is set to "myNamespace.MyKind".
-        // myNamespace.MyKind.prototype.plainProperty is set to "foo".
-        enyo.kind({
-            name: "myNamespace.MyKind"
-            plainProperty: "foo"
+        // myNamespace.MyKind.prototype.kindName is set to 'myNamespace.MyKind'.
+        // myNamespace.MyKind.prototype.plainProperty is set to 'foo'.
+        module.exports = kind({
+            name: 'myNamespace.MyKind',
+            plainProperty: 'foo'
         });
         // Make an instance of the new kind.
         var myk = new myNamespace.MyKind();
@@ -42,12 +45,16 @@ processing.	Some examples of special properties are:
     reference the `kind` constructor.
 
     ```javascript
+        var
+            kind = require('enyo/kind'),
+            Object = require('enyo/Object');
+
         // Create a function MyKind with a prototype, derived from enyo.Object.
-        // MyKind.prototype.kindName is set to "MyKind".
-        // MyKind.prototype.base is set to "enyo.Object".
-        enyo.kind({
-            name: "MyKind",
-            kind: "enyo.Object"
+        // MyKind.prototype.kindName is set to 'MyKind'.
+        // MyKind.prototype.base is set to 'enyo.Object'.
+        module.exports = kind({
+            name: 'MyKind',
+            kind: Object
         });
     ```
 
@@ -56,10 +63,14 @@ processing.	Some examples of special properties are:
 
     ```javascript
         // Create a function MyKind with a prototype, derived from enyo.Object.
-        // _constructor_ is called when an instance is created. 
-        enyo.kind({
-            name: "MyKind",
-            kind: "enyo.Object",
+        // _constructor_ is called when an instance is created.
+        var
+            kind = require('enyo/kind'),
+            Object = require('enyo/Object');
+
+        module.exports = kind({
+            name: 'MyKind',
+            kind: Object,
             constructor: function() {
                 this.instanceArray = [];
                 // Call the constructor inherited from Object
@@ -73,11 +84,14 @@ processing.	Some examples of special properties are:
 
     ```javascript
         // Create a kind with a static method.
-        enyo.kind({
-            name: "MyKind",
+        var
+            kind = require('enyo/kind');
+
+        module.exports = kind({
+            name: 'MyKind',
             statics: {
                 info: function() {
-                    return "MyKind is a kind with statics.";
+                    return 'MyKind is a kind with statics.';
                 }
             }
         });
@@ -102,7 +116,11 @@ Certain kinds in the framework define their own special properties, e.g., the
 A trivial kind has a simple lifecycle:
 
 ```javascript
-    var MyKind = enyo.kind({
+    var
+        kind = require('enyo/kind');
+
+    module.exports = kind({
+        name: MyKind,
         kind: null, // otherwise it will default to 'Control'
         constructor: function() {
             // do any initialization tasks
@@ -127,8 +145,12 @@ the properties and methods of the old kind.  If the new kind overrides a method
 from the old kind, you can call the overridden method using `this.inherited()`:
 
 ```javascript
-    var MyNextKind = enyo.kind({
-        kind: "MyKind",
+    var
+        kind = require('enyo/kind');
+
+    module.exports = enyo.kind({
+        name: 'MyNextKind',
+        kind: MyKind,
         constructor: function() {
             // do any initialization tasks before MyKind initializes
             //
@@ -155,16 +177,19 @@ all.
 This override system works the same for any method, not just `constructor()`:
 
 ```javascript
-    enyo.kind({
-        name: "MyOriginalKind",
+    var
+        kind = require('enyo/kind');
+
+    module.exports = kind({
+        name: 'MyOriginalKind',
         doWork: function() {
             this.work++;
         }
     });
 
-    enyo.kind({
-        name: "MyDerivedKind",
-        kind: "MyOriginalKind",
+    module.exports = kind({
+        name: 'MyDerivedKind',
+        kind: MyOriginalKind,
         doWork: function() {
             if (this.shouldDoWork) {
                 this.inherited(arguments);
