@@ -11,20 +11,24 @@ call `set(<propertyName>, value)`.
 By convention, the setter for a published property will trigger an optional
 `<propertyName>Changed` method when called.
 
-In the following example, `myValue` becomes a regular property on the
-`"MyObject"` prototype, with a default value of 3:
+In the following example, `myValue` becomes a regular property on the `MyObject`
+prototype, with a default value of 3:
 
 ```javascript
-    enyo.kind({
-        name: "MyObject",
-        kind: "enyo.Object",
+    var
+        kind = require('enyo/kind'),
+        Object = require('enyo/Object');
+
+    module.exports = kind({
+        name: 'MyObject',
+        kind: Object,
 
         // declare 'published' properties
         published: {
             myValue: 3
         },
 
-        // optional method that is called whenever set("myValue", <value>) is called
+        // optional method that is called whenever set('myValue', <value>) is called
         myValueChanged: function(inOldValue) {
             this.delta = this.myValue - inOldValue;
         }
@@ -33,13 +37,13 @@ In the following example, `myValue` becomes a regular property on the
 
 Since we have declared a property-changed method (i.e., `myValueChanged`) to
 observe `set()` calls on the `myValue` property, it will be called when
-`set("myValue", <value>)` is called, as illustrated by the following:
+`set('myValue', <value>)` is called, as illustrated by the following:
 
 ```javascript
     myobj = new MyObject();
-    var x = myobj.get("myValue"); // x gets 3
+    var x = myobj.get('myValue'); // x gets 3
 
-    myobj.set("myValue", 7); // myValue becomes 7; myValueChanged side-effect sets delta to 4
+    myobj.set('myValue', 7); // myValue becomes 7; myValueChanged side-effect sets delta to 4
 ```
 
 Property-changed methods are only called when setters are invoked with a
@@ -47,7 +51,7 @@ different value.  If you were to call `set()` a second time with the same
 value, the changed handler would not be invoked:
 
 ```javascript
-        myobj.set("myValue", 7); // myValue stays 7; myValueChanged is *not* called
+        myobj.set('myValue', 7); // myValue stays 7; myValueChanged is *not* called
 ```
 
 Published properties are stored as regular properties on the object prototype,
