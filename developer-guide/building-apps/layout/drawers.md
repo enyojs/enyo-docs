@@ -1,21 +1,21 @@
 % Drawers
 
-## enyo.Drawer
+## enyo/Drawer
 
 (Note: In Enyo 2.3, the Drawer kind was moved from the Onyx library into Enyo
-core.  `onyx.Drawer` continues to exist, but is now simply an alias to
-`enyo.Drawer`.)
+core.  The Onyx `Drawer` continues to exist, but is now simply an alias to
+`enyo/Drawer`.)
 
-[enyo.Drawer]($api/#/kind/enyo.Drawer) is a control that appears or disappears
-based on its `open` property.  `open` is a Boolean that defaults to `true`,
-meaning that the control is visible.
+[enyo/Drawer]($api/#/kind/enyo/Drawer/Drawer) is a control that appears or
+disappears based on its `open` property.  `open` is a Boolean that defaults to
+`true`, meaning that the control is visible.
 
 By default, a Drawer appears or disappears with a sliding animation whose
 direction is determined by the `orient` property.  The default value of `orient`
 is `'v'`, indicating that the drawer opens and closes along the vertical axis.
 To create a horizontally-oriented drawer, set `orient` to `'h'`.
 
-`enyo.Drawer` exposes an `animated` property, which may be set to `false` to
+`enyo/Drawer` exposes an `animated` property, which may be set to `false` to
 disable the sliding animation.
 
 ### Vertical Drawers
@@ -23,14 +23,19 @@ disable the sliding animation.
 Here's a kind that implements a simple vertically-oriented drawer:
 
 ```javascript
-    enyo.kind({
-        name: "VDrawer",
+    var
+        kind = require('enyo/kind'),
+        Drawer = require('enyo/Drawer'),
+        FittableRows = require('layout/FittableRows');
+
+    module.exports = kind({
+        name: 'VDrawer',
         components: [
-            {kind: "FittableRows", classes: "outer-box", components: [
-                {content: "Activate Vertical", classes: "inner-box inner-box-v", ontap: "activateDrawer"},
-                {name: "drawer", kind: "enyo.Drawer", open: false, components: [
-                    {content: "Vertical Drawer<br>Vertical Drawer</br>Vertical Drawer",
-                        classes: "inner-box inner-box-v", allowHtml: true}
+            {kind: FittableRows, classes: 'outer-box', components: [
+                {content: 'Activate Vertical', classes: 'inner-box inner-box-v', ontap: 'activateDrawer'},
+                {name: 'drawer', kind: Drawer, open: false, components: [
+                    {content: 'Vertical Drawer<br>Vertical Drawer</br>Vertical Drawer',
+                        classes: 'inner-box inner-box-v', allowHtml: true}
                 ]}
             ]}
         ],
@@ -40,7 +45,7 @@ Here's a kind that implements a simple vertically-oriented drawer:
     });
 ```
 
-Because we've set `"open: false"` on the drawer, it starts out in the closed
+Because we've set `'open: false'` on the drawer, it starts out in the closed
 state when this view is loaded.
 
 ![_Vertical Drawer (Closed)_](../../assets/drawers-1.png)
@@ -57,16 +62,21 @@ method toggles the `open` state (and visibility).
 The following kind implements a simple horizontally-oriented drawer:
 
 ```javascript
-    enyo.kind({
-        name: "HDrawer",
+    var
+        kind = require('enyo/kind'),
+        Drawer = require('enyo/Drawer'),
+        FittableColumns = require('layout/FittableColumns');
+
+    module.exports = kind({
+        name: 'HDrawer',
         components: [
-            {kind: "FittableColumns", ontap: "activateColumnsDrawer", classes: "outer-box",
+            {kind: FittableColumns, ontap: 'activateColumnsDrawer', classes: 'outer-box',
                 components: [
-                    {content: "Activate Horizontal", classes: "inner-box inner-box-h"},
-                    {name: "columnsDrawer", orient: "h", kind: "enyo.Drawer", fit: true, open: false,
+                    {content: 'Activate Horizontal', classes: 'inner-box inner-box-h'},
+                    {name: 'columnsDrawer', orient: 'h', kind: Drawer, fit: true, open: false,
                         components: [
-                            {content: "Horizontal Drawer Horizontal Drawer",
-                                classes: "inner-box inner-box-h"}
+                            {content: 'Horizontal Drawer Horizontal Drawer',
+                                classes: 'inner-box inner-box-h'}
                         ]
                     }
                 ]
@@ -78,7 +88,7 @@ The following kind implements a simple horizontally-oriented drawer:
     });
 ```
 
-As in the previous example, we've set `"open: false"`, so the drawer first
+As in the previous example, we've set `'open: false'`, so the drawer first
 appears in its closed state.
 
 ![_Horizontal Drawer (Closed)_](../../assets/drawers-3.png)
@@ -88,9 +98,9 @@ visible).
 
 ![_Horizontal Drawer (Open, fit: true)_](../../assets/drawers-4.png)
 
-Note that `"fit: true"` is set on the drawer control.  This causes the drawer to
+Note that `'fit: true'` is set on the drawer control.  This causes the drawer to
 expand horizontally--beyond the natural width of its content--to fill the
-available space in the container.  If we do not set `"fit: true"`, the drawer
+available space in the container.  If we do not set `'fit: true'`, the drawer
 assumes the natural width of its content:
 
 ![_Horizontal Drawer (Open, Natural Width)_](../../assets/drawers-5.png)
@@ -130,26 +140,26 @@ The examples in this document make use of the following CSS styles:
 Note that there are slight differences in how margins are handled, depending on
 the orientation of the drawer.
 
-## moon.Drawer and moon.Drawers
+## moonstone/Drawer and moonstone/Drawers
 
 The Moonstone library has its own implementation of drawer functionality, based
-on [moon.Drawer]($api/#/kind/moon.Drawer) (which is **not** a subkind of
-`enyo.Drawer`) and [moon.Drawers]($api/#/kind/moon.Drawers) (which is a
-container for `moon.Drawer` objects).
+on [moonstone/Drawer]($api/#/kind/moonstone/Drawer/Drawer) (which is **not** a
+subkind of `enyo/Drawer`) and [moonstone/Drawers]($api/#/kind/moonstone/Drawers/Drawers)
+(which is a container for `moonstone/Drawer` objects).
 
-`moon.Drawer` contains two areas for content--a main content area, where items
+`moonstone/Drawer` contains two areas for content--a main content area, where items
 declared in the `components` block live, and an optional `controlDrawer`, which
 houses any items declared in a `controlDrawerComponents` block.  In addition, in
-its `handle` property, `moon.Drawer` allows you to specify an activator control,
+its `handle` property, `moonstone/Drawer` allows you to specify an activator control,
 which is displayed along with a styled label.
 
-`moon.Drawer` objects are designed to be placed inside a `moon.Drawers`
+`moonstone/Drawer` objects are designed to be placed inside a `moonstone/Drawers`
 container.  This is done by supplying an array of Drawer objects in the
-`drawers` property of the `moon.Drawers`.  The drawer handles are grouped
+`drawers` property of the `moonstone/Drawers`.  The drawer handles are grouped
 together visually in the Drawers control; selecting a handle will activate the
 associated drawer, opening either the main content area or the control drawer
 (depending on how the Drawer is configured).
 
-Finally, note that a `moon.Drawers` may contain child components of any kind.
+Finally, note that a `moonstone/Drawers` may contain child components of any kind.
 
-![_moon.Drawers with Handle_](../../assets/drawers-6.png)
+![_moonstone/Drawers with Handle_](../../assets/drawers-6.png)

@@ -6,22 +6,27 @@ meet using Web technologies.
 
 ## FittableColumns and FittableRows
 
-The [FittableColumns]($api/#/kind/enyo.FittableColumns) and
-[FittableRows]($api/#/kind/enyo.FittableRows) controls let you define views
-whose children are arranged either horizontally or vertically.  Within a given
-view, you may designate one child to expand and contract to fit the available
-space, while its siblings retain their natural or explicitly-specified sizes.
+The [FittableColumns]($api/#/kind/layout/FittableColumns/FittableColumns) and
+[FittableRows]($api/#/kind/layout/FittableRows/FittableRows) controls let you
+define views whose children are arranged either horizontally or vertically.
+Within a given view, you may designate one child to expand and contract to fit
+the available space, while its siblings retain their natural or
+explicitly-specified sizes.
 
 To mark a child control as the one having variable size, set its `fit` property
 to `true`, e.g.:
 
 ```javascript
-    enyo.kind({
-        kind: "FittableColumns",
+    var
+        kind = require('enyo/kind'),
+        FittableColumns = require('layout/FittableColumns');
+
+    module.exports = kind({
+        kind: FittableColumns,
         components: [
-            {content: "1"},
-            {content: "2", fit: true},
-            {content: "3"}
+            {content: '1'},
+            {content: '2', fit: true},
+            {content: '3'}
         ]
     });
 ```
@@ -32,24 +37,30 @@ the available container space between the first and third.
 ## FittableColumnsLayout and FittableRowsLayout
 
 Another way to use the fittable layout strategy is to set a kind's `layoutKind`
-property to "[FittableColumnsLayout]($api/#/kind/enyo.FittableColumnsLayout)"
-or "[FittableRowsLayout]($api/#/kind/enyo.FittableRowsLayout)"
+property to "[FittableColumnsLayout]($api/#/kind/layout/FittableLayout/FittableColumnsLayout)"
+or "[FittableRowsLayout]($api/#/kind/layout/FittableLayout/FittableRowsLayout)"
 while employing a different base kind:
 
 ```javascript
-    enyo.kind({
-        kind: "enyo.Control",
-        layoutKind: "FittableColumnsLayout",
+    var
+        kind = require('enyo/kind'),
+        Control = require('enyo/Control'),
+        FittableLayout = require('layout/FittableLayout'),
+        FittableColumnsLayout = FittableLayout.Columns;
+
+    module.exports = kind({
+        kind: Control,
+        layoutKind: FittableColumnsLayout,
         components: [
-            {content: "1"},
-            {content: "2", fit: true},
-            {content: "3"}
+            {content: '1'},
+            {content: '2', fit: true},
+            {content: '3'}
         ]
     });
 ```
 
 Both `FittableColumnsLayout` and `FittableRowsLayout` are derived directly from
-[enyo.FittableLayout]($api/#/kind/enyo.FittableLayout), which provides basic
+[layout/FittableLayout]($api/#/kind/layout/FittableLayout/FittableLayout), which provides basic
 positioning and boundary logic.
 
 ## Nested Fittables
@@ -58,16 +69,20 @@ Fittable views may be nested as needed, as illustrated by the following example,
 in which we've nested a FittableColumns control inside of a FittableRows:
 
 ```javascript
-    enyo.kind({
-        name: "NestedFittablesExample",
-        kind: "FittableRows",
+        kind = require('enyo/kind'),
+        FittableColumns = require('layout/FittableColumns'),
+        FittableRows = require('layout/FittableRows');
+
+    module.exports = kind({
+        name: 'NestedFittablesExample',
+        kind: FittableRows,
         components: [
-            {content: "Top", allowHtml: true, classes: "outer-box"},
-            {content: "Middle", allowHtml: true, classes: "outer-box"},
-            {kind: "FittableColumns", fit: true, classes: "outer-box", components: [
-                {content: "Left", classes: "inner-box"},
-                {content: "Fits!", fit: true, classes: "inner-box"},
-                {content: "Right", classes: "inner-box"}
+            {content: 'Top', allowHtml: true, classes: 'outer-box'},
+            {content: 'Middle', allowHtml: true, classes: 'outer-box'},
+            {kind: FittableColumns, fit: true, classes: 'outer-box', components: [
+                {content: 'Left', classes: 'inner-box'},
+                {content: 'Fits!', fit: true, classes: 'inner-box'},
+                {content: 'Right', classes: 'inner-box'}
             ]}
         ]
     });
