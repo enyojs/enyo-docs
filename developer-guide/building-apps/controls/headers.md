@@ -1,20 +1,28 @@
 ﻿% Headers
 
-## moon.Header
+## moonstone/Header
 
-The [moon.Header]($api/#/kind/moon.Header) kind provides a styled header with
-optional text above and below.
+[moonstone/Header]($api/#/kind/moonstone/Header/Header) provides a styled header
+with optional text above and below.
 
 ```javascript
-    {kind: "moon.Header", name: "bigHeader", content: "Header Header Header",
-        titleAbove: "02", titleBelow: "Sub Header",
-        subTitleBelow: "Sub-sub Header", classes:"moon-10h", components: [
-            {kind: "moon.IconButton", src: "../patterns-samples/assets/icon-like.png",
-                ontap: "likeBig"},
-            {kind: "moon.IconButton", src: "../patterns-samples/assets/icon-next.png",
-                ontap: "shareBig"}
+    var
+        kind = require('enyo/kind'),
+        Header = require('moonstone/Header'),
+        IconButton = require('moonstone/IconButton');
+
+    {kind: Header, name: 'bigHeader', content: 'Header Header Header',
+        titleAbove: '02', titleBelow: 'Sub Header',
+        subTitleBelow: 'Sub-sub Header', classes: 'moon-10h', components: [
+            {kind: IconButton, src: '../patterns-samples/assets/icon-like.png',
+                ontap: 'likeBig'},
+            {kind: IconButton, src: '../patterns-samples/assets/icon-next.png',
+                ontap: 'shareBig'}
         ]
     }
 ```
 
-![_moon.Header_](../../assets/headers.png)
+![_moonstone/Header_](../../assets/headers.png)
+
+Note that you can create a header whose title is also a text input field; to do
+this, set the `inputMode` property to `true`.
