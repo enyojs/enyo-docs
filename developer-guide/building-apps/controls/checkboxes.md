@@ -10,9 +10,9 @@ marker).
 Single selection from a range of options is implemented via [radio
 items](radio-items.html) (otherwise known as radio buttons).
 
-## enyo.Checkbox
+## enyo/Checkbox
 
-[enyo.Checkbox]($api/#/kind/enyo.Checkbox) implements an HTML
+[enyo/Checkbox]($api/#/kind/enyo/Checkbox/Checkbox) implements an HTML
 checkbox input, with support for grouping.
 
 The `onActivate` event is fired when the checkbox is tapped.
@@ -20,45 +20,55 @@ The `onActivate` event is fired when the checkbox is tapped.
 The state of the checkbox is available as a boolean (`true` if checked;
 `false` if not) in the `checked` property.
 
-## moon.Checkbox and moon.CheckboxItem
+## moonstone/Checkbox and moonstone/CheckboxItem
 
-[moon.Checkbox]($api/#/kind/moon.Checkbox) extends `enyo.Checkbox`,
-adding Moonstone visual styling.
+[moonstone/Checkbox]($api/#/kind/moonstone/Checkbox/Checkbox) extends
+`enyo/Checkbox`, adding Moonstone visual styling.
 
-Instead of creating `moon.Checkbox` objects directly, you may find it convenient
-to use the [moon.CheckboxItem]($api/#/kind/moon.CheckboxItem) kind,
+Instead of creating `moonstone/Checkbox` objects directly, you may find it
+convenient to use [moonstone/CheckboxItem]($api/#/kind/moonstone/CheckboxItem/CheckboxItem),
 which combines a checkbox with a text label, as in this example taken from the
 Enyo Sampler:
 
 ```javascript
+    var
+        kind = require('enyo/kind'),
+        CheckboxItem = require('moonstone/CheckboxItem');
+
     components: [
-        {classes: "checkbox-sample-wrapper", components: [
-            {kind: "moon.CheckboxItem", content: "Option 1", checked: true},
-            {kind: "moon.CheckboxItem", content: "Option 2"},
-            {kind: "moon.CheckboxItem", disabled: true, content: "Disabled"},
-            {kind: "moon.CheckboxItem", content: "Option 4", checked: true}
+        {classes: 'checkbox-sample-wrapper', components: [
+            {kind: CheckboxItem, content: 'Option 1', checked: true},
+            {kind: CheckboxItem, content: 'Option 2'},
+            {kind: CheckboxItem, disabled: true, content: 'Disabled'},
+            {kind: CheckboxItem, content: 'Option 4', checked: true}
         ]}
     ]
 ```
 
 ![](../../assets/checkbox-items.png)
 
-## moon.FormCheckbox
+## moonstone/FormCheckbox
 
-[moon.FormCheckbox]($api/#/kind/moon.FormCheckbox) extends
-`moon.Checkbox`, providing a labeled checkbox (similar to `moon.CheckboxItem`)
-for use in form layouts.  Unlike `moon.CheckboxItem`, `moon.FormCheckbox` has a
-circular "tap target" area that is always visible, regardless of whether the
-checkbox is currently checked.
+[moonstone/FormCheckbox]($api/#/kind/moonstone/FormCheckbox/FormCheckbox)
+extends `moonstone/Checkbox`, providing a labeled checkbox (similar to
+`moonstone/CheckboxItem`) for use in form layouts.  Unlike
+`moonstone/CheckboxItem`, `moonstone/FormCheckbox` has a circular "tap target"
+area that is always visible, regardless of whether the checkbox is currently
+checked.
 
 ```javascript
+    var
+        kind = require('enyo/kind'),
+        Divider = require('moonstone/Divider'),
+        FormCheckbox = require('moonstone/FormCheckbox');
+
     components: [
-        {kind: "moon.Divider", content: "FormCheckbox Items (Default)"},
-        {kind: "moon.FormCheckbox", content: "Option 1", checked: true,
-            onchange: "itemChanged"},
-        {kind: "moon.FormCheckbox", content: "Option 2", onchange: "itemChanged"},
-        {kind: "moon.FormCheckbox", disabled: true, content: "Disabled",
-            onchange: "itemChanged"}
+        {kind: Divider, content: 'FormCheckbox Items (Default)'},
+        {kind: FormCheckbox, content: 'Option 1', checked: true,
+            onchange: 'itemChanged'},
+        {kind: FormCheckbox, content: 'Option 2', onchange: 'itemChanged'},
+        {kind: FormCheckbox, disabled: true, content: 'Disabled',
+            onchange: 'itemChanged'}
     ]
 ```
 

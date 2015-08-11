@@ -26,17 +26,21 @@ button).
 
 Note that the focused state may be animated.
 
-## moon.Button
+## moonstone/Button
 
-[moon.Button]($api/#/kind/moon.Button) derives directly from
-[enyo.Button]($api/#/kind/enyo.Button) and provides the same basic
+[moonstone/Button]($api/#/kind/moonstone/Button/Button) derives directly from
+[enyo/Button]($api/#/kind/enyo/Button/Button) and provides the same basic
 functionality, along with a dose of Moonstone visual styling.
 
-When a `moon.Button` is tapped, it generates an `ontap` event; you may respond
+When a `moonstone/Button` is tapped, it generates an `ontap` event; you may respond
 to the event by specifying a handler method, e.g.:
 
 ```javascript
-    {kind: "moon.Button", content: "tap me", ontap: "buttonTapped"},
+    var
+        kind = require('enyo/kind'),
+        Button = require('moonstone/Button');
+
+    {kind: Button, content: 'tap me', ontap: 'buttonTapped'},
 
     ...
 
@@ -46,27 +50,33 @@ to the event by specifying a handler method, e.g.:
 ```
 
 You may apply a caption to a button by wrapping it inside a
-[moon.CaptionDecorator]($api/#/kind/moon.CaptionDecorator):
+[moonstone/CaptionDecorator]($api/#/kind/moonstone/CaptionDecorator/CaptionDecorator):
 
 ```javascript
+    var
+        kind = require('enyo/kind'),
+        Button = require('moonstone/Button'),
+        CaptionDecorator = require('moonstone/CaptionDecorator'),
+        Scroller = require('moonstone/Scroller');
+
     components: [
-        {name: 'scroller', kind: 'moon.Scroller', fit: true, touch: true, components: [
-            {classes: "moon-button-sample-wrapper", components: [
-                {kind: "moon.CaptionDecorator", side: "top", content: "Pow", components: [
-                    {name: "Captioned Button A", kind: "moon.Button",
-                        content: "A", ontap: "buttonTapped"}
+        {name: 'scroller', kind: Scroller, fit: true, touch: true, components: [
+            {classes: 'moon-button-sample-wrapper', components: [
+                {kind: CaptionDecorator, side: 'top', content: 'Pow', components: [
+                    {name: 'Captioned Button A', kind: Button,
+                        content: 'A', ontap: 'buttonTapped'}
                 ]},
-                {kind: "moon.CaptionDecorator", side: "right", content: "Boom", components: [
-                    {name: "Captioned Button B", kind: "moon.Button",
-                        content: "B", ontap: "buttonTapped"}
+                {kind: CaptionDecorator, side: 'right', content: 'Boom', components: [
+                    {name: 'Captioned Button B', kind: Button,
+                        content: 'B', ontap: 'buttonTapped'}
                 ]},
-                {kind: "moon.CaptionDecorator", side: "bottom", content: "Crash", components: [
-                    {name: "Captioned Button C", kind: "moon.Button",
-                        content: "C", ontap: "buttonTapped"}
+                {kind: CaptionDecorator, side: 'bottom', content: 'Crash', components: [
+                    {name: 'Captioned Button C', kind: Button,
+                        content: 'C', ontap: 'buttonTapped'}
                 ]},
-                {kind: "moon.CaptionDecorator", side: "left", content: "Bang", components: [
-                    {name: "Captioned Button D", kind: "moon.Button",
-                        content: "D", ontap: "buttonTapped"}
+                {kind: CaptionDecorator, side: 'left', content: 'Bang', components: [
+                    {name: 'Captioned Button D', kind: Button,
+                        content: 'D', ontap: 'buttonTapped'}
                 ]}
             ]}
         ]}
@@ -78,22 +88,26 @@ You may apply a caption to a button by wrapping it inside a
 You may create a button with smaller visible dimensions (but a normal-sized tap
 target) by setting `small: true` when declaring the button.
 
-## moon.IconButton
+## moonstone/IconButton
 
-[moon.IconButton]($api/#/kind/moon.IconButton), which extends the
-[moon.Icon]($api/#/kind/moon.Icon) kind, provides a button with an image
-inside.
+[moonstone/IconButton]($api/#/kind/moonstone/IconButton/IconButton), which
+extends the [moonstone/Icon]($api/#/kind/moonstone/Icon/Icon) kind, provides a
+button with an image inside.
 
 ```javascript
+    var
+        kind = require('enyo/kind'),
+        IconButton = require('moonstone/IconButton');
+
     components: [
-        {kind: "moon.IconButton", src: "assets/icon-list.png",
-            ontap: "buttonTapped"},
-        {kind: "moon.IconButton", src: "assets/icon-list.png",
-            ontap: "buttonTapped", disabled: true}
+        {kind: IconButton, src: 'assets/icon-list.png',
+            ontap: 'buttonTapped'},
+        {kind: IconButton, src: 'assets/icon-list.png',
+            ontap: 'buttonTapped', disabled: true}
     ]
 ```
 
-![_moon.IconButton_](../../assets/icon-buttons.png)
+![_moonstone/IconButton_](../../assets/icon-buttons.png)
 
-To create a button with an image and accompanying text inside, use a `moon.Icon`
-as a component inside a `moon.Button`.
+To create a button with an image and accompanying text inside, use a
+`moonstone/Icon` as a component inside a `moonstone/Button`.
