@@ -1,32 +1,40 @@
 % Radio Items (Radio Buttons)
 
-## moon.RadioItem
+## moonstone/RadioItem
 
-[moon.RadioItem]($api/#/kind/moon.RadioItem) is a
-[moon.Button]($api/#/kind/moon.Button) designed to go inside a
-[moon.RadioItemGroup]($api/#/kind/moon.RadioItemGroup), a horizontally-oriented
-group of items in which tapping on one item will release any previously-tapped
-items.
+[moonstone/RadioItem]($api/#/kind/moonstone/RadioItem/RadioItem) is a
+[moonstone/Button]($api/#/kind/moonstone/Button/Button) designed to go inside a
+[moonstone/RadioItemGroup]($api/#/kind/moonstone/RadioItemGroup/RadioItemGroup),
+a horizontally-oriented group of items in which tapping on one item will release
+any previously-tapped items.
 
 Let's look at how a radio item group works.
 
 ```javascript
-    enyo.kind({
-        name: "moon.sample.RadioItemSample",
-        classes: "moon enyo-unselectable enyo-fit",
-        kind: "FittableRows",
+    var
+        kind = require('enyo/kind'),
+        FittableRows = require('layout/FittableRows'),
+        BodyText = require('moonstone/BodyText'),
+        Divider = require('moonstone/Divider'),
+        RadioItem = require('moonstone/RadioItem'),
+        RadioItemGroup = require('moonstone/RadioItemGroup');
+
+    module.exports = kind({
+        name: 'RadioItemSample',
+        classes: 'moon enyo-unselectable enyo-fit',
+        kind: FittableRows,
         components: [
             {fit: true, components: [
-                {kind: "moon.Divider", content: "Radio Items"},
-                {kind: "moon.RadioItemGroup", onActivate: "buttonActivated", components: [
-                    {content: "Cat"},
-                    {content: "Dog"},
-                    {content: "Whale", disabled: true},
-                    {content: "Monte Verde Golden Toad"}
+                {kind: Divider, content: 'Radio Items'},
+                {kind: RadioItemGroup, onActivate: 'buttonActivated', components: [
+                    {content: 'Cat'},
+                    {content: 'Dog'},
+                    {content: 'Whale', disabled: true},
+                    {content: 'Monte Verde Golden Toad'}
                 ]}
             ]},
-            {kind: "moon.Divider", content:"Result"},
-            {kind: "moon.BodyText", name: "result", content: "No action yet."}
+            {kind: Divider, content: 'Result'},
+            {kind: BodyText, name: 'result', content: "No action yet."}
         ],
         rendered: function() {
             this.inherited(arguments);
@@ -39,7 +47,7 @@ Let's look at how a radio item group works.
                 return;
             }
 
-            str += (inEvent.originator.getActive() && inEvent.originator.kind === "moon.RadioItem")
+            str += (inEvent.originator.getActive() && inEvent.originator instanceof RadioItem)
                 ? originator.getContent() : originator.name;
             str +=  '" item is selected.';
 
@@ -48,7 +56,7 @@ Let's look at how a radio item group works.
     });
 ```
 
-![_Radio Item Group With Nothing Selected_](../../assets/radio-item-group-no-selection.png)
+![_Radio Item Group with Nothing Selected_](../../assets/radio-item-group-no-selection.png)
 
 Notice that we have one handler method for the entire group.  When an item is
 tapped (or "activated"), we are able to identify the source of the event using
@@ -57,6 +65,6 @@ tapped (or "activated"), we are able to identify the source of the event using
 ![](../../assets/radio-item-group-with-selection.png)
 
 Also note that we don't have to explicitly declare the kind for our radio items.
-When a new control is added to a `moon.RadioItemGroup`, its kind defaults to
-`moon.RadioItem`.  (You can change this behavior by explicitly setting the
+When a new control is added to a `moonstone/RadioItemGroup`, its kind defaults
+to `moonstone/RadioItem`.  (You can change this behavior by explicitly setting the
 `defaultKind` property of the radio group.)
