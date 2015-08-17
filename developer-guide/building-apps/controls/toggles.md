@@ -1,20 +1,24 @@
 % Toggles
 
-## moon.ToggleText
+## moonstone/ToggleText
 
-[moon.ToggleText]($api/#/kind/moon.ToggleText), a control that inherits from
-[moon.Checkbox]($api/#/kind/moon.Checkbox), looks like a switch with labels for
-two states.  Each time it is tapped, it switches its state and fires an
-`onChange` event.
+[moonstone/ToggleText]($api/#/kind/moonstone/ToggleText/ToggleText), a control
+that inherits from [moonstone/Checkbox]($api/#/kind/moonstone/Checkbox/Checkbox),
+looks like a switch with labels for two states.  Each time it is tapped, it
+switches its state and fires an `onChange` event.
 
 ```javascript
-    {kind: "moon.ToggleText", onContent: "foo", offContent: "bar",
-        onChange: "toggleTextToggle"},
+    var
+        kind = require('enyo/kind'),
+        ToggleText = require('moonstone/ToggleText');
+
+    {kind: ToggleText, onContent: 'foo', offContent: 'bar',
+        onChange: 'toggleTextToggle'},
 
     ...
 
     toggleTextToggle: function(inSender, inEvent) {
-        this.log("Toggled to value " + inEvent.value);
+        this.log('Toggled to value ' + inEvent.value);
     }
 ```
 
@@ -22,7 +26,11 @@ You may customize the appearance of the control's "on" state by setting the
 background color as a CSS style:
 
 ```javascript
-    {kind: "moon.ToggleText", style: "background-color: #35A8EE;"}
+    var
+        kind = require('enyo/kind'),
+        ToggleText = require('moonstone/ToggleText');
+
+    {kind: ToggleText, style: 'background-color: #35A8EE;'}
 ```
 
 Finally, you may determine whether the toggle is currently "on" by querying its
@@ -30,59 +38,68 @@ Finally, you may determine whether the toggle is currently "on" by querying its
 
 ```javascript
     queryToggleValue: function() {
-        return this.$.toggleText.get("value");
+        return this.$.toggleText.get('value');
     }
 ```
 
-## moon.ToggleSwitch
+## moonstone/ToggleSwitch
 
-[moon.ToggleSwitch]($api/#/kind/moon.ToggleSwitch), which also inherits from
-`moon.Checkbox`, is a control that looks like a switch with an "on" state and an
-"off" state.  When the ToggleSwitch is tapped, it switches its state and fires
-an `onChange` event.
+[moonstone/ToggleSwitch]($api/#/kind/moonstone/ToggleSwitch/ToggleSwitch), which
+also inherits from `moonstone/Checkbox`, is a control that looks like a switch
+with an "on" state and an "off" state.  When the ToggleSwitch is tapped, it
+switches its state and fires an `onChange` event.
 
-`moon.ToggleSwitch` differs from `moon.ToggleText` mainly in that the "on" and
-"off" states are represented visually instead of textually.  (For a look at
-ToggleSwitch controls in various states, see the illustration for
-`moon.ToggleItem` below.)
+`moonstone/ToggleSwitch` differs from `moonstone/ToggleText` mainly in that the
+"on" and "off" states are represented visually instead of textually.  (For a
+look at ToggleSwitch controls in various states, see the illustration for
+`moonstone/ToggleItem` below.)
 
-## moon.ToggleItem
+## moonstone/ToggleItem
 
-[moon.ToggleItem]($api/#/kind/moon.ToggleItem) derives from
-[moon.CheckboxItem]($api/#/kind/moon.CheckboxItem) and provides a convenient
-way to combine a ToggleSwitch with a text label.
+[moonstone/ToggleItem]($api/#/kind/moonstone/ToggleItem/ToggleItem) derives from
+[moonstone/CheckboxItem]($api/#/kind/moonstone/CheckboxItem/CheckboxItem) and
+provides a convenient way to combine a ToggleSwitch with a text label.
 
 ```javascript
+    var
+        kind = require('enyo/kind'),
+        Divider = require('moonstone/Divider'),
+        ToggleItem = require('moonstone/ToggleItem');
+
     components: [
-        {kind: "moon.Divider", content: "Toggle Items"},
-        {kind: "moon.ToggleItem", content: "Option 1", checked: true,
-            onchange: "itemChanged"},
-        {kind: "moon.ToggleItem", content: "Option 2", onchange: "itemChanged"},
-        {kind: "moon.ToggleItem", disabled: true, content: "Disabled",
-            onchange: "itemChanged"},
-        {kind: "moon.ToggleItem", content: "Option 4", checked: true,
-            onchange: "itemChanged"}
+        {kind: Divider, content: 'Toggle Items'},
+        {kind: ToggleItem, content: 'Option 1', checked: true,
+            onchange: 'itemChanged'},
+        {kind: ToggleItem, content: 'Option 2', onchange: 'itemChanged'},
+        {kind: ToggleItem, disabled: true, content: 'Disabled',
+            onchange: 'itemChanged'},
+        {kind: ToggleItem, content: 'Option 4', checked: true,
+            onchange: 'itemChanged'}
     ]
 ```
 
 ![_Toggle Items_](../../assets/toggle-items.png)
 
 Toggle items may be used with Enyo's group API.  You may specify multiple toggle
-items as components within an [enyo.Group]($api/#/kind/enyo.Group) to create a
-control in which only one of the items may be in the "on" state (i.e.,
+items as components within an [enyo/Group]($api/#/kind/enyo/Group/Group) to
+create a control in which only one of the items may be in the "on" state (i.e.,
 `checked: true`) at a given time.
 
-## moon.ToggleButton
+## moonstone/ToggleButton
 
-[moon.ToggleButton]($api/#/kind/moon.ToggleButton), which extends
-[moon.Button]($api/#/kind/moon.Button), is a button with two states ("on" and
-"off"), each of which has an associated text label.  When the button is tapped,
-the state switches (as evidenced by updates to the text label and visual
-styling), and an `onChange` event is fired.
+[moonstone/ToggleButton]($api/#/kind/moonstone/ToggleButton/ToggleButton), which
+extends [moonstone/Button]($api/#/kind/moonstone/Button/Button), is a button
+with two states ("on" and "off"), each of which has an associated text label.
+When the button is tapped, the state switches (as evidenced by updates to the
+text label and visual styling), and an `onChange` event is fired.
 
 ```javascript
-    {kind: "moon.ToggleButton", toggleOnLabel: "wifi is on",
-        toggleOffLabel: "wifi is off", ontap: "buttonTapped"}
+    var
+        kind = require('enyo/kind'),
+        ToggleButton = require('moonstone/ToggleButton');
+
+    {kind: ToggleButton, toggleOnLabel: 'wifi is on',
+        toggleOffLabel: 'wifi is off', ontap: 'buttonTapped'}
 ```
 
 ![_Toggle Button (On)_](../../assets/toggle-button-on.png)
