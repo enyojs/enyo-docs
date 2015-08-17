@@ -14,8 +14,8 @@ a child should send events, which the parent may choose to handle or not handle.
 While sending events from child to parent is the standard paradigm in Enyo, in
 some situations the implementation of this model can result in inefficient and
 unwieldy code.  Thus an alternative method of communication exists--this
-involves the use of [enyo.Signals]($api/#/kind/enyo.Signals) and is discussed at
-the end of the current document.
+involves the use of [enyo/Signals]($api/#/kind/enyo/Signals/Signals) and is
+discussed at the end of the current document.
 
 ## Sending Events
 
@@ -33,7 +33,7 @@ For each event registered in a component's `events` block, a helper function
 `do<EventName>(inEvent)` is created on the kind, which the component may call to
 send the event up the component tree.  This function takes an optional `inEvent`
 parameter, which can contain event-specific information to be passed to the
-handler.  For example, to send the `"onStateChanged"` event from the example
+handler.  For example, to send the `onStateChanged` event from the example
 above, a component would call
 
 ```javascript
@@ -74,8 +74,8 @@ children.  For example:
 ```
 
 * `inSender` is the immediate sender of the event--that is, the last
-    [enyo.Component]($api/#/kind/enyo.Component) to touch the event before
-    passing it to `this`.
+    [enyo/Component]($api/#/kind/enyo/Component/Component) to touch the event
+    before passing it to `this`.
 
 * `inEvent` is an object that contains event data.  For DOM events, this is the
     standard DOM event object.  For custom events, it's a custom object.
@@ -153,7 +153,7 @@ If you need more sophisticated handling, you can use the `inSender` and
 ## DOM Events
 
 In Enyo, DOM events are allowed to bubble all the way up to `document`, where
-they are handled by `enyo.dispatcher`.  The dispatcher figures out where to send
+they are handled by `enyo/dispatcher`.  The dispatcher figures out where to send
 the event and provides hooks for various bits of event processing.
 
 Whenever possible, the dispatcher avoids disturbing original DOM events.  To
@@ -193,11 +193,14 @@ The following DOM events are handled by Enyo:
 * animationEnd
 
 If there are additional DOM events that you want Enyo to handle, use the
-`enyo.dispatcher.listen()` method.  For example, the following code sets up a
+`listen()` method on `enyo/dispatcher`.  For example, the following code sets up a
 handler for an event called `myEvent`:
 
 ```javascript
-    enyo.dispatcher.listen(document, 'myEvent', handleMyEvent);
+    var
+        dispatcher = require('enyo/dispatcher');
+
+    dispatcher.listen(document, 'myEvent', handleMyEvent);
 ```
 
 Here the first parameter is an event receiver to listen on (typically `document`
@@ -315,7 +318,7 @@ Moonstone, those kinds will handle keyboard input automatically.  However, there
 may be situations--in some games, for instance--in which you want your app to
 respond directly to keyboard-related DOM events.
 
-To do this, you can use an `enyo.Signals` instance to listen for the events
+To do this, you can use an `enyo/Signals` instance to listen for the events
 `onkeydown`, `onkeypress`, and `onkeyup`.  Each keystroke fires an `onkeydown`
 and an `onkeyup`; if the keystroke generates a character, there will also be an
 `onkeypress` event fired between `onkeydown` and `onkeyup`.
@@ -331,10 +334,10 @@ event up to a common parent (in the worst case, the top-level app kind) and then
 pass the event back down to the target component.  Because this may require a
 significant amount of plumbing, Enyo provides an alternative.
 
-[enyo.Signals]($api/#/kind/enyo.Signals) provides a means of broadcasting and
-subscribing to global messages, bypassing the normal component tree.  Within the
-Enyo framework itself, DOM events that have no node targets are broadcast as
-signals.  These events include window events, like `onload` and
+[enyo/Signals]($api/#/kind/enyo/Signals/Signals) provides a means of
+broadcasting and subscribing to global messages, bypassing the normal component
+tree.  Within the Enyo framework itself, DOM events that have no node targets
+are broadcast as signals.  These events include window events, like `onload` and
 `onbeforeunload`, and events that occur directly on `document`, like
 `onkeypress` if `document` has the focus.  (We'll see an example of this in the
 following section, [Handling Keyboard Input with
@@ -343,10 +346,13 @@ hooking up non-Enyo events (e.g., Cordova/PhoneGap events) to be handled by Enyo
 kinds in application code.
 
 To broadcast a message, a sender simply invokes the static `send()` function on
-`enyo.Signals`:
+`enyo/Signals`:
 
 ```javascript
-    enyo.Signals.send(inEventName, inEvent);
+    var
+        Signals = require('enyo/Signals');
+
+    Signals.send(inEventName, inEvent);
 ```
 
 * `inEventName` is the event name (including the `'on'` prefix).
@@ -382,7 +388,7 @@ For example, the following kind...
 ...will handle signal events dispatched by a call like this:
 
 ```javascript
-        enyo.Signals.send('onTransmission');
+        Signals.send('onTransmission');
 ```
 
 Note that, like all Enyo message handlers, the signal handler (`transmission()`)
@@ -398,8 +404,8 @@ Some important things to note:
 * All Signals instances that register a handler for a particular message name
     will receive the message.
 
-* The `send()` method is on the `enyo.Signals` kind itself, not an instance of a
-    Signals component.  
+* The `send()` method is on `enyo/Signals` itself, not an instance of a Signals
+    component.
 
 * Do not abuse Signals.  Coupling objects with global communication is considered
     evil.
@@ -415,7 +421,7 @@ Signals to implement some simple handling of keyboard events:
         FittableRows = require('layout/FittableRows'),
         Signals = require('enyo/Signals');
 
-    enyo.kind({
+    module.exports = kind({
         name: 'KeyboardEventExample',
         kind: FittableRows,
         classes: 'onyx',
