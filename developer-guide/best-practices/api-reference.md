@@ -16,56 +16,68 @@ information comes from comments in JSDoc format, found in the JavaScript source
 code of Enyo and its related libraries (e.g., Moonstone, Layout, Onyx).
 
 To begin browsing the API, follow one of the top-level navigation links.  For
-example, if you follow the "namespaces" link, you'll find all the public
-elements of the framework, sorted according to namespace--i.e., `enyo`, `moon`
-(for Moonstone), or `onyx`.  Each namespace is broken down into its constituent
-parts, which may include controls (UI components), kinds (non-UI components),
-methods and properties that exist directly on the namespace, mixins (shared
-chunks of functionality that may be added to individual kinds as needed), and
-sub-namespaces (e.g., the focus-state management library, `enyo.Spotlight`).
+example, if you follow the "Modules" link, you'll find all the public elements
+of the framework, grouped by library (e.g., `enyo`, `moonstone` or `onyx`).
+Under each library you'll find its constituent modules, which may include
+controls (UI components), kinds (non-UI components), mixins (shared chunks of
+functionality that may be added to individual kinds as needed), and singleton
+objects.
 
 ## Documenting Code for the API Reference
 
 ### What to Document
 
-When contributing a new kind, be sure to include appropriate documentation in
-JSDoc format.  This will typically include a summary of the kind, along with
-comments describing all public properties, methods, and events.  Details on how
-these API elements should be documented are provided in the following section,
-[How to Document](#how-to-document).
+When contributing a new module, be sure to include appropriate documentation in
+JSDoc format.  This will typically include a summary of each kind in the module,
+along with comments describing all public properties, methods, and events.
+Details on how these API elements should be documented are provided in the
+following section, [How to Document](#how-to-document).
 
-Members that are private to the kind should be marked with the `@private` tag,
+Members that are private to each kind should be marked with the `@private` tag,
 but any additional documentation is optional.
 
 ### How to Document
 
 Here are some guidelines to follow when creating (and formatting) documentation
-for Enyo kinds.
+for Enyo modules and the kinds they export.
 
 #### Summary/Description
 
 When documenting a kind, start with a brief summary of what the kind is and what
 it does.  Then provide additional information via JSDoc tags.
 
+The following example illustrates the standard set of tags for an Enyo kind:
+
 ```javascript
     /**
-    * {@link moon.ContextualPopup} is a popup window control with Moonstone
-    * visual styling applied. It extends {@link enyo.Popup} and is designed
-    * to be used with {@link moon.ContextualPopupDecorator}.
+    * {@link module:moonstone/ContextualPopup~ContextualPopup} is a popup window
+    * control with Moonstone visual styling applied. It extends
+    * {@link module:enyo/Popup~Popup} and is designed to be used with
+    * {@link module:moonstone/ContextualPopupDecorator~ContextualPopupDecorator}.
     *
-    * @class moon.ContextualPopup
-    * @extends enyo.Popup
+    * @class ContextualPopup
+    * @extends module:enyo/Popup~Popup
     * @ui
     * @public
     */
 ```
 
-This example shows the standard set of tags for an Enyo kind:
+* `@link` tags are used to generate hypertext links to a kind's location in the
+    API Reference.  Looking at the content of the `@link` tag, we see that the
+    first part (e.g., `module:moonstone/ContextualPopup`) specifies the name of
+    the module, whereas the second part (e.g., `~ContextualPopup`) refers to the
+    specific kind (exported by the just-named module) that is currently under
+    discussion.  In practice, most modules export a kind with the same name (in
+    this case, `"ContextualPopup"`), but some modules also export additional
+    kinds, such as customized support mixins.  The full `@link` syntax gives us
+    a way to differentiate between the module-named kinds and the additional
+    kinds.
 
-* `@class` indicates the kind name, including namespace.
+* `@class` indicates the kind name.
 
 * `@extends` indicates the superkind, i.e., the kind from which the current kind
-    is derived.
+    is derived.  Its content follows the same syntax as `@link`, but without the
+    enclosing braces.
 
 * `@ui` is a tag applied to UI components.  For non-UI components, there is no
     equivalent tag; just omit the `'@ui'`.
@@ -146,8 +158,8 @@ description of the data being returned.
 
 (Notice that the Boolean values `true` and `false` are formatted with backticks.
 When documenting Enyo source code, backticks should also be placed around the
-names of kinds (if the namespace is included--e.g., `enyo.Control`,
-`moon.Button`), properties, methods, and CSS classes.)
+names of modules--e.g., `enyo/Control`, `moonstone/Button`)--as well as
+properties, methods, and CSS classes.)
 
 In some cases, in addition to describing what a method does, it is helpful to
 specify when it is used.
@@ -175,7 +187,7 @@ JavaScript file, before the definition of the kind that generates them.
     * Fires when either the main drawer or the control drawer is activated. No
     * event-specific data is sent with this event.
     *
-    * @event moon.Drawer#onActivate
+    * @event module:moonstone/Drawer~Drawer#onActivate
     * @type {Object}
     * @public
     */
@@ -184,8 +196,8 @@ JavaScript file, before the definition of the kind that generates them.
 In the example above, we see the basic JSDoc tags associated with an event.
 
 * `@event` contains the name of the event `(onActivate)`, along with its
-    generating kind `(moon.Drawer)`, with the two being separated by the `#`
-    character.
+    generating kind `(moonstone/Drawer~Drawer)`, with the two being separated by
+    the `#` character.
 
 * `@type` contains the data type; for events, this should be `Object`, since
     Enyo events are passed around as objects.
@@ -199,7 +211,7 @@ handler method might find useful, e.g.:
     /**
     * Fires once per row at render time.
     *
-    * @event enyo.List#onSetupItem
+    * @event module:enyo/List~List#onSetupItem
     * @type {Object}
     * @property {Number} index - The current row index.
     * @public
@@ -208,7 +220,7 @@ handler method might find useful, e.g.:
 
 Here the `@property` tag indicates that the event object has a property called
 `index`, which contains the index of the row currently being rendered by an
-`enyo.List`.  This property may be accessed by methods that handle the
+`enyo/List`.  This property may be accessed by methods that handle the
 `onSetupItem` event.
 
 ### Formatting (Markdown)
