@@ -4,14 +4,14 @@
 	},
 	"source": {
 		"include": [
-			"../enyo/lib",
+			"../enyo/src",
 			"../enyo/docs/external.jsdoc",
-			"../moonstone/lib",
-			"../moonstone-extra/lib",
-			"../layout/lib",
-			"../spotlight/lib",
-			"../onyx/lib",
-			"../canvas/lib"
+			"../moonstone/src",
+			"../moonstone-extra/src",
+			"../layout/src",
+			"../spotlight/src",
+			"../onyx/src",
+			"../canvas/src"
 		],
 		"includePattern": ".+\\.js(doc)?$",
 		"excludePattern": "package\\.js"
