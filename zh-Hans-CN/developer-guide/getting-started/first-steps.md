@@ -8,7 +8,7 @@ Windows, Mac, 或者 Linux 环境。仅需要一些简单的工具就可以弄�
 ### 文本编辑
 
 写 Enyo 代码，只需要文本编辑器。任何一种编辑器都足够用，包括基础的自由软件如
-[Notepad++](http://notepad-plus-plus.org/)（Windows） 或者
+[Notepad++](http://notepad-plus-plus.org/)（Windows）或者
 [TextWrangler](http://www.barebones.com/products/textwrangler/)（Mac）。
 对那些物有所值的软件，Enyo 团队倾向用 [Sublime Text](http://www.sublimetext.com/)，
 该软件可在 Mac 和 Windows 下使用，或者只能在 Mac 下使用
