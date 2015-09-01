@@ -1,12 +1,12 @@
 % Controls
 
-## enyo.Control
+## enyo/Control
 
-[enyo.Control]($api/#/kind/enyo.Control) is a component that controls a DOM node
-(i.e., an element in the user interface).  Controls are generally visible and
-the user often interacts with them directly.  Things like buttons and input
-boxes are obviously controls, but in Enyo a control may become as complex as an
-entire application.
+[enyo/Control]($api/#/kind/enyo/Control/Control) is a component that controls a
+DOM node (i.e., an element in the user interface).  Controls are generally
+visible and the user often interacts with them directly.  Things like buttons
+and input boxes are obviously controls, but in Enyo a control may become as
+complex as an entire application.
 
 ## The Basics
 
@@ -50,10 +50,10 @@ inside a `TrafficLight` control:
     });
 ```
 
-The `Circle` has a `kind` value of `"Control"` and therefore inherits and
-extends the behavior of `enyo.Control`.  Since a control is a component (i.e.,
-`enyo.Control` extends [enyo.Component]($api/#/kind/enyo.Component)), it can
-publish properties, as is done here.
+The `Circle` has a `kind` value of `Control` and therefore inherits and
+extends the behavior of `enyo/Control`.  Since a control is a component (i.e.,
+`enyo/Control` extends [enyo/Component]($api/#/kind/enyo/Component/Component)),
+it can publish properties, as is done here.
 
 ## Manipulating a Control's DOM Node
 
@@ -120,7 +120,7 @@ controls and ignore the value of `content`.
 Enyo controls can handle common DOM events.  In a component configuration block,
 specify the handler for a DOM event just as you would for any other Enyo
 event--with a named delegate.  The `TrafficLight` kind does this for its circle
-controls by setting `ontap: "circleTap"`.  Since `TrafficLight` owns its
+controls by setting `ontap: 'circleTap'`.  Since `TrafficLight` owns its
 circles, it will process their events; thus, `circleTap` should be the name of a
 handler method inside `TrafficLight`.
 
@@ -149,7 +149,7 @@ the TrafficLight.
 
 ## Lifecycle Methods: hasNode() and rendered()
 
-Since `enyo.Control` is a kind of Component, it inherits the `create()` and
+Since `enyo/Control` is a kind of Component, it inherits the `create()` and
 `destroy()` methods that we saw in [Components](components.html), as well as the
 `constructor()` method that we saw in [Kinds](kinds.html).  It also introduces a
 few additional methods for managing its representation in the DOM. 

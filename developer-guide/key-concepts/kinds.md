@@ -1,24 +1,24 @@
 % Kinds
 
-## enyo.kind()
+## enyo/kind
 
-[enyo.kind(inProps)]($api/#/namespace/enyo.kind) is the Enyo framework's method
-for generating kinds.  A kind is a constructor-with-prototype (like a class)
-that has advanced features like prototype-chaining (inheritance).
+[enyo/kind]($api/#/module/enyo/kind) is the Enyo framework's module for
+generating kinds.  A kind is a constructor-with-prototype (like a class) that
+has advanced features like prototype-chaining (inheritance).
 
 A plug-in system is included for extending the abilities of the kind generator,
 and constructors are allowed to perform custom operations when subclassed.
 
-In this article, we look at several things that happen when `enyo.kind()` is
-invoked.  To learn about what happens once you have an instantiated object, see
-[Objects and Published Properties](objects-and-published-properties.html) and
+In this article, we look at several things that happen when `kind()` is invoked.
+To learn about what happens once you have an instantiated object, see [Objects
+and Published Properties](objects-and-published-properties.html) and
 [Components](components.html).
 
 ## Special Property Names
 
-Generally, the properties defined in the passed-in `inProps` object are copied
-directly to the	generated prototype, but certain property names trigger special
-processing.	Some examples of special properties are:
+Generally, the properties defined in the configuration object passed to `kind()`
+are copied directly to the	generated prototype, but certain property names
+trigger special processing.	Some examples of special properties are:
 
 * `name`: Defines the name of the created constructor in the global namespace
     (intermediate objects are created automatically).  `name` is not copied
@@ -49,9 +49,9 @@ processing.	Some examples of special properties are:
             kind = require('enyo/kind'),
             Object = require('enyo/Object');
 
-        // Create a function MyKind with a prototype, derived from enyo.Object.
+        // Create a function MyKind with a prototype, derived from enyo/Object.
         // MyKind.prototype.kindName is set to 'MyKind'.
-        // MyKind.prototype.base is set to 'enyo.Object'.
+        // MyKind.prototype.base is set to 'enyo/Object'.
         module.exports = kind({
             name: 'MyKind',
             kind: Object
@@ -62,7 +62,7 @@ processing.	Some examples of special properties are:
     is actually stored on the prototype as `_constructor`.
 
     ```javascript
-        // Create a function MyKind with a prototype, derived from enyo.Object.
+        // Create a function MyKind with a prototype, derived from enyo/Object.
         // _constructor_ is called when an instance is created.
         var
             kind = require('enyo/kind'),
@@ -109,7 +109,7 @@ processing.	Some examples of special properties are:
     any instances of the kind exist.
 
 Certain kinds in the framework define their own special properties, e.g., the
-`published` property supported by [enyo.Object]($api/#/kind/enyo.Object).
+`published` property supported by [enyo/CoreObject/Object]($api/#/kind/enyo/CoreObject/Object).
 
 ## Lifecycle of a Trivial Kind
 
@@ -120,7 +120,7 @@ A trivial kind has a simple lifecycle:
         kind = require('enyo/kind');
 
     module.exports = kind({
-        name: MyKind,
+        name: 'MyKind',
         kind: null, // otherwise it will default to 'Control'
         constructor: function() {
             // do any initialization tasks
@@ -148,7 +148,7 @@ from the old kind, you can call the overridden method using `this.inherited()`:
     var
         kind = require('enyo/kind');
 
-    module.exports = enyo.kind({
+    module.exports = kind({
         name: 'MyNextKind',
         kind: MyKind,
         constructor: function() {

@@ -1,10 +1,10 @@
 % Components
 
-The Component object, [enyo.Component]($api/#/kind/enyo.Component), is the basic
-building block of the Enyo framework.  Components encapsulate rich behavior and
-may be used together as modules to create complex applications.  When coding an
-Enyo application, you'll create many of your own component and control kinds.
-The information in this document should help you get started.
+The Component object, [enyo/Component]($api/#/kind/enyo/Component/Component), is
+the basic building block of the Enyo framework.  Components encapsulate rich
+behavior and may be used together as modules to create complex applications.
+When coding an Enyo application, you'll create many of your own component and
+control kinds.  The information in this document should help you get started.
 
 ## The Basics
 
@@ -19,6 +19,7 @@ example:
     var
         kind = require('enyo/kind'),
         Component = require('enyo/Component');
+        utils = require('enyo/utils');
 
     module.exports = kind({
         name: 'RandomizedTimer',
@@ -40,7 +41,7 @@ example:
             this.inherited(arguments);
         },
         start: function() {
-            this.job = window.setInterval(enyo.bind(this, 'timer'), this.baseInterval);
+            this.job = window.setInterval(utils.bind(this, 'timer'), this.baseInterval);
         },
         stop: function() {
             window.clearInterval(this.job);
@@ -59,14 +60,14 @@ example:
 ```
 
 As the name implies, this is a simple randomized timer component.  Its kind is
-`enyo.Component`, so it inherits and extends the behavior of the
-`enyo.Component` object.  It generates an event when the timer fires and exposes
-a couple of properties to control the firing frequency.  As you can see, it's
-straightforward to expose properties and events.
+`Component`, so it inherits and extends the behavior of `enyo/Component`.  It
+generates an event when the timer fires and exposes a couple of properties to
+control the firing frequency.  As you can see, it's straightforward to expose
+properties and events.
 
 ## Properties
 
-Exposed properties are placed in a `"published"` block and may include a default
+Exposed properties are placed in a `published` block and may include a default
 value.
 
 To retrieve a published property's value, call `get()`.  For example,
@@ -103,7 +104,7 @@ writer's discretion.
 
 ## Events
 
-Similarly, events are placed in an `"events"` block.  To fire an event, we call
+Similarly, events are placed in an `events` block.  To fire an event, we call
 the associated `"do"` method, another convenience provided by Enyo.  For
 example, to fire the `onTriggered` event, we call `doTriggered`.  You may pass a
 single argument to the `"do"` method--an event object that will be passed along
@@ -147,13 +148,13 @@ All components are considered to be private to their owner.
 
 Having addressed the issue of component ownership, we can return our attention
 to the `onTriggered` event.  Notice the string set for the `onTriggered` event
-in the `"timer"` configuration object.  This is the name of the method in
+in the `timer` configuration object.  This is the name of the method in
 `SimulatedMessage` (the owner of the timer) that will be called to handle the
 event.
 
 Events are delegated to the generating component's owner by way of this named
 delegate string.  This lets us avoid the pain of having an add/remove listener
-mechanism.  The first argument sent with every event is `"inSender"`, which is a
+mechanism.  The first argument sent with every event is `inSender`, which is a
 reference to the component that generated the event.  This argument facilitates
 code reuse since the same method can be used to handle multiple events
 distinguished by `inSender`.  The second argument, `inEvent`, is an object whose
@@ -233,9 +234,9 @@ provides that place, while also housing general cleanup code.
 
 **Note:** If you make a custom reference to a component that is not cleaned up
 by a `destroy()` method, then calling `destroy()` will not actually make that
-object subject to garbage collection.  For this reason, there is a
-`this.destroyed` flag on each component.  If `this.destroyed` is `true`, the
-component has been uninitialized and the reference should be removed.
+object subject to garbage collection.  For this reason, there is a `destroyed`
+flag on each component.  If `this.destroyed` is `true`, the component has been
+uninitialized and the reference should be removed.
 
 ## Summary
 

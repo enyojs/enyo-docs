@@ -1,12 +1,12 @@
 % Objects and Published Properties
 
-## enyo.Object
+## enyo/CoreObject/Object
 
-[enyo.Object]($api/#/kind/enyo.Object) implements the Enyo framework's property
-publishing system.  Published properties are declared in a hash called
-`published` within a call to [enyo.kind()]($api/#/namespace/enyo.kind).  To get
-the value of a published property, call `get(<propertyName>)`; to set the value,
-call `set(<propertyName>, value)`.
+[enyo/CoreObject/Object]($api/#/kind/enyo/CoreObject/Object) implements the Enyo
+framework's property publishing system.  Published properties are declared in a
+hash called `published` within a call to [kind()]($api/#/module/enyo/kind).  To
+get the value of a published property, call `get(<propertyName>)`; to set the
+value, call `set(<propertyName>, value)`.
 
 By convention, the setter for a published property will trigger an optional
 `<propertyName>Changed` method when called.
@@ -17,7 +17,7 @@ prototype, with a default value of 3:
 ```javascript
     var
         kind = require('enyo/kind'),
-        Object = require('enyo/Object');
+        Object = require('enyo/CoreObject/Object');
 
     module.exports = kind({
         name: 'MyObject',
@@ -77,9 +77,9 @@ share the same data in the same structure; they must also be the same
 returns a reference to the internal state, since if you then modify that object
 or array, you modify the same instance that's held inside the kind instance.
 
-You could work around this by overriding `get()` to have it use `enyo.clone()`
-to make a shallow copy of the object or array.  Then, if you pass that object
-into `set()`, it won't be considered equal to the internal one, since it's a
-different object in memory.  However, you would have a new problem in that the
-property-changed method will be called even if the two objects have all the same
-contents.
+You could work around this by overriding `get()` to have it use the `enyo/utils`
+module's `clone()` method to make a shallow copy of the object or array.  Then,
+if you pass that object into `set()`, it won't be considered equal to the
+internal one, since it's a different object in memory.  However, you would have
+a new problem in that the property-changed method will be called even if the two
+objects have all the same contents.
