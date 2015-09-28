@@ -114,7 +114,7 @@ instances of [moonstone/Item]($api/#/kind/moonstone/Item/Item).
 
 ![_Expandable List Item (Expanded)_](../../assets/expandable-list-item-expanded.png)
 
-## moon.ExpandablePicker
+## moonstone/ExpandablePicker
 
 One important subkind of `moonstone/ExpandableListItem` is
 [moonstone/ExpandablePicker]($api/#/kind/moonstone/ExpandablePicker/ExpandablePicker),
@@ -283,7 +283,7 @@ accordion in the group may be expanded at any given time.
 
 ## moonstone/Calendar
 
-Though not descended from `moon.ExpandableListItem`,
+Though not descended from `moonstone/ExpandableListItem`,
 [moonstone/Calendar]($api/#/kind/moonstone/Calendar/Calendar) does implement
 picker functionality in the form of a monthly calendar, from which the user may
 select a particular day.

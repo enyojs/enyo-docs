@@ -140,26 +140,28 @@ The examples in this document make use of the following CSS styles:
 Note that there are slight differences in how margins are handled, depending on
 the orientation of the drawer.
 
-## moonstone/Drawer and moonstone/Drawers
+## moonstone/Drawers/Drawer and moonstone/Drawers/Drawers
 
 The Moonstone library has its own implementation of drawer functionality, based
-on [moonstone/Drawer]($api/#/kind/moonstone/Drawer/Drawer) (which is **not** a
-subkind of `enyo/Drawer`) and [moonstone/Drawers]($api/#/kind/moonstone/Drawers/Drawers)
+on [moonstone/Drawers/Drawer]($api/#/kind/moonstone/Drawers/Drawer) (which is **not** a
+subkind of `enyo/Drawer`) and [moonstone/Drawers/Drawers]($api/#/kind/moonstone/Drawers/Drawers)
 (which is a container for `moonstone/Drawer` objects).
 
-`moonstone/Drawer` contains two areas for content--a main content area, where items
-declared in the `components` block live, and an optional `controlDrawer`, which
-houses any items declared in a `controlDrawerComponents` block.  In addition, in
-its `handle` property, `moonstone/Drawer` allows you to specify an activator control,
-which is displayed along with a styled label.
+`moonstone/Drawers/Drawer` contains two areas for content--a main content area,
+where items declared in the `components` block live, and an optional
+`controlDrawer`, which houses any items declared in a `controlDrawerComponents`
+block.  In addition, in its `handle` property, `moonstone/Drawers/Drawer` allows
+you to specify an activator control, which is displayed along with a styled
+label.
 
-`moonstone/Drawer` objects are designed to be placed inside a `moonstone/Drawers`
-container.  This is done by supplying an array of Drawer objects in the
-`drawers` property of the `moonstone/Drawers`.  The drawer handles are grouped
-together visually in the Drawers control; selecting a handle will activate the
-associated drawer, opening either the main content area or the control drawer
-(depending on how the Drawer is configured).
+`moonstone/Drawers/Drawer` objects are designed to be placed inside a
+`moonstone/Drawers/Drawers` container.  This is done by supplying an array of
+Drawer objects in the `drawers` property of the `moonstone/Drawers/Drawers`.
+The drawer handles are grouped together visually in the Drawers control;
+selecting a handle will activate the associated drawer, opening either the main
+content area or the control drawer (depending on how the Drawer is configured).
 
-Finally, note that a `moonstone/Drawers` may contain child components of any kind.
+Finally, note that a `moonstone/Drawers/Drawers` may contain child components of
+any kind.
 
-![_moonstone/Drawers with Handle_](../../assets/drawers-6.png)
+![_moonstone/Drawers/Drawers with Handle_](../../assets/drawers-6.png)

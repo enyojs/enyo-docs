@@ -67,7 +67,7 @@ popup from responding to events while the popup is showing:
 
 ## moonstone/Popup
 
-[moonstone/Popup]($api/#/kind/moonstone/Popup/Popup) is an `enyo.Popup` that
+[moonstone/Popup]($api/#/kind/moonstone/Popup/Popup) is an `enyo/Popup` that
 appears at the bottom of the screen and takes up the full screen width.  Its
 features include support for scrim behavior and z-index handling, along with
 Moonstone visual styling.

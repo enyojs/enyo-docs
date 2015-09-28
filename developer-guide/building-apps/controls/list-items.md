@@ -76,8 +76,8 @@ Spotlight.
 ### moonstone/ImageItem
 
 [moonstone/ImageItem]($api/#/kind/moonstone/ImageItem/ImageItem) combines an
-[enyo/Image]($api/#/kind/enyo/Image/Image) with a `moon.LabeledTextItem`.  By
-default, the image is positioned on the left side of the text.
+[enyo/Image]($api/#/kind/enyo/Image/Image) with a `moonstone/LabeledTextItem`.
+By default, the image is positioned on the left side of the text.
 
 ```javascript
     var
