@@ -6,14 +6,13 @@ with how the framework is organized and what each piece offers.
 In a given Enyo release, you will find the following folders:
 
 * **enyo** - The core
-* **lib** - Where all plugins and add-on libraries live
 * **moonstone** - A toolbox of UI components, optimized for TV
 * **onyx** - Enyo's original UI library, optimized for mobile devices
 * **spotlight** - A specialized library for handling focus state
 * **layout** - A set of layout components
 * **enyo-ilib** - A library providing localization services
 * **canvas** - Components for building HTML5-based canvas views
-* **extra** - Additional utility components
+* **enyo-dev** - A set of build tools for use throughout the development process
 
 ## Enyo
 
@@ -28,7 +27,6 @@ build on the Web stack in a modular way:
 * **Data Modeling and Data Binding** - Model, Collection, Binding, and more
 * **Basic HTML components** - Base UI
 * **Touch support** - Touch scroller and gesture simulation
-* **Package loader** - `enyo.depends()` and `package.js`
 
 These pieces are actually separable (it's easy to make micro-builds of Enyo),
 but we believe they form a useful working set, so we provide them together as
@@ -106,10 +104,13 @@ abstracts common canvas primitives as Enyo components:
 You can easily extend these to create complex graphical applications and games,
 such as our [Pirate Pig](http://enyojs.com/samples/piratepig) canvas demo app.
 
-## Extra
+## enyo-dev
 
-The "extra" library holds a number of useful utility-type components, which are
-used in various samples and demo applications.
+The `enyo-dev` module contains tools to help you throughout the development
+process, from quickly initializing an application project to packaging the app
+for distribution to end users.
+
+Read more about `enyo-dev` [here](https://github.com/enyojs/enyo-dev).
 
 ## Bootplate
 
