@@ -23,15 +23,19 @@ in-app-browser.  The Enyo library `enyo-cordova` encapsulates Cordova for all
 platforms, dynamically choosing the right version based on the device running
 the application (e.g., the webOS version of Cordova on webOS TVs).
 
-In addition, [Enyo signals]($api/#/kind/enyo.Signals) are set up for all
+In addition, [Enyo signals]($api/#/kind/enyo/Signals/Signals) are set up for all
 [Cordova-based events](http://docs.phonegap.com/en/2.7.0/index.html) for easy
 use within Enyo applications. For example:
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        Signals = require('enyo/Signals');
+
+    module.exports = kind({
         name: "App",
         components: [
-            {kind: "Signals", ondeviceready: "deviceready"},
+            {kind: Signals, ondeviceready: "deviceready"},
             ...
         ],
         deviceready: function(inSender, inEvent) {
@@ -67,16 +71,22 @@ above.
 ### ServiceRequest and LunaService
 
 Two components that allow for integration of webOS services into Enyo
-applications are `enyo.ServiceRequest` and `enyo.LunaService`.  They may be
-viewed as being analogous to `enyo.Ajax` and `enyo.WebService`, respectively.
+applications are [enyo-webos/ServiceRequest]($api/#/kind/enyo-webos/ServiceRequest/ServiceRequest)
+and [enyo-webos/LunaService]($api/#/kind/enyo-webos/LunaService/LunaService).
+They may be viewed as being analogous to [enyo/Ajax]($api/#/kind/enyo/Ajax/Ajax)
+and [enyo/WebService]($api/#/kind/enyo/WebService/WebService), respectively.
 
-ServiceRequest is based on `enyo.Async`; the constructor takes the service name,
-method, parameters, and an optional subscription flag.
+ServiceRequest is based on [enyo/Async]($api/#/kind/enyo/Async/Async); the
+constructor takes the service name, method, parameters, and an optional
+subscription flag.
 
 ```javascript
-    var request = new enyo.ServiceRequest({
-        service: "luna://com.palm.connectionmanager",
-        method: "getstatus"
+    var
+        ServiceRequest = require('enyo-webos/ServiceRequest');
+
+    var request = new ServiceRequest({
+        service: 'luna://com.palm.connectionmanager',
+        method: 'getstatus'
     });
     request.response(this, function(inSender, inResponse) {
         // service request succeeded with returned data within inResponse
@@ -88,11 +98,15 @@ Building upon this, LunaService provides a reusable component for interacting
 with webOS services.
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        LunaService = require('enyo-webos/LunaService');
+
+    module.exports = kind({
         name: "App",
         components: [
-            {name:"netstat", kind: "LunaService", service: "luna://com.palm.connectionmanager",
-                method: "getstatus", onResponse:"serviceResponse"},
+            {name: 'netstat', kind: LunaService, service: 'luna://com.palm.connectionmanager',
+                method: 'getstatus', onResponse: 'serviceResponse'},
             ...
         ],
         getConnectionStatus: function() {
