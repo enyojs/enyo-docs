@@ -10,6 +10,13 @@ Welcome!  Resources are available in the following areas:
     * [Planning and Structuring Your App](getting-started/planning-and-structuring-your-app.html)
     * [Tutorial: Building a Moonstone App](getting-started/moonstone-app-tutorial.html)
 
+* Enyo 2.6
+
+    * [Converting Your Existing App to 2.6](building-apps/conversion-to-2.6.html)
+    * [Flux in Enyo](building-apps/flux-in-enyo.html)
+    * [Lazy Loading](building-apps/lazy-loading.html)
+    * [Background Task Manager](building-apps/background-task-manager.html)
+
 * Enyo Essentials
 
     * [Kinds](key-concepts/kinds.html)
