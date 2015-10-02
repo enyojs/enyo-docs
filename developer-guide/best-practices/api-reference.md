@@ -41,12 +41,43 @@ but any additional documentation is optional.
 Here are some guidelines to follow when creating (and formatting) documentation
 for Enyo modules and the kinds they export.
 
-#### Summary/Description
+#### Initial Declaration
+
+```javascript
+    /**
+    * Contains the declaration for the {@link module:moonstone/ContextualPopup~ContextualPopup} kind.
+    * @module moonstone/ContextualPopup
+    */
+```
+
+A brief initial declaration goes at (or near) the top of the source file.  It is
+typically placed before the `var` declarations, but after the initial
+`require()` call, if there is one.
+
+The declaration consists of two lines.  On the second line, the `@module` tag
+is used to indicate the name of the module, prefaced by the name of the library
+it belongs to.
+
+The first line lists the kind(s) that are available in the module.  Each
+available kind is referenced using a `@link` tag, which is used to generate a
+hypertext link to a kind's location in the API Reference.  Looking at the
+content of the `@link` tag in the example above, we see that the first part
+(i.e., `module:moonstone/ContextualPopup`) specifies the name of the module,
+while the second part (i.e., `~ContextualPopup`) refers to a specific kind
+exported by the module.  Most modules export a kind with the same name as the
+module (in this case, `"ContextualPopup"`); some modules also export additional
+kinds, such as customized support mixins.  The full `@link` syntax provides a
+way to differentiate between the module-named kinds and the additional kinds.
+
+Note that the content of the first line of the declaration will appear on the
+module's page in the API Reference.
+
+#### Kind Summary/Description
 
 When documenting a kind, start with a brief summary of what the kind is and what
 it does.  Then provide additional information via JSDoc tags.
 
-The following example illustrates the standard set of tags for an Enyo kind:
+The following example illustrates the standard set of JSDoc tags for an Enyo kind:
 
 ```javascript
     /**
@@ -62,16 +93,8 @@ The following example illustrates the standard set of tags for an Enyo kind:
     */
 ```
 
-* `@link` tags are used to generate hypertext links to a kind's location in the
-    API Reference.  Looking at the content of the `@link` tag, we see that the
-    first part (e.g., `module:moonstone/ContextualPopup`) specifies the name of
-    the module, whereas the second part (e.g., `~ContextualPopup`) refers to the
-    specific kind (exported by the just-named module) that is currently under
-    discussion.  In practice, most modules export a kind with the same name (in
-    this case, `"ContextualPopup"`), but some modules also export additional
-    kinds, such as customized support mixins.  The full `@link` syntax gives us
-    a way to differentiate between the module-named kinds and the additional
-    kinds.
+* `@link` tags (discussed above) should be used for the names of any kinds
+    mentioned in the description.
 
 * `@class` indicates the kind name.
 
@@ -112,7 +135,18 @@ Be sure to indicate the property's data type (using the `@type` tag), and its
 default value (using `@default`).  Also be sure to include the `@public` tag so
 that the property will be displayed by the API Reference.
 
-If the property accepts only specific string values, list the valid values, e.g.:
+##### Instance Values
+
+Sometimes, the value of a property will be an instance of a kind--`enyo/Control`,
+for example.  In that case, the `@type` tag should use following syntax:
+
+```javascript
+    @type {module:enyo/Control~Control}
+```
+
+##### String Values
+
+If a property accepts only specific string values, list the valid values, e.g.:
 
 ```javascript
     /**
@@ -129,7 +163,7 @@ If the property accepts only specific string values, list the valid values, e.g.
 
 Note that single quotes are used to indicate that a value is a string (e.g.,
 `@default 'auto'`).  Also note that, within the summary/description section, the
-single quotes are enclosed in backticks ``(`)``, which make text appear as
+single quotes should be enclosed in backticks ``(`)``, which make text appear as
 `monospaced` in the API Viewer.
 
 #### Public Methods
@@ -187,7 +221,7 @@ JavaScript file, before the definition of the kind that generates them.
     * Fires when either the main drawer or the control drawer is activated. No
     * event-specific data is sent with this event.
     *
-    * @event module:moonstone/Drawer~Drawer#onActivate
+    * @event module:moonstone/Drawers~Drawer#onActivate
     * @type {Object}
     * @public
     */
@@ -196,8 +230,8 @@ JavaScript file, before the definition of the kind that generates them.
 In the example above, we see the basic JSDoc tags associated with an event.
 
 * `@event` contains the name of the event `(onActivate)`, along with its
-    generating kind `(moonstone/Drawer~Drawer)`, with the two being separated by
-    the `#` character.
+    generating kind `(moonstone/Drawers~Drawer)`, with the two being separated
+    by the `#` character.
 
 * `@type` contains the data type; for events, this should be `Object`, since
     Enyo events are passed around as objects.
