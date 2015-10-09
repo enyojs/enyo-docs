@@ -46,6 +46,7 @@ Welcome!  Resources are available in the following areas:
     * [Checkboxes](building-apps/controls/checkboxes.html)
     * [Headers](building-apps/controls/headers.html)
     * [List Items](building-apps/controls/list-items.html)
+    * [Media](building-apps/controls/media.html)
     * [Pickers](building-apps/controls/pickers.html)
     * [Popups](building-apps/controls/popups.html)
     * [Progress Indicators](building-apps/controls/progress-indicators.html)

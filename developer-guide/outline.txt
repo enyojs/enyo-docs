@@ -13,6 +13,7 @@ building-apps/controls/buttons.md
 building-apps/controls/checkboxes.md
 building-apps/controls/headers.md
 building-apps/controls/list-items.md
+building-apps/controls/media.md
 building-apps/controls/pickers.md
 building-apps/controls/popups.md
 building-apps/controls/progress-indicators.md
