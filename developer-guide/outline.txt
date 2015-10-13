@@ -1,8 +1,8 @@
 index.md
 getting-started/enyo-tour.md
 getting-started/first-steps.md
+getting-started/creating-and-building-an-app.md
 getting-started/bootplate.md
-getting-started/planning-and-structuring-your-app.md
 getting-started/moonstone-app-tutorial.md
 key-concepts/kinds.md
 key-concepts/objects-and-published-properties.md

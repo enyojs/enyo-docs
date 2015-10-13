@@ -6,8 +6,8 @@ Welcome!  Resources are available in the following areas:
 
     * [A Tour of Enyo](getting-started/enyo-tour.html)
     * [First Steps](getting-started/first-steps.html)
+    * [Creating and Building an App](getting-started/creating-and-building-an-app.html)
     * [Bootplate: 0-60 with Enyo in 5 Minutes](getting-started/bootplate.html)
-    * [Planning and Structuring Your App](getting-started/planning-and-structuring-your-app.html)
     * [Tutorial: Building a Moonstone App](getting-started/moonstone-app-tutorial.html)
 
 * Enyo 2.6

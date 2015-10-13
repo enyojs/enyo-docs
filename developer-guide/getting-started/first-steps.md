@@ -8,41 +8,69 @@ Linux environment.  Only a few simple tools are needed to get up and running.
 
 ### Text Editor
 
-To write Enyo code, the only requirement is a text editor.  Just
-about any text editor will suffice, including basic freeware options such as
-[Notepad++](http://notepad-plus-plus.org/) (Windows) or
+Strictly speaking, the only requirement to write Enyo code is a text editor.
+Just about any text editor will suffice, including basic freeware options such
+as [Notepad++](http://notepad-plus-plus.org/) (Windows) or
 [TextWrangler](http://www.barebones.com/products/textwrangler/) (Mac).  For what
-it's worth, members of the Enyo team tend to use either [Sublime
+it's worth, most developers on the Enyo team use either [Sublime
 Text](http://www.sublimetext.com/), which is available for Mac and Windows, or
 the Mac-only [TextMate](http://macromates.com/).
 
 ### Git Client
 
-Currently, the primary mechanism for distribution of Enyo core, libraries, and
-"bootplate" project templates is via GitHub, so you'll need to have a modern Git
-client installed on your machine.  In our documentation, we present git commands
-on the command line, but you are free to use your favorite GUI Git client as
-well.
+To obtain the Enyo framework source code, you'll need a [Git](https://git-scm.com)
+client and a [GitHub](https://github.com) account, since the Enyo source is
+maintained on GitHub and accessed via Git version control.
+
+In our documentation, we present Git commands on the command line, but you are
+free to use your favorite GUI Git client as well.
 
 You can download the latest Git client for your operating system at
 [git-scm.com](http://git-scm.com/downloads).
 
-(Note that the Enyo "bootplate" templates are also distributed in the **LG webOS
-TV SDK** and may be generated using the `ares-generate` command line tool
-included in the SDK, without the use of Git.  If you are using the **LG webOS TV
-SDK** and don't plan to version-control your application in Git, you won't need
-to install a Git client.
-
 ### Node.js
 
-The Enyo framework includes tools based on `Node.js` for minifying and deploying
-your applications.  `Node.js` is a server-side JavaScript runtime (similar to
-the server-side interpreters for Perl, Python, Ruby, and other languages) used
-for running JavaScript scripts on a server.  It's even possible to use `Node.js`
-itself as a barebones Web server (as we'll see below).
+Next, you'll need to have [Node.js](http://nodejs.org) installed on your
+development machine.  Enyo's build system requires Node version `0.12.2` or
+later.  If Node is not installed, you will need to install it; if you have an
+outdated version, you will need to update it.  To check the version of a Node
+installation, use the command `node --version`.
 
-You can download the latest version of `Node.js` for your operating system at
-[nodejs.org](http://nodejs.org/).
+### enyo-dev
+
+Once Node is in place, you'll need the tools provided by the
+[enyo-dev](https://github.com/enyojs/enyo-dev) module.  Use the following
+command to obtain the `enyo-dev` source:
+
+```
+    git clone https://github.com/enyojs/enyo-dev.git
+```
+
+After the cloning completes, enter the new directory:
+
+```
+    cd enyo-dev
+```
+
+If you've been instructed to use a specific version of the `enyo-dev` tools,
+use the following command:
+
+```
+    git checkout <version number>
+```
+
+Finally, complete the initial setup by issuing the following commands:
+
+```
+    npm install
+
+    npm link
+```
+
+`npm install` installs a number of node modules in the `enyo-dev/node_modules`
+directory, while `npm link` creates numerous symbolic links to make `enyo-dev`
+commands available in your `$PATH`.  (You will likely need to run `npm link` as
+`root`, i.e., `sudo npm link`.)
 
 ### Web Browser and Web Server
 
@@ -60,32 +88,18 @@ you can do this by creating a shortcut to `chrome.exe` and adding the switch to
 the end of the shortcut's Target property.  Then use the shortcut each time you
 launch the browser.  A similar approach should work on Mac and Linux as well.)
 
-If you are not currently running a local Web server, you may find it convenient
-to install an Apache/MySQL/PHP software bundle, such as [BitNami
+If you are not currently running a local Web server, you may want to take
+advantage of the `eserve` tool, which is found in the `enyo-dev` repo.  Running
+`eserve` on the command line will build your app and serve it via http on port
+8000.  For more on `eserve`, see [Creating and Building an
+App](creating-and-building-an-app.html).
+
+Alternatively, if you need more configurability than `eserve` can provide, you
+may want to install an Apache/MySQL/PHP software bundle, such as [BitNami
 WAMPStack](http://bitnami.org/stack/wampstack) (Windows) or
 [MAMP](http://www.mamp.info/en/index.html) (Mac).
 
-As mentioned earlier, another alternative is to create your own simple HTTP
-server using `Node.js`.  Here's how to do it:
-
-* Install `Node.js`.
-
-* Use npm to install the `serve` package:
-
-```
-        npm install -g serve
-```
-
-* Create a directory to house your application files, then enter that directory
-    and start the server by running `serve`, e.g.:
-
-    + `mkdir <my_doc_root>`
-    + `cd <my_doc_root>`
-    + `serve`
-
-* Your application will be accessible on port 3000, at a URL such as `http://localhost:3000/debug.html`.
-
-## Obtaining the Enyo Source Code
+## Obtaining the Enyo Source Code [Subject to Change]
 
 ### Bootplate
 
