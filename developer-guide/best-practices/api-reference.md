@@ -174,26 +174,32 @@ tense and is punctuated as a full sentence, with a period at the end, e.g.:
 
 ```javascript
     /**
-    * Determines whether this control currently has the [focus]{@glossary focus}.
+    * Gets the requested property (`name`) from the control's attributes
+    * [hash]{@glossary Object}, from its cache of node attributes, or, if it has
+    * yet to be cached, from the [node]{@glossary Node} itself.
     *
-    * @returns {Boolean} Whether this control has focus. `true` if the control
-    * has focus; otherwise, `false`.
+    * @param {String} name - The attribute name to get.
+    * @returns {(String|Null)} The value of the requested attribute, or `null`
+    * if there isn't a [DOM node]{@glossary Node} yet.
     * @public
     */
-    hasFocus: function () {
-        if (this.hasNode()) return document.activeElement === this.node;
-    },
     ...
 ```
 
-If, as in this example, the method has a return value, the documentation should
-include the `@returns` tag.  Use it to provide the data type and a brief
-description of the data being returned.
+If the method has one or more parameters, each should be tagged with `@param`,
+followed by the data type, the name of the parameter, and a brief description.
+The parameter name and description should be separated by a dash with one blank
+space on each side.
 
-(Notice that the Boolean values `true` and `false` are formatted with backticks.
-When documenting Enyo source code, backticks should also be placed around the
-names of modules--e.g., `enyo/Control`, `moonstone/Button`)--as well as
-properties, methods, and CSS classes.)
+In addition, if the method has a return value, the documentation should include
+the `@returns` tag.  Use it to provide the data type and a brief description of
+the data being returned.  This particular example illustrates the syntax that
+should be used when multiple data types are possible.
+
+(Notice also that the property name `name` and the value `null` are formatted
+with backticks.  When documenting Enyo source code, backticks should also be
+placed around the names of modules--e.g., `enyo/Control`, `moonstone/Button`--as
+well as methods, CSS classes, and values such as the Boolean `true` and `false`.)
 
 In some cases, in addition to describing what a method does, it is helpful to
 specify when it is used.
@@ -256,6 +262,64 @@ Here the `@property` tag indicates that the event object has a property called
 `index`, which contains the index of the row currently being rendered by an
 `enyo/List`.  This property may be accessed by methods that handle the
 `onSetupItem` event.
+
+#### Type Definitions
+
+Sometimes you may need to create customized objects that do not correspond to a
+particular JavaScript or Enyo type.  In this case, you will use JSDoc comments
+to define the custom type.  For example, here is the definition for an
+`OverscrollBoundaryObject`, a data object used by `enyo/Scroller`:
+
+```javascript
+    /**
+    * An [object]{@glossary Object} representing the overscroll boundaries.
+    *
+    * @typedef {Object} module:enyo/Scroller~Scroller~OverscrollBoundaryObject
+    * @property {Number} overleft - The left overscroll position.
+    * @property {Number} overtop - The top overscroll position.
+    */
+```
+
+The tags used for a type definition are similar to those used for an event.  The
+key difference is the presence of the `@typedef` tag, which is followed by the
+object type and a link to the object's location in the API Reference.  Note that
+when constructing the link, the name of the custom type (`OverscrollBoundaryObject`),
+prefixed with `~`, is added to the link for the kind in which it is defined
+(`module:enyo/Scroller~Scroller`).
+
+Like an event declaration, a typedef is typically placed at the top of the
+relevant JavaScript file.  For kinds that have both typedefs and events, the
+convention is to list typedefs first.
+
+#### Callback Functions
+
+Similar syntax is used when defining callback functions, e.g.:
+
+```
+    /**
+    * The details for an {@link module:enyo/Binding~Binding#transform}
+    * [function]{@glossary Function}, including the available parameters and
+    * how they can be used.
+    *
+    * @callback module:enyo/Binding~Binding~Transform
+    * @param {*} value - The value being synchronized.
+    * @param {Number} direction - The direction of synchronization; will be either
+    * 	1 (source value has changed and will be written to target) or 2 (target
+    * 	value has changed and will be written to source).
+    * @param {Object} binding - A reference to the associated
+    * 	[binding]{@link module:enyo/Binding~Binding}. In cases where the binding
+    * 	should be interrupted and not propagate the synchronization at all, call
+    * 	the [stop()]{@link module:enyo/Binding~Binding#stop} method on the
+    * 	passed-in binding reference.
+    */
+```
+
+In this case, the `@callback` tag is used in place of `@typedef`; however, in
+the production API Reference, a kind's callback functions will appear alongside
+its typedefs in the "Type Definitions" section.
+
+Note that the `@param` tag is used here just as in the documentation for a
+public method.
 
 ### Formatting (Markdown)
 
