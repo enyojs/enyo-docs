@@ -252,35 +252,6 @@ the current date.
 
 ![_Time Picker (Expanded)_](../../assets/time-picker-expanded.png)
 
-## moonstone/Accordion
-
-An additional subkind of `moonstone/ExpandableListItem`,
-[moonstone/Accordion]($api/#/kind/moonstone/Accordion/Accordion) features an
-arrow to the right of the header and additional margin space to the left of the
-drawer containing the item list.  The arrow points up when the control is
-expanded, and down when it is collapsed (the default state).
-
-```javascript
-    var
-        kind = require('enyo/kind'),
-        Accordion = require('moonstone/Accordion');
-
-    {kind: Accordion, content: 'This is an accordion', components: [
-        {content: 'Item One'},
-        {content: 'Item Two'}
-    ]}
-```
-
-![_Accordion (Collapsed)_](../../assets/accordion-collapsed.png)
-
-The drawer's state may be toggled by tapping on the header text or navigating
-(via 5-way) back to the top of the drawer.
-
-![_Accordion (Expanded)_](../../assets/accordion-expanded.png)
-
-Multiple accordions may be used together in a group; when this happens, only one
-accordion in the group may be expanded at any given time.
-
 ## moonstone/Calendar
 
 Though not descended from `moonstone/ExpandableListItem`,
