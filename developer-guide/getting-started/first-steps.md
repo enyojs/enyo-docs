@@ -94,42 +94,15 @@ advantage of the `eserve` tool, which is found in the `enyo-dev` repo.  Running
 8000.  For more on `eserve`, see [Creating and Building an
 App](creating-and-building-an-app.html).
 
-Alternatively, if you need more configurability than `eserve` can provide, you
-may want to install an Apache/MySQL/PHP software bundle, such as [BitNami
+Alternatively, if you need a more robust solution, you may want to install an
+Apache/MySQL/PHP software bundle, such as [BitNami
 WAMPStack](http://bitnami.org/stack/wampstack) (Windows) or
 [MAMP](http://www.mamp.info/en/index.html) (Mac).
 
-## Obtaining the Enyo Source Code [Subject to Change]
-
-### Bootplate
-
-If you are new to Enyo development, you will want to obtain the Enyo source as
-part of a ready-made project template.  The enyojs project includes a number of
-these, which we refer to as "bootplate" (BOOTstrap + boilerPLATE) templates.
-Each bootplate template comes with the Enyo core code, one or more optional
-libraries relevant to the project type, a "Hello World"-type application, and a
-recommended folder structure for organizing your application files.  For more on
-bootplate templates, including setup instructions, see [Bootplate: 0-60 with
-Enyo in 5 Minutes](bootplate.html).
-
-### Individual Repos
-
-Of course, you're also free to clone `enyo` or any of the library repos
-individually, e.g.:
-
-```
-    git clone https://github.com/enyojs/enyo.git <myEnyoDirectory>
-```
-
-If you plan to submit changes back to a repository, be sure to create your own
-fork of the repository and clone the fork to your local machine.
-
 ## Next Steps
 
-If you haven't already done so, read through the [Moonstone App
-Tutorial](moonstone-app-tutorial.html).  Now that you have all the necessary
-tools, try following the steps in the tutorial to run the code on your own
-computer.
+Now that you have all the necessary tools, try creating a new app using the
+instructions in [Creating and Building an App](creating-and-building-an-app.html).
 
-If you get stuck, or you'd rather explore on your own, see the
-[Bootplate](bootplate.html) documentation for some useful pointers.
+Or, if you haven't already done so, take a look at the [Moonstone App
+Tutorial](moonstone-app-tutorial.html).

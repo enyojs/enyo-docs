@@ -3,12 +3,12 @@
 ## Creating an App (enyo init)
 
 Once you've completed the setup tasks outlined in [First Steps with
-Enyo](first-steps.html), you're ready to create an application project.  To
-initialize a project, use the `enyo-dev` toolset's `enyo init` command.
-`enyo init` creates the standard Enyo directory structure and populates it with
-framework code and configuration files.
+Enyo](first-steps.html), you're ready to create an application.  To initialize a
+project, use the `enyo init` command from the `enyo-dev` tools.  `enyo init`
+creates the standard Enyo directory structure and populates it with framework
+code and configuration files.
 
-In this example, we'll initialize a project called "my-project":
+As an example, let's initialize a project called "my-project":
 
 ```
     enyo init my-project
@@ -31,8 +31,9 @@ Within the project directory (`my-project`), there are basic versions of several
 configuration files--`.enyoconfig`, `.gitignore`, and `package.json`.  We also
 have the Enyo framework libraries, installed under `my-project/lib/`.
 
-Let's look briefly at `package.json`.  Here are the contents of the default
-`package.json` file installed by `enyo init`:
+Before we continue, let's look briefly at `package.json`.  Each app must contain
+a `package.json` file in its root directory.  Here are the contents of the
+default `package.json` installed by `enyo init`:
 
 ```json
     {
@@ -45,12 +46,11 @@ Let's look briefly at `package.json`.  Here are the contents of the default
     }
 ```
 
-Each app must contain a `package.json` in its root directory.  The file itself
-must contain a `main` key indicating the entry point for the application
-(`"index.js"` by default).  It may also include paths to assets and stylesheets,
-in the `assets` and `styles` arrays, respectively.  The `moduleDir` key
-specifies the location of the Enyo framework code; you will most likely want to
-keep the default value, `"src"`.
+`package.json` must contain a `main` key indicating the entry point for the
+application (`"index.js"` by default).  It may also include paths to assets and
+stylesheets, in the `assets` and `styles` arrays, respectively.  The `moduleDir`
+key specifies the location of the Enyo framework code; you will generally want
+to keep the default value, `"src"`.
 
 ## Filling Out the App Structure
 
@@ -85,7 +85,7 @@ and all CSS/LESS is combined, is written to `./dist` by default; the output
 directory may be configured using the `-d` switch.  The JavaScript and CSS may
 either be inlined in the HTML (the default) or stored in external files (via the
 `-j` and `-c` options).  In addition, any assets declared in the app's
-`package.json` file(s) will be copied to the output directory.
+`package.json` file will be copied to the output directory.
 
 For example, the following command will create output in `build/app.css` and
 `build/app.js`.
@@ -131,5 +131,5 @@ rebuilds the application if one of the files is changed or deleted.
 related to the Web server.  Unlike `epack`, these options *cannot* be
 specified in the project's `package.json` file.
 
-Please note that `enyo-serve` only creates development builds; for production
+Please note that `enyo serve` only creates development builds; for production
 builds, you'll need to use `epack` (specifically, `epack --no-dev-mode`).
