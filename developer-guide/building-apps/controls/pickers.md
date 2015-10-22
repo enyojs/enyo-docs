@@ -154,6 +154,31 @@ The current selection appears beneath the label when the control is closed.
 Like `moonstone/ExpandableListItem`, `moonstone/ExpandablePicker` may also be
 used inline within lists.
 
+## moonstone/ExpandableDataPicker
+
+[moonstone/ExpandableDataPicker]($api/#/kind/moonstone/ExpandableDataPicker/ExpandableDataPicker)
+extends `moonstone/ExpandablePicker`, adding support for the Enyo data layer.
+It is rendered as a drop-down picker menu that solicits a choice from the user.
+
+In its `collection` property, ExpandableDataPicker keeps a reference to an
+associated [enyo/Collection]($api/#/kind/enyo/Collection/Collection).  The
+[models]($api/#/kind/enyo/Model/Model) in this collection provide the data for
+the picker's items, which are instances of
+[moonstone/CheckboxItem]($api/#/kind/moonstone/CheckboxItem/CheckboxItem) by
+default.
+
+```javascript
+    var
+        kind = require('enyo/kind'),
+        ExpandableDataPicker = require('moonstone/ExpandableDataPicker');
+
+    {name: 'picker', kind: ExpandableDataPicker, content: 'Data Picker', components: [
+        {bindings: [
+            {from: '.model.label', to: '.content'}
+        ]}
+    ]}
+```
+
 ## moonstone/ExpandableIntegerPicker
 
 Another kind derived from `moonstone/ExpandableListItem` is
