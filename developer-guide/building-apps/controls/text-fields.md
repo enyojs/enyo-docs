@@ -1,5 +1,8 @@
 % Text Fields
 
+The Enyo framework provides a variety of controls designed to facilitate the
+display and manipulation of text.
+
 ## enyo/Input
 
 [enyo/Input]($api/#/kind/enyo/Input/Input) is an [enyo/Control]($api/#/kind/enyo/Control/Control)
@@ -193,3 +196,30 @@ property.
 ```
 
 ![_moonstone/RichText_](../../assets/rich-text.png)
+
+## moonstone/ExpandableText
+
+Finally, [moonstone/ExpandableText]($api/#/kind/moonstone/ExpandableText/ExpandableText)
+is an [enyo/Control]($api/#/kind/enyo/Control/Control) that allows long bodies
+of text to be shown or hidden.
+
+```javascript
+    var
+        kind = require('enyo/kind'),
+        ExpandableText = require('moonstone/ExpandableText');
+
+    {kind: ExpandableText, collapsed: true, maxLines: 3,
+        content: 'I left my heart in San Francisco.'}
+```
+
+The current state of the ExpandableText is determined by the Boolean value of
+its `collapsed` property.  If `false`, the ExpandableText is expanded (i.e., its
+content is visible); if `true` (the default), the ExpandableText is collapsed
+(i.e., its content is not visible).
+
+ExpandableText works in conjunction with
+[moonstone/ExpandableText/ExpandableTextButton]($api/#/kind/moonstone/ExpandableText/ExpandableTextButton).
+When an ExpandableTextButton is activated, the `collapsed` value of the
+associated ExpandableText is toggled and an `onExpandCollapse` event is fired.
+
+Note that the content of an ExpandableText is not meant to be user-editable.
