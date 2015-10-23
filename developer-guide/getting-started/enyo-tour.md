@@ -112,23 +112,14 @@ for distribution to end users.
 
 Read more about `enyo-dev` [here](https://github.com/enyojs/enyo-dev).
 
-## Bootplate
-
-The [Bootplate](bootplate.html) templates provide complete starter projects
-containing everything you need to develop and deploy Enyo apps out of the box.
-These templates contain current versions of Enyo, along with the most common
-libraries used by app developers (Moonstone or Onyx, Layout, etc.) and scripts
-to minify and create deployable versions of the source and assets.
-
 ## Additional Reading
 
-From here, there are several paths you can take to ramp up as an Enyo developer.
+There are several paths you can take to ramp up as an Enyo developer.
 A few suggestions:
 
-* For a step-by-step introduction to Enyo, head to the [Moonstone App
-    Tutorial](moonstone-app-tutorial.html).
-* To get off to the races writing Enyo apps, check out [Bootplate](bootplate.html).
-* To learn more about the nuts and bolts of Enyo app structure, read [Planning
-    and Structuring Your App](planning-and-structuring-your-app.html).
+* For tips on setting up your development environment, see [First
+    Steps](planning-and-structuring-your-app.html).
+* For a step-by-step look at how Enyo apps are created, head to the [Moonstone
+    App Tutorial](moonstone-app-tutorial.html).
 * Can't make up your mind?  See the [complete list](../index.html) of available
     documentation.
