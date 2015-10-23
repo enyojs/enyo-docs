@@ -7,7 +7,6 @@ Welcome!  Resources are available in the following areas:
     * [A Tour of Enyo](getting-started/enyo-tour.html)
     * [First Steps](getting-started/first-steps.html)
     * [Creating and Building an App](getting-started/creating-and-building-an-app.html)
-    * [Bootplate: 0-60 with Enyo in 5 Minutes](getting-started/bootplate.html)
     * [Tutorial: Building a Moonstone App](getting-started/moonstone-app-tutorial.html)
 
 * Enyo 2.6
@@ -78,7 +77,7 @@ Welcome!  Resources are available in the following areas:
 
 * Best Practices
 
-    * [The API Reference: What Every Developer Should Know](best-practices/api-reference.html)
+    * [Documenting Code for the API Reference](best-practices/api-reference.html)
     * [Enyo Dos and Don'ts](best-practices/dos-and-donts.html)
     * [Encapsulation in Enyo](best-practices/encapsulation-in-enyo.html)
     * [Coding Style Guide](best-practices/style-guide.html)

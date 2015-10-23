@@ -1,8 +1,6 @@
-% The API Reference: What Every Developer Should Know
+% Documenting Code for the API Reference 
 
-## Using the API Reference
-
-### Properties, Events, and Methods
+## The API Reference
 
 The [Enyo API Reference]($apiindex.html), also known as the API Viewer,
 provides detailed information on all of the framework's publicly accessible
@@ -23,9 +21,7 @@ controls (UI components), kinds (non-UI components), mixins (shared chunks of
 functionality that may be added to individual kinds as needed), and singleton
 objects.
 
-## Documenting Code for the API Reference
-
-### What to Document
+## What to Document
 
 When contributing a new module, be sure to include appropriate documentation in
 JSDoc format.  This will typically include a summary of each kind in the module,
@@ -36,12 +32,12 @@ following section, [How to Document](#how-to-document).
 Members that are private to each kind should be marked with the `@private` tag,
 but any additional documentation is optional.
 
-### How to Document
+## How to Document
 
 Here are some guidelines to follow when creating (and formatting) documentation
 for Enyo modules and the kinds they export.
 
-#### Initial Declaration
+### Initial Declaration
 
 ```javascript
     /**
@@ -72,7 +68,7 @@ way to differentiate between the module-named kinds and the additional kinds.
 Note that the content of the first line of the declaration will appear on the
 module's page in the API Reference.
 
-#### Kind Summary/Description
+### Kind Summary/Description
 
 When documenting a kind, start with a brief summary of what the kind is and what
 it does.  Then provide additional information via JSDoc tags.
@@ -109,7 +105,7 @@ The following example illustrates the standard set of JSDoc tags for an Enyo kin
     the `@public` and `@private` tags are also applied to properties, methods,
     and events.
 
-#### Public Properties
+### Public Properties
 
 For public properties, begin by providing a brief description of the property.
 In most cases, the description should be a sentence or less in length.  If the
@@ -135,7 +131,7 @@ Be sure to indicate the property's data type (using the `@type` tag), and its
 default value (using `@default`).  Also be sure to include the `@public` tag so
 that the property will be displayed by the API Reference.
 
-##### Instance Values
+#### Instance Values
 
 Sometimes, the value of a property will be an instance of a kind--`enyo/Control`,
 for example.  In that case, the `@type` tag should use following syntax:
@@ -144,7 +140,7 @@ for example.  In that case, the `@type` tag should use following syntax:
     @type {module:enyo/Control~Control}
 ```
 
-##### String Values
+#### String Values
 
 If a property accepts only specific string values, list the valid values, e.g.:
 
@@ -166,7 +162,7 @@ Note that single quotes are used to indicate that a value is a string (e.g.,
 single quotes should be enclosed in backticks ``(`)``, which make text appear as
 `monospaced` in the API Viewer.
 
-#### Public Methods
+### Public Methods
 
 When documenting a public method, first provide a brief description of what the
 method does.  By convention, the description begins with a verb in the present
@@ -217,7 +213,7 @@ specify when it is used.
     ...
 ```
 
-#### Events
+### Events
 
 In the Enyo framework, events are typically declared at the top of each
 JavaScript file, before the definition of the kind that generates them.
@@ -263,11 +259,11 @@ Here the `@property` tag indicates that the event object has a property called
 `enyo/List`.  This property may be accessed by methods that handle the
 `onSetupItem` event.
 
-#### Type Definitions
+### Type Definitions
 
-Sometimes you may need to create customized objects that do not correspond to a
-particular JavaScript or Enyo type.  In this case, you will use JSDoc comments
-to define the custom type.  For example, here is the definition for an
+Sometimes you may need to create customized objects that do not correspond to an
+existing JavaScript or Enyo type.  In this case, you will use JSDoc comments to
+define the custom type.  For example, here is the definition for an
 `OverscrollBoundaryObject`, a data object used by `enyo/Scroller`:
 
 ```javascript
@@ -291,7 +287,7 @@ Like an event declaration, a typedef is typically placed at the top of the
 relevant JavaScript file.  For kinds that have both typedefs and events, the
 convention is to list typedefs first.
 
-#### Callback Functions
+### Callback Functions
 
 Similar syntax is used when defining callback functions, e.g.:
 
@@ -321,7 +317,7 @@ its typedefs in the "Type Definitions" section.
 Note that the `@param` tag is used here just as in the documentation for a
 public method.
 
-### Formatting (Markdown)
+## Formatting (Markdown)
 
 In addition to supporting JSDoc tags, the API Reference includes support for
 [Markdown](http://daringfireball.net/projects/markdown/), a lightweight
@@ -330,6 +326,6 @@ language for formatting text.
 Markdown may be used within API comments for simple formatting tasks such as
 italicizing text and creating bulleted lists.
 
-### Coding
+## Coding Style
 
 For guidelines on writing code, see the [Coding Style Guide](style-guide.html).
