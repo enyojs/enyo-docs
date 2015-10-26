@@ -170,14 +170,29 @@ default.
 ```javascript
     var
         kind = require('enyo/kind'),
+        Collection = require('enyo/Collection'),
         ExpandableDataPicker = require('moonstone/ExpandableDataPicker');
 
-    {name: 'picker', kind: ExpandableDataPicker, content: 'Data Picker', components: [
-        {bindings: [
-            {from: '.model.label', to: '.content'}
-        ]}
-    ]}
+    {name: 'picker', kind: ExpandableDataPicker, content: 'Expandable Data Picker',
+        noneText: 'Nothing Selected', components: [
+            {bindings: [
+                {from: '.model.label', to: '.content'}
+            ]}
+        ]
+    }
+
+    ...
+
+    this.$.picker.set('collection', new Collection([
+        {label: 'first'},
+        {label: 'second'},
+        {label: 'third'}
+    ])
 ```
+
+![_Expandable Data Picker (Collapsed)_](../../assets/expandable-data-picker-collapsed.png)  
+
+![_Expandable Data Picker (Expanded)_](../../assets/expandable-data-picker-expanded.png)  
 
 ## moonstone/ExpandableIntegerPicker
 
