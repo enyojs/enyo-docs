@@ -28,14 +28,10 @@ One significant change you'll notice is in how apps are created.  While Enyo's
 build system is still based on [Node.js](http://nodejs.org) (which still needs
 to be installed on your development machine), the new scheme no longer relies on
 Git submodules for initial app setup; in fact, _we no longer recommend using
-submodules in your projects_.  Instead, for intial setup, we now use
-[Bower](http://bower.io/), a versatile package manager that has become a
-standard tool for Web development.  (If you don't already have Bower installed,
-you can get it quickly using the Node Package Manager (npm): `npm install -g bower`.)
-
-As a developer, you may either use Bower directly, or use the new tools provided
-by the [enyo-dev](https://github.com/enyojs/enyo-dev) module.  (More on this
-below.)
+submodules in your projects_.  Instead, use the new tools provided by the
+[enyo-dev](https://github.com/enyojs/enyo-dev) module.  Detailed instructions
+for installing `enyo-dev` may be found in [First Steps with
+Enyo](../getting-started/first-steps.html).
 
 Another important change is in the application structure.  Here's the Enyo
 framework's traditional app structure, as reflected in the bootplate templates:
@@ -84,7 +80,7 @@ The `assets` directory is essentially unchanged.
 
 ### App Conversion Tools
 
-The [enyo-gen init](https://github.com/enyojs/enyo-dev#init) command, which
+The [enyo init](https://github.com/enyojs/enyo-dev#commands-init) command, which
 helps manage a project's dependencies, is a useful tool when converting existing
 applications to the new scheme.  Before you can use it, though, you'll need to
 do some preparatory work.
@@ -96,13 +92,13 @@ from a bootplate-based project (note that this requires Git version `1.8.5` or
 later):
 
 ```bash
-	# from your project's root directory
-	git submodule deinit enyo
-	# do not use a "/" at the end!
-	git rm enyo
-	rm -rf .git/modules/enyo
-	# if the enyo/ directory still exists, do this
-	rm -rf enyo
+    # from your project's root directory
+    git submodule deinit enyo
+    # do not use a "/" at the end!
+    git rm enyo
+    rm -rf .git/modules/enyo
+    # if the enyo/ directory still exists, do this
+    rm -rf enyo
 ```
 
 Once you have done this for each of your submodules, be sure to commit the
@@ -122,13 +118,12 @@ so.  Use the following command to retrieve and install the module:
 likely to make `enyo-dev` available as an npm package, installable via
 `npm install -g enyo-dev`; however, this has not yet been implemented.)
 
-Now you are ready to use `enyo-gen` to manage your Enyo dependencies.  For
-convenience, `enyo-gen` is aliased to `egen`, so you can simply run the
-following command:
+Now you are ready to use `enyo init` to manage your Enyo dependencies.  Simply
+run the following command:
 
 ```bash
-	# depending on connection speed, this may take a few minutes
-	egen init --save
+    # depending on connection speed, this may take a few minutes
+    enyo init --save
 ```
 
 That's it!  Once the command finishes executing, your dependencies will be
@@ -146,52 +141,50 @@ than `2.6.0-dev`.  For example, if you want to test a bug fix for `enyo` that
 was made in a branch called `ENYO-1675-coledavis`, do the following:
 
 ```bash
-	egen init --libs=enyo#ENYO-1675-coledavis
+    enyo init --libraries=enyo#ENYO-1675-coledavis
 ```
 
 Or, if there are dependencies on multiple updated branches:
 
 ```bash
-	egen init --libs=enyo#ENYO-1675-coledavis,moonstone#ENYO-1759-blakestephens
+    enyo init --libraries=enyo#ENYO-1675-coledavis,moonstone#ENYO-1759-blakestephens
 ```
 
 If you want to officially bump _and save_ an updated version of a dependency,
-make sure to include the `--save` flag.  The requested dependency version/target
-will be stored in your `bower.json` file.
+make sure to include the `--save` flag.
 
-Another useful thing you can do with `egen init` is to temporarily force the use
-of a local copy of one or more of your dependencies.  For instance, let's say
-you have a local clone of the `enyo` repository, and you check out a specific
-branch that you want to test in a build of your application.  You could do the
-following:
+Another useful tool is `enyo link`, which temporarily forces the use of a local
+copy of one or more of your dependencies.  For instance, let's say you have a
+local clone of the `enyo` repository, and you check out a specific branch that
+you want to test in a build of your application.  You could do the following:
 
 ```bash
-	# This command only needs to be executed one time (ever) from the local
-	# repository, so that bower knows about the repo for purposes of local
-	# linking (i.e., linking from inside your local copy of enyo).
-	bower link
-	# now navigate to your application directory
-	cd ../path/to/application
-	# The following command will temporarily link to your local version of enyo
-	# instead of the default version you have installed.
-	egen init --libs=enyo --link-libs=enyo
+    # navigate to the root directory of your cloned enyo repo
+    cd enyo
+    enyo link
+    # now navigate to your application directory
+    cd ../path/to/application
+    # The following command will temporarily link to your local version of enyo
+    # instead of the default version you have installed.
+    enyo init --links=enyo
 ```
 
 This lets you change branches in your local `enyo` repository, rebuild your app,
 and see the changes immediately.
 
-## Package Definition `(package.json)`
+## Package Definition (package.json)
 
 Your app must have at least one `package.json` at the root of the project.  It
 must contain a `main` key indicating the entry point for the application
 (`index.js` in the example above).  It may also include assets and stylesheets,
 in the `assets` and `styles` arrays, respectively.  These are the configuration
 options you are most to likely use, but there are others that can be found in
-the [enyo-dev](https://github.com/enyojs/enyo-dev) module's `enyo-pack --help`
+the [enyo-dev](https://github.com/enyojs/enyo-dev) module's `enyo pack --help`
 command-line output (or by looking at the [source
-code](https://github.com/enyojs/enyo-dev#enyo-pack)).  Each command-line option
-can be expressed as an [equivalent option](https://github.com/enyojs/enyo-dev#the-packagejson-options)
-in `package.json`.
+code](https://github.com/enyojs/enyo-dev#project)).  Each command-line
+option can be expressed as an [equivalent
+option](https://github.com/enyojs/enyo-dev#the-packagejson-options) in
+`package.json`.
 
 ```json
     {
@@ -243,7 +236,7 @@ avoided now that the load order is controlled by `package.json`.  Using
 
 ## Updating Application Code
 
-### Updating Source Files to Use `require()`
+### Updating Source Files to Use require()
 
 When updating existing application code for Enyo 2.6, there are two fundamental
 changes to remember--there is no longer anything from Enyo or its libraries in
@@ -378,69 +371,9 @@ If you are converting an Enyo 2.5.x app to use Enyo 2.6.x, please note that the
 
 As mentioned above, the new Enyo build tools require that both `Node.js` and the
 `enyo-dev` module be installed.  Once they are, you'll be able to build your
-application, either manually (using `enyo-pack`), or with a development server
-(`enyo-serve`).
+application, either manually (using `enyo pack`), or with a development server
+(`enyo serve`).
 
-### enyo-pack (epack)
-
-[enyo-pack](https://github.com/enyojs/enyo-dev#enyo-pack) (aliased to `epack`)
-creates an optimized build of your application, using only the required source.
-The output, in which all JavaScript is combined and all CSS/LESS is combined,
-is written to `./dist` by default; the output directory may be configured using
-the `-d` switch.  The JavaScript and CSS may either be inlined in the HTML (the
-default) or stored in external files (via the `-j` and `-c` options).  In
-addition, any assets declared in the app's `package.json` file(s) will be copied
-to the output directory.
-
-For example, the following command will create output in `build/app.css` and
-`build/app.js`.
-
-```
-    enyo-pack -d ./build -c app.css -j app.js
-```
-
-To simplify builds, any option available on the command line may also be set in
-the project's `package.json` file.  Command line options will always override
-`package.json` options.
-
-```json
-{
-    "main": "index.js",
-    "assets": [
-        "assets/icon.png"
-    ],
-    "styles": [
-        "src/app.less"
-    ],
-    "outdir": "./build",
-    "outCssFile": "app.css",
-    "outJsFile": "app.js"
-}
-```
-
-If a project with this `package.json` is built using `enyo-pack` without any
-options, it will produce the same output as the preceding command-line build.
-
-To see a working example of this use case, see the [enyo-strawman QA/Samples
-application](https://github.com/enyojs/enyo-strawman).  Once you have a local
-copy of the repository, run `epack` to see its output in `dist`, and check out
-the `package.json` file.
-
-### enyo-serve (eserve)
-
-`enyo-serve` (aliased to `eserve`) is a tool that builds your application and
-makes it available via a Web server (running on port 8000 by default).  The tool
-monitors the files used in the build (JavaScript, CSS, and `package.json`) and
-rebuilds the application if one of the files is changed or deleted.
-`enyo-serve` supports the same options as `enyo-pack`, along with a few others
-related to the Web server.  Unlike `enyo-pack`, these options *cannot* be
-specified in the project's `package.json` file.
-
-Please note that `enyo-serve` only creates development builds; for production
-builds, you'll need to use `enyo-pack`/`epack` (specifically,
-`epack --no-dev-mode`).
-
-Also note that a bug in `browserify` (a Node module used by `eserve`) can cause
-`EMFILE` errors to occur when `eserve` is run.  These are OS errors indicating
-that you have too many files open.  You may work around the error by using the
-`ulimit` command to raise the open file limit (e.g., `ulimit -n 4096`).
+For a detailed look at the new build process, see the section titled "Building
+an App" in the document [Creating and Building an
+App](../getting-started/creating-and-building-an-app.html).
