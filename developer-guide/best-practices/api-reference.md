@@ -2,9 +2,9 @@
 
 ## The API Reference
 
-The [Enyo API Reference]($apiindex.html), also known as the API Viewer,
+The [Enyo API Reference]($apiindex.html)
 provides detailed information on all of the framework's publicly accessible
-kinds, including their properties, events, and methods.
+modules and kinds, including their properties, events, and methods.
 
 The primary purpose of the API Reference is to give application developers an
 easy way to find documentation.  When you view the page for a particular kind,
@@ -46,9 +46,7 @@ for Enyo modules and the kinds they export.
     */
 ```
 
-A brief initial declaration goes at (or near) the top of the source file.  It is
-typically placed before the `var` declarations, but after the initial
-`require()` call, if there is one.
+A brief initial declaration goes at the top of the source file.
 
 The declaration consists of two lines.  On the second line, the `@module` tag
 is used to indicate the name of the module, prefaced by the name of the library
@@ -175,7 +173,7 @@ tense and is punctuated as a full sentence, with a period at the end, e.g.:
     * yet to be cached, from the [node]{@glossary Node} itself.
     *
     * @param {String} name - The attribute name to get.
-    * @returns {(String|Null)} The value of the requested attribute, or `null`
+    * @returns {(String|null)} The value of the requested attribute, or `null`
     * if there isn't a [DOM node]{@glossary Node} yet.
     * @public
     */
