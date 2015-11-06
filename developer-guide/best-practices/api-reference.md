@@ -132,7 +132,7 @@ that the property will be displayed by the API Reference.
 #### Instance Values
 
 Sometimes, the value of a property will be an instance of a kind--`enyo/Control`,
-for example.  In that case, the `@type` tag should use following syntax:
+for example.  In that case, the `@type` tag should use the following syntax:
 
 ```javascript
     @type {module:enyo/Control~Control}
@@ -183,7 +183,12 @@ tense and is punctuated as a full sentence, with a period at the end, e.g.:
 If the method has one or more parameters, each should be tagged with `@param`,
 followed by the data type, the name of the parameter, and a brief description.
 The parameter name and description should be separated by a dash with one blank
-space on each side.
+space on each side.  If a parameter is optional, indicate this by placing its
+name within brackets, e.g.:
+
+```
+    @param {String} [myOptionalString] - An optional string.
+```
 
 In addition, if the method has a return value, the documentation should include
 the `@returns` tag.  Use it to provide the data type and a brief description of
