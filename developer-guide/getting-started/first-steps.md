@@ -13,19 +13,21 @@ Just about any text editor will suffice, including basic freeware options such
 as [Notepad++](http://notepad-plus-plus.org/) (Windows) or
 [TextWrangler](http://www.barebones.com/products/textwrangler/) (Mac).  For what
 it's worth, most developers on the Enyo team use either [Sublime
-Text](http://www.sublimetext.com/), which is available for Mac and Windows, or
-the Mac-only [TextMate](http://macromates.com/).
+Text](http://www.sublimetext.com/), which is available for Mac, Windows, and
+Linux, or the Mac-only [TextMate](http://macromates.com/).  We have also heard
+good things about the multi-platform [WebStorm](https://www.jetbrains.com/webstorm/)
+IDE.
 
-### Git Client
+### Git
 
-To obtain the Enyo framework source code, you'll need a [Git](https://git-scm.com)
-client and a [GitHub](https://github.com) account, since the Enyo source is
-maintained on GitHub and accessed via Git version control.
+To obtain the Enyo framework source code, you'll need [Git](https://git-scm.com)
+client software and a [GitHub](https://github.com) account, since the Enyo
+source is maintained on GitHub and accessed via Git version control.
 
 In our documentation, we present Git commands on the command line, but you are
-free to use your favorite GUI Git client as well.
+welcome to use your favorite GUI Git client as well.
 
-You can download the latest Git client for your operating system at
+You can download the latest Git binaries at
 [git-scm.com](http://git-scm.com/downloads).
 
 ### Node.js
@@ -52,14 +54,14 @@ After the cloning completes, enter the new directory:
     cd enyo-dev
 ```
 
-If you've been instructed to use a specific version of the `enyo-dev` tools,
-use the following command:
+If you want to use a specific version of the `enyo-dev` tools, enter the
+following command:
 
 ```
     git checkout <version number>
 ```
 
-Finally, complete the initial setup by issuing the following commands:
+Finally, complete the initial setup by issuing two additional commands:
 
 ```
     npm install

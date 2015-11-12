@@ -11,8 +11,8 @@ In a given Enyo release, you will find the following folders:
 * **spotlight** - A specialized library for handling focus state
 * **layout** - A set of layout components
 * **enyo-ilib** - A library providing localization services
-* **canvas** - Components for building HTML5-based canvas views
 * **enyo-dev** - A set of build tools for use throughout the development process
+* **canvas** - A demonstration library with components for building HTML5-based canvas views
 
 ## Enyo
 
@@ -90,20 +90,6 @@ essentially a compatibility layer, making it easy for Enyo app developers to
 access the powerful features of `iLib` without having to deal with messy,
 locale-specific details.
 
-## Canvas
-
-Enyo's encapsulation model works equally well for structuring canvas-based
-components as it does for traditional UI, and we have provided a library that
-abstracts common canvas primitives as Enyo components:
-
-* **Canvas and CanvasControl**
-* **Shapes** (Circle, Rectangle)
-* **Text**
-* **Image**
-
-You can easily extend these to create complex graphical applications and games,
-such as our [Pirate Pig](http://enyojs.com/samples/piratepig) canvas demo app.
-
 ## enyo-dev
 
 The `enyo-dev` module contains tools to help you throughout the development
@@ -112,13 +98,23 @@ for distribution to end users.
 
 Read more about `enyo-dev` [here](https://github.com/enyojs/enyo-dev).
 
+## Canvas
+
+Enyo's encapsulation model works for structuring canvas-based components just as
+well as it does for traditional UI elements.  `canvas` is a library that
+abstracts common canvas primitives as Enyo components.
+
+Please note that `canvas` is intended mainly as a demonstration, rather than a
+complete tool for canvas manipulation.  There are no changes or additional
+features planned.
+
 ## Additional Reading
 
 There are several paths you can take to ramp up as an Enyo developer.
 A few suggestions:
 
 * For tips on setting up your development environment, see [First
-    Steps](planning-and-structuring-your-app.html).
+    Steps](first-steps.html).
 * For a step-by-step look at how Enyo apps are created, head to the [Moonstone
     App Tutorial](moonstone-app-tutorial.html).
 * Can't make up your mind?  See the [complete list](../index.html) of available
