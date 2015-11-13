@@ -68,8 +68,25 @@ plugging in your own app-specific logic, assets, and so on:
         package.json
 ```
 
-[Missing: Provide some simple template content for `index.js` and the `src/`
-directory, a la Bootplate.]
+Most Enyo apps will have their logic stored in files under `/src`, but an app
+may be as simple as a single `index.js` file.  To see for yourself, create a
+file at `my-project/index.js` with the following contents:
+
+```
+    var Control = require('enyo/Control');
+    var ready = require('enyo/ready');
+
+    var HelloWorld = Control.kind({
+        content: 'Hello World!'
+    });
+
+    ready(function () {
+        new HelloWorld().renderInto(document.body);
+    });
+```
+
+In the next section, we'll learn how to turn this into a working "Hello, World!"
+app.
 
 ## Building an App
 
@@ -116,10 +133,14 @@ command-line build, if `epack` is run without any options:
 }
 ```
 
-You can try `epack` for yourself using the [enyo-strawman sample
+You can try `epack` for yourself using `my-project` and the `index.js` file from
+our example.  Enter the `my-project` directory and run `epack`.  Then check out
+the built application under `my-project/dist`.
+
+Alternatively, try building the [enyo-strawman sample
 application](https://github.com/enyojs/enyo-strawman).  Clone the repository and
 take a look at the `package.json` file in the root directory.  Then run `epack`
-and check out the built application under `dist/`.
+and find the built app under `dist/`.
 
 ### enyo serve (eserve)
 
@@ -131,5 +152,9 @@ rebuilds the application if one of the files is changed or deleted.
 related to the Web server.  Unlike `epack`, these options *cannot* be
 specified in the project's `package.json` file.
 
-Please note that `enyo serve` only creates development builds; for production
+To try `eserve` with our "Hello, World!" example, enter the `my-project`
+directory and run `eserve`.  Then point your Web browser at port 8000 on your
+development machine.
+
+Please note that `eserve` only creates development builds; for production
 builds, you'll need to use `epack` (specifically, `epack --no-dev-mode`).
