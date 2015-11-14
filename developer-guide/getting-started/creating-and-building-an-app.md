@@ -68,7 +68,7 @@ plugging in your own app-specific logic, assets, and so on:
         package.json
 ```
 
-Most Enyo apps will have their logic stored in files under `/src`, but an app
+Most Enyo apps will have their logic stored in files under `src/`, but an app
 may be as simple as a single `index.js` file.  To see for yourself, create a
 file at `my-project/index.js` with the following contents:
 
@@ -77,7 +77,7 @@ file at `my-project/index.js` with the following contents:
     var ready = require('enyo/ready');
 
     var HelloWorld = Control.kind({
-        content: 'Hello World!'
+        content: 'Hello, World!'
     });
 
     ready(function () {
