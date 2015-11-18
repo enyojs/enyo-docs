@@ -13,8 +13,8 @@ relevant to your specific role.
 
 ## I'm Developing an Enyo/Moonstone Application...
 
-Welcome to the team!  Here are some things that all developers should keep in
-mind when writing apps using Enyo and Moonstone:
+Here are some things that all developers should keep in mind when writing apps
+using Enyo and Moonstone:
 
 * **Don't break encapsulation.**
 
@@ -93,7 +93,7 @@ mind when writing apps using Enyo and Moonstone:
 * **Don't create unnecessary `Signals` instances.**
 
     When you have a component that needs to listen for several different
-    signals, the component only needs to include one instance of `enyo.Signals`.
+    signals, the component only needs to include one instance of `enyo/Signals`.
     That one instance may register as a listener for multiple signals.  (For
     details, see [Event Handling](../key-concepts/event-handling.html).)
 
@@ -112,10 +112,15 @@ mind when writing apps using Enyo and Moonstone:
 
 * **Remember that Moonstone includes both a dark theme and a light theme.**
 
-    The dark theme, with white or gray text on a black background, is the
-    default.  To use the light theme (which features dark text on a gray
-    background), open your app's `package.js` file and replace `$lib/moonstone`
-    with `$lib/moonstone/light-package.js`.
+    Currently, an app may choose between the dark or light themes at build time
+    by setting the `@moon-theme` LESS variable from within their application's
+    LESS stylesheet. `moonstone-variables.less` will then include the correct
+    theme's variable fill (either `moonstone-variables-dark.less` or
+    `moonstone-variables-light.less`) based on the value of that variable. While
+    the light and dark themes are mutually exclusive and rely on different compiled
+    CSS, contols must adapt themselves at runtime to use the neutral theme when
+    placed inside of certain containers (Popup, ContextualPopup, Drawer, ListActions,
+    etc.), through the application of the `.moon-neutral` class.
 
 * **Use shortcuts for shared paths.**
 
@@ -129,8 +134,11 @@ mind when writing apps using Enyo and Moonstone:
 
 * **Test for right-to-left compatibility.**
 
-    Setting the CSS class `enyo-locale-right-to-left` on a control will activate
-    any specialized behavior it supports for right-to-left scripts.
+    All Moonstone controls must support "right-to-left" (RTL) layout, in addition
+    to the default "left-to-right" layout. 
+
+    Similar to fonts, the `ilib` library will apply an `.enyo-locale-right-to-left`
+    class to `<body>` for this purpose.
 
 * **Use your browser for debugging.**
 
@@ -236,8 +244,8 @@ creating shared code:
 * **Don't re-invent the wheel with utility functions.**
 
     All framework developers should familiarize themselves with the many useful,
-    cross-platform-compatible utilities provided by `enyo.lang`, `enyo.dom`,
-    `enyo.Component`, `enyo.UIComponent`, and `enyo.Control`.  Whether you need
+    cross-platform-compatible utilities provided by `enyo/lang`, `enyo/dom`,
+    `enyo/Component`, `enyo/UIComponent`, and `enyo/Control`.  Whether you need
     to check whether one component is a descendant of another, convert a style
     string into an array (and back), or filter an array of data, chances are
     good that someone else has already had to do something similar.  And that
