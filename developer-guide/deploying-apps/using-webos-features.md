@@ -44,23 +44,6 @@ use within Enyo applications. For example:
     });
 ```
 
-### TV-Specific Plugins
-
-LG webOS also includes a number of TV-specific Cordova plugins that may be
-optionally loaded.  These are not included with `enyo-cordova` by default, but
-may be added via the additional Enyo library `enyo-cordova/tv`.  Available
-plugins include the following:
-
-* Advertisement
-* Billing
-* Broadcast
-* Camera
-* DeviceInfo
-* DRM Agent
-* Magic Remote
-* Push
-* UPNP
-
 ## enyo-webos
 
 The `enyo-webos` library has a number of features designed exclusively for the
