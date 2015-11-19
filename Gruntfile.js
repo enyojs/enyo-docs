@@ -90,5 +90,7 @@ module.exports = function (grunt) {
 
 	grunt.loadTasks('tasks');
 	
+	grunt.registerTask('api', ['jsdoc', 'less', 'copy-assets', 'subst']);
+	grunt.registerTask('guide', ['shell', 'copy-assets', 'subst']);
 	grunt.registerTask('default', ['jsdoc', 'less', 'shell', 'copy-assets', 'subst']);
 };

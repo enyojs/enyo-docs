@@ -77,29 +77,29 @@ As you develop your application, you'll want to (periodically) build the app for
 testing.  The `enyo-dev` tools provide two options for doing this--manually,
 using `enyo pack`, or with a development server, using `enyo serve`.
 
-### enyo pack (epack)
+### enyo pack
 
-`enyo pack` (aliased to `epack`) creates an optimized build of your application,
-using only the required source.  The output, in which all JavaScript is combined
-and all CSS/LESS is combined, is written to `./dist` by default; the output
-directory may be configured using the `-d` switch.  The JavaScript and CSS may
-either be inlined in the HTML (the default) or stored in external files (via the
-`-j` and `-c` options).  In addition, any assets declared in the app's
-`package.json` file will be copied to the output directory.
+`enyo pack` creates an optimized build of your application, using only the
+required source.  The output, in which all JavaScript is combined and all
+CSS/LESS is combined, is written to `./dist` by default; the output directory
+may be configured using the `-d` switch.  The JavaScript and CSS may either be
+inlined in the HTML (the default) or, in production mode, stored in external
+files (via the `-j` and `-c` options).  In addition, any assets declared in the
+app's `package.json` file will be copied to the output directory.
 
 For example, the following command will create output in `build/app.css` and
 `build/app.js`.
 
 ```
-    epack -d ./build -c app.css -j app.js
+    enyo pack --production -d ./build --no-inline-css --css-outfile app.css --no-inline-js --js-outfile app.js
 ```
 
-Note that any `epack` option available on the command line may also be set in
+Note that any `enyo pack` option available on the command line may also be set in
 the project's `package.json` file.  Options specified on the command line will
 always override those defined in `package.json`.
 
 The following `package.json` will produce the same output as the preceding
-command-line build, if `epack` is run without any options:
+command-line build, if `enyo pack` is run without any options:
 
 ```json
 {
@@ -110,26 +110,29 @@ command-line build, if `epack` is run without any options:
     "styles": [
         "src/app.less"
     ],
+    "production": true,
     "outdir": "./build",
+    "inlineCss": false,
     "outCssFile": "app.css",
+    "inlineJs": false,
     "outJsFile": "app.js"
 }
 ```
 
-You can try `epack` for yourself using the [enyo-strawman sample
+You can try `enyo pack` for yourself using the [enyo-strawman sample
 application](https://github.com/enyojs/enyo-strawman).  Clone the repository and
-take a look at the `package.json` file in the root directory.  Then run `epack`
+take a look at the `package.json` file in the root directory.  Then run `enyo pack`
 and check out the built application under `dist/`.
 
-### enyo serve (eserve)
+### enyo serve
 
-`enyo serve` (aliased to `eserve`) is a tool that builds your application and
-makes it available via a Web server (running on port 8000 by default). `eserve`
+`enyo serve` is a tool that builds your application and
+makes it available via a Web server (running on port 8000 by default). `enyo serve`
 monitors the files used in the build (JavaScript, CSS, and `package.json`) and
 rebuilds the application if one of the files is changed or deleted.
-`eserve` supports the same options as `epack`, along with a few others
-related to the Web server.  Unlike `epack`, these options *cannot* be
+`enyo serve` supports the same options as `enyo pack`, along with a few others
+related to the Web server.  Unlike `enyo pack`, these options *cannot* be
 specified in the project's `package.json` file.
 
 Please note that `enyo serve` only creates development builds; for production
-builds, you'll need to use `epack` (specifically, `epack --no-dev-mode`).
+builds, you'll need to use `enyo pack` (specifically, `enyo pack --production`).

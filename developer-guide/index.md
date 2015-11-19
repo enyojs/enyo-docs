@@ -2,89 +2,39 @@
 
 Welcome!  Resources are available in the following areas:
 
-* Getting Started
+* Introduction to Enyo and Moonstone
 
     * [A Tour of Enyo](getting-started/enyo-tour.html)
-    * [First Steps](getting-started/first-steps.html)
-    * [Creating and Building an App](getting-started/creating-and-building-an-app.html)
-    * [Tutorial: Building a Moonstone App](getting-started/moonstone-app-tutorial.html)
+    * [A Visual Guide to Moonstone](getting-started/visual-guide.html)
+    * [Framework Philosophy](getting-started/philosophy.html)
 
-* Enyo 2.6
+* Moonstone Tutorial
 
-    * [Converting Your Existing App to 2.6](building-apps/conversion-to-2.6.html)
-    * [Flux in Enyo](building-apps/flux-in-enyo.html)
-    * [Lazy Loading](building-apps/lazy-loading.html)
-    * [Background Task Manager](building-apps/background-task-manager.html)
+    * [Building a Moonstone App](getting-started/moonstone-app-tutorial.html)
 
-* Enyo Essentials
+* Subject-Area Guides
 
-    * [Kinds](key-concepts/kinds.html)
-    * [Objects and Published Properties](key-concepts/objects-and-published-properties.html)
-    * [Components](key-concepts/components.html)
-    * [Controls](key-concepts/controls.html)
-    * [Event Handling](key-concepts/event-handling.html)
+    * [Key Concepts](key-concepts/index.html)
 
-* Managing Data
+    * [Getting Started](getting-started/index.html)
 
-    * [Building Data-Driven Apps](building-apps/managing-data/building-data-driven-apps.html)
-    * [Consuming Web Services](building-apps/managing-data/consuming-web-services.html)
+    * [Managing Data](building-apps/managing-data/index.html)
 
-* UI Layout
+    * [Performance](building-apps/performance/index.html)
 
-    * [Fittables](building-apps/layout/fittables.html)
-    * [Scrollers](building-apps/layout/scrollers.html)
-    * [Lists](building-apps/layout/lists.html)
-    * [Data Lists](building-apps/layout/data-lists.html)
-    * [Drawers](building-apps/layout/drawers.html)
-    * [Panels](building-apps/layout/panels.html)
+    * [Layout and Controls](building-apps/layout-and-controls.html)
 
-* Building TV Applications
+    * [Support Modules](support-modules/index.html)
 
-    * [Spotlight](building-apps/spotlight.html)
-    * [Buttons](building-apps/controls/buttons.html)
-    * [Checkboxes](building-apps/controls/checkboxes.html)
-    * [Headers](building-apps/controls/headers.html)
-    * [List Items](building-apps/controls/list-items.html)
-    * [Media](building-apps/controls/media.html)
-    * [Pickers](building-apps/controls/pickers.html)
-    * [Popups](building-apps/controls/popups.html)
-    * [Progress Indicators](building-apps/controls/progress-indicators.html)
-    * [Radio Items](building-apps/controls/radio-items.html)
-    * [Text Fields](building-apps/controls/text-fields.html)
-    * [Toggles](building-apps/controls/toggles.html)
+    * [Testing and Debugging](building-apps/testing-and-debuggin/index.html)
 
-* Performance
+    * [Platforms and Deployment](deploying-apps/index.html)
 
-    * [Performance](building-apps/performance/performance.html)
+    * [Best Practices](best-practices/index.html)
 
-* Localization
+    * [Designing Apps](design/index.hml)
 
-    * [Localization](building-apps/localization.html)
-
-* Enyo and webOS
-
-    * [Using webOS Features](building-apps/using-webos-features.html)
-
-* Testing and Debugging
-
-    * [Browser-Based Debugging](building-apps/testing-and-debugging/browser-based-debugging.html)
-
-* Deploying Apps
-
-    * [Platform-Specific Deployment](deploying-apps/platform-specific-deployment.html)
-    * [Enyo Apps on Windows 8](deploying-apps/enyo-apps-on-windows-8.html)
-    * [Cordova Native Functions](deploying-apps/cordova-native-functions.html)
-
-* Best Practices
-
-    * [Documenting Code for the API Reference](best-practices/api-reference.html)
-    * [Enyo Dos and Don'ts](best-practices/dos-and-donts.html)
-    * [Encapsulation in Enyo](best-practices/encapsulation-in-enyo.html)
-    * [Coding Style Guide](best-practices/style-guide.html)
-
-* Designing Apps
-
-    * [Design Guide](design.html)
+    * [Contributing to Enyo](contributing/index.html)
 
 * Reference
 

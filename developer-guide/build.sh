@@ -146,6 +146,8 @@ while [ $y -lt $len ]; do
 #			pandoc -s $pandocOptions -f markdown -t html -o $targetFilePath $sourceFilePath
 			pandoc --template=$templateFile $pandocOptions -f markdown -t html -o $targetFilePath $sourceFilePath
 		fi
+	else
+		echo "File not found: ${sourceFilePath}"
 	fi
 	let y++
 done
