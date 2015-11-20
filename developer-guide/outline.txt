@@ -34,6 +34,7 @@ building-apps/conversion-to-2.6.md
 building-apps/flux-in-enyo.md
 building-apps/lazy-loading.md
 building-apps/localization.md
+building-apps/resolution-independence.md
 building-apps/spotlight.md
 building-apps/testing-and-debugging/browser-based-debugging.md
 building-apps/using-webos-features.md
