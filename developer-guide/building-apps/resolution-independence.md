@@ -15,8 +15,8 @@ Your app should look the same, whether it's running at HD, FHD, or UHD!
 
 There will be more pixels at higher resolutions, of course, but the elements
 on screen should appear to have the same physical size at any resolution.  For
-example, a button that is 1-inch wide in HD resolution will also be 1-inch wide
-in FHD and UHD.
+example, a button that is 1-inch wide on an HD resolution screen will also be
+1-inch wide on an FHD or UHD screen.
 
 The easiest way to see this in action is to open a Moonstone sample, such as the
 Activity Panels sample, and use the device emulation feature in the Chrome Web
@@ -24,10 +24,9 @@ Inspector to switch between HD and FHD resolutions.  (Depending on which sample
 you're looking at, you may need to reload the page after changing resolutions,
 since any JavaScript-based layout won't automatically be re-run otherwise.)
 
-If you do that, you should see something like this:
-
-Here is the Moonstone Activity Panels Sample at various resolutions, with the
-"Fit" checkbox disabled (click an image to enlarge):
+Here's the Moonstone Activity Panels Sample as it appears in the Chrome Web
+Inspector at various resolutions, with the "Fit" checkbox disabled (click an
+image to enlarge):
 
 <table border=0>
 <tr>
@@ -91,6 +90,9 @@ You should use this function to wrap most of the hard-coded pixel values in your
 app code. For example:
 
 ```javascript
+    var
+        ri = require('enyo/resolution');
+
     var buttonWidth = ri.scale(60) + 'px'; 
  
     this.$.button.applyStyle('width', buttonWidth);
@@ -111,6 +113,9 @@ In the following example, we combine a hard-coded value (with `ri.scale()`
 applied) with a dynamically measured value:
 
 ```javascript
+    var
+        ri = require('enyo/resolution');
+
     var originalWidth = this.$.button.getBounds().width;
 
     // The calculation below will add the equivalent of
@@ -194,6 +199,9 @@ used in `if` statements or `switch` statements to execute custom code for a
 given screen type, as in the following examples:
 
 ```javascript
+    var
+        ri = require('enyo/resolution');
+
     if ( ri.getScreenType() == 'uhd' ) {
         columns = 5;
     } else {
@@ -202,6 +210,9 @@ given screen type, as in the following examples:
 ```
 
 ```javascript
+    var
+        ri = require('enyo/resolution');
+
     switch ( ri.getScreenType() ) {
         case 'hd':
             columns = 3;
