@@ -6,7 +6,7 @@ Calendar may be used to select dates from a month-based calendar.
 
 ## API Reference
 
-[moon.Calendar]($api/#/kind/moon.Calendar)
+[moonstone/Calendar]($api/#/kind/moonstone/Calendar)
 
 ## Behavior and States
 

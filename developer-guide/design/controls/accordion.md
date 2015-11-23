@@ -11,7 +11,7 @@ An accordion must contain a minimum of two items.
 
 ## API Reference
 
-[moon.Accordion]($api/#/kind/moon.Accordion)
+[moonstone/Accordion]($api/#/kind/moonstone/Accordion)
 
 ## Behaviors and States
 

@@ -7,7 +7,7 @@ rule.  It may be used as a section header to separate the sections of a list.
 
 ## API Reference
 
-[moon.Divider]($api/#/kind/moon.Divider)
+[moonstone/Divider]($api/#/kind/moonstone/Divider)
 
 ## Behavior and States
 

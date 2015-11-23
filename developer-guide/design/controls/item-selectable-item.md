@@ -10,8 +10,8 @@ time.  This is useful for menus that change the content next to them.
 
 ## API Reference
 
-[moon.Item]($api/#/kind/moon.Item),
-[moon.SelectableItem]($api/#/kind/moon.SelectableItem)
+[moonstone/Item]($api/#/kind/moonstone/Item),
+[moonstone/SelectableItem]($api/#/kind/moonstone/SelectableItem)
 
 ## Behavior and States
 

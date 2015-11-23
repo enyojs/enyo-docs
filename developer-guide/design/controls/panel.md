@@ -10,7 +10,7 @@ the main body content.
 
 ## API Reference
 
-[moon.Panel]($api/#/kind/moon.Panel)
+[moonstone/Panel]($api/#/kind/moonstone/Panel)
 
 ## Behavior and States
 

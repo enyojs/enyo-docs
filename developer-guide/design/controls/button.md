@@ -7,7 +7,7 @@ basic types, text and icon, and are available in two sizes, large and small.
 
 ## API Reference
 
-[moon.Button]($api/#/kind/moon.Button)
+[moonstone/Button]($api/#/kind/moonstone/Button)
 
 ## Behaviors and States
 

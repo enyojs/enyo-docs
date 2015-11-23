@@ -7,7 +7,7 @@ used for adjusting system settings such as contrast and brightness.
 
 ## API Reference
 
-[moon.Slider]($api/#/kind/moon.Slider)
+[moonstone/Slider]($api/#/kind/moonstone/Slider)
 
 ## Behavior and States
 

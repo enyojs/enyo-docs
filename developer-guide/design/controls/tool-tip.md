@@ -8,7 +8,7 @@ currently-focused control.
 
 ## API Reference
 
-[moon.Tooltip]($api/#/kind/moon.Tooltip)
+[moonstone/Tooltip]($api/#/kind/moonstone/Tooltip)
 
 ## Behavior and States
 

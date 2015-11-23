@@ -7,9 +7,9 @@ Moonstone provides both Single-Line and Multi-Line text inputs.
 
 ## API Reference
 
-[moon.Input]($api/#/kind/moon.Input),
-[moon.RichText]($api/#/kind/moon.RichText),
-[moon.TextArea]($api/#/kind/moon.TextArea)
+[moonstone/Input]($api/#/kind/moonstone/Input),
+[moonstone/RichText]($api/#/kind/moonstone/RichText),
+[moonstone/TextArea]($api/#/kind/moonstone/TextArea)
 
 ## Behavior and States
 

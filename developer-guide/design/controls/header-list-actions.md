@@ -14,8 +14,8 @@ content in the panel below.
 
 ## API Reference
 
-[moon.Header]($api/#/kind/moon.Header),
-[moon.ListActions]($api/#/kind/moon.ListActions)
+[moonstone/Header]($api/#/kind/moonstone/Header),
+[moonstone/ListActions]($api/#/kind/moonstone/ListActions)
 
 ## Behavior and States
 
