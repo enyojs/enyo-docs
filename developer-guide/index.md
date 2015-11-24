@@ -26,13 +26,13 @@ Welcome!  Resources are available in the following areas:
 
     * [Support Modules](support-modules/index.html)
 
-    * [Testing and Debugging](building-apps/testing-and-debuggin/index.html)
+    * [Testing and Debugging](building-apps/testing-and-debugging/index.html)
 
     * [Platforms and Deployment](deploying-apps/index.html)
 
     * [Best Practices](best-practices/index.html)
 
-    * [Designing Apps](design/index.hml)
+    * [Designing Apps](design/index.html)
 
     * [Contributing to Enyo](contributing/index.html)
 

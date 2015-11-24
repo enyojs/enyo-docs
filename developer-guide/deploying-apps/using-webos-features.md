@@ -15,35 +15,6 @@ events:
 
 * `webOSLocaleChange`: Dispatched when the system changes its language settings.
 
-## enyo-cordova
-
-Cordova features a cross-platform standard for [various device
-APIs](http://docs.phonegap.com/en/2.7.0/index.html) such as geolocation and
-in-app-browser.  The Enyo library `enyo-cordova` encapsulates Cordova for all
-platforms, dynamically choosing the right version based on the device running
-the application (e.g., the webOS version of Cordova on webOS TVs).
-
-In addition, [Enyo signals]($api/#/kind/enyo/Signals/Signals) are set up for all
-[Cordova-based events](http://docs.phonegap.com/en/2.7.0/index.html) for easy
-use within Enyo applications. For example:
-
-```javascript
-    var
-        kind = require('enyo/kind'),
-        Signals = require('enyo/Signals');
-
-    module.exports = kind({
-        name: "App",
-        components: [
-            {kind: Signals, ondeviceready: "deviceready"},
-            ...
-        ],
-        deviceready: function(inSender, inEvent) {
-            // After deviceready, Cordova is loaded and ready to be used
-        }
-    });
-```
-
 ## enyo-webos
 
 The `enyo-webos` library has a number of features designed exclusively for the
@@ -104,7 +75,7 @@ with webOS services.
 ### webOS.js
 
 In much the same way that `enyo-cordova` includes the standalone Cordova
-library, `enyo-webos` includes the standalone `webOS.js` library.  `webOS.js`
+library, `enyo-webos` includes the standalone [`webOS.js`](https://github.com/webOS-DevRel/webOS.js) library.  `webOS.js`
 focuses on providing webOS-specific functionality in a streamlined package, with
 support for both Open webOS and webOS for TV in a single API set.  Included in
 `webOS.js` are the following modules:
