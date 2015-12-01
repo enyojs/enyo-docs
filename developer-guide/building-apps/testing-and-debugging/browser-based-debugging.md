@@ -5,16 +5,9 @@ written, and that each software project presents its own unique challenges, the
 Enyo team would like to offer some general guidance as you work to perfect your
 application.
 
-Whatever the details of your situation, there are two essential rules of Enyo
-debugging:
-
-* It's much easier to debug an Enyo app running in a desktop browser than one
-    running on a device, so debug in a desktop browser whenever possible.
-
-* When debugging, load your app's `debug.html` file and not its `index.html`
-    file.
-
-We'll discuss both of these points in detail below.
+Whatever the details of your situation, the first rule of Enyo debugging remains
+the same: It's much easier to debug an Enyo app running in a desktop browser
+than one running on a device, so debug in a desktop browser whenever possible.
 
 Of course, there will likely be times when debugging in a browser won't satisfy
 your needs--if your app interacts with on-device services, for example, or if
@@ -85,27 +78,22 @@ Mac.
 * In Safari 6 on your Mac, select `Develop menu > select iOS Device`.
 * [More details](http://webdesign.tutsplus.com/tutorials/workflow-tutorials/quick-tip-using-web-inspector-to-debug-mobile-safari/)
 
-#### iOS 5
-
-In iOS 5, you can debug a Safari or Cordova/PhoneGap app in the simulator only
-(not on a device) using [iWebInspector](http://www.iwebinspector.com/).
-
 ### Android
 
 #### Chrome for Android
 
-* [Guide to Remote Debugging](https://developers.google.com/chrome/mobile/docs/debugging)
+* [Remote Debugging Devices](https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging)
 
 #### Firefox for Android
 
-* [Setting Up Remote Debugging](https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/)
+* [Remote Debugging](https://developer.mozilla.org/en-US/docs/Tools/Remote_Debugging)
 * [Remote Web Console](http://starkravingfinkle.org/blog/2012/10/firefox-for-android-remote-web-console-is-here)
 
 ### Cross-Platform
 
-* [Weinre](http://debug.phonegap.com/): Remote debugging for mobile Web apps.
-    Part of the [Cordova](http://incubator.apache.org/cordova/) (PhoneGap) open
-    source project.
+* [Weinre](https://people.apache.org/~pmuellr/weinre-docs/latest/): Remote
+    debugging for mobile Web apps.  A product of the [Apache Software
+    Foundation](http://www.apache.org/).
 
 * [Socketbug](http://socketbug.com): An open-source remote debugging utility
     using [Socket.IO](http://socket.io/)
@@ -113,39 +101,12 @@ In iOS 5, you can debug a Safari or Cordova/PhoneGap app in the simulator only
 ## Other Tools
 
 * Some third-party JavaScript IDEs include their own debuggers.  One example is
-    [JetBrains WebStorm](http://www.jetbrains.com/webstorm/), a commercial
-    product compatible with Windows, Mac, and Linux.
+    [WebStorm](http://www.jetbrains.com/webstorm/), a commercial product
+    compatible with Windows, Mac, and Linux.
 
 * [JSONLint](http://www.jsonlint.com/): This Web site takes amorphous blobs of
     JSON data and makes them readable.  It complains about JSONP results, but
     still manages to reformat all of the internals for viewing.
-
-## Loading Debug Source (debug.html)
-
-If your app is based on `bootplate-moonstone` (or some other variation of the
-Bootplate template), be sure to load the `debug.html` file (rather than
-`index.html`) when debugging.  This will ensure that the app is loaded without
-using any minimized files (i.e., the optimized versions of `app.js`, `app.css`,
-`enyo.js`, and `enyo.css` that are created when you run the `deploy` script).
-These files are best suited to final deployment; when loaded during
-development, they make it harder to pin down the source of any errors that
-occur.  Moreover, even if you debug with the optimized files loaded, any fixes
-you make will eventually need to go in the original, non-optimized source
-code--so it makes sense to work with the original source throughout the
-debugging process.
-
-If you're not using the Bootplate template, you can still prevent your app from
-loading the minimized files by editing your host HTML file.  Be sure to load
-`enyo.js` from the top level of a full `enyo` distribution and `package.js` from
-your application's source folder.  For example, the `<head>` section of the host
-HTML file might contain the following:
-
-```html
-    <!-- enyo (debug) -->
-    <script src="enyo/enyo.js"></script>
-    <!-- application (debug) -->
-    <script src="source/package.js" type="text/javascript"></script>
-```
 
 ## Basic Tips
 
