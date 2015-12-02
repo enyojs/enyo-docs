@@ -91,9 +91,9 @@ the end of the shortcut's Target property.  Then use the shortcut each time you
 launch the browser.  A similar approach should work on Mac and Linux as well.)
 
 If you are not currently running a local Web server, you may want to take
-advantage of the `eserve` tool, which is found in the `enyo-dev` repo.  Running
-`eserve` on the command line will build your app and serve it via http on port
-8000.  For more on `eserve`, see [Creating and Building an
+advantage of the `enyo serve` tool, which is found in the `enyo-dev` repo.
+Running `enyo serve` on the command line will build your app and serve it via
+http on port 8000.  For more on `enyo serve`, see [Creating and Building an
 App](creating-and-building-an-app.html).
 
 Alternatively, if you need a more robust solution, you may want to install an
