@@ -15,8 +15,8 @@ Your app should look the same, whether it's running at HD, FHD, or UHD!
 
 There will be more pixels at higher resolutions, of course, but the elements
 on screen should appear to have the same physical size at any resolution.  For
-example, a button that is 1-inch wide on an HD resolution screen will also be
-1-inch wide on an FHD or UHD screen.
+example, if a button is 1-inch wide on an HD resolution screen, it should also
+be 1-inch wide on an FHD (or UHD) screen having the same physical dimensions.
 
 The easiest way to see this in action is to open a Moonstone sample, such as the
 Activity Panels sample, and use the device emulation feature in the Chrome Web
@@ -168,7 +168,7 @@ One exception to this rule is if you are using CSS background images.  For this
 and similar cases, we have provided a simple way to write resolution-specific
 selectors.  The framework now applies a class to the document's `<body>` element
 to represent the resolution at which your app is currently running:
-`moon-res-hd` for 720p HD, `moon-res-fhd` for 1080p FHD, and `moon-res-uhd` for
+`enyo-res-hd` for 720p HD, `enyo-res-fhd` for 1080p FHD, and `enyo-res-uhd` for
 4k UHD.
 
 Here's how to use these classes to write resolution-specific selectors:
@@ -180,12 +180,12 @@ Here's how to use these classes to write resolution-specific selectors:
     }
  
     /* 720p HD-only rule */
-    .moon-res-hd .my-view {
+    .enyo-res-hd .my-view {
         background-image: url('http://lorempixel.com/64/64/city/1/');
     }
 
     /* 4k UHD-only rule */
-    .moon-res-uhd .my-view {
+    .enyo-res-uhd .my-view {
         background-image: url('http://lorempixel.com/256/256/city/1/');
     }
 ```
