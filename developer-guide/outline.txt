@@ -45,6 +45,7 @@ best-practices/api-reference.md
 best-practices/dos-and-donts.md
 best-practices/encapsulation-in-enyo.md
 best-practices/style-guide.md
+best-practices/version-control.md
 design.md
 design/principles.md
 design/patterns.md

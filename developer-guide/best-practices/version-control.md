@@ -1,54 +1,54 @@
-% Version Control Topics for Enyo Apps
+% Version Control for Enyo Apps
 
 ## What Belongs in Version Control
 
-In most cases, it is not necessary, or desirable, to commit the Enyo framework
+In most cases, it is neither necessary nor desirable to commit the Enyo framework
 source to version control along with your app. The `enyo init` command will
 add the needed libraries for a project whenever it is checked out from version
-control and it is possible to even specify specific versions of the libraries
-to use. The `enyo init` command also creates a *.gitignore* file that automatically
-ignores directories and files that should not generally be committed with app
-source.  These include:
+control; it is even possible to specify specific versions of the libraries
+to use. The `enyo init` command also creates a `.gitignore` file, which lists
+directories and files that should not generally be committed with app source, so
+they can be automatically ignored.  These include:
 
-* The *lib* directory, where the framework source is stored
-* The *node_modules* directory that holds node modules needed for test and deployment
-* Build targets (such as the *dist* directory) and artifacts
+* The `lib` directory, where the framework source is stored
+* The `node_modules` directory, which holds node modules needed for test and deployment
+* Build targets (such as the `dist` directory) and artifacts
 
-When using other version control systems, these same directories should be excluded.
+If your project is using a version control system other than Git, make sure that
+these directories are excluded.
 
-For more information on specifying Enyo libraries and versions, refer to the enyo-dev documentation.
+For more information on specifying Enyo libraries and versions, refer to the
+[enyo-dev](https://github.com/enyojs/enyo-dev) documentation.
 
 ## Shared Component Libraries
 
 Enyo encourages the factoring of application functionality into reusable
 components.  In order to share components between multiple applications, the
 shared components should typically be committed to a shared repository set up as
-a standard Enyo library, similar to other libraries used in Enyo (`layout`,
-`moonstone`, etc.).  In this way, the shared library may be added to
-applications with the enyo-dev tool.
+a standard Enyo library, similar to other libraries used in Enyo (e.g.,
+`layout`, `moonstone`).  In this way, the shared library may be added to
+applications with the `enyo-dev` tool.
 
 The following are guidelines for setting up a new Enyo library:
 
-### Folder layout
+### Folder Layout
 
 The following is a typical structure for an Enyo library (although the developer
 retains considerable discretion):
 
 * `<library-root>`
-    * `package.json` - *Project definitions*
-    * `css`
-        * *CSS/LESS source*
-    * `src`
-        * *JavaScript source*
-    * `images`
-        * *any images/assets*
-    * `index.js`
+    + `package.json` - Project definitions
+    + `css` - CSS/LESS source
+    + `src` - JavaScript source
+    + `images` - Any images/assets
+    + `index.js`
 
-It is vitally important to remember the top-level `package.json` as this file
+It is vitally important to remember the top-level `package.json` file, as this
 includes all the information about the project dependencies and tells the dev
-tools which assets and css files to include.
+tools which assets and CSS files to include.
 
-A new library can be created by issuing the `enyo init --library` command. This will set the proper settings in *.enyoconfig*, but does not create any of the directories.
+To create a new library, issue the `enyo init --library` command. This will set
+the proper settings in `.enyoconfig`, but will not create any of the directories.
 
 ### Asset URLs
 
