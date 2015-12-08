@@ -122,8 +122,14 @@ you may find it helpful to set breakpoints on particularly complex `create()` or
 code to force a break at a given line, in addition to using the
 breakpoint-setting capabilities of your browser's debugger.)
 
-All named Enyo components are available from the `enyo.$` hash, so inspecting
-that variable will show all the created objects in your application.  The
+Enyo exposes a global `require()` method that allows for loading modules at
+run-time from the console. This allows for creating objects or viewing static
+properties from Enyo modules. Any module to be required must have been included
+with the app when it was packaged.
+
+All named Enyo components are available from the `$` hash of the
+[enyo/dispatcher]($api/#/kind/enyo/dispatcher/dispatcher) module, so inspecting
+that property will show all the created objects in your application.  The
 generated ids are based on the hierarchy of your application, so you can use
 names to help with auto-completion.  For an individual Enyo object, its own `$`
 hash shows what is owned by that object.
