@@ -58,7 +58,7 @@ do not re-render components that are currently on drawn on the DOM.
 ## Using Flux with Enyo
 
 The Enyo framework's Flux support comes in the form of two new components,
-`enyo.FluxDispatcher`, and `enyo.FluxStore`.
+`enyo/FluxDispatcher`, and `enyo/FluxStore`.
 
 FluxDispatcher is a singleton instance whose job is to usher data and route
 action requests across multiple stores and consumers.
@@ -71,15 +71,20 @@ consumer of payload dispatches, to route multiple actions across stores.
 
 ### Our First Store
 
-To create our first store, we will extend `enyo.FluxStore` and define our Action
+To create our first store, we will extend `enyo/FluxStore` and define our Action
 handler inside of the `update()` method.  We will also set the `source` property
-to an instance of `enyo.Source` to be consumed. 
+to an instance of `enyo/Source` to be consumed.
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        FluxStore = require('enyo/FluxStore'),
+        Source = require(enyo.Source);
+
+    kind({
         name: 'myapp.MyFluxStore',
-        kind: 'enyo.FluxStore',
-        source: 'enyo.Source',
+        kind: FluxStore,
+        source: Source,
         update: function(actions) {
             //handle actions dispatched to the store
         }
@@ -87,19 +92,23 @@ to an instance of `enyo.Source` to be consumed.
 ```
 
 When a store instance is created, it will notify the dispatcher.  In this case,
-we have departed from the general Flux pattern.  An `enyo.FluxStore` will be
+we have departed from the general Flux pattern.  An `enyo/FluxStore` will be
 assigned a dispatch id when created.  We'll use this dispatch id to reduce the
 length of the potential notification stack.
 
 Here's an example showing the FluxStore being created inside an application:
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        App = require('enyo/Application');
+
+    kind({
         name: 'myapp.Application',
-        kind: 'enyo.Application',
+        kind: App,
         create: function() {
 
-            enyo.inherited(arguments);
+            this.inherited(arguments);
             //create a new instance of the FluxStore
             this.store = new myapp.MyFluxStore();
         }
@@ -113,7 +122,9 @@ a set of actions that the FluxStore and a consumer will share.  To do this, we
 create a singleton of static constants.
 
 ```javascript
-    enyo.singleton({
+    var kind = require('enyo/kind');
+
+    kind.singleton({
         name: 'myapp.Constants.Actions',
         myAction: 'myAction'
     });
@@ -128,14 +139,19 @@ The Flux pattern requires a slight modification of the way you manage the view
 and its consumption of the data driving the interface.
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        utils = require('enyo/utils'),
+        FluxDispatcher = require('enyo/FluxDispatcher');
+
+    kind({
         name: 'myapp.MyView',
         create: function() {
 
-            enyo.inherited(arguments);
-            this.subscriptionID = enyo.FluxDispatcher.subscribe(
+            this.inherited(arguments);
+            this.subscriptionID = FluxDispatcher.subscribe(
                     this.app.store.id, //the store provides this ID
-                    enyo.bind(this, this.update);
+                    utils.bind(this, this.update)
             );
         },
         update: function(payload) {
@@ -171,7 +187,7 @@ suppose that our view contains a button; when the button is clicked, we use the
     tapHandler: function(sender, ev) {
         //notify the store an action took place
         //pass it the data needed to modify data
-        enyo.FluxDispatcher.notify(
+        FluxDispatcher.notify(
             this.app.store.id,
             {
                 actionType: myapp.Constants.Actions.myAction,
@@ -188,10 +204,15 @@ The dispatcher passes this as a payload to the FluxStore.  The store's
 the passed-in action.
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        FluxStore = require(enyo/FluxStore),
+        Source = require('enyo/Source');
+
+    kind({
         name: 'myapp.MyFluxStore',
-        kind: 'enyo.FluxStore',
-        source: 'enyo.Source',
+        kind: FluxStore,
+        source: Source,
         update: function(action) {
 
             //handle dispatched actions to the store
@@ -218,14 +239,19 @@ case, we can create a Controller that listens for notifications.  The Controller
 may either listen to an existing notification stack or create its own stack.
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        FluxDispatcher = require('enyo/FluxDispatcher'),
+        Controller = require('enyo/Controller');
+
+    kind({
         name: 'myapp.ActionController',
-        kind: 'enyo.Controller',
+        kind: Controller,
         create: function() {
-            enyo.inherited(arguments);
-            this.subscriptionID = enyo.FluxDispatcher.subscribe(
+            this.inherited(arguments);
+            this.subscriptionID = FluxDispatcher.subscribe(
                     this.app.storeA.id, //the store provides this ID
-                    enyo.bind(this, this.update);
+                    this.bind(this, this.update)
             );
         },
         update: function(action) {
@@ -234,12 +260,12 @@ may either listen to an existing notification stack or create its own stack.
 
                 case myapp.Constants.Actions.myCompoundAction:
 
-                    enyo.FluxDispatcher.notify(
+                    FluxDispatcher.notify(
                          this.app.storeA.id,
                          myapp.Constants.Actions.myAction,
                          action.payload);
 
-                    enyo.FluxDispatcher.notify(
+                    FluxDispatcher.notify(
                          this.app.storeB.id,
                          myapp.Constants.Actions.myAction,
                          action.payload);
@@ -263,24 +289,29 @@ In instances where a compound action may take place, you may have a need to
 interact with multiple stores, based on dependency.
 
 In such a situation, a store may use the `waitFor()` method provided by
-`enyo.FluxDispatcher`.  This method is invoked inside a dispatching method like
+`enyo/FluxDispatcher`.  This method is invoked inside a dispatching method like
 `update()`.  When `waitFor()` is used, the independent store's `update()` method
 will complete before the dependent method is invoked.
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        Source = require('enyo/Source'),
+        FluxDispatcher = require('enyo/FluxDispatcher'),
+        FluxStore = require('enyo/FluxStore');
+
+    kind({
         name: 'myapp.StoreB',
-        kind: 'enyo.FluxStore',
-        source: 'enyo.Source',
+        kind: FluxStore,
+        source: Source,
         update: function(actions) {
 
-            enyo.FluxDispatcher.waitFor(this.app.storeA.id, 
+            FluxDispatcher.waitFor(this.app.storeA.id,
             function(){
                 //complete the action here after storeA.update
-
+                }
             )}
-        }
-    });
+        });
 ```
 
 ## Summary
@@ -295,10 +326,10 @@ the FluxStore.  The store is responsible for holding the data, modifying the
 data, and interacting with the source of the data.
 
 If we need to interact with multiple FluxStore instances, we can use an
-`enyo.Controller` that is configured to consume `Compound Action` notifications
+`Controller` that is configured to consume `Compound Action` notifications
 from the FluxDispatcher, and to dispatch `Actions` through the FluxDispatcher to
 the appropriate stores.
 
 If we know that one FluxStore is dependent on another FluxStore, we can use
-`enyo.FluxDispatcher.waitFor()` inside the store's `update()` method to ensure
+`FluxDispatcher.waitFor()` inside the store's `update()` method to ensure
 that the independent store completes its update first.
