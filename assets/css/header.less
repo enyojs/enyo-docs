@@ -111,11 +111,19 @@
 	.private, .protected, .inherited {
 		display: none;
 	}
+
+	.hide-on-private {
+		display: block;
+	}
 }
 
 .show-private {
 	.private, .protected, .inherited {
 		display: block;
+	}
+
+	.hide-on-private {
+		display: none;
 	}
 }
 
