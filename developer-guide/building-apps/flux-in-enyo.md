@@ -79,7 +79,7 @@ to an instance of `enyo/Source` to be consumed.
     var
         kind = require('enyo/kind'),
         FluxStore = require('enyo/FluxStore'),
-        Source = require(enyo.Source);
+        Source = require('enyo/Source');
 
     kind({
         name: 'myapp.MyFluxStore',
