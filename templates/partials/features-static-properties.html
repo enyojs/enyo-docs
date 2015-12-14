@@ -1,0 +1,12 @@
+{% if staticProperties.length > 0 %}
+<ul>
+	{% for property in staticProperties %}
+		<li class="property {{ property.access }} {{ "inherited" if property.inherits }}">
+			<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ property.name }}');">{{ property.name }}</a>
+		</li>
+	{% endfor %}
+</ul>
+{% else %}
+<span class="no-properties">No static properties</span>
+{% endif %}
+

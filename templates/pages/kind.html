@@ -25,6 +25,14 @@
 			<h1 class="inherited"><a href="javascript:find(':inherited-events');">Inherited Events</a></h1>
 			<div class="inherited">{% include "partials/features-inherited-events.html" %}</div>
 		</div>
+		<div class="static-properties">
+			<h1><a href="javascript:find(':static-properties');">Static Properties</a></h1>
+			<div>{% include "partials/features-static-properties.html" %}</div>
+		</div>
+		<div class="static-methods">
+			<h1><a href="javascript:find(':static-methods');">Static Methods</a></h1>
+			<div>{% include "partials/features-static-methods.html" %}</div>
+		</div>
 		<div class="typedefs">
 			<h1><a href="javascript:find(':typedefs');">Type Definitions</a></h1>
 			<div>{% include "partials/features-typedefs.html" %}</div>
@@ -54,6 +62,8 @@
 		<div class="section inherited-methods inherited">{% include "partials/inherited-methods.html" %}</div>
 		<div class="section events">{% include "partials/events.html" %}</div>
 		<div class="section inherited-events inherited">{% include "partials/inherited-events.html" %}</div>
+		<div class="section static-properties">{% include "partials/static-properties.html" %}</div>
+		<div class="section static-methods">{% include "partials/static-methods.html" %}</div>
 		<div class="section typedefs">{% include "partials/typedefs.html" %}</div>
 		<div class="section mixins">{% include "partials/mixins.html" %}</div>
 	</div>

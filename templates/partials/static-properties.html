@@ -1,0 +1,9 @@
+<a name="static-properties"></a>
+<h1>Static Properties</h1>
+{% if staticProperties.length > 0 %}
+	{% for property in staticProperties -%}
+		{% include "partials/property.html" %}
+	{%- endfor %}
+{% else %}
+<strong>No static properties</strong>
+{% endif %}
