@@ -22,11 +22,14 @@ code inside an `index.html` file:
     </head>
     <body>
         <script>
+            var
+                kind = require('enyo/kind'),
+                Signals = require('enyo/Signals');
             // Application kind
-            enyo.kind({
+            kind({
                 name: "App",
                 components: [
-                    {kind: "Signals", ondeviceready: "deviceReady"},
+                    {kind: Signals, ondeviceready: "deviceReady"},
                     {content: "Hello, World!"}
                 ],
                 deviceReady: function() {
@@ -52,7 +55,7 @@ GitHub, you already have the file that provides this ability, namely,
 `enyo/source/dom/cordova.js`.
 
 In Enyo 2, `cordova.js` automatically sends notifications via
-[enyo.Signals]($api/#/kind/enyo.Signals) when certain Cordova events are
+[enyo/Signals]($api/#/kind/enyo/Signals) when certain Cordova events are
 detected.
 
 The following Cordova events are supported:
@@ -73,14 +76,17 @@ The following Cordova events are supported:
 * volumedownbutton
 * volumeupbutton
 
-In order to respond to one of these events, we add an `enyo.Signals` instance to
+In order to respond to one of these events, we add an `enyo/Signals` instance to
 our application, e.g.:
 
 ```javascript
-    enyo.kind({
+    var
+        kind = require('enyo/kind'),
+        Signals = require('enyo/Signals');
+    kind({
         name: "App",
         components: [
-            {kind: "Signals", ondeviceready: "deviceReady"},
+            {kind: Signals, ondeviceready: "deviceReady"},
             {content: "Hello, World!"}
         ],
         deviceReady: function() {

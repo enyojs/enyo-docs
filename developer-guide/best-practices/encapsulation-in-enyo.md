@@ -76,7 +76,7 @@ organize each project as you see fit.
 ## Separate into packages for reuse
 
 Enyo provides a higher level of encapsulation at the file level, via
-`package.js` files and the `enyo.depends()` loader mechanism.  This is
+`package.js` files and the `enyo/depends()` loader mechanism.  This is
 especially useful for third-party components and libraries, since it allows the
 author to specify all the JavaScript and CSS files a component or library
 depends on.  As a result, the user does not have to worry about the library's

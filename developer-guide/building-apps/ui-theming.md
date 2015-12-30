@@ -202,7 +202,7 @@ The absence of custom styling makes sense, however, when we realize that
 Bootplate does not contain any Onyx controls, so there are no UI elements that
 will reflect our variable overrides.  The lone control in Bootplate's `App.js`
 file has no kind specified, and thus defaults to being an unstyled
-[enyo.Control]($api/#/kind/enyo.Control):
+[enyo/Control]($api/#/kind/enyo/Control/Control):
 
         {name: "hello", content: "Hello World", allowHtml: true, ontap: "helloWorldTap"}
 
