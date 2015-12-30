@@ -17,7 +17,7 @@ most useful for binding view properties to your back-end data, bindings in Enyo
 are very flexible and may be created between any two Enyo objects.
 
 All Enyo objects and components support binding by default when property values
-are changed using the `set()` method of [enyo/Object]($api/#/kind/enyo/Object/Object).
+are changed using the `set()` method of [enyo/Object]($api/#/kind/enyo/CoreObject/Object).
 However, to make changes to properties observable on plain old JavaScript
 objects (e.g., JSON objects loaded from a back-end service), Enyo also provides
 [enyo/Model]($api/#/kind/enyo/Model/Model), an object that wraps a plain JavaScript
