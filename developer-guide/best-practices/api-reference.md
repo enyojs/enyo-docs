@@ -320,6 +320,25 @@ its typedefs in the "Type Definitions" section.
 Note that the `@param` tag is used here just as in the documentation for a
 public method.
 
+### Mixins
+
+Mixins should be tagged with the `@mixin` tag. A module that returns a mixin should define it 
+on a local variable and assign the variable to `module.exports` so that the mixin is properly
+documented:
+
+```
+/**
+* A sample mixin
+* @mixin
+*/
+
+var MyMixin = {
+    ....
+};
+
+module.exports = MyMixin;
+```
+
 ## Formatting (Markdown)
 
 In addition to supporting JSDoc tags, the API Reference includes support for
