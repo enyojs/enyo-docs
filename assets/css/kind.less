@@ -15,6 +15,16 @@
 							overflow: hidden;
 							text-overflow: ellipsis;
 							padding: 5px;
+							span {
+								color: @text-color;
+								display: none;
+							}
+							&.private,
+							&.protected {
+								span {
+									display: inline;
+								}
+							}
 						}
 					}
 				}

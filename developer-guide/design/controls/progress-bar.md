@@ -7,7 +7,7 @@ linear progress of a process.
 
 ## API Reference
 
-[moon.ProgressBar]($api/#/kind/moon.ProgressBar)
+[moonstone/ProgressBar]($api/#/kind/moonstone/ProgressBar)
 
 ## Behavior and States
 

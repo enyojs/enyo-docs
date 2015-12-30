@@ -7,7 +7,7 @@ select one item from a list.
 
 ## API Reference
 
-[moon.SimplePicker]($api/#/kind/moon.SimplePicker)
+[moonstone/SimplePicker]($api/#/kind/moonstone/SimplePicker)
 
 ## Behavior and States
 

@@ -7,7 +7,7 @@ screen.  User interaction is required to dismiss the dialog.
 
 ## API Reference
 
-[moon.Popup]($api/#/kind/moon.Popup)
+[moonstone/Popup]($api/#/kind/moonstone/Popup)
 
 ## Behavior and States
 

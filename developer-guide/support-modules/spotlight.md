@@ -51,7 +51,7 @@ whenever suitable input is received--i.e., it switches to pointer mode on
 The Spotlight API also provides a way to make the switch explicitly:
 
 ```javascript
-    enyo.Spotlight.setPointerMode(<Boolean>);
+    Spotlight.setPointerMode(<Boolean>);
 ```
 
 <a name="3"></a>
@@ -181,10 +181,10 @@ The following events are dispatched by the main Spotlight module:
     bubbling to app level right after its originator is set as current
 
 * `onSpotlightScrollUp`: Dispatched when `mousewheel` event delta exceeds
-    `enyo.Spotlight.Scrolling.frequency` (Default: 40)  
+    `Spotlight.Scrolling.frequency` (Default: 40)
 
 * `onSpotlightScrollDown`: Dispatched when `mousewheel` negative event delta
-    exceeds `-enyo.Spotlight.Scrolling.frequency` (Default: 40)
+    exceeds `-Spotlight.Scrolling.frequency` (Default: 40)
 
 <br />     
 
@@ -272,7 +272,7 @@ Accelerator](https://github.com/enyojs/spotlight/blob/master/kind.Spotlight.Acce
 is to distribute events over time (according to its configuration).
 
 Spotlight Accelerator may be configured via its array property,
-`enyo.Spotlight.Accelerator.frequency`.  The default configuration is as
+`Spotlight.Accelerator.frequency`.  The default configuration is as
 follows:
 
 ```javascript
@@ -307,7 +307,7 @@ amount of wheel rotation.  [Spotlight
 Scrolling](https://github.com/enyojs/spotlight/blob/master/enyo.Spotlight.Scrolling.js)
 accumulates `wheelDeltaY` values in a given direction of rotation (up or down).
 
-Once the cumulative value exceeds `enyo.Spotlight.Scrolling.frequency`, either
+Once the cumulative value exceeds `Spotlight.Scrolling.frequency`, either
 `onSpotlightScrollUp` or `onSpotlightScrollDown` is dispatched and the
 cumulative value is reset to 0.
 

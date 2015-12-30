@@ -4,9 +4,10 @@
 
 Once you've completed the setup tasks outlined in [First Steps with
 Enyo](first-steps.html), you're ready to create an application.  To initialize a
-project, use the `enyo init` command from the `enyo-dev` tools.  `enyo init`
-creates the standard Enyo directory structure and populates it with framework
-code and configuration files.
+project, use the `enyo init` command from the
+[enyo-dev](https://github.com/enyojs/enyo-dev) toolset.  `enyo init` creates the
+standard Enyo directory structure and populates it with framework code and
+configuration files.
 
 As an example, let's initialize a project called "my-project":
 
@@ -68,8 +69,25 @@ plugging in your own app-specific logic, assets, and so on:
         package.json
 ```
 
-[Missing: Provide some simple template content for `index.js` and the `src/`
-directory, a la Bootplate.]
+Most Enyo apps will have their logic stored in files under `src/`, but an app
+may be as simple as a single `index.js` file.  To see for yourself, create a
+file at `my-project/index.js` with the following contents:
+
+```
+    var Control = require('enyo/Control');
+    var ready = require('enyo/ready');
+
+    var HelloWorld = Control.kind({
+        content: 'Hello, World!'
+    });
+
+    ready(function () {
+        new HelloWorld().renderInto(document.body);
+    });
+```
+
+In the next section, we'll learn how to turn this into a working "Hello, World!"
+app.
 
 ## Building an App
 
@@ -84,8 +102,9 @@ required source.  The output, in which all JavaScript is combined and all
 CSS/LESS is combined, is written to `./dist` by default; the output directory
 may be configured using the `-d` switch.  The JavaScript and CSS may either be
 inlined in the HTML (the default) or, in production mode, stored in external
-files (via the `-j` and `-c` options).  In addition, any assets declared in the
-app's `package.json` file will be copied to the output directory.
+files (via the `--no-inline-css` and `--no-inline-js` options).  In addition,
+any assets declared in the app's `package.json` file will be copied to the
+output directory.
 
 For example, the following command will create output in `build/app.css` and
 `build/app.js`.
@@ -119,20 +138,28 @@ command-line build, if `enyo pack` is run without any options:
 }
 ```
 
-You can try `enyo pack` for yourself using the [enyo-strawman sample
+You can try `enyo pack` for yourself using `my-project` and the `index.js` file
+from our example.  Enter the `my-project` directory and run `enyo pack`.  Then
+check out the built application under `my-project/dist`.
+
+Alternatively, try building the [enyo-strawman sample
 application](https://github.com/enyojs/enyo-strawman).  Clone the repository and
 take a look at the `package.json` file in the root directory.  Then run `enyo pack`
-and check out the built application under `dist/`.
+and find the built app under `dist/`.
 
 ### enyo serve
 
-`enyo serve` is a tool that builds your application and
-makes it available via a Web server (running on port 8000 by default). `enyo serve`
-monitors the files used in the build (JavaScript, CSS, and `package.json`) and
-rebuilds the application if one of the files is changed or deleted.
-`enyo serve` supports the same options as `enyo pack`, along with a few others
-related to the Web server.  Unlike `enyo pack`, these options *cannot* be
+`enyo serve` is a tool that builds your application and makes it available via a
+Web server (running on port 8000 by default). `enyo serve` monitors the files
+used in the build (JavaScript, CSS, and `package.json`) and rebuilds the
+application if one of the files is changed or deleted.  `enyo serve` supports
+the same options as `enyo pack`, along with a few others related to the Web
+server.  However, unlike `enyo pack`, the options for `enyo serve` *cannot* be
 specified in the project's `package.json` file.
+
+To try `enyo serve` with our "Hello, World!" example, enter the `my-project`
+directory and run `enyo serve`.  Then point your Web browser at port 8000 on
+your development machine.
 
 Please note that `enyo serve` only creates development builds; for production
 builds, you'll need to use `enyo pack` (specifically, `enyo pack --production`).

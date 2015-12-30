@@ -1,9 +1,11 @@
 {% if properties.length > 0 %}
 <ul>
 	{% for property in properties %}
-	<li class="property {{ property.access }} {{ "inherited" if property.inherits }}">
-		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ property.name }}');">{{ property.name }}</a>
-	</li>
+		{% if property.scope != 'static' %}
+			<li class="property {{ property.access }} {{ "inherited" if property.inherits }}">
+				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ property.name }}');">{{ property.name }}</a>
+			</li>
+		{% endif %}
 	{% endfor %}
 </ul>
 {% else %}

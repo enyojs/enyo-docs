@@ -108,9 +108,12 @@ Next, if you haven't yet installed the `enyo-dev` module, you will need to do
 so.  Use the following command to retrieve and install the module:
 
 ```bash
-    git clone https://github.com/enyojs/enyo-dev.git && \
-        cd enyo-dev && \
-        npm link
+    git clone https://github.com/enyojs/enyo-dev.git
+    cd enyo-dev
+    # if there is a version, use the next line and replace the version as appropriate
+    git checkout 0.5.3
+    npm install
+    npm link
 ```
 
 (**Note:** Depending on your development environment, you may need to run

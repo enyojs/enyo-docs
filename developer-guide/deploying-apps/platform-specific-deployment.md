@@ -106,11 +106,13 @@ the following line to load Cordova before Enyo:
 ```
 
 Enyo supports Cordova events out of the box; you may subscribe to them using
-`enyo.Signals`.  To listen for Cordova's startup event (`onDeviceReady`), add
+`enyo/Signals`.  To listen for Cordova's startup event (`onDeviceReady`), add
 the following to your main app kind's `components` block:
 
 ```javascript
-    {kind: "Signals", ondeviceready: "deviceready"}
+    var Signals = require('enyo/Signals');
+
+    {kind: Signals, ondeviceready: "deviceready"}
 ```
 
 `onDeviceReady` will be sent as soon as Cordova detects that the device is

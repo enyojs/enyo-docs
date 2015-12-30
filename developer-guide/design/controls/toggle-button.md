@@ -6,7 +6,7 @@ A Toggle Button is a button with two states: on and off.
 
 ## API Reference
 
-[moon.ToggleButton]($api/#/kind/moon.ToggleButton)
+[moonstone/ToggleButton]($api/#/kind/moonstone/ToggleButton)
 
 ## Behavior and States
 

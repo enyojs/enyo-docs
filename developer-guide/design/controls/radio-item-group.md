@@ -8,8 +8,8 @@ be used for selecting a view.
 
 ## API Reference
 
-[moon.RadioItem]($api/#/kind/moon.RadioItem),
-[moon.RadioItemGroup]($api/#/kind/moon.RadioItemGroup)
+[moonstone/RadioItem]($api/#/kind/moonstone/RadioItem),
+[moonstone/RadioItemGroup]($api/#/kind/moonstone/RadioItemGroup)
 
 ## Behavior and States
 

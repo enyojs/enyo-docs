@@ -6,7 +6,7 @@ A Date Picker is a control used for selecting a date.
 
 ## API Reference
 
-[moon.DatePicker]($api/#/kind/moon.DatePicker)
+[moonstone/DatePicker]($api/#/kind/moonstone/DatePicker)
 
 ## Behavior
 

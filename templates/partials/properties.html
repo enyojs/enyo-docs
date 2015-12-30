@@ -2,7 +2,9 @@
 <h1>Properties</h1>
 {% if properties.length > 0 %}
 {% for property in properties -%}
-{% include "partials/property.html" %}
+	{% if property.scope != 'static' %}
+		{% include "partials/property.html" %}
+	{% endif %}
 {%- endfor %}
 {% else %}
 <strong>No properties</strong>

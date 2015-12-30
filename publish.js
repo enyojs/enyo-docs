@@ -40,10 +40,13 @@ exports.publish = function (db, opts) {
 	
 	var namespaces = db({kind: 'namespace', subNamespace: {'!is': true}}).order('longname asec').get(),
 		kinds = db({kind: 'class', ui: {isUndefined: true}}).order('longname asec').get(),
+		publicKindCount = db({kind: 'class', ui: {isUndefined: true}, access: 'public'}).order('longname asec').count(),
 		controls = db({kind: 'class', ui: true}).order('longname asec').get(),
+		publicControlCount = db({kind: 'class', ui: true, access: 'public'}).order('longname asec').count(),
 		utils = db({kind: 'function', utility: true}).order('longname asec').get(),
 		modules = db({kind: 'module'}).order('longname asec').get(),
 		librariesModules = {},
+		librariesPublicModulesCount = {},
 		libraries = [],
 		prefix = /([^\/]*)/;
 
@@ -54,6 +57,13 @@ exports.publish = function (db, opts) {
 		} else {
 			libraries.push(lib);
 			librariesModules[lib] = [module];
+		}
+		if(module.access == 'public') {
+			if(librariesPublicModulesCount[lib]) {
+				librariesPublicModulesCount[lib]++;
+			} else {
+				librariesPublicModulesCount[lib] = 1;
+			}
 		}
 	});
 	
@@ -83,7 +93,8 @@ exports.publish = function (db, opts) {
 	helpers.publish('modules.html', resolveLinks(helpers.render(
 		'pages/modules.html', {
 			libraries: libraries,
-			librariesModules: librariesModules
+			librariesModules: librariesModules,
+			librariesPublicModulesCount: librariesPublicModulesCount
 		}
 	)));
 	
@@ -91,6 +102,8 @@ exports.publish = function (db, opts) {
 	helpers.publish('kinds.html', helpers.render(
 		'pages/kinds.html', {
 			controls: controls,
+			publicControlCount: publicControlCount,
+			publicKindCount: publicKindCount,
 			kinds: kinds
 		}
 	));

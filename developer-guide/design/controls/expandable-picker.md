@@ -8,7 +8,7 @@ closed.
 
 ## API Reference
 
-[moon.ExpandablePicker]($api/#/kind/moon.ExpandablePicker)
+[moonstone/ExpandablePicker]($api/#/kind/moonstone/ExpandablePicker)
 
 ## Behavior and States
 

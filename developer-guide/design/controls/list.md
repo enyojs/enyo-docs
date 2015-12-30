@@ -9,7 +9,7 @@ appear.
 
 ## API Reference
 
-[moon.DataList]($api/#/kind/moon.DataList)
+[moonstone/DataList]($api/#/kind/moonstone/DataList)
 
 ## Behavior and States
 

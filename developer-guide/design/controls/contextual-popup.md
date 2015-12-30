@@ -8,7 +8,7 @@ current context or opening a new panel.
 
 ## API Reference
 
-[moon.ContextualPopup]($api/#/kind/moon.ContextualPopup)
+[moonstone/ContextualPopup]($api/#/kind/moonstone/ContextualPopup)
 
 ## Behavior and States
 

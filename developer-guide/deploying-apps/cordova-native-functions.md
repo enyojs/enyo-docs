@@ -37,7 +37,7 @@ GitHub, you already have the file that provides this ability, namely,
 `enyo/source/dom/cordova.js`.
 
 In Enyo 2, `cordova.js` automatically sends notifications via
-[enyo.Signals]($api/#/kind/Signals/Signals) when certain Cordova events are
+[enyo/Signals]($api/#/kind/Signals/Signals) when certain Cordova events are
 detected.
 
 The following Cordova events are supported:

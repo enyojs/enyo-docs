@@ -7,7 +7,7 @@ forms to indicate agreement to conditions.
 
 ## API Reference
 
-[moon.FormCheckbox]($api/#/kind/moon.FormCheckbox)
+[moonstone/FormCheckbox]($api/#/kind/moonstone/FormCheckbox)
 
 ## Behavior and States
 

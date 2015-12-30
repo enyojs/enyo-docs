@@ -7,7 +7,7 @@ field.
 
 ## API Reference
 
-[moon.ExpandableInput]($api/#/kind/moon.ExpandableInput)
+[moonstone/ExpandableInput]($api/#/kind/moonstone/ExpandableInput)
 
 ## Behavior and States
 

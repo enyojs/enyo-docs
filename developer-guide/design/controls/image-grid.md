@@ -7,8 +7,8 @@ groups).
 
 ## API Reference
 
-[moon.DataGridList]($api/#/kind/moon.DataGridList),
-[moon.GridListImageItem]($api/#/kind/moon.GridListImageItem)
+[moonstone/DataGridList]($api/#/kind/moonstone/DataGridList),
+[moonstone/GridListImageItem]($api/#/kind/moonstone/GridListImageItem)
 
 ## Behavior and States
 

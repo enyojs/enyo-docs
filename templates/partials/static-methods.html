@@ -1,0 +1,9 @@
+<a name="static-methods"></a>
+<h1>Static Methods</h1>
+{% if staticMethods.length > 0 %}
+{% for method in staticMethods %}
+{% include "partials/method.html" %}
+{% endfor %}
+{% else %}
+<strong>No static methods</strong>
+{% endif %}

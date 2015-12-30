@@ -7,7 +7,7 @@ actions.
 
 ## API Reference
 
-[moon.ToggleItem]($api/#/kind/moon.ToggleItem)
+[moonstone/ToggleItem]($api/#/kind/moonstone/ToggleItem)
 
 ## Behavior and States
 

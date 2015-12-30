@@ -6,7 +6,7 @@ A Checkbox Item combines a checkbox with a text item.
 
 ## API Reference
 
-[moon.CheckboxItem]($api/#/kind/moon.CheckboxItem)
+[moonstone/CheckboxItem]($api/#/kind/moonstone/CheckboxItem)
 
 ## Behavior and States
 

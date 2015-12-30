@@ -272,7 +272,7 @@ If a module is requested that is already loaded (either statically or
 dynamically), the `request()` function will return immediately; the module will
 not be reloaded.
 
-**NOTE:** The `enyo-dev build tool will not allow the same module to be
+**NOTE:** The `enyo-dev` build tool will not allow the same module to be
 requested and required in the same file.  You must use a variable or obfuscate
 the module name so that the analyzer in the tool will not raise an error.
 

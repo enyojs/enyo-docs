@@ -7,7 +7,7 @@ the top of the screen.
 
 ## API Reference
 
-[moon.Drawer]($api/#/kind/moon.Drawer)
+[moonstone/Drawer]($api/#/kind/moonstone/Drawer)
 
 ## Behavior and States
 
