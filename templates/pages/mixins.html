@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
+		<div class="kinds">
+			<h1><a href="javascript:find(':mixins');">Mixins</a></h1>
+			<div>
+				<ul>
+					{% for library in libraries %}
+					<li><span class="private"><a href="javascript:find(':{{ library }}');">{{ library }} ({{ librariesMixins[library].length }})</a></span><span class="hide-on-private"><a href="javascript:find(':{{ library }}');">{{ library }} ({{ librariesPublicMixinsCount[library] }})</a></span></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-8 col-sm-pull-4 kinds main-container">
+
+
+		<div class="header">
+			<h2>MIXINS</h2>
+		</div>
+
+		<div class="section description">
+			<div>These are the <a href="#/glossary:mixin">mixins</a> available in
+				the Enyo framework, separated by library.</div>
+		</div>
+		<div class="section kinds">
+			<a name="mixins"></a>
+			{% for library in libraries %}
+			<a name="{{ library }}"></a>
+			<div class="entry">
+				<div class="header">
+					<h2>{{ library }}</h2>
+				</div>
+				<div class="content">
+					<ul class="row">
+						{% for mixin in librariesMixins[library] %}
+						<li class="col-lg-4 col-md-6 col-sm-12 {{ mixin.access }}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;{{ mixin.internalLink }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
