@@ -12,6 +12,14 @@
 		{%- endif -%}
 	</div>
 	<div class="content">
+		{%- if method.deprecated -%}
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			{%- if method.deprecated != true -%}
+				<span>Deprecated: {{ method.deprecated }}</span>
+			{%- else -%}
+				<span>Deprecated</span>
+			{%- endif -%}
+		{%- endif -%}
 		{% if method.inherited %}
 		<div class="inherited">Inherited from {{ method.inherits }}</div>
 		{% endif %}

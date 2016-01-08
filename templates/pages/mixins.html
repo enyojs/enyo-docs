@@ -33,7 +33,10 @@
 				<div class="content">
 					<ul class="row">
 						{% for mixin in librariesMixins[library] %}
-						<li class="col-lg-4 col-md-6 col-sm-12 {{ mixin.access }}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;{{ mixin.internalLink }}</li>
+						<li class="col-lg-4 col-md-6 col-sm-12 {{ mixin.access }}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+						{%- if mixin.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+						{%- if mixin.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
+							&nbsp;{{ mixin.internalLink }}</li>
 						{% endfor %}
 					</ul>
 				</div>

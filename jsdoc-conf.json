@@ -29,6 +29,7 @@
 		"ext/glossary",
 		"ext/utility",
 		"ext/ui",
+		"ext/wip",
 		"ext/definedby"
 	],
 	"markdown": {

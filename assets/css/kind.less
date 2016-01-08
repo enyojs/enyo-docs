@@ -15,13 +15,15 @@
 							overflow: hidden;
 							text-overflow: ellipsis;
 							padding: 5px;
-							span {
+							.glyphicon {
 								color: @text-color;
+							}
+							.glyphicon-lock {
 								display: none;
 							}
 							&.private,
 							&.protected {
-								span {
+								.glyphicon-lock {
 									display: inline;
 								}
 							}

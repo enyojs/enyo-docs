@@ -19,8 +19,10 @@
 	}
 
 	li {
-		span {
+		.glyphicon {
 			color: @text-color;
+		}
+		.glyphicon-lock {
 			display: none;
 		}
 		a, a:hover, a:visited {
@@ -28,7 +30,7 @@
 			color: @text-color;
 		}
 		&.private {
-			span {
+			.glyphicon-lock {
 				display: inline;
 			}
 			margin-left: -12px;

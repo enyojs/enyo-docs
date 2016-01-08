@@ -2,6 +2,7 @@
 <ul>
 	{% for mixin in mixins %}
 	<li class="mixin">
+		{%- if mixin.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
 		<a href="javascript:find(':{{ mixin.name }}');">{{ mixin.name }}</a>
 	</li>
 	{% endfor %}

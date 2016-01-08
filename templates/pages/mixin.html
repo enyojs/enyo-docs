@@ -24,6 +24,12 @@
 			{% if moduleLink %}
 			<div class="module-source">Import {{ moduleLink }}</div>
 			{% endif %}
+			{%- if mixin.wip -%}
+				<div class="wip">
+				<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+				Work-in-progress
+				</div>
+			{%- endif -%}
 		</div>
 
 		<div class="section description">

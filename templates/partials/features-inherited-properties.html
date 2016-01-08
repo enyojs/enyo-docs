@@ -2,7 +2,9 @@
 <ul>
 	{% for property in inheritedProperties %}
 	<li class="property {{ property.access }} {{ "inherited" if property.inherits }}">
-		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ property.name }}');">{{ property.name }}</a>
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+		{%- if property.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+		&nbsp;<a href="javascript:find(':{{ property.name }}');">{{ property.name }}</a>
 	</li>
 	{% endfor %}
 </ul>

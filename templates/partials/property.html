@@ -10,6 +10,14 @@
 		{% if property.inherited %}
 		<div class="inherited">Inherited from {{ property.inherits }}</div>
 		{% endif %}
+		{%- if property.deprecated -%}
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			{%- if property.deprecated != true -%}
+				<span>Deprecated: {{ property.deprecated }}</span>
+			{%- else -%}
+				<span>Deprecated</span>
+			{%- endif -%}
+		{%- endif -%}
 		<div class="default">Default: {{ property.defaultvalue }}</div>
 		<div class="description">{{ property.description }}</div>
 		{% if property.properties %}

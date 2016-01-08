@@ -8,6 +8,14 @@
 		{% if event.inherited %}
 		<div class="inherited">Inherited from {{ event.inherits }}</div>
 		{% endif %}
+		{%- if event.deprecated -%}
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			{%- if event.deprecated != true -%}
+				<span>Deprecated: {{ event.deprecated }}</span>
+			{%- else -%}
+				<span>Deprecated</span>
+			{%- endif -%}
+		{%- endif -%}
 		<div class="description">{{ event.description }}</div>
 		{% include "partials/event-properties.html" %}
 		<div class="source">

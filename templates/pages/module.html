@@ -29,6 +29,12 @@
 			<h2>MODULE</h2>
 			<h1>{% if memberof %}<a href="#/module/{{ memberof }}">{{ memberof }}</a>.{% endif %}{{ name }}</h1>
 			<div class="source">From {{ source }}</div>
+			{%- if wip -%}
+				<div class="wip">
+				<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+				Work-in-progress
+				</div>
+			{%- endif -%}
 		</div>
 
 		<div class="section description">
