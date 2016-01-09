@@ -1,13 +1,18 @@
 {% if inheritedProperties.length > 0 %}
 <ul>
+	{% set count = 0 %}
 	{% for property in inheritedProperties %}
-	<li class="property {{ property.access }} {{ "inherited" if property.inherits }}">
-		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-		{%- if property.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
-		&nbsp;<a href="javascript:find(':{{ property.name }}');">{{ property.name }}</a>
-	</li>
+		{% if property.access == 'public' %}
+			{% set count = count + 1 %}
+		{% endif %}
+		<li class="property {{ property.access }} {{ "inherited" if property.inherits }}">
+			<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+			{%- if property.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+			&nbsp;<a href="javascript:find(':{{ property.name }}');">{{ property.name }}</a>
+		</li>
 	{% endfor %}
+	{% if count == 0 %}
+		<li class="property hide-when-show-private feature-text">No public inherited properties</li>
+	{% endif %}
 </ul>
-{% else %}
-<span class="no-properties">No inherited properties</span>
 {% endif %}

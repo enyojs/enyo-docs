@@ -1,11 +1,16 @@
+{% if properties.length > 0 %}
 <a name="properties"></a>
 <h1>Properties</h1>
-{% if properties.length > 0 %}
-{% for property in properties -%}
-	{% if property.scope != 'static' %}
-		{% include "partials/property.html" %}
+	{% set count = 0 %}
+	{% for property in properties -%}
+		{% if show_static or property.scope != 'static' %}
+			{% if property.access == 'public' %}
+				{% set count = count + 1 %}
+			{% endif %}
+			{% include "partials/property.html" %}
+		{% endif %}
+	{%- endfor %}
+	{% if count == 0 %}
+		<span class="property hide-when-show-private"><strong>No public properties</strong></span>
 	{% endif %}
-{%- endfor %}
-{% else %}
-<strong>No properties</strong>
 {% endif %}

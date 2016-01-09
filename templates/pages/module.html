@@ -1,25 +1,36 @@
+{%- set show_static = true -%}
 <div class="row">
 	<div class="col-sm-4 col-sm-push-8 features">
+		{%- if (kinds.length > 0) or (ui.length > 0) -%}
 		<div class="kinds">
 			<h1><a href="javascript:find(':kinds');">Kinds</a></h1>
 			<div>{% include "partials/features-kinds.html" %}</div>
 		</div>
+		{%- endif -%}
+		{%- if (mixins.length > 0) -%}
 		<div class="mixins">
 			<h1><a href="javascript:find(':mixins');">Mixins</a></h1>
 			<div>{% include "partials/features-ns-mixins.html" %}</div>
 		</div>
+		{%- endif -%}
+		{%- if (properties.length > 0) -%}
 		<div class="properties">
 			<h1><a href="javascript:find(':properties');">Properties</a></h1>
 			<div>{% include "partials/features-properties.html" %}</div>
 		</div>
+		{%- endif -%}
+		{%- if (methods.length > 0) -%}
 		<div class="methods">
 			<h1><a href="javascript:find(':methods');">Methods</a></h1>
 			<div>{% include "partials/features-methods.html" %}</div>
 		</div>
+		{%- endif -%}
+		{%- if (typedefs.length > 0) -%}
 		<div class="typedefs">
 			<h1><a href="javascript:find(':typedefs');">Type Definitions</a></h1>
 			<div>{% include "partials/features-typedefs.html" %}</div>
 		</div>
+		{%- endif -%}
 	</div>
 	<div class="col-sm-8 col-sm-pull-4 module main-container">
 
@@ -41,10 +52,20 @@
 			<h1>Description</h1>
 			<div>{{ description }}</div>
 		</div>
+		{%- if (kinds.length > 0) or (ui.length > 0) -%}
 		<div class="section kinds">{% include "partials/kinds.html" %}</div>
+		{%- endif -%}
+		{%- if (mixins.length > 0) -%}
 		<div class="section mixins">{% include "partials/ns-mixins.html" %}</div>
+		{%- endif -%}
+		{%- if (properties.length > 0) -%}
 		<div class="section properties">{% include "partials/properties.html" %}</div>
+		{%- endif -%}
+		{%- if (methods.length > 0) -%}
 		<div class="section methods">{% include "partials/methods.html" %}</div>
+		{%- endif -%}
+		{%- if (typedefs.length > 0) -%}
 		<div class="section typedefs">{% include "partials/typedefs.html" %}</div>
+		{%- endif -%}
 	</div>
 </div>

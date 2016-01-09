@@ -1,7 +1,14 @@
 {% if mixes.length > 0 %}
 <a name="mixins"></a>
 <h1>Mixins</h1>
+{% set count = 0 %}
 {% for mixin in mixes -%}
-{% include "partials/mixin.html" %}
+	{% if mixin.access == 'public' %}
+		{% set count = count + 1 %}
+	{% endif %}
+	{% include "partials/mixin.html" %}
+	{% if count == 0 %}
+		<span class="mixin hide-when-show-private"><strong>No public mixins</strong></span>
+	{% endif %}
 {%- endfor %}
 {% endif %}

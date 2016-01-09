@@ -19,9 +19,7 @@
 	}
 
 	li {
-		.glyphicon {
-			color: @text-color;
-		}
+		color: @text-color;
 		.glyphicon-lock {
 			display: none;
 		}
@@ -35,9 +33,13 @@
 			}
 			margin-left: -12px;
 		}
+		.feature-text {
+			font-size: 12px;
+		}
 	}
 
 	.no-methods, .no-properties, .no-kinds, .no-mixins, .no-sub-namespaces {
+		color: @text-color;
 		padding-bottom: 15px;
 		display: inline-block;
 	}

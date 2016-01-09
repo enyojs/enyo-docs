@@ -1,9 +1,7 @@
+{% if inheritedMethods.length > 0 %}
 <a name="inherited-methods"></a>
 <h1 class="inherited">Inherited Methods</h1>
-{% if inheritedMethods.length > 0 %}
 {% for method in inheritedMethods %}
 {% include "partials/method.html" %}
 {% endfor %}
-{% else %}
-<strong class="inherited">No inherited methods</strong>
 {% endif %}

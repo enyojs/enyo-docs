@@ -1,14 +1,12 @@
-<a name="typedefs"></a>
-<h1>Type Definitions</h1>
 {% if typedefs.length > 0 %}
-{% for typedef in typedefs %}
-{% if typedef.params %}
-{% set method = typedef %}
-{% include "partials/method.html" %}
-{% else %}
-{% include "partials/typedef_properties.html" %}
-{% endif %}
-{% endfor %}
-{% else %}
-<strong>No Type Definitions</strong>
+	<a name="typedefs"></a>
+	<h1>Type Definitions</h1>
+	{% for typedef in typedefs %}
+		{% if typedef.params %}
+			{% set method = typedef %}
+			{% include "partials/method.html" %}
+		{% else %}
+			{% include "partials/typedef_properties.html" %}
+		{% endif %}
+	{% endfor %}
 {% endif %}

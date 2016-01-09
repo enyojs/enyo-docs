@@ -1,9 +1,14 @@
+{% if methods.length > 0 %}
 <a name="methods"></a>
 <h1>Methods</h1>
-{% if methods.length > 0 %}
-{% for method in methods %}
-{% include "partials/method.html" %}
-{% endfor %}
-{% else %}
-<strong>No methods</strong>
+	{% set count = 0 %}
+	{% for method in methods %}
+		{% if method.access == 'public' %}
+			{% set count = count + 1 %}
+		{% endif %}
+		{% include "partials/method.html" %}
+	{% endfor %}
+	{% if count == 0 %}
+		<span class="method hide-when-show-private"><strong>No public methods</strong></span>
+	{% endif %}
 {% endif %}

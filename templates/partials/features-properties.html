@@ -1,7 +1,11 @@
 {% if properties.length > 0 %}
 <ul>
+	{% set count = 0 %}
 	{% for property in properties %}
-		{% if property.scope != 'static' %}
+		{% if show_static or property.scope != 'static' %}
+			{% if property.access == 'public' %}
+				{% set count = count + 1 %}
+			{% endif %}
 			<li class="property {{ property.access }} {{ "inherited" if property.inherits }}">
 				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 				{%- if property.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
@@ -9,7 +13,8 @@
 			</li>
 		{% endif %}
 	{% endfor %}
+	{% if count == 0 %}
+		<li class="property hide-when-show-private feature-text">No public properties</li>
+	{% endif %}
 </ul>
-{% else %}
-<span class="no-properties">No properties</span>
 {% endif %}
