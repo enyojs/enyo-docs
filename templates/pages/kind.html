@@ -62,12 +62,16 @@
 		<div class="header">
 
 			<!--<h2>KIND</h2>-->
-			<h1>{{ prettyMemberof }}~{{ name }}</h1>
+			<h1>{{ name }}</h1>
+			<h3>Module:
+			{% if moduleLink %}
+				{{ moduleLink }}
+			{% else %}
+				{{ prettyMemberof }}
+			{% endif %}
+			</h3>
 			{% include "partials/inherits.html" %}
 			<div class="source">From {{ source }}</div>
-			{% if moduleLink %}
-			<div class="module-source">Import {{ moduleLink }}</div>
-			{% endif %}
 			{%- if wip -%}
 				<div class="wip">
 				<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
