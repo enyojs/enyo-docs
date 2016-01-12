@@ -15,19 +15,19 @@
 		{%- if (inheritedProperties.length > 0) -%}
 			<h1 class="inherited"><a href="javascript:find(':inherited-properties');">Inherited Properties</a></h1>
 			<div class="inherited">{% include "partials/features-inherited-properties.html" %}</div>
-		</div>
 		{%- endif -%}
-		{%- if (methods.length > 0) -%}
+		</div>
 		<div class="methods">
+		{%- if (methods.length > 0) -%}
 			<h1><a href="javascript:find(':methods');">Methods</a></h1>
 			<div>{% include "partials/features-methods.html" %}</div>
 		{%- endif -%}
 		{%- if (inheritedMethods.length > 0) -%}
 			<h1 class="inherited"><a href="javascript:find(':inherited-methods');">Inherited Methods</a></h1>
 			<div class="inherited">{% include "partials/features-inherited-methods.html" %}</div>
+		{%- endif -%}
 		</div>
 		<div class="events">
-		{%- endif -%}
 		{%- if (events.length > 0) -%}
 			<h1><a href="javascript:find(':events');">Events</a></h1>
 			<div>{% include "partials/features-events.html" %}</div>
