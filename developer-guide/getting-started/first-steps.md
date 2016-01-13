@@ -18,18 +18,6 @@ Linux, or the Mac-only [TextMate](http://macromates.com/).  We have also heard
 good things about the multi-platform [WebStorm](https://www.jetbrains.com/webstorm/)
 IDE.
 
-### Git
-
-To obtain the Enyo framework source code, you'll need [Git](https://git-scm.com)
-client software and a [GitHub](https://github.com) account, since the Enyo
-source is maintained on GitHub and accessed via Git version control.
-
-In our documentation, we present Git commands on the command line, but you are
-welcome to use your favorite GUI Git client as well.
-
-You can download the latest Git binaries at
-[git-scm.com](http://git-scm.com/downloads).
-
 ### Node.js
 
 Next, you'll need to have [Node.js](http://nodejs.org) installed on your
@@ -42,37 +30,13 @@ installation, use the command `node --version`.
 
 Once Node is in place, you'll need the tools provided by the
 [enyo-dev](https://github.com/enyojs/enyo-dev) module.  Use the following
-command to obtain the `enyo-dev` source:
+command to install the `enyo-dev` tool:
 
 ```
-    git clone https://github.com/enyojs/enyo-dev.git
+    npm install -g enyo-dev
 ```
 
-After the cloning completes, enter the new directory:
-
-```
-    cd enyo-dev
-```
-
-If you want to use a specific version of the `enyo-dev` tools, enter the
-following command:
-
-```
-    git checkout <version number>
-```
-
-Finally, complete the initial setup by issuing two additional commands:
-
-```
-    npm install
-
-    npm link
-```
-
-`npm install` installs a number of node modules in the `enyo-dev/node_modules`
-directory, while `npm link` creates numerous symbolic links to make `enyo-dev`
-commands available in your `$PATH`.  (You will likely need to run `npm link` as
-`root`, i.e., `sudo npm link`.)
+You may need to run `npm install` as `root`, i.e., `sudo npm install -g enyo-dev`.)
 
 ### Web Browser and Web Server
 
@@ -90,11 +54,17 @@ you can do this by creating a shortcut to `chrome.exe` and adding the switch to
 the end of the shortcut's Target property.  Then use the shortcut each time you
 launch the browser.  A similar approach should work on Mac and Linux as well.)
 
-If you are not currently running a local Web server, you may want to take
-advantage of the `enyo serve` tool, which is found in the `enyo-dev` repo.
-Running `enyo serve` on the command line will build your app and serve it via
-http on port 8000.  For more on `enyo serve`, see [Creating and Building an
-App](creating-and-building-an-app.html).
+If you are not currently running a local Web server, you may want to use
+a stand-alone server that can be launched where and when needed. One such option
+is the npm module [serve](). Install it using the following command:
+
+```
+    npm install -g server
+```
+
+This module can launch a web server (by default on port 3000) in the directory
+of your choice. For example, `serve dist` will serve your built enyo
+application.
 
 Alternatively, if you need a more robust solution, you may want to install an
 Apache/MySQL/PHP software bundle, such as [BitNami

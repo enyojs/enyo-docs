@@ -92,8 +92,7 @@ app.
 ## Building an App
 
 As you develop your application, you'll want to (periodically) build the app for
-testing.  The `enyo-dev` tools provide two options for doing this--manually,
-using `enyo pack`, or with a development server, using `enyo serve`.
+testing.  The `enyo-dev` tools provide the `enyo pack` command for this.
 
 ### enyo pack
 
@@ -142,20 +141,3 @@ Alternatively, try building the [enyo-strawman sample
 application](https://github.com/enyojs/enyo-strawman).  Clone the repository and
 take a look at the `package.json` file in the root directory.  Then run `enyo pack`
 and find the built app under `dist/`.
-
-### enyo serve
-
-`enyo serve` is a tool that builds your application and makes it available via a
-Web server (running on port 8000 by default). `enyo serve` monitors the files
-used in the build (JavaScript, CSS, and `package.json`) and rebuilds the
-application if one of the files is changed or deleted.  `enyo serve` supports
-the same options as `enyo pack`, along with a few others related to the Web
-server.  However, unlike `enyo pack`, the options for `enyo serve` *cannot* be
-specified in the project's `package.json` file.
-
-To try `enyo serve` with our "Hello, World!" example, enter the `my-project`
-directory and run `enyo serve`.  Then point your Web browser at port 8000 on
-your development machine.
-
-Please note that `enyo serve` only creates development builds; for production
-builds, you'll need to use `enyo pack` (specifically, `enyo pack --no-dev-mode`).

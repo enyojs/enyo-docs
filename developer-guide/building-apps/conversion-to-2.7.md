@@ -367,8 +367,7 @@ If you are converting an Enyo 2.5.x app to use Enyo 2.7.x, please note that the
 
 As mentioned above, the new Enyo build tools require that both `Node.js` and the
 `enyo-dev` module be installed.  Once they are, you'll be able to build your
-application, either manually (using `enyo pack`), or with a development server
-(`enyo serve`).
+application using `enyo pack`.
 
 For a detailed look at the new build process, see the section titled "Building
 an App" in the document [Creating and Building an
