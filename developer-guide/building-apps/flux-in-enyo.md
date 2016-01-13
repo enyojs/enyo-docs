@@ -5,7 +5,7 @@ architecture.  In this article, we look what Flux is, what it does, and how to
 use it in your Enyo application.
 
 **Please note that the code samples in this document are currently based on the
-Enyo framework's pre-2.6 (i.e., pre-modularized) state.  We will update the code
+Enyo framework's pre-2.7 (i.e., pre-modularized) state.  We will update the code
 for compatibility with modularized Enyo in the near future.**
 
 ## What is Flux?

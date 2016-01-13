@@ -1,6 +1,6 @@
-# Converting Your Existing App to 2.6
+# Converting Your Existing App to 2.7
 
-Enyo's 2.6 release introduces some significant changes to the way applications
+Enyo's 2.7 release introduces some significant changes to the way applications
 are structured and built. While the actual code in an Enyo app will be mostly
 the same, the new build system enables apps to be built with only the required
 sources, styles, and assets, resulting in smaller builds and faster load times.
@@ -49,7 +49,7 @@ framework's traditional app structure, as reflected in the bootplate templates:
         package.json
 ```
 
-In Enyo 2.6, the standard Enyo project structure looks like this:
+In Enyo 2.7, the standard Enyo project structure looks like this:
 
 ```
     my-app/
@@ -74,7 +74,7 @@ Let's look at the differences:
 
 * The app entry point is now `index.js`.  (In most apps, the file formerly found at `source/app.js` will likely become the new `index.js`.)
 
-* While `package.json` exists in both schemes (it is not strictly required in the old scheme, but happens to exist in the bootplate templates), it takes on new importance in Enyo 2.6, becoming the app's main configuration file.
+* While `package.json` exists in both schemes (it is not strictly required in the old scheme, but happens to exist in the bootplate templates), it takes on new importance in Enyo 2.7, becoming the app's main configuration file.
 
 The `assets` directory is essentially unchanged.
 
@@ -108,18 +108,11 @@ Next, if you haven't yet installed the `enyo-dev` module, you will need to do
 so.  Use the following command to retrieve and install the module:
 
 ```bash
-    git clone https://github.com/enyojs/enyo-dev.git
-    cd enyo-dev
-    # if there is a version, use the next line and replace the version as appropriate
-    git checkout 0.5.3
-    npm install
-    npm link
+    npm install -g enyo-dev
 ```
 
 (**Note:** Depending on your development environment, you may need to run
-`npm link` as root--i.e., `sudo npm link`.  In addition, in the future, we are
-likely to make `enyo-dev` available as an npm package, installable via
-`npm install -g enyo-dev`; however, this has not yet been implemented.)
+`npm install` as root--i.e., `sudo npm install -g enyo-dev`.
 
 Now you are ready to use `enyo init` to manage your Enyo dependencies.  Simply
 run the following command:
@@ -137,10 +130,10 @@ directory.  By default, there will also be a new entry added to your
 dependencies to your project source.
 
 At this time, the default is to use the `HEAD` of the `2.6.0-dev` branch for all
-dependencies.  This should be sufficient until the official release of `2.6.0`.
+dependencies.  This should be sufficient until the official release of `2.7.0`.
 
-Note that it is actually quite easy to test specific development branches other
-than `2.6.0-dev`.  For example, if you want to test a bug fix for `enyo` that
+Note that it is actually quite easy to test specific development branches.  For example,
+if you want to test a bug fix for `enyo` that
 was made in a branch called `ENYO-1675-coledavis`, do the following:
 
 ```bash
@@ -241,7 +234,7 @@ avoided now that the load order is controlled by `package.json`.  Using
 
 ### Updating Source Files to Use require()
 
-When updating existing application code for Enyo 2.6, there are two fundamental
+When updating existing application code for Enyo 2.7, there are two fundamental
 changes to remember--there is no longer anything from Enyo or its libraries in
 the global scope, and all source files should now be in
 [CommonJS](http://know.cujojs.com/tutorials/modules/authoring-cjs-modules)
@@ -292,7 +285,7 @@ Here's an example showing the use of `require()` calls in framework code:
         kind: FittableRows,
         components: [
             {kind: Toolbar, components: [
-                {content: 'Welcome to Enyo 2.6!'}
+                {content: 'Welcome to Enyo 2.7!'}
             ]},
             {fit: true, components: [
                 {content: 'Default kinds are supported so we can omit the kind key of the config'},
@@ -343,7 +336,7 @@ specify the relative path to the file.
 
 ### Determining the Kind of an Object
 
-Because of internal changes made in 2.6, application code should not rely on
+Because of internal changes made in 2.7, application code should not rely on
 either the `kind` or `kindName` property to determine whether an object instance
 is of a specific kind.  (In fact, in many cases, the `kind` property will not
 exist at all.)
@@ -367,8 +360,8 @@ or
 
 ### Resolution Independence Changes
 
-If you are converting an Enyo 2.5.x app to use Enyo 2.6.x, please note that the
-`moon-res-*` CSS classes are no longer available in Enyo 2.6.x.
+If you are converting an Enyo 2.5.x app to use Enyo 2.7.x, please note that the
+`moon-res-*` CSS classes are no longer available in Enyo 2.7.x.
 
 ## Building the App
 

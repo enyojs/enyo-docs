@@ -30,7 +30,7 @@ building-apps/managing-data/consuming-web-services.md
 building-apps/managing-data/building-data-driven-apps.md
 building-apps/performance/performance.md
 building-apps/background-task-manager.md
-building-apps/conversion-to-2.6.md
+building-apps/conversion-to-2.7.md
 building-apps/flux-in-enyo.md
 building-apps/lazy-loading.md
 building-apps/localization.md
