@@ -12,12 +12,20 @@ h1, h2, h3 {
 	letter-spacing: -1px;
 }
 
+h1 {
+	font-size: 18px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
 ul {
 	list-style-type: none;
 	padding: 0 0 0 15px;
 }
 
-a, a:hover, a:visited {
+a, a:link, a:hover, a:active, a:visited {
 	color: @link-color;
 	text-decoration: none;
 }
@@ -35,31 +43,13 @@ strong {
 	}
 }
 
-h1 {
-	font-size: 18px;
-}
-
-h2 {
-	font-size: 24px;
-}
-
-@media (min-width: @screen-sm-min) {
-	h1 {
-		font-size: 36px;
-	}
-	h2 {
-		font-size: 30px;
-	}
-}
-
-
-
 #content {
 	padding-top: 28px;
 }
 
 .main-container {
-	.source, .module-source {
+	.source,
+	.module-source {
 		color: @source-color;
 	}
 
@@ -79,7 +69,8 @@ h2 {
 			}
 		}
 
-		.source, .module-source {
+		.source,
+		.module-source {
 			height: 50px;
 			line-height: 50px;
 			font-size: 12px;
@@ -93,6 +84,12 @@ h2 {
 }
 
 @media (min-width: @screen-sm-min) {
+	h1 {
+		font-size: 36px;
+	}
+	h2 {
+		font-size: 30px;
+	}
 	.main-container {
 		.header {
 			h1 {
@@ -105,7 +102,7 @@ h2 {
 
 .section {
 	.entry {
-		margin: 20px 0 20px 0;
+		margin: 20px 0;
 
 		.header {
 			font-family: 'Droid Sans Mono', monospace;
@@ -114,14 +111,15 @@ h2 {
 				display: inline-block;
 				font-size: 18px;
 				vertical-align: baseline;
-			}
 
-			span.access.public {
-				color: @public-color;
-			}
-
-			span.access.private {
-				color: @private-color
+				&.access {
+					&.public {
+						color: @public-color;
+					}
+					&.private {
+						color: @private-color
+					}
+				}
 			}
 
 			.name {
@@ -129,11 +127,9 @@ h2 {
 				font-weight: bold;
 			}
 
-			.type {
-				//font-size: 14px;
-			}
-
-			.header-type, .header-returns, .header-params {
+			.header-type,
+			.header-returns,
+			.header-params {
 				color: #222;
 			}
 
@@ -146,6 +142,7 @@ h2 {
 				}
 			}
 		}
+
 		.content {
 			padding-left: 20px;
 			font-size: 15px;
@@ -156,7 +153,8 @@ h2 {
 				margin: 0;
 			}
 
-			&> .description, &> .inherited {
+			&> .description,
+			&> .inherited {
 				margin-top: 1em;
 			}
 
@@ -185,9 +183,6 @@ h2 {
 							font-style: italic;
 						}
 					}
-
-					.type {
-					}
 				}
 			}
 
@@ -205,9 +200,7 @@ h2 {
 				.default {
 					padding-top: 1em;
 				}
-
 			}
-
 		}
 	}
 }
@@ -222,22 +215,10 @@ h2 {
 	border-radius: 0;
 }
 
-.nav {
-	> li {
-		> a {
-			&:hover,
-			&:focus {
-				text-decoration: none;
-				background-color: transparent;
-			}
-		}
-	}
-}
-
 .navbar-nav {
 	> li {
 		> a {
-			padding: 20px 10px 0 10px;
+			padding: 10px 5px;
 		}
 	}
 }
