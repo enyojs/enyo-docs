@@ -125,25 +125,37 @@ $(document).ready(function () {
 $(document).ready(function () {
 	
 	// register for the fixed nav feature
-	var nav = $('#header .fixed-nav'),
-		orig = nav.offset().top;
-	
-	$(document).scroll(function () {
-		var y = $(document).scrollTop(),
-			wh = $(window).height(),
-			dh;
-		
-		if (y >= orig) {
-			// Prevent jitter when fixed size header makes page too small
-			dh = $(document).height();
-			if(dh > wh+orig) {
-				nav.addClass('fixed');
+	var header = $('#header'),
+		nav = $('#header .fixed-nav'),
+		fixed, h, nh,
+		refetchSizes = function () {
+			h = header.height(),
+			nh = nav.height();
+		},
+		navPosition = function () {
+			var y = $(document).scrollTop();
+			if (y >= h - nh) {	// Should we `fixed`?
+				if (fixed === false) {
+					nav.addClass('fixed');
+					nav.parent().css('height', nh);
+					fixed = true;
+				}
+			} else {	// Should we `unfixed`?
+				if (fixed || fixed == null) {	// `== null` matches both null and undefined, and is 40% faster than alternatives. This catches for initialization.
+					nav.removeClass('fixed');
+					nav.parent().css('height', '');
+					fixed = false;
+				}
 			}
-		} else {
-			nav.removeClass('fixed');
-		}
-	});
-	
+		};
+
+	refetchSizes();	// Run this initially to get our sizes
+	$(window).resize(refetchSizes);	// Run it any time the sizes may change
+
+	navPosition();	// Run this to initialize our state
+	$(document).scroll(navPosition);	// Check and change position on scroll if necessary
+
+
 	// also for the top link in the bar we deal with its click event here
 	$('li.top a#top-link').click(function (e) {
 		e.preventDefault();
