@@ -70,8 +70,34 @@
 					.transition(@transition);
 				}
 
-				// &.show-hide-private {
-				// }
+				&.show-hide-private a {
+					background-color: rgba(255,255,255,0.2);
+					border-radius: 999px;
+					padding: 5px 15px;
+					margin: 5px 0;
+					font-weight: 100;
+
+					&:hover {
+						background-color: rgba(255,255,255,0.25);
+					}
+
+					&::after {
+						content: '';
+						display: block;
+						border-radius: 50%;
+						width: 10px;
+						height: 10px;
+						float: right;
+						margin-top: 6px;
+						margin-right: -5px;
+						margin-left: 5px;
+						background-color: rgba(255, 255, 255, 0.4);
+
+						.show-private & {
+							background-color: white;
+						}
+					}
+				}
 			}
 		}
 
