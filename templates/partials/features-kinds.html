@@ -9,10 +9,12 @@
 					{% set count = count + 1 %}
 				{% endif %}
 			<li class="kind control {{ control.access }}">
-				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-				{%- if control.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
-				{%- if control.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
-				&nbsp;<a href="javascript:find(':{{ control.name }}');">{{ control.name }}</a>
+				<span class="badges">
+					{%- if control.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
+					{%- if control.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+					<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+				</span>
+				<a href="javascript:find(':{{ control.name }}');">{{ control.name }}</a>
 			</li>
 			{% endfor %}
 			{% if count == 0 %}
@@ -27,10 +29,12 @@
 		<ul>
 			{% for kind in kinds %}
 			<li class="kind {{ kind.access }}">
-				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-				{%- if kind.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
-				{%- if kind.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
-				&nbsp;<a href="javascript:find(':{{ kind.name }}');">{{ kind.name }}</a>
+				<span class="badges">
+					{%- if kind.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
+					{%- if kind.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+					<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+				</span>
+				<a href="javascript:find(':{{ kind.name }}');">{{ kind.name }}</a>
 			</li>
 			{% endfor %}
 			{% if count == 0 %}

@@ -6,9 +6,11 @@
 			{% set count = count + 1 %}
 		{% endif %}
 		<li class="method {{ method.access }} {{ "inherited" if method.inherits }}">
-			<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-			{%- if method.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
-			&nbsp;<a href="javascript:find(':{{ method.name }}');">{{ method.name }}</a>
+			<span class="badges">
+				{%- if method.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+			</span>
+			<a href="javascript:find(':{{ method.name }}');">{{ method.name }}</a>
 		</li>
 	{% endfor %}
 	{% if count == 0 %}

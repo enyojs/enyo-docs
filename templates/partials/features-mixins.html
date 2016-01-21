@@ -2,8 +2,10 @@
 <ul>
 	{% for mixin in mixes %}
 	<li class="mixin">
-		{%- if mixin.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
-		{%- if mixin.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
+		<span class="badges">
+			{%- if mixin.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
+			{%- if mixin.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+		</span>
 		<a href="javascript:find(':{{ mixin.name }}');">{{ mixin.name }}</a>
 	</li>
 	{% endfor %}

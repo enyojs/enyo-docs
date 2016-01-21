@@ -2,7 +2,10 @@
 <ul>
 	{% for event in events %}
 	<li class="event {{ event.access }} {{ "inherited" if event.inherits }}">
-		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ event.name }}');">{{ event.name }}</a>
+		<span class="badges">
+			<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+		</span>
+		<a href="javascript:find(':{{ event.name }}');">{{ event.name }}</a>
 	</li>
 	{% endfor %}
 </ul>

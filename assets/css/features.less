@@ -1,6 +1,9 @@
 .features {
+	@f-header-color: @link-color;
+	@f-item-color: #286090;
+
 	background-color: #CBECFF;
-	color: #FFF;
+	color: @f-item-color;
 	padding: 20px 20px 5px 20px;
 	font-size: 12px;
 
@@ -10,11 +13,7 @@
 		padding-top: 0;
 		margin-top: 0;
 		text-transform: uppercase;
-		color: #5DC4FF;
-
-		a {
-			color: @link-color;
-		}
+		color: @f-header-color;
 	}
 	h2 {
 		font-size: 1.2em;
@@ -28,11 +27,11 @@
 	li {
 		display: table-row;
 
-		&,
-		a,
+		a:link,
 		a:hover,
+		a:active,
 		a:visited {
-			color: @text-color;
+			color: @f-item-color;
 		}
 
 		.badges,
@@ -64,8 +63,11 @@
 		display: block;
 	}
 
-	.no-methods, .no-properties, .no-kinds, .no-mixins, .no-sub-namespaces {
-		color: @text-color;
+	.no-methods,
+	.no-properties,
+	.no-kinds,
+	.no-mixins,
+	.no-sub-namespaces {
 		padding-bottom: 15px;
 		display: inline-block;
 	}

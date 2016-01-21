@@ -3,7 +3,9 @@
 	<ul>
 		{% for util in utility %}
 		<li class="method {{ util.access }} {{ "inherited" if util.inherits }}">
-			{%- if method.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+			<span class="badges">
+				{%- if method.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+			</span>
 			<a href="javascript:find(':{{ util.longname if longname == true else util.name }}');">{{ util.longname if longname == true else util.name }}</a>
 		</li>
 		{% endfor %}
