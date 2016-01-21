@@ -26,8 +26,20 @@
 		opacity: initial;
 	}
 
+	.title,
+	.primary-nav {
+		text-transform: uppercase;
+	}
+
 	.title {
 		padding-left: 25px;
+
+		img {
+			height: 70px;
+			width: 40px;
+			vertical-align: top;
+			margin-right: 1em;
+		}
 
 		span {
 			line-height: @title-line-height;
@@ -130,6 +142,12 @@
 	.hide-on-private {
 		display: block;
 	}
+
+	.features li {
+		&.hide-on-private {
+			display: table-row;
+		}
+	}
 }
 
 .show-private {
@@ -140,6 +158,13 @@
 
 	.hide-on-private {
 		display: none;
+	}
+
+	.features li {
+		&.private,
+		&.protected {
+			display: table-row;
+		}
 	}
 }
 
