@@ -8,35 +8,53 @@
 		</div>
 		{% endif %}
 		<div class="properties">
+		{%- if (properties.length > 0) -%}
 			<h1><a href="javascript:find(':properties');">Properties</a></h1>
 			<div>{% include "partials/features-properties.html" %}</div>
+		{%- endif -%}
+		{%- if (inheritedProperties.length > 0) -%}
 			<h1 class="inherited"><a href="javascript:find(':inherited-properties');">Inherited Properties</a></h1>
 			<div class="inherited">{% include "partials/features-inherited-properties.html" %}</div>
+		{%- endif -%}
 		</div>
 		<div class="methods">
+		{%- if (methods.length > 0) -%}
 			<h1><a href="javascript:find(':methods');">Methods</a></h1>
 			<div>{% include "partials/features-methods.html" %}</div>
+		{%- endif -%}
+		{%- if (inheritedMethods.length > 0) -%}
 			<h1 class="inherited"><a href="javascript:find(':inherited-methods');">Inherited Methods</a></h1>
 			<div class="inherited">{% include "partials/features-inherited-methods.html" %}</div>
+		{%- endif -%}
 		</div>
 		<div class="events">
+		{%- if (events.length > 0) -%}
 			<h1><a href="javascript:find(':events');">Events</a></h1>
 			<div>{% include "partials/features-events.html" %}</div>
+		{%- endif -%}
+		{%- if (inheritedEvents.length > 0) -%}
 			<h1 class="inherited"><a href="javascript:find(':inherited-events');">Inherited Events</a></h1>
 			<div class="inherited">{% include "partials/features-inherited-events.html" %}</div>
+		{%- endif -%}
 		</div>
+		{%- if (staticProperties.length > 0) -%}
 		<div class="static-properties">
 			<h1><a href="javascript:find(':static-properties');">Static Properties</a></h1>
 			<div>{% include "partials/features-static-properties.html" %}</div>
 		</div>
+		{%- endif -%}
+		{%- if (staticMethods.length > 0) -%}
 		<div class="static-methods">
 			<h1><a href="javascript:find(':static-methods');">Static Methods</a></h1>
 			<div>{% include "partials/features-static-methods.html" %}</div>
 		</div>
+		{%- endif -%}
+		{%- if (typedefs.length > 0) -%}
 		<div class="typedefs">
 			<h1><a href="javascript:find(':typedefs');">Type Definitions</a></h1>
 			<div>{% include "partials/features-typedefs.html" %}</div>
 		</div>
+		{%- endif -%}
 	</div>
 	<div class="col-sm-8 col-sm-pull-4 kind main-container">
 
@@ -44,12 +62,22 @@
 		<div class="header">
 
 			<!--<h2>KIND</h2>-->
-			<h1>{{ prettyMemberof }}~{{ name }}</h1>
+			<h1>{{ name }}</h1>
+			<h3>Module:
+			{% if moduleLink %}
+				{{ moduleLink }}
+			{% else %}
+				{{ prettyMemberof }}
+			{% endif %}
+			</h3>
 			{% include "partials/inherits.html" %}
 			<div class="source">From {{ source }}</div>
-			{% if moduleLink %}
-			<div class="module-source">Import {{ moduleLink }}</div>
-			{% endif %}
+			{%- if wip -%}
+				<div class="wip">
+				<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+				Work-in-progress
+				</div>
+			{%- endif -%}
 		</div>
 
 		<div class="section description">

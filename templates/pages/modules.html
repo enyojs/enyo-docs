@@ -33,7 +33,10 @@
 				<div class="content">
 					<ul class="row">
 						{% for module in librariesModules[library] %}
-						<li class="col-lg-4 col-md-6 col-sm-12 {{ module.access }}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;{{ module.internalLink }}</li>
+						<li class="col-lg-4 col-md-6 col-sm-12 {{ module.access }}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+						{%- if module.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+						{%- if module.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
+							&nbsp;{{ module.internalLink }}</li>
 						{% endfor %}
 					</ul>
 				</div>

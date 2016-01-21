@@ -1,9 +1,7 @@
+{% if inheritedProperties.length > 0 %}
 <a name="inherited-properties"></a>
 <h1 class="inherited">Inherited Properties</h1>
-{% if inheritedProperties.length > 0 %}
 {% for property in inheritedProperties -%}
 {% include "partials/property.html" %}
 {%- endfor %}
-{% else %}
-<strong class="inherited">No inherited properties</strong>
 {% endif %}

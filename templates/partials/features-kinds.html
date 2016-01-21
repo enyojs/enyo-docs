@@ -3,11 +3,21 @@
 	<div class="ui">
 		<h2><a href="javascript:find(':controls');">Controls</a></h2>
 		<ul>
+			{% set count = 0 %}
 			{% for control in ui %}
+				{% if control.access == 'public' %}
+					{% set count = count + 1 %}
+				{% endif %}
 			<li class="kind control {{ control.access }}">
-				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':{{ control.name }}');">{{ control.name }}</a>
+				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+				{%- if control.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+				{%- if control.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
+				&nbsp;<a href="javascript:find(':{{ control.name }}');">{{ control.name }}</a>
 			</li>
 			{% endfor %}
+			{% if count == 0 %}
+				<li class="kind hide-when-show-private feature-text">No public controls</li>
+			{% endif %}
 		</ul>
 	</div>
 	{% endif %}
@@ -17,12 +27,16 @@
 		<ul>
 			{% for kind in kinds %}
 			<li class="kind {{ kind.access }}">
-				<a href="javascript:find(':{{ kind.name }}');">{{ kind.name }}</a>
+				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+				{%- if kind.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+				{%- if kind.wip -%}<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>{%- endif -%}
+				&nbsp;<a href="javascript:find(':{{ kind.name }}');">{{ kind.name }}</a>
 			</li>
 			{% endfor %}
+			{% if count == 0 %}
+				<li class="kind hide-when-show-private feature-text">No public kinds</li>
+			{% endif %}
 		</ul>
 	</div>
 	{% endif %}
-{% else %}
-<span class="no-kinds">No kinds</span>
 {% endif %}

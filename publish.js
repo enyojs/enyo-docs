@@ -45,10 +45,15 @@ exports.publish = function (db, opts) {
 		publicControlCount = db({kind: 'class', ui: true, access: 'public'}).order('longname asec').count(),
 		utils = db({kind: 'function', utility: true}).order('longname asec').get(),
 		modules = db({kind: 'module'}).order('longname asec').get(),
+		mixins = db({kind: 'mixin'}).order('longname asec').get(),
 		librariesModules = {},
 		librariesPublicModulesCount = {},
 		libraries = [],
-		prefix = /([^\/]*)/;
+		librariesMixins = {},
+		librariesPublicMixinsCount = {},
+		mixLibraries = [],
+		prefix = /([^\/]*)/,
+		mixinPrefix = /module:([^\/]*)/;
 
 	modules.forEach(function(module) {
 		var lib = module.name.match(prefix)[0];
@@ -57,13 +62,24 @@ exports.publish = function (db, opts) {
 		} else {
 			libraries.push(lib);
 			librariesModules[lib] = [module];
+			librariesPublicModulesCount[lib] = 0;
 		}
 		if(module.access == 'public') {
-			if(librariesPublicModulesCount[lib]) {
-				librariesPublicModulesCount[lib]++;
-			} else {
-				librariesPublicModulesCount[lib] = 1;
-			}
+			librariesPublicModulesCount[lib]++;
+		}
+	});
+	
+	mixins.forEach(function(mixin) {
+		var lib = mixin.longname.match(mixinPrefix)[1];
+		if(librariesMixins[lib]) {
+			librariesMixins[lib].push(mixin);
+		} else {
+			mixLibraries.push(lib);
+			librariesMixins[lib] = [mixin];
+			librariesPublicMixinsCount[lib] = 0;
+		}
+		if(mixin.access == 'public') {
+			librariesPublicMixinsCount[lib]++;
 		}
 	});
 	
@@ -107,6 +123,15 @@ exports.publish = function (db, opts) {
 			kinds: kinds
 		}
 	));
+	
+	// publish the mixins page
+	helpers.publish('mixins.html', resolveLinks(helpers.render(
+		'pages/mixins.html', {
+			libraries: mixLibraries,
+			librariesMixins: librariesMixins,
+			librariesPublicMixinsCount: librariesPublicMixinsCount
+		}
+	)));
 	
 	// publish utilities page
 	helpers.publish('utilities.html', resolveLinks(helpers.render(

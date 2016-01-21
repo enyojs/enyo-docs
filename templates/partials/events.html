@@ -1,9 +1,7 @@
-<a name="events"></a>
-<h1>Events</h1>
 {% if events.length > 0 %}
-{% for event in events %}
-{% include "partials/event.html" %}
-{% endfor %}
-{% else %}
-<strong>No events</strong>
+	<a name="events"></a>
+	<h1>Events</h1>
+	{% for event in events %}
+		{% include "partials/event.html" %}
+	{% endfor %}
 {% endif %}

@@ -4,6 +4,22 @@
 		<span class="name">{{ mixin.internalLink }}</span>
 	</div>
 	<div class="content">
+		{%- if mixin.deprecated -%}
+			<div class="deprecated">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				{%- if mixin.deprecated != true -%}
+					<span>Deprecated: {{ mixin.deprecated }}</span>
+				{%- else -%}
+					<span>Deprecated</span>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+		{%- if mixin.wip -%}
+			<div class="wip">
+			<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+			Work-in-progress
+			</div>
+		{%- endif -%}
 		<div class="description">{{ mixin.description }}</div>
 	</div>
 </div>

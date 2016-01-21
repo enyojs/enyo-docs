@@ -3,6 +3,8 @@ $(function () {
 	
 	// used to keep track of the current known internal location
 	var loc;
+
+	var TITLE = "Enyo API Reference";
 	
 	$(window).hashchange(function () {
 
@@ -41,6 +43,7 @@ $(function () {
 					$('#content').html('Could not locate the requested file: ' + hash);
 				} else {
 					
+					document.title = documentTitle(hash);
 					if (!query) $('html, body').animate({scrollTop: 0}, 200);
 					
 					// this is an unfortunate hack to ensure that Prism can find the code areas
@@ -60,6 +63,26 @@ $(function () {
 		} else if (query) find(query);
 	});
 	
+
+	function documentTitle (hash) {
+		var parts = hash.split('/');
+
+		if(parts.length == 1) {
+			return hash.charAt(0).toUpperCase() + hash.slice(1) + ' | ' + TITLE;
+		} else if(parts.length > 1) {
+			var type = parts.shift(), res;
+
+			if((type == 'kind') || (type == 'mixin')) {
+				var suffix = parts.pop();
+				res = parts.join('/') + '~' + suffix + ' ' + type.charAt(0).toUpperCase() + type.slice(1);
+			} else {
+				res = parts.join('/') + ' ' + type.charAt(0).toUpperCase() + type.slice(1);
+			}
+			return res + ' | ' + TITLE;
+		} else {
+			return TITLE;
+		}
+	}
 });
 
 // setup our link finding mechanism - try and find an anchor by this (unique) name much like a

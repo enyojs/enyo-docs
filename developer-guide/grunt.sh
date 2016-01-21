@@ -6,6 +6,6 @@
 # the page header, footer and styles used on the enyojs.com
 # site.
 
-./build.sh --template grunt_pandoc-template.html --head ../templates/page-header.html --footer grunt_enyojs-footer.html
+./build.sh --template grunt_pandoc-template.html --footer grunt_enyojs-footer.html
 
 exit
