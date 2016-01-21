@@ -1,26 +1,25 @@
-#footer {
-	height: 150px;
+footer {
 	background-color: @footer-bg-color;
 	color: @footer-text-color;
 	position: relative;
-
-	.generated {
-		position: absolute;
-		right: 25px;
-		bottom: 15px;
-		font-size: 10px;
-	}
+	line-height: 15px;
+	font-size: 10px;
+	padding: 10px 25px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	box-sizing: border-box;
 
 	.license {
-		position: absolute;
-		right: 25px;
-		bottom: 60px;
+		float: left;
+	}
+
+	.generated {
+		float: right;
 	}
 
 	.version {
-		position: absolute;
-		right: 25px;
-		bottom: 35px;
-		font-size: 10px;
+		text-align: center;
 	}
 }

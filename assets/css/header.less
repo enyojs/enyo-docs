@@ -7,8 +7,11 @@
 }
 
 #header {
+	@title-line-height: 70px;
+
 	background-color: @header-bg-color;
 	color: @header-text-color;
+	padding-top: 10px;
 
 	a,
 	a:link,
@@ -24,11 +27,10 @@
 	}
 
 	.title {
-		padding-top: 25px;
 		padding-left: 25px;
 
 		span {
-			line-height: 75px;
+			line-height: @title-line-height;
 			font-size: 50px;
 			font-family: 'Raleway', sans-serif;
 			font-weight: normal;
@@ -36,11 +38,14 @@
 	}
 
 	.primary-nav {
-		padding-top: 0px;
-
 		a {
+			@tall-nav-margin: 20px;
+
 			display: inline-block;
-			.header-nav-item
+			.header-nav-item;
+			line-height: (@title-line-height - (@tall-nav-margin * 2));
+			margin: @tall-nav-margin 5px;
+			padding: 0 5px;
 		}
 	}
 
@@ -56,8 +61,6 @@
 				.header-nav-item;
 
 				&:first-child {
-					// margin-left: 0;
-
 					a {
 						padding-left: 0;
 					}
@@ -167,7 +170,6 @@
 
 		.primary-nav {
 			text-align: right;
-			margin-top: 30px;
 		}
 	}
 }

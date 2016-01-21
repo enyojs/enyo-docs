@@ -3,7 +3,12 @@ body {
 	background-color: @background-color;
 	color: @text-color;
 	margin: 0;
-	padding: 0;
+	padding: 0 0 3em 0;	// Spacing clearance for our footer, so no overlap of content.
+
+	// Sticky footer rules
+	position: absolute;
+	width: 100%;
+	min-height: 100%;
 }
 
 h1, h2, h3 {

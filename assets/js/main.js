@@ -126,7 +126,7 @@ $(document).ready(function () {
 		nav = $('#header .fixed-nav'),
 		fixed, h, nh,
 		refetchSizes = function () {
-			h = header.height(),
+			h = header.outerHeight(),
 			nh = nav.height();
 		},
 		navPosition = function () {
