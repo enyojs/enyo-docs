@@ -561,8 +561,8 @@ The app will now reload and pick up the new locale.  This will cause all of
 your `$L()` strings to be re-evaluated and all locale-sensitive classes to be
 re-instantiated from scratch.
 
-(For more information on `enyo.Signals`, see the documentation on [Event
-Handling](../key-concepts/event-handling.html)).
+(For more information on `enyo/Signals`, see the documentation on [Event
+Handling](../getting-started/event-handling.html)).
 
 ### Caveats
 

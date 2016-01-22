@@ -440,9 +440,9 @@ The final `flickr.SearchPanel` implementation for this step should look like thi
     functions called, so it is important to always call the superkind's
     implementation by calling `enyo.inherited(arguments);`.  This is a standard
     way of calling the supermethod.  You can read more about the Enyo component
-    lifecycle in [Kinds](../key-concepts/kinds.html),
-    [Components](../key-concepts/components.html), and
-    [Controls](../key-concepts/controls.html).
+    lifecycle in [Kinds](kinds.html),
+    [Components](components.html), and
+    [Controls](controls.html).
 
 * **enyo.Collection** - A collection may get its data statically, from a
     passed-in array of records, or dynamically, from a call to the `fetch()` API

@@ -95,7 +95,7 @@ using Enyo and Moonstone:
     When you have a component that needs to listen for several different
     signals, the component only needs to include one instance of `enyo/Signals`.
     That one instance may register as a listener for multiple signals.  (For
-    details, see [Event Handling](../key-concepts/event-handling.html).)
+    details, see [Event Handling](../getting-started/event-handling.html).)
 
 * **Try to minimize your use of Fittables.**
 

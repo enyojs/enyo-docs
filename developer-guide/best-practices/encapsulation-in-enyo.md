@@ -93,4 +93,4 @@ kinds.
 
 **Additional Reading**
 
-* [Event Handling](../key-concepts/event-handling.html)
+* [Event Handling](../getting-started/event-handling.html)
