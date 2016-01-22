@@ -2,19 +2,15 @@
 
 Welcome!  Resources are available in the following areas:
 
-* Introduction to Enyo and Moonstone
+* Introduction to Enyo
 
     * [A Tour of Enyo](getting-started/enyo-tour.html)
-    * [A Visual Guide to Moonstone](getting-started/visual-guide.html)
-    * [Framework Philosophy](getting-started/philosophy.html)
 
 * Moonstone Tutorial
 
     * [Building a Moonstone App](getting-started/moonstone-app-tutorial.html)
 
 * Subject-Area Guides
-
-    * [Key Concepts](key-concepts/index.html)
 
     * [Getting Started](getting-started/index.html)
 

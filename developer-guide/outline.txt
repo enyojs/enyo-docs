@@ -6,12 +6,11 @@ getting-started/first-steps.md
 getting-started/creating-and-building-an-app.md
 getting-started/moonstone-app-tutorial.md
 getting-started/conversion-to-2.7.md
-key-concepts/index.md
-key-concepts/kinds.md
-key-concepts/objects-and-published-properties.md
-key-concepts/components.md
-key-concepts/controls.md
-key-concepts/event-handling.md
+getting-started/kinds.md
+getting-started/objects-and-published-properties.md
+getting-started/components.md
+getting-started/controls.md
+getting-started/event-handling.md
 building-apps/controls/buttons.md
 building-apps/controls/checkboxes.md
 building-apps/controls/headers.md
