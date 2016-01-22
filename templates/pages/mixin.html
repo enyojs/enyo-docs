@@ -26,11 +26,15 @@
 		<div class="header">
 
 			<h2>MIXIN</h2>
-			<h1>{{ prettyMemberof }}~{{ name }}</h1>
-			<div class="source">From {{ source }}</div>
+			<h1>{{ name }}</h1>
+			<h3>Module:
 			{% if moduleLink %}
-			<div class="module-source">Import {{ moduleLink }}</div>
+				{{ moduleLink }}
+			{% else %}
+				{{ prettyMemberof }}
 			{% endif %}
+			</h3>
+			<div class="source">From {{ source }}</div>
 			{%- if mixin.wip -%}
 				<div class="wip">
 				<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>

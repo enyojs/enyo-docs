@@ -68,7 +68,7 @@ using Enyo and Moonstone:
 * **Don't use the value of an object's `kind` property to determine whether the
     instance is of a specific kind.**
 
-    Because of internal changes made in Enyo 2.6, application code should not
+    Because of internal changes made in Enyo 2.7, application code should not
     rely on either the `kind` or the `kindName` property to determine whether an
     object instance is of a specific kind.  (In many cases, the `kind` property
     will not exist at all.)

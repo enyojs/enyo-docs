@@ -1,6 +1,6 @@
 ﻿% Background Task Manager
 
-Enyo 2.6 marks the introduction of several important new features, including the
+Enyo 2.7 marks the introduction of several important new features, including the
 Background Task Manager ([enyo/BackgroundTaskManager]($api/#/module/enyo/BackgroundTaskManager),
 or "BTM" for short).
 

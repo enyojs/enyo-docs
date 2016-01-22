@@ -1,34 +1,4 @@
-#header {
-	background-color: @header-bg-color;
-	color: @header-text-color;
-
-	a, a:hover, a:visited {
-		color: @header-text-color;
-		text-decoration: none;
-	}
-	// hack for Prism selector...
-	.namespace {
-		opacity: initial;
-	}
-
-	.title {
-		padding-top: 25px;
-		padding-left: 25px;
-
-		span {
-			line-height: 75px;
-			font-size: 50px;
-			font-family: 'Raleway', sans-serif;
-			font-weight: normal;
-		}
-	}
-
-	.primary-nav {
-		padding-top:0px;
-	}
-}
-
-.header-nav-item {
+.header-nav-item() {
 	margin: 0 10px;
 	line-height: 35px;
 	font-size: 15px;
@@ -37,29 +7,114 @@
 }
 
 #header {
+	@title-line-height: 70px;
+
+	background-color: @header-bg-color;
+	color: @header-text-color;
+	padding-top: 10px;
+
+	a,
+	a:link,
+	a:hover,
+	a:active,
+	a:visited {
+		color: @header-text-color;
+		text-decoration: none;
+	}
+	// hack for Prism selector...
+	.namespace {
+		opacity: initial;
+	}
+
+	.title,
+	.primary-nav {
+		text-transform: uppercase;
+	}
+
+	.title {
+		padding-left: 25px;
+
+		img {
+			height: 70px;
+			width: 40px;
+			vertical-align: top;
+			margin-right: 1em;
+		}
+
+		span {
+			line-height: @title-line-height;
+			font-size: 50px;
+			font-family: 'Raleway', sans-serif;
+			font-weight: normal;
+		}
+	}
+
 	.primary-nav {
 		a {
+			@tall-nav-margin: 20px;
+
 			display: inline-block;
-			.header-nav-item
+			.header-nav-item;
+			line-height: (@title-line-height - (@tall-nav-margin * 2));
+			margin: @tall-nav-margin 5px;
+			padding: 0 5px;
 		}
 	}
-}
 
-#header {
-	.fixed-nav {
-		ul {
-			li {
-				.header-nav-item
-			}
-		}
-	}
-}
-
-#header {
 	.fixed-nav {
 		background-color: @header-bg-color;
 		z-index: 100;
 		margin-bottom: 0px;
+
+		ul {
+			width: 100%;
+
+			li {
+				.header-nav-item;
+
+				&:first-child {
+					a {
+						padding-left: 0;
+					}
+				}
+
+				&.top {
+					opacity: 0;
+					visibility: hidden;
+					@transition: visibility 0s 300ms, opacity 300ms;
+					.transition(@transition);
+				}
+
+				&.show-hide-private a {
+					background-color: rgba(255,255,255,0.2);
+					border-radius: 999px;
+					padding: 5px 15px;
+					margin: 5px 0;
+					font-weight: 100;
+
+					&:hover {
+						background-color: rgba(255,255,255,0.25);
+					}
+
+					&::after {
+						content: '';
+						display: block;
+						border-radius: 50%;
+						width: 10px;
+						height: 10px;
+						float: right;
+						margin-top: 6px;
+						margin-right: -5px;
+						margin-left: 5px;
+						background-color: rgba(255, 255, 255, 0.4);
+
+						.show-private & {
+							background-color: white;
+						}
+					}
+				}
+			}
+		}
 
 		&.fixed {
 			position: fixed;
@@ -75,20 +130,55 @@
 				}
 			}
 		}
+	}
+}
 
-		ul {
-			width: 100%;
-			li {
-				&.top {
-					opacity: 0;
-					visibility: hidden;
-					@transition: visibility 0s 300ms, opacity 300ms;
-					.transition(@transition);
-				}
+.hide-private {
+	.private,
+	.protected {
+		display: none;
+	}
 
-				&.show-hide-private {
-				}
-			}
+	.hide-on-private {
+		display: block;
+	}
+
+	.features li {
+		&.hide-on-private {
+			display: table-row;
+		}
+	}
+}
+
+.show-private {
+	.private,
+	.protected {
+		display: block;
+	}
+
+	.hide-on-private {
+		display: none;
+	}
+
+	.features li {
+		&.private,
+		&.protected {
+			display: table-row;
+		}
+	}
+}
+
+.navbar-default {
+	border: none;
+
+	.navbar-toggle {
+		border-radius: 0;
+
+		&:focus {
+			background-color: transparent;
+		}
+		&:hover {
+			background-color: @navbar-default-toggle-hover-bg;
 		}
 	}
 }
@@ -102,51 +192,9 @@
 				}
 			}
 		}
-	}
-}
 
-
-
-.hide-private {
-	.private, .protected {
-		display: none;
-	}
-
-	.hide-on-private {
-		display: block;
-	}
-}
-
-.show-private {
-	.private, .protected {
-		display: block;
-	}
-
-	.hide-on-private {
-		display: none;
-	}
-}
-
-.navbar-default {
-	border: none;
-	.navbar-toggle {
-		border-radius: 0;
-		&:focus {
-			background-color: transparent;
-		}
-		&:hover {
-			background-color: @navbar-default-toggle-hover-bg;
-		}
-	}
-}
-
-@media (min-width: @screen-sm-min) {
-	#header {
 		.primary-nav {
 			text-align: right;
-			margin-top: 30px;
 		}
 	}
 }
-
-

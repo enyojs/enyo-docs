@@ -53,7 +53,23 @@ exports.publish = function (db, opts) {
 		librariesPublicMixinsCount = {},
 		mixLibraries = [],
 		prefix = /([^\/]*)/,
-		mixinPrefix = /module:([^\/]*)/;
+		mixinPrefix = /module:([^\/]*)/,
+		enyoLocation,
+		enyoVersion;
+
+	// Maybe this is cheating, but it does work.  We'll require() the index.js that adds
+	// the version.  If we update this later we'll need to update the version.
+	// Note: jsdoc can import the package.json file and get the name and version, but I don't know
+	// where it puts them. We'll want to explore this option later as it's a lot cleaner.
+	enyoLocation = opts._.filter(function(val) {
+		return val.match(/\/enyo\/src/);
+	})[0];
+
+	if(enyoLocation) {
+		enyoVersion = require('../enyo/index.js').version;
+	} else {
+		enyoVersion = 'unknown';
+	}
 
 	modules.forEach(function(module) {
 		var lib = module.name.match(prefix)[0];
@@ -87,21 +103,24 @@ exports.publish = function (db, opts) {
 	helpers.publish('home.html', helpers.render(
 		'pages/home.html', {
 			namespaces: namespaces,
-			kinds: db({kind: 'class'}).order('longname asec').get()
+			kinds: db({kind: 'class'}).order('longname asec').get(),
+			version: enyoVersion
 		}
 	));
 	
 	// publish the glossary
 	helpers.publish('glossary.html', resolveLinks(helpers.render(
 		'pages/glossary.html', {
-			terms: db({kind: 'glossary'}).order('longname asec').get()
+			terms: db({kind: 'glossary'}).order('longname asec').get(),
+			version: enyoVersion
 		}
 	)));
 	
 	// publish the namespaces page
 	helpers.publish('namespaces.html', helpers.render(
 		'pages/namespaces.html', {
-			namespaces: namespaces
+			namespaces: namespaces,
+			version: enyoVersion
 		}
 	));
 	
@@ -110,7 +129,8 @@ exports.publish = function (db, opts) {
 		'pages/modules.html', {
 			libraries: libraries,
 			librariesModules: librariesModules,
-			librariesPublicModulesCount: librariesPublicModulesCount
+			librariesPublicModulesCount: librariesPublicModulesCount,
+			version: enyoVersion
 		}
 	)));
 	
@@ -120,7 +140,8 @@ exports.publish = function (db, opts) {
 			controls: controls,
 			publicControlCount: publicControlCount,
 			publicKindCount: publicKindCount,
-			kinds: kinds
+			kinds: kinds,
+			version: enyoVersion
 		}
 	));
 	
@@ -129,21 +150,24 @@ exports.publish = function (db, opts) {
 		'pages/mixins.html', {
 			libraries: mixLibraries,
 			librariesMixins: librariesMixins,
-			librariesPublicMixinsCount: librariesPublicMixinsCount
+			librariesPublicMixinsCount: librariesPublicMixinsCount,
+			version: enyoVersion
 		}
 	)));
 	
 	// publish utilities page
 	helpers.publish('utilities.html', resolveLinks(helpers.render(
 		'pages/utilities.html', {
-			utils: utils
+			utils: utils,
+			version: enyoVersion
 		}
 	)));
 	
 	// publish our index
 	helpers.publish('index.html', helpers.render(
 		'index.html', {
-			generated: new Date().toLocaleDateString()
+			generated: new Date().toLocaleDateString(),
+			version: enyoVersion
 		}
 	));
 	
