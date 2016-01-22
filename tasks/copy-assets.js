@@ -19,6 +19,7 @@ module.exports = function (grunt) {
 		cpy('css/prism.css', 'css/prism.css');
 
 		cpy('fonts/', 'fonts/');
+		cpy('images/', 'images/');
 
 		// for js includes, we specify and install specific versions via bower but we
 		// arbitrarily map the correct include file into the output directory (for now)
