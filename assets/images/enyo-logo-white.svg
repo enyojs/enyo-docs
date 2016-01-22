@@ -7,10 +7,8 @@
 </style>
 <polygon class="st0" points="4.1,8 1.6,6.3 1.6,5.4 4.1,7 4.1,5 1.6,3.5 1.6,2.6 4.1,4.1 4.1,2 0,0 0,7 4.1,10 "/>
 <g class="st1">
-	<g>
-		<polygon class="st0" points="4.1,7 7,5.2 7,3.3 4.1,5 		"/>
-		<polygon class="st0" points="4.1,10 8.2,7 8.2,5.3 4.1,8 		"/>
-		<polygon class="st0" points="4.1,4.1 8.2,1.8 8.2,0 4.1,2 		"/>
-	</g>
+	<polygon class="st0" points="4.1,7 7,5.2 7,3.3 4.1,5"/>
+	<polygon class="st0" points="4.1,10 8.2,7 8.2,5.3 4.1,8"/>
+	<polygon class="st0" points="4.1,4.1 8.2,1.8 8.2,0 4.1,2"/>
 </g>
 </svg>
