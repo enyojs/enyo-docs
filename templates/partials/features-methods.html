@@ -2,16 +2,18 @@
 <ul>
 	{% set count = 0 %}
 	{% for method in methods %}
-		{% if method.access == 'public' %}
-			{% set count = count + 1 %}
+		{% if show_static or method.scope != 'static' %}
+			{% if method.access == 'public' %}
+				{% set count = count + 1 %}
+			{% endif %}
+			<li class="method {{ method.access }} {{ "inherited" if method.inherits }}">
+				<span class="badges">
+					{%- if method.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
+					<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+				</span>
+				<a href="javascript:find(':{{ method.name }}');">{{ method.name }}</a>
+			</li>
 		{% endif %}
-		<li class="method {{ method.access }} {{ "inherited" if method.inherits }}">
-			<span class="badges">
-				{%- if method.deprecated -%}<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{%- endif -%}
-				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-			</span>
-			<a href="javascript:find(':{{ method.name }}');">{{ method.name }}</a>
-		</li>
 	{% endfor %}
 	{% if count == 0 %}
 		<li class="method hide-when-show-private feature-text">No public methods</li>

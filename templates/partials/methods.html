@@ -3,10 +3,12 @@
 <h1>Methods</h1>
 	{% set count = 0 %}
 	{% for method in methods %}
-		{% if method.access == 'public' %}
-			{% set count = count + 1 %}
+		{% if show_static or method.scope != 'static' %}
+			{% if method.access == 'public' %}
+				{% set count = count + 1 %}
+			{% endif %}
+			{% include "partials/method.html" %}
 		{% endif %}
-		{% include "partials/method.html" %}
 	{% endfor %}
 	{% if count == 0 %}
 		<span class="method hide-when-show-private"><strong>No public methods</strong></span>
