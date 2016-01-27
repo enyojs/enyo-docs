@@ -49,7 +49,6 @@ best-practices/index.md
 best-practices/dos-and-donts.md
 best-practices/encapsulation-in-enyo.md
 contributing/index.md
-contributing/contribution-guide.md
 contributing/api-reference.md
 contributing/style-guide.md
 design/index.md
