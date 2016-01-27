@@ -109,7 +109,7 @@ It's also possible to install the Enyo Sampler app on your Windows 8 PC or
 tablet.  To do so, you'll need to download the built app (in an archive called
 `ProjectOutputFolder.zip`), either from the
 [Enyo Bug Tracker](https://enyojs.atlassian.net/browse/ENYO-1899) or from the
-[Dropbox](www.dropbox.com) file sharing service.
+[Dropbox](http://www.dropbox.com) file sharing service.
 
 To obtain the file from Dropbox, connect to Dropbox (via browser or client app)
 using the following credentials:
