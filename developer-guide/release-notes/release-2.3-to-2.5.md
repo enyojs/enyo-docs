@@ -7,22 +7,19 @@ history in GitHub for a complete list of changes.)
 ## Migration Notes
 
 Some of the changes made in Enyo 2.5.0 may require updates to your existing Enyo
-applications.  Please read the Enyo 2.3.0-rc.24 to 2.5.0 Migration Notes
-([English](migration-2.3-to-2.5.html) | [Korean](migration-2.3-to-2.5-ko.html))
+applications.  Please read the [Enyo 2.3.0-rc.24 to 2.5.0 Migration Notes](migration-2.3-to-2.5.html)
 for a detailed discussion of these issues.
 
 ## Performance Notes
 
 Enyo 2.5.0 contains numerous changes designed to improve the performance of your
-applications.  For a detailed list, please see the Enyo 2.3.0-rc.24 to 2.5.0
-Performance Notes ([English](performance-2.3-to-2.5.html) |
-[Korean](performance-2.3-to-2.5-ko.html)).
+applications.  For a detailed list, please see the [Enyo 2.3.0-rc.24 to 2.5.0
+Performance Notes](performance-2.3-to-2.5.html).
 
 ## UX Notes
 
 Enyo 2.5.0 also features a number of user experience enhancements, described in
-the Enyo 2.3.0-rc.24 to 2.5.0 UX Notes ([English](ux-2.3-to-2.5.html) |
-[Korean](ux-2.3-to-2.5-ko.html)).
+the [Enyo 2.3.0-rc.24 to 2.5.0 UX Notes](ux-2.3-to-2.5.html).
 
 ## Detailed Release Notes
 
