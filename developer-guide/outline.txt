@@ -102,6 +102,7 @@ design/styles/fonts.md
 design/styles/color.md
 design/styles/icons.md
 release-notes.md
+migration-guides.md
 release-notes/release-2.5.1.md
 release-notes/release-2.5.md
 release-notes/release-2.4.md
@@ -111,6 +112,10 @@ release-notes/release-2.1.1.md
 release-notes/release-2.1.md
 release-notes/release-2.0.1.md
 release-notes/release-2.0.md
+release-notes/migration-2.3-to-2.5.md
+release-notes/performance-2.3-to-2.5.md
+release-notes/ux-2.3-to-2.5.md
+release-notes/release-2.3-to-2.5.md
 support-modules/index.md
 support-modules/spotlight.md
 support-modules/localization.md

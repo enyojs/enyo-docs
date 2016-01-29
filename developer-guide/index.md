@@ -36,4 +36,5 @@ Welcome!  Resources are available in the following areas:
 
     * [API Reference](../index.html)
     * [Enyo Release Notes](release-notes.html)
+    * [Migration Guides](migration-guides.html)
     * [Documentation for Previous Releases](previous-releases.html)
