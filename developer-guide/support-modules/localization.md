@@ -1,4 +1,4 @@
-﻿% Localization
+% Localization
 
 In this document, we look at how globalization/localization works in Enyo
 applications.
@@ -28,33 +28,18 @@ As an Enyo application developer, you will not work with `iLib` directly, but
 rather with [enyo-ilib](https://github.com/enyojs/enyo-ilib), a compatibility
 library that wraps `iLib`'s functionality for easy access from Enyo apps.
 
-`enyo-ilib` is included in the `bootplate-moonstone` template by default; if you
-base your app on that template, you won't need to obtain `enyo-ilib` separately.
-If, however, you decide not to use the template, you may obtain `enyo-ilib` by
-issuing the following command in your Git client:
-
-```
-    git clone https://github.com/enyojs/enyo-ilib.git
-```
-
-Then, to make the `ilib` namespace available to your app, add the `enyo-ilib`
-directory to your app's `package.js` file, e.g.:
+By default, `enyo-ilib` is included into your library list by `enyo init`. To make it
+available to your source files, require the module:
 
 ```javascript
-    enyo.depends({
-        "$lib/enyo-ilib/",
-        <other libraries>,
-        ...
-    });
+var ilib = require('enyo-ilib');
 ```
-
-(Again, you won't need to do this if you use Bootplate.)
 
 ## Using enyo-ilib
 
 ### Locales
 
-#### iLib.Locale
+#### iLib/Locale
 
 The concept of the locale is central to the functioning of `iLib`, as it is
 with any localization tool.  Locales are specified using [IETF language
@@ -79,14 +64,16 @@ In Enyo application code, you'll work with instances of `iLib`'s `Locale`
 class:
 
 ```javascript
-    var locale = new ilib.Locale("ko-KR");
+    var Locale = require('enyo-ilib/Locale');
+    ...
+    var locale = new Locale("ko-KR");
 ```
 
 If you create a `Locale` instance without passing in a string identifier,
 you'll get an object representing the current locale.
 
 ```javascript
-    var curLocale = new ilib.Locale();
+    var curLocale = new Locale();
 ```
 
 If no locale was previously set as the default, the system default locale from
@@ -94,13 +81,15 @@ the JavaScript engine is used.  In a WebKit environment (such as webOS for TV),
 this will be the `navigator.language` property; in a Node.js environment, it
 will be the `webos.locales.UI` property.
 
-#### iLib.LocaleInfo
+#### iLib/LocaleInfo
 
 To obtain detailed information about a locale, you may create an instance of
-`ilib.LocaleInfo`.
+`enyo-ilib/LocaleInfo`.
 
 ```javascript
-    var li = new ilib.LocaleInfo({
+    var LocaleInfo = require('ilib/LocaleInfo');
+    ...
+    var li = new LocaleInfo({
         locale: "ru-RU"
     });
 ```
@@ -121,11 +110,11 @@ On webOS for TV, information for locales other than the current UI locale must
 be retrieved asynchronously via the LS2 bus:
 
 ```javascript
-    enyo.kind({
+    kind({
         name: "LocalePref",
-        kind: "enyo.Component",
+        kind: Component,
         components: [{
-            kind: "enyo.LS2Service",
+            kind: LS2Service,
             service: "palm://com.webos.settingsservice",
             name: "getCurrentLanguage",
             method: "getSystemSettings",
@@ -148,14 +137,16 @@ be retrieved asynchronously via the LS2 bus:
 
 #### Resource Bundles
 
-`ilib.ResBundle`, the resource bundle class, represents a set of translated
+`enyo-ilib/ResBundle`, the resource bundle class, represents a set of translated
 strings.  Each app has its own resource bundle.  These bundles are loaded
 dynamically, with each one having a name and locale.
 
 The locale may be specified as an option in the constructor.
 
 ```javascript
-    var rb = new ilib.ResBundle({locale: "ko-KR"});
+    var ResBundle = require('enyo-ilib/ResBundle');
+    ...
+    var rb = new ResBundle({locale: "ko-KR"});
 ```
 
 In practical terms, `ResBundle`'s most important method is `getString()`.
@@ -196,15 +187,18 @@ app's top-level `appinfo.json`.
 
 #### $L()
 
-`$L()` is a convenience function wrapping `ilib.ResBundle`.
+`$L()` is a convenience function wrapping `ilib/ResBundle` that is exported by the
+main Enyo library. When `enyo-ilib` is loaded, it will update this method to support
+`ResBundle`.
 
 Each translatable string in your application should be wrapped in a call to
 `$L()`.  For example:
 
 ```javascript
+    var $L = require('enyo/i18n').$L;
+    ...
     {
-        kind: "text",
-        label: $L("First Name:"),
+        content: $L('First Name:'),
         ...
     }
 ```
@@ -227,11 +221,12 @@ Many localization houses are able to provide translations in this format.
 
 The string returned from a call to `$L()` will be the translated string for the
 current UI locale.  If a different locale or a bundle with a different name is
-needed, use `ilib.ResBundle` directly instead of `$L()`.
+needed, use `ResBundle` directly instead of `$L()`.
 
 #### String Formatting
 
-`ilib.String` is used to format strings.  Its `format()` method allows for
+`enyo-ilib/IString` is used to format strings.  You will not generally need to require `IString`
+directly to use it. Its `format()` method allows for
 interpolation of named parameters into the string.  The following syntax is
 recommended:
 
@@ -244,18 +239,18 @@ recommended:
 
 Note that we are populating `template` by calling `getString()` on the
 localized resource bundle `$L.rb`.  This is because `format()` accepts an
-`ilib.String` object, but not an intrinsic JavaScript string.  (A call to
-`getString()` on a resource bundle returns an instance of `ilib.String`, while
+`enyo-ilib/IString` object, but not an intrinsic JavaScript string.  (A call to
+`getString()` on a resource bundle returns an instance of `enyo-ilib/IString`, while
 a call to `$L()` returns an intrinsic JavaScript string.)
 
-`ilib.String` has the same methods as an intrinsic string, and in many cases may
+`enyo-ilib/IString` has the same methods as an intrinsic string, and in many cases may
 be used as a substitute.  For those places that require an intrinsic string, you
-must call the `toString()` method to convert the `ilib.String` to an intrinsic
+must call the `toString()` method to convert the `enyo-ilib/IString` to an intrinsic
 string.
 
 #### Handling Plurals
 
-`ilib.String` uses the `formatChoice()` method to handle plurals.  This allows
+`enyo-ilib/IString` uses the `formatChoice()` method to handle plurals.  This allows
 translators to adjust strings to handle plurals properly for their respective
 languages.
 
@@ -295,13 +290,15 @@ The formatting of dates and times can differ widely from one locale to the next:
 ------------------------------------
 ```
 
-In `iLib`, the `ilib.DateFmt` class is used to format dates and times.  The
+In `iLib`, the `enyo-ilib/DateFmt` class is used to format dates and times.  The
 constructor accepts various options, which control how the formatter behaves.
 Once you create a `DateFmt` instance, you may call its `format()` method as many
 times as you want to format dates according to the given set of options.
 
 ```javascript
-    var fmt = new ilib.DateFmt();
+    var DateFmt = require('enyo-ilib/DateFmt');
+    ...
+    var fmt = new DateFmt();
     var d = fmt.format(date);
 ```
 
@@ -318,7 +315,7 @@ Among the options you may specify are the following:
 * Which time zone to format for
 
 ```javascript
-    var fmt = new ilib.DateFmt({ locale: "tr-TR",
+    var fmt = new DateFmt({ locale: "tr-TR",
         type: "date", date: "dmy", timezone: "Europe/Istanbul"
     });
 ```
@@ -332,13 +329,17 @@ To create a date, you may call the factory method or use the calendar date
 directly, e.g.:
 
 ```javascript
-    var now = new ilib.Date.HebrewDate();
+    var HebrewDate = require('enyo-ilib/HebrewDate');
+    ...
+    var now = new HebrewDate();
 ```
 
 This is equivalent to the following factory method call:
 
 ```javascript
-    var now = ilib.Date.newInstance({type: "hebrew"});
+    var dateFactory = require('enyo-ilib/DateFactory');
+    ...
+    var now = dateFactory({type: "hebrew"});
 ```
 
 Dates may be converted between calendars via a "Julian Day" number.  A Julian
@@ -346,10 +347,10 @@ Day is the number of whole days and fractions of a day since the beginning of
 the epoch on 24 November -4713 BCE (Gregorian):
 
 ```javascript
-    var now = new ilib.Date.GregDate();
+    var now = dateFactory();
     // now.year is currently 2013
     var jd = now.getJulianDay();
-    var hebrewDate = new ilib.Date.HebrewDate({julianday: jd});
+    var hebrewDate = new HebrewDate({julianday: jd});
     // hebrewDate.year is 5773
 ```
 
@@ -357,7 +358,7 @@ To format a date in a non-Gregorian Calendar, follow the pattern of creating a
 `DateFmt` object and calling `format()` on it. 
 
 ```javascript
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         length: "full",
         locale: "en-US",
         calendar: "hebrew"
@@ -367,12 +368,12 @@ To format a date in a non-Gregorian Calendar, follow the pattern of creating a
 
 The value of `d` is `"Adar 27, 5773 11:47PM PDT"`.
 
-Information about the most popular calendars may be retrieved using the
-`ilib.Cal.*` classes.  Use `ilib.Calendar.newInstance()` as a factory method to
+Use `enyo-ilib/CalendarFactory` as a factory method to
 create the other calendar types.
 
 ```javascript
-    var cal = ilib.Calendar.newInstance({
+    var calendarFactory = require('enyo-ilib/CalendarFactory');
+    var cal = calendarFactory({
         // looks up calendar for this locale
         locale: "nl-NL"
     });
@@ -383,32 +384,34 @@ create the other calendar types.
 
 #### Ranges and Durations
 
-`ilib.DateRngFmt` may be used to format a date/time range--a period of time with
+`enyo-ilib/DateRngFmt` may be used to format a date/time range--a period of time with
 a specific start point and end point.  As with the other formatter classes, the
 final output (e.g., `'Mar 11-14, 2013'`) will depend on the options supplied to
 the formatter.
 
-Similarly, `ilib.DurFmt` lets you format durations--how long things take to
+Similarly, `enyo-ilib/DurationFmt` lets you format durations--how long things take to
 happen.  Again, you may customize the output (e.g., `'36 hours, 24 minutes, and
 37 seconds'`) by setting the formatter's options.
 
 #### Time Zones
 
-In many countries, the federal government determines the time zone.  In some
+In many countries, the national government determines the time zone.  In some
 countries, including the United States, this may be overridden by smaller
 jurisdictions such as states/provinces, counties, towns, etc.  Time zones are
 specified using the IANA convention of "continent/city" (e.g.,
 `'America/Los_Angeles'` or `'Asia/Seoul'`).
 
-`ilib.TimeZone` represents information about a particular time zone.  Instances
-may be passed to other classes such as `ilib.DateFmt`, although the specifier
+`enyo-ilib/TimeZone` represents information about a particular time zone.  Instances
+may be passed to other classes such as `enyo-ilib/DateFmt`, although the specifier
 string itself is also accepted.
 
 ```javascript
-    var tz = new ilib.TimeZone({
+    var TimeZone = require('enyo-ilib/TimeZone');
+    ...
+    var tz = new TimeZone({
         id: "America/Los_Angeles"
     });
-    var offset = tz.getOffset(new ilib.Date.newInstance());
+    var offset = tz.getOffset(dateFactory());
 ```
 
 `offset` is now `{h: -8, m: 0}`.
@@ -433,12 +436,14 @@ another locale-sensitive process.
 ```
 
 As shown in the following examples, `iLib` handles each of these cases using
-`ilib.NumFmt`.
+`enyo-ilib/NumFmt`.
 
 #### Numbers
 
 ```javascript
-    var fmt = new ilib.NumFmt({
+    var NumFmt = require('enyo-ilib/NumFmt');
+    ...
+    var fmt = new NumFmt({
         locale: "de-DE"
     });
     var str = fmt.format(1234567.89);
@@ -449,7 +454,7 @@ As shown in the following examples, `iLib` handles each of these cases using
 #### Currency
 
 ```javascript
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "currency",
         currency: "EUR",
         locale: "de-DE"
@@ -462,7 +467,7 @@ As shown in the following examples, `iLib` handles each of these cases using
 #### Percentages
 
 ```javascript
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "percentage",
         maxFractionDigits: 2,
         locale: "tr-TR"
@@ -519,12 +524,12 @@ used to turn on right-to-left orientation for a widget:
 
 In Enyo apps running on webOS for TV, you can listen for locale changes and
 perform actions when a change occurs.  The locale change event is implemented
-as an `enyo.Signal`. You may register a callback method to be called when the
+as an `enyo/Signal`. You may register a callback method to be called when the
 signal is raised.
 
 ### Changes in Your App
 
-First, you must include the [enyo-webos](http://github.com/enyojs/enyo-webos)
+First, you must include the `enyo-webos`
 library in your `package.js` file in order to receive the locale changed signal.
 
 ```javascript
@@ -539,7 +544,7 @@ library in your `package.js` file in order to receive the locale changed signal.
 Then, in your main app kind, add the following to the `components` block:
 
 ```javascript
-    {kind: "enyo.Signals", onwebOSLocaleChange: "handleLocaleChangeEvent"}
+    {kind: Signals, onwebOSLocaleChange: "handleLocaleChangeEvent"}
 ```
 
 Finally, define the `handleLocaleChangeEvent()` function itself:
