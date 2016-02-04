@@ -29,14 +29,11 @@ computer-with-mouse.
 In addition, Spotlight includes support for point-and-click events, so all bases
 are covered.
 
-To add Spotlight to an application, simply include the `spotlight` package in
-your `package.js` file.  Note that when you use the `bootplate-moonstone` app
-template, this is already done for you, since `source/package.js` includes the
-`spotlight` library:
+To add Spotlight to an application, simply require `spotlight` in one of your
+source files:
 
 ```javascript
-    // Focus support library for TV applications
-    "$lib/spotlight",
+    var Spotlight = require('spotlight');
 ```
 
 <a name="2"></a>
@@ -82,11 +79,10 @@ position on the screen.
 
 It's worth noting that spottable controls may be found on different hierarchical
 levels of an Enyo component tree.  Spotlight facilitates seamless navigation
-between the topmost spottable components found in the tree.
+among the topmost spottable components found in the tree.
 
 For a demonstration of the Nearest Neighbor algorithm's behavior, see
-"ContainerSample" in the Spotlight repo's
-[samples](https://github.com/enyojs/spotlight/tree/master/samples) folder.
+"ContainerSample" in the [Enyo sampler](https://enyojs.com/sampler/latest/index.html?Spotlight&ContainerSample).
 
 <a name="4"></a>
 
@@ -96,7 +92,7 @@ In order to organize controls into navigation groups, we have created Spotlight
 containers. 
 
 A good example of how containers should be used is a set of radio buttons that
-must be navigable separate from the rest of the app's controls.
+must be navigable separately from the rest of the app's controls.
 
 When a Spotlight container is focused, it passes the focus to its own hierarchy
 of spottable child controls--specifically, to the last spottable child to hold
@@ -117,8 +113,7 @@ In a way, containers may be thought of as the branches--and spottable controls
 as the leaves--of the Spotlight navigation tree.
 
 For a demonstration of container behavior, see "ContainerSample" in the
-Spotlight repo's [samples](https://github.com/enyojs/spotlight/tree/master/samples)
-folder).
+[Enyo sampler](https://enyojs.com/sampler/latest/index.html?Spotlight&ContainerSample).
 
 <a name="5"></a>
 
@@ -208,8 +203,8 @@ For such cases, we have included an "Allow DOM Default" feature.  The events
 with an added `allowDomDefault()` method:
 
 ```javascript
-    onSpotlightKeyDown: function(oSender, oEvent) {
-        oEvent.allowDomDefault();
+    onSpotlightKeyDown: function(sender, event) {
+        event.allowDomDefault();
     }
 ```
 
@@ -217,7 +212,7 @@ In the above handler, if the Spotlight event is allowed to propagate, it will
 allow the original DOM `keydown` to trigger default browser behavior. (See
 [Figure A](#A)).
 
-<br />  
+<br />
 
 <a name="6.3"></a>
 
@@ -268,7 +263,7 @@ nearly equal) intervals.
 
 Looking at [Figure B](#B), we can see that not all of these events affect the
 application.  The function of the [Spotlight
-Accelerator](https://github.com/enyojs/spotlight/blob/master/kind.Spotlight.Accelerator.js)
+Accelerator]($api/#/module/spotlight/accelerator)
 is to distribute events over time (according to its configuration).
 
 Spotlight Accelerator may be configured via its array property,
@@ -304,7 +299,7 @@ works:
 
 The `mousewheel` event has a `wheelDeltaY` property, which translates to a given
 amount of wheel rotation.  [Spotlight
-Scrolling](https://github.com/enyojs/spotlight/blob/master/enyo.Spotlight.Scrolling.js)
+Scrolling]($api/#/module/spotlight/scrolling)
 accumulates `wheelDeltaY` values in a given direction of rotation (up or down).
 
 Once the cumulative value exceeds `Spotlight.Scrolling.frequency`, either

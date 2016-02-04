@@ -35,7 +35,7 @@ using Enyo and Moonstone:
 * **Most published properties should have change handlers (or data bindings).**
 
     A common bug occurs when a property is used only at create/render time;
-    later, when someone calls `set("myProperty", <myValue>)`, nothing happens
+    later, when someone calls `set('myProperty', <myValue>)`, nothing happens
     because there is no change handler to enable the property to change at
     runtime.
 
@@ -60,7 +60,7 @@ using Enyo and Moonstone:
 
 * **Handlers for `onSetupItem` events should usually return `true`, stopping
     propagation of the event.**
-    
+
     Failure to return `true` may cause problems with nested repeaters or lists,
     and will certainly make the program run more slowly due to the extra
     dispatching taking place for each item.
@@ -77,7 +77,7 @@ using Enyo and Moonstone:
     constructors instead, e.g.:
 
     ```javascript
-        if (inEvent.originator instanceof ExpectedKindCtor) {
+        if (event.originator instanceof ExpectedKindCtor) {
             // do something
         }
     ```
@@ -85,7 +85,7 @@ using Enyo and Moonstone:
     or
 
     ```javascript
-        if (inEvent.originator.ctor === ExpectedKindCtor) {
+        if (event.originator.ctor === ExpectedKindCtor) {
             // do something
         }
     ```
@@ -137,7 +137,7 @@ using Enyo and Moonstone:
     All Moonstone controls must support "right-to-left" (RTL) layout, in addition
     to the default "left-to-right" layout. 
 
-    Similar to fonts, the `ilib` library will apply an `.enyo-locale-right-to-left`
+    Similar to fonts, the `enyo-ilib` library will apply an `.enyo-locale-right-to-left`
     class to `<body>` for this purpose.
 
 * **Use your browser for debugging.**
@@ -180,7 +180,7 @@ creating shared code:
     existing comments as a guide.
 
     For more details, see [Documenting Code for the API
-    Reference](api-reference.html#documenting-code-for-the-api-reference).
+    Reference](../contributing/api-reference.html#documenting-code-for-the-api-reference).
 
 * **Prefix all CSS classes with the name of the widget you are developing.**
 

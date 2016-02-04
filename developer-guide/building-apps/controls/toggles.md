@@ -17,8 +17,8 @@ switches its state and fires an `onChange` event.
 
     ...
 
-    toggleTextToggle: function(inSender, inEvent) {
-        this.log('Toggled to value ' + inEvent.value);
+    toggleTextToggle: function(sender, event) {
+        this.log('Toggled to value ' + event.value);
     }
 ```
 

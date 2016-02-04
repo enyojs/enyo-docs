@@ -9,7 +9,7 @@ In Enyo, Web requests are made using either an
 `enyo/Ajax` is derived directly from [enyo/Async]($api/#/kind/enyo/Async/Async),
 the base kind for handling asynchronous operations.  `enyo/WebService` manages
 HTTP transactions by using either `enyo/Ajax` or
-[enyo/Jsonp/JsonpRequest]($api/#/kind/enyo/Jsonp/JsonpRequest), which is another
+[enyo/Jsonp]($api/#/kind/enyo/Jsonp/JsonpRequest), which is another
 subkind of `enyo/Async`.
 
 Considering the central role of `Async`, it makes sense to begin our discussion
@@ -58,12 +58,12 @@ aforementioned features:
         // Create a transaction object.
         var async = new Async();
         // Cause handlers to fire asynchronously (sometime after we yield this thread).
-        // "initial response" will be sent to handlers as inResponse
+        // 'initial response' will be sent to handlers as response
         async.go('intial response');
         // Until we yield the thread, we can continue to add handlers.
-        async.response(function(inSender, inResponse) {
-            console.log("first response: returning a string,",
-                "subsequent handlers receive this value for 'inResponse'");
+        async.response(function(sender, response) {
+            console.log('first response: returning a string,',
+                'subsequent handlers receive this value for 'response'');
             return 'some response';
         });
         return async;
@@ -80,8 +80,8 @@ until all functions return (synchronously):
 
     // Add a handler that will be called if an error is detected. This handler
     // recovers and sends a custom message.
-    x.error(function(inSender, inResponse) {
-        console.log('error: calling recover', inResponse);
+    x.error(function(sender, response) {
+        console.log('error: calling recover', response);
         this.recover();
         return 'recovered message';
     });
@@ -89,14 +89,14 @@ until all functions return (synchronously):
     // Add a response handler that halts response handler and triggers the
     // error chain. The error will be sent to the error handler registered
     // above, which will restart the handler chain.
-    x.response(function(inSender, inResponse) {
+    x.response(function(sender, response) {
         console.log('response: calling fail');
-        this.fail(inResponse);
+        this.fail(response);
     });
 
     // Recovered message will end up here.
-    x.response(function(inSender, inResponse) {
-        console.log('response: ', inResponse);
+    x.response(function(sender, response) {
+        console.log('response: ', response);
     });
 ```
 
@@ -127,50 +127,50 @@ corresponding to the passed-in place name:
     
         getWoeid: function(inPlace) {
         // set up enyo/AjaxProperties by sending them to the enyo/Ajax constructor
-        var x = new Ajax({url: "http://query.yahooapis.com/v1/public/yql?format=json"});
+        var x = new Ajax({url: 'http://query.yahooapis.com/v1/public/yql?format=json'});
         // send parameters the remote service using the 'go()' method
         x.go({
             q: 'select woeid from geo.placefinder where text="' + inPlace + '"'
         });
         // attach responders to the transaction object
-        x.response(this, function(inSender, inResponse) {
+        x.response(this, function(sender, response) {
             // extra information from response object
-            var woeid = inResponse.data.query.results.Result.woeid;
+            var woeid = response.data.query.results.Result.woeid;
             // do something with it
             this.setWoeid(inPlace, woeid);
         });
     }
 ```
 
-For additional examples of `enyo/Ajax` in action, look under `"Enyo Core > Ajax"`
+For additional examples of `enyo/Ajax` in action, look under `"Enyo > Ajax"`
 in the [Sampler app](http://enyojs.com/sampler/) on enyojs.com.  (The Sampler
 also includes examples using `JsonpRequest` and `WebService`.)
 
-## enyo/Jsonp/JsonpRequest
+## enyo/Jsonp
 
-[enyo/Jsonp/JsonpRequest]($api/#/kind/enyo/Jsonp/JsonpRequest) is a specialized
+[enyo/Jsonp]($api/#/kind/enyo/Jsonp/JsonpRequest) is a specialized
 form of `enyo/Async` used for making JSONP requests to a remote server (which
 must, of course, support such requests).  This differs from the normal
 XmlHttpRequest call in that the external resource is loaded using a `<script>`
 tag.
 
-`enyo/Jsonp/JsonpRequest` is useful when an application needs to load data from
+`enyo/Jsonp` is useful when an application needs to load data from
 a different domain.  JSONP lets us work around the browser security model for
 cross-origin requests, in which cross-origin XHRs can only be made to the same
 server the page is loaded from (unless the server supports cross-origin
 resource sharing, aka "CORS").  In a JSONP request, this restriction does not
 come into play because a browser will load scripts from any address.
 
-In addition to using `enyo/Jsonp/JsonpRequest` directly, you can make a JSONP
+In addition to using `enyo/Jsonp` directly, you can make a JSONP
 request using `WebService` by setting `jsonp: true` on the `WebService`
-instance.  When you do this, `WebService` will use `enyo/Jsonp/JsonpRequest`
+instance.  When you do this, `WebService` will use `enyo/Jsonp`
 internally to manage the HTTP transaction.
 
 ## enyo/WebService
 
 [enyo/WebService]($api/#/kind/enyo/WebService/WebService) is a component that
 performs XHR requests; it acts as a wrapper for the `Async` subkinds `enyo/Ajax`
-and `enyo/Jsonp/JsonpRequest`, using these subkinds internally to manage HTTP
+and `enyo/Jsonp`, using these subkinds internally to manage HTTP
 transactions.
 
 `enyo/WebService` uses `enyo/Ajax` by default and, like `enyo/Ajax`, it
@@ -179,7 +179,7 @@ publishes all the properties of the
 customize your HTTP request by setting values for these properties on a given
 `WebService` instance.
 
-To have a `WebService` instance use `enyo/Jsonp/JsonpRequest` instead of
+To have a `WebService` instance use `enyo/Jsonp` instead of
 `enyo/Ajax`, set `jsonp: true` on the instance.
 
 The `send()` method sends the request, returning the Async instance used.  The

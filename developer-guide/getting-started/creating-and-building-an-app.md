@@ -143,5 +143,5 @@ check out the built application under `my-project/dist`.
 
 Alternatively, try building the [enyo-strawman sample
 application](https://github.com/enyojs/enyo-strawman).  Clone the repository and
-take a look at the `package.json` file in the root directory.  Then run `enyo pack`
-and find the built app under `dist/`.
+take a look at the `package.json` file in the root directory.  First, run `enyo init` to
+install the dependencies and then run `enyo pack`. You will find the built app under `dist/`.

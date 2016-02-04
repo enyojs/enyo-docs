@@ -1,8 +1,8 @@
 % Platform-Specific Deployment
 
 The instructions that follow assume that you have completed the development phase
-of an Enyo-based application as well as the optimization phase (i.e., running the
-`deploy` script and removing any unnecessary files from the project) and that you
+of an Enyo-based application as well as the optimization phase (i.e., running
+`enyo pack` with production options to remove any unnecessary files from the project) and that you
 are now ready to create a final product for deployment to your platform of choice.
 
 ## Deploying as a Mobile Application
@@ -13,14 +13,7 @@ are now ready to create a final product for deployment to your platform of choic
     Guide][getting-started]
     to install Cordova and create a basic iOS Cordova app.
 
-2. Now drop your Enyo-based app files into the `www` directory created in step 1.
-
-3. Add the following `<meta>` tag to `index.html` for proper display on device:
-
-    ```html
-        <meta name="viewport"; content="width=device-width, initial-scale=1.0,
-            maximum-scale=1.0, user-scalable=no" />
-    ```
+2. Now drop the files from the `dist` directory into the `www` directory created in step 1. (Tip: you can specify the output directory for `enyo pack` using the `-d`/`--outdir` option.)
 
 From here you can follow the instructions in the Cordova Getting Started Guide
 to deploy to the simulator or device.  To submit your app to the Apple App
@@ -36,14 +29,7 @@ follow the directions in [Making Use of Cordova's Native Functions][native-funct
     Guide][getting-started] to install Cordova and create a basic Android
     Cordova app.
 
-2. Now drop your Enyo-based app files into the `www` directory created in step 1.
-
-3. Add the following `<meta>` tag to `index.html` for proper display on device:
-
-    ```html
-        <meta name="viewport"; content="width=device-width, initial-scale=1.0,
-            maximum-scale=1.0, user-scalable=no" />
-    ```
+2. Now drop the files from the `dist` directory into the `www` directory created in step 1. (Tip: you can specify the output directory for `enyo pack` using the `-d`/`--outdir` option.)
 
 From here you can follow the instructions in the Cordova Getting Started Guide
 to deploy to the emulator or device.  To publish your app on Google Play, you'll
@@ -59,9 +45,7 @@ follow the directions in [Making Use of Cordova's Native Functions][native-funct
     Guide][getting-started] to install Cordova and create a basic Windows Phone
     Cordova app.
 
-2. Now drop your Enyo-based app files into the `www` directory created in step 1.
-
-3.	Add the following viewport rule to `css/index.css` for proper display on device:
+2. Add the following viewport rule to `css/index.css` for proper display on device:
 
     ```css
         @-ms-viewport {
@@ -72,6 +56,8 @@ follow the directions in [Making Use of Cordova's Native Functions][native-funct
             min-zoom: 1;
         }
     ```
+
+3. Package your app after making the CSS change and drop the files from the `dist` directory into the `www` directory created in step 1. (Tip: you can specify the output directory for `enyo pack` using the `-d`/`--outdir` option.)
 
 From here you can follow the instructions in the Cordova Getting Started Guide
 to deploy to the simulator or device.  To submit your app to the Microsoft

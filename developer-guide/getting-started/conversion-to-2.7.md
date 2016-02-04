@@ -345,7 +345,7 @@ If you need to perform this sort of test, do a direct comparison between
 constructors, e.g.:
 
 ```javascript
-    if (inEvent.originator instanceof ExpectedKindCtor) {
+    if (event.originator instanceof ExpectedKindCtor) {
         // do something
     }
 ```
@@ -353,7 +353,7 @@ constructors, e.g.:
 or
 
 ```javascript
-    if (inEvent.originator.ctor === ExpectedKindCtor) {
+    if (event.originator.ctor === ExpectedKindCtor) {
         // do something
     }
 ```

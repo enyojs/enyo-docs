@@ -120,8 +120,8 @@ be retrieved asynchronously via the LS2 bus:
             method: "getSystemSettings",
             onResponse: "getCurrentLanguageResponse"
         }],
-        getCurrentLanguageResponse: function(inSender, innResponse) {
-            var inResponse = innResponse.data;
+        getCurrentLanguageResponse: function(sender, response) {
+            var inResponse = response.data;
             var localeInfo = inResponse.localeInfo;
             var STTlocale = localeInfo.locales.STT;  // speech-to-text locale (voice recognition)
         },

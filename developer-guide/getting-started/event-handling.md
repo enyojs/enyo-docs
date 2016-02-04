@@ -30,11 +30,11 @@ A component declares the events that it sends using an `events` block, e.g.:
 Note that, by convention, event names always start with `'on'`.
 
 For each event registered in a component's `events` block, a helper function
-`do<EventName>(inEvent)` is created on the kind, which the component may call to
-send the event up the component tree.  This function takes an optional `inEvent`
-parameter, which can contain event-specific information to be passed to the
-handler.  For example, to send the `onStateChanged` event from the example
-above, a component would call
+`do<EventName>(event)` is created on the kind, which the component may call to
+send the event up the component tree.  This function takes an optional `event`
+parameter, which must be an object and can contain event-specific information
+to be passed to the handler.  For example, to send the `onStateChanged` event
+from the example above, a component would call:
 
 ```javascript
     this.doStateChanged(newState)  // parameter is specific to the 'onStateChanged' event
@@ -44,17 +44,17 @@ Under the hood, the `do<EventName>` function wraps Enyo's generic `bubble`
 function for sending events up the component tree:
 
 ```javascript
-    this.bubble(inEventName <, inEvent, inSender>)
+    this.bubble(eventName <, event, sender>)
 ```
 
-* `inEventName` is the event name (including the `'on'` prefix).
+* `eventName` is the event name (including the `'on'` prefix).
 
-* `inEvent` is an optional object containing event-specific information (this is
-    the same object listeners receive as `inEvent`, although it may be decorated,
+* `event` is an object containing event-specific information (this is
+    the same object listeners receive as `event`, although it may be decorated,
     e.g., with the `originator` property).  Note that this must be a JavaScript
     object, not a primitive.
 
-* `inSender` should almost always be omitted, although you could use it to force
+* `sender` should almost always be omitted, although you could use it to force
     a particular sender for the next handler.
 
 **Note:** Declaring an `events` block and using the `do<EventName>` helper
@@ -67,34 +67,34 @@ An event handler is a function assigned to "catch" events bubbling up from
 children.  For example:
 
 ```javascript
-    myEventHandler: function(inSender, inEvent) {
+    myEventHandler: function(sender, event) {
         // Can return true to indicate that this event was handled and
         // propagation should stop
     }
 ```
 
-* `inSender` is the immediate sender of the event--that is, the last
+* `sender` is the immediate sender of the event--that is, the last
     [enyo/Component]($api/#/kind/enyo/Component/Component) to touch the event
     before passing it to `this`.
 
-* `inEvent` is an object that contains event data.  For DOM events, this is the
+* `event` is an object that contains event data.  For DOM events, this is the
     standard DOM event object.  For custom events, it's a custom object.
 
-The handler may return a truthy value to stop propagating the event.  Otherwise,
+The handler may return a *truthy* value to stop propagating the event.  Otherwise,
 it will continue bubbling up the component tree. 
 
 Note that the meaning of the return value is different from the classic DOM
 convention (historically, the return value would determine whether the default
 action occurs).  If you need to control the default action on a DOM event, use
-the modern equivalent, `inEvent.preventDefault()`.
+the modern equivalent, `event.preventDefault()`.
 
-`inEvent.stopPropagation()` will not prevent propagation of events in Enyo;
+`event.stopPropagation()` will not prevent propagation of events in Enyo;
 instead, return `true` from the handler.
 
-Because events propagate until stopped, an event's sender (`inSender`) may be
+Because events propagate until stopped, an event's sender (`sender`) may be
 different from its originator (i.e., the component that originally fired the
 event).  The originating component is available to the event handler as
-`inEvent.originator`.
+`event.originator`.
 
 For example, when clicked, a button originates an `onclick` event, which
 bubbles up the control chain.  The button's parent may bubble the event up to
@@ -110,7 +110,7 @@ set a handler name on an object owned by the component, like so:
     components: [
         {name: 'thing', ontap: 'thingTap'}
     ],
-    thingTap: function(inSender, inEvent) {
+    thingTap: function(sender, event) {
         // do stuff
     }
 ```
@@ -121,7 +121,7 @@ The second is to name a catch-all handler in the `handlers` block, like so:
     handlers: {
         ontap: 'anythingTap'
     },
-    anythingTap: function(inSender, inEvent) {
+    anythingTap: function(sender, event) {
         // do stuff
     }
 ```
@@ -137,18 +137,18 @@ by preventing propagation in `thingTap()`.  For example:
     handlers: {
         ontap: 'anythingTap'
     },
-    thingTap: function(inSender, inEvent) {
+    thingTap: function(sender, event) {
         // taps on _thing_ will bubble up to _anythingTap()_ also,
         // unless I stop propagation here
         return true; // handled here, don't propagate
     }
-    anythingTap: function(inSender, inEvent) {
+    anythingTap: function(sender, event) {
         // do stuff
     }
 ```
 
-If you need more sophisticated handling, you can use the `inSender` and
-`inEvent.originator` properties to help you discern the provenance of the event.
+If you need more sophisticated handling, you can use the `sender` and
+`event.originator` properties to help you discern the provenance of the event.
 
 ## DOM Events
 
@@ -240,7 +240,7 @@ DOM events:
 * `up` is generated when the pointer is released up.
 
 * `tap` is generated when the pointer is pressed down and released up.  The
-	target is the lowest DOM element that received both	the related `down` and
+	target is the lowest DOM element that received both the related `down` and
 	`up` events.
 
 * `move` is generated when the pointer moves.
@@ -277,7 +277,7 @@ DOM events:
     to the vertical axis).
 
 (Note that, on the Android platform, the `touchmove` event must be prevented
-via `inEvent.preventDefault()`, or the Enyo dragging system will not function
+via `event.preventDefault()`, or the Enyo dragging system will not function
 correctly.)
 
 Bear in mind that normalized input events are generated on Enyo controls, not
@@ -352,12 +352,12 @@ To broadcast a message, a sender simply invokes the static `send()` function on
     var
         Signals = require('enyo/Signals');
 
-    Signals.send(inEventName, inEvent);
+    Signals.send(eventName, event);
 ```
 
-* `inEventName` is the event name (including the `'on'` prefix).
+* `eventName` is the event name (including the `'on'` prefix).
 
-* `inEvent` is an optional object containing event-specific information.
+* `event` is an optional object containing event-specific information.
 
 To listen for a signal, a component should include a Signals instance in its
 `components` block.  It should also specify a handler for the signal by setting
@@ -379,7 +379,7 @@ For example, the following kind...
             // name of a handler method in my owner.
             {kind: Signals, onTransmission: 'transmission'}
         ],
-        transmission: function(inSender, inEvent) {
+        transmission: function(sender, event) {
             // respond to the signal
         }
     });
@@ -430,51 +430,51 @@ Signals to implement some simple handling of keyboard events:
             {kind: Signals, onkeypress: 'handleKeyPress',
                 onkeydown: 'handleKeyDown', onkeyup: 'handleKeyUp'}
         ],
-        handleKeyDown: function(inSender, inEvent) {
-            // Can use inEvent.keyCode to detect non-character keys
-            if (inEvent.keyCode === 8) {
+        handleKeyDown: function(sender, event) {
+            // Can use event.keyCode to detect non-character keys
+            if (event.keyCode === 8) {
                 // respond to backspace
             }
         },
-        handleKeyPress: function(inSender, inEvent) {
-            // Use inEvent.charCode to detect spacebar
-            if (inEvent.charCode === 32) {
-                this.$.myContent.setContent('I thought I asked you not to press the spacebar.');
+        handleKeyPress: function(sender, event) {
+            // Use event.charCode to detect spacebar
+            if (event.charCode === 32) {
+                this.$.myContent.set('content', 'I thought I asked you not to press the spacebar.');
             } else {
-                var key = String.fromCharCode(inEvent.charCode).toUpperCase();
-                this.$.myContent.setContent('Last key pressed: ' + key);
+                var key = String.fromCharCode(event.charCode).toUpperCase();
+                this.$.myContent.set('content', 'Last key pressed: ' + key);
             }
         },
-        handleKeyUp: function(inSender, inEvent) {
+        handleKeyUp: function(sender, event) {
             // Respond to keyup, if desired
         }
     });
 ```
 
 Within the `onkeydown` and `onkeyup` handler methods (`handleKeyDown()` and
-`handleKeyUp()`), `inEvent.keyCode` is the JavaScript key code representing the
+`handleKeyUp()`), `event.keyCode` is the JavaScript key code representing the
 key that was pressed.  In the `onkeypress` handler (`handleKeyPress()`),
-`inEvent.charCode` is the decimal value of the Unicode character generated by
+`event.charCode` is the decimal value of the Unicode character generated by
 the keypress; you can get the character itself as a string by passing
-`inEvent.charCode` into `String.fromCharCode()`.
+`event.charCode` into `String.fromCharCode()`.
 
 For example, let's say I press the `J` key on my keyboard to type a lowercase
-"j".  First, an `onkeydown` event is fired, in which `inEvent.keyCode` has a
+"j".  First, an `onkeydown` event is fired, in which `event.keyCode` has a
 value of `74`, the JavaScript key code for "j".  (Note that there is no
 distinction between lowercase and uppercase in the JavaScript key codes.) Then
-an `onkeypress` event is fired, in which `inEvent.charCode` has a value of 
+an `onkeypress` event is fired, in which `event.charCode` has a value of 
 `106`, which is the decimal value of the Unicode character lowercase "j".
-Finally, an `onkeyup` event is fired, in which, once again, `inEvent.keyCode` is
+Finally, an `onkeyup` event is fired, in which, once again, `event.keyCode` is
 `74`.
 
 Now, let's say I press `"SHIFT + J"` on my keyboard to type an uppercase "J".
 This fires two sets of `onkeydown`/`onkeyup` events.  In the first,
-`inEvent.keyCode` has a value of `16`, representing the SHIFT key, and there is
+`event.keyCode` has a value of `16`, representing the SHIFT key, and there is
 no associated `onkeypress` event since there is no character generated.  In the
-second `onkeydown` and `onkeyup`, `inEvent.keyCode` has a value of `74`, which
+second `onkeydown` and `onkeyup`, `event.keyCode` has a value of `74`, which
 we've seen is the JavaScript key code for "j".  Between the second `onkeydown`
 and the second `onkeyup`, an `onkeypress` event fires, in which the value of
-`inEvent.charCode` is also `74`, representing the decimal value of the Unicode
+`event.charCode` is also `74`, representing the decimal value of the Unicode
 character uppercase "J".
 
 ![](../assets/user-input-1.png)

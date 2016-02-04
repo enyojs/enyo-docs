@@ -39,15 +39,15 @@ Let's look at how a radio item group works.
         rendered: function() {
             this.inherited(arguments);
         },
-        buttonActivated: function(inSender, inEvent) {
-            var originator = inEvent.originator,
+        buttonActivated: function(sender, event) {
+            var originator = event.originator,
             str = 'The "';
 
             if (!originator || !this.hasNode()) {
                 return;
             }
 
-            str += (inEvent.originator.getActive() && inEvent.originator instanceof RadioItem)
+            str += (event.originator.getActive() && event.originator instanceof RadioItem)
                 ? originator.getContent() : originator.name;
             str +=  '" item is selected.';
 
@@ -60,7 +60,7 @@ Let's look at how a radio item group works.
 
 Notice that we have one handler method for the entire group.  When an item is
 tapped (or "activated"), we are able to identify the source of the event using
-`inEvent.originator`.  So if we tap "Dog", we see the following:
+`event.originator`.  So if we tap "Dog", we see the following:
 
 ![](../../assets/radio-item-group-with-selection.png)
 

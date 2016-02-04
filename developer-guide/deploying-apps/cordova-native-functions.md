@@ -10,11 +10,11 @@ code inside an `app.js` file:
         ready = require('enyo/ready');
 
     ready(function() {
-        kind({
-            name: "App",
+        var App = kind({
+            name: "App',
             components: [
-                {kind: Signals, ondeviceready: "deviceReady"},
-                {content: "Hello, World!"}
+                {kind: Signals, ondeviceready: 'deviceReady'},
+                {content: 'Hello, World!'}
             ],
             deviceReady: function() {
                 // respond to deviceready event
@@ -26,7 +26,7 @@ code inside an `app.js` file:
 
 ## Enyo and Cordova
 
-When an application is first launched, Cordova sends a `"deviceready"` event to
+When an application is first launched, Cordova sends a `'deviceready'` event to
 the document body.  This event tells us that the application has been launched
 and Cordova has been loaded.  It is at this point that we can use Enyo to render
 the application.

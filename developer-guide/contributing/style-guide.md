@@ -42,6 +42,16 @@ In `"else"` clauses, place the keyword `else` (or `else if`) between the braces.
     }
 ```
 
+## Variables
+
+Variables should be declared at the top of functions and should be declared in a single
+block (as opposed to multiple `var` statements.
+
+```javascript
+    var myVar, myVar2, ...,
+        anotherVar;
+```
+
 ## Punctuation
 
 We use a like-English rule whenever possible.  For example, there should be no
@@ -53,7 +63,7 @@ spaces on the inside of associations, and one space after a colon:
     var z = [1, 2, 3, (4 + 5)];
 ```
 
-Use a single space after any keyword, except `function`:
+Use a single space after any keyword, including `function`:
 
 ```javascript
     for (var i=0; i<100; i++) {
@@ -64,12 +74,30 @@ Use a single space after any keyword, except `function`:
         ... 
     }
 
-    x = function() {
+    x = function () {
         ...
     }
 ```
+
+## Quotes
+
+We use single quotes instead of double quotes for quoting strings:
+
+```javascript
+    var myString = 'Hello!';
+```
+
+## Line Length
+
+Lines should not exceed 100 characters.  Try to split long statements logically so that it
+is easy for others to figure out the intent of the statement.  If a comment would make a line
+too long, consider placing the comment before the statement it documents rather than to the right.
 
 ## Commenting
 
 For code commenting guidelines, see [Documenting Code for the API
 Reference](api-reference.html#documenting-code-for-the-api-reference).
+
+## Exports
+
+In general, a module should only export a single kind.

@@ -56,11 +56,11 @@ change observers for properties in the form of `<property>Changed()`
 functions.  For example:
 
 ```javascript
-    kind({
-        name: "MyControl",
-        foo: "",
+    var MyControl = kind({
+        name: 'MyControl',
+        foo: '',
         fooChanged: function(inOld) {    // Called when foo changes
-            // Do something with "this.foo"
+            // Do something with 'this.foo'
         }
     });
 ```
@@ -69,7 +69,7 @@ In this example, `fooChanged()` will be called when `foo` is set with the `set()
 
 ```javascript
     tapHandler: function() {
-        this.set("foo", "bar");      // Causes fooChanged() to be called
+        this.set('foo', 'bar');      // Causes fooChanged() to be called
     }
 ```
 
@@ -77,15 +77,15 @@ You may declare your own property change observers by adding entries to your
 kind's `observers` block:
 
 ```javascript
-    kind({
-        name: "MyControl",
+    var MyControl = kind({
+        name: 'MyControl',
         publicProperty: 10,
         _protectedProperty: 42,
         observers: [
-            { method: "watchValues", path: ["publicProperty", "_protectedProperty"] }
+            { method: 'watchValues', path: ['publicProperty', '_protectedProperty'] }
         ],
         watchValues: function(previous, current, property) {  // Called when either property changes
-            // Do something with "this.publicProperty" and "this._protectedProperty"
+            // Do something with 'this.publicProperty' and 'this._protectedProperty'
         }
     });
 ```
@@ -120,14 +120,14 @@ knob.
         Slider = require('moonstone/Slider'),
         Control = require('enyo/Control');
 
-    kind({
-        name: "MyValueSlider",
+    var MyValueSlider = kind({
+        name: 'MyValueSlider',
         components: [
-            {kind: Slider, name: "slider"},
-            {kind: Control, name: "label"}
+            {kind: Slider, name: 'slider'},
+            {kind: Control, name: 'label'}
         ],
         bindings: [
-            {from: "$.slider.value", to: "$.label.content"}
+            {from: '$.slider.value', to: '$.label.content'}
         ]
     });
 ```
@@ -146,15 +146,15 @@ a binding may be specified as "two-way" by setting the `oneWay` flag to `false`:
         Control = require('enyo/Control');
 
     kind({
-        name: "MyValueSlider",
+        name: 'MyValueSlider',
         sliderValue: 10,    // Initial value of slider
         components: [
-            {kind: Slider, name:"slider"},
-            {kind: Control, name:"label"}
+            {kind: Slider, name:'slider'},
+            {kind: Control, name:'label'}
         ],
         bindings: [
-            {from: "sliderValue", to: "$.slider.value", oneWay: false},    // two-way binding
-            {from: "$.slider.value", to: "$.label.content"}                // one-way binding
+            {from: 'sliderValue', to: '$.slider.value', oneWay: false},    // two-way binding
+            {from: '$.slider.value', to: '$.label.content'}                // one-way binding
         ]
     });
 ```
@@ -177,15 +177,15 @@ bindings):
         Slider = require('moonstone/Slider'),
         Control = require('enyo/Control');
 
-    kind({
-        name: "MyValueSlider",
+    var MyValueSlider = kind({
+        name: 'MyValueSlider',
         components: [
-            {kind: Slider, name:"slider", min: 0, max: 1},
-            {kind: Control, name:"label"}
+            {kind: Slider, name:'slider', min: 0, max: 1},
+            {kind: Control, name:'label'}
         ],
         bindings: [
-            {from: "$.slider.value", to: "$.label.content", transform: function(val) {
-                return "The slider value is " + Math.round(val * 100) + "%";
+            {from: '$.slider.value', to: '$.label.content', transform: function(val) {
+                return 'The slider value is ' + Math.round(val * 100) + '%';
             }}
         ]
     });
@@ -196,9 +196,9 @@ check the second argument to the `transform` function to determine the direction
 in which the binding is firing: 
 
 ```javascript
-    {from: "$.slider.value", to: "$.input.value", oneWay:false, transform: function(val, dir) {
+    {from: '$.slider.value', to: '$.input.value', oneWay:false, transform: function(val, dir) {
         if (dir == 1) { //source (`from`) setting value for target (`to`)
-            return (val * 100) + "%";
+            return (val * 100) + '%';
         } else if (dir == 2) { //target (`to`) setting value for source (`from`)
             return parseInt(val) / 100;
         }
@@ -215,15 +215,15 @@ observers and bindings for that property fire.
 Here's a simple example of a computed property based on two properties:
 
 ```javascript
-    kind({
-        name: "MyForecastControl",
-        weather: "sunny",
-        city: "San Francisco",
+    var MyForecastControl = kind({
+        name: 'MyForecastControl',
+        weather: 'sunny',
+        city: 'San Francisco',
         computed: [
-            { method: "forecast", path: ["weather", "city"] }    // "forecast" method depends on properties in list
+            { method: 'forecast', path: ['weather', 'city'] }    // 'forecast' method depends on properties in list
         ],
         forecast: function() {
-            return "It's always " + this.get("weather") + " in " + this.get("city")
+            return 'It's always ' + this.get('weather') + ' in ' + this.get('city')
         }
     }); 
 ```
@@ -231,21 +231,21 @@ Here's a simple example of a computed property based on two properties:
 We may now bind the computed `forecast` property to a view control, e.g.:
 
 ```javascript
-    kind({
-        name: "MyForecastControl",
-        weather: "sunny",
-        city: "San Francisco",
+    var MyForecastControl = kind({
+        name: 'MyForecastControl',
+        weather: 'sunny',
+        city: 'San Francisco',
         components: [
-            {kind: Control, name: "forecastLabel"}
+            {kind: Control, name: 'forecastLabel'}
         ],
         bindings: [
-            {from: "forecast", to: "$.forecastLabel.content"}
+            {from: 'forecast', to: '$.forecastLabel.content'}
         ],
         computed: [
-            { method: "forecast", path: ["weather", "city"] }    // "forecast" method depends on properties in list
+            { method: 'forecast', path: ['weather', 'city'] }    // 'forecast' method depends on properties in list
         ],
         forecast: function() {
-            return "It's always " + this.get("weather") + " in " + this.get("city")
+            return 'It's always ' + this.get('weather') + ' in ' + this.get('city')
         }
     });
 ```
@@ -253,11 +253,11 @@ We may now bind the computed `forecast` property to a view control, e.g.:
 Then, when either dependent property changes, the view will automatically update:
 
 ```javascript
-    this.set("weather", "rainy");    
-    // forecastLabel's content becomes "It's always rainy in San Francisco"
+    this.set('weather', 'rainy');
+    // forecastLabel's content becomes 'It's always rainy in San Francisco'
 
-    this.set("city", "Seattle");
-    // forecastLabel's content becomes "It's always rainy in Seattle"
+    this.set('city', 'Seattle');
+    // forecastLabel's content becomes 'It's always rainy in Seattle'
 ```
 
 ## Models
@@ -282,9 +282,9 @@ desired initial attribute values:
     var Model = require('enyo/Model');
 
     var myModel = new Model({
-        name: "Kevin", 
-        hometown: "San Francisco",
-        avatar: "/assets/kevin.png",
+        name: 'Kevin', 
+        hometown: 'San Francisco',
+        avatar: '/assets/kevin.png',
         height: 6.0
     });
 ```
@@ -293,27 +293,27 @@ We may get and set properties of the model using the `set()` and `get()`
 functions, just as we would do with `enyo/Object`:
 
 ```javascript
-    myModel.get("name"); // returns "Kevin"
-    myModel.set("name", "Bob");
-    myModel.get("name"); // returns "Bob"
+    myModel.get('name'); // returns 'Kevin'
+    myModel.set('name', 'Bob');
+    myModel.get('name'); // returns 'Bob'
 ```
 
 The properties of the model may be observed or bound to properties of components
 or other models using the same API described above:
 
 ```javascript
-    kind({
-        name: "ContactView",
+    var ContactView = kind({
+        name: 'ContactView',
         personModel: null,
         components: [
-            {kind: Image, name: "avatar"},
-            {kind: Control, name: "nameLabel"},
-            {kind: Control, name: "townLabel"}
+            {kind: Image, name: 'avatar'},
+            {kind: Control, name: 'nameLabel'},
+            {kind: Control, name: 'townLabel'}
         ],
         bindings: [
-            {from: "personModel.name", to: "$.nameLabel.content"},
-            {from: "personModel.hometown", to: "$.townLabel.content"},
-            {from: "personModel.avatar", to: "$.avatar.src"}
+            {from: 'personModel.name', to: '$.nameLabel.content'},
+            {from: 'personModel.hometown', to: '$.townLabel.content'},
+            {from: 'personModel.avatar', to: '$.avatar.src'}
         ]
     });
 ```
@@ -326,20 +326,20 @@ automatically be synced with the corresponding properties of the model:
     var Model = require('enyo/Model');
 
     var myModel = new Model({
-        name: "Kevin", 
-        hometown: "San Francisco",
-        avatar: "/assets/kevin.png",
+        name: 'Kevin', 
+        hometown: 'San Francisco',
+        avatar: '/assets/kevin.png',
         height: 6.0
     });
 
-    this.$.contactView.set("personModel", myModel);
+    this.$.contactView.set('personModel', myModel);
 ```
 
 Furthermore, if any properties of the model are changed, the view will
 automatically update:
 
 ```javascript
-    myModel.set("name", "Bob");        // The "nameLabel" component of the view will update
+    myModel.set('name', 'Bob');        // The 'nameLabel' component of the view will update
 ```
 
 ### Creating Model Subkinds
@@ -348,18 +348,18 @@ You may subkind `enyo/Model` to provide an explicit schema and default values
 via the `attributes` property, or to override any other default behavior:
 
 ```javascript
-    kind({
-        name: "ContactModel",
+    var COntactModel = kind({
+        name: 'ContactModel',
         kind: Model,
         attributes: {
-            name: "Unknown",
-            hometown: "Unknown",
-            avatar: "/assets/unknown.png"
+            name: 'Unknown',
+            hometown: 'Unknown',
+            avatar: '/assets/unknown.png'
         }
     });
 
     var myModel = new ContactModel({
-        name: "Bob"        // other attributes will reflect the defaults in ContactModel
+        name: 'Bob'        // other attributes will reflect the defaults in ContactModel
     });
 ```
 
@@ -380,14 +380,14 @@ to pass along the model property that is used to reference the resource we need:
         Model = require('enyo/Model'),
         AjaxSource = require('enyo/AjaxSource');
 
-    new AjaxSource({name: "ajax"});
+    new AjaxSource({name: 'ajax'});
 
-    kind({
-        name: "ContactModel",
+    var ContactModel = kind({
+        name: 'ContactModel',
         kind: Model,
-        source: "ajax",
+        source: 'ajax',
         getUrl: function() {
-            return "http://myservice.com/users/" + this.get("user_id");
+            return 'http://myservice.com/users/' + this.get('user_id');
         }
     });
 
@@ -426,14 +426,14 @@ In this case, you could overload the `parse()` function to tell `enyo/Model` to
 only use the `result` sub-tree of the fetched data for the model attributes:
 
 ```javascript
-    kind({
-        name: "ContactModel",
+    var ContactModel = kind({
+        name: 'ContactModel',
         kind: Model,
         options: {parse: true},
-        source: "ajax",
-        url: "http://myservice.com/users",
+        source: 'ajax',
+        url: 'http://myservice.com/users',
         getUrl: function() {
-            return "http://myservice.com/users/" + this.get("user_id");
+            return 'http://myservice.com/users/' + this.get('user_id');
         },
         parse: function(data) {        // incoming data contains {status:..., result:...}
             return data.result;        // returned data contains {user_id:..., name:..., ...}
@@ -449,15 +449,15 @@ functionality, such as [X2JS](https://code.google.com/p/x2js/):
 
 ```javascript
     kind({
-        name: "ContactModel",
+        name: 'ContactModel',
         kind: Model,
         options: {parse: true},
-        source: "ajax",
+        source: 'ajax',
         getUrl: function() {
-            return "http://myservice.com/users/" + this.get("user_id");
+            return 'http://myservice.com/users/' + this.get('user_id');
         },
         parser: new X2JS(),
-        parse: function(data) {        // incoming data: "<root><user_id>1234</user_id><name>...</name>...</root>"
+        parse: function(data) {        // incoming data: '<root><user_id>1234</user_id><name>...</name>...</root>'
             var json = this.parser.xml_str2json(data);
             return json.root;        // returned data: {user_id:..., name:..., ...}
         }
@@ -488,13 +488,13 @@ example, if the fetched model data looked like this...
 fields with `enyo/Model`, making those nested sub-objects bindable as well:
 
 ```javascript
-    kind({
-        name: "ContactModel",
+    var ContactModel = kind({
+        name: 'ContactModel',
         kind: Model,
         options: {parse: true},
-        source: "ajax",
+        source: 'ajax',
         getUrl: function() {
-            return "http://myservice.com/users/" + this.get("user_id");
+            return 'http://myservice.com/users/' + this.get('user_id');
         },
         parse: function(data) {
             data.dept_id = data.department.dept_id;
@@ -534,21 +534,21 @@ initial model data:
 
     var myCollection = new Collection([
         {
-            name: "Kevin", 
-            hometown: "San Francisco",
-            avatar: "/assets/kevin.png",
+            name: 'Kevin', 
+            hometown: 'San Francisco',
+            avatar: '/assets/kevin.png',
             height: 6.0
         },
         {
-            name: "Gray", 
-            hometown: "San Jose",
-            avatar: "/assets/gray.png",
+            name: 'Gray', 
+            hometown: 'San Jose',
+            avatar: '/assets/gray.png',
             height: 6.1
         },
         {
-            name: "Cole", 
-            hometown: "Santa Clara",
-            avatar: "/assets/cole.png",
+            name: 'Cole', 
+            hometown: 'Santa Clara',
+            avatar: '/assets/cole.png',
             height: 5.9
         }
     ]);
@@ -557,8 +557,8 @@ initial model data:
 We can retrieve models from the collection using the `at()` function:
 
 ```javascript
-    myCollection.at(0);                 // returns enyo/Model instance for "Kevin" record
-    myCollection.at(2).get("name");     // returns "Cole"
+    myCollection.at(0);                 // returns enyo/Model instance for 'Kevin' record
+    myCollection.at(2).get('name');     // returns 'Cole'
 ```
 
 We can add models using the `add()` function.  Note that `add()` will accept
@@ -566,11 +566,11 @@ either `enyo/Model` objects or plain JavaScript objects.  The latter are
 converted into `enyo/Model` objects when first retrieved.
 
 ```javascript
-    myCollection.add({name: "Ben", hometown: "Austin"});
-    myCollection.at(myCollection.length-1).get("name"); // returns "Ben"
+    myCollection.add({name: 'Ben', hometown: 'Austin'});
+    myCollection.at(myCollection.length-1).get('name'); // returns 'Ben'
 
-    myCollection.add(new ContactModel({name: "Aaron", hometown: "San Mateo"}));
-    myCollection.at(myCollection.length-1).get("name"); // returns "Aaron"
+    myCollection.add(new ContactModel({name: 'Aaron', hometown: 'San Mateo'}));
+    myCollection.at(myCollection.length-1).get('name'); // returns 'Aaron'
 ```
 
 See the documentation for [enyo/Collection]($api/#/kind/enyo/Collection/Collection) for the
@@ -583,22 +583,22 @@ for wrapping its array data, or to override any other default behavior:
 
 ```javascript
     var MyContactCollection = kind({
-        name: "MyContactCollection",
+        name: 'MyContactCollection',
         kind: Collection,
-        model: "MyContactModel"
+        model: ContactModel
     });
 
     var myCollection = new MyContactCollection([
         {
-            name: "Kevin", 
-            hometown: "San Francisco",
-            avatar: "/assets/kevin.png",
+            name: 'Kevin', 
+            hometown: 'San Francisco',
+            avatar: '/assets/kevin.png',
             height: 6.0
         },
         ...
     ]);
 
-    myCollection.at(0);        // returns instance of "MyContactModel" for "Kevin" record
+    myCollection.at(0);        // returns instance of 'MyContactModel' for 'Kevin' record
 ```
 
 ### Fetching Collections from REST Endpoints
@@ -615,13 +615,13 @@ In the following example, the collection is loaded from a fixed URL:
         AjaxSource = require('enyo/AjaxSource'),
         Collection = require('enyo/Collection');
 
-    new AjaxSource({name: "ajax"});
+    new AjaxSource({name: 'ajax'});
 
-    kind({
-        name: "MyContactCollection",
+    var MyContactCollection = kind({
+        name: 'MyContactCollection',
         kind: Collection,
-        source: "ajax",
-        url: "http://myservice.com/users"
+        source: 'ajax',
+        url: 'http://myservice.com/users'
     });
 
     var myCollection = new MyContactCollection();
@@ -632,12 +632,12 @@ If the URL for the collection needs to be customized, simply overload `getUrl()`
 to provide a custom URL--based on properties of the collection, for example:
 
 ```javascript
-    kind({
-        name: "MyContactCollection",
+    var MyContactCollection = kind({
+        name: 'MyContactCollection',
         kind: Collection,
-        source: "ajax",
+        source: 'ajax',
         getUrl: function() {
-            return "http://myservice.com/departments/" + this.get("dept_id") + "/users";
+            return 'http://myservice.com/departments/' + this.get('dept_id') + '/users';
         }
     });
 
@@ -688,12 +688,12 @@ array...
 ...you could implement the following function to use only the `result` sub-array:
 
 ```javascript
-    kind({
-        name: "MyContactCollection",
+    var MycontactCollection = kind({
+        name: 'MyContactCollection',
         kind: Collection,
         options: {parse: true},
-        source: "ajax",
-        url: "http://myservice.com/users"
+        source: 'ajax',
+        url: 'http://myservice.com/users'
         parse: function(data) {        // incoming data contains {status:..., result:...}
             return data.result;        // returned data contains {[{user_id:..., name:...}, {...}]}
         }
@@ -734,17 +734,17 @@ the [enyo/AjaxSource]($api/#/kind/enyo/AjaxSource/AjaxSource) and
 When defining a custom `enyo/Model` or `enyo/Collection` subkind, you must
 specify the `source` property to indicate which source to use for
 fetching and committing records, using the shorthand name for the source (e.g.,
-"`ajax`", "`jsonp`", etc.).
+'`ajax`', '`jsonp`', etc.).
 
 For example:
 
 ```javascript
-    kind({
-        name: "MyContactCollection",
+    var MyContactCollection = kind({
+        name: 'MyContactCollection',
         kind: Collection,
-        model: "MyContactModel",
-        url: "http://myservice.com/users",
-        source: "jsonp"        // use jsonp source instead of ajax for fetching
+        model: MyContactModel,
+        url: 'http://myservice.com/users',
+        source: 'jsonp'        // use jsonp source instead of ajax for fetching
     });
 ```
 
@@ -759,22 +759,22 @@ For example, to create a subkind of `enyo/JsonpSource` to provide a custom
 `callback` property required by the JSONP endpoint, you could do the following:
 
 ```javascript
-    kind({
-        name: "MyJsonpSource",
+    var MyJsonpSource = kind({
+        name: 'MyJsonpSource',
         kind: JsonpSource,
         fetch: function(opts) {
-            opts.callbackName = "kallback";
+            opts.callbackName = 'kallback';
             this.inherited(arguments);
         }
     });
-    new MyJsonpSource({name: "mysource"});
+    new MyJsonpSource({name: 'mysource'});
 ```
 
 To create a brand new source, implement the abstract API as necessary:
 
 ```javascript
-    kind({
-        name: "MySource",
+    var MySource = kind({
+        name: 'MySource',
         kind: Source,
         fetch: function(rec, opts) {
             // implement code to fetch records
@@ -793,7 +793,7 @@ To create a brand new source, implement the abstract API as necessary:
             opts.success(data);        // call success callback to return data
         },
     });
-    new MySource({name: "mysource"});
+    new MySource({name: 'mysource'});
 ```
 
 As an example, you could easily implement an `enyo/Source` that uses the
@@ -803,16 +803,16 @@ authentication required for this particular SDK is out of the scope of this
 article.)
 
 ```javascript
-    kind({
-        name: "FacebookFeedSource",
+    var FacebookFeedSource = kind({
+        name: 'FacebookFeedSource',
         kind: Source,
         fetch: function(rec, opts) {
             var resource;
             if (rec instanceof Collection) {
-                var user = rec.get("user") || "me";
-                resource = "/" + user + "/feed";
+                var user = rec.get('user') || 'me';
+                resource = '/' + user + '/feed';
             } else {
-                resource = "/" + rec.id;
+                resource = '/' + rec.id;
             }
             FB.api(resource, function(response) {
                 if (response && !response.error) {
@@ -824,7 +824,7 @@ article.)
         },
         commit: function(rec, opts) {
             if (rec.isNew) {
-                FB.api("/me/feed", "POST", rec, function(response) {
+                FB.api('/me/feed', 'POST', rec, function(response) {
                     if (response && !response.error) {
                         opts.success(response);
                     } else {
@@ -836,7 +836,7 @@ article.)
             }
         },
         destroy: function(rec, opts) {
-            FB.api(rec.id, "DELETE", function(response) {
+            FB.api(rec.id, 'DELETE', function(response) {
                 if (response && !response.error) {
                     opts.success(response);
                 } else {
@@ -845,7 +845,7 @@ article.)
             });
         }
     });
-    new FacebookFeedSource({name: "fbfeed"});
+    new FacebookFeedSource({name: 'fbfeed'});
 ```
 
 ## Binding Models and Collections to Views
@@ -873,27 +873,27 @@ This is the typical way to implement such a view without using bindings:
         Slider = require('onyx/Slider'),
         Input = require('enyo/Input');
 
-    kind({
-        name: "MyControl",
+    var MyControl = kind({
+        name: 'MyControl',
         model: null,
         components: [
-            {kind: Control, name: "nameLabel"},
-            {kind: Slider, name: "slider", onChanging: "sliderChanging"},
-            {kind: Input, name: "input", oninput: "inputChanged"}
+            {kind: Control, name: 'nameLabel'},
+            {kind: Slider, name: 'slider', onChanging: 'sliderChanging'},
+            {kind: Input, name: 'input', oninput: 'inputChanged'}
         ],
         create: function() {
             this.inherited(arguments);
-            this.set("$.nameLabel.content", this.get("model.name"));
-            this.set("$.slider.value", this.get("model.value"));
-            this.set("$.input.value", this.get("model.value"));
+            this.set('$.nameLabel.content', this.get('model.name'));
+            this.set('$.slider.value', this.get('model.value'));
+            this.set('$.input.value', this.get('model.value'));
         },
-        sliderChanging: function(inSender, inEvent) {
-            this.set("$.input.value", inEvent.value);
-            this.set("model.value", inEvent.value)
+        sliderChanging: function(sender, event) {
+            this.set('$.input.value', event.value);
+            this.set('model.value', event.value)
         },
-        inputChanged: function(inSender, inEvent) {
-            this.set("$.slider.value", inSender.get("value"));
-            this.set("model.value", inSender.get("value"));
+        inputChanged: function(sender, event) {
+            this.set('$.slider.value', sender.get('value'));
+            this.set('model.value', sender.get('value'));
         }
     });
 ```
@@ -904,18 +904,18 @@ Using bindings, the implementation requires significantly less code, and may be
 done completely declaratively, making your code easier to read and maintain:
 
 ```javascript
-    kind({
-        name: "MyControl",
+    var MyControl = kind({
+        name: 'MyControl',
         model: null,
         components: [
-            {kind: Control, name: "nameLabel"},
-            {kind: Slider, name: "slider", onChanging: "sliderChanging"},
-            {kind: Input, name: "input", oninput: "inputChanged"}
+            {kind: Control, name: 'nameLabel'},
+            {kind: Slider, name: 'slider', onChanging: 'sliderChanging'},
+            {kind: Input, name: 'input', oninput: 'inputChanged'}
         ],
         bindings: [
-            {from: "model.name", to: "$.nameLabel.content"},
-            {from: "model.value", to: "$.slider.value", oneWay: false},
-            {from: "model.value", to: "$.input.value", oneWay: false}
+            {from: 'model.name', to: '$.nameLabel.content'},
+            {from: 'model.value', to: '$.slider.value', oneWay: false},
+            {from: 'model.value', to: '$.input.value', oneWay: false}
         ]
     });
 ```
@@ -942,13 +942,13 @@ control to sync data to and from the models.
 Without collections or bindings, one might implement a simple repeater as follows:
 
 ```javascript
-    kind({
-        name: "",
+    var SimpleRepeater = kind({
+        name: 'SimpleRepeater',
         data: null, // expects plain JS array array
         components: [
-            {kind: Repeater, name: "repeater", onSetupItem: "setupItem", components: [
-                {kind: Control, name: "nameLabel"},
-                {kind: Control, name: "ageLabel"}
+            {kind: Repeater, name: 'repeater', onSetupItem: 'setupItem', components: [
+                {kind: Control, name: 'nameLabel'},
+                {kind: Control, name: 'ageLabel'}
             ]}
         ],
         create: function() {
@@ -957,13 +957,13 @@ Without collections or bindings, one might implement a simple repeater as follow
         },
         dataChanged: function() {
             if (this.data) {
-                this.$.repeater.set("count", data.length);
+                this.$.repeater.set('count', data.length);
             }
         },
-        setupItem: function(inSender, inEvent) {
-            var record = this.data[inEvent.index];
-            this.$.nameLabel.set("content", record.name);
-            this.$.ageLabel.set("content", record.age);
+        setupItem: function(sender, event) {
+            var record = this.data[event.index];
+            this.$.nameLabel.set('content', record.name);
+            this.$.ageLabel.set('content', record.age);
         }
     });
 ```
@@ -979,19 +979,19 @@ the DataRepeater automatically keeping the view in sync when records in the
 collection are changed:
 
 ```javascript
-    kind({
-        name: "",
+    var MyView = kind({
+        name: 'MyView',
         data: null, // expects an enyo/Collection
         components: [
-            {kind: DataRepeater, name: "repeater", components: [
+            {kind: DataRepeater, name: 'repeater', components: [
                 {
                     components: [
-                        {kind: Control, name: "nameLabel"},
-                        {kind: Control, name: "ageLabel"}
+                        {kind: Control, name: 'nameLabel'},
+                        {kind: Control, name: 'ageLabel'}
                     ],
                     bindings: [
-                        {from: "model.name", to: "$.nameLabel.content"},
-                        {from: "model.age", to: "$.ageLabel.content"}
+                        {from: 'model.name', to: '$.nameLabel.content'},
+                        {from: 'model.age', to: '$.ageLabel.content'}
                     ]
                 }
             ]}

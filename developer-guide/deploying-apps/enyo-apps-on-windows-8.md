@@ -17,8 +17,8 @@ need the following:
 
 ### 1. Create Your Enyo Application
 
-Build your Enyo application using the Bootplate template, as described
-[here](../getting-started/bootplate.html).
+Build your Enyo application as described
+[here](../getting-started/first-steps.html).
 
 ### 2. Create a New Visual Studio Project
 
@@ -34,7 +34,7 @@ Build your Enyo application using the Bootplate template, as described
 * Your project will include `css` and `js` folders by default.  Feel free to
     delete these from the project.
 
-* Copy your Enyo bootplate app into your Visual Studio project structure.  Make
+* Copy your Enyo app into your Visual Studio project structure.  Make
     sure that your application files are included in the project by
     right-clicking on your files and folders and selecting the **Include in
     Project** contextual menu item.
@@ -42,31 +42,7 @@ Build your Enyo application using the Bootplate template, as described
     ![](../assets/enyo-apps-on-windows-8-a.png)
 
 * Replace your project's `index.html` file with the `index.html` from your
-    Bootplate app, or else edit it to look like the following:
-
-    ```html
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-            <meta charset="utf-8" />
-            <title>Enyo 2 Sampler</title>
-
-            <!-- css -->
-            <link href="build/enyo.css" rel="stylesheet"/>
-            <link href="build/app.css" rel="stylesheet"/>
-
-            <!-- js -->
-            <script src="build/enyo.js"></script>
-            <script src="build/app.js"></script>
-        </head>
-        <body class="enyo-unselectable">
-            <script>
-                new App().renderInto(document.body);
-            </script>
-        </body>
-        </html>
-    ```
+    app's `dist` directory.
 
 ### 3. Build and Deploy Your Project Locally
 

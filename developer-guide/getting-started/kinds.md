@@ -17,29 +17,31 @@ and Published Properties](objects-and-published-properties.html) and
 ## Special Property Names
 
 Generally, the properties defined in the configuration object passed to `kind()`
-are copied directly to the	generated prototype, but certain property names
-trigger special processing.	Some examples of special properties are:
+are copied directly to the generated prototype, but certain property names
+trigger special processing. Some examples of special properties are:
 
-* `name`: Defines the name of the created constructor in the global namespace
+* `name`: Defines the name of the created constructor
     (intermediate objects are created automatically).  `name` is not copied
-    directly to the prototype, but is instead stored as `kindName`.
+    directly to the prototype, but is instead stored as `kindName`. The `name` property
+    (and `kindName` on instances) is merely
+    a convenience for debugging and shoud not be used for run-time checking.
 
     ```javascript
         var
             kind = require('enyo/kind');
 
-        // Create a function myNamespace.MyKind with a prototype.
+        // Create a function MyKind with a prototype.
         // myNamespace.MyKind.prototype.kindName is set to 'myNamespace.MyKind'.
         // myNamespace.MyKind.prototype.plainProperty is set to 'foo'.
-        module.exports = kind({
+        var MyKind = kind({
             name: 'myNamespace.MyKind',
             plainProperty: 'foo'
         });
         // Make an instance of the new kind.
-        var myk = new myNamespace.MyKind();
+        var myk = new MyKind();
     ```
 
-* `kind`: The name of, or a reference to, a kind to derive from, like a
+* `kind`: A reference to a kind to derive from, like a
     superclass.  The new constructor's prototype is chained to the prototype
     specified by `kind`, and the `base` property in the new prototype is set to
     reference the `kind` constructor.
@@ -52,13 +54,22 @@ trigger special processing.	Some examples of special properties are:
         // Create a function MyKind with a prototype, derived from enyo/Object.
         // MyKind.prototype.kindName is set to 'MyKind'.
         // MyKind.prototype.base is set to 'enyo/Object'.
-        module.exports = kind({
+        var MyKind = kind({
             name: 'MyKind',
             kind: Object
         });
     ```
 
-* `constructor`: An optional function to call when a new instance is created; it
+    Note: All Enyo Objects provide a convenience method called `kind` that can be used to
+    derive new kinds. The above declaration could be written:
+
+    ```javascript
+    var MyKind = Object.kind({
+        name: 'MyKind'
+    });
+    ```
+
+* `constructor`: An optional method to call when a new instance is created; it
     is actually stored on the prototype as `_constructor`.
 
     ```javascript
@@ -68,7 +79,7 @@ trigger special processing.	Some examples of special properties are:
             kind = require('enyo/kind'),
             Object = require('enyo/Object');
 
-        module.exports = kind({
+        var MyKind = kind({
             name: 'MyKind',
             kind: Object,
             constructor: function() {
@@ -87,7 +98,7 @@ trigger special processing.	Some examples of special properties are:
         var
             kind = require('enyo/kind');
 
-        module.exports = kind({
+        var MyKind = kind({
             name: 'MyKind',
             statics: {
                 info: function() {
@@ -98,15 +109,6 @@ trigger special processing.	Some examples of special properties are:
         // Invoke the static info() method of MyKind.
         console.log(MyKind.info());
     ```
-
-* `protectedStatics`: Introduced in Enyo 2.3, protected statics are statics that
-    are meant for use only within the kind in which they are declared, or in
-    code that derives from that kind.
-
-    Unlike public statics, protected statics won't prevent the deferral of a
-    kind's creation.  Deferral is not possible for kinds containing public
-    statics because of the potential for the public statics' being used before
-    any instances of the kind exist.
 
 Certain kinds in the framework define their own special properties, e.g., the
 `published` property supported by [enyo/CoreObject/Object]($api/#/kind/enyo/CoreObject/Object).
@@ -119,7 +121,7 @@ A trivial kind has a simple lifecycle:
     var
         kind = require('enyo/kind');
 
-    module.exports = kind({
+    var MyKind = kind({
         name: 'MyKind',
         kind: null, // otherwise it will default to 'Control'
         constructor: function() {
@@ -148,7 +150,7 @@ from the old kind, you can call the overridden method using `this.inherited()`:
     var
         kind = require('enyo/kind');
 
-    module.exports = kind({
+    var MyNextKind = kind({
         name: 'MyNextKind',
         kind: MyKind,
         constructor: function() {
@@ -180,14 +182,14 @@ This override system works the same for any method, not just `constructor()`:
     var
         kind = require('enyo/kind');
 
-    module.exports = kind({
+    var MyOriginalKind = kind({
         name: 'MyOriginalKind',
         doWork: function() {
             this.work++;
         }
     });
 
-    module.exports = kind({
+    var MyDerivedKind = kind({
         name: 'MyDerivedKind',
         kind: MyOriginalKind,
         doWork: function() {

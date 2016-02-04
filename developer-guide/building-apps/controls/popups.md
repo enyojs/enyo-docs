@@ -23,10 +23,10 @@ pressing a button will display a popup.
                 ]
             }
         ],
-        showPopup: function(inSender, inEvent) {
+        showPopup: function(sender, event) {
             this.$.basicPopup.show();
         },
-        popupHidden: function(inSender, inEvent) {
+        popupHidden: function(sender, event) {
             // do something
         }
     });
@@ -85,9 +85,9 @@ Moonstone visual styling.
 
     ...
 
-    showPopup: function(inSender) {
+    showPopup: function(sender) {
         this.hidePopup();
-        var p = this.$[inSender.popup];
+        var p = this.$[sender.popup];
         if (p) {
             p.show();
         }
@@ -140,10 +140,10 @@ the following example:
                 ]
             }
         ],
-        showDialog: function(inSender) {
+        showDialog: function(sender) {
             this.$.dialog.show();
         },
-        hideDialog: function(inSender, inEvent) {
+        hideDialog: function(sender, event) {
             this.$.dialog.hide();
         }
     });

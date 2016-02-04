@@ -127,8 +127,8 @@ First, though, we'll create another component kind, named `SimulatedMessage`:
             {name: 'timer', kind: RandomizedTimer, percentTrigger: 10,
                 onTriggered: 'timerTriggered'}
         ],
-        timerTriggered: function(inSender, inEvent) {
-            this.log('Simulated Service Message Occurred at ' + inEvent.time);
+        timerTriggered: function(sender, event) {
+            this.log('Simulated Service Message Occurred at ' + event.time);
         }
     });
 ```
@@ -154,10 +154,10 @@ event.
 
 Events are delegated to the generating component's owner by way of this named
 delegate string.  This lets us avoid the pain of having an add/remove listener
-mechanism.  The first argument sent with every event is `inSender`, which is a
+mechanism.  The first argument sent with every event is `sender`, which is a
 reference to the component that generated the event.  This argument facilitates
 code reuse since the same method can be used to handle multiple events
-distinguished by `inSender`.  The second argument, `inEvent`, is an object whose
+distinguished by `sender`.  The second argument, `event`, is an object whose
 properties convey information about the event.
 
 To learn more about events in Enyo, see [Event Handling](event-handling.html).

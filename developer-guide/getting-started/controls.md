@@ -41,10 +41,10 @@ inside a `TrafficLight` control:
         bgColorChanged: function() {
             this.applyStyle('background-color', this.bgColor);
         },
-        downHandler: function(inSender, inEvent) {
+        downHandler: function(sender, event) {
             this.applyStyle('background-color', 'white');
         },
-        upHandler: function(inSender, inEvent) {
+        upHandler: function(sender, event) {
             this.applyStyle('background-color', 'black');
         }
     });
@@ -95,13 +95,13 @@ Here is our aforementioned `TrafficLight` control:
             {kind: Circle, color: 'yellow', ontap: 'circleTap'},
             {kind: Circle, color: 'green', ontap: 'circleTap'}
         ],
-        circleTap: function(inSender, inEvent) {
+        circleTap: function(sender, event) {
             var lights = {red: 'tomato', yellow: '#FFFF80', green: 'lightgreen'};
             if (this.lastCircle) {
                 this.lastCircle.set('bgColor', 'black');
             }
-            this.lastCircle = inSender;
-            this.lastCircle.set('bgColor', lights[inSender.color]);
+            this.lastCircle = sender;
+            this.lastCircle.set('bgColor', lights[sender.color]);
         }
     });
 ```
@@ -139,7 +139,7 @@ Again, strictly speaking, the `down` and `up` events are not DOM events, but are
 DOM-like.
 
 As with all events, the first argument sent to the event handler is the
-`inSender` object, the Enyo control that generated the event.  DOM and DOM-like
+`sender` object, the Enyo control that generated the event.  DOM and DOM-like
 events pass the event object as the second argument.
 
 Since DOM and DOM-like events bubble up through the DOM, they may be handled by

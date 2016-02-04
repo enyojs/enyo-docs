@@ -35,12 +35,12 @@ the Enyo API.
 Finally, you should never make assumptions about how a component you are using
 is built internally.  For example, say you are using a widget that includes a
 title and descriptive text, and you want to change the color of the title.
-Calling `this.$.myWidget.$.title.applyStyle("color", "red")` would clearly break
+Calling `this.$.myWidget.$.title.applyStyle('color', 'red')` would clearly break
 encapsulation, since you are assuming a lot about the construction of
 `myWidget` (i.e., that its title component is called `title` and that applying a
 style on that component will change the color of the text).  Instead, `myWidget`
 should provide an API that its owner may call to make this change, such as
-`this.$.myWidget.setTitleColor("red")`.
+`this.$.myWidget.setTitleColor('red')`.
 
 In summary: "Send events up and call functions down."
 
@@ -71,25 +71,22 @@ project among multiple developers, and to implement automated testing.
 
 With all of this in mind, we've introduced support for MVC in Enyo 2.3 while
 retaining the existing Enyo component model, to give you the flexibility to
-organize each project as you see fit. 
+organize each project as you see fit.
 
-## Separate into packages for reuse
+## Separate into modules for reuse
 
-Enyo provides a higher level of encapsulation at the file level, via
-`package.js` files and the `enyo/depends()` loader mechanism.  This is
+Enyo provides a higher level of encapsulation at the module level, allowing
+developers to only `require()` modules that are needed.  This is
 especially useful for third-party components and libraries, since it allows the
 author to specify all the JavaScript and CSS files a component or library
-depends on.  As a result, the user does not have to worry about the library's
-internal structure, but can simply include the path to its top-level
-`package.js` and then use the library's public kinds and APIs.
+depends on.
 
 As your app grows larger, you may find it useful to split it into multiple
-packages.  Rather than maintain one top-level `package.js` file that references
+modules.  Rather than maintain one top-level file that references
 all the source and CSS in your app, you can separate chunks of functionality
-into individual packages, which are then referenced by the top-level
-`package.js`.  While this is ultimately a matter of personal preference, a good
-rule of thumb is to create separate packages for independently useful sets of
-kinds.
+into individual modules, which are then `required()` as needed.
+While this is ultimately a matter of personal preference, a good
+rule of thumb is to create separate modules for independently useful kinds.
 
 **Additional Reading**
 

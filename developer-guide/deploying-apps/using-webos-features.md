@@ -42,8 +42,8 @@ subscription flag.
         service: 'luna://com.palm.connectionmanager',
         method: 'getstatus'
     });
-    request.response(this, function(inSender, inResponse) {
-        // service request succeeded with returned data within inResponse
+    request.response(this, function(sender, response) {
+        // service request succeeded with returned data within response
     });
     request.go({});
 ```
@@ -66,8 +66,8 @@ with webOS services.
         getConnectionStatus: function() {
             var request = this.$.netstat.send({});
         },
-        serviceResponse: function(inSender, inResponse) {
-            // service request succeeded with returned data within inResponse
+        serviceResponse: function(sender, response) {
+            // service request succeeded with returned data within response
         }
     });
 ```

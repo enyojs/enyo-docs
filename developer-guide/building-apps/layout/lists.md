@@ -68,9 +68,9 @@ this event to customize the settings for individual rows, e.g.:
 
     ...
 
-    setImageSource: function(inSender, inEvent) {
-        var index = inEvent.index;
-        var item = inEvent.item;
+    setImageSource: function(sender, event) {
+        var index = event.index;
+        var item = event.item;
         item.$.image.setSrc(this.imageSources[index]);
         return true;
     }
@@ -127,21 +127,21 @@ list...
 ...one might write event handlers like so:
 
 ```javascript
-    setupItem: function(inSender, inEvent) {
+    setupItem: function(sender, event) {
         // given some available data.
-        var data = this.data[inEvent.index];
+        var data = this.data[event.index];
         // setup the controls for this item.
         this.$.name.setContent(data.name);
-        this.$.index.setContent(inEvent.index);
+        this.$.index.setContent(event.index);
     },
-    itemTap: function(inSender, inEvent) {
-        alert('You tapped on row: ' + inEvent.index);
+    itemTap: function(sender, event) {
+        alert('You tapped on row: ' + event.index);
     }
 ```
 
 As this example illustrates, the identity of the row from which the event
 originated is available to us in the event's `index` property (i.e.,
-`inEvent.index`).
+`event.index`).
 
 It is possible to alter the contents of a row in a `layout/List`, but in order
 to do so effectively, one must understand the implications of the flyweight

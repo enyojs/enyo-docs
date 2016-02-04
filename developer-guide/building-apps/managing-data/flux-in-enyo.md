@@ -81,7 +81,7 @@ to an instance of `enyo/Source` to be consumed.
         FluxStore = require('enyo/FluxStore'),
         Source = require('enyo/Source');
 
-    kind({
+    var MyFluxStore = kind({
         name: 'myapp.MyFluxStore',
         kind: FluxStore,
         source: Source,
@@ -103,14 +103,14 @@ Here's an example showing the FluxStore being created inside an application:
         kind = require('enyo/kind'),
         App = require('enyo/Application');
 
-    kind({
+    var MyApplication = kind({
         name: 'myapp.Application',
         kind: App,
         create: function() {
 
             this.inherited(arguments);
             //create a new instance of the FluxStore
-            this.store = new myapp.MyFluxStore();
+            this.store = new MyFluxStore();
         }
     });
 ```
@@ -144,7 +144,7 @@ and its consumption of the data driving the interface.
         utils = require('enyo/utils'),
         FluxDispatcher = require('enyo/FluxDispatcher');
 
-    kind({
+    var MyView = kind({
         name: 'myapp.MyView',
         create: function() {
 
@@ -209,7 +209,7 @@ the passed-in action.
         FluxStore = require(enyo/FluxStore),
         Source = require('enyo/Source');
 
-    kind({
+    var MyFluxStore = kind({
         name: 'myapp.MyFluxStore',
         kind: FluxStore,
         source: Source,
@@ -244,7 +244,7 @@ may either listen to an existing notification stack or create its own stack.
         FluxDispatcher = require('enyo/FluxDispatcher'),
         Controller = require('enyo/Controller');
 
-    kind({
+    var MyActionController = kind({
         name: 'myapp.ActionController',
         kind: Controller,
         create: function() {
@@ -300,7 +300,7 @@ will complete before the dependent method is invoked.
         FluxDispatcher = require('enyo/FluxDispatcher'),
         FluxStore = require('enyo/FluxStore');
 
-    kind({
+    var StoreB = kind({
         name: 'myapp.StoreB',
         kind: FluxStore,
         source: Source,
