@@ -8,7 +8,7 @@ applications to PCs, tablets, and phones running Windows 10, via the Windows Sto
 In order to build and test your Enyo application for Windows 10, you will first
 need the following:
 
-* [Enyo 2.7 or later](../getting-started/bootplate.html)
+* [Enyo 2.7 or later](../getting-started/first-steps.html)
 * A PC running Windows 10 (and, optionally, a tablet or phone running Windows 10)
 * Visual Studio 2015 (Community, Professional, or Enterprise edition) or
     [Visual Studio Express 2015 for Windows 10](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx)
@@ -18,7 +18,7 @@ need the following:
 ### 1. Create Your Enyo Application
 
 Build your Enyo application as described
-[here](../getting-started/first-steps.html).
+[here](../getting-started/creating-and-building-an-app.html).
 
 ### 2. Create a New Visual Studio Project
 
