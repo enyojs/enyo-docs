@@ -146,11 +146,11 @@ webOS Web site](http://www.openwebosproject.org).
     for more information on manifest files and the actual packaging of an
     application.
 
-## Deploying as a Windows 8 App
+## Deploying as a Windows 10 App
 
-For information on building apps for PCs and tablets running Windows 8, to be
+For information on building apps for PCs, tablets, and phones running Windows 10, to be
 deployed via the Windows Store, please see
-[Enyo Apps on Windows 8](enyo-apps-on-windows-8.html).
+[Enyo Apps on Windows 10](enyo-apps-on-windows-10.html).
 
 ## Deploying as an Installable Windows Application
 

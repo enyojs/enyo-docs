@@ -42,7 +42,7 @@ building-apps/testing-and-debugging/browser-based-debugging.md
 building-apps/layout-and-controls.md
 deploying-apps/index.md
 deploying-apps/cordova-native-functions.md
-deploying-apps/enyo-apps-on-windows-8.md
+deploying-apps/enyo-apps-on-windows-10.md
 deploying-apps/platform-specific-deployment.md
 deploying-apps/using-webos-features.md
 best-practices/index.md
