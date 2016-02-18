@@ -7,7 +7,7 @@
 		<h2>Controls</h2>
 		{% for control in ui %}
 		<a name="{{ control.name }}"></a>
-		<div class="entry kind control">
+		<div class="entry kind control {{ control.access }}">
 			<div class="header">
 				<span class="name">{{ control.internalLink }}</span>
 			</div>
@@ -22,7 +22,7 @@
 		<h2>Other</h2>
 		{% for kind in kinds %}
 		<a name="{{ kind.name }}"></a>
-		<div class="entry kind other">
+		<div class="entry kind other {{ kind.access }}">
 			<div class="header">
 				<span class="name">{{ kind.internalLink }}</span>
 			</div>
