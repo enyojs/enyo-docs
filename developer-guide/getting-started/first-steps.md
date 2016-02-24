@@ -56,10 +56,11 @@ launch the browser.  A similar approach should work on Mac and Linux as well.)
 
 If you are not currently running a local Web server, you may want to use
 a stand-alone server that can be launched where and when needed. One such option
-is the npm module [serve](). Install it using the following command:
+is the npm module [serve](https://www.npmjs.com/package/serve). Install it
+using the following command:
 
 ```
-    npm install -g server
+    npm install -g serve
 ```
 
 This module can launch a web server (by default on port 3000) in the directory
