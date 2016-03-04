@@ -69,6 +69,7 @@ Fittable views may be nested as needed, as illustrated by the following example,
 in which we've nested a FittableColumns control inside of a FittableRows:
 
 ```javascript
+    var
         kind = require('enyo/kind'),
         FittableColumns = require('layout/FittableColumns'),
         FittableRows = require('layout/FittableRows');

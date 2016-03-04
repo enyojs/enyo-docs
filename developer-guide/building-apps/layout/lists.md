@@ -68,9 +68,9 @@ this event to customize the settings for individual rows, e.g.:
 
     ...
 
-    setImageSource: function(sender, event) {
-        var index = event.index;
-        var item = event.item;
+    setImageSource: function (sender, ev) {
+        var index = ev.index;
+        var item = ev.item;
         item.$.image.setSrc(this.imageSources[index]);
         return true;
     }
@@ -127,21 +127,21 @@ list...
 ...one might write event handlers like so:
 
 ```javascript
-    setupItem: function(sender, event) {
+    setupItem: function (sender, ev) {
         // given some available data.
-        var data = this.data[event.index];
+        var data = this.data[ev.index];
         // setup the controls for this item.
-        this.$.name.setContent(data.name);
-        this.$.index.setContent(event.index);
+        this.$.name.set('content', data.name);
+        this.$.index.set('content', ev.index);
     },
-    itemTap: function(sender, event) {
-        alert('You tapped on row: ' + event.index);
+    itemTap: function (sender, ev) {
+        alert('You tapped on row: ' + ev.index);
     }
 ```
 
 As this example illustrates, the identity of the row from which the event
 originated is available to us in the event's `index` property (i.e.,
-`event.index`).
+`ev.index`).
 
 It is possible to alter the contents of a row in a `layout/List`, but in order
 to do so effectively, one must understand the implications of the flyweight
@@ -159,7 +159,7 @@ In addition, it is possible to create controls with more complex interactions
 that are specifically tailored to function correctly in a flyweight context.
 Events for controls in a list will be decorated with both the index of the row
 being interacted with and the flyweight controller for the control (i.e.,
-`event.index` and `event.flyweight`).  The list's `prepareRow(inIndex)` method
+`ev.index` and `ev.flyweight`).  The list's `prepareRow(inIndex)` method
 can be used to assign the list's controls to a specific list row, allowing
 persistent interactivity with that row.  When the interaction is complete, the
 list's `lockRow()` method should be called.

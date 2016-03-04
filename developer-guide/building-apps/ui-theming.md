@@ -2,9 +2,9 @@
 
 ## Overview
 
-Enyo offers a first-class UI widget set called Onyx, which contains a wide
-variety of native-quality controls for building Enyo applications, along with a
-widget set called Moonstone, which offers controls tuned for use on smart TVs.
+Enyo offers two first-class UI widget sets: Onyx, which contains a wide
+variety of native-quality controls for building Enyo applications, and Moonstone,
+which offers controls tuned for use on smart TVs.
 While you are certainly welcome to use Onyx and Moonstone controls straight out
 of the box to develop your app, we know that many developers will want to adapt
 the look and feel of these widgets to meet the design requirements of their
@@ -27,7 +27,7 @@ most-effort-and-most-flexibility:
 In variable-based theming, you simply override the default values of certain
 variables that are used to generate CSS stylesheets.  For example, you could set
 the `@onyx-toolbar-background` variable to `orange` to make all of your app's
-`onyx.Toolbar` controls orange.
+`onyx/Toolbar` controls orange.
 
 Since the 2.1 release, Enyo has included support for [LESS](http://lesscss.org/),
 a dynamic stylesheet language that extends CSS with features such as variables,
@@ -38,24 +38,9 @@ variables.
 ### Enyo's LESS Integration
 
 If you include `.less` files alongside `.css` files in your `package.js`, they
-can be transparently compiled into traditional CSS, either in the client during
-development (by including LESS's client-side `less.js` library in 
-[Bootplate](https://github.com/enyojs/bootplate)'s `debug.html` file, a process
-detailed below), or as part of the minification process (via LESS's
-Node.js-based compiler, which is now integrated into the Bootplate `deploy`
-script).  This capability is enabled right out of the box, without any
+can be transparently compiled into traditional CSS during the `enyo pack` process.
+This capability is enabled right out of the box, without any
 additional tools or setup.
-
-By the way, if you're wondering how this affects backward compatibility, please
-note that using LESS with Enyo is completely optional.  Pre-compiled `.css`
-files for both widget sets are provided alongside the top-level `.less` files;
-if the client-side `less.js` library is not loaded and Enyo's loader finds a
-`.less` file while parsing a `package.js` file, it will fall back to loading the
-`.css` file of the same name.  As such, you are free to modify CSS directly, or
-use a server-side tool such as CodeKit to pre-compile your LESS to CSS instead of
-using the client-side compiler.  Additionally, you may pass the `"-c"` flag to
-Bootplate's `deploy` script to enable similar CSS-fallback behavior when
-deploying your app.
 
 ### Overriding Onyx Variables
 

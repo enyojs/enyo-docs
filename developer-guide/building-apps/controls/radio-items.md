@@ -36,10 +36,10 @@ Let's look at how a radio item group works.
             {kind: Divider, content: 'Result'},
             {kind: BodyText, name: 'result', content: "No action yet."}
         ],
-        rendered: function() {
+        rendered: function () {
             this.inherited(arguments);
         },
-        buttonActivated: function(sender, event) {
+        buttonActivated: function (sender, event) {
             var originator = event.originator,
             str = 'The "';
 

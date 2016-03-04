@@ -59,7 +59,7 @@ functions.  For example:
     var MyControl = kind({
         name: 'MyControl',
         foo: '',
-        fooChanged: function(inOld) {    // Called when foo changes
+        fooChanged: function (inOld) {    // Called when foo changes
             // Do something with 'this.foo'
         }
     });
@@ -68,7 +68,7 @@ functions.  For example:
 In this example, `fooChanged()` will be called when `foo` is set with the `set()` method:
 
 ```javascript
-    tapHandler: function() {
+    tapHandler: function () {
         this.set('foo', 'bar');      // Causes fooChanged() to be called
     }
 ```
@@ -84,7 +84,7 @@ kind's `observers` block:
         observers: [
             { method: 'watchValues', path: ['publicProperty', '_protectedProperty'] }
         ],
-        watchValues: function(previous, current, property) {  // Called when either property changes
+        watchValues: function (previous, current, property) {  // Called when either property changes
             // Do something with 'this.publicProperty' and 'this._protectedProperty'
         }
     });
@@ -184,7 +184,7 @@ bindings):
             {kind: Control, name:'label'}
         ],
         bindings: [
-            {from: '$.slider.value', to: '$.label.content', transform: function(val) {
+            {from: '$.slider.value', to: '$.label.content', transform: function (val) {
                 return 'The slider value is ' + Math.round(val * 100) + '%';
             }}
         ]
@@ -196,7 +196,7 @@ check the second argument to the `transform` function to determine the direction
 in which the binding is firing: 
 
 ```javascript
-    {from: '$.slider.value', to: '$.input.value', oneWay:false, transform: function(val, dir) {
+    {from: '$.slider.value', to: '$.input.value', oneWay:false, transform: function (val, dir) {
         if (dir == 1) { //source (`from`) setting value for target (`to`)
             return (val * 100) + '%';
         } else if (dir == 2) { //target (`to`) setting value for source (`from`)
@@ -222,7 +222,7 @@ Here's a simple example of a computed property based on two properties:
         computed: [
             { method: 'forecast', path: ['weather', 'city'] }    // 'forecast' method depends on properties in list
         ],
-        forecast: function() {
+        forecast: function () {
             return 'It's always ' + this.get('weather') + ' in ' + this.get('city')
         }
     }); 
@@ -244,7 +244,7 @@ We may now bind the computed `forecast` property to a view control, e.g.:
         computed: [
             { method: 'forecast', path: ['weather', 'city'] }    // 'forecast' method depends on properties in list
         ],
-        forecast: function() {
+        forecast: function () {
             return 'It's always ' + this.get('weather') + ' in ' + this.get('city')
         }
     });
@@ -386,7 +386,7 @@ to pass along the model property that is used to reference the resource we need:
         name: 'ContactModel',
         kind: Model,
         source: 'ajax',
-        getUrl: function() {
+        getUrl: function () {
             return 'http://myservice.com/users/' + this.get('user_id');
         }
     });
@@ -432,10 +432,10 @@ only use the `result` sub-tree of the fetched data for the model attributes:
         options: {parse: true},
         source: 'ajax',
         url: 'http://myservice.com/users',
-        getUrl: function() {
+        getUrl: function () {
             return 'http://myservice.com/users/' + this.get('user_id');
         },
-        parse: function(data) {        // incoming data contains {status:..., result:...}
+        parse: function (data) {        // incoming data contains {status:..., result:...}
             return data.result;        // returned data contains {user_id:..., name:..., ...}
         }
     });
@@ -453,11 +453,11 @@ functionality, such as [X2JS](https://code.google.com/p/x2js/):
         kind: Model,
         options: {parse: true},
         source: 'ajax',
-        getUrl: function() {
+        getUrl: function () {
             return 'http://myservice.com/users/' + this.get('user_id');
         },
         parser: new X2JS(),
-        parse: function(data) {        // incoming data: '<root><user_id>1234</user_id><name>...</name>...</root>'
+        parse: function (data) {        // incoming data: '<root><user_id>1234</user_id><name>...</name>...</root>'
             var json = this.parser.xml_str2json(data);
             return json.root;        // returned data: {user_id:..., name:..., ...}
         }
@@ -493,10 +493,10 @@ fields with `enyo/Model`, making those nested sub-objects bindable as well:
         kind: Model,
         options: {parse: true},
         source: 'ajax',
-        getUrl: function() {
+        getUrl: function () {
             return 'http://myservice.com/users/' + this.get('user_id');
         },
-        parse: function(data) {
+        parse: function (data) {
             data.dept_id = data.department.dept_id;
             data.dept_name = data.department.name;
             delete data.department;
@@ -636,7 +636,7 @@ to provide a custom URL--based on properties of the collection, for example:
         name: 'MyContactCollection',
         kind: Collection,
         source: 'ajax',
-        getUrl: function() {
+        getUrl: function () {
             return 'http://myservice.com/departments/' + this.get('dept_id') + '/users';
         }
     });
@@ -694,7 +694,7 @@ array...
         options: {parse: true},
         source: 'ajax',
         url: 'http://myservice.com/users'
-        parse: function(data) {        // incoming data contains {status:..., result:...}
+        parse: function (data) {        // incoming data contains {status:..., result:...}
             return data.result;        // returned data contains {[{user_id:..., name:...}, {...}]}
         }
     });
@@ -762,7 +762,7 @@ For example, to create a subkind of `enyo/JsonpSource` to provide a custom
     var MyJsonpSource = kind({
         name: 'MyJsonpSource',
         kind: JsonpSource,
-        fetch: function(opts) {
+        fetch: function (opts) {
             opts.callbackName = 'kallback';
             this.inherited(arguments);
         }
@@ -776,19 +776,19 @@ To create a brand new source, implement the abstract API as necessary:
     var MySource = kind({
         name: 'MySource',
         kind: Source,
-        fetch: function(rec, opts) {
+        fetch: function (rec, opts) {
             // implement code to fetch records
             opts.success(data);        // call success callback to return data
         },
-        commit: function(rec, opts) {
+        commit: function (rec, opts) {
             // implement code to store records
             opts.success();        // call success callback
         },
-        destroy: function(rec, opts) {
+        destroy: function (rec, opts) {
             // implement code to destroy records
             opts.success();        // call success callback
         },
-        find: function(rec, opts) {
+        find: function (rec, opts) {
             // implement code to find records
             opts.success(data);        // call success callback to return data
         },
@@ -806,7 +806,7 @@ article.)
     var FacebookFeedSource = kind({
         name: 'FacebookFeedSource',
         kind: Source,
-        fetch: function(rec, opts) {
+        fetch: function (rec, opts) {
             var resource;
             if (rec instanceof Collection) {
                 var user = rec.get('user') || 'me';
@@ -814,7 +814,7 @@ article.)
             } else {
                 resource = '/' + rec.id;
             }
-            FB.api(resource, function(response) {
+            FB.api(resource, function (response) {
                 if (response && !response.error) {
                     opts.success(response);
                 } else {
@@ -822,9 +822,9 @@ article.)
                 }
             });
         },
-        commit: function(rec, opts) {
+        commit: function (rec, opts) {
             if (rec.isNew) {
-                FB.api('/me/feed', 'POST', rec, function(response) {
+                FB.api('/me/feed', 'POST', rec, function (response) {
                     if (response && !response.error) {
                         opts.success(response);
                     } else {
@@ -835,8 +835,8 @@ article.)
                 opts.fail();  // FB only supports adding new posts, not editing
             }
         },
-        destroy: function(rec, opts) {
-            FB.api(rec.id, 'DELETE', function(response) {
+        destroy: function (rec, opts) {
+            FB.api(rec.id, 'DELETE', function (response) {
                 if (response && !response.error) {
                     opts.success(response);
                 } else {
@@ -881,17 +881,17 @@ This is the typical way to implement such a view without using bindings:
             {kind: Slider, name: 'slider', onChanging: 'sliderChanging'},
             {kind: Input, name: 'input', oninput: 'inputChanged'}
         ],
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.set('$.nameLabel.content', this.get('model.name'));
             this.set('$.slider.value', this.get('model.value'));
             this.set('$.input.value', this.get('model.value'));
         },
-        sliderChanging: function(sender, event) {
-            this.set('$.input.value', event.value);
-            this.set('model.value', event.value)
+        sliderChanging: function (sender, ev) {
+            this.set('$.input.value', ev.value);
+            this.set('model.value', ev.value)
         },
-        inputChanged: function(sender, event) {
+        inputChanged: function (sender, ev) {
             this.set('$.slider.value', sender.get('value'));
             this.set('model.value', sender.get('value'));
         }
@@ -951,17 +951,17 @@ Without collections or bindings, one might implement a simple repeater as follow
                 {kind: Control, name: 'ageLabel'}
             ]}
         ],
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.dataChanged();
         },
-        dataChanged: function() {
+        dataChanged: function () {
             if (this.data) {
                 this.$.repeater.set('count', data.length);
             }
         },
-        setupItem: function(sender, event) {
-            var record = this.data[event.index];
+        setupItem: function (sender, ev) {
+            var record = this.data[ev.index];
             this.$.nameLabel.set('content', record.name);
             this.$.ageLabel.set('content', record.age);
         }

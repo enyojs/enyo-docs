@@ -122,7 +122,7 @@ you may find it helpful to set breakpoints on particularly complex `create()` or
 code to force a break at a given line, in addition to using the
 breakpoint-setting capabilities of your browser's debugger.)
 
-Enyo exposes a global `require()` method that allows for loading modules at
+Enyo exposes a global `enyo.require()` method that allows for loading modules at
 run-time from the console. This allows for creating objects or viewing static
 properties from Enyo modules. Any module to be required must have been included
 with the app when it was packaged.

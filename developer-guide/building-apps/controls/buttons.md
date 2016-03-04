@@ -44,7 +44,7 @@ to the event by specifying a handler method, e.g.:
 
     ...
 
-    buttonTapped: function(sender, event) {
+    buttonTapped: function (sender, event) {
         // respond to the tap event
     }
 ```

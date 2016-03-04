@@ -22,7 +22,7 @@ inside an Input has been modified.  `oninput` fires immediately, while
         {kind: Input, name: 'myInput', placeholder: 'Enter some text...',
             oninput: 'inputChanged'}
     ],
-    inputChanged: function(sender, event) {
+    inputChanged: function (sender, event) {
         // retrieve new input value
         newInputValue = this.$.myInput.get('value');
         // do something in response
