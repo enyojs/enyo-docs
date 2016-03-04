@@ -4,4 +4,5 @@ In addition to the [current release](http://enyojs.com/docs/latest/), documentat
 prior Enyo releases listed below.  Note that this information is provided for
 historical purposes only.
 
+* [Enyo 2.5.1](http://enyojs.com/docs/2.5.1/)
 * [Enyo 2.4](http://enyojs.com/docs/2.4.0/)
