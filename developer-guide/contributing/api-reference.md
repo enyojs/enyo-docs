@@ -84,6 +84,7 @@ The following example illustrates the standard set of JSDoc tags for an Enyo kin
     * @extends module:enyo/Popup~Popup
     * @ui
     * @public
+    * @since 2.0
     */
 ```
 
@@ -103,6 +104,8 @@ The following example illustrates the standard set of JSDoc tags for an Enyo kin
     the `@public` and `@private` tags are also applied to properties, methods,
     and events.
 
+* `@since` indicates the version number the kind was added.
+
 ### Public Properties
 
 For public properties, begin by providing a brief description of the property.
@@ -120,6 +123,7 @@ description as concise as possible.
     * @type {Boolean}
     * @default false
     * @public
+    * @since 2.3.0
     */
     small: false,
     ...
@@ -176,6 +180,7 @@ tense and is punctuated as a full sentence, with a period at the end, e.g.:
     * @returns {(String|null)} The value of the requested attribute, or `null`
     * if there isn't a [DOM node]{@glossary Node} yet.
     * @public
+    * @since 2.4.0
     */
     ...
 ```
@@ -337,6 +342,22 @@ var MyMixin = {
 };
 
 module.exports = MyMixin;
+```
+
+### Deprecating
+
+When depracting a kind or method, add a `@deprecated` tag indicating the version number the feature
+was deprecated or the replacement feature:
+
+```
+	/**
+	* Set this to `true` to allow multiple children to be selected simultaneously.
+	*
+	* @deprecated since version 2.6
+	* @type {Boolean}
+	* @default false
+	* @public
+	*/
 ```
 
 ## Formatting (Markdown)

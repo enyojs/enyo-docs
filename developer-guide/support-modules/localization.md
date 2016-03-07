@@ -28,12 +28,17 @@ As an Enyo application developer, you will not work with `iLib` directly, but
 rather with [enyo-ilib](https://github.com/enyojs/enyo-ilib), a compatibility
 library that wraps `iLib`'s functionality for easy access from Enyo apps.
 
-By default, `enyo-ilib` is included into your library list by `enyo init`. To make it
+By default, `enyo-ilib` is included into your library list by `enyo init` when using
+the Onyx or Moonstone templates. To make it
 available to your source files, require the module:
 
 ```javascript
 var ilib = require('enyo-ilib');
 ```
+
+NOTE: If you only use some of the `iLib` submodules you need to make sure to include the
+base library from at least one source file or the locale assets will not be copied to your built
+application.
 
 ## Using enyo-ilib
 
@@ -120,12 +125,12 @@ be retrieved asynchronously via the LS2 bus:
             method: "getSystemSettings",
             onResponse: "getCurrentLanguageResponse"
         }],
-        getCurrentLanguageResponse: function(sender, response) {
+        getCurrentLanguageResponse: function (sender, response) {
             var inResponse = response.data;
             var localeInfo = inResponse.localeInfo;
             var STTlocale = localeInfo.locales.STT;  // speech-to-text locale (voice recognition)
         },
-        makeLS2Call: function() {
+        makeLS2Call: function () {
             this.$.getCurrentLanguage.call({keys:["localeInfo"]});
         }
     });
@@ -530,15 +535,11 @@ signal is raised.
 ### Changes in Your App
 
 First, you must include the `enyo-webos`
-library in your `package.js` file in order to receive the locale changed signal.
+library in your app in order to receive the locale changed signal. In your main app source
+file add:
 
 ```javascript
-    enyo.depends({
-        "$lib/enyo-ilib/",
-        "$lib/enyo-webos/",
-        <other libraries>,
-        ...
-    });
+    require('enyo-webos');
 ```
 
 Then, in your main app kind, add the following to the `components` block:
@@ -550,10 +551,10 @@ Then, in your main app kind, add the following to the `components` block:
 Finally, define the `handleLocaleChangeEvent()` function itself:
 
 ```javascript
-    handleLocaleChangeEvent: function() {
+    handleLocaleChangeEvent: function () {
         // Check if the locale actually changed. Save the current locale in
         // your create method to compare against.
-        if (ilib && ilib.getLocale() !== this.iLibLocale) {
+        if (ilib.getLocale() !== this.iLibLocale) {
             this.saveStateIfNecessary();
             if (this.canReload()) {
                 window.location && window.location.reload();

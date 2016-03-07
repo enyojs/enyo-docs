@@ -101,8 +101,19 @@ later):
     rm -rf enyo
 ```
 
-Once you have done this for each of your submodules, be sure to commit the
-changes so that the submodules do not reappear in your project by accident.
+Repeat this process for each of the submodules in your `lib` directory. If you use no
+external submodules you can simplify this to:
+
+```bash
+    # from your project's root directory
+    git submodule deinit .
+    git rm -r lib
+    rm -rf .git/modules/*
+    rm -rf lib
+```
+
+Be sure to commit the changes so that the submodules do not reappear in your
+project by accident.
 
 Next, if you haven't yet installed the `enyo-dev` module, you will need to do
 so.  Use the following command to retrieve and install the module:
@@ -115,41 +126,50 @@ so.  Use the following command to retrieve and install the module:
 `npm install` as root--i.e., `sudo npm install -g enyo-dev`.
 
 Now you are ready to use `enyo init` to manage your Enyo dependencies.  Simply
-run the following command:
+run the following commands to create a new package.json and initialize the libraries:
 
 ```bash
+    mv package.json package.bak
     # depending on connection speed, this may take a few minutes
-    enyo init --save
+    enyo init
 ```
 
-That's it!  Once the command finishes executing, your dependencies will be
-installed.  You can use `git status` to see what changed.  All _Moonstone
-application-related dependencies_ will be installed in your project's `lib`
-directory.  By default, there will also be a new entry added to your
-`.gitignore` file to ensure that you don't accidentally commit these
-dependencies to your project source.
+That's it!  Once the command finishes executing, default dependencies will be
+installed.  You can copy back any of the pieces from your `package.bak` file
+that you may need (such as the `"name"`). Then, use `git status` to see what changed.
+All _Moonstone application-related dependencies_ will be installed in your project's `lib`
+directory.
 
-At this time, the default is to use the `HEAD` of the `2.6.0-dev` branch for all
-dependencies.  This should be sufficient until the official release of `2.7.0`.
+You should modify your `.gitignore` file to to ensure that you don't accidentally commit these
+dependencies to your project source. The following a suggested starting point:
 
-Note that it is actually quite easy to test specific development branches.  For example,
+```
+    lib
+    node_modules
+    dist
+    .enyocache
+```
+
+Now, you can clean up unused files (`package.js`, `*.html`, `package.bak`,
+etc.) and begin converting the source.
+
+### Library Versions
+
+At this time, the default is to use the `2.7.0` tag for all
+dependencies.
+
+You can modify the way enyo-init behaves to check out development branches.  For example,
 if you want to test a bug fix for `enyo` that
-was made in a branch called `ENYO-1675-coledavis`, do the following:
+was made in a branch called `ENYO-1675-coledavis`, edit the `.enyoconfig` file and change
+the `"targets"` section to reference the branch name:
 
-```bash
-    enyo init --libraries=enyo#ENYO-1675-coledavis
+```javascript
+  "targets": {
+    "enyo": "ENYO-1675-coledavis",
+    ...
 ```
 
-Or, if there are dependencies on multiple updated branches:
-
-```bash
-    enyo init --libraries=enyo#ENYO-1675-coledavis,moonstone#ENYO-1759-blakestephens
-```
-
-If you want to officially bump _and save_ an updated version of a dependency,
-make sure to include the `--save` flag.
-
-Another useful tool is `enyo link`, which temporarily forces the use of a local
+Another useful tool is `enyo link`, which forces the use of a local
 copy of one or more of your dependencies.  For instance, let's say you have a
 local clone of the `enyo` repository, and you check out a specific branch that
 you want to test in a build of your application.  You could do the following:
@@ -162,7 +182,7 @@ you want to test in a build of your application.  You could do the following:
     cd ../path/to/application
     # The following command will temporarily link to your local version of enyo
     # instead of the default version you have installed.
-    enyo init --links=enyo
+    enyo init --link-available
 ```
 
 This lets you change branches in your local `enyo` repository, rebuild your app,
@@ -172,7 +192,7 @@ and see the changes immediately.
 
 Your app must have at least one `package.json` at the root of the project.  It
 must contain a `main` key indicating the entry point for the application
-(`index.js` in the example above).  It may also include assets and stylesheets,
+(`index.js` in the example above) and a `name` key.  It may also include assets and stylesheets,
 in the `assets` and `styles` arrays, respectively.  These are the configuration
 options you are most to likely use, but there are others that can be found in
 the [enyo-dev](https://github.com/enyojs/enyo-dev) module's `enyo pack --help`
@@ -184,6 +204,7 @@ option](https://github.com/enyojs/enyo-dev#the-packagejson-options) in
 
 ```json
     {
+        "name": "myProject",
         "main": "index.js",
         "assets": [
             "assets/*.png"
@@ -208,18 +229,19 @@ as images) than it is for stylesheets.
 Here is an example of mixed ordering and _globbing_:
 
 ```json
-	{
-    	"main": "index.js",
-    	"assets": [
-    		"assets/*.png",
-    		"assets/*.ico"
-		],
-		"styles": [
-			"css/root.less",
-			"css/rules.less",
-			"css/*.less"
-		]
-	}
+    {
+        "name": "myProject",
+        "main": "index.js",
+        "assets": [
+            "assets/*.png",
+            "assets/*.ico"
+        ],
+        "styles": [
+            "css/root.less",
+            "css/rules.less",
+            "css/*.less"
+        ]
+    }
 ```
 
 In this example, the `css/root.less` and `css/rules.less` files would be loaded
@@ -240,7 +262,7 @@ the global scope, and all source files should now be in
 [CommonJS](http://know.cujojs.com/tutorials/modules/authoring-cjs-modules)
 format.
 
-The fact that Enyo no longer exports anything in the global scope means that any
+The fact that Enyo no longer exports to the global scope means that any
 kinds or methods used via `enyo.`, `moon.`, or `onyx.` (e.g., `enyo.Button`,
 `enyo.kind()`, `moon.Scroller`) will no longer work.  Instead, you must specify
 the relevant submodule in your source, within a call to `require()`.
@@ -292,7 +314,7 @@ Here's an example showing the use of `require()` calls in framework code:
                 {kind: Button, content: 'Continue', ontap: 'continueTapped'}
             ]}
         ],
-        continueTapped: function (sender, event) {
+        continueTapped: function (sender, ev) {
             utils.asyncMethod(this, function () {
                 this.log('Log this message in just a moment');
             });
@@ -303,12 +325,10 @@ Here's an example showing the use of `require()` calls in framework code:
 Here's a simple example of a custom kind defined in application code:
 
 ```javascript
-    // my-project/src/controls.js
+    // my-project/src/onekind.js
     var OneKind = kind({ /* kind config */ });
 
-    module.exports = {
-        OneKind: OneKind
-    };
+    module.exports = OneKind;
 ```
 
 To import `OneKind` into another module, we `require()` it, as we did with the
@@ -322,12 +342,12 @@ specify the relative path to the file.
 
     var
         // pull in a reference to the exported kind
-        controls = require('./controls');
+        OneKind = require('./onekind');
 
     module.exports = kind({
         name: 'ex.View',
         // extend OneKind
-        kind: controls.OneKind,
+        kind: OneKind,
         components: [
             // add custom stuff
         ]

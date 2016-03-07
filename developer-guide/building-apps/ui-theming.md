@@ -37,7 +37,7 @@ variables.
 
 ### Enyo's LESS Integration
 
-If you include `.less` files alongside `.css` files in your `package.js`, they
+If you include `.less` files alongside `.css` files in your `package.json`, they
 can be transparently compiled into traditional CSS during the `enyo pack` process.
 This capability is enabled right out of the box, without any
 additional tools or setup.

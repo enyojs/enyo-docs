@@ -214,7 +214,3 @@ instances of [moonstone/Panel]($api/#/kind/moonstone/Panel/Panel).  A
 The built-in features of `moonstone/Panel` include a header and a
 [FittableRows]($api/#/kind/layout/FittableRows/FittableRows) layout for the main
 body content.
-
-## enyo/LightPanels
-
-Coming soon!
