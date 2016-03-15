@@ -492,7 +492,7 @@ hash, which will be expanded into query string parameters on the Jsonp request.
 ```javascript
     var Source = kind({
         name: 'Source',
-        kind: 'enyo/JsonpSource',
+        kind: JsonpSource,
         urlRoot: 'https://api.com/services/rest/',
         fetch: function(rec, opts) {
             opts.callbackName = 'jsoncallback';
@@ -588,7 +588,7 @@ and a limit to the number of results.
         },
         fetch: function(opts) {
             this.params = {
-                method: 'photos.search',
+                method: 'flickr.photos.search',
                 sort: 'interestingness-desc',
                 per_page: 50,
                 text: this.searchText
@@ -606,13 +606,15 @@ for these parameters and add them to the `params` that are passed along:
 **Edit file: src/data/data.js**
 
 ```javascript
+    var utils = require('enyo/utils');
+
     var Source = kind({
         name: 'Source',
         kind: JsonpSource,
         urlRoot: 'https://api.com/services/rest/',
         fetch: function(rec, opts) {
             opts.callbackName = 'jsoncallback';
-            opts.params = enyo.clone(rec.params);
+            opts.params = utils.clone(rec.params);
             opts.params.api_key = '2a21b46e58d207e4888e1ece0cb149a5';
             opts.params.format = 'json';
             this.inherited(arguments);
@@ -880,6 +882,8 @@ We can place the spinner in the header's "client" area.  This is exposed on
 `moonstone/Panel` via the `headerComponents` array:
 
 ```javascript
+    var Spinner = require('moonstone/Spinner');
+
     var SearchPanel = kind({
         name: 'SearchPanel',
         ...
@@ -933,7 +937,8 @@ data.)
 
 ```javascript
     var Image = require('moonstone/Image'),
-        FittableColumnsLayout = require('layout/FittableColumnsLayout');
+        FittableLayout = require('layout/FittableLayout'),
+        FittableColumnsLayout = FittableLayout.Columns;
 
     var DetailPanel = kind({
         name: 'DetailPanel',
@@ -1085,7 +1090,7 @@ bubble the event, passing the panel definition in the event payload:
 
 * **doRequestPushPanel()** - Calling the convenience method
     `doRequestPushPanel()` is equivalent to calling
-    `this.bubble("onRequestPushPanel", <event>)`.  As the second parameter, we
+    `this.bubble('onRequestPushPanel', <event>)`.  As the second parameter, we
     pass an "event payload" object that contains a `panel` property, as expected
     by the `onRequestPushPanel` handler in `MainView`.  The `panel`
     property contains the definition of the panel kind we want to push onto the
