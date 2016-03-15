@@ -126,19 +126,19 @@ so.  Use the following command to retrieve and install the module:
 `npm install` as root--i.e., `sudo npm install -g enyo-dev`.
 
 Now you are ready to use `enyo init` to manage your Enyo dependencies.  Simply
-run the following commands to create a new package.json and initialize the libraries:
+run the following commands to create a new package.json and initialize the moonstone libraries:
 
 ```bash
     mv package.json package.bak
     # depending on connection speed, this may take a few minutes
-    enyo init
+    enyo init --template=moonstone-app
 ```
 
 That's it!  Once the command finishes executing, default dependencies will be
 installed.  You can copy back any of the pieces from your `package.bak` file
 that you may need (such as the `"name"`). Then, use `git status` to see what changed.
 All _Moonstone application-related dependencies_ will be installed in your project's `lib`
-directory.
+directory. If your project was based on Onyx, use the `onyx-app` template instead.
 
 You should modify your `.gitignore` file to to ensure that you don't accidentally commit these
 dependencies to your project source. The following a suggested starting point:

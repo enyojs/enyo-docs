@@ -47,10 +47,17 @@ default `package.json` installed by `enyo init`:
 ```
 
 `package.json` must contain a `main` key indicating the entry point for the
-application (`"index.js"` by default).  It may also include paths to assets and
-stylesheets, in the `assets` and `styles` arrays, respectively.  The `moduleDir`
-key specifies the location of additional app source code; you will generally want
-to keep the default value, `"src"`.
+application (`"index.js"` by default) and a `name` key with the project name.
+It may also include paths to assets and stylesheets, in the `assets` and
+`styles` arrays, respectively.  The `moduleDir` key specifies the location of
+additional app source code; you will generally want to keep the default value,
+`"src"`.
+
+There are additional templates included with `enyo-dev`, to see a list use the following command:
+
+```bash
+enyo templates list
+```
 
 ## Filling Out the App Structure
 
