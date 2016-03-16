@@ -54,7 +54,7 @@ consistent and enjoyable to use.  Ask yourself the following questions:
 
 ## Don't Reinvent the Wheel
 
-Use existing [Moonstone controls](controls.html) to perform actions.  If an
+Use existing [Moonstone controls](../../building-apps/layout-and-controls.html) to perform actions.  If an
 action cannot be performed with a single control, perhaps a combination of
 controls will work.  Consult the documentation on [UI Patterns](patterns.html)
 for answers to common layout questions.

@@ -56,13 +56,6 @@ patterns, let's look at the topics we'll cover and define our terms.
     recreate your custom patterns using the Moonstone UI Controls, as this will
     help maintain consistency with the pattern language.
 
-* [UI Controls](controls.html)
-
-    Each of the webOS UI Patterns cross-references the UI Controls used in the
-    pattern.  Once you have created your Application Pattern Sublanguage by
-    selecting the patterns that support your needs, read about the related UI
-    Controls to gain a deeper understanding of how they work.
-
 ## Definitions
 
 * **Lean Back:** UI experienced at a distance of 10 feet, controlled through a
@@ -97,7 +90,7 @@ patterns, let's look at the topics we'll cover and define our terms.
     the difference between a pattern and a control.
 
     A few examples of websOS Moonstone controls are the expandable picker, the
-    button, and the input field (see [UI Controls](controls.html) for more
+    button, and the input field (see [Controls](../../building-apps/layout-and-controls.html) for more
     examples).  All UI controls exist as coded parts of the webOS framework.
 
     A pattern is the repeated configuration and use of a control (or set of

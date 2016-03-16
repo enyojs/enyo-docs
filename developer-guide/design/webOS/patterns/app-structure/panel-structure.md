@@ -4,9 +4,7 @@ Panels are the core structural element for displaying content and navigating the
 different views of an Enyo/Moonstone application.  Panels have several built-in
 features (e.g., the header, action bar, body/content area, breadcrumbing, and
 panel transitions), along with a responsive layout for cross-platform
-compatibility.  Although panels and headers are covered in the Design Guide's
-[UI Controls](../../controls.html) section, we would also like to look at how
-these controls relate to patterns.
+compatibility.
 
 ![_Structure of a Panel_](../../../../assets/dg-panel-structure.png)
 
