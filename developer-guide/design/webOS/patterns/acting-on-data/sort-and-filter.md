@@ -43,7 +43,7 @@ track of which Sort and Filter options have been selected.
 
 ## Examples
 
-![](../../../assets/dg-acting-on-data-sort-filter-1.jpg)
+![](../../../../assets/dg-acting-on-data-sort-filter-1.jpg)
 
 This is an example of the single-select filter List Actions menu in an Always
 Viewing Pattern.
@@ -51,7 +51,7 @@ Viewing Pattern.
 Note how the focus is on the first item in the list and there is an Exit button
 in the top right corner.
 
-![](../../../assets/dg-acting-on-data-sort-filter-2.jpg)
+![](../../../../assets/dg-acting-on-data-sort-filter-2.jpg)
 
 This is an example of a multi-select List Actions menu in an Activity Pattern.
 

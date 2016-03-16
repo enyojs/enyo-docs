@@ -17,7 +17,7 @@ Level view.
 
 ## How to Use
 
-![_Panel 1: Hub_](../../../assets/dg-navigation-hub-and-spoke-1.jpg)
+![_Panel 1: Hub_](../../../../assets/dg-navigation-hub-and-spoke-1.jpg)
 
 Panel 1 is the Hub of the application.  The main menu can be a simple list of
 categories or a more visually rich grid with previews of the content available
@@ -25,7 +25,7 @@ in each category as shown to the left.
 
 Select a menu item to navigate into that spoke of the application.
 
-![_Panel 2: Movies Spoke_](../../../assets/dg-navigation-hub-and-spoke-2.jpg)
+![_Panel 2: Movies Spoke_](../../../../assets/dg-navigation-hub-and-spoke-2.jpg)
 
 After making a selection from Panel 1, the user begins the journey down the
 Movies spoke.
@@ -36,7 +36,7 @@ return to the Hub (Panel 1) and choose another spoke.
 Selecting an item from the options available in Panel 2 will move the user
 further along the spoke.
 
-![_Panel 3: End of Spoke_](../../../assets/dg-navigation-hub-and-spoke-3.jpg)
+![_Panel 3: End of Spoke_](../../../../assets/dg-navigation-hub-and-spoke-3.jpg)
 
 Once the end of a spoke is reached (Panel 3), the user can explore the final
 section by utilizing the Jump To Anchor, or make a selection to begin viewing

@@ -9,9 +9,9 @@ The following colors are used in the Moonstone library's "Dark" theme:
 <table style="padding: 5px;">
 <tr>
 <td style="width: 175px; padding: 5px;"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-cf0652.png" alt="Pink"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-999999.png" alt="Gray 4"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-ffffff.png" alt="White"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-cf0652.png" alt="Pink"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-999999.png" alt="Gray 4"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-ffffff.png" alt="White"></td>
 </tr>
 <tr>
 <td style="width: 175px; padding: 5px;"><b>Name</b></td>
@@ -38,10 +38,10 @@ The following colors are used in the Moonstone library's "Dark" theme:
 <table style="padding: 5px;">
 <tr>
 <td style="width: 175px; padding: 5px;"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-262626.png" alt="Gray 1"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-404040.png" alt="Gray 2"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-686868.png" alt="Gray 3"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-999999.png" alt="Gray 4"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-262626.png" alt="Gray 1"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-404040.png" alt="Gray 2"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-686868.png" alt="Gray 3"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-999999.png" alt="Gray 4"></td>
 </tr>
 <tr>
 <td style="width: 175px; padding: 5px;"><b>Name</b></td>
@@ -71,11 +71,11 @@ The following colors are used in the Moonstone library's "Dark" theme:
 <table style="padding: 5px;">
 <tr>
 <td style="width: 175px; padding: 5px;"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-6fbe44.png" alt="Green"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-ff4a4a.png" alt="Red"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-2dc4a2.png" alt="Turquoise"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-69cdff.png" alt="Blue"></td>
-<td style="width: 175px; padding: 5px;"><img src="../../assets/dg-color-ffb80d.png" alt="Yellow"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-6fbe44.png" alt="Green"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-ff4a4a.png" alt="Red"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-2dc4a2.png" alt="Turquoise"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-69cdff.png" alt="Blue"></td>
+<td style="width: 175px; padding: 5px;"><img src="../../../assets/dg-color-ffb80d.png" alt="Yellow"></td>
 </tr>
 <tr>
 <td style="width: 175px; padding: 5px;"><b>Name</b></td>

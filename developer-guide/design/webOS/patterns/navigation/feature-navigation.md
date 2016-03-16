@@ -14,7 +14,7 @@ important features, no matter what panel they happen to be in.
 
 ### Example 1: Search
 
-![](../../../assets/dg-navigation-feature-search-1.jpg)
+![](../../../../assets/dg-navigation-feature-search-1.jpg)
 
 The Top Drawer is accessed via a handle at the top of the screen.
 
@@ -24,7 +24,7 @@ can point anywhere along the top edge to access the drawer's handle.
 In this example, the handle for the Top Drawer is in the focused state.  Once
 the user clicks on the handle, the Drawer will open.
 
-![](../../../assets/dg-navigation-feature-search-2.jpg)
+![](../../../../assets/dg-navigation-feature-search-2.jpg)
 
 The Top Drawer is on the same layer as the panels.  When it opens, the drawer
 pushes all panels and breadcrumbs down so that the breadcrumbs and panel headers
@@ -33,7 +33,7 @@ remain visible if the drawer is only partially open.
 The Top Drawer may be set to any height; it is set to the full screen height by
 default.
 
-![](../../../assets/dg-navigation-feature-search-3.jpg)
+![](../../../../assets/dg-navigation-feature-search-3.jpg)
 
 To manually close the Top Drawer, click the handle.  The drawer and panels slide
 up to their default position.
@@ -43,7 +43,7 @@ automatically closes and a Detail Panel opens.
 
 ### Example 2: Music Player
 
-![](../../../assets/dg-navigation-feature-music-player-1.jpg)
+![](../../../../assets/dg-navigation-feature-music-player-1.jpg)
 
 In this example the height of the drawer has been set so that it appears as
 partially open, with a simple, persistent music player exposed.  This smaller
@@ -53,7 +53,7 @@ the full screen.
 Note the inclusion of list action buttons in this view.  One of these buttons
 lets the user expand the partially open drawer to a fullscreen state.
 
-![](../../../assets/dg-navigation-feature-music-player-2.jpg)
+![](../../../../assets/dg-navigation-feature-music-player-2.jpg)
 
 In this case, clicking the Music Queue Action expands the drawer to fullscreen
 so that the user can interact with the Music Queue.

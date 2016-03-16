@@ -44,28 +44,28 @@ For actions such as "Add To", open a popup message at the bottom of the screen
 offering a choice to stay in the current list/panel or return to the list/panel
 the user just added content to.
 
-![_Fig. 1: Select an Action_](../../../assets/dg-acting-on-data-multi-select-1.jpg)
+![_Fig. 1: Select an Action_](../../../../assets/dg-acting-on-data-multi-select-1.jpg)
 
 The action Button has focus.  Click to initiate multi-select mode.
 
-![_Fig. 2: Navigate to an Object_](../../../assets/dg-acting-on-data-multi-select-2.jpg)
+![_Fig. 2: Navigate to an Object_](../../../../assets/dg-acting-on-data-multi-select-2.jpg)
 
 The first item has focus but is not yet selected.
 
-![_Fig. 3: Object Selected_](../../../assets/dg-acting-on-data-multi-select-3.jpg)
+![_Fig. 3: Object Selected_](../../../../assets/dg-acting-on-data-multi-select-3.jpg)
 
 The first item has focus and is selected.
 
-![_Fig. 4: Navigate to a Second Object_](../../../assets/dg-acting-on-data-multi-select-4.jpg)
+![_Fig. 4: Navigate to a Second Object_](../../../../assets/dg-acting-on-data-multi-select-4.jpg)
 
 The first item is selected.  The second item has focus but is not yet selected.
 
-![_Fig. 5: Select Second Object and Confirm Action_](../../../assets/dg-acting-on-data-multi-select-5.jpg)
+![_Fig. 5: Select Second Object and Confirm Action_](../../../../assets/dg-acting-on-data-multi-select-5.jpg)
 
 The first and second items are selected.  The action button has focus but is not
 yet selected.
 
-![_Fig. 6: Action Completed_](../../../assets/dg-acting-on-data-multi-select-6.jpg)
+![_Fig. 6: Action Completed_](../../../../assets/dg-acting-on-data-multi-select-6.jpg)
 
 When the action is complete, focus returns to the first item in the list.
 

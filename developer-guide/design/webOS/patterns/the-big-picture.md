@@ -28,9 +28,9 @@ familiar with and have come to expect.
 Examples of content consumption apps include Live TV, Netflix, Pandora, and
 Instagram.
 
-![_Vimeo - Details Panel_](../../assets/dg-app-type-content-video.png)
+![_Vimeo - Details Panel_](../../../assets/dg-app-type-content-video.png)
 
-![_SoundCloud - Category Panel_](../../assets/dg-app-type-content-music.png)
+![_SoundCloud - Category Panel_](../../../assets/dg-app-type-content-music.png)
 
 ### Social Communication
 
@@ -41,7 +41,7 @@ redefining how users interact with their TVs.
 Examples of social communication apps include Skype, Google Hangouts, Twitter,
 Facebook, instant messaging, and VoIP calling.
 
-![_Skype - Contact List_](../../assets/dg-skype-contact-list.jpg)
+![_Skype - Contact List_](../../../assets/dg-skype-contact-list.jpg)
 
 ### Shopping
 
@@ -54,9 +54,9 @@ shopping options.
 Examples of shopping apps include the App Catalog, Amazon, Fancy, PayPal, and
 food ordering.
 
-![_Disney Store_](../../assets/dg-disney-store.jpg)
+![_Disney Store_](../../../assets/dg-disney-store.jpg)
 
-![_Fancy - Details Panel_](../../assets/dg-app-type-shopping-details.png)
+![_Fancy - Details Panel_](../../../assets/dg-app-type-shopping-details.png)
 
 ### Productivity
 
@@ -84,7 +84,7 @@ checking email are commonly characterized by a high level of activity.
 It is also possible for a single experience to have relatively high levels of
 both activity and absorption (e.g., when playing a game).
 
-![](../../assets/dg-app-engagement-levels.png)
+![](../../../assets/dg-app-engagement-levels.png)
 
 The setting, conditions, and environment that users are accustomed to for a
 particular engagement style can influence their expectations of, and levels of
@@ -93,7 +93,7 @@ may reject the idea of engaging in high-activity experiences (such as checking
 email) while sitting in front of the TV in their living room--if they associate
 that environment with high-absorption engagement.
 
-![](../../assets/dg-app-engagement-levels-over-time.png)
+![](../../../assets/dg-app-engagement-levels-over-time.png)
 
 The level of user engagement with an application may also change over time.  The
 image above identifies a movie application as being high-absorption and

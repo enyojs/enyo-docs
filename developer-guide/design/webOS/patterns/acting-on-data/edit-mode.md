@@ -53,7 +53,7 @@ bottom of the screen.
 
 #### Example
 
-![](../../../assets/dg-acting-on-data-edit-mode-1.jpg)
+![](../../../../assets/dg-acting-on-data-edit-mode-1.jpg)
 
 In this example, the current panel is in a non-editable state.  This state is
 consistent with the main use case for the panel--viewing contact information and
@@ -61,7 +61,7 @@ initiating a video, voice, or instant message conversation with the contact.
 
 An Edit action button is provided in the Action Bar to enable inline editing.
 
-![](../../../assets/dg-acting-on-data-edit-mode-2.jpg)
+![](../../../../assets/dg-acting-on-data-edit-mode-2.jpg)
 
 Here the Edit action button has been selected and the panel is now in Edit Mode.
 Editable text fields have been changed to input fields and the contact image now
@@ -98,7 +98,7 @@ bottom of the screen.
 
 #### Example
 
-![](../../../assets/dg-acting-on-data-edit-mode-3.jpg)
+![](../../../../assets/dg-acting-on-data-edit-mode-3.jpg)
 
 In this example, the current panel is in a non-editable state.  The account
 information is divided into sections, each with its own Edit button.
@@ -106,7 +106,7 @@ information is divided into sections, each with its own Edit button.
 Selecting any one of these Edit buttons will open a new panel containing only
 the information from that section.
 
-![](../../../assets/dg-acting-on-data-edit-mode-4.jpg)
+![](../../../../assets/dg-acting-on-data-edit-mode-4.jpg)
 
 Here a new panel has been opened for editing the information from the previously
 selected section.

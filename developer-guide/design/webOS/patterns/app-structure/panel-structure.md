@@ -8,7 +8,7 @@ compatibility.  Although panels and headers are covered in the Design Guide's
 [UI Controls](../../controls.html) section, we would also like to look at how
 these controls relate to patterns.
 
-![_Structure of a Panel_](../../../assets/dg-panel-structure.png)
+![_Structure of a Panel_](../../../../assets/dg-panel-structure.png)
 
 ## Header
 

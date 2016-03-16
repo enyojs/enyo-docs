@@ -16,7 +16,7 @@ user can reopen the left drawer and change categories.
 
 ## How to Use
 
-![_Panel 1 with Left Drawer Open_](../../../assets/dg-navigation-global-1.jpg)
+![_Panel 1 with Left Drawer Open_](../../../../assets/dg-navigation-global-1.jpg)
 
 Above is an example of the Left Drawer with Panel 1.
 
@@ -27,14 +27,14 @@ If the user selects a different item from the Left Drawer, Panel 1 is updated
 with the new content. If the user selects an item from Panel 1, Panel 2 opens,
 the Left Drawer closes, and Panel 1 becomes a Breadcrumb.
 
-![_Panel 2 with Left Drawer Closed_](../../../assets/dg-navigation-global-2.jpg)
+![_Panel 2 with Left Drawer Closed_](../../../../assets/dg-navigation-global-2.jpg)
 
 The Left Drawer is accessible from any panel with the Magic Remote pointer only.
 
 When the drawer is hidden, the user must point to the Left Drawer Handle on the
 left edge of the screen to reopen the drawer.
 
-![_Panel 2 with Left Drawer Open_](../../../assets/dg-navigation-global-3.jpg)
+![_Panel 2 with Left Drawer Open_](../../../../assets/dg-navigation-global-3.jpg)
 
 If the user selects an item from the Left Drawer, Panel 2 is replaced by Panel
 1, which will be populated with content associated with the selection.  The user

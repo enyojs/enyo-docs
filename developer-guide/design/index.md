@@ -1,12 +1,10 @@
 ﻿% Design Guide
 
 We are pleased to offer the following resources to those designing apps using
-the Enyo framework and Moonstone UI library:
-
-* [Design Principles](principles.html) - Guidelines for designing TV apps
-
-* [UI Patterns](patterns.html) - A discussion of TV UI patterns
+the Enyo framework and the Moonstone UI library:
 
 * [UI Theming](ui-theming.html) - How to override library styles
 
-* [Styles](styles.html) - This section name sucks. It's about fonts, colors and other design considerations
+* [Resolution Independence](resolution-independence.html) - Using Enyo features to design for different resolutions
+
+* [webOS Design Considerations](webOS/index.html) - Design issues for webOS app developers
