@@ -45,29 +45,12 @@ additional tools or setup.
 ### Overriding Onyx Variables
 
 Onyx's CSS lives inside two key files: `onyx-variables.less` and
-`onyx-rules.less`.  Onyx's default theme is built from these two files and
-pulled in when you include `$lib/onyx` in your app's `package.js` file.
+`onyx-rules.less`.  Onyx's default theme is built from these two files and is
+included in your app whenever you `require()` and Onyx component.
 
-That being said, if you're using the Bootplate app template, you can easily
-create and use a custom theme for Onyx as follows:
-
-1. In `source/package.js`, include `"$lib/onyx/source"` instead of `"$lib/onyx"`.
-    This will cause your app to load only the JavaScript source; the default CSS
-    will be ignored.
-
-2. In `source/style/package.js`, uncomment the entry for `"Theme.less"`.
-
-4. Within `source/style/Theme.less`, insert your variable overrides between the
-    import rules for `onyx-variables.less` and `onyx-rules.less`, where
-    indicated:
-
-        @import "../lib/onyx/css/onyx-variables.less";
-
-        /* Place your Onyx variable overrides here. */
-
-        @import "../lib/onyx/css/onyx-rules.less";
-
-    The Onyx defaults will now be overridden by the values you supply.
+If you're using the `enyo-dev` `onyx-app` template, you can easily
+create and use a custom theme for Onyx as follows by editing `css/main.less` and
+adding any variable or rule overrides you need.
 
 ### Onyx Variables: A Quick Tour
 
@@ -108,56 +91,31 @@ for a complete list of the available variables and their default values.
 
 ### Overriding Moonstone Variables
 
-Similar to Onyx, Moonstone's CSS is split between variables and rules.  However,
-Moonstone includes both a light and a dark theme; consequently, it has an
-additional variable file for each theme.  For the light theme, this variable
-file is called `moonstone-variables-light.less`; for the dark theme, it is
-called `moonstone-variables-dark.less`.  Both themes use a common variable file,
-`moonstone-variables.less`, and a common rule file, `moonstone-rules.less`.
+Similar to Onyx, Moonstone's CSS is split between variables and rules.  Additionally,
+Moonstone includes both a light and a dark theme.  To select the light theme, add the following
+line to your `css/main.less` file:
 
-When using the Bootplate Moonstone app template, you can easily create and use a
-custom theme as follows:
+```
+    @moon-theme: 'light';
+```
 
-1. In `source/package.js`, include `"$lib/moonstone/source"` instead of
-    `"$lib/moonstone"`.  This will cause your app to load only the JavaScript
-    source; the default CSS will be ignored.
-
-2. In `source/style/package.js`, uncomment the entry for `"Theme.less"`.
-
-3. Within `source/style/Theme.less`, insert your variable overrides between the
-    import rules for the variables and the rules, as indicated:
-
-        /* Moonstone theme variable definitions: */
-        @import "../../lib/moonstone/css/moonstone-variables-light.less";
-        /* @import "../../lib/moonstone/css/moonstone-variables-dark.less"; */
-
-        /* Moonstone default variable definitions: */
-        @import "../../lib/moonstone/css/moonstone-variables.less";
-
-        /* Place your Moonstone variable overrides here --------------- */
-
-        /* ------------------------------------- end variable overrides */
-
-        /* Moonstone rule definitions: */
-        @import "../../lib/moonstone/css/moonstone-rules.less";
-
-The Moonstone defaults will now be overridden by the values you supply.
+When using the `enyo-dev` `moonstone-app` template, you can easily create and use a
+custom theme by defining any variable or rules overrides in the `css/main.less` file.
 
 ### Moonstone Variables
 
 Moonstone employs a much finer-grained approach to specifying default values for
-various controls than Onyx does.  Refer to `moonstone.less` and the
+various controls than Onyx does.  Refer to the Moonstone `css` directory and the
 corresponding light or dark `less` file for a complete list of the available
 variables and their default values.
 
 ### Variable Overrides in Action
 
 As a quick illustration of how the variable-override syntax works, if you were
-to create a simple "My Little Pony"-inspired theme, the `Theme.less` file might
+to create a simple "My Little Pony"-inspired theme, the `main.less` file might
 look like this:
 
-        @import "../lib/onyx/css/onyx-variables.less";
-
+```
         @onyx-text-color: pink;
         @onyx-toolbar-text-color: pink;
         @onyx-button-text-color: pink;
@@ -175,75 +133,18 @@ look like this:
 
         @onyx-border-radius: 15px;
         @onyx-border-radius-tight: 15px;
+```
 
-        @import "../lib/onyx/css/onyx-rules.less";
+If we take this custom theme and apply it to the app template--following
+the steps outlined above--the results are stunning:
 
-If we take this custom theme and apply it to the Bootplate template--following
-the four steps outlined above--the results (or lack thereof) may be surprising:
-
-![_My Little Pony Theme: Bootplate_](../assets/ui-theming-1.png)
-
-The absence of custom styling makes sense, however, when we realize that
-Bootplate does not contain any Onyx controls, so there are no UI elements that
-will reflect our variable overrides.  The lone control in Bootplate's `App.js`
-file has no kind specified, and thus defaults to being an unstyled
-[enyo/Control]($api/#/kind/enyo/Control/Control):
-
-        {name: "hello", content: "Hello World", allowHtml: true, ontap: "helloWorldTap"}
-
-If, instead, we define this control as an [onyx.Button]($api/#/kind/onyx.Button)...
-
-        {name: "hello", kind: "onyx.Button", content: "Hello World",
-            allowHtml: true, ontap: "helloWorldTap"}
-
-...our custom styling becomes readily apparent:
-
-![_My Little Pony Theme: onyx.Button_](../assets/ui-theming-2.png)
-
-### Rebuilding onyx.css
-
-Whenever you check in changes to `.less` files in Onyx, you'll also need to
-rebuild and check in the top-level `onyx.css` file (i.e.,
-`lib/onyx/css/onyx.css`) to maintain backward compatibility for environments
-that don't wish to use LESS.  (This is true whether you are using LESS for
-variable-based theming or for rule-based theming, which is discussed below.)
-
-To rebuild `onyx.css`, run the `lessc` script from the command line.
-
-On Mac/Linux:
-
-        cd lib/onyx/css
-        ../../../enyo/tools/lessc.sh ./package.js
-
-On Windows:
-
-        cd lib\onyx\css
-        ..\..\..\enyo\tools\lessc.bat .\package.js
-
-Please note that, since LESS generates relative URLs, it's important to run the
-`lessc` script from the `lib/onyx/css` folder.
-
-Also note that you only need to regenerate `onyx.css` when you're ready to check
-in your changes.  Before that point, you won't need to run `lessc` if you
-include `"less-<version number>.min.js"` in your app's `debug.html` file, e.g.:
-
-        <script src="enyo/tools/minifier/node_modules/less/dist/less-1.3.0e.min.js"></script>
-
-This causes the LESS code to be compiled on the client side during loading.
+![_My Little Pony Theme_](../assets/ui-theming-1.png)
 
 ## Rule-Override Theming
 
 When no variable exists for the piece of CSS you want to customize, your next
 option is to use a CSS rule override.  Rule overrides go in the aforementioned
-`Theme.less` file, *after* the `@import` statement for `onyx-rules.less`:
-
-        @import "../lib/onyx/css/onyx-variables.less";
-
-        /* Place your Onyx variable overrides here */
-
-        @import "../lib/onyx/css/onyx-rules.less";
-
-        /* Place your Onyx rule overrides here */
+`css/main.less` file.
 
 Let's say you want to change the color of the glow that surrounds a focused
 input.  `Input.less` doesn't break that value out into a variable, but we can
@@ -257,10 +158,6 @@ define the rule overriding the property (or properties) whose styling you wish
 to customize.  In the case of the input glow color, that might look like the
 following:
 
-        @import "../lib/onyx/css/onyx-variables.less";
-
-        @import "../lib/onyx/css/onyx-rules.less";
-
         /* Add a nice red glow to input decorators */
         .onyx-input-decorator.onyx-focused {
             box-shadow: inset 0px 1px 4px rgba(255,0,0,0.3);
@@ -273,10 +170,6 @@ applied.  In that case, simply define your rule override using a compound
 selector; that is, add an additional class to the definition, such as
 `.red-glow` below:
 
-        @import "../lib/onyx/css/onyx-variables.less";
-
-        @import "../lib/onyx/css/onyx-rules.less";
-
         /* Add a nice red glow to input decorators */
         .red-glow.onyx-input-decorator.onyx-focused {
             box-shadow: inset 0px 1px 4px rgba(255,0,0,0.3);
@@ -284,11 +177,11 @@ selector; that is, add an additional class to the definition, such as
 
 Now the rule override will only affect instances of
 [onyx.InputDecorator]($api/#/kind/onyx.InputDecorator) that have the selecting
-class (`"red-glow"`) applied, e.g.:
+class (`'red-glow'`) applied, e.g.:
 
         components: [
-            {kind: "onyx.InputDecorator", classes: "red-glow", components: [
-                {kind: "onyx.Input"}
+            {kind: OnyxInputDecorator, classes: 'red-glow', components: [
+                {kind: OnyxInput}
             ]}
         ]
 
@@ -297,22 +190,19 @@ will cause all of its child input decorators to receive the override:
 
         components: [
             // Standard Input
-            {kind: "onyx.InputDecorator", components: [
-                {kind: "onyx.Input"}
+            {kind: OnyxInputDecorator, components: [
+                {kind: OnyxInput}
             ]},
-            // Both input decorators will have "red-glow" applied
-            {classes: "red-glow", components: [
-                {kind: "onyx.InputDecorator", components: [
-                    {kind: "onyx.Input"}
+            // Both input decorators will have 'red-glow' applied
+            {classes: 'red-glow', components: [
+                {kind: OnyxInputDecorator, components: [
+                    {kind: OnyxInput}
                 ]},
-                {kind: "onyx.InputDecorator", components: [
-                    {kind: "onyx.Input"}
+                {kind: OnyxInputDecorator, components: [
+                    {kind: OnyxInput}
                 ]}
             ]}
         ]
-
-As mentioned above, when you're ready to check in your rule overrides, remember
-to also rebuild and check in `lib/onyx/css/onyx.css`.
 
 ## Library-Based Theming
 
@@ -322,14 +212,14 @@ when DOM or behavioral changes are required.
 
 For example, you might want to implement a `"Slider"` as a rotary dial instead
 of a horizontal track with a handle.  Even if your new `Slider` has the exact
-same API as [onyx.Slider]($api/#/kind/onyx.Slider) (i.e., the same published
+same API as [onyx/Slider]($api/#/kind/onyx/Slider/Slider) (i.e., the same published
 properities and bubbled events), it will still require completely different DOM,
 CSS, and internal event tracking.
 
 In this scenario, the idea of "theming" grows to encompass the building of a new
 library, made up of (one or more) Enyo kinds that implement your desired
 look-and-feel, while allowing you the freedom to implement custom DOM, CSS, and
-behavioral logic as needed.  
+behavioral logic as needed.
 
 In keeping with Enyo's emphasis on reusability, we encourage you to follow
 certain best practices when creating alternate UI libraries:

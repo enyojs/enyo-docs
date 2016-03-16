@@ -9,4 +9,6 @@ the Enyo framework and Moonstone UI library:
 
 * [UI Controls](controls.html) - A design discussion of various Moonstone controls
 
+* [UI Theming](ui-theming.html) - How to override library styles
+
 * [Styles](styles.html) - This section name sucks. It's about fonts, colors and other design considerations

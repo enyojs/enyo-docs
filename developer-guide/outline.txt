@@ -101,6 +101,7 @@ design/styles/layout-grid.md
 design/styles/fonts.md
 design/styles/color.md
 design/styles/icons.md
+design/ui-theming.md
 release-notes.md
 migration-guides.md
 release-notes/release-2.5.1.md
