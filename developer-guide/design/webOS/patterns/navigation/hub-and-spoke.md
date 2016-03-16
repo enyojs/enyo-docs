@@ -58,5 +58,3 @@ categories frequently.
 ## Related Topics
 
 Patterns: [Panel Patterns](../app-structure/panel-patterns.html)
-
-Controls: [Panel](../../controls/panel.html)

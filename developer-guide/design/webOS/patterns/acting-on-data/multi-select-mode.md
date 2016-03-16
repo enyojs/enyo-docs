@@ -86,9 +86,3 @@ faster and easier for them to do so.
 Patterns: [Action Bar](../app-structure/panel-structure.html#action-bar),
 [Action Menu](sort-and-filter.html),
 Lists and Grids
-
-Controls: [Button](../../controls/button.html),
-[Checkbox Item](../../controls/checkbox-item.html),
-[Header](../../controls/header-list-actions.html),
-[List](../../controls/list.html),
-[Popup](../../controls/popup.html)

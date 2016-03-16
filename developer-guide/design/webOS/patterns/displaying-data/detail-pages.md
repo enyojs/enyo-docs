@@ -45,7 +45,7 @@ to Anchor Menu and any premium action buttons that deserve additional attention
 
 ## Example
 
-![_Sectioned Detail Page: Top_](../../../assets/dg-displaying-data-detail-pages-1.jpg)
+![_Sectioned Detail Page: Top_](../../../../assets/dg-displaying-data-detail-pages-1.jpg)
 
 This is an example of a Sectioned Detail Page for a movie; the same design may
 be easily applied to a TV show, CD, or other such item.
@@ -56,7 +56,7 @@ easily jump to different sections in this view.
 The Jump to Anchor Menu and large action buttons above will remain fixed on the
 right while the user scrolls through the main content area on the left.
 
-![_Sectioned Detail Page: Full Panel_](../../../assets/dg-displaying-data-detail-pages-2.png)
+![_Sectioned Detail Page: Full Panel_](../../../../assets/dg-displaying-data-detail-pages-2.png)
 
 This is a visualization of the same Sectioned Detail Page without the frame of
 the TV, to demonstrate the length of the panel and the value of using sections.
@@ -94,5 +94,3 @@ technical errors.**
 ## Related Topics
 
 Patterns: [Acting on Data](../acting-on-data.html), Jump to Anchor, Loading
-
-Controls: [Button](../../controls/button.html), Expandable Text

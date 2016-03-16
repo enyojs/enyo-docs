@@ -117,5 +117,3 @@ Patterns: [Hub and Spoke](navigation/hub-and-spoke.html),
 [Global Navigation](navigation/global-navigation.html),
 [Feature Navigation](navigation/feature-navigation.html),
 Search, Step Navigation, Jump to Anchor
-
-Controls: [Drawer](../controls/drawer.html), [List](../controls/list.html)

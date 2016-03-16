@@ -123,7 +123,3 @@ panel's primary use case.
 ## Related Topics
 
 Patterns: [User Input](../user-input.html), Notifications
-
-Controls: [Text Input](../../controls/text-input.html),
-[Button](../../controls/button.html),
-[Header/List Actions](../../header-list-actions.html)

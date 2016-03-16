@@ -38,5 +38,3 @@ webOS Moonstone icons for common actions will soon be available for download.
 ## Related Topics
 
 Patterns: Lists and Grids
-
-Controls: [Header/List Actions](../controls/header-list-actions.html)

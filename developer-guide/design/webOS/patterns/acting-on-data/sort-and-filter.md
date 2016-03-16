@@ -68,7 +68,3 @@ Do not use a contextual popup to display Sort and Filter options.
 ## Related Topics
 
 Patterns: [Panel Patterns](../app-structure/panel-patterns.html)
-
-Controls: [List Actions](../../controls/header-list-actions.html),
-[Button](../../controls/button.html), [Checkbox
-Item](../../controls/checkbox-item.html).

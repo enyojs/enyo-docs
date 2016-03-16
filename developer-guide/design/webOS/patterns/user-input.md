@@ -52,8 +52,3 @@ can be fully displayed above the expanded Virtual Keyboard.
 ## Related Topics
 
 Patterns: Notifications, Onscreen Direction, Confirmation
-
-Controls: [Text Input](../controls/text-input.html),
-[Button](../controls/button.html),
-[Form Checkbox](../controls/form-checkbox.html),
-[Date Picker](../controls/date-picker.html)

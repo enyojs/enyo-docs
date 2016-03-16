@@ -75,6 +75,3 @@ these controls relate to patterns.
 
 Patterns: [Navigation](../navigation.html), [Displaying
 Data](../displaying-data.html), [Acting on Data](../acting-on-data.html)
-
-Controls: [Panel](../../controls/panel.html),
-[Header/List Actions](../../controls/header-list-actions.html)

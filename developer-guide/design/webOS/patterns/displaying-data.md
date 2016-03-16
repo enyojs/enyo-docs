@@ -28,8 +28,3 @@ The following patterns include solutions for loading and organizing data:
 * [Detail Pages](displaying-data/detail-pages.html)
 * Lists and Grids
 * Loading
-
-## Related Topics
-
-Controls: [List](../controls/list.html), [Image
-Grid](../controls/image-grid.html), [Progress Bar](../controls/progress-bar.html)

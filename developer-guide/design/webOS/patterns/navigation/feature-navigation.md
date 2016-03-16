@@ -80,5 +80,3 @@ Do not use the Top Drawer for persistent, menu-based navigation.
 ## Related Topics
 
 Patterns: [Global Navigation](global-navigation.html)
-
-Controls: [Drawer](../../controls/drawer.html)

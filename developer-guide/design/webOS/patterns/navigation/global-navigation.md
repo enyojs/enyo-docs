@@ -63,5 +63,3 @@ user may also navigate back to the content in Panel 2.
 ## Related Topics
 
 Patterns: [Feature Navigation](feature-navigation.html)
-
-Controls: [Drawer](../../controls/drawer.html)
