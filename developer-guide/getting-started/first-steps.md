@@ -21,7 +21,7 @@ IDE.
 ### Node.js
 
 Next, you'll need to have [Node.js](http://nodejs.org) installed on your
-development machine.  Enyo's build system requires Node version `0.12.2` or
+development machine.  Enyo's build system requires Node version `4.0` or
 later.  If Node is not installed, you will need to install it; if you have an
 outdated version, you will need to update it.  To check the version of a Node
 installation, use the command `node --version`.
