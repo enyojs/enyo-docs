@@ -27,9 +27,9 @@ Implement the `arrange()` method to position controls relative to each other.
 This method is where the real layout work occurs.  An arranger only needs to
 specify the layout for each active position; it does not have to concern itself
 with intermediate layouts.  Instead of directly applying styling to controls in
-the `arrange()` method, do this by calling `arrangeControl(inControl, inArrangement)`.
-The `inArrangement` argument is an object with settings that are later applied
-to the control via the `flowControl(inControl, inArrangement)` method.  By
+the `arrange()` method, do this by calling `arrangeControl(control, arrangement)`.
+The `arrangement` argument is an object with settings that are later applied
+to the control via the `flowControl(control, arrangement)` method.  By
 default, the `flowControl()` method will process arrangement settings	for
 `left`, `top`, and `opacity`, and this method should only be implemented to
 style the control in other ways.
@@ -37,8 +37,8 @@ style the control in other ways.
 Arranger also supports dragging between active states.  The arranger must specify
 how dragging will affect the layout.  The properties `dragProp`, `canDragProp`,
 and `dragDirectionProp` are used to indicate which direction of drag is
-relevant. The `calcArrangementDifference(inI0, inA0, inI1, inA1)` method should
-be implemented to return the difference in pixels between the arrangement `inA0`
-for layout setting `inI0` and arrangement `inA1` for layout	setting `inI1`.
+relevant. The `calcArrangementDifference(i0, a0, i1, a1)` method should
+be implemented to return the difference in pixels between the arrangement `a0`
+for layout setting `i0` and arrangement `a1` for layout setting `i1`.
 This data is used to calculate the percentage that a drag should move the layout
 between two active states.

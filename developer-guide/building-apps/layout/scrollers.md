@@ -40,8 +40,8 @@ respective axes.  Both properties have the same four possible values:
 * `'default'` (the default value) is the same as `'auto'`.
 
 To programmatically scroll to a specific position with animation, call
-`scrollTo(inX, inY)`; to snap to a position without animation, call
-`setScrollLeft(inX)` and `setScrollTop(inY)`.
+`scrollTo(x, y`; to snap to a position without animation, call
+`setScrollLeft(x)` and `setScrollTop(y)`.
 
 When touch-based scrolling is in effect, the user may drag beyond a valid scroll
 position.  When this occurs, the scroller moves with increased tension before

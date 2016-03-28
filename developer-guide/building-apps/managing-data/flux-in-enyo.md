@@ -85,7 +85,7 @@ to an instance of `enyo/Source` to be consumed.
         name: 'myapp.MyFluxStore',
         kind: FluxStore,
         source: Source,
-        update: function(actions) {
+        update: function (actions) {
             //handle actions dispatched to the store
         }
     });
@@ -106,7 +106,7 @@ Here's an example showing the FluxStore being created inside an application:
     var MyApplication = kind({
         name: 'myapp.Application',
         kind: App,
-        create: function() {
+        create: function () {
 
             this.inherited(arguments);
             //create a new instance of the FluxStore
@@ -146,7 +146,7 @@ and its consumption of the data driving the interface.
 
     var MyView = kind({
         name: 'myapp.MyView',
-        create: function() {
+        create: function () {
 
             this.inherited(arguments);
             this.subscriptionID = FluxDispatcher.subscribe(
@@ -154,7 +154,7 @@ and its consumption of the data driving the interface.
                     utils.bind(this, this.update)
             );
         },
-        update: function(payload) {
+        update: function (payload) {
 
             //interact with the fetched data here
             if(payload.fooNode) {
@@ -184,7 +184,7 @@ suppose that our view contains a button; when the button is clicked, we use the
 `ontap` event to invoke a method called `tapHandler()`.
 
 ```javascript
-    tapHandler: function(sender, ev) {
+    tapHandler: function (sender, ev) {
         //notify the store an action took place
         //pass it the data needed to modify data
         FluxDispatcher.notify(
@@ -213,7 +213,7 @@ the passed-in action.
         name: 'myapp.MyFluxStore',
         kind: FluxStore,
         source: Source,
-        update: function(action) {
+        update: function (action) {
 
             //handle dispatched actions to the store
             switch(action.actionType) {
@@ -226,7 +226,7 @@ the passed-in action.
                     //default code block
             }
         },
-        handleMyAction: function(data) {
+        handleMyAction: function (data) {
             //do something here with your source
         }
     });
@@ -247,14 +247,14 @@ may either listen to an existing notification stack or create its own stack.
     var MyActionController = kind({
         name: 'myapp.ActionController',
         kind: Controller,
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.subscriptionID = FluxDispatcher.subscribe(
                     this.app.storeA.id, //the store provides this ID
                     this.bind(this, this.update)
             );
         },
-        update: function(action) {
+        update: function (action) {
 
             switch(action.actionType) {
 
@@ -304,10 +304,10 @@ will complete before the dependent method is invoked.
         name: 'myapp.StoreB',
         kind: FluxStore,
         source: Source,
-        update: function(actions) {
+        update: function (actions) {
 
             FluxDispatcher.waitFor(this.app.storeA.id,
-            function(){
+            function () {
                 //complete the action here after storeA.update
                 }
             )}

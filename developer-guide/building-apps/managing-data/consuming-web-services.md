@@ -54,14 +54,14 @@ aforementioned features:
     var
         Async = require('enyo/Async');
 
-    var transaction = function() {
+    var transaction = function () {
         // Create a transaction object.
         var async = new Async();
         // Cause handlers to fire asynchronously (sometime after we yield this thread).
         // 'initial response' will be sent to handlers as response
         async.go('intial response');
         // Until we yield the thread, we can continue to add handlers.
-        async.response(function(sender, response) {
+        async.response(function (sender, response) {
             console.log('first response: returning a string,',
                 'subsequent handlers receive this value for 'response'');
             return 'some response';
@@ -80,7 +80,7 @@ until all functions return (synchronously):
 
     // Add a handler that will be called if an error is detected. This handler
     // recovers and sends a custom message.
-    x.error(function(sender, response) {
+    x.error(function (sender, response) {
         console.log('error: calling recover', response);
         this.recover();
         return 'recovered message';
@@ -89,13 +89,13 @@ until all functions return (synchronously):
     // Add a response handler that halts response handler and triggers the
     // error chain. The error will be sent to the error handler registered
     // above, which will restart the handler chain.
-    x.response(function(sender, response) {
+    x.response(function (sender, response) {
         console.log('response: calling fail');
         this.fail(response);
     });
 
     // Recovered message will end up here.
-    x.response(function(sender, response) {
+    x.response(function (sender, response) {
         console.log('response: ', response);
     });
 ```
@@ -125,19 +125,19 @@ corresponding to the passed-in place name:
         var
             Ajax = require('enyo/Ajax');
     
-        getWoeid: function(inPlace) {
+        getWoeid: function (place) {
         // set up enyo/AjaxProperties by sending them to the enyo/Ajax constructor
         var x = new Ajax({url: 'http://query.yahooapis.com/v1/public/yql?format=json'});
         // send parameters the remote service using the 'go()' method
         x.go({
-            q: 'select woeid from geo.placefinder where text="' + inPlace + '"'
+            q: 'select woeid from geo.placefinder where text="' + place + '"'
         });
         // attach responders to the transaction object
-        x.response(this, function(sender, response) {
+        x.response(this, function (sender, response) {
             // extra information from response object
             var woeid = response.data.query.results.Result.woeid;
             // do something with it
-            this.setWoeid(inPlace, woeid);
+            this.setWoeid(place, woeid);
         });
     }
 ```

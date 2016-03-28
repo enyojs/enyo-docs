@@ -23,10 +23,10 @@ pressing a button will display a popup.
                 ]
             }
         ],
-        showPopup: function (sender, event) {
+        showPopup: function (sender, ev) {
             this.$.basicPopup.show();
         },
-        popupHidden: function (sender, event) {
+        popupHidden: function (sender, ev) {
             // do something
         }
     });
@@ -143,7 +143,7 @@ the following example:
         showDialog: function (sender) {
             this.$.dialog.show();
         },
-        hideDialog: function (sender, event) {
+        hideDialog: function (sender, ev) {
             this.$.dialog.hide();
         }
     });

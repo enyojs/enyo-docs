@@ -32,26 +32,26 @@ example:
         events: {
             onTriggered: ''
         },
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.start();
         },
-        destroy: function() {
+        destroy: function () {
             this.stop();
             this.inherited(arguments);
         },
-        start: function() {
+        start: function () {
             this.job = window.setInterval(utils.bind(this, 'timer'), this.baseInterval);
         },
-        stop: function() {
+        stop: function () {
             window.clearInterval(this.job);
         },
-        timer: function() {
+        timer: function () {
             if (Math.random() < this.percentTrigger * 0.01) {
                 this.doTriggered({time: new Date().getTime()});
             }
         },
-        baseIntervalChanged: function(inOldValue) {
+        baseIntervalChanged: function (oldValue) {
             this.baseInterval = Math.max(this.minInterval, this.baseInterval);
             this.stop();
             this.start();
@@ -127,8 +127,8 @@ First, though, we'll create another component kind, named `SimulatedMessage`:
             {name: 'timer', kind: RandomizedTimer, percentTrigger: 10,
                 onTriggered: 'timerTriggered'}
         ],
-        timerTriggered: function(sender, event) {
-            this.log('Simulated Service Message Occurred at ' + event.time);
+        timerTriggered: function (sender, ev) {
+            this.log('Simulated Service Message Occurred at ' + ev.time);
         }
     });
 ```
@@ -157,7 +157,7 @@ delegate string.  This lets us avoid the pain of having an add/remove listener
 mechanism.  The first argument sent with every event is `sender`, which is a
 reference to the component that generated the event.  This argument facilitates
 code reuse since the same method can be used to handle multiple events
-distinguished by `sender`.  The second argument, `event`, is an object whose
+distinguished by `sender`.  The second argument, `ev`, is an object whose
 properties convey information about the event.
 
 To learn more about events in Enyo, see [Event Handling](event-handling.html).
@@ -178,16 +178,16 @@ The different roles of these methods are sketched out in the following example:
 
     module.exports = kind({
         kind: Component,
-        constructor: function() {
+        constructor: function () {
             // low-level or esoteric initialization, usually not needed at all
             this.inherited(arguments);
         },
-        create: function() {
+        create: function () {
             // create is called *after* the constructor chain is finished
             this.inherited(arguments);
             // this.$ hash is only available *after* calling inherited create
         },
-        destroy: function() {
+        destroy: function () {
             // do inherited teardown
             this.inherited(arguments);
         }
@@ -210,7 +210,7 @@ components.  For example:
     components: [
         {kind: MyWorker}
     ],
-    create: function() {
+    create: function () {
         this.inherited(arguments);
         // put MyWorker to work
         this.$.myWorker.work();
@@ -223,7 +223,7 @@ references so that components may be garbage-collected.  The `destroy()` method
 provides that place, while also housing general cleanup code.
 
 ```javascript
-    destroy: function() {
+    destroy: function () {
         // stop MyWorker from working
         this.$.myWorker.stop();
         // standard cleanup

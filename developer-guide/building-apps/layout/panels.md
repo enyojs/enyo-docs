@@ -172,7 +172,7 @@ This gives us the following kind definition:
             {name: 'MyLastPanel', content: 'last'}
         ],
         statics: {
-            isScreenNarrow: function() {
+            isScreenNarrow: function () {
                 return dom.getWindowWidth() <= 600;
             }
         }

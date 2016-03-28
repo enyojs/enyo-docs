@@ -59,7 +59,7 @@ functions.  For example:
     var MyControl = kind({
         name: 'MyControl',
         foo: '',
-        fooChanged: function (inOld) {    // Called when foo changes
+        fooChanged: function (oldValue) {    // Called when foo changes
             // Do something with 'this.foo'
         }
     });

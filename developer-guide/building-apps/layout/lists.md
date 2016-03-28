@@ -153,13 +153,13 @@ Any time a list row is rendered, the `onSetupItem` event is fired.  An
 application can therefore control the rendering of the controls in a row by
 calling methods on those controls within this event's handler.  An application
 can update a specific row by forcing it to render using the list's
-`renderRow(inIndex)` method.
+`renderRow(index)` method.
 
 In addition, it is possible to create controls with more complex interactions
 that are specifically tailored to function correctly in a flyweight context.
 Events for controls in a list will be decorated with both the index of the row
 being interacted with and the flyweight controller for the control (i.e.,
-`ev.index` and `ev.flyweight`).  The list's `prepareRow(inIndex)` method
+`ev.index` and `ev.flyweight`).  The list's `prepareRow(index)` method
 can be used to assign the list's controls to a specific list row, allowing
 persistent interactivity with that row.  When the interaction is complete, the
 list's `lockRow()` method should be called.

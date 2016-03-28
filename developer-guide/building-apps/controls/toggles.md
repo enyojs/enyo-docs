@@ -17,8 +17,8 @@ switches its state and fires an `onChange` event.
 
     ...
 
-    toggleTextToggle: function(sender, event) {
-        this.log('Toggled to value ' + event.value);
+    toggleTextToggle: function (sender, ev) {
+        this.log('Toggled to value ' + ev.value);
     }
 ```
 
@@ -37,7 +37,7 @@ Finally, you may determine whether the toggle is currently "on" by querying its
 `value` property.  The returned value will be a Boolean `true` or `false`:
 
 ```javascript
-    queryToggleValue: function() {
+    queryToggleValue: function () {
         return this.$.toggleText.get('value');
     }
 ```

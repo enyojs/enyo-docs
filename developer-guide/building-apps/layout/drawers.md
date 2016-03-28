@@ -39,7 +39,7 @@ Here's a kind that implements a simple vertically-oriented drawer:
                 ]}
             ]}
         ],
-        activateDrawer: function (sender, event) {
+        activateDrawer: function (sender, ev) {
             this.$.drawer.setOpen(!this.$.drawer.open);
         },
     });
@@ -82,7 +82,7 @@ The following kind implements a simple horizontally-oriented drawer:
                 ]
             }
         ],
-        activateColumnsDrawer: function (sender, event) {
+        activateColumnsDrawer: function (sender, ev) {
             this.$.columnsDrawer.setOpen(!this.$.columnsDrawer.open);
         }
     });

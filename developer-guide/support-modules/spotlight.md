@@ -203,8 +203,8 @@ For such cases, we have included an "Allow DOM Default" feature.  The events
 with an added `allowDomDefault()` method:
 
 ```javascript
-    onSpotlightKeyDown: function(sender, event) {
-        event.allowDomDefault();
+    onSpotlightKeyDown: function (sender, ev) {
+        ev.allowDomDefault();
     }
 ```
 

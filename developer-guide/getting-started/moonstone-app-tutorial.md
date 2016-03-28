@@ -131,7 +131,7 @@ in which the user searches for photos and browses the results.
         handlers: {
             onInputHeaderChange: 'search'
         },
-        search: function(sender, ev) {
+        search: function (sender, ev) {
             alert(ev.originator.get('value'));
         }
     });
@@ -228,7 +228,7 @@ search panel.  We'll use this to display thumbnails of the search results.
                 {kind: GridListImageItem, imageSizing: 'cover', useSubCaption: false, centered: false}
             ]}
         ],
-        search: function(sender, ev) {
+        search: function (sender, ev) {
             alert(ev.originator.get('value'));
         }
     });
@@ -304,7 +304,7 @@ control, which we'll call "photos":
     var SearchPanel = kind({
         name: 'SearchPanel',
         ...
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.set('photos', new Collection());
         }
@@ -362,7 +362,7 @@ from Flickr to use.
     var SearchPanel = kind({
         name: 'SearchPanel',
         ...
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.set('photos', new Collection([
                 {title: 'Photo 1', thumbnail: 'http://lorempixel.com/300/300/?1'},
@@ -400,7 +400,7 @@ The final `SearchPanel` implementation for this step should look like this:
         bindings: [
             {from: 'photos', to: '$.resultList.collection'}
         ],
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.set('photos', new Collection([
                 {title: 'Photo 1', thumbnail: 'http://lorempixel.com/300/300/?1'},
@@ -409,7 +409,7 @@ The final `SearchPanel` implementation for this step should look like this:
                 {title: 'Photo 4', thumbnail: 'http://lorempixel.com/300/300/?4'}
             ]));
         },
-        search: function(sender, ev) {
+        search: function (sender, ev) {
             alert(ev.originator.get('value'));
         }
     });
@@ -494,7 +494,7 @@ hash, which will be expanded into query string parameters on the Jsonp request.
         name: 'Source',
         kind: JsonpSource,
         urlRoot: 'https://api.com/services/rest/',
-        fetch: function(rec, opts) {
+        fetch: function (rec, opts) {
             opts.callbackName = 'jsoncallback';
             opts.params = {};
             opts.params.api_key = '2a21b46e58d207e4888e1ece0cb149a5';
@@ -558,7 +558,7 @@ the value of `searchText` is altered.
         published: {
             searchText: null
         },
-        searchTextChanged: function() {
+        searchTextChanged: function () {
             this.empty({destroy: true});
             this.fetch();
         }
@@ -582,11 +582,11 @@ and a limit to the number of results.
         published: {
             searchText: null,
         },
-        searchTextChanged: function() {
+        searchTextChanged: function () {
             this.empty({destroy: true});
             this.fetch();
         },
-        fetch: function(opts) {
+        fetch: function (opts) {
             this.params = {
                 method: 'flickr.photos.search',
                 sort: 'interestingness-desc',
@@ -612,7 +612,7 @@ for these parameters and add them to the `params` that are passed along:
         name: 'Source',
         kind: JsonpSource,
         urlRoot: 'https://api.com/services/rest/',
-        fetch: function(rec, opts) {
+        fetch: function (rec, opts) {
             opts.callbackName = 'jsoncallback';
             opts.params = utils.clone(rec.params);
             opts.params.api_key = '2a21b46e58d207e4888e1ece0cb149a5';
@@ -692,7 +692,7 @@ array that we actually want to load into the collection--which, in this case, is
         ...
         options: { parse: true },
         ...
-        parse: function(data) {
+        parse: function (data) {
             return data && data.photos && data.photos.photo;
         }
     });
@@ -769,12 +769,12 @@ the model data:
             {method: 'thumbnail', path: ['farm', 'server', 'id', 'secret']},
             {method: 'original', path: ['farm', 'server', 'id', 'secret']}
         ],
-        thumbnail: function() {
+        thumbnail: function () {
             return 'https://farm' + this.get('farm') +
                 '.static.com/' + this.get('server') +
                 '/' + this.get('id') + '_' + this.get('secret') + '_m.jpg';
         },
-        original: function() {
+        original: function () {
             return 'https://farm' + this.get('farm') +
                 '.static.com/' + this.get('server') +
                 '/' + this.get('id') + '_' + this.get('secret') + '.jpg';
@@ -834,7 +834,7 @@ set the grid list's collection type to be our new `SearchCollection`:
     var SearchPanel = kind({
         name: 'SearchPanel',
         ...
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.set('photos', new SearchCollection());
         }
@@ -850,7 +850,7 @@ the search collection's `searchText` property:
     var SearchPanel = kind({
         name: 'SearchPanel',
         ...
-        search: function(sender, ev) {
+        search: function (sender, ev) {
             this.$.resultList.collection.set('searchText', ev.originator.get('value'));
         }
     });
@@ -908,7 +908,7 @@ to test for the specific conditions we're interested in:
         ...
         bindings: [
             ...,
-            {from: 'photos.status', to:'$.spinner.showing', transform: function(value) {
+            {from: 'photos.status', to:'$.spinner.showing', transform: function (value) {
                 return this.photos.isBusy();
             }}
         ],
@@ -1017,7 +1017,7 @@ First, we'll add a handler for the new custom `onRequestPushPanel` event to
             onRequestPushPanel: 'pushPanel'
         },
         ...
-        pushPanel: function(sender, ev) {
+        pushPanel: function (sender, ev) {
             this.$.panels.pushPanel(ev.panel);
         }
     });
@@ -1039,7 +1039,7 @@ grid list items that will use this new event API:
             {kind: DataGridList, ..., ontap: 'itemSelected', ...}
         ],
         ...
-        itemSelected: function(sender, ev) {
+        itemSelected: function (sender, ev) {
             // ev.index will reference the index associated with the tapped item
             // ev.model will reference the model associated with the tapped item
         }
@@ -1074,7 +1074,7 @@ bubble the event, passing the panel definition in the event payload:
             {kind: DataGridList, ..., ontap: 'itemSelected', ...}
         ],
         ...
-        itemSelected: function(sender, ev) {
+        itemSelected: function (sender, ev) {
             this.doRequestPushPanel({panel: {kind: DetailPanel, model: ev.model}});
         }
     });
@@ -1130,7 +1130,7 @@ a `params` hash with the information needed to fetch detailed image models
         name: 'ImageModel',
         source: 'flickr',
         ...
-        fetch: function(opts) {
+        fetch: function (opts) {
             this.params = {
                 method: 'photos.getinfo',
                 photo_id: this.get('id')
@@ -1197,7 +1197,7 @@ properties bindable.  Since we're interested in the `owner.realname` and
         ...
         options: { parse: true },
         ...
-        parse: function(data) {
+        parse: function (data) {
             data = data.photo || data;
             data.title = data.title._content || data.title;
             data.username = data.owner && data.owner.realname;
@@ -1256,7 +1256,7 @@ moving _to_ the detail panel (i.e., when the "to" index is greater than the
     var DetailPanel = kind({
         name: 'DetailPanel',
         ...
-        transitionFinished: function(info) {
+        transitionFinished: function (info) {
             if (info.from < info.to) {
                 this.model.fetch();
             }
@@ -1292,10 +1292,10 @@ strings:
         ...
         bindings: [
             ...
-            {from: 'model.username', to: 'titleBelow', transform: function(val) {
+            {from: 'model.username', to: 'titleBelow', transform: function (val) {
                 return 'By ' + (val || ' unknown user');
             }},
-            {from: 'model.taken', to: 'subTitleBelow', transform: function(val) {
+            {from: 'model.taken', to: 'subTitleBelow', transform: function (val) {
                 return val ? 'Taken ' + val : '';
             }}
         ],
@@ -1344,7 +1344,7 @@ that a new image be loaded into the image viewer:
             onRequestFullScreen: 'fullscreen'
         },
         ...
-        fullscreen: function(sender, ev) {
+        fullscreen: function (sender, ev) {
             this.$.imageViewer.set('src', ev.model.get('original'));
             this.$.panels.hide();
         }
@@ -1374,7 +1374,7 @@ that bubbles the `onRequestFullScreen` event, passing the model mentioned above:
             {kind: 'moon.Button', ontap: 'requestFullScreen', small: true, content: 'View Fullscreen'}
         ],
         ...
-        requestFullScreen: function() {
+        requestFullScreen: function () {
             this.doRequestFullScreen({model: this.model});
         }
     });

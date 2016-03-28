@@ -31,20 +31,20 @@ inside a `TrafficLight` control:
         },
         content: 'Hi',
         style: 'padding: 2px 6px; border: 3px solid; border-radius: 20px; cursor: pointer;',
-        create: function() {
+        create: function () {
             this.inherited(arguments);
             this.colorChanged();
         },
-        colorChanged: function() {
+        colorChanged: function () {
             this.applyStyle('border-color', this.color);
         },
-        bgColorChanged: function() {
+        bgColorChanged: function () {
             this.applyStyle('background-color', this.bgColor);
         },
-        downHandler: function(sender, event) {
+        downHandler: function (sender, ev) {
             this.applyStyle('background-color', 'white');
         },
-        upHandler: function(sender, event) {
+        upHandler: function (sender, ev) {
             this.applyStyle('background-color', 'black');
         }
     });
@@ -95,7 +95,7 @@ Here is our aforementioned `TrafficLight` control:
             {kind: Circle, color: 'yellow', ontap: 'circleTap'},
             {kind: Circle, color: 'green', ontap: 'circleTap'}
         ],
-        circleTap: function(sender, event) {
+        circleTap: function (sender, ev) {
             var lights = {red: 'tomato', yellow: '#FFFF80', green: 'lightgreen'};
             if (this.lastCircle) {
                 this.lastCircle.set('bgColor', 'black');
@@ -175,7 +175,7 @@ In a control, if you need to perform an action immediately after the DOM is
 created, you can do it in the `rendered()` method:
 
 ```javascript
-    rendered: function() {
+    rendered: function () {
         // important! must call the inherited method
         this.inherited(arguments);
         // this is the first moment that bounds are available
@@ -194,7 +194,7 @@ Whenever you need to access a control's DOM node directly, use the `hasNode()`
 method:
 
 ```javascript
-    twiddle: function() {
+    twiddle: function () {
         if (this.hasNode()) {
             buffNode(this.node); // buffNode is made-up
         }
@@ -206,7 +206,7 @@ truthy result from `hasNode()` means `this.node` is initialized.  Even within
 `rendered()`, you need to call `hasNode()` before using `this.node`:
 
 ```javascript
-    rendered: function() {
+    rendered: function () {
         this.inherited(arguments); // important! must call the inherited method
         if (this.hasNode()) {
             buffNode(this.node);
@@ -225,7 +225,7 @@ until you call `render()` on them, or on one of their containers.  You will
 often see code like the following:
 
 ```javascript
-    updateControls: function() {
+    updateControls: function () {
         // destroy controls we made last time 
         // ('destroyClientControls' destroys only dynamic controls;
         // 'destroyControls' destroys everything)

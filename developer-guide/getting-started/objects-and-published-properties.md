@@ -29,7 +29,7 @@ prototype, with a default value of 3:
         },
 
         // optional method that is called whenever set('myValue', <value>) is called
-        myValueChanged: function(oldValue) {
+        myValueChanged: function (oldValue) {
             this.delta = this.myValue - oldValue;
         }
     });

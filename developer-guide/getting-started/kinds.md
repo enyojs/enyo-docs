@@ -82,7 +82,7 @@ trigger special processing. Some examples of special properties are:
         var MyKind = kind({
             name: 'MyKind',
             kind: Object,
-            constructor: function() {
+            constructor: function () {
                 this.instanceArray = [];
                 // Call the constructor inherited from Object
                 this.inherited(arguments);
@@ -101,7 +101,7 @@ trigger special processing. Some examples of special properties are:
         var MyKind = kind({
             name: 'MyKind',
             statics: {
-                info: function() {
+                info: function () {
                     return 'MyKind is a kind with statics.';
                 }
             }
@@ -124,7 +124,7 @@ A trivial kind has a simple lifecycle:
     var MyKind = kind({
         name: 'MyKind',
         kind: null, // otherwise it will default to 'Control'
-        constructor: function() {
+        constructor: function () {
             // do any initialization tasks
         }
     });
@@ -153,7 +153,7 @@ from the old kind, you can call the overridden method using `this.inherited()`:
     var MyNextKind = kind({
         name: 'MyNextKind',
         kind: MyKind,
-        constructor: function() {
+        constructor: function () {
             // do any initialization tasks before MyKind initializes
             //
             // do inherited initialization (optional, but usually a good idea)
@@ -184,7 +184,7 @@ This override system works the same for any method, not just `constructor()`:
 
     var MyOriginalKind = kind({
         name: 'MyOriginalKind',
-        doWork: function() {
+        doWork: function () {
             this.work++;
         }
     });
@@ -192,7 +192,7 @@ This override system works the same for any method, not just `constructor()`:
     var MyDerivedKind = kind({
         name: 'MyDerivedKind',
         kind: MyOriginalKind,
-        doWork: function() {
+        doWork: function () {
             if (this.shouldDoWork) {
                 this.inherited(arguments);
             }

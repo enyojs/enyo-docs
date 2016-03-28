@@ -9,14 +9,14 @@ code inside an `app.js` file:
         Signals = require('enyo/Signals'),
         ready = require('enyo/ready');
 
-    ready(function() {
+    ready(function () {
         var App = kind({
             name: "App',
             components: [
                 {kind: Signals, ondeviceready: 'deviceReady'},
                 {content: 'Hello, World!'}
             ],
-            deviceReady: function() {
+            deviceReady: function () {
                 // respond to deviceready event
             }
         });
