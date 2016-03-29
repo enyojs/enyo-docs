@@ -12,7 +12,8 @@
 			"../spotlight/src",
 			"../onyx/src",
 			"../enyo-webos/src",
-			"../canvas/src"
+			"../canvas/src",
+			"../svg/src"
 		],
 		"includePattern": ".+\\.js(doc)?$",
 		"excludePattern": "package\\.js"
