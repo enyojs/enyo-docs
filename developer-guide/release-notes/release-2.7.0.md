@@ -49,12 +49,15 @@ In order to package apps using modules, you must use
 
 * Added new modules 
     * `enyo/AccessibilitySupport`
-    * `enyo/DataGridList`
-    * `enyo/ScrollThumb`
-    * `enyo/Blob`
-    * `enyo/EventEmitter`
     * `enyo/History`
-    * `enyo/MixinSupport`
+    * `enyo/NewDataList`
+    * `enyo/ViewManager` (WIP)
+    * `enyo/FluxStore` (WIP)
+    * `enhyo/FluxDispatcher` (WIP)
+    * `enyo/BackgroundTaskManager` (WIP)
+    * `enyo/ShowingTransitionSupport` (WIP)
+    * and more
+
 
 * Deprecated Modules/Methods/Properties
     * `enyo/animation`
@@ -116,21 +119,15 @@ In order to package apps using modules, you must use
 
 * Removed IE8 support and took all non-evergreen desktop browsers off our supported platforms list
 
-* Added `enyo/NewDataList`, `enyo/ViewManager`, `enyo/FluxStore`, `enhyo/FluxDispatcher`,
-    `enyo/BackgroundTaskManager` and other Work-In-Progress kinds
-
 * Various bug fixes and performance improvements
 
 ### moonstone
 
 * Added new modules 
     * `moonstone/AnimatedButton`
-    * `moonstone/AnimatedButtonSvg`    
     * `moonstone/ApplicationCloseButton`
     * `moonstone/ClampedText`
     * `moonstone/DayPicker`
-    * `moonstone/ExpandableListItemDrawer`
-    * `moonstone/ExpandableListItemHeader`
     * `moonstone/MoonAnimator`
     * `moonstone/NewDataList`
     * `moonstone/PlaylistSupport`
@@ -177,7 +174,7 @@ In order to package apps using modules, you must use
         * `contentUpperCase`
     * `moonstone/VideoInfoHeader`
         * `titleUpperCase`
-    
+
 #### Various bug fixes and performance improvements
 
 * Added new validator option for `moonstone/InputDecorator` using `invalid` and `invalidMessage`
