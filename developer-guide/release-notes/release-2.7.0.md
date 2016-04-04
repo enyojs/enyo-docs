@@ -24,7 +24,7 @@ Before we could write code like this:
   }).renderInto(document.body);
 ```
 
-Starting in enyo 2.7.0 we now write code like this.
+Starting in Enyo 2.7.0 we now write code like this.
 
 ```javascript
   //Enyo 2.7
@@ -119,6 +119,8 @@ In order to package apps using modules, you must use
 
 * Removed IE8 support and took all non-evergreen desktop browsers off our supported platforms list
 
+* `sampler` was replaced with `enyo-strawman`
+
 * Various bug fixes and performance improvements
 
 ### moonstone
@@ -178,7 +180,7 @@ In order to package apps using modules, you must use
 #### Various bug fixes and performance improvements
 
 * Added new validator option for `moonstone/InputDecorator` using `invalid` and `invalidMessage`
-    properties. If `invalid`, the `invalidMessage` will show up as a tooltip next to the input.
+    properties. If `invalid`, the `invalidMessage` will show up as a ToolTip next to the input.
 
 * Added sideways facing `moonstone/ToolTip` and updated the look of the ToolTip tail. It is now
     possible to specify `'left top'`, `'left bottom'`, `'right top'` and, `'right bottom'` for
@@ -240,3 +242,22 @@ In order to package apps using modules, you must use
 * A new library for using SVG components, the Enyo way
 
 ## Known Issues
+
+### enyo
+
+* `enyo/DataGridList` may not properly relayout after a rotate operation, causing a blank area to appear
+
+* On WebKit mobile browsers, `playbackRate` is not supported so fast forward operations do not work for
+    `enyo/Audio` and `enyo/Video`
+
+### moonstone
+
+* `moonstone/ExpandableText` does not work on non-WebKit browsers
+
+* `moonstone/Input` ellipsis behavior is odd on Firefox. This is just how Firefox works.
+
+* `moonstone/Panels` breadcrumb behavior is odd on first transition, but fine on successive
+
+### enyo-strawman
+
+* In IE 11, the AudioSample will display NaN for the duration
