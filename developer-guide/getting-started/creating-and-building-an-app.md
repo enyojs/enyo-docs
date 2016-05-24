@@ -119,22 +119,14 @@ For example, the following command will create output in `build/app.css` and
 ```
 
 Note that any `enyo pack` option available on the command line may also be set in
-the project's `package.json` file.  Options specified on the command line will
-always override those defined in `package.json`.
+the project's `.enyoconfig` file.  Options specified on the command line will
+always override those defined in `.enyoconfig`.
 
-The following `package.json` will produce the same output as the preceding
+The following `.enyoconfig` will produce the same output as the preceding
 command-line build, if `enyo pack` is run without any options:
 
 ```json
 {
-    "name": "my-project",
-    "main": "index.js",
-    "assets": [
-        "assets/icon.png"
-    ],
-    "styles": [
-        "src/app.less"
-    ],
     "production": true,
     "outDir": "./build",
     "inlineCss": false,
