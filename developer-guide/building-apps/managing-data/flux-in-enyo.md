@@ -39,11 +39,11 @@ Data consumers ask the dispatcher to pass `Action` requests (with payloads) to
 the data store.  The payload may contain any meaningful data that a store needs
 to operate.
 
-![_Flux Flow_](../assets/flux-in-enyo-1.png)
+![_Flux Flow_](../../assets/flux-in-enyo-1.png)
 
 ## How is this different from Enyo MVC?
 
-![_MVC Flow_](../assets/flux-in-enyo-2.png)
+![_MVC Flow_](../../assets/flux-in-enyo-2.png)
 
 ## What are the downsides?
 
