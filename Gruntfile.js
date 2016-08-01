@@ -26,11 +26,20 @@ module.exports = function (grunt) {
 		},
 
 		subst: {
+			'dev-guide-rel': {
+				options: {
+					pattern: /\$dev-guide-rel/ig,
+					relative: true,
+					base: 'output/developer-guide'
+				},
+				files: {
+					src: 'output/developer-guide/**/*.html'
+				}
+			},
 			'dev-guide': {
 				options: {
 					pattern: /\$dev-guide/ig,
-					relative: true,
-					base: 'output/developer-guide'
+					replacement: "developer-guide"
 				},
 				files: {
 					src: 'output/**/*.html'
