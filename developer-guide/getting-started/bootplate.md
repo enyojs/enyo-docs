@@ -19,16 +19,17 @@ development tools.
 
 **Note:** To use `generator-enyo`, you will first need to have
 [Node.js](http://nodejs.org) and the [Node Package Manager](https://npmjs.org)
-installed on your Mac OS or Linux computer.
+installed on your Windows, Mac OS or Linux computer.
 
-1. Use the Node Package Manager `(npm)` to install `generator-enyo`:
+1. Use the Node Package Manager `(npm)` to install `generator-enyo` and associated tools:
 
 	```
-		sudo npm install -g generator-enyo
+		sudo npm install -g generator-enyo yo bower cordova
 	```
 
-    Note that this will install Yeoman, if it is not already installed.  (Also
-    note that `sudo` may not be necessary on all platforms.)
+    Note that this will install Yeoman, Bower, and Cordova, if they are not already 
+    installed.  (Also note that `sudo` may not be necessary on all platforms, such 
+    as Windows.)
 
 2. Run the generator, specifying the name of your new app:
 
