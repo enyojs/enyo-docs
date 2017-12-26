@@ -3,7 +3,7 @@
 ## Introduction
 
 In this tutorial, we will build a basic TV application using the Moonstone UI
-library.  Our application will perform [Flickr](http://com) searches, and will follow
+library.  Our application will perform [Flickr](http://filckr.com) searches, and will follow
 Moonstone's "always viewing" Panels pattern.  
 
 We'll walk through the creation of "Search" and "Detail" panel views, crafting
@@ -473,7 +473,7 @@ source directly:
     var Source = kind({
         name: 'Source',
         kind: JsonpSource,
-        urlRoot: 'https://api.com/services/rest/',
+        urlRoot: 'https://api.flickr.com/services/rest/',
     });
 ```
 
@@ -493,7 +493,7 @@ hash, which will be expanded into query string parameters on the Jsonp request.
     var Source = kind({
         name: 'Source',
         kind: JsonpSource,
-        urlRoot: 'https://api.com/services/rest/',
+        urlRoot: 'https://api.flickr.com/services/rest/',
         fetch: function (rec, opts) {
             opts.callbackName = 'jsoncallback';
             opts.params = {};
@@ -568,7 +568,7 @@ the value of `searchText` is altered.
 Finally, we'll override the collection's `fetch()` function to provide more
 information to the source about how to retrieve this specific information.
 Along with the search text, the [Flickr photos search
-API](https://www.com/services/api/photos.search.html) requires us
+API](https://www.flickr.com/services/api/flickr.photos.search.html) requires us
 to pass a `method` query string parameter indicating that we want to search
 photos.  There are a number of optional parameters we could specify as well; for
 this sample, we'll specify a `sort` value (so that we get interesting photos),
@@ -611,7 +611,7 @@ for these parameters and add them to the `params` that are passed along:
     var Source = kind({
         name: 'Source',
         kind: JsonpSource,
-        urlRoot: 'https://api.com/services/rest/',
+        urlRoot: 'https://api.flickr.com/services/rest/',
         fetch: function (rec, opts) {
             opts.callbackName = 'jsoncallback';
             opts.params = utils.clone(rec.params);
@@ -634,12 +634,12 @@ our `SearchCollection`, we should get result data loaded into the
 collection.  But there is one final step.
 
 If we look at a sample of the [data
-returned](https://api.com/services/rest/?method=photos.search&sort=interestingness-desc&per_page=50&text=San%20Francisco&api_key=2a21b46e58d207e4888e1ece0cb149a5&format=json&jsoncallback=enyo_jsonp_callback_0)
+returned](https://api.flickr.com/services/rest/?method=flickr.photos.search&sort=interestingness-desc&per_page=50&text=San%20Francisco&api_key=2a21b46e58d207e4888e1ece0cb149a5&format=json&jsoncallback=enyo_jsonp_callback_0)
 from a call to the API, we can see that it is not actually an array, which is
 what `enyo/Collection` expects.  The array of photo records is actually nested
 a couple levels down in the object returned:
 
-**Sample response from Flickr "photos.search" API**
+**Sample response from Flickr "flickr.photos.search" API**
 
 ```
     {
@@ -1132,7 +1132,7 @@ a `params` hash with the information needed to fetch detailed image models
         ...
         fetch: function (opts) {
             this.params = {
-                method: 'photos.getinfo',
+                method: 'flickr.photos.getinfo',
                 photo_id: this.get('id')
             };
             return this.inherited(arguments);
@@ -1140,16 +1140,16 @@ a `params` hash with the information needed to fetch detailed image models
     });
 ```
 
-Here, we set the `method` parameter to `photos.getinfo` to reach the
-[Flickr photo information endpoint](https://www.com/services/api/photos.getinfo.html).
+Here, we set the `method` parameter to `flickr.photos.getinfo` to reach the
+[Flickr photo information endpoint](https://www.flickr.com/services/api/flickr.photos.getinfo.html).
 We also pass a `photo_id` property, whose value will already be available from
 the partial field set loaded by the collection.
 
 Next, let's examine the [data we get
-back](https://api.com/services/rest/?method=photos.getinfo&photo_id=59948935&api_key=2a21b46e58d207e4888e1ece0cb149a5&format=json&jsoncallback=enyo_jsonp_callback_1)
+back](https://flickr.api.com/services/rest/?method=flickr.photos.getinfo&photo_id=59948935&api_key=2a21b46e58d207e4888e1ece0cb149a5&format=json&jsoncallback=enyo_jsonp_callback_1)
 from a call to this endpoint:
 
-**Sample of data returned by call to "photos.getinfo" API**
+**Sample of data returned by call to "flickr.photos.getinfo" API**
 
 ```
     {
