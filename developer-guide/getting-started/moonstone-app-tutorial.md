@@ -3,7 +3,7 @@
 ## Introduction
 
 In this tutorial, we will build a basic TV application using the Moonstone UI
-library.  Our application will perform [Flickr](http://filckr.com) searches, and will follow
+library.  Our application will perform [Flickr](http://flickr.com) searches, and will follow
 Moonstone's "always viewing" Panels pattern.  
 
 We'll walk through the creation of "Search" and "Detail" panel views, crafting
