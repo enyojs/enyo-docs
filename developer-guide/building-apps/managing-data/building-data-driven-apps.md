@@ -611,7 +611,7 @@ In the following example, the collection is loaded from a fixed URL:
 
 ```javascript
     var
-        kind = require(enyo/kind),
+        kind = require('enyo/kind'),
         AjaxSource = require('enyo/AjaxSource'),
         Collection = require('enyo/Collection');
 
