@@ -34,13 +34,12 @@ obtaining and installing these tools, along with some suggested choices (where
 appropriate).  If you are already familiar with the tools, feel free to install
 them on your own and move on to step 2.
 
-## 2. Install a moonstone app template
+## 2. Create new project with moonstone app template
 
-The `enyo-dev` tool does not include a Moonstone app template but makes it easy to add
-custom templates. We'll start by adding a Moonstone template and then use the template
-to create our base app.
-
-TODO: Complete this
+```
+    enyo init -t moonstone-app moonstone-project
+		cd moonstone-project
+```
 
 ## 3. Set up main view
 
